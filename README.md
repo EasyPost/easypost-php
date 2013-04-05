@@ -16,7 +16,7 @@ Include the EasyPost client in your PHP script:
 Example
 ----------------
 
---Note: This won't work yet, only ScanForms and Addresses are implemented to date--
+**Note: This won't work yet, only ScanForms and Addresses are implemented to date**
 
     EasyPost::setApiKey("Er1KtysoI4ogfaWswh1v7w");
     
