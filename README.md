@@ -24,9 +24,9 @@ Example
     $from_param = array("street1" => "764 Warehouse Ave", "street2" => "", "city" => "Kansas City", "state" => "KS", "zip" => "66101");
     $parcel_param = array("predefined_package" => "LargeFlatRateBox", "weight" => 100.0); // weight in ounces
 
-    $to = EasyPost_Address:create(array("address" => $to_param));
-    $from = EasyPost_Address:create(array("address" => $from_param));
-    $parcel = EasyPost_Parcel::create(array("address" => $parcel_param));
+    $to = EasyPost_Address:create($to_param);
+    $from = EasyPost_Address:create($from_param);
+    $parcel = EasyPost_Parcel::create($parcel_param);
 
     $shipment = EasyPost_Shipment::create(array(
       "to" => $to,

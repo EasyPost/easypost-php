@@ -13,11 +13,21 @@ class EasyPost_Address extends EasyPost_Resource {
 
   public static function all($params=null, $apiKey=null) {
     $class = get_class();
+    if(!isset($params['address']) || !is_array($params['address'])) {
+      $clone = $params;
+      unset($params);
+      $params['address'] = $clone;
+    }
     return self::_scopedAll($class, $params, $apiKey);
   }
 
   public static function create($params=null, $apiKey=null) {
     $class = get_class();
+    if(!isset($params['address']) || !is_array($params['address'])) {
+      $clone = $params;
+      unset($params);
+      $params['address'] = $clone;
+    }
     return self::_scopedCreate($class, $params, $apiKey);
   }
     
@@ -30,7 +40,6 @@ class EasyPost_Address extends EasyPost_Resource {
     $requestor = new EasyPost_Requestor($this->_apiKey);
     $url = $this->instanceUrl() . '/verify';
     list($response, $apiKey) = $requestor->request('get', $url, $params);
-    print_r($response);
     $this->refreshFrom($response, $apiKey);
     return $this;
   }
