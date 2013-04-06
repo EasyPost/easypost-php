@@ -27,3 +27,5 @@ require(dirname(__FILE__) . '/EasyPost/Requestor.php');
 // API Resources
 require(dirname(__FILE__) . '/EasyPost/Address.php');
 require(dirname(__FILE__) . '/EasyPost/ScanForm.php');
+require(dirname(__FILE__) . '/EasyPost/CustomsItem.php');
+require(dirname(__FILE__) . '/EasyPost/CustomsInfo.php');

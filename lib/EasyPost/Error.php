@@ -1,17 +1,17 @@
 <?php
 
 class EasyPost_Error extends Exception {
-  public function __construct($message=null, $http_status=null, $http_body=null) {
+  public function __construct($message=null, $httpStatus=null, $httpBody=null) {
     parent::__construct($message);
-    $this->http_status = $http_status;
-    $this->http_body = $http_body;
+    $this->httpStatus = $httpStatus;
+    $this->httpBody = $httpBody;
   }
 
   public function getHttpStatus() {
-    return $this->http_status;
+    return $this->httpStatus;
   }
 
   public function getHttpBody() {
-    return $this->http_body;
+    return $this->httpBody;
   }
 }

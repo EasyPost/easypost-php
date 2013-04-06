@@ -39,6 +39,8 @@ abstract class EasyPost_Util {
       'rate' => 'EasyPost_Rate',
       'shipment' => 'EasyPost_Shipment',
       'billingplan' => 'EasyPost_BillingPlan',
+      'customsitem' => 'EasyPost_CustomsItem',
+      'customsinfo' => 'EasyPost_CustomsInfo',
       'apikey' => 'EasyPost_ApiKey',
       'carrieraccount' => 'EasyPost_CarrierAccount');
 
