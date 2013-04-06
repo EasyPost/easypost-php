@@ -15,10 +15,6 @@ abstract class EasyPost_Util {
   public static function convertEasyPostObjectToArray($values) {
     $results = array();
     foreach ($values as $k => $v) {
-      if (in_array($k, EasyPost_Object::$_permanentAttributes)) {
-        continue;
-      }
-
       if ($v instanceof EasyPost_Object) {
         $results[$k] = $v->__toArray(true);
       }
@@ -67,7 +63,7 @@ abstract class EasyPost_Util {
       } else {
         $class = 'EasyPost_Object';
       }
-      return EasyPost_Object::scopedConstructFrom($class, $response, $apiKey);
+      return EasyPost_Object::constructFrom($class, $response, $apiKey);
     } else {
       return $response;
     }

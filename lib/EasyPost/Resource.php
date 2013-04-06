@@ -1,15 +1,6 @@
 <?php
 
 abstract class EasyPost_Resource extends EasyPost_Object {
-  public function refresh() {
-    $requestor = new EasyPost_Requestor($this->_apiKey);
-    $url = $this->instanceUrl();
-
-    list($response, $apiKey) = $requestor->request('get', $url, $this->_retrieveOptions);
-    $this->refreshFrom($response, $apiKey);
-    return $this;
-   }
-
   public static function className($class) {
     // Strip namespace if present
     if ($postfix = strrchr($class, '\\')) {
@@ -38,14 +29,23 @@ abstract class EasyPost_Resource extends EasyPost_Object {
     $id = $this['id'];
     $class = get_class($this);
     if (!$id) {
-      throw new EasyPost_InvalidRequestError("Could not determine which URL to request: {$class} instance has invalid ID: {$id}", null);
+      throw new EasyPost_InvalidRequestError("Could not determine which URL to request: {$class} instance has invalid ID: {$id}");
     }
     $id = EasyPost_Requestor::utf8($id);
     $classUrl = self::classUrl($class);
     return "{$classUrl}/".urlencode($id);
   }
 
-  private static function _validateCall($method, $params=null, $apiKey=null) {
+  public function refresh() {
+    $requestor = new EasyPost_Requestor($this->_apiKey);
+    $url = $this->instanceUrl();
+
+    list($response, $apiKey) = $requestor->request('get', $url, $this->_retrieveOptions);
+    $this->refreshFrom($response, $apiKey);
+    return $this;
+   }
+
+  private static function _validate($method, $params=null, $apiKey=null) {
     if ($params && !is_array($params)) {
       throw new EasyPost_Error("You must pass an array as the first argument to EasyPost API method calls.");
     }
@@ -54,30 +54,30 @@ abstract class EasyPost_Resource extends EasyPost_Object {
     }
   }
 
-  protected static function _scopedRetrieve($class, $id, $apiKey=null) {
+  protected static function _retrieve($class, $id, $apiKey=null) {
     $instance = new $class($id, $apiKey);
     $instance->refresh();
     return $instance;
   }
 
-  protected static function _scopedAll($class, $params=null, $apiKey=null) {
-    self::_validateCall('all', $params, $apiKey);
+  protected static function _all($class, $params=null, $apiKey=null) {
+    self::_validate('all', $params, $apiKey);
     $requestor = new EasyPost_Requestor($apiKey);
     $url = self::classUrl($class);
     list($response, $apiKey) = $requestor->request('get', $url, $params);
     return EasyPost_Util::convertToEasyPostObject($response, $apiKey);
   }
 
-  protected static function _scopedCreate($class, $params=null, $apiKey=null) {
-    self::_validateCall('create', $params, $apiKey);
+  protected static function _create($class, $params=null, $apiKey=null) {
+    self::_validate('create', $params, $apiKey);
     $requestor = new EasyPost_Requestor($apiKey);
     $url = self::classUrl($class);
     list($response, $apiKey) = $requestor->request('post', $url, $params);
     return EasyPost_Util::convertToEasyPostObject($response, $apiKey);
   }
 
-  protected function _scopedSave($class) {
-    self::_validateCall('save');
+  protected function _save($class) {
+    self::_validate('save');
     if (count($this->_unsavedValues)) {
       $requestor = new EasyPost_Requestor($this->_apiKey);
       $params = array();
@@ -91,8 +91,8 @@ abstract class EasyPost_Resource extends EasyPost_Object {
     return $this;
   }
 
-  protected function _scopedDelete($class, $params=null) {
-    self::_validateCall('delete');
+  protected function _delete($class, $params=null) {
+    self::_validate('delete');
     $requestor = new EasyPost_Requestor($this->_apiKey);
     $url = $this->instanceUrl();
     list($response, $apiKey) = $requestor->request('delete', $url, $params);

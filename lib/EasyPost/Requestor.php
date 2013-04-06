@@ -9,7 +9,7 @@ class EasyPost_Requestor {
 
   public static function apiUrl($url='') {
     $apiBase = EasyPost::$apiBase;
-    return "$apiBase$url";
+    return "{$apiBase}{$url}";
   }
 
   public static function utf8($value) {
@@ -67,39 +67,45 @@ class EasyPost_Requestor {
     if (!$params) {
       $params = array();
     }
-    list($rbody, $rcode, $myApiKey) = $this->_requestRaw($method, $url, $params);
-    $response = $this->_interpretResponse($rbody, $rcode);
+    list($httpBody, $httpStatus, $myApiKey) = $this->_requestRaw($method, $url, $params);
+
+    // decode the json response into an array
+    $response = $this->_interpretResponse($httpBody, $httpStatus);
     return array($response, $myApiKey);
   }
 
-  public function handleApiError($rbody, $rcode, $response) {
+  public function handleApiError($httpBody, $httpStatus) {
     if(!is_array($response) || !isset($response['error'])) {
-      throw new EasyPost_ApiError("Invalid response object from API: {$rbody} (HTTP response code was {$rcode})", $rcode, $rbody, $response);
+      throw new EasyPost_ApiError("Invalid response object from API: HTTP Status: {$httpStatus} - {$httpBody})", $httpStatus, $httpBody);
     }
+    // TODO: line these up properly with the API's response codes
     $error = $response['error'];
-    switch ($rcode) {
+    switch ($httpStatus) {
     case 400:
     case 404:
       throw new EasyPost_InvalidRequestError(isset($error['message']) ? $error['message'] : null,
                                             isset($error['param']) ? $error['param'] : null,
-                                            $rcode, $rbody, $response);
+                                            $httpStatus, $httpBody);
     case 401:
-      throw new EasyPost_AuthenticationError(isset($error['message']) ? $error['message'] : null, $rcode, $rbody, $response);
+      throw new EasyPost_AuthenticationError(isset($error['message']) ? $error['message'] : null, $httpStatus, $httpBody);
     default:
-      throw new EasyPost_ApiError(isset($error['message']) ? $error['message'] : null, $rcode, $rbody, $response);
+      throw new EasyPost_ApiError(isset($error['message']) ? $error['message'] : null, $httpStatus, $httpBody);
     }
   }
 
   private function _requestRaw($method, $url, $params) {
+    // check auth
     $myApiKey = $this->_apiKey;
     if (!$myApiKey) {
-      $myApiKey = EasyPost::$apiKey;
+      if (!$myApiKey = EasyPost::$apiKey) {
+        throw new EasyPost_AuthenticationError('No API key provided. Set your API key using "EasyPost::setApiKey(<API-KEY>)". See https://geteasypost.com/docs for details, or email contact@geteasypost.com if you have any questions.');
+      }
     }
-    if (!$myApiKey) {
-      throw new EasyPost_AuthenticationError('No API key provided. Set your API key using "EasyPost::setApiKey(<API-KEY>)". See https://geteasypost.com/docs for details, or email contact@geteasypost.com if you have any questions.');
-    }
+
+    // prepare url, params, header for cURL
     $absUrl = $this->apiUrl($url);
     $params = self::_encodeObjects($params);
+
     $langVersion = phpversion();
     $uname = php_uname();
     $ua = array('bindings_version' => EasyPost::VERSION,
@@ -108,29 +114,29 @@ class EasyPost_Requestor {
 		'publisher' => 'easypost',
 		'uname' => $uname);
     $headers = array('X-EasyPost-Client-User-Agent: ' . json_encode($ua),
-		  'User-Agent: EasyPost/v1 PhpBindings/' . EasyPost::VERSION,
+		  'User-Agent: EasyPost/v2 PhpClient/' . EasyPost::VERSION,
       "Authorization: Bearer {$myApiKey}");
     if (EasyPost::$apiVersion) {
       $headers[] = 'EasyPost-Version: ' . EasyPost::$apiVersion;
     }
-    list($rbody, $rcode) = $this->_curlRequest($method, $absUrl, $headers, $params, $myApiKey);
+    list($httpBody, $httpStatus) = $this->_curlRequest($method, $absUrl, $headers, $params, $myApiKey);
 
     // TODO: remove this
     //echo "Raw Response:"."\n";
-    //print_r(array($rbody, $rcode, $myApiKey));
+    //print_r(array($httpBody, $httpStatus, $myApiKey));
 
-    return array($rbody, $rcode, $myApiKey);
+    return array($httpBody, $httpStatus, $myApiKey);
   }
 
-  private function _interpretResponse($rbody, $rcode) {
+  private function _interpretResponse($httpBody, $httpStatus) {
     try {
-      $response = json_decode($rbody, true);
+      $response = json_decode($httpBody, true);
     } catch (Exception $e) {
-      throw new EasyPost_ApiError("Invalid response body from API: {$rbody} (HTTP response code was {$rcode})", $rcode, $rbody);
+      throw new EasyPost_ApiError("Invalid response body from API: HTTP Status: {$httpStatus} - {$httpBody}", $httpStatus, $httpBody);
     }
 
-    if ($rcode < 200 || $rcode >= 300) {
-      $this->handleApiError($rbody, $rcode, $response);
+    if ($httpStatus < 200 || $httpStatus >= 300) {
+      $this->handleApiError($httpBody, $httpStatus);
     }
     return $response;
   }
@@ -138,20 +144,20 @@ class EasyPost_Requestor {
   private function _curlRequest($method, $absUrl, $headers, $params, $myApiKey) {
     $curl = curl_init();
     $method = strtolower($method);
-    $opts = array();
+    $curlOptions = array();
 
     // method
     if ($method == 'get') {
-      $opts[CURLOPT_HTTPGET] = 1;
+      $curlOptions[CURLOPT_HTTPGET] = 1;
       if (count($params) > 0) {
       	$encoded = self::encode($params);
       	$absUrl = "$absUrl?$encoded";
       }
     } else if ($method == 'post') {
-      $opts[CURLOPT_POST] = 1;
-      $opts[CURLOPT_POSTFIELDS] = self::encode($params);
+      $curlOptions[CURLOPT_POST] = 1;
+      $curlOptions[CURLOPT_POSTFIELDS] = self::encode($params);
     } else if ($method == 'delete')  {
-      $opts[CURLOPT_CUSTOMREQUEST] = 'DELETE';
+      $curlOptions[CURLOPT_CUSTOMREQUEST] = 'DELETE';
       if (count($params) > 0) {
       	$encoded = self::encode($params);
       	$absUrl = "{$absUrl}?{$encoded}";
@@ -166,33 +172,33 @@ class EasyPost_Requestor {
     // TODO: remove this
     //echo($absUrl . "\n\n");
 
-    $opts[CURLOPT_URL] = $absUrl;
+    $curlOptions[CURLOPT_URL] = $absUrl;
 
-    $opts[CURLOPT_RETURNTRANSFER] = true;
-    $opts[CURLOPT_CONNECTTIMEOUT] = 30;
-    $opts[CURLOPT_TIMEOUT] = 80;
-    $opts[CURLOPT_HTTPHEADER] = $headers;
+    $curlOptions[CURLOPT_RETURNTRANSFER] = true;
+    $curlOptions[CURLOPT_CONNECTTIMEOUT] = 30;
+    $curlOptions[CURLOPT_TIMEOUT] = 80;
+    $curlOptions[CURLOPT_HTTPHEADER] = $headers;
     
-    curl_setopt_array($curl, $opts);
-    $rbody = curl_exec($curl);
+    curl_setopt_array($curl, $curlOptions);
+    $httpBody = curl_exec($curl);
 
-    $errno = curl_errno($curl);
+    $errorNum = curl_errno($curl);
 
-    if ($rbody === false) {
-      $errno = curl_errno($curl);
+    if ($httpBody === false) {
+      $errorNum = curl_errno($curl);
       $message = curl_error($curl);
       curl_close($curl);
-      $this->handleCurlError($errno, $message);
+      $this->handleCurlError($errorNum, $message);
     }
 
-    $rcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+    $httpStatus = curl_getinfo($curl, CURLINFO_HTTP_CODE);
     curl_close($curl);
-    return array($rbody, $rcode);
+    return array($httpBody, $httpStatus);
   }
 
-  public function handleCurlError($errno, $message) {
+  public function handleCurlError($errorNum, $message) {
     $apiBase = EasyPost::$apiBase;
-    switch ($errno) {
+    switch ($errorNum) {
       case CURLE_COULDNT_CONNECT:
       case CURLE_COULDNT_RESOLVE_HOST:
       case CURLE_OPERATION_TIMEOUTED:
@@ -206,7 +212,7 @@ class EasyPost_Requestor {
         $msg = "Unexpected error communicating with EasyPost.  If this problem persists, let us know at contact@easypost.com.";
     }
 
-    $msg .= "\n\n(Network error [errno {$errno}]: {$message})";
-    throw new EasyPost_ApiConnectionError($msg);
+    $msg .= "\n\n(Network error [errno {$errorNum}]: {$message})";
+    throw new EasyPost_NetworkError($msg);
   }
 }
