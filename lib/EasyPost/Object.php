@@ -63,7 +63,7 @@ class EasyPost_Object implements ArrayAccess {
     }
   }
 
-  public static function constructFrom($class=null, $values, $apiKey=null) {
+  public static function constructFrom($values, $class=null, $apiKey=null) {
     if($class === null) {
       $class = get_class();
     }

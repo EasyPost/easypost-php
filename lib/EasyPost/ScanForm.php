@@ -1,9 +1,9 @@
 <?php
 
 class EasyPost_ScanForm extends EasyPost_Resource {
-  public static function constructFrom($values, $apiKey=null) {
+  public static function constructFrom($values, $class=null, $apiKey=null) {
     $class = get_class();
-    return self::constructFrom($class, $values, $apiKey);
+    return self::constructFrom($values, $class, $apiKey);
   }
 
   public static function retrieve($id, $apiKey=null) {

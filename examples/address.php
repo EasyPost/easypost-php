@@ -1,20 +1,36 @@
 <?php
 
-require_once("../lib/Easypost.php");
+require_once("../lib/easypost.php");
+EasyPost::setApiKey('cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi');
 
-EasyPost::setApiKey('Nr0PtkhoI7ogfaWswh1v7w');
+// create address
+$address_params = array("name" => "Sawyer Bateman",
+                        "street1" => "388 Townsend St",
+                        "street2" => "Apt 20",
+                        "city" => "San Francisco",
+                        "state" => "CA",
+                        "zip" => "94107");
+$address = EasyPost_Address::create($address_params);
+print_r($address);
 
-/* Waiting on v2 endpoint for testing 
 
-$address_params = array("street1" => "388 Townsend St", "street2" => "Apt 20", "city" => "San Francisco", "state" => "CA", "zip" => "94107");
+// retrieve
+$retrieved_address = EasyPost_Address::retrieve($address->id);
+print_r($retrieved_address);
 
-$address_obj = EasyPost_Address::create($address_params);
 
-print_r($address_obj);
+// verify
+$verified_address = $address->verify();
+print_r($verified_address);
+
+
+// all
+$all = EasyPost_Address::all();
+print_r($all);
+/*
+for($i = 0, $k = count($all); $i < $k; $i++) {
+  print_r(EasyPost_Address::retrieve($all[$i]->id));
+}
 */
-//$verified_address = Easypost_Address::verify(array('address' => $address));
-//$verified_address = $address_obj->verify();
-//echo $verified_address;
-
 
 

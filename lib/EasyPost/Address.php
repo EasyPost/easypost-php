@@ -1,9 +1,9 @@
 <?php
 
 class EasyPost_Address extends EasyPost_Resource {
-  public static function constructFrom($values, $apiKey=null) {
+  public static function constructFrom($values, $class=null, $apiKey=null) {
     $class = get_class();
-    return self::constructFrom($class, $values, $apiKey);
+    return self::constructFrom($values, $class, $apiKey);
   }
 
   public static function retrieve($id, $apiKey=null) {
@@ -13,11 +13,12 @@ class EasyPost_Address extends EasyPost_Resource {
 
   public static function all($params=null, $apiKey=null) {
     $class = get_class();
+    /*
     if(!isset($params['address']) || !is_array($params['address'])) {
       $clone = $params;
       unset($params);
       $params['address'] = $clone;
-    }
+    }*/
     return self::_all($class, $params, $apiKey);
   }
 

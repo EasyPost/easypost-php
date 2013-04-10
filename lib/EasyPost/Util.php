@@ -29,9 +29,11 @@ abstract class EasyPost_Util {
   }
 
   public static function convertToEasyPostObject($response, $apiKey) {
-    $types = array('address' => 'EasyPost_Address',
-		  'parcel' => 'EasyPost_Parcel',
-      'scanform' => 'EasyPost_ScanForm',
+    $types = array('Address' => 'EasyPost_Address',
+      'ScanForm' => 'EasyPost_ScanForm',
+      'CustomsItem' => 'EasyPost_CustomsItem',
+      'CustomsInfo' => 'EasyPost_CustomsInfo',
+      'Parcel' => 'EasyPost_Parcel',
 		  'postagelabel' => 'EasyPost_PostageLabel',
 		  'bulklabel' => 'EasyPost_BulkLabel',
       'notification' => 'EasyPost_Notification',
@@ -39,8 +41,6 @@ abstract class EasyPost_Util {
       'rate' => 'EasyPost_Rate',
       'shipment' => 'EasyPost_Shipment',
       'billingplan' => 'EasyPost_BillingPlan',
-      'customsitem' => 'EasyPost_CustomsItem',
-      'customsinfo' => 'EasyPost_CustomsInfo',
       'apikey' => 'EasyPost_ApiKey',
       'carrieraccount' => 'EasyPost_CarrierAccount');
 
@@ -65,7 +65,7 @@ abstract class EasyPost_Util {
       } else {
         $class = 'EasyPost_Object';
       }
-      return EasyPost_Object::constructFrom($class, $response, $apiKey);
+      return EasyPost_Object::constructFrom($response, $class, $apiKey);
     } else {
       return $response;
     }

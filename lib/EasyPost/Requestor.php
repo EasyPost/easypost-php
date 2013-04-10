@@ -21,7 +21,7 @@ class EasyPost_Requestor {
 
   private static function _encodeObjects($d) {
     if ($d instanceof EasyPost_Resource) {
-      return self::utf8($d->id);
+      return array("id" => self::utf8($d->id));
     } else if ($d === true) {
       return 'true';
     } else if ($d === false) {
@@ -47,7 +47,7 @@ class EasyPost_Requestor {
         continue;
       }
 
-      if ($prefix && $k && !is_int($k)) {
+      if ($prefix && isset($k)) {
         $k = $prefix."[".$k."]";
       } else if ($prefix) {
         $k = $prefix."[]";
@@ -72,25 +72,6 @@ class EasyPost_Requestor {
     // decode the json response into an array
     $response = $this->_interpretResponse($httpBody, $httpStatus);
     return array($response, $myApiKey);
-  }
-
-  public function handleApiError($httpBody, $httpStatus) {
-    if(!is_array($response) || !isset($response['error'])) {
-      throw new EasyPost_ApiError("Invalid response object from API: HTTP Status: {$httpStatus} - {$httpBody})", $httpStatus, $httpBody);
-    }
-    // TODO: line these up properly with the API's response codes
-    $error = $response['error'];
-    switch ($httpStatus) {
-    case 400:
-    case 404:
-      throw new EasyPost_InvalidRequestError(isset($error['message']) ? $error['message'] : null,
-                                            isset($error['param']) ? $error['param'] : null,
-                                            $httpStatus, $httpBody);
-    case 401:
-      throw new EasyPost_AuthenticationError(isset($error['message']) ? $error['message'] : null, $httpStatus, $httpBody);
-    default:
-      throw new EasyPost_ApiError(isset($error['message']) ? $error['message'] : null, $httpStatus, $httpBody);
-    }
   }
 
   private function _requestRaw($method, $url, $params) {
@@ -128,19 +109,6 @@ class EasyPost_Requestor {
     return array($httpBody, $httpStatus, $myApiKey);
   }
 
-  private function _interpretResponse($httpBody, $httpStatus) {
-    try {
-      $response = json_decode($httpBody, true);
-    } catch (Exception $e) {
-      throw new EasyPost_ApiError("Invalid response body from API: HTTP Status: {$httpStatus} - {$httpBody}", $httpStatus, $httpBody);
-    }
-
-    if ($httpStatus < 200 || $httpStatus >= 300) {
-      $this->handleApiError($httpBody, $httpStatus);
-    }
-    return $response;
-  }
-
   private function _curlRequest($method, $absUrl, $headers, $params, $myApiKey) {
     $curl = curl_init();
     $method = strtolower($method);
@@ -170,7 +138,9 @@ class EasyPost_Requestor {
     $absUrl = self::utf8($absUrl);
 
     // TODO: remove this
-    //echo($absUrl . "\n\n");
+    //echo($absUrl . "\n");
+    //print_r($params);
+    //print_r(self::encode($params));
 
     $curlOptions[CURLOPT_URL] = $absUrl;
 
@@ -194,6 +164,38 @@ class EasyPost_Requestor {
     $httpStatus = curl_getinfo($curl, CURLINFO_HTTP_CODE);
     curl_close($curl);
     return array($httpBody, $httpStatus);
+  }
+
+  private function _interpretResponse($httpBody, $httpStatus) {
+    try {
+      $response = json_decode($httpBody, true);
+    } catch (Exception $e) {
+      throw new EasyPost_ApiError("Invalid response body from API: HTTP Status: {$httpStatus} - {$httpBody}", $httpStatus, $httpBody);
+    }
+
+    if ($httpStatus < 200 || $httpStatus >= 300) {
+      $this->handleApiError($httpBody, $httpStatus, $response);
+    }
+    return $response;
+  }
+
+  public function handleApiError($httpBody, $httpStatus, $response) {
+    if(!is_array($response) || !isset($response['error'])) {
+      throw new EasyPost_ApiError("Invalid response object from API: HTTP Status: {$httpStatus} - {$httpBody})", $httpStatus, $httpBody);
+    }
+    // TODO: line these up properly with the API's response codes
+    $error = $response['error'];
+    switch ($httpStatus) {
+    case 400:
+    case 404:
+      throw new EasyPost_InvalidRequestError(isset($error['message']) ? $error['message'] : null,
+                                            isset($error['param']) ? $error['param'] : null,
+                                            $httpStatus, $httpBody);
+    case 401:
+      throw new EasyPost_AuthenticationError(isset($error['message']) ? $error['message'] : null, $httpStatus, $httpBody);
+    default:
+      throw new EasyPost_ApiError(isset($error['message']) ? $error['message'] : null, $httpStatus, $httpBody);
+    }
   }
 
   public function handleCurlError($errorNum, $message) {

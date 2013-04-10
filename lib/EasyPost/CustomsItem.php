@@ -1,9 +1,9 @@
 <?php
 
 class EasyPost_CustomsItem extends EasyPost_Resource {
-  public static function constructFrom($values, $apiKey=null) {
+  public static function constructFrom($values, $class=null, $apiKey=null) {
     $class = get_class();
-    return self::constructFrom($class, $values, $apiKey);
+    return self::constructFrom($values, $class, $apiKey);
   }
 
   public static function retrieve($id, $apiKey=null) {
@@ -18,6 +18,11 @@ class EasyPost_CustomsItem extends EasyPost_Resource {
 
   public static function create($params=null, $apiKey=null) {
     $class = get_class();
+    if(!isset($params['customs_item']) || !is_array($params['customs_item'])) {
+      $clone = $params;
+      unset($params);
+      $params['customs_item'] = $clone;
+    }
     return self::_create($class, $params, $apiKey);
   }
     
