@@ -17,7 +17,6 @@ $scan_form = EasyPost_ScanForm::create(array("from" => $from, "tracking_codes" =
 print_r($scan_form);
 
 
-// TODO: Modify API to receive an address.id as a valid "from" param
 // create format 2
 $from_address = EasyPost_Address::create($from);
 //$tracking_code_array = array(123456,123455,123454,123453,123452);
