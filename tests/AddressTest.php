@@ -5,6 +5,9 @@ require_once(dirname(__FILE__)."/../lib/easypost.php");
 EasyPost::setApiKey('cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi');
 
 class AddressTest extends PHPUnit_Framework_TestCase {
+    
+    // TODO: set up tests for exceptions and error codes
+
     public function testCreate() {
         $address_params = array("street1" => "388 Townsend St",
                             "street2" => "Apt 20",
@@ -32,6 +35,17 @@ class AddressTest extends PHPUnit_Framework_TestCase {
 
         return $retrieved_address;
     }
+
+    /**
+     * @depends testRetrieve
+     */
+    public function testSave(EasyPost_Address $address) {
+        $address->street2 = "Apt 30";
+        $address->save();
+
+        print_r($address);
+    }
+
 
     /**
      * @depends testRetrieve

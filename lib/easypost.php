@@ -29,3 +29,4 @@ require(dirname(__FILE__) . '/EasyPost/Address.php');
 require(dirname(__FILE__) . '/EasyPost/ScanForm.php');
 require(dirname(__FILE__) . '/EasyPost/CustomsItem.php');
 require(dirname(__FILE__) . '/EasyPost/CustomsInfo.php');
+require(dirname(__FILE__) . '/EasyPost/Parcel.php');

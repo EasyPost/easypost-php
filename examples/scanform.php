@@ -19,9 +19,9 @@ print_r($scan_form);
 
 // create format 2
 $from_address = EasyPost_Address::create($from);
-//$tracking_code_array = array(123456,123455,123454,123453,123452);
+$tracking_code_array = array(123456,123455,123454,123453,123452);
 
-$scan_form_2 = EasyPost_ScanForm::create(array("from" => $from_address, "tracking_codes" => $tracking_codes));
+$scan_form_2 = EasyPost_ScanForm::create(array("from" => $from_address, "tracking_codes" => $tracking_code_array));
 print_r($scan_form_2);
 
 // retrieve

@@ -81,7 +81,7 @@ abstract class EasyPost_Resource extends EasyPost_Object {
     if (count($this->_unsavedValues)) {
       $requestor = new EasyPost_Requestor($this->_apiKey);
       $params = array();
-      foreach ($this->_unsavedValues->toArray() as $k) {
+      foreach ($this->_unsavedValues as $k) {
         $params[$k] = $this->$k;
       }
       $url = $this->instanceUrl();

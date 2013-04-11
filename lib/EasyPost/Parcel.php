@@ -1,6 +1,6 @@
 <?php
 
-class EasyPost_Address extends EasyPost_Resource {
+class EasyPost_Parcel extends EasyPost_Resource {
   public static function constructFrom($values, $class=null, $apiKey=null) {
     $class = get_class();
     return self::constructFrom($values, $class, $apiKey);
@@ -18,10 +18,10 @@ class EasyPost_Address extends EasyPost_Resource {
 
   public static function create($params=null, $apiKey=null) {
     $class = get_class();
-    if(!isset($params['address']) || !is_array($params['address'])) {
+    if(!isset($params['parcel']) || !is_array($params['parcel'])) {
       $clone = $params;
       unset($params);
-      $params['address'] = $clone;
+      $params['parcel'] = $clone;
     }
     return self::_create($class, $params, $apiKey);
   }
@@ -29,13 +29,5 @@ class EasyPost_Address extends EasyPost_Resource {
   public function save() {
     $class = get_class();
     return self::_save($class);
-  }
-
-  public function verify($params=null) {
-    $requestor = new EasyPost_Requestor($this->_apiKey);
-    $url = $this->instanceUrl() . '/verify';
-    list($response, $apiKey) = $requestor->request('get', $url, $params);
-    $this->refreshFrom($response, $apiKey);
-    return $this;
   }
 }
