@@ -23,6 +23,11 @@ class EasyPost_Rate extends EasyPost_Resource {
       unset($params);
       $params['rate'] = $clone;
     }
+    if(isset($params['rate']['id']) && strpos($params['rate']['id'], "shp") !== -1) {
+      $clone = $params;
+      unset($params);
+      $params['rate']['shipment'] = $clone['rate'];
+    }
     return self::_create($class, $params, $apiKey);
   }
   

@@ -55,6 +55,9 @@ abstract class EasyPost_Resource extends EasyPost_Object {
   }
 
   protected static function _retrieve($class, $id, $apiKey=null) {
+    if($id instanceof EasyPost_Resource) {
+      $id = $id->id;
+    }
     $instance = new $class($id, $apiKey);
     $instance->refresh();
     return $instance;

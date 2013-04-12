@@ -46,4 +46,14 @@ class EasyPost_Shipment extends EasyPost_Resource {
     $this->refreshFrom($response, $apiKey);
     return $this;
   }
+
+  public function lowest_rate() {
+    $lowest_rate = false;
+    for($i = 0, $k = count($this->rates); $i < $k; $i++) {
+      if(!$lowest_rate || floatval($this->rates[$i]->rate) < floatval($lowest_rate->rate)) {
+        $lowest_rate = clone($this->rates[$i]);
+      }
+    }
+    return $lowest_rate;
+  }
 }

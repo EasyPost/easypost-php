@@ -40,9 +40,23 @@ $shipment_params = array("from_address" => $from_address,
 $shipment = EasyPost_Shipment::create($shipment_params);
 print_r($shipment);
 
-// get shipment rates
-$shipment->rates();
-print_r($shipment);
+// get shipment rates - optional, rates are added to the obj when it's created if addresses and parcel are present
+if(count($shipment->rates) === 0) {
+    $shipment->rates();
+    print_r($shipment);
+}
+
+// retrieve one rate
+$rate = EasyPost_Rate::retrieve($shipment->lowest_rate());
+print_r($rate);
+
+// create rates the other way
+$created_rates = EasyPost_Rate::create($shipment);
+print_r($created_rates);
+
+
+print_r(EasyPost_Shipment::retrieve($shipment));
+
 
 
 

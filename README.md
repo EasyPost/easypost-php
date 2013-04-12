@@ -32,9 +32,13 @@ Example
       "parcel" => $parcel,
     ));
 
-    $shipment->rates();
+    print_r($shipment->rates);
+    
     // CURRENTLY WORKS UP TO HERE!
+    
     $shipment->postage_label($shipment->rates[0]);
+    // alternatively: $shipment->postage_label($shipment->lowest_rate());
+
     echo $shipment->postage_label->label_url;
 
 Documentation

@@ -138,8 +138,8 @@ class EasyPost_Requestor {
     $absUrl = self::utf8($absUrl);
 
     // TODO: remove this
-    //echo($absUrl . "\n");
-    //print_r($params);
+    echo($absUrl . "\n");
+    print_r($params);
     //print_r(self::encode($params));
 
     $curlOptions[CURLOPT_URL] = $absUrl;
