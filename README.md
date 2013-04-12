@@ -16,8 +16,6 @@ Include the EasyPost client in your PHP script:
 Example
 ----------------
 
-**Note: This won't work yet, only Addresses, ScanForms, and CustomsItems/CustomsInfos are implemented to date**
-
     EasyPost::setApiKey("Er1KtysoI4ogfaWswh1v7w");
     
     $to_param = array("street1" => "388 Townsend St", "street2" => "Apt 20", "city" => "San Francisco", "state" => "CA", "zip" => "94107");
@@ -29,12 +27,14 @@ Example
     $parcel = EasyPost_Parcel::create($parcel_param);
 
     $shipment = EasyPost_Shipment::create(array(
-      "to" => $to,
-      "from" => $from,
+      "to_address" => $to,
+      "from_address" => $from,
       "parcel" => $parcel,
     ));
 
-    $shipment->purchase();
+    $shipment->rates();
+    // CURRENTLY WORKS UP TO HERE!
+    $shipment->postage_label($shipment->rates[0]);
     echo $shipment->postage_label->label_url;
 
 Documentation

@@ -34,15 +34,15 @@ abstract class EasyPost_Util {
       'CustomsItem' => 'EasyPost_CustomsItem',
       'CustomsInfo' => 'EasyPost_CustomsInfo',
       'Parcel' => 'EasyPost_Parcel',
-		  'postagelabel' => 'EasyPost_PostageLabel',
-		  'bulklabel' => 'EasyPost_BulkLabel',
-      'notification' => 'EasyPost_Notification',
-		  'trackingcode' => 'EasyPost_TrackingCode',
-      'rate' => 'EasyPost_Rate',
-      'shipment' => 'EasyPost_Shipment',
-      'billingplan' => 'EasyPost_BillingPlan',
-      'apikey' => 'EasyPost_ApiKey',
-      'carrieraccount' => 'EasyPost_CarrierAccount');
+      'Shipment' => 'EasyPost_Shipment',
+      'Rate' => 'EasyPost_Rate',
+		  'PostageLabel' => 'EasyPost_PostageLabel',
+		  //'BulkLabel' => 'EasyPost_BulkLabel',
+      //'Notification' => 'EasyPost_Notification',
+		  //'TrackingCode' => 'EasyPost_TrackingCode',
+      //'BillingPlan' => 'EasyPost_BillingPlan',
+      //'ApiKey' => 'EasyPost_ApiKey',
+      'CarrierAccount' => 'EasyPost_CarrierAccount');
 
     if(self::isList($response)) {
       $mapped = array();
