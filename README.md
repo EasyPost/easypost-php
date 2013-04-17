@@ -45,6 +45,6 @@ Up-to-date documentation at: https://www.geteasypost.com/docs
 
 Tests
 --------------------
-Requires PHPUnit [https://github.com/sebastianbergmann/phpunit/]
+Requires [PHPUnit](https://github.com/sebastianbergmann/phpunit/)
 
     phpunit tests/
