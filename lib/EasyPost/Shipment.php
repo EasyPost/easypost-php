@@ -39,11 +39,18 @@ class EasyPost_Shipment extends EasyPost_Resource {
     return $this;
   }
 
-  public function postage_label($params=null) {
+  public function buy($params=null) {
     $requestor = new EasyPost_Requestor($this->_apiKey);
-    $url = $this->instanceUrl() . '/postage_label';
-    list($response, $apiKey) = $requestor->request('get', $url, $params);
-    $this->refreshFrom($response, $apiKey);
+    $url = $this->instanceUrl() . '/buy';
+
+    if(isset($params['id']) && (!isset($params['rate']) || !is_array($params['rate']))) {
+      $clone = $params;
+      unset($params);
+      $params['rate'] = $clone;
+    }
+
+    list($response, $apiKey) = $requestor->request('post', $url, $params);
+    $this->refreshFrom($response, $apiKey, true);
     return $this;
   }
 

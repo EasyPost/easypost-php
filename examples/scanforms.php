@@ -5,7 +5,7 @@ require_once("../lib/easypost.php");
 EasyPost::setApiKey('cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi');
 
 // create format 1
-$from = array("name" => "Jon Calhoun",
+$from_address = array("name" => "Jon Calhoun",
               "street1" => "388 Townsend St",
               "street2" => "Apt 20",
               "city" => "San Francisco",
@@ -13,15 +13,15 @@ $from = array("name" => "Jon Calhoun",
               "zip" => "94107");
 $tracking_codes = "123456,123455,123454,123453,123452";
 
-$scan_form = EasyPost_ScanForm::create(array("from" => $from, "tracking_codes" => $tracking_codes));
+$scan_form = EasyPost_ScanForm::create(array("from_address" => $from_address, "tracking_codes" => $tracking_codes));
 print_r($scan_form);
 
 
 // create format 2
-$from_address = EasyPost_Address::create($from);
+$from_address_obj = EasyPost_Address::create($from_address);
 $tracking_code_array = array(123456,123455,123454,123453,123452);
 
-$scan_form_2 = EasyPost_ScanForm::create(array("from" => $from_address, "tracking_codes" => $tracking_code_array));
+$scan_form_2 = EasyPost_ScanForm::create(array("from_address" => $from_address_obj, "tracking_codes" => $tracking_code_array));
 print_r($scan_form_2);
 
 // retrieve
