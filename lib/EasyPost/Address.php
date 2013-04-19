@@ -35,7 +35,6 @@ class EasyPost_Address extends EasyPost_Resource {
     $requestor = new EasyPost_Requestor($this->_apiKey);
     $url = $this->instanceUrl() . '/verify';
     list($response, $apiKey) = $requestor->request('get', $url, $params);
-    $this->refreshFrom($response, $apiKey);
-    return $this;
+    return EasyPost_Util::convertToEasyPostObject($response, $apiKey);
   }
 }

@@ -138,8 +138,8 @@ class EasyPost_Requestor {
     $absUrl = self::utf8($absUrl);
 
     // TODO: remove this
-    echo($absUrl . "\n");
-    print_r($params);
+    //echo($absUrl . "\n");
+    //print_r($params);
     //print_r(self::encode($params));
 
     $curlOptions[CURLOPT_URL] = $absUrl;
@@ -183,18 +183,21 @@ class EasyPost_Requestor {
     if(!is_array($response) || !isset($response['error'])) {
       throw new EasyPost_ApiError("Invalid response object from API: HTTP Status: {$httpStatus} - {$httpBody})", $httpStatus, $httpBody);
     }
-    // TODO: line these up properly with the API's response codes
     $error = $response['error'];
     switch ($httpStatus) {
     case 400:
     case 404:
-      throw new EasyPost_InvalidRequestError(isset($error['message']) ? $error['message'] : null,
-                                            isset($error['param']) ? $error['param'] : null,
-                                            $httpStatus, $httpBody);
+      if(isset($error['type']) && $error['type'] == "invalid_request_error") {
+        throw new EasyPost_InvalidRequestError(isset($error['message']) ? $error['message'] : null,
+                                              isset($error['param']) ? $error['param'] : null,
+                                              $httpStatus, $httpBody);
+      } else {
+        throw new EasyPost_ApiError(isset($error['message']) ? $error['message'] : isset($error) ? $error : null, $httpStatus, $httpBody);
+      }
     case 401:
       throw new EasyPost_AuthenticationError(isset($error['message']) ? $error['message'] : null, $httpStatus, $httpBody);
     default:
-      throw new EasyPost_ApiError(isset($error['message']) ? $error['message'] : null, $httpStatus, $httpBody);
+      throw new EasyPost_ApiError(isset($error['message']) ? $error['message'] : isset($error) ? $error : null, $httpStatus, $httpBody);
     }
   }
 
@@ -211,7 +214,7 @@ class EasyPost_Requestor {
         $msg = "Could not verify EasyPost's SSL certificate.  Please make sure that your network is not intercepting certificates.  (Try going to {$apiBase} in your browser.)  If this problem persists, let us know at contact@geteasypost.com.";
         break;
       default:
-        $msg = "Unexpected error communicating with EasyPost.  If this problem persists, let us know at contact@easypost.com.";
+        $msg = "Unexpected error communicating with EasyPost.  If this problem persists, let us know at contact@geteasypost.com.";
     }
 
     $msg .= "\n\n(Network error [errno {$errorNum}]: {$message})";

@@ -36,13 +36,16 @@ abstract class EasyPost_Util {
       'Parcel' => 'EasyPost_Parcel',
       'Shipment' => 'EasyPost_Shipment',
       'Rate' => 'EasyPost_Rate',
-		  'PostageLabel' => 'EasyPost_PostageLabel',
-		  //'BulkLabel' => 'EasyPost_BulkLabel',
-      //'Notification' => 'EasyPost_Notification',
-		  //'TrackingCode' => 'EasyPost_TrackingCode',
-      //'BillingPlan' => 'EasyPost_BillingPlan',
-      //'ApiKey' => 'EasyPost_ApiKey',
-      'CarrierAccount' => 'EasyPost_CarrierAccount');
+		  'PostageLabel' => 'EasyPost_PostageLabel');
+
+    $prefixes = array('adr' => 'EasyPost_Address',
+      'sf' => 'EasyPost_ScanForm',
+      'cstitem' => 'EasyPost_CustomsItem',
+      'cstinfo' => 'EasyPost_CustomsInfo',
+      'prcl' => 'EasyPost_Parcel',
+      'shp' => 'EasyPost_Shipment',
+      'rate' => 'EasyPost_Rate',
+      'pl' => 'EasyPost_PostageLabel');
 
     if(self::isList($response)) {
       $mapped = array();
@@ -54,14 +57,10 @@ abstract class EasyPost_Util {
       }
       return $mapped;
     } else if(is_array($response)) {
-      $response_key = array_keys($response);
-      if(isset($response_key[0]) && is_string($response_key[0]) && isset($types[$response_key[0]])) {
-        $response = $response[$response_key[0]];
-        $response['object'] = $response_key[0];
-      }
-
       if(isset($response['object']) && is_string($response['object']) && isset($types[$response['object']])) {
         $class = $types[$response['object']];
+      } else if(isset($response['id']) && isset($prefixes[substr($response['id'], 0, strpos($response['id'], "_"))])) {
+        $class = $prefixes[substr($response['id'], 0, strpos($response['id'], "_"))];
       } else {
         $class = 'EasyPost_Object';
       }
