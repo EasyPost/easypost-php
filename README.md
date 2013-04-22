@@ -16,6 +16,9 @@ Include the EasyPost client in your PHP script:
 Example
 ----------------
 
+    <?php
+
+    require_once("lib/easypost.php");
     EasyPost::setApiKey("cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi");
     
     $to_param = array("street1" => "388 Townsend St", "street2" => "Apt 20", "city" => "San Francisco", "state" => "CA", "zip" => "94107");
