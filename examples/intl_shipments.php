@@ -68,4 +68,6 @@ $shipment = EasyPost_Shipment::create($shipment_params);
 
 $shipment->buy($shipment->lowest_rate());
 
+print_r($shipment);
+
 echo $shipment->postage_label->label_url;
