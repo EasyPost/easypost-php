@@ -48,8 +48,8 @@ $customs_info_params = array("integrated_form_type" => "form_2976",
     "customs_certify" => true,
     "customs_signer" => "Borat Sagdiyev",
     "contents_type" => "gift",
-    "contents_explanation" => "You wouldn't believe how many EasyPost stickers I packed into this parcel.",
-    "eel_pfc" => "NOEEI 30.37(a).",
+    "contents_explanation" => "", // only necessary for contents_type=other
+    "eel_pfc" => "NOEEI 30.36",
     "non_delivery_option" => "abandon",
     "restriction_type" => "none",
     "restriction_comments" => "",
@@ -67,6 +67,9 @@ $shipment_params = array("from_address" => $from_address,
 $shipment = EasyPost_Shipment::create($shipment_params);
 
 $shipment->buy($shipment->lowest_rate());
+
+// this is necessary for the time being to get tracking_code into $shipment until I fix buy to also refresh the obj
+$shipment = EasyPost_Shipment::retrieve($shipment->id);
 
 print_r($shipment);
 

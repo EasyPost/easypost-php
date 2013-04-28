@@ -18,7 +18,8 @@ $from_address_params = array("name" => "Jon Calhoun",
                         "street2" => "Apt 20",
                         "city" => "San Francisco",
                         "state" => "CA",
-                        "zip" => "94107");
+                        "zip" => "94107",
+                        "phone" => "323-855-0394");
 $from_address = EasyPost_Address::create($from_address_params);
 
 
@@ -42,7 +43,7 @@ print_r($shipment);
 
 // get shipment rates - optional, rates are added to the obj when it's created if addresses and parcel are present
 if(count($shipment->rates) === 0) {
-    $shipment->rates();
+    $shipment->get_rates();
     print_r($shipment);
 }
 
@@ -57,6 +58,11 @@ print_r($created_rates);
 
 print_r(EasyPost_Shipment::retrieve($shipment));
 
+$shipment = EasyPost_Shipment::retrieve(array('id' => "shp_iUXLz4n0"));
+
+$shipment->buy($shipment->rates[1]);
+
+echo $shipment->postage_label->label_url;
 
 
 

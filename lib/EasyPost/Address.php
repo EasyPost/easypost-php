@@ -35,6 +35,15 @@ class EasyPost_Address extends EasyPost_Resource {
     $requestor = new EasyPost_Requestor($this->_apiKey);
     $url = $this->instanceUrl() . '/verify';
     list($response, $apiKey) = $requestor->request('get', $url, $params);
-    return EasyPost_Util::convertToEasyPostObject($response, $apiKey);
+    if(isset($response['address'])) {
+      $verified_address = EasyPost_Util::convertToEasyPostObject($response['address'], $apiKey);
+      if(!empty($response['message'])) {
+        $verified_address->message = $response['message'];
+        $verified_address->_immutableValues[] = 'message';
+      }
+      return $verified_address;
+    } else {
+      return EasyPost_Util::convertToEasyPostObject($response, $apiKey);
+    }
   }
 }

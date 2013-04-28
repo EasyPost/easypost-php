@@ -31,7 +31,7 @@ class EasyPost_Shipment extends EasyPost_Resource {
     return self::_save($class);
   }
 
-  public function rates($params=null, $apiKey=null) {
+  public function get_rates($params=null, $apiKey=null) {
     $requestor = new EasyPost_Requestor($this->_apiKey);
     $url = $this->instanceUrl() . '/rates';
     list($response, $apiKey) = $requestor->request('get', $url, $params);
