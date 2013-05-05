@@ -5,30 +5,28 @@ require_once("../lib/easypost.php");
 EasyPost::setApiKey('cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi');
 
 // create addresses
-$to_address_params = array("name" => "Sawyer Bateman",
+$canada_address_params = array("name" => "Sawyer Bateman",
                         "street1" => "1A Larkspur Cres",
-                        "street2" => "",
                         "city" => "St. Albert",
                         "state" => "AB",
                         "zip" => "t8n2m4",
-                        "country" => "CA");
-$to_address = EasyPost_Address::create($to_address_params);
-
-$from_address_params = array("name" => "Jon Calhoun",
+                        "country" => "CA",
+                        "phone" => "780-252-8464");
+$sf_address_params = array("name" => "Jon Calhoun",
                         "street1" => "388 Townsend St",
                         "street2" => "Apt 20",
                         "city" => "San Francisco",
                         "state" => "CA",
-                        "zip" => "94107",
+                        "zip" => "94107-8273",
                         "phone" => "415-456-7890");
-$from_address = EasyPost_Address::create($from_address_params);
+$from_address = EasyPost_Address::create($sf_address_params);
+$to_address = EasyPost_Address::create($canada_address_params);
 
 
 // create parcel
 $parcel_params = array("length" => 20.2,
     "width" => 10.9,
     "height" => 5,
-    "predefined_package" => null,
     "weight" => 14.8
 );
 $parcel = EasyPost_Parcel::create($parcel_params);
@@ -68,7 +66,7 @@ $shipment = EasyPost_Shipment::create($shipment_params);
 
 $shipment->buy($shipment->lowest_rate());
 
-// this is necessary for the time being to get tracking_code into $shipment until I fix buy to also refresh the obj
+// this is necessary for the time being to get tracking_code into $shipment until we fix buy to also refresh the obj
 $shipment = EasyPost_Shipment::retrieve($shipment->id);
 
 print_r($shipment);

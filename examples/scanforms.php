@@ -29,7 +29,7 @@ try {
 
     // all
     $all = EasyPost_ScanForm::all();
-    print_r($all);
+    //print_r($all);
 
 } catch(Exception $e) {
     echo "Status: " . $e->getHttpStatus() . ":\n";

@@ -29,7 +29,7 @@ abstract class EasyPost_Resource extends EasyPost_Object {
     $id = $this['id'];
     $class = get_class($this);
     if (!$id) {
-      throw new EasyPost_InvalidRequestError("Could not determine which URL to request: {$class} instance has invalid ID: {$id}");
+      throw new EasyPost_Error("Could not determine which URL to request: {$class} instance has invalid ID: {$id}");
     }
     $id = EasyPost_Requestor::utf8($id);
     $classUrl = self::classUrl($class);

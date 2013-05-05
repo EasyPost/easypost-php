@@ -5,6 +5,17 @@ class EasyPost_Error extends Exception {
     parent::__construct($message);
     $this->httpStatus = $httpStatus;
     $this->httpBody = $httpBody;
+
+    try {
+      $this->jsonBody = json_decode($httpBody, true);
+      if(isset($this->jsonBody) && !empty($this->jsonBody['error']['param'])) {
+        $this->param = $this->jsonBody['error']['param'];
+      } else {
+        $this->param = null;
+      }
+    } catch (Exception $e) {
+      $this->jsonBody = null;
+    }
   }
 
   public function getHttpStatus() {

@@ -79,7 +79,7 @@ class EasyPost_Requestor {
     $myApiKey = $this->_apiKey;
     if (!$myApiKey) {
       if (!$myApiKey = EasyPost::$apiKey) {
-        throw new EasyPost_AuthenticationError('No API key provided. Set your API key using "EasyPost::setApiKey(<API-KEY>)". See https://geteasypost.com/docs for details, or email contact@geteasypost.com if you have any questions.');
+        throw new EasyPost_Error('No API key provided. Set your API key using "EasyPost::setApiKey(<API-KEY>)". See https://geteasypost.com/docs for details, or contact us at contact@geteasypost.com for assistance.');
       }
     }
 
@@ -131,7 +131,7 @@ class EasyPost_Requestor {
       	$absUrl = "{$absUrl}?{$encoded}";
       }
     } else {
-      throw new EasyPost_ApiError("Unrecognized method {$method}");
+      throw new EasyPost_Error("Unrecognized method {$method}");
     }
 
     // url
@@ -170,7 +170,7 @@ class EasyPost_Requestor {
     try {
       $response = json_decode($httpBody, true);
     } catch (Exception $e) {
-      throw new EasyPost_ApiError("Invalid response body from API: HTTP Status: {$httpStatus} - {$httpBody}", $httpStatus, $httpBody);
+      throw new EasyPost_Error("Invalid response body from API: HTTP Status: ({$httpStatus}) {$httpBody}", $httpStatus, $httpBody);
     }
 
     if ($httpStatus < 200 || $httpStatus >= 300) {
@@ -181,24 +181,9 @@ class EasyPost_Requestor {
 
   public function handleApiError($httpBody, $httpStatus, $response) {
     if(!is_array($response) || !isset($response['error'])) {
-      throw new EasyPost_ApiError("Invalid response object from API: HTTP Status: {$httpStatus} - {$httpBody})", $httpStatus, $httpBody);
+      throw new EasyPost_Error("Invalid response object from API: HTTP Status: ({$httpStatus}) {$httpBody})", $httpStatus, $httpBody);
     }
-    $error = $response['error'];
-    switch ($httpStatus) {
-    case 400:
-    case 404:
-      if(isset($error['type']) && $error['type'] == "invalid_request_error") {
-        throw new EasyPost_InvalidRequestError(isset($error['message']) ? $error['message'] : null,
-                                              isset($error['param']) ? $error['param'] : null,
-                                              $httpStatus, $httpBody);
-      } else {
-        throw new EasyPost_ApiError(isset($error['message']) ? $error['message'] : isset($error) ? $error : null, $httpStatus, $httpBody);
-      }
-    case 401:
-      throw new EasyPost_AuthenticationError(isset($error['message']) ? $error['message'] : null, $httpStatus, $httpBody);
-    default:
-      throw new EasyPost_ApiError(isset($error['message']) ? $error['message'] : isset($error) ? $error : null, $httpStatus, $httpBody);
-    }
+    throw new EasyPost_Error(isset($response['error']['message']) ? $response['error']['message'] : (isset($response['error']) ? $response['error'] : ""), $httpStatus, $httpBody);
   }
 
   public function handleCurlError($errorNum, $message) {
@@ -214,10 +199,10 @@ class EasyPost_Requestor {
         $msg = "Could not verify EasyPost's SSL certificate.  Please make sure that your network is not intercepting certificates.  (Try going to {$apiBase} in your browser.)  If this problem persists, let us know at contact@geteasypost.com.";
         break;
       default:
-        $msg = "Unexpected error communicating with EasyPost.  If this problem persists, let us know at contact@geteasypost.com.";
+        $msg = "Unexpected error communicating with EasyPost.  If this problem persists please let us know at contact@geteasypost.com.";
     }
 
-    $msg .= "\n\n(Network error [errno {$errorNum}]: {$message})";
-    throw new EasyPost_NetworkError($msg);
+    $msg .= "\nNetwork error [errno {$errorNum}]: {$message})";
+    throw new EasyPost_Error($msg);
   }
 }

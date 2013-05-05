@@ -20,13 +20,12 @@ print_r($retrieved);
 
 // all
 $all = EasyPost_CustomsItem::all();
-print_r($all);
+//print_r($all);
 /*
 for($i = 0, $k = count($all); $i < $k; $i++) {
   print_r(EasyPost_CustomsItem::retrieve($all[$i]->id));
 }
 */
-
 
 // CustomsInfo: create
 $params = array("integrated_form_type" => "form_2976",
@@ -34,7 +33,7 @@ $params = array("integrated_form_type" => "form_2976",
     "customs_signer" => "Borat Sagdiyev",
     "contents_type" => "gift",
     "contents_explanation" => "",
-    "eel_pfc" => "NOEEI 30.37(a).",
+    "eel_pfc" => "NOEEI 30.37(a)",
     "non_delivery_option" => "abandon",
     "restriction_type" => "none",
     "restriction_comments" => "",
@@ -48,7 +47,7 @@ print_r($retrieved);
 
 // all
 $all = EasyPost_CustomsInfo::all();
-print_r($all);
+//print_r($all);
 
 
 

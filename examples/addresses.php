@@ -6,8 +6,8 @@ EasyPost::setApiKey('cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi');
 try {
     // create address
     $address_params = array("name" => "Sawyer Bateman",
-                            "street1" => "388 Townsend St",
-                            "street2" => "Apt 20",
+                            "street1" => "388 Townasend St",
+                            //"street2" => "Apt 20",
                             "city" => "San Francisco",
                             "state" => "CA",
                             "zip" => "94107",
@@ -26,10 +26,14 @@ try {
 
     // all
     $all = EasyPost_Address::all();
-    print_r($all);
+    //print_r($all);
 
 } catch(Exception $e) {
     echo "Status: " . $e->getHttpStatus() . ":\n";
-    exit($e->getMessage());
+    echo $e->getMessage();
+    if (!empty($e->param)) {
+        echo "\nInvalid param: {$e->param}";
+    }
+    exit();
 }
 

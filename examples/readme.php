@@ -15,7 +15,7 @@ $parcel = EasyPost_Parcel::create($parcel_param);
 $shipment = EasyPost_Shipment::create(array(
   "to_address" => $to_address,
   "from_address" => $from_address,
-  "parcel" => $parcel,
+  "parcel" => $parcel
 ));
 
 // print_r($shipment->rates);

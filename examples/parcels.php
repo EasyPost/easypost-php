@@ -8,8 +8,13 @@ EasyPost::setApiKey('cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi');
 $params = array("length" => 20.2,
     "width" => 10.9,
     "height" => 5,
-    "predefined_package" => null,
+    //"predefined_package" => null,
     "weight" => 14.8
+);
+$parcel = EasyPost_Parcel::create($params);
+
+$params = array("predefined_package" => 'SmallFlatRateBox',
+    "weight" => 38.1
 );
 $parcel = EasyPost_Parcel::create($params);
 
@@ -19,7 +24,7 @@ print_r($retrieved);
 
 // all
 $all = EasyPost_Parcel::all();
-print_r($all);
+//print_r($all);
 /*
 for($i = 0, $k = count($all); $i < $k; $i++) {
   print_r(EasyPost_Parcel::retrieve($all[$i]->id));
