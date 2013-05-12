@@ -38,23 +38,23 @@ abstract class Util
 
     public static function convertToEasyPostObject($response, $apiKey)
     {
-        $types = array('Address'      => 'EasyPost_Address',
-                       'ScanForm'     => 'EasyPost_ScanForm',
-                       'CustomsItem'  => 'EasyPost_CustomsItem',
-                       'CustomsInfo'  => 'EasyPost_CustomsInfo',
-                       'Parcel'       => 'EasyPost_Parcel',
-                       'Shipment'     => 'EasyPost_Shipment',
-                       'Rate'         => 'EasyPost_Rate',
-                       'PostageLabel' => 'EasyPost_PostageLabel');
+        $types = array('Address'      => '\EasyPost\Address',
+                       'ScanForm'     => '\EasyPost\ScanForm',
+                       'CustomsItem'  => '\EasyPost\CustomsItem',
+                       'CustomsInfo'  => '\EasyPost\CustomsInfo',
+                       'Parcel'       => '\EasyPost\Parcel',
+                       'Shipment'     => '\EasyPost\Shipment',
+                       'Rate'         => '\EasyPost\Rate',
+                       'PostageLabel' => '\EasyPost\PostageLabel');
 
-        $prefixes = array('adr'     => 'EasyPost_Address',
-                          'sf'      => 'EasyPost_ScanForm',
-                          'cstitem' => 'EasyPost_CustomsItem',
-                          'cstinfo' => 'EasyPost_CustomsInfo',
-                          'prcl'    => 'EasyPost_Parcel',
-                          'shp'     => 'EasyPost_Shipment',
-                          'rate'    => 'EasyPost_Rate',
-                          'pl'      => 'EasyPost_PostageLabel');
+        $prefixes = array('adr'     => '\EasyPost\Address',
+                          'sf'      => '\EasyPost\ScanForm',
+                          'cstitem' => '\EasyPost\CustomsItem',
+                          'cstinfo' => '\EasyPost\CustomsInfo',
+                          'prcl'    => '\EasyPost\Parcel',
+                          'shp'     => '\EasyPost\Shipment',
+                          'rate'    => '\EasyPost\Rate',
+                          'pl'      => '\EasyPost\PostageLabel');
 
         if (self::isList($response)) {
             $mapped = array();
@@ -72,7 +72,7 @@ abstract class Util
             } else if (isset($response['id']) && isset($prefixes[substr($response['id'], 0, strpos($response['id'], "_"))])) {
                 $class = $prefixes[substr($response['id'], 0, strpos($response['id'], "_"))];
             } else {
-                $class = 'EasyPost_Object';
+                $class = '\EasyPost\Object';
             }
 
             return Object::constructFrom($response, $class, $apiKey);
