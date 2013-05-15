@@ -1,63 +1,79 @@
+**Note: Moved to composer and namespaces! Read installation instructions and examples before updating, not backwards compatible!**
+
 Installation
 ------------------
 
-Required PHP Extensions:
-- [cURL](http://php.net/manual/en/book.curl.php)
-- [JSON](http://php.net/manual/en/book.json.php)
+Requires:
+- [composer](http://getcomposer.org/)
 
-Clone the EasyPost PHP client repository:
+Create or add the following to composer.json in your project root:
+```javascript
+{
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/EasyPost/easypost-php-beta"
+        }
+    ],
+    "require": {
+        "easypost/easypost-php": "master"
+    }
+}
+```
 
-    git clone https://github.com/easypost/easypost-php
+Install composer dependancies:
+```shell
+php composer.phar install
+```
 
-Include the EasyPost client in your PHP script:
-
-    require_once("/path/to/easypost-php/lib/easypost.php");
+Require dependancies:
+```php
+require_once("/path/to/vendor/autoload.php");
+```
 
 Example
 ----------------
+```php
+require_once("path/to/vendor/autoload.php");
+\EasyPost\EasyPost::setApiKey('cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi');
 
-    <?php
+$to_address = \EasyPost\Address::create(
+    array(
+        "street1" => "388 Townsend St",
+        "street2" => "Apt 20",
+        "city"    => "San Francisco",
+        "state"   => "CA",
+        "zip"     => "94107"
+    )
+);
+$from_address = \EasyPost\Address::create(
+    array(
+        "company" => "Simpler Postage Inc",
+        "street1" => "764 Warehouse Ave",
+        "city"    => "Kansas City",
+        "state"   => "KS",
+        "zip"     => "66101",
+        "phone"   => "620-123-4567"
+    )
+);
+$parcel = \EasyPost\Parcel::create(
+    array(
+        "predefined_package" => "LargeFlatRateBox",
+        "weight" => 76.9
+    )
+);
+$shipment = \EasyPost\Shipment::create(
+    array(
+        "to_address"   => $to_address,
+        "from_address" => $from_address,
+        "parcel"       => $parcel
+    )
+);
 
-    require_once("../vendor/autoload.php");
-    \EasyPost\EasyPost::setApiKey('cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi');
+$shipment->buy($shipment->lowest_rate());
 
-    $to_address = \EasyPost\Address::create(
-        array(
-            "street1" => "388 Townsend St",
-            "street2" => "Apt 20",
-            "city"    => "San Francisco",
-            "state"   => "CA",
-            "zip"     => "94107"
-        )
-    );
-    $from_address = \EasyPost\Address::create(
-        array(
-            "company" => "Simpler Postage Inc",
-            "street1" => "764 Warehouse Ave",
-            "city"    => "Kansas City",
-            "state"   => "KS",
-            "zip"     => "66101",
-            "phone"   => "620-123-4567"
-        )
-    );
-    $parcel = \EasyPost\Parcel::create(
-        array(
-            "predefined_package" => "LargeFlatRateBox",
-            "weight" => 76.9
-        )
-    );
-    $shipment = \EasyPost\Shipment::create(
-        array(
-            "to_address"   => $to_address,
-            "from_address" => $from_address,
-            "parcel"       => $parcel
-        )
-    );
-
-    $shipment->buy($shipment->lowest_rate());
-
-    echo $shipment->postage_label->label_url;
-
+echo $shipment->postage_label->label_url;
+```
 
 Documentation
 --------------------
@@ -66,6 +82,12 @@ Up-to-date documentation at: https://www.geteasypost.com/docs/v2
 
 Tests
 --------------------
-Requires [PHPUnit](https://github.com/sebastianbergmann/phpunit/)
+Install dev dependancies:
+```shell
+php composer.phar install --dev
+```
 
-    phpunit tests/
+Run tests:
+```shell
+path/to/bin/phpunit
+```
