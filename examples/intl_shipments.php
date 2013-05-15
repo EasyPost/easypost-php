@@ -1,8 +1,7 @@
 <?php
 
-require_once("../lib/easypost.php");
-
-EasyPost::setApiKey('cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi');
+require_once("../vendor/autoload.php");
+\EasyPost\EasyPost::setApiKey('cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi');
 
 // create addresses
 $sf_address_params = array(
@@ -40,8 +39,9 @@ $china_address_params = array(
     "phone"   => "21-7283-8264",
     "country" => "CN"
 );
-$from_address = EasyPost_Address::create($sf_address_params);
-$to_address = EasyPost_Address::create($canada_address_params);
+$from_address = \EasyPost\Address::create($sf_address_params);
+$to_address = \EasyPost\Address::create($canada_address_params);
+
 
 // create parcel
 $parcel_params = array(
@@ -51,40 +51,42 @@ $parcel_params = array(
     // "predefined_package" => 'MediumFlatRateBox',
     "weight" => 14.8
 );
-$parcel = EasyPost_Parcel::create($parcel_params);
+$parcel = \EasyPost\Parcel::create($parcel_params);
 
 
 // customs info form
-$customs_item_params = array("description" => "Many, many EasyPost stickers.",
+$customs_item_params = array(
+    "description"      => "Many, many EasyPost stickers.",
     "hs_tariff_number" => 123456,
-    "origin_country" => "US",
-    "quantity" => 1,
-    "value" => 879.47,
-    "weight" => 14
+    "origin_country"   => "US",
+    "quantity"         => 1,
+    "value"            => 879.47,
+    "weight"           => 14
 );
-$customs_item = EasyPost_CustomsItem::create($customs_item_params);
+$customs_item = \EasyPost\CustomsItem::create($customs_item_params);
 
-$customs_info_params = array("integrated_form_type" => "form_2976",
-    "customs_certify" => true,
-    "customs_signer" => "Borat Sagdiyev",
-    "contents_type" => "gift",
+$customs_info_params = array(
+    "integrated_form_type" => "form_2976",
+    "customs_certify"      => true,
+    "customs_signer"       => "Borat Sagdiyev",
+    "contents_type"        => "gift",
     "contents_explanation" => "", // only necessary for contents_type=other
-    "eel_pfc" => "NOEEI 30.36",
-    "non_delivery_option" => "abandon",
-    "restriction_type" => "none",
+    "eel_pfc"              => "NOEEI 30.36",
+    "non_delivery_option"  => "abandon",
+    "restriction_type"     => "none",
     "restriction_comments" => "",
-    "customs_items" => array($customs_item)
+    "customs_items"        => array($customs_item)
 );
-$customs_info = EasyPost_CustomsInfo::create($customs_info_params);
-
+$customs_info = \EasyPost\CustomsInfo::create($customs_info_params);
 
 // create shipment
-$shipment_params = array("from_address" => $from_address,
-    "to_address" => $to_address,
-    "parcel" => $parcel,
+$shipment_params = array(
+    "from_address" => $from_address,
+    "to_address"   => $to_address,
+    "parcel"       => $parcel,
     "customs_info" => $customs_info
 );
-$shipment = EasyPost_Shipment::create($shipment_params);
+$shipment = \EasyPost\Shipment::create($shipment_params);
 
 // $shipment->buy($shipment->lowest_rate(['usps','fedex']));
 $shipment->buy($shipment->lowest_rate('usps'));
