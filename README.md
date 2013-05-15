@@ -1,4 +1,4 @@
-**Note: Moved to composer and namespaces! Read installation instructions and examples before updating, not backwards compatible!**
+**Note: Moved to composer and namespaces! Read installation instructions and examples before updating, not backwards compatible with older beta client!**
 
 Installation
 ------------------
