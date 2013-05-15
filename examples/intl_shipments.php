@@ -5,28 +5,50 @@ require_once("../lib/easypost.php");
 EasyPost::setApiKey('cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi');
 
 // create addresses
-$canada_address_params = array("name" => "Sawyer Bateman",
-                        "street1" => "1A Larkspur Cres",
-                        "city" => "St. Albert",
-                        "state" => "AB",
-                        "zip" => "t8n2m4",
-                        "country" => "CA",
-                        "phone" => "780-252-8464");
-$sf_address_params = array("name" => "Jon Calhoun",
-                        "street1" => "388 Townsend St",
-                        "street2" => "Apt 20",
-                        "city" => "San Francisco",
-                        "state" => "CA",
-                        "zip" => "94107-8273",
-                        "phone" => "415-456-7890");
+$sf_address_params = array(
+    "name"    => "Jon Calhoun",
+    "street1" => "388 Townsend St",
+    "street2" => "Apt 20",
+    "city"    => "San Francisco",
+    "state"   => "CA",
+    "zip"     => "94107-8273",
+    "phone"   => "415-456-7890"
+);
+$sf2_address_params = array(
+    "name"    => "Dirk Diggler",
+    "street1" => "101 California St",
+    "street2" => "Suite 1290",
+    "city"    => "San Francisco",
+    "state"   => "CA",
+    "zip"     => "94111",
+    "phone"   => "415-482-2937"
+);
+$canada_address_params = array(
+    "name"    => "Sawyer Bateman",
+    "street1" => "1A Larkspur Cres",
+    "city"    => "St. Albert",
+    "state"   => "AB",
+    "zip"     => "t8n2m4",
+    "country" => "CA",
+    "phone"   => "780-252-8464"
+);
+$china_address_params = array(
+    "name"    => "马修",
+    "street1" => "36 BAOSHAN JIUCUN",
+    "city"    => "上海市",
+    "zip"     => "201900",
+    "phone"   => "21-7283-8264",
+    "country" => "CN"
+);
 $from_address = EasyPost_Address::create($sf_address_params);
 $to_address = EasyPost_Address::create($canada_address_params);
 
-
 // create parcel
-$parcel_params = array("length" => 20.2,
+$parcel_params = array(
+    "length" => 20.2,
     "width" => 10.9,
     "height" => 5,
+    // "predefined_package" => 'MediumFlatRateBox',
     "weight" => 14.8
 );
 $parcel = EasyPost_Parcel::create($parcel_params);
@@ -64,10 +86,8 @@ $shipment_params = array("from_address" => $from_address,
 );
 $shipment = EasyPost_Shipment::create($shipment_params);
 
-$shipment->buy($shipment->lowest_rate());
-
-// this is necessary for the time being to get tracking_code into $shipment until we fix buy to also refresh the obj
-$shipment = EasyPost_Shipment::retrieve($shipment->id);
+// $shipment->buy($shipment->lowest_rate(['usps','fedex']));
+$shipment->buy($shipment->lowest_rate('usps'));
 
 print_r($shipment);
 

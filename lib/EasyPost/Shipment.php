@@ -54,13 +54,45 @@ class EasyPost_Shipment extends EasyPost_Resource {
     return $this;
   }
 
-  public function lowest_rate() {
+  public function lowest_rate($carriers=null) {
     $lowest_rate = false;
-    for($i = 0, $k = count($this->rates); $i < $k; $i++) {
-      if(!$lowest_rate || floatval($this->rates[$i]->rate) < floatval($lowest_rate->rate)) {
-        $lowest_rate = clone($this->rates[$i]);
+    for ($i = 0, $k = count($this->rates); $i < $k; $i++) {
+      if (!$lowest_rate || floatval($this->rates[$i]->rate) < floatval($lowest_rate->rate)) {
+        if (empty($carriers)) {          
+          $lowest_rate = clone($this->rates[$i]);
+        } else {
+          $rate_carrier = strtolower($this->rates[$i]->carrier);
+
+          if (is_array($carriers)) {
+            $carriers = array_map('strtolower', $carriers);
+            if(in_array($rate_carrier, $carriers)) {
+              $lowest_rate = clone($this->rates[$i]);
+            }
+          } else {
+            if (strtolower($carriers) == $rate_carrier) {
+              $lowest_rate = clone($this->rates[$i]);
+            }
+          }
+        }
       }
     }
     return $lowest_rate;
   }
+
+  // public function find_rate($carriers=null, $services=null, $max_days) {
+  //   $rates = clone($this->rates);
+
+  //   if($carriers !== null) {
+  //     if(!is_array($carriers)) {
+  //       $carriers = explode(',', $carriers);
+  //     }
+  //     $carriers = array_map('strtolower', $carriers);
+  //     for($i = 0, $j = count($rates); $i < $j; $i++) {
+  //       if(!in_array(strtolower($rates[$i]->carrier), $carriers)) {
+  //         unset($rates[$i]);
+  //       }
+  //     }
+  //     $rates = array_values($rates);
+  //   }
+  // }
 }
