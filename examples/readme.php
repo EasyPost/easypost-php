@@ -5,11 +5,13 @@ require_once("../vendor/autoload.php");
 
 $to_address = \EasyPost\Address::create(
     array(
+        "name"    => "Dirk Diggler",
         "street1" => "388 Townsend St",
         "street2" => "Apt 20",
         "city"    => "San Francisco",
         "state"   => "CA",
-        "zip"     => "94107"
+        "zip"     => "94107",
+        "phone"   => "415-456-7890"
     )
 );
 $from_address = \EasyPost\Address::create(

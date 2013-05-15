@@ -1,10 +1,10 @@
-**Note: Moved to composer and namespaces! Read installation instructions and examples before updating, not backwards compatible with older beta client!**
+**Note: Moved to composer and namespaces! Read installation instructions and examples before updating, not backwards compatible with older beta**
 
 Installation
 ------------------
 
 Requires:
-- [composer](http://getcomposer.org/)
+- [Composer](http://getcomposer.org/)
 
 Create or add the following to composer.json in your project root:
 ```javascript
@@ -39,11 +39,13 @@ require_once("path/to/vendor/autoload.php");
 
 $to_address = \EasyPost\Address::create(
     array(
+        "name"    => "Dirk Diggler",
         "street1" => "388 Townsend St",
         "street2" => "Apt 20",
         "city"    => "San Francisco",
         "state"   => "CA",
-        "zip"     => "94107"
+        "zip"     => "94107",
+        "phone"   => "415-456-7890"
     )
 );
 $from_address = \EasyPost\Address::create(
