@@ -77,7 +77,7 @@ $customs_item_params = array(
 $customs_item = \EasyPost\CustomsItem::create($customs_item_params);
 
 $customs_info_params = array(
-    "integrated_form_type" => "form_2976",
+    "integrated_form_type" => "form_2976_a",
     "customs_certify"      => true,
     "customs_signer"       => "Borat Sagdiyev",
     "contents_type"        => "gift",
