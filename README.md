@@ -11,7 +11,7 @@ There are two ways to install:
 require_once("/path/to/lib/easypost.php");
 ```
 
-*or* **via [Composer](http://getcomposer.org/):**
+**or via [Composer](http://getcomposer.org/):**
 
 Create or add the following to composer.json in your project root:
 ```javascript
