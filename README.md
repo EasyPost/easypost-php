@@ -1,10 +1,17 @@
-**Note: Moved to composer and namespaces! Read installation instructions and examples before updating, not backwards compatible with older beta**
+**Note: Moved classes into \EasyPost namespace! Read installation instructions and examples before updating, not backwards compatible with older beta**
 
 Installation
 ------------------
 
-Requires:
-- [Composer](http://getcomposer.org/)
+There are two ways to install:
+
+ **Require Library**
+
+```php
+require_once("/path/to/lib/easypost.php");
+```
+
+*or* **via [Composer](http://getcomposer.org/):**
 
 Create or add the following to composer.json in your project root:
 ```javascript
