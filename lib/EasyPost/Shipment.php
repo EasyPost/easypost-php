@@ -71,29 +71,40 @@ class Shipment extends Resource
         return $this;
     }
 
+    public function refund($params = null)
+    {
+        $requestor = new Requestor($this->_apiKey);
+        $url = $this->instanceUrl() . '/refund';
+
+        list($response, $apiKey) = $requestor->request('get', $url, $params);
+        $this->refreshFrom($response, $apiKey, true);
+
+        return $this;
+    }
+
     public function lowest_rate($carriers=null)
     {
         $lowest_rate = false;
 
         for ($i = 0, $k = count($this->rates); $i < $k; $i++) {
-          if (!$lowest_rate || floatval($this->rates[$i]->rate) < floatval($lowest_rate->rate)) {
-            if (empty($carriers)) {          
-              $lowest_rate = clone($this->rates[$i]);
-            } else {
-              $rate_carrier = strtolower($this->rates[$i]->carrier);
+            if (!$lowest_rate || floatval($this->rates[$i]->rate) < floatval($lowest_rate->rate)) {
+                if (empty($carriers)) {          
+                    $lowest_rate = clone($this->rates[$i]);
+                } else {
+                    $rate_carrier = strtolower($this->rates[$i]->carrier);
 
-              if (is_array($carriers)) {
-                $carriers = array_map('strtolower', $carriers);
-                if(in_array($rate_carrier, $carriers)) {
-                  $lowest_rate = clone($this->rates[$i]);
+                    if (is_array($carriers)) {
+                        $carriers = array_map('strtolower', $carriers);
+                        if(in_array($rate_carrier, $carriers)) {
+                            $lowest_rate = clone($this->rates[$i]);
+                        }
+                    } else {
+                        if (strtolower($carriers) == $rate_carrier) {
+                            $lowest_rate = clone($this->rates[$i]);
+                        }
+                    }
                 }
-              } else {
-                if (strtolower($carriers) == $rate_carrier) {
-                  $lowest_rate = clone($this->rates[$i]);
-                }
-              }
             }
-          }
         }
 
         return $lowest_rate;

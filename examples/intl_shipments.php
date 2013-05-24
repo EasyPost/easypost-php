@@ -1,6 +1,8 @@
 <?php
 
 require_once("../vendor/autoload.php");
+// require_once("../lib/easypost.php");
+
 \EasyPost\EasyPost::setApiKey('cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi');
 
 // create addresses
@@ -15,11 +17,11 @@ $sf_address_params = array(
 );
 $sf2_address_params = array(
     "name"    => "Dirk Diggler",
-    "street1" => "101 California St",
-    "street2" => "Suite 1290",
+    "street1" => "63 Ellis Street",
+    // "street2" => "Suite 1290",
     "city"    => "San Francisco",
     "state"   => "CA",
-    "zip"     => "94111",
+    "zip"     => "94102",
     "phone"   => "415-482-2937"
 );
 $canada_address_params = array(
@@ -32,13 +34,22 @@ $canada_address_params = array(
     "phone"   => "780-252-8464"
 );
 $china_address_params = array(
-    "name"    => "马修",
-    "street1" => "36 BAOSHAN JIUCUN",
-    "city"    => "上海市",
+    "name"    => "姚明",
+    "street1" => "香港东路6号，5号楼，8号室",
+    "city"    => "青岛市",
     "zip"     => "201900",
     "phone"   => "21-7283-8264",
     "country" => "CN"
 );
+$uk_address_params = array(
+    "name" => "Queen Elizabeth",
+    "street1" => "Buckingham Palace",
+    "phone" => "+44 20 7930 4832",
+    "city" => "London",
+    "zip" => "SW1A 1AA",
+    "country" => "GB"
+);
+
 $from_address = \EasyPost\Address::create($sf_address_params);
 $to_address = \EasyPost\Address::create($canada_address_params);
 
@@ -48,8 +59,8 @@ $parcel_params = array(
     "length" => 20.2,
     "width" => 10.9,
     "height" => 5,
-    // "predefined_package" => 'MediumFlatRateBox',
-    "weight" => 14.8
+    // "predefined_package" => 'Parcel',
+    "weight" => 222.9
 );
 $parcel = \EasyPost\Parcel::create($parcel_params);
 
@@ -88,8 +99,12 @@ $shipment_params = array(
 );
 $shipment = \EasyPost\Shipment::create($shipment_params);
 
-// $shipment->buy($shipment->lowest_rate(['usps','fedex']));
+// $shipment->buy($shipment->lowest_rate(['fedex','ups']));
 $shipment->buy($shipment->lowest_rate('usps'));
+
+// Refund specific shipment example
+// $shipment = \EasyPost\Shipment::retrieve('shp_fX5JFpdF');
+// $shipment->refund();
 
 print_r($shipment);
 

@@ -46,7 +46,8 @@ abstract class Util
             'Parcel'       => '\EasyPost\Parcel',
             'Shipment'     => '\EasyPost\Shipment',
             'Rate'         => '\EasyPost\Rate',
-            'PostageLabel' => '\EasyPost\PostageLabel'
+            'PostageLabel' => '\EasyPost\PostageLabel',
+            'Refund'       => '\EasyPost\Refund'
         );
 
         $prefixes = array(
@@ -57,7 +58,8 @@ abstract class Util
             'prcl'    => '\EasyPost\Parcel',
             'shp'     => '\EasyPost\Shipment',
             'rate'    => '\EasyPost\Rate',
-            'pl'      => '\EasyPost\PostageLabel'
+            'pl'      => '\EasyPost\PostageLabel',
+            'rfnd'    => '\EasyPost\Refund'
         );
 
         if (self::isList($response)) {
