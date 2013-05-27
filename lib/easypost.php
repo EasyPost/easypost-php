@@ -30,3 +30,4 @@ require(dirname(__FILE__) . '/EasyPost/Rate.php');
 require(dirname(__FILE__) . '/EasyPost/PostageLabel.php');
 require(dirname(__FILE__) . '/EasyPost/Shipment.php');
 require(dirname(__FILE__) . '/EasyPost/Refund.php');
+require(dirname(__FILE__) . '/EasyPost/Batch.php');

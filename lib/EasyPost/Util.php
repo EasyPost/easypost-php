@@ -47,6 +47,7 @@ abstract class Util
             'Shipment'     => '\EasyPost\Shipment',
             'Rate'         => '\EasyPost\Rate',
             'PostageLabel' => '\EasyPost\PostageLabel',
+            'Batch'        => '\EasyPost\Batch',
             'Refund'       => '\EasyPost\Refund'
         );
 
@@ -59,6 +60,7 @@ abstract class Util
             'shp'     => '\EasyPost\Shipment',
             'rate'    => '\EasyPost\Rate',
             'pl'      => '\EasyPost\PostageLabel',
+            'batch'     => '\EasyPost\Batch',
             'rfnd'    => '\EasyPost\Refund'
         );
 

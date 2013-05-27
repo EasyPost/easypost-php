@@ -24,7 +24,7 @@ abstract class Resource extends Object
     public static function classUrl($class)
     {
         $className = self::className($class);
-        if (substr($className, -1) !== "s") {
+        if (substr($className, -1) !== "s" && substr($className, -1) !== "h") {
             return "/{$className}s";
         }
 
