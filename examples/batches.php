@@ -76,11 +76,11 @@ $customs_info_params = array(
 // print_r($all);
 
 // retrieve a batch
-// $retrieved_batch = \EasyPost\Batch::retrieve('batch_YyUTlTaE');
-// if ($batch->status->created == 0) {
+// $retrieved_batch = \EasyPost\Batch::retrieve('batch_On2DW6Kf');
+// if ($retrieved_batch->status->created != 0) {
 //     // retrieve shipment details if the batch processing is complete
-//     for($i = 0, $j = count($batch->shipments); $i < $j; $i++) {
-//         $batch->shipments[$i]->refresh();
+//     for($i = 0, $j = count($retrieved_batch->shipments); $i < $j; $i++) {
+//         $retrieved_batch->shipments[$i]->refresh();
 //     }
 // }
 // print_r($retrieved_batch);
