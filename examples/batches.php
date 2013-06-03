@@ -50,7 +50,7 @@ $parcel_params_2 = array(
 
 // customs info form
 $customs_info_params = array(
-    "integrated_form_type" => "form_2976_a",
+    "integrated_form_type" => "form_2976",
     "customs_certify"      => true,
     "customs_signer"       => "Borat Sagdiyev",
     "contents_type"        => "gift",
@@ -76,17 +76,18 @@ $customs_info_params = array(
 // print_r($all);
 
 // retrieve a batch
-// $retrieved_batch = \EasyPost\Batch::retrieve('batch_On2DW6Kf');
-// if ($retrieved_batch->status->created != 0) {
+// $retrieved_batch = \EasyPost\Batch::retrieve('batch_hXfIInqx');
+// if ($retrieved_batch->status->created == 0 && empty($retrieved_batch->label_url)) {
 //     // retrieve shipment details if the batch processing is complete
 //     for($i = 0, $j = count($retrieved_batch->shipments); $i < $j; $i++) {
 //         $retrieved_batch->shipments[$i]->refresh();
 //     }
+//     $retrieved_batch->label(array('file_format' => 'epl2'));
 // }
 // print_r($retrieved_batch);
 
 // create shipment batch
-$new_batch = \EasyPost\Batch::create(array(
+$new_batch = \EasyPost\Batch::create_and_buy(array('shipment' => array(
     array(
         'from_address' => $sf_address_params,
         'to_address'   => $sf2_address_params,
@@ -101,8 +102,8 @@ $new_batch = \EasyPost\Batch::create(array(
         'parcel'       => $parcel_params_2,
         'customs_info' => $customs_info_params,
         'carrier'      => 'USPS',
-        'service'      => 'FirstClassMailInternational',
+        'service'      => 'FirstClassPackageInternationalService',
         'reference'    => 'order_67890'
     ),
-));
+)));
 print_r($new_batch);

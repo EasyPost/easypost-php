@@ -82,6 +82,18 @@ class Shipment extends Resource
         return $this;
     }
 
+    public function track($params = null)
+    {
+        $requestor = new Requestor($this->_apiKey);
+        $url = $this->instanceUrl() . '/track';
+
+        list($response, $apiKey) = $requestor->request('get', $url, $params);
+        // $this->refreshFrom($response, $apiKey, true);
+
+        // return $this;
+        return $response;
+    }
+
     public function lowest_rate($carriers=null)
     {
         $lowest_rate = false;

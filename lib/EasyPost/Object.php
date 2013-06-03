@@ -91,7 +91,7 @@ class Object implements \ArrayAccess
     }
 
     public function refreshFrom($values, $apiKey, $partial = false)
-    {
+    {        
         $this->_apiKey = $apiKey;
 
         if ($partial) {
@@ -101,7 +101,7 @@ class Object implements \ArrayAccess
         }
 
         foreach ($removed as $k) {
-            if (in_array($k, $this->_immutableValues)) {
+            if (in_array($k, $this->_immutableValues) || in_array($k, $values)) {
                 continue;
             }
             unset($this->$k);
