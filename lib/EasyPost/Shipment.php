@@ -93,33 +93,58 @@ class Shipment extends Resource
         return $this;
     }
 
-    public function lowest_rate($carriers=null, $services=null)
+    public function barcode($params = null)
+    {
+        $requestor = new Requestor($this->_apiKey);
+        $url = $this->instanceUrl() . '/barcode';
+
+        list($response, $apiKey) = $requestor->request('get', $url, $params);
+
+        return $response['barcode_url'];
+    }
+
+    public function stamp($params = null)
+    {
+        $requestor = new Requestor($this->_apiKey);
+        $url = $this->instanceUrl() . '/stamp';
+
+        list($response, $apiKey) = $requestor->request('get', $url, $params);
+        
+        return $response['stamp_url'];
+    }
+
+    public function lowest_rate($carriers=array(), $services=array())
     {
         $lowest_rate = false;
 
-        if(!empty($carriers) && !is_array($carriers)) {
-            $carriers = array($carriers);
-            $carriers = array_map('strtolower', $carriers);
+        if(!is_array($carriers)) {
+            $carriers = explode(',', $carriers);
         }
-        if(!empty($services) && !is_array($services)) {
+        $carriers = array_map('strtolower', $carriers);
+
+        if(!is_array($services)) {
             $services = array($services);
-            $services = array_map('strtolower', $services);
         }
+        $services = array_map('strtolower', $services);
 
         for ($i = 0, $k = count($this->rates); $i < $k; $i++) {
             $rate_carrier = strtolower($this->rates[$i]->carrier);
-            if (!empty($carriers) && !in_array($rate_carrier, $carriers)) {
+            if (count($carriers) > 0 && !in_array($rate_carrier, $carriers)) {
                 continue;
             }
 
             $rate_service = strtolower($this->rates[$i]->service);
-            if (!empty($services) && !in_array($rate_service, $services)) {
+            if (count($services) > 0 && !in_array($rate_service, $services)) {
                 continue;
             }
 
             if (!$lowest_rate || floatval($this->rates[$i]->rate) < floatval($lowest_rate->rate)) {
                 $lowest_rate = clone($this->rates[$i]);
             }
+        }
+
+        if ($lowest_rate == false) {
+            throw new Error('No rates found.');
         }
 
         return $lowest_rate;

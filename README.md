@@ -1,7 +1,9 @@
-**Note: Moved classes into \EasyPost namespace! Read installation instructions and examples before updating, not backwards compatible with older beta**
+# EasyPost PHP Client Library
+
+EasyPost is a simple shipping API. You can sign up for an account at https://easypost.com
 
 Installation
-------------------
+------------
 
 There are two ways to install:
 
@@ -39,7 +41,8 @@ require_once("/path/to/vendor/autoload.php");
 ```
 
 Example
-----------------
+-------
+
 ```php
 require_once("path/to/vendor/autoload.php");
 \EasyPost\EasyPost::setApiKey('cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi');
@@ -91,6 +94,7 @@ Up-to-date documentation at: https://www.geteasypost.com/docs/v2
 
 Tests
 --------------------
+
 Install dev dependancies:
 ```shell
 php composer.phar install --dev
