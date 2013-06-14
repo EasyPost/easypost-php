@@ -88,54 +88,41 @@ class Shipment extends Resource
         $url = $this->instanceUrl() . '/track';
 
         list($response, $apiKey) = $requestor->request('get', $url, $params);
-        // $this->refreshFrom($response, $apiKey, true);
+        $this->refreshFrom($response, $apiKey, true);
 
-        // return $this;
-        return $response;
+        return $this;
     }
 
-    public function lowest_rate($carriers=null)
+    public function lowest_rate($carriers=null, $services=null)
     {
         $lowest_rate = false;
 
-        for ($i = 0, $k = count($this->rates); $i < $k; $i++) {
-            if (!$lowest_rate || floatval($this->rates[$i]->rate) < floatval($lowest_rate->rate)) {
-                if (empty($carriers)) {          
-                    $lowest_rate = clone($this->rates[$i]);
-                } else {
-                    $rate_carrier = strtolower($this->rates[$i]->carrier);
+        if(!empty($carriers) && !is_array($carriers)) {
+            $carriers = array($carriers);
+            $carriers = array_map('strtolower', $carriers);
+        }
+        if(!empty($services) && !is_array($services)) {
+            $services = array($services);
+            $services = array_map('strtolower', $services);
+        }
 
-                    if (is_array($carriers)) {
-                        $carriers = array_map('strtolower', $carriers);
-                        if(in_array($rate_carrier, $carriers)) {
-                            $lowest_rate = clone($this->rates[$i]);
-                        }
-                    } else {
-                        if (strtolower($carriers) == $rate_carrier) {
-                            $lowest_rate = clone($this->rates[$i]);
-                        }
-                    }
-                }
+        for ($i = 0, $k = count($this->rates); $i < $k; $i++) {
+            $rate_carrier = strtolower($this->rates[$i]->carrier);
+            if (!empty($carriers) && !in_array($rate_carrier, $carriers)) {
+                continue;
+            }
+
+            $rate_service = strtolower($this->rates[$i]->service);
+            if (!empty($services) && !in_array($rate_service, $services)) {
+                continue;
+            }
+
+            if (!$lowest_rate || floatval($this->rates[$i]->rate) < floatval($lowest_rate->rate)) {
+                $lowest_rate = clone($this->rates[$i]);
             }
         }
 
         return $lowest_rate;
     }
 
-    // public function find_rate($carriers=null, $services=null, $max_days) {
-    //   $rates = clone($this->rates);
-
-    //   if($carriers !== null) {
-    //     if(!is_array($carriers)) {
-    //       $carriers = explode(',', $carriers);
-    //     }
-    //     $carriers = array_map('strtolower', $carriers);
-    //     for($i = 0, $j = count($rates); $i < $j; $i++) {
-    //       if(!in_array(strtolower($rates[$i]->carrier), $carriers)) {
-    //         unset($rates[$i]);
-    //       }
-    //     }
-    //     $rates = array_values($rates);
-    //   }
-    // }
 }

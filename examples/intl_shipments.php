@@ -1,7 +1,7 @@
 <?php
 
-require_once("../vendor/autoload.php");
-// require_once("../lib/easypost.php");
+// require_once("../vendor/autoload.php");
+require_once("../lib/easypost.php");
 
 \EasyPost\EasyPost::setApiKey('cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi');
 
@@ -60,7 +60,7 @@ $parcel_params = array(
     "width" => 10.9,
     "height" => 5,
     // "predefined_package" => 'Parcel',
-    "weight" => 222.9
+    "weight" => 22.9
 );
 $parcel = \EasyPost\Parcel::create($parcel_params);
 
@@ -77,12 +77,11 @@ $customs_item_params = array(
 $customs_item = \EasyPost\CustomsItem::create($customs_item_params);
 
 $customs_info_params = array(
-    "integrated_form_type" => "form_2976_a",
     "customs_certify"      => true,
     "customs_signer"       => "Borat Sagdiyev",
     "contents_type"        => "gift",
     "contents_explanation" => "", // only necessary for contents_type=other
-    "eel_pfc"              => "NOEEI 30.36",
+    "eel_pfc"              => "NOEEI 30.37(a)",
     "non_delivery_option"  => "abandon",
     "restriction_type"     => "none",
     "restriction_comments" => "",
@@ -100,7 +99,7 @@ $shipment_params = array(
 $shipment = \EasyPost\Shipment::create($shipment_params);
 
 // $shipment->buy($shipment->lowest_rate(['fedex','ups']));
-$shipment->buy($shipment->lowest_rate('usps'));
+$shipment->buy($shipment->lowest_rate(null, 'PriorityMailInternational'));
 
 // Refund specific shipment example
 // $shipment = \EasyPost\Shipment::retrieve('shp_fX5JFpdF');

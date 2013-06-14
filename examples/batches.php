@@ -50,7 +50,6 @@ $parcel_params_2 = array(
 
 // customs info form
 $customs_info_params = array(
-    "integrated_form_type" => "form_2976",
     "customs_certify"      => true,
     "customs_signer"       => "Borat Sagdiyev",
     "contents_type"        => "gift",
@@ -76,7 +75,7 @@ $customs_info_params = array(
 // print_r($all);
 
 // retrieve a batch
-// $retrieved_batch = \EasyPost\Batch::retrieve('batch_hXfIInqx');
+// $retrieved_batch = \EasyPost\Batch::retrieve('batch_jlELe1ki');
 // if ($retrieved_batch->status->created == 0 && empty($retrieved_batch->label_url)) {
 //     // retrieve shipment details if the batch processing is complete
 //     for($i = 0, $j = count($retrieved_batch->shipments); $i < $j; $i++) {
