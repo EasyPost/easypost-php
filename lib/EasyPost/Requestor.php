@@ -157,6 +157,7 @@ class Requestor
         $absUrl = self::utf8($absUrl);
         $curlOptions[CURLOPT_URL] = $absUrl;
 
+        $curlOptions[CURLOPT_SSL_VERIFYHOST] = 1;
         $curlOptions[CURLOPT_RETURNTRANSFER] = true;
         $curlOptions[CURLOPT_CONNECTTIMEOUT] = 30;
         $curlOptions[CURLOPT_TIMEOUT] = 80;
@@ -209,14 +210,14 @@ class Requestor
             case CURLE_COULDNT_CONNECT:
             case CURLE_COULDNT_RESOLVE_HOST:
             case CURLE_OPERATION_TIMEOUTED:
-                $msg = "Could not connect to EasyPost ({$apiBase}).  Please check your internet connection and try again.  If this problem persists please let us know at contact@geteasypost.com.";
+                $msg = "Could not connect to EasyPost ({$apiBase}).  Please check your internet connection and try again.  If this problem persists please let us know at contact@easypost.com.";
                 break;
             case CURLE_SSL_CACERT:
             case CURLE_SSL_PEER_CERTIFICATE:
-                $msg = "Could not verify EasyPost's SSL certificate.  Please make sure that your network is not intercepting certificates.  (Try going to {$apiBase} in your browser.)  If this problem persists, let us know at contact@geteasypost.com.";
+                $msg = "Could not verify EasyPost's SSL certificate.  Please make sure that your network is not intercepting certificates.  (Try going to {$apiBase} in your browser.)  If this problem persists, let us know at contact@easypost.com.";
                 break;
             default:
-                $msg = "Unexpected error communicating with EasyPost.  If this problem persists please let us know at contact@geteasypost.com.";
+                $msg = "Unexpected error communicating with EasyPost.  If this problem persists please let us know at contact@easypost.com.";
         }
 
         $msg .= "\nNetwork error [errno {$errorNum}]: {$message})";

@@ -123,18 +123,18 @@ class Shipment extends Resource
         $carriers = array_map('strtolower', $carriers);
 
         if(!is_array($services)) {
-            $services = array($services);
+            $services = explode(',', $services);
         }
         $services = array_map('strtolower', $services);
 
         for ($i = 0, $k = count($this->rates); $i < $k; $i++) {
             $rate_carrier = strtolower($this->rates[$i]->carrier);
-            if (count($carriers) > 0 && !in_array($rate_carrier, $carriers)) {
+            if (!empty($carriers[0]) && !in_array($rate_carrier, $carriers)) {
                 continue;
             }
 
             $rate_service = strtolower($this->rates[$i]->service);
-            if (count($services) > 0 && !in_array($rate_service, $services)) {
+            if (!empty($services[0]) && !in_array($rate_service, $services)) {
                 continue;
             }
 
