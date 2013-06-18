@@ -157,7 +157,6 @@ class Requestor
         $absUrl = self::utf8($absUrl);
         $curlOptions[CURLOPT_URL] = $absUrl;
 
-        $curlOptions[CURLOPT_SSL_VERIFYHOST] = 1;
         $curlOptions[CURLOPT_RETURNTRANSFER] = true;
         $curlOptions[CURLOPT_CONNECTTIMEOUT] = 30;
         $curlOptions[CURLOPT_TIMEOUT] = 80;
@@ -167,6 +166,10 @@ class Requestor
         $httpBody = curl_exec($curl);
 
         $errorNum = curl_errno($curl);
+        if ($errorNum == CURLE_SSL_CACERT || $errorNum == CURLE_SSL_PEER_CERTIFICATE || $errorNum == 77) {
+          curl_setopt($curl, CURLOPT_CAINFO, dirname(__FILE__) . '/../cacert.pem');
+          $httpBody = curl_exec($curl);
+        }
 
         if ($httpBody === false) {
             $errorNum = curl_errno($curl);
