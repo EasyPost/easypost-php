@@ -63,4 +63,26 @@ class Batch extends Resource
 
         return $this;
     }
+
+    public function remove_shipments($params = null)
+    {
+        $requestor = new Requestor($this->_apiKey);
+        $url = $this->instanceUrl() . '/remove_shipments';
+
+        list($response, $apiKey) = $requestor->request('post', $url, $params);
+        $this->refreshFrom($response, $apiKey, true);
+
+        return $this;
+    }
+
+    public function add_shipments($params = null)
+    {
+        $requestor = new Requestor($this->_apiKey);
+        $url = $this->instanceUrl() . '/add_shipments';
+
+        list($response, $apiKey) = $requestor->request('post', $url, $params);
+        $this->refreshFrom($response, $apiKey, true);
+
+        return $this;
+    }
 }
