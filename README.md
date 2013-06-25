@@ -21,7 +21,7 @@ Create or add the following to composer.json in your project root:
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/EasyPost/easypost-php-beta"
+            "url": "https://github.com/EasyPost/easypost-php"
         }
     ],
     "require": {
@@ -90,7 +90,7 @@ echo $shipment->postage_label->label_url;
 Documentation
 --------------------
 
-Up-to-date documentation at: https://www.geteasypost.com/docs/v2
+Up-to-date documentation at: https://www.geteasypost.com/docs
 
 Tests
 --------------------
