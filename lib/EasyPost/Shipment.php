@@ -44,7 +44,7 @@ class Shipment extends Resource
         return self::_save($class);
     }
 
-    public function get_rates($params = null, $apiKey = null)
+    public function get_rates($params = null)
     {
         $requestor = new Requestor($this->_apiKey);
         $url = $this->instanceUrl() . '/rates';
@@ -100,6 +100,40 @@ class Shipment extends Resource
         list($response, $apiKey) = $requestor->request('get', $url, $params);
         
         return $response['stamp_url'];
+    }
+
+    public function label($params = null)
+    {
+        $requestor = new Requestor($this->_apiKey);
+        $url = $this->instanceUrl() . '/label';
+
+        if (!isset($params['file_format'])) {
+            $clone = $params;
+            unset($params);
+            $params['file_format'] = $clone;
+        }
+
+        list($response, $apiKey) = $requestor->request('get', $url, $params);
+        $this->refreshFrom($response, $apiKey);
+
+        return $this;
+    }
+
+    public function insure($params = null)
+    {
+        $requestor = new Requestor($this->_apiKey);
+        $url = $this->instanceUrl() . '/insure';
+
+        if (!isset($params['amount'])) {
+            $clone = $params;
+            unset($params);
+            $params['amount'] = $clone;
+        }
+
+        list($response, $apiKey) = $requestor->request('post', $url, $params);
+        $this->refreshFrom($response, $apiKey);
+
+        return $this;
     }
 
     public function lowest_rate($carriers=array(), $services=array())
