@@ -1,6 +1,7 @@
 <?php
 
-require_once("../vendor/autoload.php");
+// require_once("../vendor/autoload.php");
+require_once("../lib/easypost.php");
 \EasyPost\EasyPost::setApiKey('cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi');
 
 try {
@@ -24,8 +25,12 @@ try {
     $verified_address = $address->verify();
     print_r($verified_address);
 
+    // create and verify at the same time
+    $verified_on_create = \EasyPost\Address::create_and_verify($address_params);
+    print_r($verified_on_create);
+
     // all
-    $all = \EasyPost\Address::all();
+    // $all = \EasyPost\Address::all();
     //print_r($all);
 
 } catch (Exception $e) {

@@ -53,14 +53,12 @@ $uk_address_params = array(
 $from_address = \EasyPost\Address::create($sf_address_params);
 $to_address = \EasyPost\Address::create($canada_address_params);
 
-
 // create parcel
 $parcel_params = array(
     "length" => 20.2,
     "width" => 10.9,
     "height" => 5,
-    // "predefined_package" => 'Parcel',
-    "weight" => 22.9
+    "weight" => 14.8
 );
 $parcel = \EasyPost\Parcel::create($parcel_params);
 
@@ -98,8 +96,9 @@ $shipment_params = array(
 );
 $shipment = \EasyPost\Shipment::create($shipment_params);
 
-// $shipment->buy($shipment->lowest_rate(['fedex','ups']));
-$shipment->buy($shipment->lowest_rate(null, 'PriorityMailInternational'));
+$shipment->buy(array('rate' => $shipment->lowest_rate('usps'), 'insurance' => 249.99));
+// $shipment->buy(array('rate' => $shipment->lowest_rate(array('ups', 'fedex'))));
+// $shipment->buy($shipment->lowest_rate(null, 'PriorityMailInternational'));
 
 // Refund specific shipment example
 // $shipment = \EasyPost\Shipment::retrieve('shp_fX5JFpdF');
