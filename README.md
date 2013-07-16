@@ -90,7 +90,7 @@ echo $shipment->postage_label->label_url;
 Documentation
 --------------------
 
-Up-to-date documentation at: https://www.geteasypost.com/docs
+Up-to-date documentation at: https://www.easypost.com/docs
 
 Tests
 --------------------
