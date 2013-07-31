@@ -48,6 +48,7 @@ abstract class Util
             'Rate'         => '\EasyPost\Rate',
             'PostageLabel' => '\EasyPost\PostageLabel',
             'Batch'        => '\EasyPost\Batch',
+            'Tracker'      => '\EasyPost\Tracker',
             'Refund'       => '\EasyPost\Refund'
         );
 
@@ -61,6 +62,7 @@ abstract class Util
             'rate'    => '\EasyPost\Rate',
             'pl'      => '\EasyPost\PostageLabel',
             'batch'   => '\EasyPost\Batch',
+            'trk'     => '\EasyPost\Tracker',
             'rfnd'    => '\EasyPost\Refund'
         );
 
