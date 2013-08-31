@@ -1,72 +1,73 @@
 <?php
 
 require_once("../lib/easypost.php");
+
 \EasyPost\EasyPost::setApiKey('cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi');
 
 // create addresses
-$sf_address_params = array(
-    "name"    => "Jon Calhoun",
+$from_address = array(
+    "company" => "EasyPost",
     "street1" => "388 Townsend St",
-    "street2" => "Apt 20",
     "city"    => "San Francisco",
     "state"   => "CA",
     "zip"     => "94107-8273",
     "phone"   => "415-456-7890"
 );
-$sf2_address_params = array(
-    "name"    => "Dirk Diggler",
-    "street1" => "63 Ellis Street",
-    "street2" => "Suite 1290",
-    "city"    => "San Francisco",
-    "state"   => "CA",
-    "zip"     => "94102",
-    "phone"   => "415-482-2937"
-);
-$canada_address_params = array(
-    "name"    => "Sawyer Bateman",
-    "street1" => "1A Larkspur Cres",
-    "city"    => "St. Albert",
-    "state"   => "AB",
-    "zip"     => "t8n2m4",
-    "country" => "CA",
-    "phone"   => "780-252-8464"
-);
-
-// create parcel
-$parcel_params_1 = array(
-    // "length" => 20.2,
-    // "width" => 10.9,
-    // "height" => 5,
+$parcel = array(
     "predefined_package" => 'Parcel',
-    "weight" => 222.9
-);
-$parcel_params_2 = array(
-    "length" => 20.2,
-    "width" => 10.9,
-    "height" => 5,
-    // "predefined_package" => 'Parcel',
-    "weight" => 22.9
+    "weight"             => 22.9
 );
 
-// customs info form
-$customs_info_params = array(
-    "customs_certify"      => true,
-    "customs_signer"       => "Borat Sagdiyev",
-    "contents_type"        => "gift",
-    "contents_explanation" => "", // only necessary for contents_type=other
-    "eel_pfc"              => "NOEEI 30.36",
-    "non_delivery_option"  => "abandon",
-    "restriction_type"     => "none",
-    "restriction_comments" => "",
-    "customs_items"        => array(
-        array(
-            "description"      => "Many, many EasyPost stickers.",
-            "hs_tariff_number" => 123456,
-            "origin_country"   => "US",
-            "quantity"         => 1,
-            "value"            => 879.47,
-            "weight"           => 14
-        )
+// in your application orders will likely
+// come from an external data source
+$orders = array(
+    array(
+        "address"  => array(
+            "name"    => "Ronald",
+            "street1" => "6258 Amesbury St",
+            "city"    => "San Diego",
+            "state"   => "CA",
+            "zip"     => "92114"
+        ),
+        "reference"   => "123456786",
+        "carrier"     => "USPS",
+        "service"     => "Priority"
+    ),
+    array(
+        "address"  => array(
+            "name"    => "Hamburgler",
+            "street1" => "8308 Fenway Rd",
+            "city"    => "Bethesda",
+            "state"   => "MD",
+            "zip"     => "20817"
+        ),
+        "reference"   => "123456787",
+        "carrier"     => "USPS",
+        "service"     => "Priority"
+    ),
+    array(
+        "address"  => array(
+            "name"    => "Grimace",
+            "street1" => "10 Wall St",
+            "city"    => "Burlington",
+            "state"   => "MA",
+            "zip"     => "01803"
+        ),
+        "reference"   => "123456788",
+        "carrier"     => "USPS",
+        "service"     => "Priority"
+    ),
+    array(
+        "address"  => array(
+            "name"    => "Cosmc",
+            "street1" => "3315 W Greenway Rd",
+            "city"    => "Phoenix",
+            "state"   => "AZ",
+            "zip"     => "85053"
+        ),
+        "reference"   => "123456789",
+        "carrier"     => "USPS",
+        "service"     => "Express"
     )
 );
 
@@ -75,34 +76,54 @@ $customs_info_params = array(
 // print_r($all);
 
 // retrieve a batch
-// $retrieved_batch = \EasyPost\Batch::retrieve('batch_jlELe1ki');
-// if ($retrieved_batch->status->created == 0 && empty($retrieved_batch->label_url)) {
-//     // retrieve shipment details if the batch processing is complete
-//     for($i = 0, $j = count($retrieved_batch->shipments); $i < $j; $i++) {
-//         $retrieved_batch->shipments[$i]->refresh();
-//     }
-//     $retrieved_batch->label(array('file_format' => 'epl2'));
-// }
-// print_r($retrieved_batch);
+// $batch = \EasyPost\Batch::retrieve('batch_0SLoY64K');
 
 // create shipment batch
-$new_batch = \EasyPost\Batch::create_and_buy(array('shipment' => array(
-    array(
-        'from_address' => $sf_address_params,
-        'to_address'   => $sf2_address_params,
-        'parcel'       => $parcel_params_1,
-        'carrier'      => 'USPS',
-        'service'      => 'Priority',
-        'reference'    => 'order_12345'
-    ),
-    array(
-        'from_address' => $sf_address_params,
-        'to_address'   => $canada_address_params,
-        'parcel'       => $parcel_params_2,
-        'customs_info' => $customs_info_params,
-        'carrier'      => 'USPS',
-        'service'      => 'FirstClassPackageInternationalService',
-        'reference'    => 'order_67890'
-    ),
-)));
-print_r($new_batch);
+$shipments = array();
+for($i = 0, $j = count($orders); $i < $j; $i++) {
+    $shipments[] = array(
+        "to_address"   => $orders[$i]["address"],
+        "from_address" => $from_address,
+        "parcel"       => $parcel,
+        "reference"    => $orders[$i]["reference"],
+        "carrier"      => $orders[$i]["carrier"],
+        "service"      => $orders[$i]["service"]
+    );
+}
+
+$batch = \EasyPost\Batch::create(array('shipments' => $shipments));
+
+// asynchronous creation means you can send us up to
+// 1000 shipments at once, but you'll have to wait
+// for the shipments to be created before you can continue
+while($batch->status->created != count($orders)) {
+    sleep(5);
+    $batch->refresh();
+    if($batch->status->creation_failed != 0) {
+        throw new \EasyPost\Error('One of your batch shipments was unable to be created. Please manually retrieve and review your batch.');
+    }
+}
+
+// if creation_failed == 0 and the while loop above ends
+// we know that all shipments have been created
+$batch->buy();
+
+// asyncronous purchasing means we have to watch
+// for when all labels have been purchased
+while($batch->status->postage_purchased != count($orders)) {
+    sleep(5);
+    $batch->refresh();
+    if($batch->status->postage_purchase_failed != 0) {
+        throw new \EasyPost\Error('One of your batch shipments was unable to be purchased. Please manually retrieve and review your batch.');
+    }
+}
+
+// generate a consolidated file containing all batch labels
+$batch->label(array("file_format" => "pdf"));
+
+while(empty($batch->label_url)) {
+    sleep(5);
+    $batch->refresh();
+}
+
+print_r($batch);

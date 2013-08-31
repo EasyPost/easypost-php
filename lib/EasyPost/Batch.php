@@ -53,6 +53,17 @@ class Batch extends Resource
         return Util::convertToEasyPostObject($response, $apiKey);
     }
 
+    public function buy($params = null)
+    {
+        $requestor = new Requestor($this->_apiKey);
+        $url = $this->instanceUrl() . '/buy';
+
+        list($response, $apiKey) = $requestor->request('post', $url, $params);
+        $this->refreshFrom($response, $apiKey, true);
+
+        return $this;
+    }
+
     public function label($params = null)
     {
         $requestor = new Requestor($this->_apiKey);
@@ -84,5 +95,15 @@ class Batch extends Resource
         $this->refreshFrom($response, $apiKey, true);
 
         return $this;
+    }
+
+    public function scan_form($params = null)
+    {
+        $requestor = new Requestor($this->_apiKey);
+        $url = $this->instanceUrl() . '/scan_form';
+
+        list($response, $apiKey) = $requestor->request('post', $url, $params);
+
+        return Util::convertToEasyPostObject($response, $apiKey);
     }
 }
