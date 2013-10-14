@@ -49,7 +49,8 @@ abstract class Util
             'PostageLabel' => '\EasyPost\PostageLabel',
             'Batch'        => '\EasyPost\Batch',
             'Tracker'      => '\EasyPost\Tracker',
-            'Refund'       => '\EasyPost\Refund'
+            'Refund'       => '\EasyPost\Refund',
+            'Event'        => '\EasyPost\Event'
         );
 
         $prefixes = array(
@@ -62,6 +63,7 @@ abstract class Util
             'rate'    => '\EasyPost\Rate',
             'pl'      => '\EasyPost\PostageLabel',
             'batch'   => '\EasyPost\Batch',
+            'evt'     => '\EasyPost\Event',
             'trk'     => '\EasyPost\Tracker',
             'rfnd'    => '\EasyPost\Refund'
         );
