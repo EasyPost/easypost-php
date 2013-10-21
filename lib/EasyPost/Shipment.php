@@ -98,7 +98,7 @@ class Shipment extends Resource
         $url = $this->instanceUrl() . '/stamp';
 
         list($response, $apiKey) = $requestor->request('get', $url, $params);
-        
+
         return $response['stamp_url'];
     }
 

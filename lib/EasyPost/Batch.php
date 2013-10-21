@@ -97,7 +97,7 @@ class Batch extends Resource
         return $this;
     }
 
-    public function scan_form($params = null)
+    public function create_scan_form($params = null)
     {
         $requestor = new Requestor($this->_apiKey);
         $url = $this->instanceUrl() . '/scan_form';
