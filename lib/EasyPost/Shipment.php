@@ -37,6 +37,21 @@ class Shipment extends Resource
         return self::_create($class, $params, $apiKey);
     }
 
+    public static function create_from_tracking_code($params = null, $apiKey = null)
+    {
+        $class = get_class();
+        if (!isset($params['tracking_code'])) {
+            $clone = $params;
+            unset($params);
+            $params['tracking_code'] = $clone;
+        }
+
+        $requestor = new Requestor($apiKey);
+        $url = self::classUrl($class) . '/create_from_tracking_code';
+        list($response, $apiKey) = $requestor->request('post', $url, $params);
+        return Util::convertToEasyPostObject($response, $apiKey);
+    }
+
     public function save()
     {
         $class = get_class();
