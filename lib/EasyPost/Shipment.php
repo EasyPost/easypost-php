@@ -154,25 +154,49 @@ class Shipment extends Resource
     public function lowest_rate($carriers=array(), $services=array())
     {
         $lowest_rate = false;
+        $carriers_include = array();
+        $carriers_exclude = array();
+        $services_include = array();
+        $services_exclude = array();
 
         if(!is_array($carriers)) {
             $carriers = explode(',', $carriers);
         }
-        $carriers = array_map('strtolower', $carriers);
+        for ($a = 0, $b = count($carriers); $a < $b; $a++) {
+            $carriers[$a] = trim(strtolower($carriers[$a]));
+            if (substr($carriers[$a], 0, 1) == '!') {
+                $carriers_exclude[] = substr($carriers[$a], 1);
+            } else {
+                $carriers_include[] = $carriers[$a];
+            }
+        }
 
         if(!is_array($services)) {
             $services = explode(',', $services);
         }
-        $services = array_map('strtolower', $services);
+        for ($c = 0, $d = count($services); $c < $d; $c++) {
+            $services[$c] = trim(strtolower($services[$c]));
+            if (substr($services[$c], 0, 1) == '!') {
+                $services_exclude[] = substr($services[$c], 1);
+            } else {
+                $services_include[] = $services[$c];
+            }
+        }
 
         for ($i = 0, $k = count($this->rates); $i < $k; $i++) {
             $rate_carrier = strtolower($this->rates[$i]->carrier);
-            if (!empty($carriers[0]) && !in_array($rate_carrier, $carriers)) {
+            if (!empty($carriers_include[0]) && !in_array($rate_carrier, $carriers_include)) {
+                continue;
+            }
+            if (!empty($carriers_exclude[0]) && in_array($rate_carrier, $carriers_exclude)) {
                 continue;
             }
 
             $rate_service = strtolower($this->rates[$i]->service);
-            if (!empty($services[0]) && !in_array($rate_service, $services)) {
+            if (!empty($services_include[0]) && !in_array($rate_service, $services_include)) {
+                continue;
+            }
+            if (!empty($services_exclude[0]) && in_array($rate_service, $services_exclude)) {
                 continue;
             }
 

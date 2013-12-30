@@ -7,7 +7,7 @@ abstract class EasyPost
     public static $apiKey;
     public static $apiBase = 'https://api.easypost.com/v2';
     public static $apiVersion = "2";
-    const VERSION = '2.0.7';
+    const VERSION = '2.0.8';
 
     public static function getApiKey()
     {
