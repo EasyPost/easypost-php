@@ -49,23 +49,29 @@ abstract class Util
             'PostageLabel' => '\EasyPost\PostageLabel',
             'Batch'        => '\EasyPost\Batch',
             'Tracker'      => '\EasyPost\Tracker',
+            'Event'        => '\EasyPost\Event',
             'Refund'       => '\EasyPost\Refund',
-            'Event'        => '\EasyPost\Event'
+            'Container'    => '\EasyPost\Container',
+            'Item'         => '\EasyPost\Item',
+            'Order'        => '\EasyPost\Order'
         );
 
         $prefixes = array(
-            'adr'     => '\EasyPost\Address',
-            'sf'      => '\EasyPost\ScanForm',
-            'cstitem' => '\EasyPost\CustomsItem',
-            'cstinfo' => '\EasyPost\CustomsInfo',
-            'prcl'    => '\EasyPost\Parcel',
-            'shp'     => '\EasyPost\Shipment',
-            'rate'    => '\EasyPost\Rate',
-            'pl'      => '\EasyPost\PostageLabel',
-            'batch'   => '\EasyPost\Batch',
-            'evt'     => '\EasyPost\Event',
-            'trk'     => '\EasyPost\Tracker',
-            'rfnd'    => '\EasyPost\Refund'
+            'adr'       => '\EasyPost\Address',
+            'sf'        => '\EasyPost\ScanForm',
+            'cstitem'   => '\EasyPost\CustomsItem',
+            'cstinfo'   => '\EasyPost\CustomsInfo',
+            'prcl'      => '\EasyPost\Parcel',
+            'shp'       => '\EasyPost\Shipment',
+            'rate'      => '\EasyPost\Rate',
+            'pl'        => '\EasyPost\PostageLabel',
+            'batch'     => '\EasyPost\Batch',
+            'evt'       => '\EasyPost\Event',
+            'rfnd'      => '\EasyPost\Refund',
+            'trk'       => '\EasyPost\Tracker',
+            'container' => '\EasyPost\Container',
+            'item'      => '\EasyPost\Item',
+            'order'     => '\EasyPost\Order'
         );
 
         if (self::isList($response)) {

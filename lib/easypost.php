@@ -33,3 +33,6 @@ require(dirname(__FILE__) . '/EasyPost/Refund.php');
 require(dirname(__FILE__) . '/EasyPost/Batch.php');
 require(dirname(__FILE__) . '/EasyPost/Tracker.php');
 require(dirname(__FILE__) . '/EasyPost/Event.php');
+require(dirname(__FILE__) . '/EasyPost/Container.php');
+require(dirname(__FILE__) . '/EasyPost/Item.php');
+require(dirname(__FILE__) . '/EasyPost/Order.php');
