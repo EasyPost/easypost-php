@@ -81,7 +81,7 @@ class Shipment extends Resource
         }
 
         list($response, $apiKey) = $requestor->request('post', $url, $params);
-        $this->refreshFrom($response, $apiKey, true);
+        $this->refresh();
 
         return $this;
     }
