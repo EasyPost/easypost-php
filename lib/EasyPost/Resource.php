@@ -102,7 +102,7 @@ abstract class Resource extends Object
         if (count($this->_unsavedValues)) {
             $requestor = new Requestor($this->_apiKey);
             $params = array();
-            foreach ($this->_unsavedValues as $k) {
+            foreach (array_keys($this->_unsavedValues) as $k) {
                 $params[$k] = $this->$k;
             }
             $url = $this->instanceUrl();
