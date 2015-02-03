@@ -28,6 +28,7 @@ require(dirname(__FILE__) . '/EasyPost/CustomsInfo.php');
 require(dirname(__FILE__) . '/EasyPost/Parcel.php');
 require(dirname(__FILE__) . '/EasyPost/Rate.php');
 require(dirname(__FILE__) . '/EasyPost/PostageLabel.php');
+require(dirname(__FILE__) . '/EasyPost/Pickup.php');
 require(dirname(__FILE__) . '/EasyPost/Shipment.php');
 require(dirname(__FILE__) . '/EasyPost/Refund.php');
 require(dirname(__FILE__) . '/EasyPost/Batch.php');
