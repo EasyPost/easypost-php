@@ -40,7 +40,7 @@ $shipment = \EasyPost\Shipment::create(
         "parcel"       => $parcel
     )
 );
-$shipment->buy($shipment->lowest_rate(array('FEDEX')));
+$shipment->buy($shipment->lowest_rate(array('UPS')));
 
 
 echo $shipment->id;
@@ -50,12 +50,14 @@ $pickup = \EasyPost\Pickup::create(
         "address" => $from_address,
         "shipment"=> $shipment,
         "reference" => $shipment->id,
-        "max_date" => date("Y-m-d H:i:s"),
-        "min_date" => date("Y-m-d H:i:s", strtotime('+1 day')),
+        "max_datetime" => date("Y-m-d H:i:s"),
+        "min_datetime" => date("Y-m-d H:i:s", strtotime('+1 day')),
         "is_account_address" => false,
         "instructions" => "Will be next to garage"
     )
 );
 
-var_dump($pickup);
+$pickup->buy(array('carrier'=>'UPS', 'service' => 'Future-day Pickup'));
+echo "Confirmation: " . $pickup->confirmation . "\n";
+
 ?>
