@@ -101,12 +101,9 @@ abstract class Resource extends Object
         self::_validate('save');
         if (count($this->_unsavedValues)) {
             $requestor = new Requestor($this->_apiKey);
-            $params = array();
-            foreach (array_keys($this->_unsavedValues) as $k) {
-                $params[$k] = $this->$k;
-            }
             $url = $this->instanceUrl();
-            list($response, $apiKey) = $requestor->request('post', $url, $params);
+            $params = array(self::className($class) => $this->_unsavedValues);
+            list($response, $apiKey) = $requestor->request('patch', $url, $params);
             $this->refreshFrom($response, $apiKey);
         }
 
