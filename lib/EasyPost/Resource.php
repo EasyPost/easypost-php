@@ -96,15 +96,6 @@ abstract class Resource extends Object
         return Util::convertToEasyPostObject($response, $apiKey);
     }
 
-    public static function string_to_params($params = array(), $pieces = array()) {
-        if (count($pieces) == 0) {
-            return $params;
-        }
-        $first_piece = array_shift($pieces);
-        $params[] = $first_piece;
-        return \EasyPost\Resource::string_to_params($params, $pieces);
-    }
-
     protected function _save($class)
     {
         self::_validate('save');
