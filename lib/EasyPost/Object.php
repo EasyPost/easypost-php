@@ -2,23 +2,26 @@
 
 namespace EasyPost;
 
-class Object implements \ArrayAccess
+class Object implements \ArrayAccess, \Iterator
 {
     protected $_apiKey;
     protected $_retrieveOptions;
 
     protected $_values;
     protected $_unsavedValues;
-    protected $_transientValues;
     protected $_immutableValues;
 
-    public function __construct($id = null, $apiKey = null)
+    private $_parent;
+    private $_name;
+
+    public function __construct($id = null, $apiKey = null, $parent = null, $name = null)
     {
         $this->_apiKey = $apiKey;
         $this->_values = array();
         $this->_unsavedValues = array();
-        $this->_transientValues = array();
         $this->_immutableValues = array('_apiKey', 'id');
+        $this->_parent = $parent;
+        $this->_name = $name;
 
         $this->_retrieveOptions = array();
         if (is_array($id)) {
@@ -39,9 +42,20 @@ class Object implements \ArrayAccess
     {
         $this->_values[$k] = $v;
 
-        if (!in_array($k, $this->_immutableValues)) {
-            $this->_unsavedValues[$k] = true;
-            unset($this->_transientValues[$k]);
+        $i = 0;
+        $current = $this;
+        $param = array($k => $v);
+        while(true && $i < 99) {
+            if(!is_null($current->_parent)) {
+                $param = array($current->_name => $param);
+                $current = $current->_parent;
+            } else {
+                reset($param);
+                $first_key = key($param);
+                $current->_unsavedValues[$first_key] = $param[$first_key];
+                break;
+            }
+            $i++;
         }
     }
 
@@ -54,22 +68,29 @@ class Object implements \ArrayAccess
     {
         if (!in_array($k, $this->_immutableValues)) {
             unset($this->_values[$k]);
-            $this->_transientValues[$k] = true;
-            unset($this->_unsavedValues[$k]);
+
+            $i = 0;
+            $current = $this;
+            $param = array($k => $v);
+            while(true && $i < 99) {
+                if(!is_null($current->_parent)) {
+                    $param = array($current->_name => $param);
+                    $current = $current->_parent;
+                } else {
+                    reset($param);
+                    $first_key = key($param);
+                    unset($current->_unsavedValues[$first_key]);
+                    break;
+                }
+                $i++;
+            }
         }
     }
 
     public function __get($k)
     {
         if (array_key_exists($k, $this->_values)) {
-
             return $this->_values[$k];
-        } else if (in_array($k, $this->_transientValues)) {
-            $class = get_class($this);
-            $attrs = join(', ', array_keys($this->_values));
-            error_log("EasyPost Notice: Undefined property of {$class} instance: {$k}.");
-
-            return null;
         } else {
             $class = get_class($this);
             error_log("EasyPost Notice: Undefined property of {$class} instance: {$k}");
@@ -78,20 +99,20 @@ class Object implements \ArrayAccess
         }
     }
 
-    public static function constructFrom($values, $class = null, $apiKey = null)
+    public static function constructFrom($values, $class = null, $apiKey = null, $parent = null, $name = null)
     {
         if ($class === null) {
             $class = get_class();
         }
 
-        $obj = new $class(isset($values['id']) ? $values['id'] : null, $apiKey);
+        $obj = new $class(isset($values['id']) ? $values['id'] : null, $apiKey, $parent, $name);
         $obj->refreshFrom($values, $apiKey);
 
         return $obj;
     }
 
     public function refreshFrom($values, $apiKey, $partial = false)
-    {        
+    {
         $this->_apiKey = $apiKey;
 
         if ($partial) {
@@ -111,10 +132,10 @@ class Object implements \ArrayAccess
             if (in_array($k, $this->_immutableValues)) {
                 continue;
             }
-            $this->_values[$k] = Util::convertToEasyPostObject($v, $apiKey);
-            unset($this->_transientValues[$k]);
-            unset($this->_unsavedValues[$k]);
+            $this->_values[$k] = Util::convertToEasyPostObject($v, $apiKey, $this, $k);
+
         }
+        $this->_unsavedValues = array();
     }
 
     // ArrayAccess methods
@@ -136,6 +157,33 @@ class Object implements \ArrayAccess
     public function offsetGet($k)
     {
         return array_key_exists($k, $this->_values) ? $this->_values[$k] : null;
+    }
+
+    // Iterator methods
+    public function rewind()
+    {
+        reset($this->_values);
+    }
+
+    public function current()
+    {
+        return current($this->_values);
+    }
+
+    public function key()
+    {
+        return key($this->_values);
+    }
+
+    public function next()
+    {
+        return next($this->_values);
+    }
+
+    public function valid()
+    {
+        $key = key($this->_values);
+        return ($key !== NULL && $key !== FALSE);
     }
 
     // Output methods

@@ -96,17 +96,23 @@ abstract class Resource extends Object
         return Util::convertToEasyPostObject($response, $apiKey);
     }
 
+    public static function string_to_params($params = array(), $pieces = array()) {
+        if (count($pieces) == 0) {
+            return $params;
+        }
+        $first_piece = array_shift($pieces);
+        $params[] = $first_piece;
+        return \EasyPost\Resource::string_to_params($params, $pieces);
+    }
+
     protected function _save($class)
     {
         self::_validate('save');
         if (count($this->_unsavedValues)) {
             $requestor = new Requestor($this->_apiKey);
-            $params = array();
-            foreach (array_keys($this->_unsavedValues) as $k) {
-                $params[$k] = $this->$k;
-            }
             $url = $this->instanceUrl();
-            list($response, $apiKey) = $requestor->request('post', $url, $params);
+            $params = array(self::className($class) => $this->_unsavedValues);
+            list($response, $apiKey) = $requestor->request('patch', $url, $params);
             $this->refreshFrom($response, $apiKey);
         }
 
