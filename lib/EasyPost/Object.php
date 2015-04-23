@@ -18,7 +18,7 @@ class Object implements \ArrayAccess
         $this->_values = array();
         $this->_unsavedValues = array();
         $this->_transientValues = array();
-        $this->_immutableValues = array('_apiKey', 'id');
+        $this->_immutableValues = array('_apiKey');
 
         $this->_retrieveOptions = array();
         if (is_array($id)) {
@@ -91,7 +91,7 @@ class Object implements \ArrayAccess
     }
 
     public function refreshFrom($values, $apiKey, $partial = false)
-    {        
+    {
         $this->_apiKey = $apiKey;
 
         if ($partial) {
