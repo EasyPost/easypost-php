@@ -99,7 +99,7 @@ class Requestor
         $myApiKey = $this->_apiKey;
         if (!$myApiKey) {
             if (!$myApiKey = EasyPost::$apiKey) {
-                throw new Error('No API key provided. Set your API key using "EasyPost::setApiKey(<API-KEY>)". See https://www.geteasypost.com/docs for details, or contact us at contact@geteasypost.com for assistance.');
+                throw new Error('No API key provided. Set your API key using "EasyPost::setApiKey(<API-KEY>)". See https://www.easypost.com/docs for details, or contact support@easypost.com for assistance.');
             }
         }
 
@@ -144,10 +144,15 @@ class Requestor
             $curlOptions[CURLOPT_POST] = 1;
             $curlOptions[CURLOPT_POSTFIELDS] = self::encode($params);
         } else if ($method == 'delete') {
-            $curlOptions[CURLOPT_CUSTOMREQUEST] = 'DELETE';
+            $curlOptions[CURLOPT_CUSTOMREQUEST] = strtoupper($method);
             if (count($params) > 0) {
                 $encoded = self::encode($params);
                 $absUrl = "{$absUrl}?{$encoded}";
+            }
+        } else if ($method == 'patch' || $method == 'put') {
+            $curlOptions[CURLOPT_CUSTOMREQUEST] = strtoupper($method);
+            if (count($params) > 0) {
+                $curlOptions[CURLOPT_POSTFIELDS] = self::encode($params);
             }
         } else {
             throw new Error("Unrecognized method {$method}");
@@ -161,6 +166,7 @@ class Requestor
         $curlOptions[CURLOPT_CONNECTTIMEOUT] = 30;
         $curlOptions[CURLOPT_TIMEOUT] = 80;
         $curlOptions[CURLOPT_HTTPHEADER] = $headers;
+        $curlOptions[CURLOPT_SSLVERSION] = CURL_SSLVERSION_TLSv1;
 
         curl_setopt_array($curl, $curlOptions);
         $httpBody = curl_exec($curl);

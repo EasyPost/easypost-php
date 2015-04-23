@@ -2,28 +2,22 @@
 
 namespace EasyPost;
 
-
-
 class Pickup extends Resource
 {
     public static function retrieve($id, $apiKey = null)
     {
-        $class = get_class();
-
-        return self::_retrieve($class, $id, $apiKey);
+        return self::_retrieve(get_class(), $id, $apiKey);
     }
-
 
     public static function create($params = null, $apiKey = null)
     {
-        $class = get_class();
         if (!isset($params['pickup']) || !is_array($params['pickup'])) {
             $clone = $params;
             unset($params);
             $params['pickup'] = $clone;
         }
 
-        return self::_create($class, $params, $apiKey);
+        return self::_create(get_class(), $params, $apiKey);
     }
 
     public function buy($params = null)
@@ -36,6 +30,7 @@ class Pickup extends Resource
 
         return $this;
     }
+
     public function cancel($params = null)
     {
         $requestor = new Requestor($this->_apiKey);
