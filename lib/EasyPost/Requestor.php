@@ -164,7 +164,7 @@ class Requestor
 
         $curlOptions[CURLOPT_RETURNTRANSFER] = true;
         $curlOptions[CURLOPT_CONNECTTIMEOUT] = 30;
-        $curlOptions[CURLOPT_TIMEOUT] = 80;
+        $curlOptions[CURLOPT_TIMEOUT] = EasyPost::$timeout;
         $curlOptions[CURLOPT_HTTPHEADER] = $headers;
         $curlOptions[CURLOPT_SSLVERSION] = CURL_SSLVERSION_TLSv1;
 
