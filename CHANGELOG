@@ -1,3 +1,8 @@
+=== 2.1.1 2015-05-11
+
+* Added request timeout and connection timeout to EasyPost config. Increased request timeout.
+
+
 === 2.1.0 2015-04-10
 
 * Added User and CarrierAccount resources and examples for each.
@@ -5,7 +10,7 @@
 object rather than the object that the change was made in. This allows you to
 change sub objects and then call save() on the parent to have all properties
 saved.
-* Removed EasyPost Object transientValues and made unsavedValues act as a 
+* Removed EasyPost Object transientValues and made unsavedValues act as a
 representation of the params to send on save, rather than a flag to indicate
 if a property had been changed.
 * Added support for EasyPost's new error format: {"error": {"message": "...",
