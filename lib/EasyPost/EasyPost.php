@@ -8,6 +8,7 @@ abstract class EasyPost
     public static $apiBase = 'https://api.easypost.com/v2';
     public static $apiVersion = "2";
     public static $timeout = 120;
+    public static $connectTimeout = 30;
     const VERSION = '2.1.1';
 
     public static function getApiKey()
@@ -44,5 +45,14 @@ abstract class EasyPost
     public static function setTimeout($timeout)
     {
         self::$timeout = $timeout;
+    }
+
+    public static function getConnectTimeout()
+    {
+        return self::$connectTimeout;
+    }
+    public static function setConnectTimeout($connectTimeout)
+    {
+        self::$connectTimeout = $connectTimeout;
     }
 }
