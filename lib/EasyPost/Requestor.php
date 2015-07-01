@@ -86,8 +86,6 @@ class Requestor
             $params = array();
         }
         list($httpBody, $httpStatus, $myApiKey) = $this->_requestRaw($method, $url, $params);
-
-        // decode the json response into an array
         $response = $this->_interpretResponse($httpBody, $httpStatus);
 
         return array($response, $myApiKey);
@@ -95,7 +93,6 @@ class Requestor
 
     private function _requestRaw($method, $url, $params)
     {
-        // check auth
         $myApiKey = $this->_apiKey;
         if (!$myApiKey) {
             if (!$myApiKey = EasyPost::$apiKey) {
@@ -103,7 +100,6 @@ class Requestor
             }
         }
 
-        // prepare url, params, header for cURL
         $absUrl = $this->apiUrl($url);
         $params = self::_encodeObjects($params);
 
@@ -158,15 +154,10 @@ class Requestor
             throw new Error("Unrecognized method {$method}");
         }
 
-        // url
         $absUrl = self::utf8($absUrl);
         $curlOptions[CURLOPT_URL] = $absUrl;
-
         $curlOptions[CURLOPT_RETURNTRANSFER] = true;
-        $curlOptions[CURLOPT_CONNECTTIMEOUT] = 30;
-        $curlOptions[CURLOPT_TIMEOUT] = 80;
         $curlOptions[CURLOPT_HTTPHEADER] = $headers;
-        $curlOptions[CURLOPT_SSLVERSION] = CURL_SSLVERSION_TLSv1;
 
         curl_setopt_array($curl, $curlOptions);
         $httpBody = curl_exec($curl);
@@ -219,14 +210,14 @@ class Requestor
             case CURLE_COULDNT_CONNECT:
             case CURLE_COULDNT_RESOLVE_HOST:
             case CURLE_OPERATION_TIMEOUTED:
-                $msg = "Could not connect to EasyPost ({$apiBase}).  Please check your internet connection and try again.  If this problem persists please let us know at contact@easypost.com.";
+                $msg = "Could not connect to EasyPost ({$apiBase}). Please check your internet connection and try again.  If this problem persists please let us know at contact@easypost.com.";
                 break;
             case CURLE_SSL_CACERT:
             case CURLE_SSL_PEER_CERTIFICATE:
-                $msg = "Could not verify EasyPost's SSL certificate.  Please make sure that your network is not intercepting certificates.  (Try going to {$apiBase} in your browser.)  If this problem persists, let us know at contact@easypost.com.";
+                $msg = "Could not verify EasyPost's SSL certificate. Please make sure that your network is not intercepting certificates.  (Try going to {$apiBase} in your browser.)  If this problem persists, let us know at contact@easypost.com.";
                 break;
             default:
-                $msg = "Unexpected error communicating with EasyPost.  If this problem persists please let us know at contact@easypost.com.";
+                $msg = "Unexpected error communicating with EasyPost. If this problem persists please let us know at contact@easypost.com.";
         }
 
         $msg .= "\nNetwork error [errno {$errorNum}]: {$message})";

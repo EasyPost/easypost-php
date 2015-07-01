@@ -14,7 +14,6 @@ class Event extends Resource
         } else {
             throw new Error('There was a problem decoding the webhook');
         }
-        
     }
 }
 ?>
