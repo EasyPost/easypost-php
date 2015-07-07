@@ -17,6 +17,20 @@ $parcel = array(
     "predefined_package" => 'Parcel',
     "weight"             => 22.9
 );
+$customs_item = array(
+    "description"      => "T Shirt",
+    "currency"         => "USD",
+    "value"            => 35.0,
+    "quantity"         => 7,
+    "weight"           => 22.9,
+    "hs_tariff_number" => "123456"
+);
+$customs_info = array(
+    "contents_type" => "merchandise",
+    "customs_items" => array(
+      $customs_item
+    )
+);
 
 // in your application orders will likely
 // come from an external data source
@@ -68,6 +82,21 @@ $orders = array(
         "reference"   => "123456789",
         "carrier"     => "USPS",
         "service"     => "Express"
+    ),
+    array(
+        "address"      => array(
+            "company" => "Tim Hortons",
+            "street1" => "65 Queen St W",
+            "city"    => "Toronto",
+            "state"   => "CA",
+            "zip"     => "M5H2M5",
+            "phone"   => "+1 416-360-6776",
+            "country" => "CA"
+        ),
+        "customs_info" => $customs_info,
+        "reference"    => "timhortons",
+        "carrier"      => "USPS",
+        "service"      => "ExpressMailInternational"
     )
 );
 
@@ -85,6 +114,7 @@ for($i = 0, $j = count($orders); $i < $j; $i++) {
         "to_address"   => $orders[$i]["address"],
         "from_address" => $from_address,
         "parcel"       => $parcel,
+        "customs_info" => $orders[$i]["customs_info"],
         "reference"    => $orders[$i]["reference"],
         "carrier"      => $orders[$i]["carrier"],
         "service"      => $orders[$i]["service"]
