@@ -63,6 +63,7 @@ try {
             "reference"    => $orders[$i]["reference"],
         ));
         $shipment->buy(array("rate" => $shipment->lowest_rate('usps')));
+        $shipment->insure(array('amount' => 100));
         $shipments[] = $shipment;
     }
 

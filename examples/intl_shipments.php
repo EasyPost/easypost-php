@@ -104,6 +104,8 @@ $shipment->buy(array('rate' => $shipment->lowest_rate('usps'), 'insurance' => 24
 // $shipment = \EasyPost\Shipment::retrieve('shp_fX5JFpdF');
 // $shipment->refund();
 
+$shipment->insure(array('amount' => 100));
+
 print_r($shipment);
 
 echo $shipment->postage_label->label_url;

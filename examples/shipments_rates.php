@@ -62,5 +62,6 @@ print_r(\EasyPost\Shipment::retrieve($shipment));
 $shipment = \EasyPost\Shipment::retrieve(array('id' => "shp_iUXLz4n0"));
 
 $shipment->buy($shipment->rates[1]);
+$shipment->insure(array('amount' => 100));
 
 echo $shipment->postage_label->label_url;

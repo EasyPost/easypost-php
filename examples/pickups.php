@@ -41,7 +41,7 @@ $shipment = \EasyPost\Shipment::create(
     )
 );
 $shipment->buy($shipment->lowest_rate(array('UPS')));
-
+$shipment->insure(array('amount' => 100));
 
 echo $shipment->id;
 
