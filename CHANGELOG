@@ -1,3 +1,8 @@
+=== 2.1.2 2015-11-04
+
+* Added Tracker.all example, and updated some old examples
+
+
 === 2.1.1 2015-07-01
 
 * Removed cURL options for SSL version, timeout, and connect timeout. The
@@ -11,7 +16,7 @@ default values for these options are acceptable.
 object rather than the object that the change was made in. This allows you to
 change sub objects and then call save() on the parent to have all properties
 saved.
-* Removed EasyPost Object transientValues and made unsavedValues act as a 
+* Removed EasyPost Object transientValues and made unsavedValues act as a
 representation of the params to send on save, rather than a flag to indicate
 if a property had been changed.
 * Added support for EasyPost's new error format: {"error": {"message": "...",
