@@ -25,17 +25,17 @@ Create or add the following to composer.json in your project root:
         }
     ],
     "require": {
-        "easypost/easypost-php": "dev-master"
+        "easypost/easypost-php": "~2.1"
     }
 }
 ```
 
-Install composer dependancies:
+Install composer dependencies:
 ```shell
 php composer.phar install
 ```
 
-Require dependancies:
+Require dependencies:
 ```php
 require_once("/path/to/vendor/autoload.php");
 ```
@@ -97,7 +97,7 @@ Up-to-date documentation at: https://www.easypost.com/docs
 Tests
 --------------------
 
-Install dev dependancies:
+Install dev dependencies:
 ```shell
 php composer.phar install --dev
 ```
