@@ -4,21 +4,47 @@ namespace EasyPost;
 
 class Address extends Resource
 {
+    /**
+     * retrieve an address
+     *
+     * @param string $id
+     * @param string $apiKey
+     * @return mixed
+     */
     public static function retrieve($id, $apiKey = null)
     {
         return self::_retrieve(get_class(), $id, $apiKey);
     }
 
+    /**
+     * retrieve all addresses
+     *
+     * @param mixed  $params
+     * @param string $apiKey
+     * @return mixed
+     */
     public static function all($params = null, $apiKey = null)
     {
         return self::_all(get_class(), $params, $apiKey);
     }
 
+    /**
+     * save an address
+     *
+     * @return $this
+     */
     public function save()
     {
         return self::_save(get_class());
     }
 
+    /**
+     * create an address
+     *
+     * @param mixed  $params
+     * @param string $apiKey
+     * @return mixed
+     */
     public static function create($params = null, $apiKey = null)
     {
         if (!isset($params['address']) || !is_array($params['address'])) {
@@ -30,6 +56,13 @@ class Address extends Resource
         return self::_create(get_class(), $params, $apiKey);
     }
 
+    /**
+     * create and verify an address
+     *
+     * @param mixed  $params
+     * @param string $apiKey
+     * @return mixed
+     */
     public static function create_and_verify($params = null, $apiKey = null)
     {
         $class = get_class();
@@ -57,6 +90,13 @@ class Address extends Resource
         }
     }
 
+    /**
+     * verify an address
+     *
+     * @param mixed $params
+     * @return mixed
+     * @throws \EasyPost\Error
+     */
     public function verify($params = null)
     {
         $requestor = new Requestor($this->_apiKey);

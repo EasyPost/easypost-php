@@ -4,6 +4,13 @@ namespace EasyPost;
 
 class Error extends \Exception
 {
+    /**
+     * constructor
+     *
+     * @param string $message
+     * @param int    $httpStatus
+     * @param string $httpBody
+     */
     public function __construct($message = null, $httpStatus = null, $httpBody = null)
     {
         parent::__construct($message);
@@ -34,16 +41,31 @@ class Error extends \Exception
         }
     }
 
+    /**
+     * get the HTTP status code
+     *
+     * @return int
+     */
     public function getHttpStatus()
     {
         return $this->httpStatus;
     }
 
+    /**
+     * get the HTTP body
+     *
+     * @return string
+     */
     public function getHttpBody()
     {
         return $this->httpBody;
     }
 
+    /**
+     * print out the error
+     *
+     * @return void
+     */
     public function prettyPrint()
     {
         print($this->ecode . " (" . $this->getHttpStatus() . "): " .

@@ -4,16 +4,49 @@ namespace EasyPost;
 
 class Object implements \ArrayAccess, \Iterator
 {
+    /**
+     * @var string
+     */
     protected $_apiKey;
+
+    /**
+     * @var array
+     */
     protected $_retrieveOptions;
 
+    /**
+     * @var array
+     */
     protected $_values;
+
+    /**
+     * @var array
+     */
     protected $_unsavedValues;
+
+    /**
+     * @var array
+     */
     protected $_immutableValues;
 
+    /**
+     * @var string
+     */
     private $_parent;
+
+    /**
+     * @var string
+     */
     private $_name;
 
+    /**
+     * constructor
+     *
+     * @param string $id
+     * @param string $apiKey
+     * @param string $parent
+     * @param string $name
+     */
     public function __construct($id = null, $apiKey = null, $parent = null, $name = null)
     {
         $this->_apiKey = $apiKey;
@@ -37,7 +70,12 @@ class Object implements \ArrayAccess, \Iterator
         }
     }
 
-    // Standard accessor magic methods
+    /**
+     * Standard accessor magic methods
+     *
+     * @param string $k
+     * @param mixed $v
+     */
     public function __set($k, $v)
     {
         $this->_values[$k] = $v;
@@ -59,11 +97,22 @@ class Object implements \ArrayAccess, \Iterator
         }
     }
 
+    /**
+     * isset magic method
+     *
+     * @param string $k
+     * @return bool
+     */
     public function __isset($k)
     {
         return isset($this->_values[$k]);
     }
 
+    /**
+     * unset magic method
+     *
+     * @param string $k
+     */
     public function __unset($k)
     {
         if (!in_array($k, $this->_immutableValues)) {
@@ -87,6 +136,12 @@ class Object implements \ArrayAccess, \Iterator
         }
     }
 
+    /**
+     * getter
+     *
+     * @param string $k
+     * @return mixed
+     */
     public function __get($k)
     {
         if (array_key_exists($k, $this->_values)) {
@@ -99,6 +154,16 @@ class Object implements \ArrayAccess, \Iterator
         }
     }
 
+    /**
+     * construct from
+     *
+     * @param array  $values
+     * @param string $class
+     * @param string $apiKey
+     * @param string $parent
+     * @param string $name
+     * @return mixed
+     */
     public static function constructFrom($values, $class = null, $apiKey = null, $parent = null, $name = null)
     {
         if ($class === null) {
@@ -111,6 +176,13 @@ class Object implements \ArrayAccess, \Iterator
         return $obj;
     }
 
+    /**
+     * refresh from
+     *
+     * @param array  $values
+     * @param string $apiKey
+     * @param bool $partial
+     */
     public function refreshFrom($values, $apiKey, $partial = false)
     {
         $this->_apiKey = $apiKey;
@@ -138,55 +210,105 @@ class Object implements \ArrayAccess, \Iterator
         $this->_unsavedValues = array();
     }
 
-    // ArrayAccess methods
+    /**
+     * ArrayAccess methods
+     *
+     * @param string $k
+     * @param mixed $v
+     */
     public function offsetSet($k, $v)
     {
         $this->$k = $v;
     }
 
+    /**
+     * ArrayAccess methods
+     *
+     * @param string $k
+     * @return bool
+     */
     public function offsetExists($k)
     {
         return array_key_exists($k, $this->_values);
     }
 
+    /**
+     * ArrayAccess methods
+     *
+     * @param string $k
+     */
     public function offsetUnset($k)
     {
         unset($this->$k);
     }
 
+    /**
+     * ArrayAccess methods
+     *
+     * @param string $k
+     * @return mixed
+     */
     public function offsetGet($k)
     {
         return array_key_exists($k, $this->_values) ? $this->_values[$k] : null;
     }
 
-    // Iterator methods
+    /**
+     * Iterator methods
+     *
+     * @return void
+     */
     public function rewind()
     {
         reset($this->_values);
     }
 
+    /**
+     * Iterator methods
+     *
+     * @return mixed
+     */
     public function current()
     {
         return current($this->_values);
     }
 
+    /**
+     * Iterator methods
+     *
+     * @return mixed
+     */
     public function key()
     {
         return key($this->_values);
     }
 
+    /**
+     * Iterator methods
+     *
+     * @return mixed
+     */
     public function next()
     {
         return next($this->_values);
     }
 
+    /**
+     * Iterator methods
+     *
+     * @return bool
+     */
     public function valid()
     {
         $key = key($this->_values);
         return ($key !== NULL && $key !== FALSE);
     }
 
-    // Output methods
+    /**
+     * convert object to JSON
+     *
+     * @return string
+     */
     public function __toJSON()
     {
         if (defined('JSON_PRETTY_PRINT')) {
@@ -197,11 +319,22 @@ class Object implements \ArrayAccess, \Iterator
         return json_encode($this->__toArray(true));
     }
 
+    /**
+     * convert object to a string
+     *
+     * @return string
+     */
     public function __toString()
     {
         return $this->__toJSON();
     }
 
+    /**
+     * convert object to an array
+     *
+     * @param bool $recursive
+     * @return array
+     */
     public function __toArray($recursive = false)
     {
         if ($recursive) {

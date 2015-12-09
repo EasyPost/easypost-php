@@ -4,21 +4,47 @@ namespace EasyPost;
 
 class Shipment extends Resource
 {
+    /**
+     * retrieve a shipment
+     *
+     * @param string $id
+     * @param string $apiKey
+     * @return mixed
+     */
     public static function retrieve($id, $apiKey = null)
     {
         return self::_retrieve(get_class(), $id, $apiKey);
     }
 
+    /**
+     * retrieve all shipments
+     *
+     * @param mixed  $params
+     * @param string $apiKey
+     * @return mixed
+     */
     public static function all($params = null, $apiKey = null)
     {
         return self::_all(get_class(), $params, $apiKey);
     }
 
+    /**
+     * save a shipment
+     *
+     * @return $this
+     */
     public function save()
     {
         return self::_save(get_class());
     }
 
+    /**
+     * create a shipment
+     *
+     * @param mixed  $params
+     * @param string $apiKey
+     * @return mixed
+     */
     public static function create($params = null, $apiKey = null)
     {
         if (!isset($params['shipment']) || !is_array($params['shipment'])) {
@@ -30,6 +56,13 @@ class Shipment extends Resource
         return self::_create(get_class(), $params, $apiKey);
     }
 
+    /**
+     * create a shipment from tracking code
+     *
+     * @param mixed  $params
+     * @param string $apiKey
+     * @return mixed
+     */
     public static function create_from_tracking_code($params = null, $apiKey = null)
     {
         $class = get_class();
@@ -45,6 +78,13 @@ class Shipment extends Resource
         return Util::convertToEasyPostObject($response, $apiKey);
     }
 
+    /**
+     * get rates for a shipment
+     *
+     * @param mixed $params
+     * @return $this
+     * @throws \EasyPost\Error
+     */
     public function get_rates($params = null)
     {
         $requestor = new Requestor($this->_apiKey);
@@ -55,6 +95,13 @@ class Shipment extends Resource
         return $this;
     }
 
+    /**
+     * buy a shipment
+     *
+     * @param mixed $params
+     * @return $this
+     * @throws \EasyPost\Error
+     */
     public function buy($params = null)
     {
         $requestor = new Requestor($this->_apiKey);
@@ -72,6 +119,13 @@ class Shipment extends Resource
         return $this;
     }
 
+    /**
+     * refund a shipment
+     *
+     * @param mixed $params
+     * @return $this
+     * @throws \EasyPost\Error
+     */
     public function refund($params = null)
     {
         $requestor = new Requestor($this->_apiKey);
@@ -83,6 +137,13 @@ class Shipment extends Resource
         return $this;
     }
 
+    /**
+     * get the shipment barcode
+     *
+     * @param mixed $params
+     * @return mixed
+     * @throws \EasyPost\Error
+     */
     public function barcode($params = null)
     {
         $requestor = new Requestor($this->_apiKey);
@@ -93,6 +154,13 @@ class Shipment extends Resource
         return $response['barcode_url'];
     }
 
+    /**
+     * get the shipment stamp
+     *
+     * @param mixed $params
+     * @return mixed
+     * @throws \EasyPost\Error
+     */
     public function stamp($params = null)
     {
         $requestor = new Requestor($this->_apiKey);
@@ -103,6 +171,13 @@ class Shipment extends Resource
         return $response['stamp_url'];
     }
 
+    /**
+     * get the shipment label
+     *
+     * @param mixed $params
+     * @return $this
+     * @throws \EasyPost\Error
+     */
     public function label($params = null)
     {
         $requestor = new Requestor($this->_apiKey);
@@ -120,6 +195,13 @@ class Shipment extends Resource
         return $this;
     }
 
+    /**
+     * insure the shipment
+     *
+     * @param mixed $params
+     * @return $this
+     * @throws \EasyPost\Error
+     */
     public function insure($params = null)
     {
         $requestor = new Requestor($this->_apiKey);
@@ -137,6 +219,14 @@ class Shipment extends Resource
         return $this;
     }
 
+    /**
+     * get the lowest rate for the shipment
+     *
+     * @param array $carriers
+     * @param array $services
+     * @return bool
+     * @throws \EasyPost\Error
+     */
     public function lowest_rate($carriers=array(), $services=array())
     {
         $lowest_rate = false;
