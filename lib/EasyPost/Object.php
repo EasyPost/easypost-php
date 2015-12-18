@@ -129,9 +129,14 @@ class Object implements \ArrayAccess, \Iterator
         }
 
         foreach ($values as $k => $v) {
+            if ($k == 'id' && $this->id != $v) {
+                $this->id = $v;
+            }
+
             if (in_array($k, $this->_immutableValues)) {
                 continue;
             }
+
             $this->_values[$k] = Util::convertToEasyPostObject($v, $apiKey, $this, $k);
 
         }
