@@ -25,7 +25,7 @@ Create or add the following to composer.json in your project root:
         }
     ],
     "require": {
-        "easypost/easypost-php": "~2.1"
+        "easypost/easypost-php": "~3.0"
     }
 }
 ```
