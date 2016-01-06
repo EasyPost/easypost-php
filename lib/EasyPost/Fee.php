@@ -6,4 +6,3 @@ class Fee extends Resource
 {
     
 }
-

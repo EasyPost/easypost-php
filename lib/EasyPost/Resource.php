@@ -4,6 +4,10 @@ namespace EasyPost;
 
 abstract class Resource extends Object
 {
+    /**
+     * @param string $class
+     * @return string
+     */
     public static function className($class)
     {
         // Strip namespace if present
@@ -21,6 +25,10 @@ abstract class Resource extends Object
         return $name;
     }
 
+    /**
+     * @param string $class
+     * @return string
+     */
     public static function classUrl($class)
     {
         $className = self::className($class);
@@ -31,6 +39,10 @@ abstract class Resource extends Object
         return "/{$className}es";
     }
 
+    /**
+     * @return string
+     * @throws \EasyPost\Error
+     */
     public function instanceUrl()
     {
         $id = $this['id'];
@@ -44,6 +56,10 @@ abstract class Resource extends Object
         return "{$classUrl}/" . urlencode($id);
     }
 
+    /**
+     * @return $this
+     * @throws \EasyPost\Error
+     */
     public function refresh()
     {
         $requestor = new Requestor($this->_apiKey);
@@ -55,6 +71,12 @@ abstract class Resource extends Object
         return $this;
     }
 
+    /**
+     * @param string $method
+     * @param array  $params
+     * @param string $apiKey
+     * @throws \EasyPost\Error
+     */
     private static function _validate($method, $params = null, $apiKey = null)
     {
         if ($params && !is_array($params)) {
@@ -65,6 +87,12 @@ abstract class Resource extends Object
         }
     }
 
+    /**
+     * @param string $class
+     * @param mixed  $id
+     * @param string $apiKey
+     * @return mixed
+     */
     protected static function _retrieve($class, $id, $apiKey = null)
     {
         if ($id instanceof Resource) {
@@ -76,6 +104,13 @@ abstract class Resource extends Object
         return $instance;
     }
 
+    /**
+     * @param string $class
+     * @param mixed  $params
+     * @param string $apiKey
+     * @return mixed
+     * @throws \EasyPost\Error
+     */
     protected static function _all($class, $params = null, $apiKey = null)
     {
         self::_validate('all', $params, $apiKey);
@@ -86,6 +121,13 @@ abstract class Resource extends Object
         return Util::convertToEasyPostObject($response, $apiKey);
     }
 
+    /**
+     * @param string $class
+     * @param mixed  $params
+     * @param string $apiKey
+     * @return mixed
+     * @throws \EasyPost\Error
+     */
     protected static function _create($class, $params = null, $apiKey = null)
     {
         self::_validate('create', $params, $apiKey);
@@ -96,6 +138,11 @@ abstract class Resource extends Object
         return Util::convertToEasyPostObject($response, $apiKey);
     }
 
+    /**
+     * @param string $class
+     * @return $this
+     * @throws \EasyPost\Error
+     */
     protected function _save($class)
     {
         self::_validate('save');
@@ -110,6 +157,12 @@ abstract class Resource extends Object
         return $this;
     }
 
+    /**
+     * @param string $class
+     * @param mixed  $params
+     * @return $this
+     * @throws \EasyPost\Error
+     */
     protected function _delete($class, $params = null)
     {
         self::_validate('delete');

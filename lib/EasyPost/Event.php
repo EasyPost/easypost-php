@@ -4,7 +4,13 @@ namespace EasyPost;
 
 class Event extends Resource
 {
-
+    /**
+     * receive an event
+     *
+     * @param string $rawInput
+     * @return mixed
+     * @throws \EasyPost\Error
+     */
     public static function receive($rawInput=null){
         if($rawInput == null)
             throw new Error('The raw input must be set');

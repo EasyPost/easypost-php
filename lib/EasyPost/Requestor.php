@@ -4,13 +4,27 @@ namespace EasyPost;
 
 class Requestor
 {
+    /**
+     * @var string
+     */
     public $apiKey;
 
+    /**
+     * constructor
+     *
+     * @param string $apiKey
+     */
     public function __construct($apiKey = null)
     {
         $this->_apiKey = $apiKey;
     }
 
+    /**
+     * get the API url
+     *
+     * @param string $url
+     * @return string
+     */
     public static function apiUrl($url = '')
     {
         $apiBase = EasyPost::$apiBase;
@@ -18,6 +32,10 @@ class Requestor
         return "{$apiBase}{$url}";
     }
 
+    /**
+     * @param mixed $value
+     * @return string
+     */
     public static function utf8($value)
     {
         if (is_string($value) && mb_detect_encoding($value, "UTF-8", TRUE) != "UTF-8") {
@@ -27,6 +45,10 @@ class Requestor
         return $value;
     }
 
+    /**
+     * @param mixed $d
+     * @return array|string
+     */
     private static function _encodeObjects($d)
     {
         if ($d instanceof Resource) {
@@ -51,6 +73,11 @@ class Requestor
         }
     }
 
+    /**
+     * @param mixed $arr
+     * @param null  $prefix
+     * @return string
+     */
     public static function encode($arr, $prefix = null)
     {
         if (!is_array($arr)) {
@@ -80,6 +107,13 @@ class Requestor
         return implode("&", $r);
     }
 
+    /**
+     * @param string $method
+     * @param string $url
+     * @param mixed  $params
+     * @return array
+     * @throws \EasyPost\Error
+     */
     public function request($method, $url, $params = null)
     {
         if (!$params) {
@@ -91,6 +125,13 @@ class Requestor
         return array($response, $myApiKey);
     }
 
+    /**
+     * @param string $method
+     * @param string $url
+     * @param mixed  $params
+     * @return array
+     * @throws \EasyPost\Error
+     */
     private function _requestRaw($method, $url, $params)
     {
         $myApiKey = $this->_apiKey;
@@ -123,6 +164,15 @@ class Requestor
         return array($httpBody, $httpStatus, $myApiKey);
     }
 
+    /**
+     * @param string $method
+     * @param string $absUrl
+     * @param mixed  $headers
+     * @param mixed  $params
+     * @param string $myApiKey
+     * @return array
+     * @throws \EasyPost\Error
+     */
     private function _curlRequest($method, $absUrl, $headers, $params, $myApiKey)
     {
         $curl = curl_init();
@@ -181,6 +231,12 @@ class Requestor
         return array($httpBody, $httpStatus);
     }
 
+    /**
+     * @param string $httpBody
+     * @param int    $httpStatus
+     * @return mixed
+     * @throws \EasyPost\Error
+     */
     private function _interpretResponse($httpBody, $httpStatus)
     {
         try {
@@ -195,6 +251,12 @@ class Requestor
         return $response;
     }
 
+    /**
+     * @param string $httpBody
+     * @param int    $httpStatus
+     * @param array  $response
+     * @throws \EasyPost\Error
+     */
     public function handleApiError($httpBody, $httpStatus, $response)
     {
         if (!is_array($response) || !isset($response['error'])) {
@@ -203,6 +265,11 @@ class Requestor
         throw new Error(is_array($response['error']) ? $response['error']['message'] : (!empty($response['error']) ? $response['error'] : ""), $httpStatus, $httpBody);
     }
 
+    /**
+     * @param int    $errorNum
+     * @param string $message
+     * @throws \EasyPost\Error
+     */
     public function handleCurlError($errorNum, $message)
     {
         $apiBase = EasyPost::$apiBase;

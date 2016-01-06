@@ -4,6 +4,12 @@ namespace EasyPost;
 
 abstract class Util
 {
+    /**
+     * check if input is a list
+     *
+     * @param $array
+     * @return bool
+     */
     public static function isList($array)
     {
         if (!is_array($array)) {
@@ -20,6 +26,12 @@ abstract class Util
         return true;
     }
 
+    /**
+     * convert EasyPost object to an array
+     *
+     * @param mixed $values
+     * @return array
+     */
     public static function convertEasyPostObjectToArray($values)
     {
         $results = array();
@@ -36,6 +48,15 @@ abstract class Util
         return $results;
     }
 
+    /**
+     * convert input to an EasyPost object
+     *
+     * @param mixed  $response
+     * @param string $apiKey
+     * @param string $parent
+     * @param string $name
+     * @return array
+     */
     public static function convertToEasyPostObject($response, $apiKey, $parent = null, $name = null)
     {
         $types = array(

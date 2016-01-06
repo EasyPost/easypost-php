@@ -4,16 +4,35 @@ namespace EasyPost;
 
 class User extends Resource
 {
+    /**
+     * retrieve a user
+     *
+     * @param string $id
+     * @param string $apiKey
+     * @return mixed
+     */
     public static function retrieve($id, $apiKey = null)
     {
         return self::_retrieve(get_class(), $id, $apiKey);
     }
 
+    /**
+     * save a user
+     *
+     * @return $this
+     */
     public function save()
     {
         return self::_save(get_class());
     }
 
+    /**
+     * create a user
+     *
+     * @param mixed  $params
+     * @param string $apiKey
+     * @return mixed
+     */
     public static function create($params = null, $apiKey = null)
     {
         if (!isset($params['user']) || !is_array($params['user'])) {
@@ -24,11 +43,23 @@ class User extends Resource
         return self::_create(get_class(), $params, $apiKey);
     }
 
+    /**
+     * retrieve me
+     *
+     * @param string $apiKey
+     * @return mixed
+     */
     public static function retrieve_me($apiKey = null)
     {
         return self::_all(get_class(), null, $apiKey);
     }
 
+    /**
+     * get all API keys
+     *
+     * @param null $apiKey
+     * @return mixed
+     */
     public static function all_api_keys($apiKey = null)
     {
         $requestor = new Requestor($apiKey);
@@ -36,6 +67,12 @@ class User extends Resource
         return Util::convertToEasyPostObject($response, $apiKey);
     }
 
+    /**
+     * api keys
+     *
+     * @param string $apiKey
+     * @return array|null
+     */
     public function api_keys($apiKey = null)
     {
         $api_keys = self::all_api_keys();

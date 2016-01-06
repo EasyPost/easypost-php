@@ -4,21 +4,47 @@ namespace EasyPost;
 
 class Order extends Resource
 {
+    /**
+     * retrieve an order
+     *
+     * @param string $id
+     * @param string $apiKey
+     * @return mixed
+     */
     public static function retrieve($id, $apiKey = null)
     {
         return self::_retrieve(get_class(), $id, $apiKey);
     }
 
+    /**
+     * retrieve all orders
+     *
+     * @param mixed  $params
+     * @param string $apiKey
+     * @return mixed
+     */
     public static function all($params = null, $apiKey = null)
     {
         return self::_all(get_class(), $params, $apiKey);
     }
 
+    /**
+     * save an order
+     *
+     * @return $this
+     */
     public function save()
     {
         return self::_save(get_class());
     }
 
+    /**
+     * create an order
+     *
+     * @param mixed $params
+     * @param string $apiKey
+     * @return mixed
+     */
     public static function create($params = null, $apiKey = null)
     {
         if (!isset($params['order']) || !is_array($params['order'])) {
@@ -30,6 +56,13 @@ class Order extends Resource
         return self::_create(get_class(), $params, $apiKey);
     }
 
+    /**
+     * buy an order
+     *
+     * @param mixed $params
+     * @return $this
+     * @throws \EasyPost\Error
+     */
     public function buy($params = null)
     {
         $requestor = new Requestor($this->_apiKey);

@@ -6,4 +6,3 @@ class PostageLabel extends Resource
 {
     
 }
-
