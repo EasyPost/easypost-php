@@ -47,13 +47,37 @@ class Address extends Resource
      */
     public static function create($params = null, $apiKey = null)
     {
+        $urlMod = "";
+
+        if ((isset($params['verify']) && is_array($params['verify'])) || (isset($params['verify_strict']) && is_array($params['verify_strict']))) {
+            $verify = $params['verify'];
+            unset($params['verify']);
+
+            $verify_strict = $params['verify_strict'];
+            unset($params['verify_strict']);
+
+            $urlMod = "?";
+
+            if (is_array($verify)) {
+                foreach ($verify as $verification) {
+                    $urlMod .= "verify[]=" . $verification . "&";
+                }
+            }
+
+            if (is_array($verify_strict)) {
+                foreach ($verify_strict as $verification_strict) {
+                    $urlMod .= "verify_strict[]=" . $verification_strict . "&";
+                }
+            }
+        }
+
         if (!isset($params['address']) || !is_array($params['address'])) {
             $clone = $params;
             unset($params);
             $params['address'] = $clone;
         }
 
-        return self::_create(get_class(), $params, $apiKey);
+        return self::_create(get_class(), $params, $apiKey, $urlMod);
     }
 
     /**
