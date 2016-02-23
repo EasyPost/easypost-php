@@ -40,7 +40,7 @@ class User extends Resource
             unset($params);
             $params['user'] = $clone;
         }
-        return self::_create(get_class(), $params, $apiKey);
+        return self::_create(get_class(), $params, $apiKey, null, false);
     }
 
     /**
