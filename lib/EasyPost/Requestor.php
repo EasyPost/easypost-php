@@ -114,12 +114,12 @@ class Requestor
      * @return array
      * @throws \EasyPost\Error
      */
-    public function request($method, $url, $params = null)
+    public function request($method, $url, $params = null, $apiKeyRequired = true)
     {
         if (!$params) {
             $params = array();
         }
-        list($httpBody, $httpStatus, $myApiKey) = $this->_requestRaw($method, $url, $params);
+        list($httpBody, $httpStatus, $myApiKey) = $this->_requestRaw($method, $url, $params, $apiKeyRequired);
         $response = $this->_interpretResponse($httpBody, $httpStatus);
 
         return array($response, $myApiKey);
@@ -132,12 +132,15 @@ class Requestor
      * @return array
      * @throws \EasyPost\Error
      */
-    private function _requestRaw($method, $url, $params)
+    private function _requestRaw($method, $url, $params, $apiKeyRequired)
     {
         $myApiKey = $this->_apiKey;
+
         if (!$myApiKey) {
             if (!$myApiKey = EasyPost::$apiKey) {
-                throw new Error('No API key provided. Set your API key using "EasyPost::setApiKey(<API-KEY>)". See https://www.easypost.com/docs for details, or contact support@easypost.com for assistance.');
+                if ($apiKeyRequired) {
+                    throw new Error('No API key provided. Set your API key using "EasyPost::setApiKey(<API-KEY>)". See https://www.easypost.com/docs for details, or contact support@easypost.com for assistance.');
+                }
             }
         }
 

@@ -129,7 +129,7 @@ abstract class Resource extends Object
      * @return mixed
      * @throws \EasyPost\Error
      */
-    protected static function _create($class, $params = null, $apiKey = null, $urlModifier = null)
+    protected static function _create($class, $params = null, $apiKey = null, $urlModifier = null, $apiKeyRequired = true)
     {
         self::_validate('create', $params, $apiKey);
         $requestor = new Requestor($apiKey);
@@ -138,7 +138,7 @@ abstract class Resource extends Object
             $url .= $urlModifier;
         }
 
-        list($response, $apiKey) = $requestor->request('post', $url, $params);
+        list($response, $apiKey) = $requestor->request('post', $url, $params, $apiKeyRequired);
 
         return Util::convertToEasyPostObject($response, $apiKey);
     }
