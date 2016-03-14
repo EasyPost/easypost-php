@@ -40,6 +40,8 @@ Require dependencies:
 require_once("/path/to/vendor/autoload.php");
 ```
 
+*NOTE:* This library relies on the [mbstring](http://php.net/manual/en/book.mbstring.php) extension. Ensure you have it [installed](http://www.php.net/manual/en/mbstring.installation.php) correctly before using the library.
+
 Example
 -------
 
