@@ -2,7 +2,7 @@
 
 namespace EasyPost;
 
-class Address extends Resource
+class Address extends EasypostResource
 {
     /**
      * retrieve an address

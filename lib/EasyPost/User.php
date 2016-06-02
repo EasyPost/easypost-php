@@ -2,7 +2,7 @@
 
 namespace EasyPost;
 
-class User extends Resource
+class User extends EasypostResource
 {
     /**
      * retrieve a user

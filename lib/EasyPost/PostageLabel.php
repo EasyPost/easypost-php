@@ -2,7 +2,7 @@
 
 namespace EasyPost;
 
-class PostageLabel extends Resource
+class PostageLabel extends EasypostResource
 {
     
 }

@@ -51,7 +51,7 @@ class Requestor
      */
     private static function _encodeObjects($d)
     {
-        if ($d instanceof Resource) {
+        if ($d instanceof EasypostResource) {
 
             return array("id" => self::utf8($d->id));
         } else if ($d === true) {

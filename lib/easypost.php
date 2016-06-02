@@ -17,7 +17,7 @@ require(dirname(__FILE__) . '/EasyPost/Error.php');
 
 // Guts
 require(dirname(__FILE__) . '/EasyPost/Object.php');
-require(dirname(__FILE__) . '/EasyPost/Resource.php');
+require(dirname(__FILE__) . '/EasyPost/EasypostResource.php');
 require(dirname(__FILE__) . '/EasyPost/Requestor.php');
 
 // API Resources

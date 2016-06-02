@@ -2,7 +2,7 @@
 
 namespace EasyPost;
 
-class Refund extends Resource
+class Refund extends EasypostResource
 {
     /**
      * retrieve a refund
