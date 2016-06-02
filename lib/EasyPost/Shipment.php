@@ -2,7 +2,7 @@
 
 namespace EasyPost;
 
-class Shipment extends Resource
+class Shipment extends ObjectResource
 {
     /**
      * retrieve a shipment

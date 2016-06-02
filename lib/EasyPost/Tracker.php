@@ -2,7 +2,7 @@
 
 namespace EasyPost;
 
-class Tracker extends Resource
+class Tracker extends ObjectResource
 {
     /**
      * retrieve a tracker

@@ -2,7 +2,7 @@
 
 namespace EasyPost;
 
-class ScanForm extends Resource
+class ScanForm extends ObjectResource
 {
     /**
      * retrieve a scan form
