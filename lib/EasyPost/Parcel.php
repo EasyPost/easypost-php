@@ -2,7 +2,7 @@
 
 namespace EasyPost;
 
-class Parcel extends ObjectResource
+class Parcel extends EasypostResource
 {
     /**
      * retrieve a parcel

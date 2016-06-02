@@ -2,7 +2,7 @@
 
 namespace EasyPost;
 
-class Item extends ObjectResource
+class Item extends EasypostResource
 {
     /**
      * retrieve an item

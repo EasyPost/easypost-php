@@ -2,7 +2,7 @@
 
 namespace EasyPost;
 
-class Pickup extends ObjectResource
+class Pickup extends EasypostResource
 {
     /**
      * retrieve a pickup

@@ -2,7 +2,7 @@
 
 namespace EasyPost;
 
-class Container extends ObjectResource
+class Container extends EasypostResource
 {
     /**
      * retrieve a container

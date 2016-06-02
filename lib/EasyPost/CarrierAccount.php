@@ -2,7 +2,7 @@
 
 namespace EasyPost;
 
-class CarrierAccount extends ObjectResource
+class CarrierAccount extends EasypostResource
 {
     /**
      * retrieve a carrier account

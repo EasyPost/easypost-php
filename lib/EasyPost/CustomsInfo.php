@@ -2,7 +2,7 @@
 
 namespace EasyPost;
 
-class CustomsInfo extends ObjectResource
+class CustomsInfo extends EasypostResource
 {
     /**
      * retrieve a customs info

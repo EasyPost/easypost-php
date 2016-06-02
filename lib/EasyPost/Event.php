@@ -2,7 +2,7 @@
 
 namespace EasyPost;
 
-class Event extends ObjectResource
+class Event extends EasypostResource
 {
     /**
      * receive an event

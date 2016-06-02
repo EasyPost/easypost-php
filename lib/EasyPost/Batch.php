@@ -2,7 +2,7 @@
 
 namespace EasyPost;
 
-class Batch extends ObjectResource
+class Batch extends EasypostResource
 {
     /**
      * retrieve a batch

@@ -2,7 +2,7 @@
 
 namespace EasyPost;
 
-class Fee extends ObjectResource
+class Fee extends EasypostResource
 {
     
 }

@@ -2,7 +2,7 @@
 
 namespace EasyPost;
 
-abstract class ObjectResource extends Object
+abstract class EasypostResource extends Object
 {
     /**
      * @param string $class
@@ -95,7 +95,7 @@ abstract class ObjectResource extends Object
      */
     protected static function _retrieve($class, $id, $apiKey = null)
     {
-        if ($id instanceof ObjectResource) {
+        if ($id instanceof EasypostResource) {
             $id = $id->id;
         }
         $instance = new $class($id, $apiKey);

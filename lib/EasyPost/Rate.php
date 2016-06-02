@@ -2,7 +2,7 @@
 
 namespace EasyPost;
 
-class Rate extends ObjectResource
+class Rate extends EasypostResource
 {
     /**
      * retrieve a rate

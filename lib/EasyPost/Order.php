@@ -2,7 +2,7 @@
 
 namespace EasyPost;
 
-class Order extends ObjectResource
+class Order extends EasypostResource
 {
     /**
      * retrieve an order
