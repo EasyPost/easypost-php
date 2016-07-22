@@ -40,4 +40,5 @@ require(dirname(__FILE__) . '/EasyPost/ScanForm.php');
 require(dirname(__FILE__) . '/EasyPost/Shipment.php');
 require(dirname(__FILE__) . '/EasyPost/Tracker.php');
 require(dirname(__FILE__) . '/EasyPost/User.php');
+require(dirname(__FILE__) . '/EasyPost/Insurance.php');
 
