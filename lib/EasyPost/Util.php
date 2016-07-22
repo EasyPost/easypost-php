@@ -78,7 +78,8 @@ abstract class Util
             'ScanForm'        => '\EasyPost\ScanForm',
             'Shipment'        => '\EasyPost\Shipment',
             'Tracker'         => '\EasyPost\Tracker',
-            'User'            => '\EasyPost\User'
+            'User'            => '\EasyPost\User',
+            'Insurance'       => '\EasyPost\Insurance'
         );
 
         $prefixes = array(
@@ -100,7 +101,8 @@ abstract class Util
             'sf'        => '\EasyPost\ScanForm',
             'shp'       => '\EasyPost\Shipment',
             'trk'       => '\EasyPost\Tracker',
-            'user'      => '\EasyPost\User'
+            'user'      => '\EasyPost\User',
+            'ins'       => '\EasyPost\Insurance'
         );
 
         if (self::isList($response)) {

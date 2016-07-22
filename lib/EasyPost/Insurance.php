@@ -27,6 +27,18 @@ class Insurance extends EasypostResource
     }
 
     /**
+     * retrieve all insurances
+     *
+     * @param mixed  $params
+     * @param string $apiKey
+     * @return mixed
+     */
+    public static function all($params = null, $apiKey = null)
+    {
+        return self::_all(get_class(), $params, $apiKey);
+    }
+
+    /**
      * create an insurance
      *
      * @param mixed  $params
