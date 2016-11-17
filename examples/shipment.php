@@ -30,7 +30,7 @@ $shipment = \EasyPost\Shipment::create(array(
   )
 ));
 
-echo $shipment;
+echo $shipment->id;
 
 $shipment->buy($shipment->lowest_rate("USPS"));
 
