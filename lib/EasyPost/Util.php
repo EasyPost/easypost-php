@@ -60,26 +60,30 @@ abstract class Util
     public static function convertToEasyPostObject($response, $apiKey, $parent = null, $name = null)
     {
         $types = array(
-            'Address'         => '\EasyPost\Address',
-            'Batch'           => '\EasyPost\Batch',
-            'CarrierAccount'  => '\EasyPost\CarrierAccount',
-            'Container'       => '\EasyPost\Container',
-            'CustomsInfo'     => '\EasyPost\CustomsInfo',
-            'CustomsItem'     => '\EasyPost\CustomsItem',
-            'Event'           => '\EasyPost\Event',
-            'Fee'             => '\EasyPost\Fee',
-            'Item'            => '\EasyPost\Item',
-            'Order'           => '\EasyPost\Order',
-            'Parcel'          => '\EasyPost\Parcel',
-            'Pickup'          => '\EasyPost\Pickup',
-            'PostageLabel'    => '\EasyPost\PostageLabel',
-            'Rate'            => '\EasyPost\Rate',
-            'Refund'          => '\EasyPost\Refund',
-            'ScanForm'        => '\EasyPost\ScanForm',
-            'Shipment'        => '\EasyPost\Shipment',
-            'Tracker'         => '\EasyPost\Tracker',
-            'User'            => '\EasyPost\User',
-            'Insurance'       => '\EasyPost\Insurance'
+            'Address'           => '\EasyPost\Address',
+            'Batch'             => '\EasyPost\Batch',
+            'CarrierAccount'    => '\EasyPost\CarrierAccount',
+            'Container'         => '\EasyPost\Container',
+            'CustomsInfo'       => '\EasyPost\CustomsInfo',
+            'CustomsItem'       => '\EasyPost\CustomsItem',
+            'Event'             => '\EasyPost\Event',
+            'Fee'               => '\EasyPost\Fee',
+            'Item'              => '\EasyPost\Item',
+            'Order'             => '\EasyPost\Order',
+            'Parcel'            => '\EasyPost\Parcel',
+            'Pickup'            => '\EasyPost\Pickup',
+            'PostageLabel'      => '\EasyPost\PostageLabel',
+            'Rate'              => '\EasyPost\Rate',
+            'Refund'            => '\EasyPost\Refund',
+            'ScanForm'          => '\EasyPost\ScanForm',
+            'Shipment'          => '\EasyPost\Shipment',
+            'Tracker'           => '\EasyPost\Tracker',
+            'User'              => '\EasyPost\User',
+            'Insurance'         => '\EasyPost\Insurance',
+            'Report'            => '\EasyPost\Report',
+            'ShipmentReport'    => '\EasyPost\Report',
+            'PaymentLogReport'  => '\EasyPost\Report',
+            'TrackerReport'     => '\EasyPost\Report'
         );
 
         $prefixes = array(
@@ -102,7 +106,10 @@ abstract class Util
             'shp'       => '\EasyPost\Shipment',
             'trk'       => '\EasyPost\Tracker',
             'user'      => '\EasyPost\User',
-            'ins'       => '\EasyPost\Insurance'
+            'ins'       => '\EasyPost\Insurance',
+            'shrep'     => '\EasyPost\Report',
+            'plrep'     => '\EasyPost\Report',
+            'trkrep'    => '\EasyPost\Report'
         );
 
         if (self::isList($response)) {

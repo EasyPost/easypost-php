@@ -77,7 +77,7 @@ abstract class EasypostResource extends Object
      * @param string $apiKey
      * @throws \EasyPost\Error
      */
-    private static function _validate($method, $params = null, $apiKey = null)
+    protected static function _validate($method, $params = null, $apiKey = null)
     {
         if ($params && !is_array($params)) {
             throw new Error("You must pass an array as the first argument to EasyPost API method calls.");
