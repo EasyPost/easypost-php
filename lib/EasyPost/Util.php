@@ -107,7 +107,7 @@ abstract class Util
             'trk'       => '\EasyPost\Tracker',
             'user'      => '\EasyPost\User',
             'ins'       => '\EasyPost\Insurance',
-            'shrep'     => '\EasyPost\Report',
+            'shprep'    => '\EasyPost\Report',
             'plrep'     => '\EasyPost\Report',
             'trkrep'    => '\EasyPost\Report'
         );
