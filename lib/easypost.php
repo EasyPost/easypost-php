@@ -42,4 +42,5 @@ require(dirname(__FILE__) . '/EasyPost/Tracker.php');
 require(dirname(__FILE__) . '/EasyPost/User.php');
 require(dirname(__FILE__) . '/EasyPost/Insurance.php');
 require(dirname(__FILE__) . '/EasyPost/Report.php');
+require(dirname(__FILE__) . '/EasyPost/Webhook.php');
 

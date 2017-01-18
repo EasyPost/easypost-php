@@ -168,12 +168,31 @@ abstract class EasypostResource extends Object
      * @return $this
      * @throws \EasyPost\Error
      */
-    protected function _delete($class, $params = null)
+    protected function _delete($class, $params = null, $no_refresh = null)
     {
         self::_validate('delete');
         $requestor = new Requestor($this->_apiKey);
         $url = $this->instanceUrl();
         list($response, $apiKey) = $requestor->request('delete', $url, $params);
+        if (!$no_refresh){
+            $this->refreshFrom($response, $apiKey);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param string $class
+     * @param mixed  $params
+     * @return $this
+     * @throws \EasyPost\Error
+     */
+    protected function _update($class, $params = null)
+    {
+        self::_validate('put');
+        $requestor = new Requestor($this->_apiKey);
+        $url = $this->instanceUrl();
+        list($response, $apiKey) = $requestor->request('put', $url, $params);
         $this->refreshFrom($response, $apiKey);
 
         return $this;

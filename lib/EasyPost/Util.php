@@ -83,7 +83,8 @@ abstract class Util
             'Report'            => '\EasyPost\Report',
             'ShipmentReport'    => '\EasyPost\Report',
             'PaymentLogReport'  => '\EasyPost\Report',
-            'TrackerReport'     => '\EasyPost\Report'
+            'TrackerReport'     => '\EasyPost\Report',
+            'Webhook'           => '\EasyPost\Webhook'
         );
 
         $prefixes = array(
@@ -109,7 +110,8 @@ abstract class Util
             'ins'       => '\EasyPost\Insurance',
             'shprep'    => '\EasyPost\Report',
             'plrep'     => '\EasyPost\Report',
-            'trkrep'    => '\EasyPost\Report'
+            'trkrep'    => '\EasyPost\Report',
+            'hook'      => '\EasyPost\Webhook'
         );
 
         if (self::isList($response)) {
