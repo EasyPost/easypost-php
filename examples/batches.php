@@ -157,3 +157,18 @@ while(empty($batch->label_url)) {
 }
 
 print_r($batch);
+
+
+// request a scan form
+$batch->create_scan_form();
+
+// wait for scan form to complete
+while(empty($batch->scan_form)) {
+    sleep(5);
+    $batch->refresh();
+}
+
+// retrieve scan form
+$scan_form = \EasyPost\ScanForm::retrieve($batch->scan_form->id);
+
+print_r($scan_form);

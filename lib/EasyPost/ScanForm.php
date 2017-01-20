@@ -47,12 +47,6 @@ class ScanForm extends EasypostResource
      */
     public static function create($params = null, $apiKey = null)
     {
-        if (!isset($params['scan_form']) || !is_array($params['scan_form'])) {
-            $clone = $params;
-            unset($params);
-            $params['scan_form'] = $clone;
-        }
-
         return self::_create(get_class(), $params, $apiKey);
     }
 }
