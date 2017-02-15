@@ -38,6 +38,10 @@ $order = \EasyPost\Order::create(array(
     ),
 ));
 
+echo($order->shipments[0]->rates[0]->id . "\n");
+$order->get_rates();
+echo($order->shipments[0]->rates[0]->id . "\n");
+
 $order->buy(array("carrier" => "UPS", "service" => "Ground"));
 
-print_r($order);
+echo($order->id . "\n");

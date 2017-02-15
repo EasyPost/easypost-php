@@ -18,8 +18,7 @@ $webhook3 = $webhook->update();
 var_dump($webhook3->id);
 
 // Webhook: index
-$index_params = array();
-$webhooks = \EasyPost\Webhook::all($index_params);
+$webhooks = \EasyPost\Webhook::all();
 var_dump($webhooks["webhooks"][count($webhooks["webhooks"]) -1]->id);
 
 // Webhook: delete
