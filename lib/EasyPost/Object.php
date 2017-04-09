@@ -52,7 +52,7 @@ class Object implements \ArrayAccess, \Iterator
         $this->_apiKey = $apiKey;
         $this->_values = array();
         $this->_unsavedValues = array();
-        $this->_immutableValues = array('_apiKey', 'id');
+        $this->_immutableValues = array('_apiKey');
         $this->_parent = $parent;
         $this->_name = $name;
 
