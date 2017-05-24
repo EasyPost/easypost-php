@@ -43,15 +43,15 @@ $shipment = \EasyPost\Shipment::create(
 $shipment->buy($shipment->lowest_rate(array('UPS')));
 $shipment->insure(array('amount' => 100));
 
-echo $shipment->id;
+echo $shipment->id . "\n";
 
 $pickup = \EasyPost\Pickup::create(
     array(
         "address" => $from_address,
         "shipment"=> $shipment,
         "reference" => $shipment->id,
-        "max_datetime" => date("Y-m-d H:i:s"),
         "min_datetime" => date("Y-m-d H:i:s", strtotime('+1 day')),
+        "max_datetime" => date("Y-m-d H:i:s", strtotime('+25 hours')),
         "is_account_address" => false,
         "instructions" => "Will be next to garage"
     )

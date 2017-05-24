@@ -156,7 +156,7 @@ class Requestor
             'publisher'        => 'easypost',
             'uname'            => $uname
         );
-        $headers = array('X-EasyPost-Client-User-Agent: ' . json_encode($ua),
+        $headers = array('X-Client-User-Agent: ' . json_encode($ua),
             'User-Agent: EasyPost/v2 PhpClient/' . EasyPost::VERSION,
             "Authorization: Bearer {$myApiKey}");
         if (EasyPost::$apiVersion) {

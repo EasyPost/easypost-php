@@ -4,37 +4,6 @@ namespace EasyPost;
 
 class Report extends EasypostResource
 {
-    // Define a psuedo-constant
-    private static $report_prefixes = array(
-        'shprep' => 'shipment',
-        'plrep'  => 'payment_log',
-        'trkrep' => 'tracker'
-    );
-    public static function getReportPrefixes($index = false){
-        return $index !== false ? self::$report_prefixes[$index] : self::$report_prefixes;
-    }
-
-    /**
-     * rewrite instanceUrl for reports to handle different format
-     *
-     * @return string
-     * @throws \EasyPost\Error
-     */
-    public function instanceUrl()
-    {
-        $id = $this['id'];
-        if (!$id) {
-            throw new Error('Could not determine which URL to request: {$class} instance has invalid ID: {$id}');
-        }
-        $id = Requestor::utf8($id);
-        $id_parts = explode('_', $id);
-        $id_prefix = $id_parts[0];
-
-        $type = self::getReportPrefixes($id_prefix);
-
-        return self::reportUrl($type) . urlencode($id);
-    }
-
     /**
      * retrieve a report
      *
@@ -45,19 +14,7 @@ class Report extends EasypostResource
      */
     public static function retrieve($id, $apiKey = null)
     {
-        if ($id instanceof EasypostResource) {
-            $id = $id->id;
-        }
-
-        $id_parts = explode('_', $id);
-        $id_prefix = $id_parts[0];
-        $report_type = self::getReportPrefixes($id_prefix);
-
-        if (!isset($report_type)) {
-            throw new Error('Undetermined Report Type');
-        } else {
-            return self::_retrieve(get_class(), $id, $apiKey);
-        }
+        return self::_retrieve(get_class(), $id, $apiKey);
     }
 
 
@@ -71,7 +28,7 @@ class Report extends EasypostResource
      */
     public static function all($params = null, $apiKey = null)
     {
-        if (!isset($params) || !isset($params['type']) || !in_array($params['type'], array_values(self::getReportPrefixes()))) {
+        if (!isset($params) || !isset($params['type'])) {
             throw new Error('Undetermined Report Type');
         } else {
             $type = $params['type'];
@@ -102,7 +59,7 @@ class Report extends EasypostResource
             $params['report'] = $clone;
         }
 
-        if (!isset($params['report']['type']) || !in_array($params['report']['type'], array_values(self::getReportPrefixes()))) {
+        if (!isset($params['report']['type'])) {
             throw new Error('Undetermined Report Type');
         } else {
             $type = $params['report']['type'];
