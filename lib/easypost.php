@@ -35,6 +35,7 @@ require(dirname(__FILE__) . '/EasyPost/Parcel.php');
 require(dirname(__FILE__) . '/EasyPost/Pickup.php');
 require(dirname(__FILE__) . '/EasyPost/PostageLabel.php');
 require(dirname(__FILE__) . '/EasyPost/Rate.php');
+require(dirname(__FILE__) . '/EasyPost/Rating.php');
 require(dirname(__FILE__) . '/EasyPost/Refund.php');
 require(dirname(__FILE__) . '/EasyPost/ScanForm.php');
 require(dirname(__FILE__) . '/EasyPost/Shipment.php');

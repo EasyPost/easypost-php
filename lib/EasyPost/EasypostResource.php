@@ -137,7 +137,6 @@ abstract class EasypostResource extends Object
         if ($urlModifier != null) {
             $url .= $urlModifier;
         }
-
         list($response, $apiKey) = $requestor->request('post', $url, $params, $apiKeyRequired);
 
         return Util::convertToEasyPostObject($response, $apiKey);

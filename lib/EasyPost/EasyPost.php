@@ -22,7 +22,7 @@ abstract class EasyPost
     /**
      * @var string
      */
-    const VERSION = '3.3.4';
+    const VERSION = '3.4.0';
 
     /**
      * get the API key

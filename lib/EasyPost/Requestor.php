@@ -134,6 +134,7 @@ class Requestor
      */
     private function _requestRaw($method, $url, $params, $apiKeyRequired)
     {
+        $isRating = false;
         $myApiKey = $this->_apiKey;
 
         if (!$myApiKey) {
@@ -145,8 +146,14 @@ class Requestor
         }
 
         $absUrl = $this->apiUrl($url);
-        $params = self::_encodeObjects($params);
+        if (strcmp($absUrl,'https://api.easypost.com/v2/ratings') === 0){
+            $absUrl = 'https://api.easypost.com/rating/v1/rates';
+            $isRating = true;
+        }
+        else{
+                    $params = self::_encodeObjects($params);
 
+        }
         $langVersion = phpversion();
         $uname = php_uname();
         $ua = array(
@@ -156,13 +163,22 @@ class Requestor
             'publisher'        => 'easypost',
             'uname'            => $uname
         );
-        $headers = array('X-Client-User-Agent: ' . json_encode($ua),
-            'User-Agent: EasyPost/v2 PhpClient/' . EasyPost::VERSION,
-            "Authorization: Bearer {$myApiKey}");
+        if ($isRating === true){
+            $headers = array('X-Client-User-Agent: ' . json_encode($ua),
+                'User-Agent: EasyPost/v2 PhpClient/' . EasyPost::VERSION,
+                "Authorization: Bearer {$myApiKey}",
+                "Content-Type: application/json",);
+        }
+        else{
+            $headers = array('X-Client-User-Agent: ' . json_encode($ua),
+                'User-Agent: EasyPost/v2 PhpClient/' . EasyPost::VERSION,
+                "Authorization: Bearer {$myApiKey}");
+        }
         if (EasyPost::$apiVersion) {
             $headers[] = 'EasyPost-Version: ' . EasyPost::$apiVersion;
         }
-        list($httpBody, $httpStatus) = $this->_curlRequest($method, $absUrl, $headers, $params, $myApiKey);
+
+        list($httpBody, $httpStatus) = $this->_curlRequest($method, $absUrl, $headers, $params, $myApiKey, $isRating);
 
         return array($httpBody, $httpStatus, $myApiKey);
     }
@@ -176,12 +192,11 @@ class Requestor
      * @return array
      * @throws \EasyPost\Error
      */
-    private function _curlRequest($method, $absUrl, $headers, $params, $myApiKey)
+    private function _curlRequest($method, $absUrl, $headers, $params, $myApiKey, $isRating)
     {
         $curl = curl_init();
         $method = strtolower($method);
         $curlOptions = array();
-
         // method
         if ($method == 'get') {
             $curlOptions[CURLOPT_HTTPGET] = 1;
@@ -191,7 +206,12 @@ class Requestor
             }
         } else if ($method == 'post') {
             $curlOptions[CURLOPT_POST] = 1;
-            $curlOptions[CURLOPT_POSTFIELDS] = self::encode($params);
+            if ($isRating === true){
+                $curlOptions[CURLOPT_POSTFIELDS] = json_encode($params);
+            }
+            else {
+                $curlOptions[CURLOPT_POSTFIELDS] = self::encode($params);
+            }
         } else if ($method == 'delete') {
             $curlOptions[CURLOPT_CUSTOMREQUEST] = strtoupper($method);
             if (count($params) > 0) {
@@ -206,7 +226,7 @@ class Requestor
         } else {
             throw new Error("Unrecognized method {$method}");
         }
-
+        
         $absUrl = self::utf8($absUrl);
         $curlOptions[CURLOPT_URL] = $absUrl;
         $curlOptions[CURLOPT_RETURNTRANSFER] = true;
