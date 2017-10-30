@@ -2,7 +2,7 @@
 
 namespace EasyPost;
 
-class Object implements \ArrayAccess, \Iterator
+class EasyPostObject implements \ArrayAccess, \Iterator
 {
     /**
      * @var string

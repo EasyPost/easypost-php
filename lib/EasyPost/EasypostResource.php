@@ -2,7 +2,7 @@
 
 namespace EasyPost;
 
-abstract class EasypostResource extends Object
+abstract class EasypostResource extends EasyPostObject
 {
     /**
      * @param string $class

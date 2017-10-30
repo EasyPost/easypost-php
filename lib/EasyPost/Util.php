@@ -36,7 +36,7 @@ abstract class Util
     {
         $results = array();
         foreach ($values as $k => $v) {
-            if ($v instanceof Object) {
+            if ($v instanceof EasyPostObject) {
                 $results[$k] = $v->__toArray(true);
             } else if (is_array($v)) {
                 $results[$k] = self::convertEasyPostObjectToArray($v);
@@ -130,10 +130,10 @@ abstract class Util
             } else if (isset($response['id']) && isset($prefixes[substr($response['id'], 0, strpos($response['id'], "_"))])) {
                 $class = $prefixes[substr($response['id'], 0, strpos($response['id'], "_"))];
             } else {
-                $class = '\EasyPost\Object';
+                $class = '\EasyPost\EasyPostObject';
             }
 
-            return Object::constructFrom($response, $class, $apiKey, $parent, $name);
+            return EasyPostObject::constructFrom($response, $class, $apiKey, $parent, $name);
         } else {
 
             return $response;
