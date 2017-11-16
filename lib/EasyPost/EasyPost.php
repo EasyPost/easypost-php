@@ -20,6 +20,24 @@ abstract class EasyPost
     public static $apiVersion = "2";
 
     /**
+     * Time in milliseconds to wait for a connection
+     *
+     * Zero or null means no timeout.
+     *
+     * @var int|null
+     */
+    public static $connectTimeout;
+
+    /**
+     * Time in milliseconds to wait for a response
+     *
+     * Zero or null means no timeout.
+     *
+     * @var int|null
+     */
+    public static $responseTimeout;
+
+    /**
      * @var string
      */
     const VERSION = '3.4.0';
@@ -82,5 +100,53 @@ abstract class EasyPost
     public static function setApiVersion($apiVersion)
     {
         self::$apiVersion = $apiVersion;
+    }
+
+    /**
+     * Set time in milliseconds to wait for a connection
+     *
+     * Zero or null means no timeout.
+     *
+     * @return int|null
+     */
+    public static function getConnectTimeout()
+    {
+        return self::$connectTimeout;
+    }
+
+    /**
+     * Get time in milliseconds to wait for a connection
+     *
+     * Zero or null means no timeout.
+     *
+     * @param int|null $connectTimeout
+     */
+    public static function setConnectTimeout($connectTimeout)
+    {
+        self::$connectTimeout = $connectTimeout;
+    }
+
+    /**
+     * Get time in milliseconds to wait for a response
+     *
+     * Zero or null means no timeout.
+     *
+     * @return int|null
+     */
+    public static function getResponseTimeout()
+    {
+        return self::$responseTimeout;
+    }
+
+    /**
+     * Get time in milliseconds to wait for a response
+     *
+     * Zero or null means no timeout.
+     *
+     * @param int|null $responseTimeout
+     */
+    public static function setResponseTimeout($responseTimeout)
+    {
+        self::$responseTimeout = $responseTimeout;
     }
 }

@@ -212,6 +212,14 @@ class Requestor
         $curlOptions[CURLOPT_RETURNTRANSFER] = true;
         $curlOptions[CURLOPT_HTTPHEADER] = $headers;
 
+        if ($timeout = EasyPost::getConnectTimeout()) {
+            $curlOptions[CURLOPT_CONNECTTIMEOUT_MS] = $timeout;
+        }
+
+        if ($timeout = EasyPost::getResponseTimeout()) {
+            $curlOptions[CURLOPT_TIMEOUT_MS] = $timeout;
+        }
+
         curl_setopt_array($curl, $curlOptions);
         $httpBody = curl_exec($curl);
 
