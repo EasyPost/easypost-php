@@ -120,7 +120,8 @@ class EasyPostObject implements \ArrayAccess, \Iterator
 
             $i = 0;
             $current = $this;
-            $param = array($k => $v);
+            $param = array($k => null);
+
             while(true && $i < 99) {
                 if(!is_null($current->_parent)) {
                     $param = array($current->_name => $param);
