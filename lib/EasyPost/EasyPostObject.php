@@ -135,6 +135,17 @@ class EasyPostObject implements \ArrayAccess, \Iterator
             }
         }
     }
+    
+    /**
+     * Getter to recieve private defined variables
+     *
+     * @param string $var
+     * @return mixed
+     */
+    
+    public function get($var){
+        return $this->$var;
+    }
 
     /**
      * getter
