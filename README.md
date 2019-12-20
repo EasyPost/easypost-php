@@ -2,37 +2,27 @@
 
 [![Build Status](https://travis-ci.org/EasyPost/easypost-php.svg?branch=master)](https://travis-ci.org/EasyPost/easypost-php)
 
-EasyPost is a simple shipping API. You can sign up for an account at https://easypost.com
+EasyPost is a simple shipping API. You can sign up for an account at https://easypost.com.
 
-Installation
-------------
+## Installation
 
 There are two ways to install:
 
- **Require Library**
+**Recommended: [Composer](http://getcomposer.org/)**
+
+```shell
+composer require easypost/easypost-php
+```
+
+**OR: Require Library**
+
+Manually download and drop the library in your project.
 
 ```php
 require_once("/path/to/lib/easypost.php");
 ```
 
-**or via [Composer](http://getcomposer.org/):**
-
-Create or add the following to composer.json in your project root:
-```javascript
-{
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/EasyPost/easypost-php"
-        }
-    ],
-    "require": {
-        "easypost/easypost-php": "~3.0"
-    }
-}
-```
-
-Install composer dependencies:
+**Install project dependencies:**
 ```shell
 php composer.phar install
 
@@ -41,15 +31,14 @@ OR
 composer install
 ```
 
-Require dependencies:
+**Require dependencies:**
 ```php
 require_once("/path/to/vendor/autoload.php");
 ```
 
-*NOTE:* This library relies on the [mbstring](http://php.net/manual/en/book.mbstring.php) extension. Ensure you have it [installed](http://www.php.net/manual/en/mbstring.installation.php) correctly before using the library.
+***NOTE:*** This library relies on the [mbstring](http://php.net/manual/en/book.mbstring.php) extension. Ensure you have it [installed](http://www.php.net/manual/en/mbstring.installation.php) correctly before using the library.
 
-Example
--------
+## Example
 
 ```php
 require_once("path/to/vendor/autoload.php");
@@ -97,13 +86,11 @@ $shipment->insure(array('amount' => 100));
 echo $shipment->postage_label->label_url;
 ```
 
-Documentation
---------------------
+## Documentation
 
 Up-to-date documentation at: https://www.easypost.com/docs
 
-Testing & Development
---------------------
+## Testing & Development
 
 **Install dependencies:**
 ```shell
