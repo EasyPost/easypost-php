@@ -12,6 +12,11 @@ class AddressTest extends \PHPUnit\Framework\TestCase
 
     // TODO: set up tests for exceptions and error codes
 
+    /**
+     * Test the creation of an address
+     *
+     * @return void
+     */
     public function testCreate()
     {
         $address_params = array("street1" => "388 Townsend St",
@@ -19,7 +24,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
                                 "city"    => "San Francisco",
                                 "state"   => "CA",
                                 "zip"     => "94107");
-        $address = \EasyPost\Address::create($address_params);
+        $address = Address::create($address_params);
         $this->assertInstanceOf('\EasyPost\Address', $address);
         $this->assertIsString($address->id);
         $this->assertStringMatchesFormat("adr_%s", $address->id);
@@ -29,11 +34,15 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
+     * Test the retrieval of an address
+     *
+     * @param Address $address
+     * @return void
      * @depends testCreate
      */
-    public function testRetrieve(\EasyPost\Address $address)
+    public function testRetrieve(Address $address)
     {
-        $retrieved_address = \EasyPost\Address::retrieve($address->id);
+        $retrieved_address = Address::retrieve($address->id);
 
         $this->assertInstanceOf('\EasyPost\Address', $retrieved_address);
         $this->assertEquals($retrieved_address->id, $address->id);
@@ -61,9 +70,9 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     // TODO: Fix unit testing
 
     /*
-    public function testAll(\EasyPost\Address $address)
+    public function testAll(Address $address)
     {
-        $all = \EasyPost\Address::all();
+        $all = Address::all();
 
         $address_in_all = false;
         for ($_i = 0, $_k = count($all); $_i < $_k; $_i++) {
