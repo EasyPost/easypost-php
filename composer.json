@@ -13,10 +13,12 @@
     "require": {
         "ext-curl": "*",
         "ext-json": "*",
-        "php": ">=5.3.0"
+        "php": ">=5.6.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "3.7.*"
+        "phpunit/phpunit": "^8",
+        "overtrue/phplint": "^1.2",
+        "friendsofphp/php-cs-fixer": "^2.16"
     },
     "config": {
         "bin-dir": "bin"
@@ -26,5 +28,5 @@
             "EasyPost": "lib/"
         }
     },
-    "version": "3.4.1"
+    "version": "3.4.2"
 }

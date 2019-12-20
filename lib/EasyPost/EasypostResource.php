@@ -174,7 +174,7 @@ abstract class EasypostResource extends EasyPostObject
         $requestor = new Requestor($this->_apiKey);
         $url = $this->instanceUrl();
         list($response, $apiKey) = $requestor->request('delete', $url, $params);
-        if (!$no_refresh){
+        if (!$no_refresh) {
             $this->refreshFrom($response, $apiKey);
         }
 

@@ -82,7 +82,7 @@ class User extends EasypostResource
             $my_api_keys = $api_keys->keys;
         }
         if (is_null($my_api_keys)) {
-            foreach($api_keys->children as $children_keys) {
+            foreach ($api_keys->children as $children_keys) {
                 if ($children_keys->id == $this->id) {
                     $my_api_keys = $children_keys->keys;
                 }
@@ -93,11 +93,10 @@ class User extends EasypostResource
             return null;
         } else {
             $response = array();
-            foreach($my_api_keys as $key) {
+            foreach ($my_api_keys as $key) {
                 $response[$key->mode] = $key->key;
             }
             return $response;
         }
     }
 }
-

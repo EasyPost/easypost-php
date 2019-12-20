@@ -27,13 +27,14 @@ $from_address = array(
   "phone"   => "415-456-7890"
 );
 
-$insurance = \EasyPost\Insurance::create(array(
-  'to_address' => $to_address,
-  'from_address' => $from_address,
-  'amount'    => $amount,
-  'tracking_code' => $tracking_code,
-  'carrier'   => $carrier
-  )
+$insurance = \EasyPost\Insurance::create(
+    array(
+      'to_address' => $to_address,
+      'from_address' => $from_address,
+      'amount'    => $amount,
+      'tracking_code' => $tracking_code,
+      'carrier'   => $carrier
+    )
 );
 
 var_dump($insurance->id);                      // This is random
@@ -51,13 +52,14 @@ var_dump($insurances["has_more"]);             // Should be true, unless the cou
 var_dump($insurances["insurances"][0]->id);    // Should be an insurance ID
 
 // create another test insurance
-$insurance3 = \EasyPost\Insurance::create(array(
-  'to_address' => $to_address,
-  'from_address' => $from_address,
-  'amount'    => $amount,
-  'tracking_code' => $tracking_code,
-  'carrier'   => $carrier
-  )
+$insurance3 = \EasyPost\Insurance::create(
+    array(
+      'to_address' => $to_address,
+      'from_address' => $from_address,
+      'amount'    => $amount,
+      'tracking_code' => $tracking_code,
+      'carrier'   => $carrier
+    )
 );
 
 var_dump($insurance3->id);                     // This is random

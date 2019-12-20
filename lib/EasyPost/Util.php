@@ -13,12 +13,10 @@ abstract class Util
     public static function isList($array)
     {
         if (!is_array($array)) {
-
             return false;
         }
         foreach (array_keys($array) as $k) {
             if (!is_numeric($k)) {
-
                 return false;
             }
         }
@@ -38,7 +36,7 @@ abstract class Util
         foreach ($values as $k => $v) {
             if ($v instanceof EasyPostObject) {
                 $results[$k] = $v->__toArray(true);
-            } else if (is_array($v)) {
+            } elseif (is_array($v)) {
                 $results[$k] = self::convertEasyPostObjectToArray($v);
             } else {
                 $results[$k] = $v;
@@ -124,10 +122,10 @@ abstract class Util
             }
 
             return $mapped;
-        } else if (is_array($response)) {
+        } elseif (is_array($response)) {
             if (isset($response['object']) && is_string($response['object']) && isset($types[$response['object']])) {
                 $class = $types[$response['object']];
-            } else if (isset($response['id']) && isset($prefixes[substr($response['id'], 0, strpos($response['id'], "_"))])) {
+            } elseif (isset($response['id']) && isset($prefixes[substr($response['id'], 0, strpos($response['id'], "_"))])) {
                 $class = $prefixes[substr($response['id'], 0, strpos($response['id'], "_"))];
             } else {
                 $class = '\EasyPost\EasyPostObject';
@@ -135,7 +133,6 @@ abstract class Util
 
             return EasyPostObject::constructFrom($response, $class, $apiKey, $parent, $name);
         } else {
-
             return $response;
         }
     }

@@ -32,7 +32,6 @@ try {
     // all
     // $all = \EasyPost\Address::all();
     //print_r($all);
-
 } catch (Exception $e) {
     echo "Status: " . $e->getHttpStatus() . ":\n";
     echo $e->getMessage();
@@ -41,4 +40,3 @@ try {
     }
     exit();
 }
-

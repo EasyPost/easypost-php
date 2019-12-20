@@ -47,7 +47,3 @@ print_r($retrieved);
 // all
 $all = \EasyPost\CustomsInfo::all();
 //print_r($all);
-
-
-
-

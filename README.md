@@ -1,5 +1,7 @@
 # EasyPost PHP Client Library
 
+[![Build Status](https://travis-ci.org/EasyPost/easypost-php.svg?branch=master)](https://travis-ci.org/EasyPost/easypost-php)
+
 EasyPost is a simple shipping API. You can sign up for an account at https://easypost.com
 
 Installation
@@ -33,6 +35,10 @@ Create or add the following to composer.json in your project root:
 Install composer dependencies:
 ```shell
 php composer.phar install
+
+OR
+
+composer install
 ```
 
 Require dependencies:
@@ -96,15 +102,29 @@ Documentation
 
 Up-to-date documentation at: https://www.easypost.com/docs
 
-Tests
+Testing & Development
 --------------------
 
-Install dev dependencies:
+**Install dependencies:**
 ```shell
-php composer.phar install --dev
+php composer.phar install
+
+OR
+
+composer install
 ```
 
-Run tests:
+**Fix PHP Standards:**
 ```shell
-path/to/bin/phpunit
+./bin/php-cs-fixer fix mydir --verbose --show-progress=estimating     
+```
+
+**Run Linting:**
+```shell
+./bin/phplint ./dir
+```
+
+**Run Unit Tests:**
+```shell
+./bin/phpunit
 ```

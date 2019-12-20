@@ -1,0 +1,16 @@
+language: php
+
+php:
+  - 7.2
+  - 7.3
+  - 7.4
+
+install:
+  - composer self-update
+  - composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+
+script:
+  - ./bin/phpunit
+  - ./bin/phplint ./lib
+  - ./bin/phplint ./examples
+  - ./bin/phplint ./test

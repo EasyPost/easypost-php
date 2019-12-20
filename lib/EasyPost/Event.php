@@ -11,10 +11,12 @@ class Event extends EasypostResource
      * @return mixed
      * @throws \EasyPost\Error
      */
-    public static function receive($rawInput=null){
-        if($rawInput == null)
+    public static function receive($rawInput=null)
+    {
+        if ($rawInput == null) {
             throw new Error('The raw input must be set');
-        $values =  json_decode( $rawInput, TRUE );
+        }
+        $values =  json_decode($rawInput, true);
         if ($values != null) {
             return self::constructFrom($values, get_class(), null);
         } else {
@@ -22,4 +24,3 @@ class Event extends EasypostResource
         }
     }
 }
-?>
