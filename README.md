@@ -6,15 +6,17 @@ EasyPost is a simple shipping API. You can sign up for an account at https://eas
 
 ## Installation
 
-There are two ways to install:
+*NOTE: Although this library has been tested with PHP 5.3^, it's highly recommended to use PHP 7.2^. Additionally, This library relies on the [mbstring](http://php.net/manual/en/book.mbstring.php) extension. Ensure you have it [installed](http://www.php.net/manual/en/mbstring.installation.php) correctly before using the library.*
 
-**Recommended: [Composer](http://getcomposer.org/)**
+### Install Client Library
+
+**Recommended Installation: [Composer](http://getcomposer.org/)**
 
 ```shell
 composer require easypost/easypost-php
 ```
 
-**OR: Require Library**
+**OR: Manually Require Library**
 
 Manually download and drop the library in your project.
 
@@ -22,21 +24,21 @@ Manually download and drop the library in your project.
 require_once("/path/to/lib/easypost.php");
 ```
 
-**Install project dependencies:**
+### Install Dependencies
+
+**Recommended Dependency Installation:**
 ```shell
-php composer.phar install
+composer install
 
 OR
 
-composer install
+php composer.phar install
 ```
 
-**Require dependencies:**
+**OR: Manually Require Dependencies:**
 ```php
 require_once("/path/to/vendor/autoload.php");
 ```
-
-***NOTE:*** This library relies on the [mbstring](http://php.net/manual/en/book.mbstring.php) extension. Ensure you have it [installed](http://www.php.net/manual/en/mbstring.installation.php) correctly before using the library.
 
 ## Example
 
@@ -88,18 +90,13 @@ echo $shipment->postage_label->label_url;
 
 ## Documentation
 
-Up-to-date documentation at: https://www.easypost.com/docs
+Up-to-date documentation can be found at: https://www.easypost.com/docs.
 
 ## Testing & Development
 
-**Install dependencies:**
-```shell
-php composer.phar install
+***NOTE: Unit tests only work with PHP 7.2^.***
 
-OR
-
-composer install
-```
+Ensure dependencies are installed, then run any of the following:
 
 **Fix PHP Standards:**
 ```shell
