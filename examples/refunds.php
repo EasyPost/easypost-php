@@ -14,7 +14,6 @@ try {
     // all
     $all = \EasyPost\Refund::all();
     print_r($all);
-
 } catch (Exception $e) {
     echo "Status: " . $e->getHttpStatus() . ":\n";
     echo $e->getMessage();

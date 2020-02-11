@@ -115,7 +115,6 @@ class Address extends EasypostResource
 
             return $verified_address;
         } else {
-
             return Util::convertToEasyPostObject($response, $apiKey);
         }
     }
@@ -141,7 +140,6 @@ class Address extends EasypostResource
 
             return $verified_address;
         } else {
-
             return Util::convertToEasyPostObject($response, $apiKey);
         }
     }

@@ -100,4 +100,3 @@ class Report extends EasypostResource
         return "/reports/{$name}/";
     }
 }
-

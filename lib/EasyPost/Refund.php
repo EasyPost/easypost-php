@@ -46,4 +46,3 @@ class Refund extends EasypostResource
         return self::_create(get_class(), $params, $apiKey);
     }
 }
-

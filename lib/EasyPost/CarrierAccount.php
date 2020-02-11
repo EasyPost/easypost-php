@@ -79,4 +79,3 @@ class CarrierAccount extends EasypostResource
         return Util::convertToEasyPostObject($response, $apiKey);
     }
 }
-

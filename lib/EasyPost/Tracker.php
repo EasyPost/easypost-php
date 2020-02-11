@@ -48,10 +48,10 @@ class Tracker extends EasypostResource
     public static function create($params = null, $apiKey = null)
     {
         if (!is_array($params)) {
-          $clone = $params;
-          unset($params);
-          $params['tracker']['tracking_code'] = $clone;
-        } else if (!isset($params['tracker']) || !is_array($params['tracker'])) {
+            $clone = $params;
+            unset($params);
+            $params['tracker']['tracking_code'] = $clone;
+        } elseif (!isset($params['tracker']) || !is_array($params['tracker'])) {
             $clone = $params;
             unset($params);
             $params['tracker'] = $clone;
@@ -81,4 +81,3 @@ class Tracker extends EasypostResource
         list($response, $apiKey) = $requestor->request('post', $url.'/create_list', $params);
     }
 }
-
