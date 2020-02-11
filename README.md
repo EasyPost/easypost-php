@@ -1,49 +1,46 @@
 # EasyPost PHP Client Library
 
-EasyPost is a simple shipping API. You can sign up for an account at https://easypost.com
+[![Build Status](https://travis-ci.org/EasyPost/easypost-php.svg?branch=master)](https://travis-ci.org/EasyPost/easypost-php)
 
-Installation
-------------
+EasyPost is a simple shipping API. You can sign up for an account at https://easypost.com.
 
-There are two ways to install:
+## Installation
 
- **Require Library**
+*NOTE: Although this library has been tested with PHP 5.3^, it's highly recommended to use PHP 7.2^. Additionally, This library relies on the [mbstring](http://php.net/manual/en/book.mbstring.php) extension. Ensure you have it [installed](http://www.php.net/manual/en/mbstring.installation.php) correctly before using the library.*
+
+### Install Client Library
+
+**Recommended Installation: [Composer](http://getcomposer.org/)**
+
+```shell
+composer require easypost/easypost-php
+```
+
+**OR: Manually Require Library**
+
+Manually download and drop the library in your project.
 
 ```php
 require_once("/path/to/lib/easypost.php");
 ```
 
-**or via [Composer](http://getcomposer.org/):**
+### Install Dependencies
 
-Create or add the following to composer.json in your project root:
-```javascript
-{
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/EasyPost/easypost-php"
-        }
-    ],
-    "require": {
-        "easypost/easypost-php": "~3.0"
-    }
-}
-```
-
-Install composer dependencies:
+**Recommended Dependency Installation:**
 ```shell
+composer install
+
+OR
+
 php composer.phar install
 ```
 
-Require dependencies:
+**OR: Manually Require Dependencies:**
 ```php
 require_once("/path/to/vendor/autoload.php");
 ```
 
-*NOTE:* This library relies on the [mbstring](http://php.net/manual/en/book.mbstring.php) extension. Ensure you have it [installed](http://www.php.net/manual/en/mbstring.installation.php) correctly before using the library.
-
-Example
--------
+## Example
 
 ```php
 require_once("path/to/vendor/autoload.php");
@@ -91,20 +88,27 @@ $shipment->insure(array('amount' => 100));
 echo $shipment->postage_label->label_url;
 ```
 
-Documentation
---------------------
+## Documentation
 
-Up-to-date documentation at: https://www.easypost.com/docs
+Up-to-date documentation can be found at: https://www.easypost.com/docs.
 
-Tests
---------------------
+## Testing & Development
 
-Install dev dependencies:
+***NOTE: Unit tests only work with PHP 7.2^.***
+
+Ensure dependencies are installed, then run any of the following:
+
+**Fix PHP Standards:**
 ```shell
-php composer.phar install --dev
+./bin/php-cs-fixer fix mydir --verbose --show-progress=estimating     
 ```
 
-Run tests:
+**Run Linting:**
 ```shell
-path/to/bin/phpunit
+./bin/phplint ./dir
+```
+
+**Run Unit Tests:**
+```shell
+./bin/phpunit
 ```
