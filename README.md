@@ -16,6 +16,12 @@ EasyPost is a simple shipping API. You can sign up for an account at https://eas
 composer require easypost/easypost-php
 ```
 
+Require dependencies:
+
+```php
+require_once("/path/to/vendor/autoload.php");
+```
+
 **OR: Manually Require Library**
 
 Manually download and drop the library in your project.
