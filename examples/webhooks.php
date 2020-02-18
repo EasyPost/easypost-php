@@ -24,8 +24,8 @@ var_dump($webhooks["webhooks"][count($webhooks["webhooks"]) -1]->id);
 // Webhook: delete
 $webhook->delete();
 try {
-  $webhook4 = \EasyPost\Webhook::retrieve($webhook->id); // This should error
+    $webhook4 = \EasyPost\Webhook::retrieve($webhook->id); // This should error
   var_dump("NOT DELETED");                               // This line should not be reached
 } catch (Exception $e) {
-  var_dump($e->getHttpBody());                           // code: NOT_FOUND
+    var_dump($e->getHttpBody());                           // code: NOT_FOUND
 }

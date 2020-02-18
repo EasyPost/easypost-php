@@ -38,7 +38,7 @@ class Requestor
      */
     public static function utf8($value)
     {
-        if (is_string($value) && mb_detect_encoding($value, "UTF-8", TRUE) != "UTF-8") {
+        if (is_string($value) && mb_detect_encoding($value, "UTF-8", true) != "UTF-8") {
             return utf8_encode($value);
         }
 
@@ -52,15 +52,12 @@ class Requestor
     private static function _encodeObjects($d)
     {
         if ($d instanceof EasypostResource) {
-
             return array("id" => self::utf8($d->id));
-        } else if ($d === true) {
-
+        } elseif ($d === true) {
             return 'true';
-        } else if ($d === false) {
-
+        } elseif ($d === false) {
             return 'false';
-        } else if (is_array($d)) {
+        } elseif (is_array($d)) {
             $res = array();
             foreach ($d as $k => $v) {
                 $res[$k] = self::_encodeObjects($v);
@@ -68,7 +65,6 @@ class Requestor
 
             return $res;
         } else {
-
             return self::utf8($d);
         }
     }
@@ -81,7 +77,6 @@ class Requestor
     public static function encode($arr, $prefix = null)
     {
         if (!is_array($arr)) {
-
             return $arr;
         }
 
@@ -93,7 +88,7 @@ class Requestor
 
             if ($prefix && isset($k)) {
                 $k = $prefix . "[" . $k . "]";
-            } else if ($prefix) {
+            } elseif ($prefix) {
                 $k = $prefix . "[]";
             }
 
@@ -189,16 +184,16 @@ class Requestor
                 $encoded = self::encode($params);
                 $absUrl = "$absUrl?$encoded";
             }
-        } else if ($method == 'post') {
+        } elseif ($method == 'post') {
             $curlOptions[CURLOPT_POST] = 1;
             $curlOptions[CURLOPT_POSTFIELDS] = self::encode($params);
-        } else if ($method == 'delete') {
+        } elseif ($method == 'delete') {
             $curlOptions[CURLOPT_CUSTOMREQUEST] = strtoupper($method);
             if (count($params) > 0) {
                 $encoded = self::encode($params);
                 $absUrl = "{$absUrl}?{$encoded}";
             }
-        } else if ($method == 'patch' || $method == 'put') {
+        } elseif ($method == 'patch' || $method == 'put') {
             $curlOptions[CURLOPT_CUSTOMREQUEST] = strtoupper($method);
             if (count($params) > 0) {
                 $curlOptions[CURLOPT_POSTFIELDS] = self::encode($params);
@@ -225,8 +220,8 @@ class Requestor
 
         $errorNum = curl_errno($curl);
         if ($errorNum == CURLE_SSL_CACERT || $errorNum == CURLE_SSL_PEER_CERTIFICATE || $errorNum == 77) {
-          curl_setopt($curl, CURLOPT_CAINFO, dirname(__FILE__) . '/../cacert.pem');
-          $httpBody = curl_exec($curl);
+            curl_setopt($curl, CURLOPT_CAINFO, dirname(__FILE__) . '/../cacert.pem');
+            $httpBody = curl_exec($curl);
         }
 
         if ($httpBody === false) {

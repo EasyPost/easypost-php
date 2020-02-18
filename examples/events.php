@@ -36,8 +36,7 @@ $json = "{\"result\":{\"id\":\"trk_71bc712e373a475a9595b3afc92f7348\",\"object\"
 $event = \EasyPost\Event::receive($json);
 
 if ($event->description == "tracker.updated") {
-  $tracker = $event->result;
+    $tracker = $event->result;
 
-  echo $tracker->tracking_code;
+    echo $tracker->tracking_code;
 }
-

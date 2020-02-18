@@ -24,4 +24,3 @@ try {
     echo $e->getMessage() . "\n";
     exit();
 }
-

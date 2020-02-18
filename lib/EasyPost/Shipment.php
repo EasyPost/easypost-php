@@ -235,7 +235,7 @@ class Shipment extends EasypostResource
         $services_include = array();
         $services_exclude = array();
 
-        if(!is_array($carriers)) {
+        if (!is_array($carriers)) {
             $carriers = explode(',', $carriers);
         }
         for ($a = 0, $b = count($carriers); $a < $b; $a++) {
@@ -247,7 +247,7 @@ class Shipment extends EasypostResource
             }
         }
 
-        if(!is_array($services)) {
+        if (!is_array($services)) {
             $services = explode(',', $services);
         }
         for ($c = 0, $d = count($services); $c < $d; $c++) {
@@ -287,6 +287,4 @@ class Shipment extends EasypostResource
 
         return $lowest_rate;
     }
-
 }
-

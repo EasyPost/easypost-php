@@ -29,4 +29,3 @@ for($i = 0, $k = count($all); $i < $k; $i++) {
   print_r(\EasyPost\Parcel::retrieve($all[$i]->id));
 }
 */
-

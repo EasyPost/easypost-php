@@ -4,5 +4,4 @@ namespace EasyPost;
 
 class Fee extends EasypostResource
 {
-    
 }

@@ -59,5 +59,3 @@ $pickup = \EasyPost\Pickup::create(
 
 $pickup->buy(array('carrier'=>'UPS', 'service' => 'Future-day Pickup'));
 echo "Confirmation: " . $pickup->confirmation . "\n";
-
-?>

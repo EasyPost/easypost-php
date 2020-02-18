@@ -59,8 +59,9 @@ class EasyPostObject implements \ArrayAccess, \Iterator
         $this->_retrieveOptions = array();
         if (is_array($id)) {
             foreach ($id as $key => $value) {
-                if ($key != 'id')
+                if ($key != 'id') {
                     $this->_retrieveOptions[$key] = $value;
+                }
             }
             $id = $id['id'];
         }
@@ -83,8 +84,8 @@ class EasyPostObject implements \ArrayAccess, \Iterator
         $i = 0;
         $current = $this;
         $param = array($k => $v);
-        while(true && $i < 99) {
-            if(!is_null($current->_parent)) {
+        while (true && $i < 99) {
+            if (!is_null($current->_parent)) {
                 $param = array($current->_name => $param);
                 $current = $current->_parent;
             } else {
@@ -121,8 +122,8 @@ class EasyPostObject implements \ArrayAccess, \Iterator
             $i = 0;
             $current = $this;
             $param = array($k => $v);
-            while(true && $i < 99) {
-                if(!is_null($current->_parent)) {
+            while (true && $i < 99) {
+                if (!is_null($current->_parent)) {
                     $param = array($current->_name => $param);
                     $current = $current->_parent;
                 } else {
@@ -210,7 +211,6 @@ class EasyPostObject implements \ArrayAccess, \Iterator
             }
 
             $this->_values[$k] = Util::convertToEasyPostObject($v, $apiKey, $this, $k);
-
         }
         $this->_unsavedValues = array();
     }
@@ -306,7 +306,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     public function valid()
     {
         $key = key($this->_values);
-        return ($key !== NULL && $key !== FALSE);
+        return ($key !== null && $key !== false);
     }
 
     /**
@@ -317,7 +317,6 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     public function __toJSON()
     {
         if (defined('JSON_PRETTY_PRINT')) {
-
             return json_encode($this->__toArray(true), JSON_PRETTY_PRINT);
         }
 

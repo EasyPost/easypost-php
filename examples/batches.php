@@ -109,7 +109,7 @@ $orders = array(
 
 // create shipment batch
 $shipments = array();
-for($i = 0, $j = count($orders); $i < $j; $i++) {
+for ($i = 0, $j = count($orders); $i < $j; $i++) {
     $shipments[] = array(
         "to_address"   => $orders[$i]["address"],
         "from_address" => $from_address,
@@ -126,10 +126,10 @@ $batch = \EasyPost\Batch::create(array('shipments' => $shipments));
 // asynchronous creation means you can send us up to
 // 1000 shipments at once, but you'll have to wait
 // for the shipments to be created before you can continue
-while($batch->status->created != count($orders)) {
+while ($batch->status->created != count($orders)) {
     sleep(5);
     $batch->refresh();
-    if($batch->status->creation_failed != 0) {
+    if ($batch->status->creation_failed != 0) {
         throw new \EasyPost\Error('One of your batch shipments was unable to be created. Please manually retrieve and review your batch.');
     }
 }
@@ -140,10 +140,10 @@ $batch->buy();
 
 // asyncronous purchasing means we have to watch
 // for when all labels have been purchased
-while($batch->status->postage_purchased != count($orders)) {
+while ($batch->status->postage_purchased != count($orders)) {
     sleep(5);
     $batch->refresh();
-    if($batch->status->postage_purchase_failed != 0) {
+    if ($batch->status->postage_purchase_failed != 0) {
         throw new \EasyPost\Error('One of your batch shipments was unable to be purchased. Please manually retrieve and review your batch.');
     }
 }
@@ -151,7 +151,7 @@ while($batch->status->postage_purchased != count($orders)) {
 // generate a consolidated file containing all batch labels
 $batch->label(array("file_format" => "pdf"));
 
-while(empty($batch->label_url)) {
+while (empty($batch->label_url)) {
     sleep(5);
     $batch->refresh();
 }
@@ -163,7 +163,7 @@ print_r($batch);
 $batch->create_scan_form();
 
 // wait for scan form to complete
-while(empty($batch->scan_form)) {
+while (empty($batch->scan_form)) {
     sleep(5);
     $batch->refresh();
 }
