@@ -1,30 +1,30 @@
 # EasyPost PHP Client Library
 
-[![Build Status](https://travis-ci.org/EasyPost/easypost-php.svg?branch=master)](https://travis-ci.org/EasyPost/easypost-php)
+[![Build Status](https://travis-ci.com/EasyPost/easypost-php.svg?branch=master)](https://travis-ci.com/EasyPost/easypost-php)
 
 EasyPost is a simple shipping API. You can sign up for an account at https://easypost.com.
 
 ## Installation
 
-*NOTE: Although this library has been tested with PHP 5.3^, it's highly recommended to use PHP 7.2^. Additionally, This library relies on the [mbstring](http://php.net/manual/en/book.mbstring.php) extension. Ensure you have it [installed](http://www.php.net/manual/en/mbstring.installation.php) correctly before using the library.*
+***NOTE:** Although this library has been tested with PHP 5.3^, it's highly recommended to use PHP 7.2^. Additionally, This library relies on the [mbstring](http://php.net/manual/en/book.mbstring.php) extension. Ensure you have it [installed](http://www.php.net/manual/en/mbstring.installation.php) correctly before using the library.*
 
 ### Install Client Library
 
-**Recommended Installation: [Composer](http://getcomposer.org/)**
+**Install the Library via [Composer](http://getcomposer.org/):**
 
 ```shell
 composer require easypost/easypost-php
 ```
 
-Require dependencies:
+Then, require the autoloader:
 
 ```php
-require_once("/path/to/vendor/autoload.php");
+require_once("/path/to/vendor/easypost/autoload.php");
 ```
 
-**OR: Manually Require Library**
+**OR: Manually Install the Library**
 
-Manually download and drop the library in your project.
+Manually download this library and require it from your project:
 
 ```php
 require_once("/path/to/lib/easypost.php");
@@ -32,24 +32,16 @@ require_once("/path/to/lib/easypost.php");
 
 ### Install Dependencies
 
-**Recommended Dependency Installation:**
+Run the following from the root directory of the library:
+
 ```shell
 composer install
-
-OR
-
-php composer.phar install
-```
-
-**OR: Manually Require Dependencies:**
-```php
-require_once("/path/to/vendor/autoload.php");
 ```
 
 ## Example
 
 ```php
-require_once("path/to/vendor/autoload.php");
+require_once("/path/to/vendor/easypost/autoload.php");
 \EasyPost\EasyPost::setApiKey('cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi');
 
 $to_address = \EasyPost\Address::create(
