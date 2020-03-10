@@ -109,6 +109,7 @@ abstract class Util
             'shprep'    => '\EasyPost\Report',
             'plrep'     => '\EasyPost\Report',
             'trkrep'    => '\EasyPost\Report',
+            'refrep'    => '\EasyPost\Report',
             'hook'      => '\EasyPost\Webhook'
         );
 

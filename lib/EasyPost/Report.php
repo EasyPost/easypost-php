@@ -53,16 +53,10 @@ class Report extends EasypostResource
      */
     public static function create($params = null, $apiKey = null)
     {
-        if (!isset($params['report']) || !is_array($params['report'])) {
-            $clone = $params;
-            unset($params);
-            $params['report'] = $clone;
-        }
-
-        if (!isset($params['report']['type'])) {
+        if (!isset($params['type'])) {
             throw new Error('Undetermined Report Type');
         } else {
-            $type = $params['report']['type'];
+            $type = $params['type'];
 
             self::_validate('create', $params, $apiKey);
             $requestor = new Requestor($apiKey);
