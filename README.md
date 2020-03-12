@@ -90,6 +90,15 @@ echo $shipment->postage_label->label_url;
 
 Up-to-date documentation can be found at: https://www.easypost.com/docs.
 
+## Releasing
+
+1. Update the `VERSION` file
+1. Update the `CHANGELOG` file
+1. Update the version in the `composer.json` file
+1. Create a git tag with the new version
+
+[Packagist](https://packagist.org) should automatically pull in the new tag if the above was done properly.
+
 ## Testing & Development
 
 ***NOTE: Unit tests only work with PHP 7.2^.***
