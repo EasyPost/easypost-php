@@ -94,6 +94,7 @@ Up-to-date documentation can be found at: https://www.easypost.com/docs.
 
 1. Update the `VERSION` file
 1. Update the `CHANGELOG` file
+1. Update the `VERSION` constant in the `EasyPost.php` file
 1. Update the version in the `composer.json` file
 1. Create a git tag with the new version
 
