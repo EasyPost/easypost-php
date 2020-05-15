@@ -55,6 +55,17 @@ class User extends EasypostResource
     }
 
     /**
+     * Delete a user.
+     *
+     * @param string $apiKey
+     * @return $this
+     */
+    public function delete($params = null, $apiKey = null)
+    {
+        return self::_delete(get_class(), $params, true);
+    }
+
+    /**
      * get all API keys
      *
      * @param null $apiKey
