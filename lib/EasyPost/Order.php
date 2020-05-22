@@ -17,18 +17,6 @@ class Order extends EasypostResource
     }
 
     /**
-     * retrieve all orders
-     *
-     * @param mixed  $params
-     * @param string $apiKey
-     * @return mixed
-     */
-    public static function all($params = null, $apiKey = null)
-    {
-        return self::_all(get_class(), $params, $apiKey);
-    }
-
-    /**
      * save an order
      *
      * @return $this
