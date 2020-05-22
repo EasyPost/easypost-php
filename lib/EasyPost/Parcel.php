@@ -29,16 +29,6 @@ class Parcel extends EasypostResource
     }
 
     /**
-     * save a parcel
-     *
-     * @return $this
-     */
-    public function save()
-    {
-        return self::_save(get_class());
-    }
-
-    /**
      * create a parcel
      *
      * @param mixed  $params

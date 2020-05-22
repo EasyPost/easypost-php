@@ -29,16 +29,6 @@ class Tracker extends EasypostResource
     }
 
     /**
-     * save a tracker
-     *
-     * @return $this
-     */
-    public function save()
-    {
-        return self::_save(get_class());
-    }
-
-    /**
      * create a tracker
      *
      * @param mixed  $params

@@ -17,13 +17,15 @@ class CustomsInfo extends EasypostResource
     }
 
     /**
-     * save a customs info
+     * retrieve all customs info
      *
-     * @return $this
+     * @param mixed $params
+     * @param string $apiKey
+     * @return mixed
      */
-    public function save()
+    public static function all($params = null, $apiKey = null)
     {
-        return self::_save(get_class());
+        return self::_all(get_class(), $params, $apiKey);
     }
 
     /**
