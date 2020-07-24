@@ -29,16 +29,6 @@ class Address extends EasypostResource
     }
 
     /**
-     * save an address
-     *
-     * @return $this
-     */
-    public function save()
-    {
-        return self::_save(get_class());
-    }
-
-    /**
      * create an address
      *
      * @param mixed  $params

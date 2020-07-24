@@ -17,7 +17,6 @@ class Report extends EasypostResource
         return self::_retrieve(get_class(), $id, $apiKey);
     }
 
-
     /**
      * retrieve all reports
      *

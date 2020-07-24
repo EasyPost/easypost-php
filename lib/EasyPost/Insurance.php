@@ -17,16 +17,6 @@ class Insurance extends EasypostResource
     }
 
     /**
-     * save an insurance
-     *
-     * @return $this
-     */
-    public function save()
-    {
-        return self::_save(get_class());
-    }
-
-    /**
      * retrieve all insurances
      *
      * @param mixed  $params

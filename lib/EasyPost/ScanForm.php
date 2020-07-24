@@ -29,16 +29,6 @@ class ScanForm extends EasypostResource
     }
 
     /**
-     * save a scan form
-     *
-     * @return $this
-     */
-    public function save()
-    {
-        return self::_save(get_class());
-    }
-
-    /**
      * create a scan form
      *
      * @param mixed  $params

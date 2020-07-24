@@ -29,16 +29,6 @@ class Shipment extends EasypostResource
     }
 
     /**
-     * save a shipment
-     *
-     * @return $this
-     */
-    public function save()
-    {
-        return self::_save(get_class());
-    }
-
-    /**
      * create a shipment
      *
      * @param mixed  $params
@@ -54,28 +44,6 @@ class Shipment extends EasypostResource
         }
 
         return self::_create(get_class(), $params, $apiKey);
-    }
-
-    /**
-     * create a shipment from tracking code
-     *
-     * @param mixed  $params
-     * @param string $apiKey
-     * @return mixed
-     */
-    public static function create_from_tracking_code($params = null, $apiKey = null)
-    {
-        $class = get_class();
-        if (!isset($params['tracking_code'])) {
-            $clone = $params;
-            unset($params);
-            $params['tracking_code'] = $clone;
-        }
-
-        $requestor = new Requestor($apiKey);
-        $url = self::classUrl($class) . '/create_from_tracking_code';
-        list($response, $apiKey) = $requestor->request('post', $url, $params);
-        return Util::convertToEasyPostObject($response, $apiKey);
     }
 
     /**
@@ -135,40 +103,6 @@ class Shipment extends EasypostResource
         $this->refreshFrom($response, $apiKey, true);
 
         return $this;
-    }
-
-    /**
-     * get the shipment barcode
-     *
-     * @param mixed $params
-     * @return mixed
-     * @throws \EasyPost\Error
-     */
-    public function barcode($params = null)
-    {
-        $requestor = new Requestor($this->_apiKey);
-        $url = $this->instanceUrl() . '/barcode';
-
-        list($response, $apiKey) = $requestor->request('get', $url, $params);
-
-        return $response['barcode_url'];
-    }
-
-    /**
-     * get the shipment stamp
-     *
-     * @param mixed $params
-     * @return mixed
-     * @throws \EasyPost\Error
-     */
-    public function stamp($params = null)
-    {
-        $requestor = new Requestor($this->_apiKey);
-        $url = $this->instanceUrl() . '/stamp';
-
-        list($response, $apiKey) = $requestor->request('get', $url, $params);
-
-        return $response['stamp_url'];
     }
 
     /**
