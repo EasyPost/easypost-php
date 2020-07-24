@@ -65,7 +65,6 @@ class Tracker extends EasypostResource
      *
      * @param mixed  $params
      * @param string $apiKey
-     * @return mixed
      */
     public static function create_list($params = null, $apiKey = null)
     {
