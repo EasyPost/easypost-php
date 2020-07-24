@@ -5,6 +5,30 @@ namespace EasyPost;
 class Event extends EasypostResource
 {
     /**
+     * retrieve an event
+     *
+     * @param string $id
+     * @param string $apiKey
+     * @return mixed
+     */
+    public static function retrieve($id, $apiKey = null)
+    {
+        return self::_retrieve(get_class(), $id, $apiKey);
+    }
+
+    /**
+     * retrieve all events
+     *
+     * @param mixed  $params
+     * @param string $apiKey
+     * @return mixed
+     */
+    public static function all($params = null, $apiKey = null)
+    {
+        return self::_all(get_class(), $params, $apiKey);
+    }
+
+    /**
      * receive an event
      *
      * @param string $rawInput
