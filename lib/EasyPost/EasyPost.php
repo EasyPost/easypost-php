@@ -17,10 +17,10 @@ abstract class EasyPost
     /**
      * @var string
      */
-    public static $apiVersion = "2";
+    public static $apiVersion = '2';
 
     /**
-     * Time in milliseconds to wait for a connection
+     * Time in milliseconds to wait for a connection.
      *
      * Zero or null means no timeout.
      *
@@ -29,7 +29,7 @@ abstract class EasyPost
     public static $connectTimeout;
 
     /**
-     * Time in milliseconds to wait for a response
+     * Time in milliseconds to wait for a response.
      *
      * Zero or null means no timeout.
      *
@@ -40,10 +40,10 @@ abstract class EasyPost
     /**
      * @var string
      */
-    const VERSION = '3.4.5';
+    const VERSION = '3.5.0';
 
     /**
-     * get the API key
+     * get the API key.
      *
      * @return string
      */
@@ -53,7 +53,7 @@ abstract class EasyPost
     }
 
     /**
-     * set the API key
+     * set the API key.
      *
      * @param string $apiKey
      */
@@ -63,7 +63,7 @@ abstract class EasyPost
     }
 
     /**
-     * get the API base URL
+     * get the API base URL.
      *
      * @return string
      */
@@ -73,7 +73,7 @@ abstract class EasyPost
     }
 
     /**
-     * set the API base URL
+     * set the API base URL.
      *
      * @param string $apiBase
      */
@@ -83,7 +83,7 @@ abstract class EasyPost
     }
 
     /**
-     * get the API version
+     * get the API version.
      *
      * @return string
      */
@@ -93,7 +93,7 @@ abstract class EasyPost
     }
 
     /**
-     * set the API version
+     * set the API version.
      *
      * @param $apiVersion
      */
@@ -103,7 +103,7 @@ abstract class EasyPost
     }
 
     /**
-     * Set time in milliseconds to wait for a connection
+     * Set time in milliseconds to wait for a connection.
      *
      * Zero or null means no timeout.
      *
@@ -115,7 +115,7 @@ abstract class EasyPost
     }
 
     /**
-     * Get time in milliseconds to wait for a connection
+     * Get time in milliseconds to wait for a connection.
      *
      * Zero or null means no timeout.
      *
@@ -127,7 +127,7 @@ abstract class EasyPost
     }
 
     /**
-     * Get time in milliseconds to wait for a response
+     * Get time in milliseconds to wait for a response.
      *
      * Zero or null means no timeout.
      *
@@ -139,7 +139,7 @@ abstract class EasyPost
     }
 
     /**
-     * Get time in milliseconds to wait for a response
+     * Get time in milliseconds to wait for a response.
      *
      * Zero or null means no timeout.
      *
