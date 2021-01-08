@@ -1,6 +1,6 @@
 # EasyPost PHP Client Library
 
-[![Build Status](https://travis-ci.com/EasyPost/easypost-php.svg?branch=master)](https://travis-ci.com/EasyPost/easypost-php)
+[![CI](https://github.com/EasyPost/easypost-php/workflows/CI/badge.svg)](https://github.com/EasyPost/easypost-php/actions?query=workflow%3ACI)
 
 EasyPost is a simple shipping API. You can sign up for an account at https://easypost.com.
 
