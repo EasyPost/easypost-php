@@ -1,4 +1,5 @@
 <?php
+
 require_once("../lib/easypost.php");
 
 \EasyPost\EasyPost::setApiKey('cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi');
@@ -39,16 +40,16 @@ if (ECHO_CA_TYPES) {
 if (CREATE_NEW_CA) {
     try {
         $new_ups_account = \EasyPost\CarrierAccount::create(array(
-      'type' => "UpsAccount",
-      'description' => "My third UPS account.",
-      'reference' => "ups02",
-      'credentials' => array(
+        'type' => "UpsAccount",
+        'description' => "My third UPS account.",
+        'reference' => "ups02",
+        'credentials' => array(
         'account_number' => "A1A1A1",
         'user_id' => "UPSDOTCOM_USERNAME",
         'password' => "UPSDOTCOM_PASSWORD",
         'access_license_number' => "UPS_ACCESS_LICENSE_NUMBER"
-      )
-    ));
+        )
+        ));
         print_r($new_ups_account);
     } catch (Exception $e) {
         $e->prettyPrint();

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<ruleset name="PHP_CodeSniffer">
+    <description>PHPCS configuration file.</description>
+
+    <!-- Where to lint -->
+    <file>lib</file>
+    <file>test</file>
+    <file>examples</file>
+
+    <!-- What to exclude -->
+    <exclude-pattern>*/bin/*</exclude-pattern>
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+
+    <!-- Only lint PHP files -->
+    <arg name="extensions" value="php" />
+
+    <!-- Ignore warnings and display ERRORS only -->
+    <arg value="np" />
+
+    <!-- Use the PSR12 ruleset -->
+    <rule ref="PSR12">
+        <!-- None of our functions are camel caps and would be a massive breaking change -->
+        <exclude name="PSR1.Methods.CamelCapsMethodName.NotCamelCaps" />
+        <!-- TODO: Rename functions with prefixed underscores -->
+        <exclude name="PSR2.Methods.MethodDeclaration.Underscore" />
+    </rule>
+</ruleset>

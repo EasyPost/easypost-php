@@ -64,7 +64,7 @@ class Batch extends EasypostResource
 
         $requestor = new Requestor($apiKey);
         $url = self::classUrl($class);
-        list($response, $apiKey) = $requestor->request('post', $url.'/create_and_buy', $params);
+        list($response, $apiKey) = $requestor->request('post', $url . '/create_and_buy', $params);
 
         return Util::convertToEasyPostObject($response, $apiKey);
     }

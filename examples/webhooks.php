@@ -19,13 +19,13 @@ var_dump($webhook3->id);
 
 // Webhook: index
 $webhooks = \EasyPost\Webhook::all();
-var_dump($webhooks["webhooks"][count($webhooks["webhooks"]) -1]->id);
+var_dump($webhooks["webhooks"][count($webhooks["webhooks"]) - 1]->id);
 
 // Webhook: delete
 $webhook->delete();
 try {
     $webhook4 = \EasyPost\Webhook::retrieve($webhook->id); // This should error
-  var_dump("NOT DELETED");                               // This line should not be reached
+    var_dump("NOT DELETED");                               // This line should not be reached
 } catch (Exception $e) {
     var_dump($e->getHttpBody());                           // code: NOT_FOUND
 }

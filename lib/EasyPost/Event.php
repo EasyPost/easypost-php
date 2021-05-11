@@ -35,7 +35,7 @@ class Event extends EasypostResource
      * @return mixed
      * @throws \EasyPost\Error
      */
-    public static function receive($rawInput=null)
+    public static function receive($rawInput = null)
     {
         if ($rawInput == null) {
             throw new Error('The raw input must be set');

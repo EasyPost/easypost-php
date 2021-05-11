@@ -17,8 +17,8 @@ class TestReport extends \PHPUnit\Framework\TestCase
     public function testCreatePaymentLogReport()
     {
         // Set a random date to use
-        $year = sprintf('%04d', rand(0001,2020));
-        $month = sprintf('%02d', rand(01,12));
+        $year = sprintf('%04d', rand(0001, 2020));
+        $month = sprintf('%02d', rand(01, 12));
 
         // Build params and run assertions
         $params = array(
@@ -42,8 +42,8 @@ class TestReport extends \PHPUnit\Framework\TestCase
     public function testCreateRefundReport()
     {
         // Set a random date to use
-        $year = sprintf('%04d', rand(0001,2020));
-        $month = sprintf('%02d', rand(01,12));
+        $year = sprintf('%04d', rand(0001, 2020));
+        $month = sprintf('%02d', rand(01, 12));
 
         // Build params and run assertions
         $params = array(
@@ -67,8 +67,8 @@ class TestReport extends \PHPUnit\Framework\TestCase
     public function testCreateShipmentReport()
     {
         // Set a random date to use
-        $year = sprintf('%04d', rand(0001,2020));
-        $month = sprintf('%02d', rand(01,12));
+        $year = sprintf('%04d', rand(0001, 2020));
+        $month = sprintf('%02d', rand(01, 12));
 
         // Build params and run assertions
         $params = array(
@@ -92,8 +92,8 @@ class TestReport extends \PHPUnit\Framework\TestCase
     public function testCreateTrackerReport()
     {
         // Set a random date to use
-        $year = sprintf('%04d', rand(0001,2020));
-        $month = sprintf('%02d', rand(01,12));
+        $year = sprintf('%04d', rand(0001, 2020));
+        $month = sprintf('%02d', rand(01, 12));
 
         // Build params and run assertions
         $params = array(
