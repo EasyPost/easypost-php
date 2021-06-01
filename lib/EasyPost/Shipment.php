@@ -83,7 +83,7 @@ class Shipment extends EasypostResource
     /**
      * get smartrates for a shipment
      *
-     * @return $this
+     * @return $response
      * @throws \EasyPost\Error
      */
     public function get_smartrates()
