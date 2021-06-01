@@ -98,14 +98,14 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         $this->assertNotNull($shipment->rates);
 
         $smartrates = $shipment->get_smartrates();
-        $this->assertEquals($shipment->rates[0]['id'], $smartrates['result'][0]['id']);
+        $this->assertEquals($shipment->rates[0]['id'], $smartrates[0]['id']);
         # TODO: Once we've added `php-vcr`, assert that the following values actually match an integer
-        $this->assertNotNull($smartrates['result'][0]['time_in_transit']['percentile_50']);
-        $this->assertNotNull($smartrates['result'][0]['time_in_transit']['percentile_75']);
-        $this->assertNotNull($smartrates['result'][0]['time_in_transit']['percentile_85']);
-        $this->assertNotNull($smartrates['result'][0]['time_in_transit']['percentile_90']);
-        $this->assertNotNull($smartrates['result'][0]['time_in_transit']['percentile_95']);
-        $this->assertNotNull($smartrates['result'][0]['time_in_transit']['percentile_97']);
-        $this->assertNotNull($smartrates['result'][0]['time_in_transit']['percentile_99']);
+        $this->assertNotNull($smartrates[0]['time_in_transit']['percentile_50']);
+        $this->assertNotNull($smartrates[0]['time_in_transit']['percentile_75']);
+        $this->assertNotNull($smartrates[0]['time_in_transit']['percentile_85']);
+        $this->assertNotNull($smartrates[0]['time_in_transit']['percentile_90']);
+        $this->assertNotNull($smartrates[0]['time_in_transit']['percentile_95']);
+        $this->assertNotNull($smartrates[0]['time_in_transit']['percentile_97']);
+        $this->assertNotNull($smartrates[0]['time_in_transit']['percentile_99']);
     }
 }

@@ -92,7 +92,7 @@ class Shipment extends EasypostResource
         $url = $this->instanceUrl() . '/smartrate';
         list($response, $apiKey) = $requestor->request('get', $url);
 
-        return $response;
+        return $response['result'];
     }
 
     /**
