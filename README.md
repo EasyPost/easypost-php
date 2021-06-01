@@ -107,12 +107,13 @@ Up-to-date documentation can be found at: https://www.easypost.com/docs.
 
 Ensure dependencies are installed, then run any of the following:
 
-**Run Linting:**
-```shell
-./bin/phpcs
-```
+```bash
+# Lint project
+composer lint
 
-**Run Unit Tests:**
-```shell
-./bin/phpunit
+# Fix linting errors
+composer fix
+
+# Run tests
+composer test
 ```

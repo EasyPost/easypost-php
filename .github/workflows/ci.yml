@@ -19,7 +19,7 @@ jobs:
       - name: install dependencies
         run: composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
       - name: lint
-        run: ./bin/phpcs
+        run: composer lint
   run-tests:
     runs-on: ubuntu-18.04
     strategy:
@@ -45,4 +45,4 @@ jobs:
       - name: install dependencies
         run: composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
       - name: test with phpunit on ${{ matrix.phpversion }}
-        run: ./bin/phpunit
+        run: composer test
