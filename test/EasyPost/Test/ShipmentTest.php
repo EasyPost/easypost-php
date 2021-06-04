@@ -69,7 +69,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test retrieving smartrates for a shipment
-     * 
+     *
      * @return void
      */
     public function testSmartrate()
