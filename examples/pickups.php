@@ -48,7 +48,7 @@ echo $shipment->id . "\n";
 $pickup = \EasyPost\Pickup::create(
     array(
         "address" => $from_address,
-        "shipment"=> $shipment,
+        "shipment" => $shipment,
         "reference" => $shipment->id,
         "min_datetime" => date("Y-m-d H:i:s", strtotime('+1 day')),
         "max_datetime" => date("Y-m-d H:i:s", strtotime('+25 hours')),
@@ -57,5 +57,5 @@ $pickup = \EasyPost\Pickup::create(
     )
 );
 
-$pickup->buy(array('carrier'=>'UPS', 'service' => 'Future-day Pickup'));
+$pickup->buy(array('carrier' => 'UPS', 'service' => 'Future-day Pickup'));
 echo "Confirmation: " . $pickup->confirmation . "\n";

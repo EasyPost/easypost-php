@@ -42,7 +42,8 @@ composer install
 
 ```php
 require_once("/path/to/vendor/easypost/autoload.php");
-\EasyPost\EasyPost::setApiKey('cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi');
+
+\EasyPost\EasyPost::setApiKey('API_KEY');
 
 $to_address = \EasyPost\Address::create(
     array(
@@ -106,17 +107,13 @@ Up-to-date documentation can be found at: https://www.easypost.com/docs.
 
 Ensure dependencies are installed, then run any of the following:
 
-**Fix PHP Standards:**
-```shell
-./bin/php-cs-fixer fix mydir --verbose --show-progress=estimating     
-```
+```bash
+# Lint project
+composer lint
 
-**Run Linting:**
-```shell
-./bin/phplint ./dir
-```
+# Fix linting errors
+composer fix
 
-**Run Unit Tests:**
-```shell
-./bin/phpunit
+# Run tests
+composer test
 ```

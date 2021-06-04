@@ -178,7 +178,7 @@ class Shipment extends EasypostResource
      * @return bool
      * @throws \EasyPost\Error
      */
-    public function lowest_rate($carriers=array(), $services=array())
+    public function lowest_rate($carriers = array(), $services = array())
     {
         $lowest_rate = false;
         $carriers_include = array();
