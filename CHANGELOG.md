@@ -1,3 +1,7 @@
+### 3.6.0 2021-06-10
+
+* Adds `SmartRate` functionality to the `Shipments` object (available by calling `get_smartrates()` on a shipment)
+
 ### 3.5.0 2020-08-09
 
 * Added event retrieval methods
