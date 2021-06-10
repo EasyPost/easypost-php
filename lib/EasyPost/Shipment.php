@@ -81,6 +81,21 @@ class Shipment extends EasypostResource
     }
 
     /**
+     * get smartrates for a shipment
+     *
+     * @return array
+     * @throws \EasyPost\Error
+     */
+    public function get_smartrates()
+    {
+        $requestor = new Requestor($this->_apiKey);
+        $url = $this->instanceUrl() . '/smartrate';
+        list($response, $apiKey) = $requestor->request('get', $url);
+
+        return isset($response['result']) ? $response['result'] : [];
+    }
+
+    /**
      * buy a shipment
      *
      * @param mixed $params
