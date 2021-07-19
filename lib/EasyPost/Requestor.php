@@ -279,20 +279,20 @@ class Requestor
     public function handleCurlError($errorNum, $message)
     {
         $apiBase = EasyPost::$apiBase;
-        $contactEmail = 'support@easypost.com';
+        $supportEmail = 'support@easypost.com';
 
         switch ($errorNum) {
             case CURLE_COULDNT_CONNECT:
             case CURLE_COULDNT_RESOLVE_HOST:
             case CURLE_OPERATION_TIMEOUTED:
-                $msg = "Could not connect to EasyPost ({$apiBase}). Please check your internet connection and try again.  If this problem persists please let us know at {$contactEmail}.";
+                $msg = "Could not connect to EasyPost ({$apiBase}). Please check your internet connection and try again.  If this problem persists please let us know at {$supportEmail}.";
                 break;
             case CURLE_SSL_CACERT:
             case CURLE_SSL_PEER_CERTIFICATE:
-                $msg = "Could not verify EasyPost's SSL certificate. Please make sure that your network is not intercepting certificates.  (Try going to {$apiBase} in your browser.)  If this problem persists, let us know at {$contactEmail}.";
+                $msg = "Could not verify EasyPost's SSL certificate. Please make sure that your network is not intercepting certificates.  (Try going to {$apiBase} in your browser.)  If this problem persists, let us know at {$supportEmail}.";
                 break;
             default:
-                $msg = "Unexpected error communicating with EasyPost. If this problem persists please let us know at {$contactEmail}.";
+                $msg = "Unexpected error communicating with EasyPost. If this problem persists please let us know at {$supportEmail}.";
         }
 
         $msg .= "\nNetwork error [errno {$errorNum}]: {$message})";
