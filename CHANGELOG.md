@@ -1,3 +1,9 @@
+## CHANGELOG
+
+### NEXT RELEASE
+
+* Corrects references of `contact@easypost.com` to `support@easypost.com`
+
 ### 3.6.0 2021-06-10
 
 * Adds `SmartRate` functionality to the `Shipments` object (available by calling `get_smartrates()` on a shipment)
