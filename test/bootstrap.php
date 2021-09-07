@@ -16,6 +16,7 @@ VCRCleaner::enable(array(
     'request' => array(
         'ignoreHeaders' => array(
             'Authorization',
+            'X-Client-User-Agent',
         ),
     ),
 ));
