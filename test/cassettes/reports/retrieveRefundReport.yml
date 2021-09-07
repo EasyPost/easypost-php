@@ -1,0 +1,76 @@
+
+-
+    request:
+        method: GET
+        url: 'https://api.easypost.com/v2/reports/refrep_eaf0cb1246a847c0b83e4d6c859a0b85'
+        headers:
+            Host: api.easypost.com
+            X-Client-User-Agent: '{"bindings_version":"3.6.0","lang":"php","lang_version":"7.4.23","publisher":"easypost","uname":"Darwin MacBook-Pro-Justin-EasyPost 20.6.0 Darwin Kernel Version 20.6.0: Wed Jun 23 00:26:31 PDT 2021; root:xnu-7195.141.2~5\/RELEASE_X86_64 x86_64"}'
+            User-Agent: 'EasyPost/v2 PhpClient/3.6.0'
+            Authorization: ''
+            EasyPost-Version: '2'
+    response:
+        status:
+            http_version: '1.1'
+            code: '200'
+            message: OK
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: 3774dfb961379b34e786b44300a6963c
+            cache-control: 'no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '665'
+            etag: 'W/"7e7856452e61683103b6bacf65f41321"'
+            x-request-id: 5c222ca5-a69a-40cb-aadd-ca742efe123e
+            x-runtime: '0.041363'
+            x-node: bigweb1nuq
+            x-version-label: easypost-202109032253-dc86ce0535-master
+            x-backend: easypost
+            x-proxied: ['intlb1nuq 543ba58655', 'extlb1nuq 543ba58655']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"id":"refrep_eaf0cb1246a847c0b83e4d6c859a0b85","object":"RefundReport","created_at":"2021-09-07T16:58:48Z","updated_at":"2021-09-07T16:58:50Z","start_date":"2021-01-01","end_date":"2021-01-02","mode":"test","status":"available","url":"https://easypost-files.s3.us-west-2.amazonaws.com/files/refund_report/20210907/refrep_eaf0cb1246a847c0b83e4d6c859a0b85.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAY27LO6YQVHEFDONM%2F20210907%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210907T170244Z&X-Amz-Expires=30&X-Amz-SignedHeaders=host&X-Amz-Signature=b5a56a9f92ce578bc3a66025eda5372dfa210ab20d75eb69e8d65b22a4960bcb","url_expires_at":"2021-09-07T17:03:14Z"}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/reports/refrep_eaf0cb1246a847c0b83e4d6c859a0b85'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 774
+            request_size: 491
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.309156
+            namelookup_time: 0.051939
+            connect_time: 0.112876
+            pretransfer_time: 0.200764
+            size_upload: !!float 0
+            size_download: !!float 665
+            speed_download: !!float 2151
+            speed_upload: !!float 0
+            download_content_length: !!float 665
+            upload_content_length: !!float 0
+            starttransfer_time: 0.309046
+            redirect_time: !!float 0
+            redirect_url: ''
+            primary_ip: 169.62.110.131
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 10.130.6.9
+            local_port: 50458
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 200662
+            connect_time_us: 112876
+            namelookup_time_us: 51939
+            pretransfer_time_us: 200764
+            redirect_time_us: 0
+            starttransfer_time_us: 309046
+            total_time_us: 309156

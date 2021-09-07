@@ -1,0 +1,77 @@
+
+-
+    request:
+        method: POST
+        url: 'https://api.easypost.com/v2/reports/payment_log/'
+        headers:
+            Host: api.easypost.com
+            X-Client-User-Agent: '{"bindings_version":"3.6.0","lang":"php","lang_version":"7.4.23","publisher":"easypost","uname":"Darwin MacBook-Pro-Justin-EasyPost 20.6.0 Darwin Kernel Version 20.6.0: Wed Jun 23 00:26:31 PDT 2021; root:xnu-7195.141.2~5\/RELEASE_X86_64 x86_64"}'
+            User-Agent: 'EasyPost/v2 PhpClient/3.6.0'
+            Authorization: ''
+            EasyPost-Version: '2'
+        body: 'start_date=2021-01-01&end_date=2021-01-02&type=payment_log'
+    response:
+        status:
+            http_version: '1.1'
+            code: '201'
+            message: Created
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: 3774dfb861379a49e786b3fe00a63af3
+            cache-control: 'no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '259'
+            etag: 'W/"4bf8c4885141fa37247ccc0ff8caf4a6"'
+            x-request-id: e3350907-9b6e-4ade-82f1-adcedb12469c
+            x-runtime: '0.045816'
+            x-node: bigweb3nuq
+            x-version-label: easypost-202109032253-dc86ce0535-master
+            x-backend: easypost
+            x-proxied: ['intlb2nuq 543ba58655', 'extlb1nuq 543ba58655']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"id":"plrep_44432ab730e3410aad8cae818225226f","object":"PaymentLogReport","created_at":"2021-09-07T16:58:49Z","updated_at":"2021-09-07T16:58:49Z","start_date":"2021-01-01","end_date":"2021-01-02","mode":"test","status":"new","url":null,"url_expires_at":null}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/reports/payment_log/'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 201
+            header_size: 779
+            request_size: 592
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.254214
+            namelookup_time: 0.00168
+            connect_time: 0.064012
+            pretransfer_time: 0.137754
+            size_upload: !!float 58
+            size_download: !!float 259
+            speed_download: !!float 1018
+            speed_upload: !!float 228
+            download_content_length: !!float 259
+            upload_content_length: !!float 58
+            starttransfer_time: 0.254151
+            redirect_time: !!float 0
+            redirect_url: ''
+            primary_ip: 169.62.110.131
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 10.130.6.9
+            local_port: 50435
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 137653
+            connect_time_us: 64012
+            namelookup_time_us: 1680
+            pretransfer_time_us: 137754
+            redirect_time_us: 0
+            starttransfer_time_us: 254151
+            total_time_us: 254214

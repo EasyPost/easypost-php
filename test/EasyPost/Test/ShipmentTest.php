@@ -2,48 +2,73 @@
 
 namespace EasyPost\Test;
 
+use VCR\VCR;
 use EasyPost\Shipment;
 use EasyPost\EasyPost;
 
-EasyPost::setApiKey('cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi');
+EasyPost::setApiKey(getenv('API_KEY'));
 
 class ShipmentTest extends \PHPUnit\Framework\TestCase
 {
+    /**
+     * Set up VCR before running tests in this file
+     *
+     * @return void
+     */
+    public static function setUpBeforeClass(): void
+    {
+        VCR::turnOn();
+    }
 
-    // TODO: set up tests for exceptions and error codes
+    /**
+     * Spin down VCR after running tests
+     *
+     * @return void
+     */
+    public static function tearDownAfterClass(): void
+    {
+        VCR::eject();
+        VCR::turnOff();
+    }
 
     /**
      * Test the creation of a Shipment
      *
-     * @return void
+     * @return Shipment
      */
     public function testCreate()
     {
-        $shipment = Shipment::create(
-            array(
-                "to_address"    => array(
-                    "street1" => "388 Townsend St",
-                    "street2" => "Apt 20",
-                    "city"    => "San Francisco",
-                    "state"   => "CA",
-                    "zip"     => "94107"),
-                "from_address"  => array(
-                    "street1" => "388 Townsend St",
-                    "street2" => "Apt 20",
-                    "city"    => "San Francisco",
-                    "state"   => "CA",
-                    "zip"     => "94107"),
-                "parcel"    => array(
-                    "length"     => "10",
-                    "width"     => "8",
-                    "height"    => "4",
-                    "weight"    => "15")
+        VCR::insertCassette('shipments/create.yml');
+
+        $shipment = Shipment::create(array(
+            "to_address" => array(
+                "street1"   => "388 Townsend St",
+                "street2"   => "Apt 20",
+                "city"      => "San Francisco",
+                "state"     => "CA",
+                "zip"       => "94107",
+            ),
+            "from_address" => array(
+                "street1"   => "388 Townsend St",
+                "street2"   => "Apt 20",
+                "city"      => "San Francisco",
+                "state"     => "CA",
+                "zip"       => "94107",
+            ),
+            "parcel" => array(
+                "length"    => "10",
+                "width"     => "8",
+                "height"    => "4",
+                "weight"    => "15",
             )
-        );
+        ));
+
         $this->assertInstanceOf('\EasyPost\Shipment', $shipment);
         $this->assertIsString($shipment->id);
-        $this->assertStringMatchesFormat("shp_%s", $shipment->id);
+        $this->assertStringMatchesFormat('shp_%s', $shipment->id);
+        $this->assertEquals($shipment->parcel->weight, '15');
 
+        // Return so the `retrieve` tests can reuse this object
         return $shipment;
     }
 
@@ -57,13 +82,13 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
      */
     public function testRetrieve(Shipment $shipment)
     {
+        VCR::insertCassette('shipments/retrieve.yml');
+
         $retrieved_shipment = Shipment::retrieve($shipment->id);
 
         $this->assertInstanceOf('\EasyPost\Shipment', $retrieved_shipment);
         $this->assertEquals($retrieved_shipment->id, $shipment->id);
         $this->assertEquals($retrieved_shipment, $shipment);
-
-        return $retrieved_shipment;
     }
 
 
@@ -74,38 +99,41 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
      */
     public function testSmartrate()
     {
-        $shipment = Shipment::create(
-            array(
-                "to_address"    => array(
-                    "street1" => "388 Townsend St",
-                    "street2" => "Apt 20",
-                    "city"    => "San Francisco",
-                    "state"   => "CA",
-                    "zip"     => "94107"),
-                "from_address"  => array(
-                    "street1" => "388 Townsend St",
-                    "street2" => "Apt 20",
-                    "city"    => "San Francisco",
-                    "state"   => "CA",
-                    "zip"     => "94107"),
-                "parcel"    => array(
-                    "length"     => "10",
-                    "width"     => "8",
-                    "height"    => "4",
-                    "weight"    => "15")
+        VCR::insertCassette('shipments/smartrates.yml');
+
+        $shipment = Shipment::create(array(
+            "to_address" => array(
+                "street1"   => "388 Townsend St",
+                "street2"   => "Apt 20",
+                "city"      => "San Francisco",
+                "state"     => "CA",
+                "zip"       => "94107",
+            ),
+            "from_address" => array(
+                "street1"   => "388 Townsend St",
+                "street2"   => "Apt 20",
+                "city"      => "San Francisco",
+                "state"     => "CA",
+                "zip"       => "94107",
+            ),
+            "parcel" => array(
+                "length"    => "10",
+                "width"     => "8",
+                "height"    => "4",
+                "weight"    => "15",
             )
-        );
+        ));
+
         $this->assertNotNull($shipment->rates);
 
         $smartrates = $shipment->get_smartrates();
         $this->assertEquals($shipment->rates[0]['id'], $smartrates[0]['id']);
-        # TODO: Once we've added `php-vcr`, assert that the following values actually match an integer
-        $this->assertNotNull($smartrates[0]['time_in_transit']['percentile_50']);
-        $this->assertNotNull($smartrates[0]['time_in_transit']['percentile_75']);
-        $this->assertNotNull($smartrates[0]['time_in_transit']['percentile_85']);
-        $this->assertNotNull($smartrates[0]['time_in_transit']['percentile_90']);
-        $this->assertNotNull($smartrates[0]['time_in_transit']['percentile_95']);
-        $this->assertNotNull($smartrates[0]['time_in_transit']['percentile_97']);
-        $this->assertNotNull($smartrates[0]['time_in_transit']['percentile_99']);
+        $this->assertEquals($smartrates[0]['time_in_transit']['percentile_50'], 1);
+        $this->assertEquals($smartrates[0]['time_in_transit']['percentile_75'], 1);
+        $this->assertEquals($smartrates[0]['time_in_transit']['percentile_85'], 1);
+        $this->assertEquals($smartrates[0]['time_in_transit']['percentile_90'], 2);
+        $this->assertEquals($smartrates[0]['time_in_transit']['percentile_95'], 2);
+        $this->assertEquals($smartrates[0]['time_in_transit']['percentile_97'], 3);
+        $this->assertEquals($smartrates[0]['time_in_transit']['percentile_99'], 4);
     }
 }

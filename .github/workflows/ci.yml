@@ -13,7 +13,7 @@ jobs:
       - name: set up php
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 7.4
+          php-version: 8.0
       - name: install composer
         run: composer self-update
       - name: install dependencies
@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-18.04
     strategy:
       matrix:
-        phpversion: [7.2, 7.3, 7.4, 8.0]
+        phpversion: [7.3, 7.4, 8.0]
     steps:
       - uses: actions/checkout@v2
       - name: set up php
@@ -45,4 +45,4 @@ jobs:
       - name: install dependencies
         run: composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
       - name: test with phpunit on ${{ matrix.phpversion }}
-        run: composer test
+        run: API_KEY=123 composer test

@@ -2,32 +2,57 @@
 
 namespace EasyPost\Test;
 
+use VCR\VCR;
 use EasyPost\Parcel;
 use EasyPost\EasyPost;
 
-EasyPost::setApiKey('cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi');
+EasyPost::setApiKey(getenv('API_KEY'));
 
 class ParcelTest extends \PHPUnit\Framework\TestCase
 {
+    /**
+     * Set up VCR before running tests in this file
+     *
+     * @return void
+     */
+    public static function setUpBeforeClass(): void
+    {
+        VCR::turnOn();
+    }
 
-    // TODO: set up tests for exceptions and error codes
+    /**
+     * Spin down VCR after running tests
+     *
+     * @return void
+     */
+    public static function tearDownAfterClass(): void
+    {
+        VCR::eject();
+        VCR::turnOff();
+    }
 
     /**
      * Test the creation of a Parcel
      *
-     * @return void
+     * @return Parcel
      */
     public function testCreate()
     {
-        $parcel_params = array("length"     => "10",
-                                "width"     => "8",
-                                "height"    => "4",
-                                "weight"    => "15");
-        $parcel = Parcel::create($parcel_params);
+        VCR::insertCassette('parcels/create.yml');
+
+        $parcel = Parcel::create(array(
+            "length"    => "10",
+            "width"     => "8",
+            "height"    => "4",
+            "weight"    => "15",
+        ));
+
         $this->assertInstanceOf('\EasyPost\Parcel', $parcel);
         $this->assertIsString($parcel->id);
-        $this->assertStringMatchesFormat("prcl_%s", $parcel->id);
+        $this->assertStringMatchesFormat('prcl_%s', $parcel->id);
+        $this->assertEquals($parcel->weight, '15');
 
+        // Return so the `retrieve` tests can reuse this object
         return $parcel;
     }
 
@@ -40,12 +65,12 @@ class ParcelTest extends \PHPUnit\Framework\TestCase
      */
     public function testRetrieve(Parcel $parcel)
     {
+        VCR::insertCassette('parcels/retrieve.yml');
+
         $retrieved_parcel = Parcel::retrieve($parcel->id);
 
         $this->assertInstanceOf('\EasyPost\Parcel', $retrieved_parcel);
         $this->assertEquals($retrieved_parcel->id, $parcel->id);
         $this->assertEquals($retrieved_parcel, $parcel);
-
-        return $retrieved_parcel;
     }
 }
