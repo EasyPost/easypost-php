@@ -89,8 +89,28 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf('\EasyPost\Shipment', $retrieved_shipment);
         $this->assertEquals($retrieved_shipment->id, $shipment->id);
         $this->assertEquals($retrieved_shipment, $shipment);
+
+        // Return so the `buy` test can reuse this object
+        return $shipment;
     }
 
+    /**
+     * Test buying a Shipment
+     *
+     * @param Shipment $shipment
+     * @return void
+     * @depends testRetrieve
+     */
+    public function testBuy(Shipment $shipment)
+    {
+        VCR::insertCassette('shipments/buy.yml');
+
+        $shipment->buy(array(
+            'id' => 'rate_94ad5814f2be4c9e97dc6256b8ec940a',
+        ));
+
+        $this->assertNotNull($shipment->postage_label);
+    }
 
     /**
      * Test retrieving smartrates for a shipment
