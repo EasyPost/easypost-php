@@ -4,7 +4,7 @@ use VCR\VCR;
 use allejo\VCR\VCRCleaner;
 
 if (!file_exists('test/cassettes')) {
-    mkdir('test/cassettes', 0777, true);
+    mkdir('test/cassettes', 0755, true);
 }
 
 VCR::configure()->setCassettePath('test/cassettes')

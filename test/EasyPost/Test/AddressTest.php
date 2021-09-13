@@ -53,7 +53,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
         $this->assertStringMatchesFormat('adr_%s', $address->id);
         $this->assertEquals($address->street1, '388 Townsend St');
 
-        // Return so the `retrieve` tests can reuse this object
+        // Return so the `retrieve` test can reuse this object
         return $address;
     }
 

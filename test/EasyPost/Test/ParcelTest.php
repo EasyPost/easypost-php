@@ -52,7 +52,7 @@ class ParcelTest extends \PHPUnit\Framework\TestCase
         $this->assertStringMatchesFormat('prcl_%s', $parcel->id);
         $this->assertEquals($parcel->weight, '15');
 
-        // Return so the `retrieve` tests can reuse this object
+        // Return so the `retrieve` test can reuse this object
         return $parcel;
     }
 

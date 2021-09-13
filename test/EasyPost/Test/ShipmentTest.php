@@ -68,7 +68,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         $this->assertStringMatchesFormat('shp_%s', $shipment->id);
         $this->assertEquals($shipment->parcel->weight, '15');
 
-        // Return so the `retrieve` tests can reuse this object
+        // Return so the `retrieve` test can reuse this object
         return $shipment;
     }
 

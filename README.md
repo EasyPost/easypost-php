@@ -103,7 +103,7 @@ Up-to-date documentation can be found at: https://www.easypost.com/docs.
 
 ## Testing & Development
 
-***NOTE: Unit tests only work with PHP >=7.2 and <8.0.***
+***NOTE: Unit tests only work with PHP >=7.3 and <8.0.***
 
 Ensure dependencies are installed, then run any of the following:
 

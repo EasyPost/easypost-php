@@ -50,7 +50,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
         $this->assertIsString($payment_log_report->id);
         $this->assertStringMatchesFormat("plrep_%s", $payment_log_report->id);
 
-        // Return so the `retrieve` tests can reuse this object
+        // Return so the `retrieve` test can reuse this object
         return $payment_log_report;
     }
 
@@ -73,7 +73,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
         $this->assertIsString($refund_report->id);
         $this->assertStringMatchesFormat("refrep_%s", $refund_report->id);
 
-        // Return so the `retrieve` tests can reuse this object
+        // Return so the `retrieve` test can reuse this object
         return $refund_report;
     }
 
@@ -96,7 +96,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
         $this->assertIsString($shipment_report->id);
         $this->assertStringMatchesFormat("shprep_%s", $shipment_report->id);
 
-        // Return so the `retrieve` tests can reuse this object
+        // Return so the `retrieve` test can reuse this object
         return $shipment_report;
     }
 
@@ -119,7 +119,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
         $this->assertIsString($shipment_invoice_report->id);
         $this->assertStringMatchesFormat("shpinvrep_%s", $shipment_invoice_report->id);
 
-        // Return so the `retrieve` tests can reuse this object
+        // Return so the `retrieve` test can reuse this object
         return $shipment_invoice_report;
     }
 
@@ -142,7 +142,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
         $this->assertIsString($tracker_report->id);
         $this->assertStringMatchesFormat("trkrep_%s", $tracker_report->id);
 
-        // Return so the `retrieve` tests can reuse this object
+        // Return so the `retrieve` test can reuse this object
         return $tracker_report;
     }
 
