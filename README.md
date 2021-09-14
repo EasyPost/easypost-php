@@ -6,7 +6,7 @@ EasyPost is a simple shipping API. You can sign up for an account at https://eas
 
 ## Installation
 
-***NOTE:** Although this library may work with PHP 5.3^, it is only tested against PHP 7.2^ and we highly recommended to use PHP 7.2^. Additionally, This library relies on the [mbstring](http://php.net/manual/en/book.mbstring.php) extension. Ensure you have it [installed](http://www.php.net/manual/en/mbstring.installation.php) correctly before using the library.*
+***NOTE:** Although this library may work with PHP 5.3^, it is only tested against PHP 7.3^ and we highly recommended to use PHP 7.3^. Additionally, This library relies on the [mbstring](http://php.net/manual/en/book.mbstring.php) extension. Ensure you have it [installed](http://www.php.net/manual/en/mbstring.installation.php) correctly before using the library.*
 
 ### Install Client Library
 
@@ -103,7 +103,7 @@ Up-to-date documentation can be found at: https://www.easypost.com/docs.
 
 ## Testing & Development
 
-***NOTE: Unit tests only work with PHP 7.2^.***
+***NOTE: Unit tests only work with PHP >=7.3 and <8.0.***
 
 Ensure dependencies are installed, then run any of the following:
 
@@ -115,5 +115,5 @@ composer lint
 composer fix
 
 # Run tests
-composer test
+API_KEY=123... composer test
 ```

@@ -1,0 +1,78 @@
+
+-
+    request:
+        method: POST
+        url: 'https://api.easypost.com/v2/addresses'
+        headers:
+            Host: api.easypost.com
+            X-Client-User-Agent: ''
+            User-Agent: 'EasyPost/v2 PhpClient/3.6.0'
+            Authorization: ''
+            EasyPost-Version: '2'
+        body: 'address%5Bstreet1%5D=388+Townsend+St&address%5Bstreet2%5D=Apt+20&address%5Bcity%5D=San+Francisco&address%5Bstate%5D=CA&address%5Bzip%5D=94107'
+    response:
+        status:
+            http_version: '1.1'
+            code: '201'
+            message: Created
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: 917ccb3f61379629e786af7e009e7905
+            cache-control: 'no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            location: /api/v2/addresses/adr_ee8ef1e75fa842e68bb9688f2e78f9f0
+            content-type: 'application/json; charset=utf-8'
+            content-length: '429'
+            etag: 'W/"590bb5c4349e8e6b32b4e63c2dc70e7e"'
+            x-request-id: dd8933f3-e203-4549-97a7-9f836b7c1b63
+            x-runtime: '0.037233'
+            x-node: bigweb4nuq
+            x-version-label: easypost-202109032253-dc86ce0535-master
+            x-backend: easypost
+            x-proxied: ['intlb1nuq 543ba58655', 'extlb2nuq 543ba58655']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"id":"adr_ee8ef1e75fa842e68bb9688f2e78f9f0","object":"Address","created_at":"2021-09-07T16:41:13+00:00","updated_at":"2021-09-07T16:41:13+00:00","name":null,"company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","country":"US","phone":null,"email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/addresses'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 201
+            header_size: 845
+            request_size: 665
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.255859
+            namelookup_time: 0.008096
+            connect_time: 0.074502
+            pretransfer_time: 0.15727
+            size_upload: !!float 141
+            size_download: !!float 429
+            speed_download: !!float 1676
+            speed_upload: !!float 551
+            download_content_length: !!float 429
+            upload_content_length: !!float 141
+            starttransfer_time: 0.255781
+            redirect_time: !!float 0
+            redirect_url: ''
+            primary_ip: 169.62.110.130
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 10.130.6.9
+            local_port: 50318
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 157215
+            connect_time_us: 74502
+            namelookup_time_us: 8096
+            pretransfer_time_us: 157270
+            redirect_time_us: 0
+            starttransfer_time_us: 255781
+            total_time_us: 255859

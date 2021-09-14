@@ -1,0 +1,77 @@
+
+-
+    request:
+        method: POST
+        url: 'https://api.easypost.com/v2/reports/refund/'
+        headers:
+            Host: api.easypost.com
+            X-Client-User-Agent: ''
+            User-Agent: 'EasyPost/v2 PhpClient/3.6.0'
+            Authorization: ''
+            EasyPost-Version: '2'
+        body: 'start_date=2021-01-01&end_date=2021-01-02&type=refund'
+    response:
+        status:
+            http_version: '1.1'
+            code: '201'
+            message: Created
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: 3774dfbe61379a48e786b3fc00a63a88
+            cache-control: 'no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '256'
+            etag: 'W/"9a2fb1b03b03bd9b6d28de8c26fa214f"'
+            x-request-id: 3199f487-79f9-4f41-af08-b0ae106d97f0
+            x-runtime: '0.065057'
+            x-node: bigweb2nuq
+            x-version-label: easypost-202109032253-dc86ce0535-master
+            x-backend: easypost
+            x-proxied: ['intlb1nuq 543ba58655', 'extlb1nuq 543ba58655']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"id":"refrep_eaf0cb1246a847c0b83e4d6c859a0b85","object":"RefundReport","created_at":"2021-09-07T16:58:48Z","updated_at":"2021-09-07T16:58:48Z","start_date":"2021-01-01","end_date":"2021-01-02","mode":"test","status":"new","url":null,"url_expires_at":null}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/reports/refund/'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 201
+            header_size: 779
+            request_size: 582
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.268631
+            namelookup_time: 0.001788
+            connect_time: 0.06137
+            pretransfer_time: 0.141702
+            size_upload: !!float 53
+            size_download: !!float 256
+            speed_download: !!float 952
+            speed_upload: !!float 197
+            download_content_length: !!float 256
+            upload_content_length: !!float 53
+            starttransfer_time: 0.268596
+            redirect_time: !!float 0
+            redirect_url: ''
+            primary_ip: 169.62.110.131
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 10.130.6.9
+            local_port: 50433
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 141623
+            connect_time_us: 61370
+            namelookup_time_us: 1788
+            pretransfer_time_us: 141702
+            redirect_time_us: 0
+            starttransfer_time_us: 268596
+            total_time_us: 268631
