@@ -6,9 +6,9 @@
         </testsuite>
     </testsuites>
 
-    <filter>
-        <whitelist>
+    <coverage cacheDirectory=".phpunit.cache/code-coverage" processUncoveredFiles="true">
+        <include>
             <directory suffix=".php">./lib/EasyPost/</directory>
-        </whitelist>
-    </filter>
+        </include>
+    </coverage>
 </phpunit>

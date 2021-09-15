@@ -29,6 +29,7 @@
     "squizlabs/php_codesniffer": "^3.0"
   },
   "scripts": {
+    "coverage": "XDEBUG_MODE=coverage ./bin/phpunit --coverage-html clover.html --coverage-clover clover.xml",
     "fix": "./bin/phpcbf",
     "lint": "./bin/phpcs",
     "test": "./bin/phpunit"
