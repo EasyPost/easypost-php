@@ -116,4 +116,7 @@ composer fix
 
 # Run tests
 API_KEY=123... composer test
+
+# Generate coverage reports (requires Xdebug)
+API_KEY=123... composer coverage
 ```
