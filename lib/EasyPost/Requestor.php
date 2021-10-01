@@ -70,39 +70,6 @@ class Requestor
     }
 
     /**
-     * @param mixed $arr
-     * @param null  $prefix
-     * @return string
-     */
-    public static function encode($arr, $prefix = null)
-    {
-        if (!is_array($arr)) {
-            return $arr;
-        }
-
-        $r = array();
-        foreach ($arr as $k => $v) {
-            if (is_null($v)) {
-                continue;
-            }
-
-            if ($prefix && isset($k)) {
-                $k = $prefix . "[" . $k . "]";
-            } elseif ($prefix) {
-                $k = $prefix . "[]";
-            }
-
-            if (is_array($v)) {
-                $r[] = self::encode($v, $k, true);
-            } else {
-                $r[] = urlencode($k) . "=" . urlencode($v);
-            }
-        }
-
-        return implode("&", $r);
-    }
-
-    /**
      * @param string $method
      * @param string $url
      * @param mixed  $params
@@ -151,9 +118,13 @@ class Requestor
             'publisher'        => 'easypost',
             'uname'            => $uname
         );
-        $headers = array('X-Client-User-Agent: ' . json_encode($ua),
+        $headers = array(
+            'Accept: application/json',
+            "Authorization: Bearer {$myApiKey}",
+            'Content-Type: application/json',
             'User-Agent: EasyPost/v2 PhpClient/' . EasyPost::VERSION,
-            "Authorization: Bearer {$myApiKey}");
+            'X-Client-User-Agent: ' . json_encode($ua),
+        );
         if (EasyPost::$apiVersion) {
             $headers[] = 'EasyPost-Version: ' . EasyPost::$apiVersion;
         }
@@ -176,27 +147,28 @@ class Requestor
         $curl = curl_init();
         $method = strtolower($method);
         $curlOptions = array();
+        $json_encoded_params = json_encode($params);
 
         // method
         if ($method == 'get') {
             $curlOptions[CURLOPT_HTTPGET] = 1;
             if (count($params) > 0) {
-                $encoded = self::encode($params);
+                $encoded = $json_encoded_params;
                 $absUrl = "$absUrl?$encoded";
             }
         } elseif ($method == 'post') {
             $curlOptions[CURLOPT_POST] = 1;
-            $curlOptions[CURLOPT_POSTFIELDS] = self::encode($params);
+            $curlOptions[CURLOPT_POSTFIELDS] = $json_encoded_params;
         } elseif ($method == 'delete') {
             $curlOptions[CURLOPT_CUSTOMREQUEST] = strtoupper($method);
             if (count($params) > 0) {
-                $encoded = self::encode($params);
+                $encoded = $json_encoded_params;
                 $absUrl = "{$absUrl}?{$encoded}";
             }
         } elseif ($method == 'patch' || $method == 'put') {
             $curlOptions[CURLOPT_CUSTOMREQUEST] = strtoupper($method);
             if (count($params) > 0) {
-                $curlOptions[CURLOPT_POSTFIELDS] = self::encode($params);
+                $curlOptions[CURLOPT_POSTFIELDS] = $json_encoded_params;
             }
         } else {
             throw new Error("Unrecognized method {$method}");

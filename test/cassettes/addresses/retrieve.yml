@@ -2,12 +2,14 @@
 -
     request:
         method: GET
-        url: 'https://api.easypost.com/v2/addresses/adr_ee8ef1e75fa842e68bb9688f2e78f9f0'
+        url: 'https://api.easypost.com/v2/addresses/adr_059da1d447734818bee9a1a2fa429230'
         headers:
             Host: api.easypost.com
-            X-Client-User-Agent: ''
-            User-Agent: 'EasyPost/v2 PhpClient/3.6.0'
+            Accept: application/json
             Authorization: ''
+            Content-Type: application/json
+            User-Agent: 'EasyPost/v2 PhpClient/3.6.0'
+            X-Client-User-Agent: ''
             EasyPost-Version: '2'
     response:
         status:
@@ -21,56 +23,56 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 917ccb4161379c70e786b49f00a093a4
+            x-ep-request-uuid: 8d29b69961578bbbe78bb42c003aeda7
             cache-control: 'no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '429'
-            etag: 'W/"590bb5c4349e8e6b32b4e63c2dc70e7e"'
-            x-request-id: c2ed6931-75f9-4195-a611-d26340ce6ea5
-            x-runtime: '0.022779'
-            x-node: bigweb8nuq
-            x-version-label: easypost-202109032253-dc86ce0535-master
+            etag: 'W/"8a84928b0f256fa81df9d80b69ef7c60"'
+            x-request-id: 67c6b326-9644-4ebd-ab31-480b70e325d9
+            x-runtime: '0.024227'
+            x-node: bigweb6nuq
+            x-version-label: easypost-202110011858-559f609973-master
             x-backend: easypost
-            x-proxied: ['intlb1nuq 543ba58655', 'extlb2nuq 543ba58655']
+            x-proxied: ['intlb2nuq d40607e4ab', 'extlb2nuq d40607e4ab']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"adr_ee8ef1e75fa842e68bb9688f2e78f9f0","object":"Address","created_at":"2021-09-07T16:41:13+00:00","updated_at":"2021-09-07T16:41:13+00:00","name":null,"company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","country":"US","phone":null,"email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}}'
+        body: '{"id":"adr_059da1d447734818bee9a1a2fa429230","object":"Address","created_at":"2021-10-01T22:29:15+00:00","updated_at":"2021-10-01T22:29:15+00:00","name":null,"company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","country":"US","phone":null,"email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}}'
         curl_info:
-            url: 'https://api.easypost.com/v2/addresses/adr_ee8ef1e75fa842e68bb9688f2e78f9f0'
+            url: 'https://api.easypost.com/v2/addresses/adr_059da1d447734818bee9a1a2fa429230'
             content_type: 'application/json; charset=utf-8'
             http_code: 200
             header_size: 774
-            request_size: 490
+            request_size: 535
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.301913
-            namelookup_time: 0.047044
-            connect_time: 0.109122
-            pretransfer_time: 0.216986
+            total_time: 0.224275
+            namelookup_time: 0.001475
+            connect_time: 0.06067
+            pretransfer_time: 0.138363
             size_upload: !!float 0
             size_download: !!float 429
-            speed_download: !!float 1420
+            speed_download: !!float 1912
             speed_upload: !!float 0
             download_content_length: !!float 429
             upload_content_length: !!float 0
-            starttransfer_time: 0.301812
+            starttransfer_time: 0.224243
             redirect_time: !!float 0
             redirect_url: ''
             primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.9
-            local_port: 50481
+            local_ip: 10.130.6.13
+            local_port: 59818
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 216887
-            connect_time_us: 109122
-            namelookup_time_us: 47044
-            pretransfer_time_us: 216986
+            appconnect_time_us: 138332
+            connect_time_us: 60670
+            namelookup_time_us: 1475
+            pretransfer_time_us: 138363
             redirect_time_us: 0
-            starttransfer_time_us: 301812
-            total_time_us: 301913
+            starttransfer_time_us: 224243
+            total_time_us: 224275

@@ -5,11 +5,13 @@
         url: 'https://api.easypost.com/v2/reports/tracker/'
         headers:
             Host: api.easypost.com
-            X-Client-User-Agent: ''
-            User-Agent: 'EasyPost/v2 PhpClient/3.6.0'
+            Accept: application/json
             Authorization: ''
+            Content-Type: application/json
+            User-Agent: 'EasyPost/v2 PhpClient/3.6.0'
+            X-Client-User-Agent: ''
             EasyPost-Version: '2'
-        body: 'start_date=2021-01-01&end_date=2021-01-02&type=tracker'
+        body: '{"start_date":"2021-01-02","end_date":"2021-01-03","type":"tracker"}'
     response:
         status:
             http_version: '1.1'
@@ -22,56 +24,56 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 3774dfb861379a49e786b3fd00a63abc
+            x-ep-request-uuid: 8d29b69461578bbce78bb447003aee01
             cache-control: 'no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '282'
-            etag: 'W/"54b1d381e58fa08a7280d3435549f6bf"'
-            x-request-id: f0580179-7bf8-4d8e-8956-d8ba3bf2c3f6
-            x-runtime: '0.048567'
+            etag: 'W/"9f0520ffba1716b0e6a3d55cd127b6b4"'
+            x-request-id: 2074dd1a-83af-4497-8709-8009dda8892b
+            x-runtime: '0.038858'
             x-node: bigweb8nuq
-            x-version-label: easypost-202109032253-dc86ce0535-master
+            x-version-label: easypost-202110011858-559f609973-master
             x-backend: easypost
-            x-proxied: ['intlb1nuq 543ba58655', 'extlb1nuq 543ba58655']
+            x-proxied: ['intlb2nuq d40607e4ab', 'extlb2nuq d40607e4ab']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"trkrep_f3a8b8c133ff4ebaaf185272ccd32e5c","object":"TrackerReport","created_at":"2021-09-07T16:58:49Z","updated_at":"2021-09-07T16:58:49Z","start_date":"2021-01-01","end_date":"2021-01-02","mode":"test","status":"new","url":null,"url_expires_at":null,"include_children":false}'
+        body: '{"id":"trkrep_3d3cbd083ed74b2b931ec6c52ab4f448","object":"TrackerReport","created_at":"2021-10-01T22:29:16Z","updated_at":"2021-10-01T22:29:16Z","start_date":"2021-01-02","end_date":"2021-01-03","mode":"test","status":"new","url":null,"url_expires_at":null,"include_children":false}'
         curl_info:
             url: 'https://api.easypost.com/v2/reports/tracker/'
             content_type: 'application/json; charset=utf-8'
             http_code: 201
             header_size: 779
-            request_size: 584
+            request_size: 594
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.24534
-            namelookup_time: 0.00168
-            connect_time: 0.061869
-            pretransfer_time: 0.133431
-            size_upload: !!float 54
+            total_time: 0.245008
+            namelookup_time: 0.001632
+            connect_time: 0.064219
+            pretransfer_time: 0.145187
+            size_upload: !!float 68
             size_download: !!float 282
-            speed_download: !!float 1149
-            speed_upload: !!float 220
+            speed_download: !!float 1150
+            speed_upload: !!float 277
             download_content_length: !!float 282
-            upload_content_length: !!float 54
-            starttransfer_time: 0.245298
+            upload_content_length: !!float 68
+            starttransfer_time: 0.24498
             redirect_time: !!float 0
             redirect_url: ''
-            primary_ip: 169.62.110.131
+            primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.9
-            local_port: 50434
+            local_ip: 10.130.6.13
+            local_port: 59822
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 133396
-            connect_time_us: 61869
-            namelookup_time_us: 1680
-            pretransfer_time_us: 133431
+            appconnect_time_us: 145130
+            connect_time_us: 64219
+            namelookup_time_us: 1632
+            pretransfer_time_us: 145187
             redirect_time_us: 0
-            starttransfer_time_us: 245298
-            total_time_us: 245340
+            starttransfer_time_us: 244980
+            total_time_us: 245008

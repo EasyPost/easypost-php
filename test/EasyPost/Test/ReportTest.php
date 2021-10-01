@@ -41,8 +41,8 @@ class ReportTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('reports/createPaymentLogReport.yml');
 
         $payment_log_report = Report::create(array(
-            "start_date" => "2021-01-01",
-            "end_date" => "2021-01-02",
+            "start_date" => "2021-01-02",
+            "end_date" => "2021-01-03",
             "type" => "payment_log"
         ));
 
@@ -64,8 +64,8 @@ class ReportTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('reports/createRefundReport.yml');
 
         $refund_report = Report::create(array(
-            "start_date" => "2021-01-01",
-            "end_date" => "2021-01-02",
+            "start_date" => "2021-01-02",
+            "end_date" => "2021-01-03",
             "type" => "refund"
         ));
 
@@ -87,8 +87,8 @@ class ReportTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('reports/createShipmentReport.yml');
 
         $shipment_report = Report::create(array(
-            "start_date" => "2021-01-01",
-            "end_date" => "2021-01-02",
+            "start_date" => "2021-01-02",
+            "end_date" => "2021-01-03",
             "type" => "shipment"
         ));
 
@@ -110,8 +110,8 @@ class ReportTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('reports/createShipmentInvoiceReport.yml');
 
         $shipment_invoice_report = Report::create(array(
-            "start_date" => "2021-01-01",
-            "end_date" => "2021-01-02",
+            "start_date" => "2021-01-02",
+            "end_date" => "2021-01-03",
             "type" => "shipment_invoice"
         ));
 
@@ -133,8 +133,8 @@ class ReportTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('reports/createTrackerReport.yml');
 
         $tracker_report = Report::create(array(
-            "start_date" => "2021-01-01",
-            "end_date" => "2021-01-02",
+            "start_date" => "2021-01-02",
+            "end_date" => "2021-01-03",
             "type" => "tracker"
         ));
 
