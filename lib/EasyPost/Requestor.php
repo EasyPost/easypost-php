@@ -70,6 +70,39 @@ class Requestor
     }
 
     /**
+     * @param mixed $arr
+     * @param null  $prefix
+     * @return string
+     */
+    public static function _urlEncode($arr, $prefix = null)
+    {
+        if (!is_array($arr)) {
+            return $arr;
+        }
+
+        $r = array();
+        foreach ($arr as $k => $v) {
+            if (is_null($v)) {
+                continue;
+            }
+
+            if ($prefix && isset($k)) {
+                $k = $prefix . "[" . $k . "]";
+            } elseif ($prefix) {
+                $k = $prefix . "[]";
+            }
+
+            if (is_array($v)) {
+                $r[] = self::_urlEncode($v, $k, true);
+            } else {
+                $r[] = urlencode($k) . "=" . urlencode($v);
+            }
+        }
+
+        return implode("&", $r);
+    }
+
+    /**
      * @param string $method
      * @param string $url
      * @param mixed  $params
@@ -147,28 +180,27 @@ class Requestor
         $curl = curl_init();
         $method = strtolower($method);
         $curlOptions = array();
-        $json_encoded_params = json_encode($params);
 
-        // method
+        // Setup the HTTP method and params to use on the request
         if ($method == 'get') {
             $curlOptions[CURLOPT_HTTPGET] = 1;
             if (count($params) > 0) {
-                $encoded = $json_encoded_params;
-                $absUrl = "$absUrl?$encoded";
+                $urlParams = self::_urlEncode($params);
+                $absUrl = "$absUrl?$urlParams";
             }
         } elseif ($method == 'post') {
             $curlOptions[CURLOPT_POST] = 1;
-            $curlOptions[CURLOPT_POSTFIELDS] = $json_encoded_params;
-        } elseif ($method == 'delete') {
-            $curlOptions[CURLOPT_CUSTOMREQUEST] = strtoupper($method);
-            if (count($params) > 0) {
-                $encoded = $json_encoded_params;
-                $absUrl = "{$absUrl}?{$encoded}";
-            }
+            $curlOptions[CURLOPT_POSTFIELDS] = json_encode($params);
         } elseif ($method == 'patch' || $method == 'put') {
             $curlOptions[CURLOPT_CUSTOMREQUEST] = strtoupper($method);
             if (count($params) > 0) {
-                $curlOptions[CURLOPT_POSTFIELDS] = $json_encoded_params;
+                $curlOptions[CURLOPT_POSTFIELDS] = json_encode($params);
+            }
+        } elseif ($method == 'delete') {
+            $curlOptions[CURLOPT_CUSTOMREQUEST] = strtoupper($method);
+            if (count($params) > 0) {
+                $urlParams = self::_urlEncode($params);
+                $absUrl = "$absUrl?$urlParams";
             }
         } else {
             throw new Error("Unrecognized method {$method}");
