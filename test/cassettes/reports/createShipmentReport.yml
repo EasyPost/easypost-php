@@ -5,11 +5,13 @@
         url: 'https://api.easypost.com/v2/reports/shipment/'
         headers:
             Host: api.easypost.com
-            X-Client-User-Agent: ''
-            User-Agent: 'EasyPost/v2 PhpClient/3.6.0'
+            Accept: application/json
             Authorization: ''
+            Content-Type: application/json
+            User-Agent: 'EasyPost/v2 PhpClient/3.6.0'
+            X-Client-User-Agent: ''
             EasyPost-Version: '2'
-        body: 'start_date=2021-01-01&end_date=2021-01-02&type=shipment'
+        body: '{"start_date":"2021-01-02","end_date":"2021-01-03","type":"shipment"}'
     response:
         status:
             http_version: '1.1'
@@ -22,56 +24,56 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 3774dfbd61379a48e786b3fb00a63a73
+            x-ep-request-uuid: 8d29b69661578bbde78bb44a003aee41
             cache-control: 'no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '283'
-            etag: 'W/"d85ad54c0e4ee0d6c9d4f6f7b4066b2d"'
-            x-request-id: 8439cc0f-3c76-4240-ad10-03eb3498e2c7
-            x-runtime: '0.044387'
+            etag: 'W/"b32ad5e7e95c448dfbeb42820ee4c5ab"'
+            x-request-id: 62951230-d73f-42dc-a6d1-bc70655944fd
+            x-runtime: '0.049582'
             x-node: bigweb6nuq
-            x-version-label: easypost-202109032253-dc86ce0535-master
+            x-version-label: easypost-202110011858-559f609973-master
             x-backend: easypost
-            x-proxied: ['intlb2nuq 543ba58655', 'extlb1nuq 543ba58655']
+            x-proxied: ['intlb2nuq d40607e4ab', 'extlb2nuq d40607e4ab']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"shprep_1c2b5100501646c783fa7ed9179098ff","object":"ShipmentReport","created_at":"2021-09-07T16:58:48Z","updated_at":"2021-09-07T16:58:48Z","start_date":"2021-01-01","end_date":"2021-01-02","mode":"test","status":"new","url":null,"url_expires_at":null,"include_children":false}'
+        body: '{"id":"shprep_afc0505b01244b879126a0f5ac032ff3","object":"ShipmentReport","created_at":"2021-10-01T22:29:17Z","updated_at":"2021-10-01T22:29:17Z","start_date":"2021-01-02","end_date":"2021-01-03","mode":"test","status":"new","url":null,"url_expires_at":null,"include_children":false}'
         curl_info:
             url: 'https://api.easypost.com/v2/reports/shipment/'
             content_type: 'application/json; charset=utf-8'
             http_code: 201
             header_size: 779
-            request_size: 586
+            request_size: 596
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.275592
-            namelookup_time: 0.012444
-            connect_time: 0.079331
-            pretransfer_time: 0.167652
-            size_upload: !!float 55
+            total_time: 0.258868
+            namelookup_time: 0.001815
+            connect_time: 0.063448
+            pretransfer_time: 0.142094
+            size_upload: !!float 69
             size_download: !!float 283
-            speed_download: !!float 1026
-            speed_upload: !!float 199
+            speed_download: !!float 1093
+            speed_upload: !!float 266
             download_content_length: !!float 283
-            upload_content_length: !!float 55
-            starttransfer_time: 0.275498
+            upload_content_length: !!float 69
+            starttransfer_time: 0.258837
             redirect_time: !!float 0
             redirect_url: ''
-            primary_ip: 169.62.110.131
+            primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.9
-            local_port: 50432
+            local_ip: 10.130.6.13
+            local_port: 59825
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 167439
-            connect_time_us: 79331
-            namelookup_time_us: 12444
-            pretransfer_time_us: 167652
+            appconnect_time_us: 142055
+            connect_time_us: 63448
+            namelookup_time_us: 1815
+            pretransfer_time_us: 142094
             redirect_time_us: 0
-            starttransfer_time_us: 275498
-            total_time_us: 275592
+            starttransfer_time_us: 258837
+            total_time_us: 258868

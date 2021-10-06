@@ -106,7 +106,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('shipments/buy.yml');
 
         $shipment->buy(array(
-            'id' => 'rate_94ad5814f2be4c9e97dc6256b8ec940a',
+            'rate' => $shipment->lowest_rate(),
         ));
 
         $this->assertNotNull($shipment->postage_label);
@@ -154,6 +154,6 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($smartrates[0]['time_in_transit']['percentile_90'], 2);
         $this->assertEquals($smartrates[0]['time_in_transit']['percentile_95'], 2);
         $this->assertEquals($smartrates[0]['time_in_transit']['percentile_97'], 3);
-        $this->assertEquals($smartrates[0]['time_in_transit']['percentile_99'], 4);
+        $this->assertEquals($smartrates[0]['time_in_transit']['percentile_99'], 5);
     }
 }
