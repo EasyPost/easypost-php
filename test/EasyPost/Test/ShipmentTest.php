@@ -158,7 +158,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test the creation of a Shipment with empty objects 
+     * Test the creation of a Shipment with empty objects
      * `options`, `customs_info`, and `customs_items`
      *
      * @return Shipment
