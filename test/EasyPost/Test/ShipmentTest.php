@@ -192,11 +192,15 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
             "customs_info" => array(
                 "customs_items" => array()
             ),
+            "tax_identifiers" => null,
         ));
 
         $this->assertInstanceOf('\EasyPost\Shipment', $shipment);
         $this->assertIsString($shipment->id);
         $this->assertStringMatchesFormat('shp_%s', $shipment->id);
+        $this->assertNotEmpty($shipment->options);
+        $this->assertNotEmpty($shipment->customs_info);
         $this->assertEmpty($shipment->customs_info->customs_items);
+        $this->assertNull($shipment->tax_identifiers);
     }
 }
