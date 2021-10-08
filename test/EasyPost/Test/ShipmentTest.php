@@ -156,4 +156,47 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($smartrates[0]['time_in_transit']['percentile_97'], 3);
         $this->assertEquals($smartrates[0]['time_in_transit']['percentile_99'], 5);
     }
+
+    /**
+     * Test the creation of a Shipment with empty objects 
+     * `options`, `customs_info`, and `customs_items`
+     *
+     * @return Shipment
+     */
+    public function testCreateEmptyObjects()
+    {
+        VCR::insertCassette('shipments/createEmptyObjects.yml');
+
+        $shipment = Shipment::create(array(
+            "to_address" => array(
+                "street1"   => "388 Townsend St",
+                "street2"   => "Apt 20",
+                "city"      => "San Francisco",
+                "state"     => "CA",
+                "zip"       => "94107",
+            ),
+            "from_address" => array(
+                "street1"   => "388 Townsend St",
+                "street2"   => "Apt 20",
+                "city"      => "San Francisco",
+                "state"     => "CA",
+                "zip"       => "94107",
+            ),
+            "parcel" => array(
+                "length"    => "10",
+                "width"     => "8",
+                "height"    => "4",
+                "weight"    => "15",
+            ),
+            "options" => array(),
+            "customs_info" => array(
+                "customs_items" => array()
+            ),
+        ));
+
+        $this->assertInstanceOf('\EasyPost\Shipment', $shipment);
+        $this->assertIsString($shipment->id);
+        $this->assertStringMatchesFormat('shp_%s', $shipment->id);
+        $this->assertEmpty($shipment->customs_info->customs_items);
+    }
 }

@@ -190,11 +190,11 @@ class Requestor
             }
         } elseif ($method == 'post') {
             $curlOptions[CURLOPT_POST] = 1;
-            $curlOptions[CURLOPT_POSTFIELDS] = json_encode($params);
+            $curlOptions[CURLOPT_POSTFIELDS] = json_encode($params, JSON_FORCE_OBJECT);
         } elseif ($method == 'patch' || $method == 'put') {
             $curlOptions[CURLOPT_CUSTOMREQUEST] = strtoupper($method);
             if (count($params) > 0) {
-                $curlOptions[CURLOPT_POSTFIELDS] = json_encode($params);
+                $curlOptions[CURLOPT_POSTFIELDS] = json_encode($params, JSON_FORCE_OBJECT);
             }
         } elseif ($method == 'delete') {
             $curlOptions[CURLOPT_CUSTOMREQUEST] = strtoupper($method);
