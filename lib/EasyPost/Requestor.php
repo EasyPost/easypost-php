@@ -10,7 +10,7 @@ class Requestor
     public $apiKey;
 
     /**
-     * constructor
+     * Constructor
      *
      * @param string $apiKey
      */
@@ -20,7 +20,7 @@ class Requestor
     }
 
     /**
-     * get the API url
+     * Get the API URL
      *
      * @param string $url
      * @return string
@@ -33,6 +33,8 @@ class Requestor
     }
 
     /**
+     * Converts a set of values to UTF-8 encoding
+     *
      * @param mixed $value
      * @return string
      */
@@ -46,30 +48,38 @@ class Requestor
     }
 
     /**
-     * @param mixed $d
+     * Encodes an EasyPost object and prepares the data for the request
+     *
+     * @param mixed $data
      * @return array|string
      */
-    private static function _encodeObjects($d)
+    private static function _encodeObjects($data)
     {
-        if ($d instanceof EasypostResource) {
-            return array("id" => self::utf8($d->id));
-        } elseif ($d === true) {
+        if (!$data) {
+            $data = array();
+        }
+
+        if ($data instanceof EasypostResource) {
+            return array("id" => self::utf8($data->id));
+        } elseif ($data === true) {
             return 'true';
-        } elseif ($d === false) {
+        } elseif ($data === false) {
             return 'false';
-        } elseif (is_array($d)) {
-            $res = array();
-            foreach ($d as $k => $v) {
-                $res[$k] = self::_encodeObjects($v);
+        } elseif (is_array($data)) {
+            $resource = array();
+            foreach ($data as $k => $v) {
+                $resource[$k] = self::_encodeObjects($v);
             }
 
-            return $res;
+            return array_filter($resource);
         } else {
-            return self::utf8($d);
+            return self::utf8($data);
         }
     }
 
     /**
+     * URL Encodes data for GET requests
+     *
      * @param mixed $arr
      * @param null  $prefix
      * @return string
@@ -103,6 +113,8 @@ class Requestor
     }
 
     /**
+     * Make a request to the EasyPost API
+     *
      * @param string $method
      * @param string $url
      * @param mixed  $params
@@ -111,9 +123,6 @@ class Requestor
      */
     public function request($method, $url, $params = null, $apiKeyRequired = true)
     {
-        if (!$params) {
-            $params = array();
-        }
         list($httpBody, $httpStatus, $myApiKey) = $this->_requestRaw($method, $url, $params, $apiKeyRequired);
         $response = $this->_interpretResponse($httpBody, $httpStatus);
 
@@ -121,6 +130,8 @@ class Requestor
     }
 
     /**
+     * Internal logic required to make a request to the EasyPost API
+     *
      * @param string $method
      * @param string $url
      * @param mixed  $params
@@ -167,6 +178,8 @@ class Requestor
     }
 
     /**
+     * Build the cURL request
+     *
      * @param string $method
      * @param string $absUrl
      * @param mixed  $headers
@@ -190,11 +203,11 @@ class Requestor
             }
         } elseif ($method == 'post') {
             $curlOptions[CURLOPT_POST] = 1;
-            $curlOptions[CURLOPT_POSTFIELDS] = json_encode($params, JSON_FORCE_OBJECT);
+            $curlOptions[CURLOPT_POSTFIELDS] = json_encode($params);
         } elseif ($method == 'patch' || $method == 'put') {
             $curlOptions[CURLOPT_CUSTOMREQUEST] = strtoupper($method);
             if (count($params) > 0) {
-                $curlOptions[CURLOPT_POSTFIELDS] = json_encode($params, JSON_FORCE_OBJECT);
+                $curlOptions[CURLOPT_POSTFIELDS] = json_encode($params);
             }
         } elseif ($method == 'delete') {
             $curlOptions[CURLOPT_CUSTOMREQUEST] = strtoupper($method);
@@ -242,6 +255,8 @@ class Requestor
     }
 
     /**
+     * Interpret the response body we receive from the API
+     *
      * @param string $httpBody
      * @param int    $httpStatus
      * @return mixed
@@ -262,6 +277,8 @@ class Requestor
     }
 
     /**
+     * Handles API errors returned from EasyPost
+     *
      * @param string $httpBody
      * @param int    $httpStatus
      * @param array  $response
@@ -276,6 +293,8 @@ class Requestor
     }
 
     /**
+     * Handle errors related to curling the API
+     *
      * @param int    $errorNum
      * @param string $message
      * @throws \EasyPost\Error

@@ -60,13 +60,35 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
                 "width"     => "8",
                 "height"    => "4",
                 "weight"    => "15",
-            )
+            ),
+            "customs_info"  => array(
+                "eel_pfc" => 'NOEEI 30.37(a)',
+                "customs_certify" => true,
+                "customs_signer" => 'Steve Brule',
+                "contents_type" => 'merchandise',
+                "contents_explanation" => '',
+                "restriction_type" => 'none',
+                "non_delivery_option" => 'return',
+                "customs_items" => array(
+                    array(
+                        "description" => 'Sweet shirts',
+                        "quantity" => 2,
+                        "weight" => 11,
+                        "value" => 23,
+                        "hs_tariff_number" => '654321',
+                        "origin_country" => 'US'
+                    ),
+                ),
+            ),
+            "options" => array(
+                "label_format"  => "PDF",
+            ),
         ));
 
         $this->assertInstanceOf('\EasyPost\Shipment', $shipment);
         $this->assertIsString($shipment->id);
         $this->assertStringMatchesFormat('shp_%s', $shipment->id);
-        $this->assertEquals($shipment->parcel->weight, '15');
+        $this->assertEquals($shipment->options->label_format, 'PDF');
 
         // Return so the `retrieve` test can reuse this object
         return $shipment;
@@ -154,17 +176,61 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($smartrates[0]['time_in_transit']['percentile_90'], 2);
         $this->assertEquals($smartrates[0]['time_in_transit']['percentile_95'], 2);
         $this->assertEquals($smartrates[0]['time_in_transit']['percentile_97'], 3);
-        $this->assertEquals($smartrates[0]['time_in_transit']['percentile_99'], 5);
+        $this->assertEquals($smartrates[0]['time_in_transit']['percentile_99'], 6);
     }
 
     /**
      * Test the creation of a Shipment with empty or null objects and arrays
      *
-     * @return Shipment
+     * @return void
      */
     public function testCreateEmptyObjects()
     {
         VCR::insertCassette('shipments/createEmptyObjects.yml');
+
+        $shipment = Shipment::create(array(
+            "to_address" => array(
+                "street1"   => "388 Townsend St",
+                "street2"   => "Apt 20",
+                "city"      => "San Francisco",
+                "state"     => "CA",
+                "zip"       => "94107",
+            ),
+            "from_address" => array(
+                "street1"   => "388 Townsend St",
+                "street2"   => "Apt 20",
+                "city"      => "San Francisco",
+                "state"     => "CA",
+                "zip"       => "94107",
+            ),
+            "parcel" => array(
+                "length"    => null,
+                "width"     => "",
+                "height"    => null,
+                "weight"    => "15",
+            ),
+            "customs_info" => array(
+                "customs_items" => array()
+            ),
+            "options" => null,
+            "tax_identifiers" => null,
+        ));
+
+        $this->assertInstanceOf('\EasyPost\Shipment', $shipment);
+        $this->assertIsString($shipment->id);
+        $this->assertStringMatchesFormat('shp_%s', $shipment->id);
+        $this->assertNotEmpty($shipment->options); // The EasyPost API populates some default values here
+        $this->assertNull($shipment->customs_info);
+    }
+
+    /**
+     * Test the creation of a Shipment with `tax_identifiers`
+     *
+     * @return void
+     */
+    public function testCreateTaxIdentifiers()
+    {
+        VCR::insertCassette('shipments/createTaxIdentifiers.yml');
 
         $shipment = Shipment::create(array(
             "to_address" => array(
@@ -187,23 +253,19 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
                 "height"    => "4",
                 "weight"    => "15",
             ),
-            "options" => array(
-                "label_format"  => "PDF",
-                "label_size"    => null,
-            ),
-            "customs_info" => array(
-                "customs_items" => array()
-            ),
-            "tax_identifiers" => null,
+            "tax_identifiers" => array(
+                array(
+                    "entity" => "SENDER",
+                    "tax_id_type" => "IOSS",
+                    "tax_id" => "12345",
+                    "issuing_country" => "GB",
+                )
+            )
         ));
 
         $this->assertInstanceOf('\EasyPost\Shipment', $shipment);
         $this->assertIsString($shipment->id);
         $this->assertStringMatchesFormat('shp_%s', $shipment->id);
-        $this->assertEquals($shipment->options->label_format, "PDF");
-        $this->assertNull($shipment->options->label_size);
-        $this->assertNotEmpty($shipment->customs_info);
-        $this->assertEmpty($shipment->customs_info->customs_items);
-        $this->assertNull($shipment->tax_identifiers);
+        $this->assertNotEmpty($shipment->tax_identifiers);
     }
 }
