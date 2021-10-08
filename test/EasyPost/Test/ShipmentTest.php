@@ -158,8 +158,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test the creation of a Shipment with empty objects
-     * `options`, `customs_info`, and `customs_items`
+     * Test the creation of a Shipment with empty or null objects and arrays
      *
      * @return Shipment
      */
@@ -188,7 +187,10 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
                 "height"    => "4",
                 "weight"    => "15",
             ),
-            "options" => array(),
+            "options" => array(
+                "label_format"  => "PDF",
+                "label_size"    => null,
+            ),
             "customs_info" => array(
                 "customs_items" => array()
             ),
@@ -198,7 +200,8 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf('\EasyPost\Shipment', $shipment);
         $this->assertIsString($shipment->id);
         $this->assertStringMatchesFormat('shp_%s', $shipment->id);
-        $this->assertNotEmpty($shipment->options);
+        $this->assertEquals($shipment->options->label_format, "PDF");
+        $this->assertNull($shipment->options->label_size);
         $this->assertNotEmpty($shipment->customs_info);
         $this->assertEmpty($shipment->customs_info->customs_items);
         $this->assertNull($shipment->tax_identifiers);
