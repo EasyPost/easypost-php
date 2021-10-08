@@ -1,8 +1,11 @@
 ## CHANGELOG
 
-### NEXT RELEASE
+### 4.0.0 2021-10-06
 
+* JSON encodes POST bodies instead of form encoding them
+* Adds TaxIdentifier support
 * Corrects references of `contact@easypost.com` to `support@easypost.com`
+* Bumps patch versions of dependencies
 
 ### 3.6.0 2021-06-10
 
