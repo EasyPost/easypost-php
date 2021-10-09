@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+### 4.0.1 2021-10-08
+
+* Properly handles empty lists and objects with JSON encoding (closes #114)
+
 ### 4.0.0 2021-10-06
 
 * JSON encodes POST bodies instead of form encoding them
