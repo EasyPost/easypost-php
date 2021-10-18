@@ -74,4 +74,32 @@ class AddressTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($retrieved_address->id, $address->id);
         $this->assertEquals($retrieved_address, $address);
     }
+
+    /**
+     * Test the creation of a verified address
+     * We purposefully pass in slightly incorrect data to get the corrected address back once verified
+     *
+     * @return void
+     */
+    public function testCreateVerify()
+    {
+        VCR::insertCassette('addresses/createVerify.yml');
+
+        $address = Address::create(array(
+            "verify"  => array(true),
+            "street1" => "417 montgomery streat",
+            "street2" => "FL 5",
+            "city"    => "San Francisco",
+            "state"   => "CA",
+            "zip"     => "94104",
+            "country" => "US",
+            "company" => "EasyPost",
+            "phone"   => "415-123-4567"
+        ));
+
+        $this->assertInstanceOf('\EasyPost\Address', $address);
+        $this->assertIsString($address->id);
+        $this->assertStringMatchesFormat('adr_%s', $address->id);
+        $this->assertEquals($address->street1, '417 MONTGOMERY ST STE 500');
+    }
 }

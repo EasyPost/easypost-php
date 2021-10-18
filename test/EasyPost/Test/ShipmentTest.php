@@ -81,14 +81,18 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
                 ),
             ),
             "options" => array(
-                "label_format"  => "PDF",
+                "label_format"      => "PDF",
+                "invoice_number"    => 123 // Tests that we encode integers to strings where appropriate
             ),
+            "reference" => 123 // Tests that we encode integers to strings where appropriate
         ));
 
         $this->assertInstanceOf('\EasyPost\Shipment', $shipment);
         $this->assertIsString($shipment->id);
         $this->assertStringMatchesFormat('shp_%s', $shipment->id);
         $this->assertEquals($shipment->options->label_format, 'PDF');
+        $this->assertEquals($shipment->options->invoice_number, '123');
+        $this->assertEquals($shipment->reference, '123');
 
         // Return so the `retrieve` test can reuse this object
         return $shipment;
@@ -175,8 +179,8 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($smartrates[0]['time_in_transit']['percentile_85'], 1);
         $this->assertEquals($smartrates[0]['time_in_transit']['percentile_90'], 2);
         $this->assertEquals($smartrates[0]['time_in_transit']['percentile_95'], 2);
-        $this->assertEquals($smartrates[0]['time_in_transit']['percentile_97'], 3);
-        $this->assertEquals($smartrates[0]['time_in_transit']['percentile_99'], 6);
+        $this->assertEquals($smartrates[0]['time_in_transit']['percentile_97'], 2);
+        $this->assertEquals($smartrates[0]['time_in_transit']['percentile_99'], 3);
     }
 
     /**
@@ -220,7 +224,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         $this->assertIsString($shipment->id);
         $this->assertStringMatchesFormat('shp_%s', $shipment->id);
         $this->assertNotEmpty($shipment->options); // The EasyPost API populates some default values here
-        $this->assertNull($shipment->customs_info);
+        $this->assertEmpty($shipment->customs_info->customs_items);
     }
 
     /**
@@ -266,6 +270,6 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf('\EasyPost\Shipment', $shipment);
         $this->assertIsString($shipment->id);
         $this->assertStringMatchesFormat('shp_%s', $shipment->id);
-        $this->assertNotEmpty($shipment->tax_identifiers);
+        $this->assertEquals($shipment->tax_identifiers[0]['tax_id_type'], 'IOSS');
     }
 }

@@ -65,13 +65,19 @@ class Requestor
             return 'true';
         } elseif ($data === false) {
             return 'false';
+        } elseif (is_integer($data)) {
+            return strval($data);
         } elseif (is_array($data)) {
+            if (empty($data)) {
+                return null;
+            }
+
             $resource = array();
             foreach ($data as $k => $v) {
                 $resource[$k] = self::_encodeObjects($v);
             }
 
-            return array_filter($resource);
+            return $resource;
         } else {
             return self::utf8($data);
         }
@@ -197,24 +203,18 @@ class Requestor
         // Setup the HTTP method and params to use on the request
         if ($method == 'get') {
             $curlOptions[CURLOPT_HTTPGET] = 1;
-            if (count($params) > 0) {
-                $urlParams = self::_urlEncode($params);
-                $absUrl = "$absUrl?$urlParams";
-            }
+            $urlParams = self::_urlEncode($params);
+            $absUrl = "$absUrl?$urlParams";
         } elseif ($method == 'post') {
             $curlOptions[CURLOPT_POST] = 1;
             $curlOptions[CURLOPT_POSTFIELDS] = json_encode($params);
         } elseif ($method == 'patch' || $method == 'put') {
             $curlOptions[CURLOPT_CUSTOMREQUEST] = strtoupper($method);
-            if (count($params) > 0) {
-                $curlOptions[CURLOPT_POSTFIELDS] = json_encode($params);
-            }
+            $curlOptions[CURLOPT_POSTFIELDS] = json_encode($params);
         } elseif ($method == 'delete') {
             $curlOptions[CURLOPT_CUSTOMREQUEST] = strtoupper($method);
-            if (count($params) > 0) {
-                $urlParams = self::_urlEncode($params);
-                $absUrl = "$absUrl?$urlParams";
-            }
+            $urlParams = self::_urlEncode($params);
+            $absUrl = "$absUrl?$urlParams";
         } else {
             throw new Error("Unrecognized method {$method}");
         }
