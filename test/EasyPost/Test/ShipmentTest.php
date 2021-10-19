@@ -218,13 +218,15 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
             ),
             "options" => null,
             "tax_identifiers" => null,
+            "reference" => "",
         ));
 
         $this->assertInstanceOf('\EasyPost\Shipment', $shipment);
         $this->assertIsString($shipment->id);
         $this->assertStringMatchesFormat('shp_%s', $shipment->id);
         $this->assertNotEmpty($shipment->options); // The EasyPost API populates some default values here
-        $this->assertEmpty($shipment->customs_info->customs_items);
+        $this->assertEmpty($shipment->customs_info);
+        $this->assertNull($shipment->reference);
     }
 
     /**

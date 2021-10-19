@@ -55,9 +55,7 @@ class Requestor
      */
     private static function _encodeObjects($data)
     {
-        if ($data === "") {
-            return null;
-        } elseif (is_null($data)) {
+        if (is_null($data)) {
             return array();
         } elseif ($data instanceof EasypostResource) {
             return array("id" => self::utf8($data->id));
@@ -68,9 +66,7 @@ class Requestor
         } elseif (is_array($data)) {
             $resource = array();
             foreach ($data as $k => $v) {
-                if (empty($data)) {
-                    return null;
-                } elseif (!is_null($v)) {
+                if (!is_null($v) and ($v !== "") and (!is_array($v) or !empty($v))) {
                     $resource[$k] = self::_encodeObjects($v);
                 }
             }
