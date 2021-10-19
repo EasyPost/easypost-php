@@ -55,18 +55,16 @@ class Requestor
      */
     private static function _encodeObjects($data)
     {
-        if (!$data) {
-            $data = array();
-        }
-
-        if ($data instanceof EasypostResource) {
+        if ($data === "") {
+            return null;
+        } elseif (is_null($data)) {
+            return array();
+        } elseif ($data instanceof EasypostResource) {
             return array("id" => self::utf8($data->id));
         } elseif ($data === true) {
             return 'true';
         } elseif ($data === false) {
             return 'false';
-        } elseif (is_integer($data)) {
-            return strval($data);
         } elseif (is_array($data)) {
             if (empty($data)) {
                 return null;
@@ -74,12 +72,14 @@ class Requestor
 
             $resource = array();
             foreach ($data as $k => $v) {
-                $resource[$k] = self::_encodeObjects($v);
+                if (!is_null($v)) {
+                    $resource[$k] = self::_encodeObjects($v);
+                }
             }
 
             return $resource;
         } else {
-            return self::utf8($data);
+            return self::utf8(strval($data));
         }
     }
 
