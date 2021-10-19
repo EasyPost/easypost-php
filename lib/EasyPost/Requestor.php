@@ -66,7 +66,6 @@ class Requestor
         } elseif ($data === false) {
             return 'false';
         } elseif (is_array($data)) {
-
             $resource = array();
             foreach ($data as $k => $v) {
                 if (empty($data)) {
