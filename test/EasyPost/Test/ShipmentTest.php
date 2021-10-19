@@ -176,11 +176,11 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($shipment->rates[0]['id'], $smartrates[0]['id']);
         $this->assertEquals($smartrates[0]['time_in_transit']['percentile_50'], 1);
         $this->assertEquals($smartrates[0]['time_in_transit']['percentile_75'], 1);
-        $this->assertEquals($smartrates[0]['time_in_transit']['percentile_85'], 1);
+        $this->assertEquals($smartrates[0]['time_in_transit']['percentile_85'], 2);
         $this->assertEquals($smartrates[0]['time_in_transit']['percentile_90'], 2);
         $this->assertEquals($smartrates[0]['time_in_transit']['percentile_95'], 2);
-        $this->assertEquals($smartrates[0]['time_in_transit']['percentile_97'], 2);
-        $this->assertEquals($smartrates[0]['time_in_transit']['percentile_99'], 4);
+        $this->assertEquals($smartrates[0]['time_in_transit']['percentile_97'], 3);
+        $this->assertEquals($smartrates[0]['time_in_transit']['percentile_99'], 3);
     }
 
     /**

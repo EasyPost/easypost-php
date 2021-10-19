@@ -66,13 +66,12 @@ class Requestor
         } elseif ($data === false) {
             return 'false';
         } elseif (is_array($data)) {
-            if (empty($data)) {
-                return null;
-            }
 
             $resource = array();
             foreach ($data as $k => $v) {
-                if (!is_null($v)) {
+                if (empty($data)) {
+                    return null;
+                } elseif (!is_null($v)) {
                     $resource[$k] = self::_encodeObjects($v);
                 }
             }
