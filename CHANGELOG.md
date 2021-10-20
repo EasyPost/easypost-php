@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+### 4.0.2 2021-10-20
+
+* Further fixes JSON encoding by dropping null key/values, sending values as strings where necessary (returning to previous behavior), and removing the `array_filter` from the previous release
+
 ### 4.0.1 2021-10-08
 
 * Properly handles empty lists and objects with JSON encoding (closes #114)
