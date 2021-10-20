@@ -2,13 +2,13 @@
 -
     request:
         method: GET
-        url: 'https://api.easypost.com/v2/reports/refrep_7b14834d2318435b82b3d3d336c073d7'
+        url: 'https://api.easypost.com/v2/reports/refrep_cec3d5069281419eb6115e41f593921f'
         headers:
             Host: api.easypost.com
             Accept: application/json
             Authorization: ''
             Content-Type: application/json
-            User-Agent: 'EasyPost/v2 PhpClient/3.6.0'
+            User-Agent: ''
             X-Client-User-Agent: ''
             EasyPost-Version: '2'
     response:
@@ -23,23 +23,23 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 8d29b69261578bbde78bb44b003aee60
+            x-ep-request-uuid: e739257c61704a99e786c184001358dc
             cache-control: 'no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
-            content-length: '256'
-            etag: 'W/"92625adf408678e38afa59fe71b6e2e4"'
-            x-request-id: f4624b67-f41a-4363-8616-7301ec1b068a
-            x-runtime: '0.035925'
-            x-node: bigweb2nuq
-            x-version-label: easypost-202110011858-559f609973-master
+            content-length: '665'
+            etag: 'W/"6c753c23661eb796c37ee3c8cab33e3b"'
+            x-request-id: b8a5935a-a27a-45c2-a262-0b4cf63e0a41
+            x-runtime: '0.032498'
+            x-node: bigweb5nuq
+            x-version-label: easypost-202110192143-cc149f31de-master
             x-backend: easypost
             x-proxied: ['intlb1nuq d40607e4ab', 'extlb2nuq d40607e4ab']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"refrep_7b14834d2318435b82b3d3d336c073d7","object":"RefundReport","created_at":"2021-10-01T22:29:17Z","updated_at":"2021-10-01T22:29:17Z","start_date":"2021-01-02","end_date":"2021-01-03","mode":"test","status":"new","url":null,"url_expires_at":null}'
+        body: '{"id":"refrep_cec3d5069281419eb6115e41f593921f","object":"RefundReport","created_at":"2021-10-20T16:53:01Z","updated_at":"2021-10-20T16:53:02Z","start_date":"2021-01-03","end_date":"2021-01-04","mode":"test","status":"available","url":"https://easypost-files.s3.us-west-2.amazonaws.com/files/refund_report/20211020/refrep_cec3d5069281419eb6115e41f593921f.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAY27LO6YQVHEFDONM%2F20211020%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211020T165801Z&X-Amz-Expires=30&X-Amz-SignedHeaders=host&X-Amz-Signature=7b78ff3186cb1ecc62f3e208a69270e160c7df63653861e862813a5593d722ec","url_expires_at":"2021-10-20T16:58:31Z"}'
         curl_info:
-            url: 'https://api.easypost.com/v2/reports/refrep_7b14834d2318435b82b3d3d336c073d7'
+            url: 'https://api.easypost.com/v2/reports/refrep_cec3d5069281419eb6115e41f593921f'
             content_type: 'application/json; charset=utf-8'
             http_code: 200
             header_size: 774
@@ -47,32 +47,32 @@
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.239974
-            namelookup_time: 0.001782
-            connect_time: 0.06228
-            pretransfer_time: 0.141574
+            total_time: 0.234468
+            namelookup_time: 0.003069
+            connect_time: 0.062213
+            pretransfer_time: 0.136188
             size_upload: !!float 0
-            size_download: !!float 256
-            speed_download: !!float 1066
+            size_download: !!float 665
+            speed_download: !!float 2836
             speed_upload: !!float 0
-            download_content_length: !!float 256
+            download_content_length: !!float 665
             upload_content_length: !!float 0
-            starttransfer_time: 0.239933
+            starttransfer_time: 0.234417
             redirect_time: !!float 0
             redirect_url: ''
             primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.13
-            local_port: 59826
+            local_ip: 10.130.6.4
+            local_port: 50792
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 141519
-            connect_time_us: 62280
-            namelookup_time_us: 1782
-            pretransfer_time_us: 141574
+            appconnect_time_us: 136064
+            connect_time_us: 62213
+            namelookup_time_us: 3069
+            pretransfer_time_us: 136188
             redirect_time_us: 0
-            starttransfer_time_us: 239933
-            total_time_us: 239974
+            starttransfer_time_us: 234417
+            total_time_us: 234468

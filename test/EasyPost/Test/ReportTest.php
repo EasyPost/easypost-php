@@ -7,6 +7,8 @@ use EasyPost\Report;
 use EasyPost\EasyPost;
 
 EasyPost::setApiKey(getenv('API_KEY'));
+define('REPORT_START_DATE', '2021-01-03');
+define('REPORT_END_DATE', '2021-01-04');
 
 class ReportTest extends \PHPUnit\Framework\TestCase
 {
@@ -41,8 +43,8 @@ class ReportTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('reports/createPaymentLogReport.yml');
 
         $payment_log_report = Report::create(array(
-            "start_date" => "2021-01-02",
-            "end_date" => "2021-01-03",
+            "start_date" => REPORT_START_DATE,
+            "end_date" => REPORT_END_DATE,
             "type" => "payment_log"
         ));
 
@@ -64,8 +66,8 @@ class ReportTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('reports/createRefundReport.yml');
 
         $refund_report = Report::create(array(
-            "start_date" => "2021-01-02",
-            "end_date" => "2021-01-03",
+            "start_date" => REPORT_START_DATE,
+            "end_date" => REPORT_END_DATE,
             "type" => "refund"
         ));
 
@@ -87,8 +89,8 @@ class ReportTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('reports/createShipmentReport.yml');
 
         $shipment_report = Report::create(array(
-            "start_date" => "2021-01-02",
-            "end_date" => "2021-01-03",
+            "start_date" => REPORT_START_DATE,
+            "end_date" => REPORT_END_DATE,
             "type" => "shipment"
         ));
 
@@ -110,8 +112,8 @@ class ReportTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('reports/createShipmentInvoiceReport.yml');
 
         $shipment_invoice_report = Report::create(array(
-            "start_date" => "2021-01-02",
-            "end_date" => "2021-01-03",
+            "start_date" => REPORT_START_DATE,
+            "end_date" => REPORT_END_DATE,
             "type" => "shipment_invoice"
         ));
 
@@ -133,8 +135,8 @@ class ReportTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('reports/createTrackerReport.yml');
 
         $tracker_report = Report::create(array(
-            "start_date" => "2021-01-02",
-            "end_date" => "2021-01-03",
+            "start_date" => REPORT_START_DATE,
+            "end_date" => REPORT_END_DATE,
             "type" => "tracker"
         ));
 

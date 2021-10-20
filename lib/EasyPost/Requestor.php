@@ -197,8 +197,10 @@ class Requestor
         // Setup the HTTP method and params to use on the request
         if ($method == 'get') {
             $curlOptions[CURLOPT_HTTPGET] = 1;
-            $urlParams = self::_urlEncode($params);
-            $absUrl = "$absUrl?$urlParams";
+            if (isset($params) && !empty($params)) {
+                $urlParams = self::_urlEncode($params);
+                $absUrl = "$absUrl?$urlParams";
+            }
         } elseif ($method == 'post') {
             $curlOptions[CURLOPT_POST] = 1;
             $curlOptions[CURLOPT_POSTFIELDS] = json_encode($params);
@@ -207,8 +209,10 @@ class Requestor
             $curlOptions[CURLOPT_POSTFIELDS] = json_encode($params);
         } elseif ($method == 'delete') {
             $curlOptions[CURLOPT_CUSTOMREQUEST] = strtoupper($method);
-            $urlParams = self::_urlEncode($params);
-            $absUrl = "$absUrl?$urlParams";
+            if (isset($params) && !empty($params)) {
+                $urlParams = self::_urlEncode($params);
+                $absUrl = "$absUrl?$urlParams";
+            }
         } else {
             throw new Error("Unrecognized method {$method}");
         }
