@@ -55,11 +55,9 @@ class Requestor
      */
     private static function _encodeObjects($data)
     {
-        if (!$data) {
-            $data = array();
-        }
-
-        if ($data instanceof EasypostResource) {
+        if (is_null($data)) {
+            return array();
+        } elseif ($data instanceof EasypostResource) {
             return array("id" => self::utf8($data->id));
         } elseif ($data === true) {
             return 'true';
@@ -68,12 +66,14 @@ class Requestor
         } elseif (is_array($data)) {
             $resource = array();
             foreach ($data as $k => $v) {
-                $resource[$k] = self::_encodeObjects($v);
+                if (!is_null($v) and ($v !== "") and (!is_array($v) or !empty($v))) {
+                    $resource[$k] = self::_encodeObjects($v);
+                }
             }
 
-            return array_filter($resource);
+            return $resource;
         } else {
-            return self::utf8($data);
+            return self::utf8(strval($data));
         }
     }
 
@@ -197,7 +197,7 @@ class Requestor
         // Setup the HTTP method and params to use on the request
         if ($method == 'get') {
             $curlOptions[CURLOPT_HTTPGET] = 1;
-            if (count($params) > 0) {
+            if (isset($params) && !empty($params)) {
                 $urlParams = self::_urlEncode($params);
                 $absUrl = "$absUrl?$urlParams";
             }
@@ -206,12 +206,10 @@ class Requestor
             $curlOptions[CURLOPT_POSTFIELDS] = json_encode($params);
         } elseif ($method == 'patch' || $method == 'put') {
             $curlOptions[CURLOPT_CUSTOMREQUEST] = strtoupper($method);
-            if (count($params) > 0) {
-                $curlOptions[CURLOPT_POSTFIELDS] = json_encode($params);
-            }
+            $curlOptions[CURLOPT_POSTFIELDS] = json_encode($params);
         } elseif ($method == 'delete') {
             $curlOptions[CURLOPT_CUSTOMREQUEST] = strtoupper($method);
-            if (count($params) > 0) {
+            if (isset($params) && !empty($params)) {
                 $urlParams = self::_urlEncode($params);
                 $absUrl = "$absUrl?$urlParams";
             }

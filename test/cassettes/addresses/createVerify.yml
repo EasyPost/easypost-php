@@ -1,0 +1,81 @@
+
+-
+    request:
+        method: POST
+        url: 'https://api.easypost.com/v2/addresses?verify%5B0%5D=1'
+        headers:
+            Host: api.easypost.com
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+            X-Client-User-Agent: ''
+            EasyPost-Version: '2'
+        body: '{"address":{"street1":"417 montgomery streat","street2":"FL 5","city":"San Francisco","state":"CA","zip":"94104","country":"US","company":"EasyPost","phone":"415-123-4567"}}'
+    response:
+        status:
+            http_version: '1.1'
+            code: '201'
+            message: Created
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: bee4655d6170496de786b3f90015d233
+            cache-control: 'no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            location: /api/v2/addresses/adr_ead917f3f5244f2f9ffa711385519860
+            content-type: 'application/json; charset=utf-8'
+            content-length: '632'
+            etag: 'W/"848850ba4309baaf384ef1d37b1d62fb"'
+            x-request-id: ef46d4e9-20af-4bd9-b6d4-a0c27171264b
+            x-runtime: '0.077191'
+            x-node: bigweb7nuq
+            x-version-label: easypost-202110192143-cc149f31de-master
+            x-backend: easypost
+            x-canary: direct
+            x-proxied: ['intlb2nuq d40607e4ab', 'extlb1nuq d40607e4ab']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"id":"adr_ead917f3f5244f2f9ffa711385519860","object":"Address","created_at":"2021-10-20T16:53:01+00:00","updated_at":"2021-10-20T16:53:01+00:00","name":null,"company":"EASYPOST","street1":"417 MONTGOMERY ST STE 500","street2":"","city":"SAN FRANCISCO","state":"CA","zip":"94104-1100","country":"US","phone":"4151234567","email":null,"mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":37.79342,"longitude":-122.40288,"time_zone":"America/Los_Angeles"}}}}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/addresses?verify%5B0%5D=1'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 201
+            header_size: 863
+            request_size: 705
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.272141
+            namelookup_time: 0.001417
+            connect_time: 0.058951
+            pretransfer_time: 0.135609
+            size_upload: !!float 173
+            size_download: !!float 632
+            speed_download: !!float 2322
+            speed_upload: !!float 635
+            download_content_length: !!float 632
+            upload_content_length: !!float 173
+            starttransfer_time: 0.272098
+            redirect_time: !!float 0
+            redirect_url: ''
+            primary_ip: 169.62.110.131
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 10.130.6.4
+            local_port: 50430
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 135520
+            connect_time_us: 58951
+            namelookup_time_us: 1417
+            pretransfer_time_us: 135609
+            redirect_time_us: 0
+            starttransfer_time_us: 272098
+            total_time_us: 272141

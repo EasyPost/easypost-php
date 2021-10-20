@@ -8,10 +8,10 @@
             Accept: application/json
             Authorization: ''
             Content-Type: application/json
-            User-Agent: 'EasyPost/v2 PhpClient/3.6.0'
+            User-Agent: ''
             X-Client-User-Agent: ''
             EasyPost-Version: '2'
-        body: '{"start_date":"2021-01-02","end_date":"2021-01-03","type":"shipment_invoice"}'
+        body: '{"start_date":"2021-01-03","end_date":"2021-01-04","type":"shipment_invoice"}'
     response:
         status:
             http_version: '1.1'
@@ -24,21 +24,21 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 8d29b69661578bbce78bb446003aede8
+            x-ep-request-uuid: bee4655e6170496ee786b3fc0015d278
             cache-control: 'no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '293'
-            etag: 'W/"3ebacfdce2cf32da62568faa06106a2c"'
-            x-request-id: 3728250c-d35c-4dc0-afb4-31e79d09ade8
-            x-runtime: '0.042307'
-            x-node: bigweb2nuq
-            x-version-label: easypost-202110011858-559f609973-master
+            etag: 'W/"6dd8000c30b863486c9a3687203a499c"'
+            x-request-id: e405a078-156b-4107-8364-b9b5c26ac5c3
+            x-runtime: '0.037514'
+            x-node: bigweb5nuq
+            x-version-label: easypost-202110192143-cc149f31de-master
             x-backend: easypost
-            x-proxied: ['intlb1nuq d40607e4ab', 'extlb2nuq d40607e4ab']
+            x-proxied: ['intlb2nuq d40607e4ab', 'extlb1nuq d40607e4ab']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"shpinvrep_b1461e064b04446d9637a9144bc07b35","object":"ShipmentInvoiceReport","created_at":"2021-10-01T22:29:16Z","updated_at":"2021-10-01T22:29:16Z","start_date":"2021-01-02","end_date":"2021-01-03","mode":"test","status":"new","url":null,"url_expires_at":null,"include_children":false}'
+        body: '{"id":"shpinvrep_cc522cb1483c4ddaab8de4825e1e48eb","object":"ShipmentInvoiceReport","created_at":"2021-10-20T16:53:02Z","updated_at":"2021-10-20T16:53:02Z","start_date":"2021-01-03","end_date":"2021-01-04","mode":"test","status":"new","url":null,"url_expires_at":null,"include_children":false}'
         curl_info:
             url: 'https://api.easypost.com/v2/reports/shipment_invoice/'
             content_type: 'application/json; charset=utf-8'
@@ -48,32 +48,32 @@
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.241637
-            namelookup_time: 0.001872
-            connect_time: 0.061711
-            pretransfer_time: 0.139001
+            total_time: 0.239289
+            namelookup_time: 0.001656
+            connect_time: 0.060131
+            pretransfer_time: 0.142374
             size_upload: !!float 77
             size_download: !!float 293
-            speed_download: !!float 1212
-            speed_upload: !!float 318
+            speed_download: !!float 1224
+            speed_upload: !!float 321
             download_content_length: !!float 293
             upload_content_length: !!float 77
-            starttransfer_time: 0.241594
+            starttransfer_time: 0.239244
             redirect_time: !!float 0
             redirect_url: ''
-            primary_ip: 169.62.110.130
+            primary_ip: 169.62.110.131
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.13
-            local_port: 59821
+            local_ip: 10.130.6.4
+            local_port: 50433
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 138952
-            connect_time_us: 61711
-            namelookup_time_us: 1872
-            pretransfer_time_us: 139001
+            appconnect_time_us: 142284
+            connect_time_us: 60131
+            namelookup_time_us: 1656
+            pretransfer_time_us: 142374
             redirect_time_us: 0
-            starttransfer_time_us: 241594
-            total_time_us: 241637
+            starttransfer_time_us: 239244
+            total_time_us: 239289
