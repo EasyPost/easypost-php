@@ -26,7 +26,7 @@ abstract class EasyPost
      *
      * @var int|null
      */
-    public static $connectTimeout;
+    public static $connectTimeout = 30000;
 
     /**
      * Time in milliseconds to wait for a response.
@@ -35,7 +35,7 @@ abstract class EasyPost
      *
      * @var int|null
      */
-    public static $responseTimeout;
+    public static $responseTimeout = 30000;
 
     /**
      * @var string

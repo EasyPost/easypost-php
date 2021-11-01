@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+### NEXT RELEASE
+
+* Set a default timeout of 30 seconds for connections and requests
+
 ### 4.0.2 2021-10-20
 
 * Further fixes JSON encoding by dropping null key/values, sending values as strings where necessary (returning to previous behavior), and removing the `array_filter` from the previous release
