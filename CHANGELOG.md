@@ -2,7 +2,7 @@
 
 ### NEXT RELEASE
 
-* Set a default timeout of 30 seconds for connections and requests
+* Set a default timeout of 60 seconds for connections and requests
 
 ### 4.0.2 2021-10-20
 
