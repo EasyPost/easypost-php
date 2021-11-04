@@ -305,7 +305,7 @@ class Requestor
         switch ($errorNum) {
             case CURLE_COULDNT_CONNECT:
             case CURLE_COULDNT_RESOLVE_HOST:
-            case CURLE_OPERATION_TIMEOUTED:
+            case CURLE_OPERATION_TIMEDOUT:
                 $msg = "Could not connect to EasyPost ({$apiBase}). Please check your internet connection and try again.  If this problem persists please let us know at {$supportEmail}.";
                 break;
             case CURLE_SSL_CACERT:
