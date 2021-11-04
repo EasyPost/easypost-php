@@ -103,7 +103,7 @@ abstract class EasyPost
     }
 
     /**
-     * Set time in milliseconds to wait for a connection.
+     * Get time in milliseconds to wait for a connection.
      *
      * Zero or null means no timeout.
      *
@@ -115,7 +115,7 @@ abstract class EasyPost
     }
 
     /**
-     * Get time in milliseconds to wait for a connection.
+     * Set time in milliseconds to wait for a connection.
      *
      * Zero or null means no timeout.
      *
@@ -139,7 +139,7 @@ abstract class EasyPost
     }
 
     /**
-     * Get time in milliseconds to wait for a response.
+     * Set time in milliseconds to wait for a response.
      *
      * Zero or null means no timeout.
      *
