@@ -13,7 +13,7 @@ jobs:
       - name: set up php
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.0
+          php-version: 8.1
       - name: install composer
         run: composer self-update
       - name: install dependencies
@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-18.04
     strategy:
       matrix:
-        phpversion: [7.3, 7.4, 8.0]
+        phpversion: [7.3, 7.4, 8.0, 8.1]
     steps:
       - uses: actions/checkout@v2
       - name: set up php
