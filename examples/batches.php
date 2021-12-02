@@ -2,7 +2,7 @@
 
 require_once("../lib/easypost.php");
 
-\EasyPost\EasyPost::setApiKey('cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi');
+\EasyPost\EasyPost::setApiKey(getenv('API_KEY'));
 
 // create addresses
 $from_address = array(

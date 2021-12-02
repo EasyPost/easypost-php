@@ -2,7 +2,7 @@
 
 require_once("../lib/easypost.php");
 
-\EasyPost\EasyPost::setApiKey('cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi');
+\EasyPost\EasyPost::setApiKey(getenv('API_KEY'));
 
 define("ECHO_ALL_CA", true);
 define("ECHO_CA_TYPES", false);

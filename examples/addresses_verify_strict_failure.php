@@ -2,7 +2,7 @@
 
 // require_once("../vendor/autoload.php");
 require_once("../lib/easypost.php");
-\EasyPost\EasyPost::setApiKey('cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi');
+\EasyPost\EasyPost::setApiKey(getenv('API_KEY'));
 
 try {
     // create address

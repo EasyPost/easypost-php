@@ -2,7 +2,7 @@
 
 require_once("../lib/easypost.php");
 
-\EasyPost\EasyPost::setApiKey('PROD_MODE_KEY');
+\EasyPost\EasyPost::setApiKey(getenv('API_KEY'));
 
 define("ECHO_ME", true);
 define("CREATE_CHILD", false);

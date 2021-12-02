@@ -2,7 +2,7 @@
 
 require_once("../lib/easypost.php");
 
-\EasyPost\EasyPost::setApiKey('cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi');
+\EasyPost\EasyPost::setApiKey(getenv('API_KEY'));
 
 // get shipment rates (assumes you have a shipment object)
 // this is optional as rates are added to the obj when it's created if addresses and parcel are present
