@@ -103,7 +103,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
      * Test the retrieval of a Shipment
      *
      * @param Shipment $shipment
-     * @return void
+     * @return Shipment
      * @depends testCreate
      */
     public function testRetrieve(Shipment $shipment)

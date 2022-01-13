@@ -203,7 +203,13 @@ class Requestor
             }
         } elseif ($method == 'post') {
             $curlOptions[CURLOPT_POST] = 1;
-            $curlOptions[CURLOPT_POSTFIELDS] = json_encode($params);
+            if (strpos($absUrl, 'trackers/create_list') !== false) {
+                // We must encode the params for the `trackers/create_list` endpoint differently because
+                // it expects a hash of hashes instead of a list of objects (handled in the `create_list` function)
+                $curlOptions[CURLOPT_POSTFIELDS] = $params;
+            } else {
+                $curlOptions[CURLOPT_POSTFIELDS] = json_encode($params);
+            }
         } elseif ($method == 'patch' || $method == 'put') {
             $curlOptions[CURLOPT_CUSTOMREQUEST] = strtoupper($method);
             $curlOptions[CURLOPT_POSTFIELDS] = json_encode($params);
