@@ -81,11 +81,11 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('trackers/all.yml');
 
         $page_size = 5;
-        
+
         $trackers = Tracker::all(array(
             'page_size' => $page_size,
         ));
-        
+
         $trackers_array = $trackers['trackers'];
         $first_tracker = $trackers['trackers'][0];
 
