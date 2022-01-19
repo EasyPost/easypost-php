@@ -166,7 +166,7 @@ class Requestor
             'Accept: application/json',
             "Authorization: Bearer {$myApiKey}",
             'Content-Type: application/json',
-            'User-Agent: EasyPost/v2 PhpClient/' . EasyPost::VERSION,
+            'User-Agent: EasyPost/v2 PhpClient/' . EasyPost::VERSION . ' PHP/' . phpversion(),
             'X-Client-User-Agent: ' . json_encode($ua),
         );
         if (EasyPost::$apiVersion) {
