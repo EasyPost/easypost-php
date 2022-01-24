@@ -114,7 +114,8 @@ class User extends EasypostResource
     /**
      * Update the User's Brand object.
      *
-     * @param null $apiKey
+     * @param mixed  $params
+     * @param string $apiKey
      * @return mixed
      */
     public function update_brand($params = null, $apiKey = null)
