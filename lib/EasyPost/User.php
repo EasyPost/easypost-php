@@ -110,4 +110,18 @@ class User extends EasypostResource
             return $response;
         }
     }
+
+    /**
+     * Update the User's Brand object.
+     *
+     * @param mixed  $params
+     * @param string $apiKey
+     * @return mixed
+     */
+    public function update_brand($params = null, $apiKey = null)
+    {
+        $requestor = new Requestor($apiKey);
+        list($response, $apiKey) = $requestor->request('put', $this->instanceUrl() . '/brand', $params);
+        return Util::convertToEasyPostObject($response, $apiKey);
+    }
 }

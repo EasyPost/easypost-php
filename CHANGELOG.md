@@ -2,6 +2,7 @@
 
 ### NEXT RELEASE
 
+* Adds the `update_brand()` method on the user object
 * Set a default timeout of 30 seconds for connections and 60 seconds for requests
 * Fixes the tracker `create_list` method's encoding to properly send through the parameters
 * Adds the PHP version used to the `user-agent` header

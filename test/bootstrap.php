@@ -15,8 +15,8 @@ VCRCleaner::enable(array(
     'request' => array(
         'ignoreHeaders' => array(
             'Authorization',        // Ignore credentials
-            'User-Agent',           // Ignore varying version numbers between builds
-            'X-Client-User-Agent',  // Ignore varying user agents between machines
+            'User-Agent',           // Ignore varying user agents across test runs
+            'X-Client-User-Agent',  // Ignore varying user agents across test runs
         ),
     ),
 ));
