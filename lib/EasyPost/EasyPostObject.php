@@ -223,6 +223,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
      * @param string $k
      * @param mixed $v
      */
+    #[\ReturnTypeWillChange]
     public function offsetSet($k, $v)
     {
         $this->$k = $v;
@@ -234,6 +235,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
      * @param string $k
      * @return bool
      */
+    #[\ReturnTypeWillChange]
     public function offsetExists($k)
     {
         return array_key_exists($k, $this->_values);
@@ -244,6 +246,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
      *
      * @param string $k
      */
+    #[\ReturnTypeWillChange]
     public function offsetUnset($k)
     {
         unset($this->$k);
@@ -255,6 +258,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
      * @param string $k
      * @return mixed
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($k)
     {
         return array_key_exists($k, $this->_values) ? $this->_values[$k] : null;
@@ -265,6 +269,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
      *
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function rewind()
     {
         reset($this->_values);
@@ -275,6 +280,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
      *
      * @return mixed
      */
+    #[\ReturnTypeWillChange]
     public function current()
     {
         return current($this->_values);
@@ -285,6 +291,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
      *
      * @return mixed
      */
+    #[\ReturnTypeWillChange]
     public function key()
     {
         return key($this->_values);
@@ -295,6 +302,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
      *
      * @return mixed
      */
+    #[\ReturnTypeWillChange]
     public function next()
     {
         return next($this->_values);
@@ -305,6 +313,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
      *
      * @return bool
      */
+    #[\ReturnTypeWillChange]
     public function valid()
     {
         $key = key($this->_values);
