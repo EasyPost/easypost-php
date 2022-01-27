@@ -258,6 +258,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
      * @param string $k
      * @return mixed
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($k)
     {
         return array_key_exists($k, $this->_values) ? $this->_values[$k] : null;
@@ -290,6 +291,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
      *
      * @return mixed
      */
+    #[\ReturnTypeWillChange]
     public function key()
     {
         return key($this->_values);
