@@ -2,10 +2,30 @@
 
 namespace EasyPost;
 
+/**
+ * @package EasyPost
+ * @property string $id
+ * @property string $object
+ * @property string $reference
+ * @property string $mode
+ * @property string $status
+ * @property string $min_datetime
+ * @property string $max_datetime
+ * @property bool $is_account_address
+ * @property string $instructions
+ * @property Message[] $messages
+ * @property string $confirmation
+ * @property Shipment $shipment
+ * @property Address $address
+ * @property CarrierAccount[] $carrier_accounts
+ * @property PickupRate[] $pickup_rates
+ * @property string $created_at
+ * @property string $updated_at
+ */
 class Pickup extends EasypostResource
 {
     /**
-     * retrieve a pickup
+     * Retrieve a pickup.
      *
      * @param string $id
      * @param string $apiKey
@@ -17,9 +37,9 @@ class Pickup extends EasypostResource
     }
 
     /**
-     * create a pickup
+     * Create a pickup.
      *
-     * @param mixed  $params
+     * @param mixed $params
      * @param string $apiKey
      * @return mixed
      */
@@ -35,7 +55,7 @@ class Pickup extends EasypostResource
     }
 
     /**
-     * buy a pickup
+     * Buy a pickup.
      *
      * @param mixed $params
      * @return $this
@@ -53,7 +73,7 @@ class Pickup extends EasypostResource
     }
 
     /**
-     * cancel a pickup
+     * Cancel a pickup.
      *
      * @param mixed $params
      * @return $this

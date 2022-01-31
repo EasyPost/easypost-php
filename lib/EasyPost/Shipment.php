@@ -2,10 +2,43 @@
 
 namespace EasyPost;
 
+/**
+ * @package EasyPost
+ * @property string $id
+ * @property string $object
+ * @property string $reference
+ * @property string $mode
+ * @property Address $to_address
+ * @property Address $from_address
+ * @property Address $return_address
+ * @property Address $buyer_address
+ * @property Parcel $parcel
+ * @property CustomsInfo $customs_info
+ * @property ScanForm $scan_form
+ * @property array $forms
+ * @property Insurance $insurance
+ * @property Rate[] $rates
+ * @property Rate $selected_rate
+ * @property PostageLabel $postage_label
+ * @property Message[] $messages
+ * @property object $options
+ * @property bool $is_return
+ * @property string $tracking_code
+ * @property bool $usps_zone
+ * @property string $status
+ * @property Tracker $tracker
+ * @property Fee[] $fees
+ * @property string $refund_status
+ * @property string $batch_id
+ * @property string $batch_status
+ * @property string $batch_message
+ * @property string $created_at
+ * @property string $updated_at
+ */
 class Shipment extends EasypostResource
 {
     /**
-     * retrieve a shipment
+     * Retrieve a shipment.
      *
      * @param string $id
      * @param string $apiKey
@@ -17,7 +50,7 @@ class Shipment extends EasypostResource
     }
 
     /**
-     * retrieve all shipments
+     * Retrieve all shipments.
      *
      * @param mixed  $params
      * @param string $apiKey
@@ -29,9 +62,9 @@ class Shipment extends EasypostResource
     }
 
     /**
-     * create a shipment
+     * Create a shipment.
      *
-     * @param mixed  $params
+     * @param mixed $params
      * @param string $apiKey
      * @return mixed
      */
@@ -47,7 +80,7 @@ class Shipment extends EasypostResource
     }
 
     /**
-     * get rates for a shipment
+     * Get rates for a shipment.
      *
      * @param mixed $params
      * @return $this
@@ -64,7 +97,7 @@ class Shipment extends EasypostResource
     }
 
     /**
-     * re-rate for a shipment
+     * Re-rate a shipment.
      *
      * @param mixed $params
      * @return $this
@@ -81,7 +114,7 @@ class Shipment extends EasypostResource
     }
 
     /**
-     * get smartrates for a shipment
+     * Get smartrates for a shipment.
      *
      * @return array
      * @throws \EasyPost\Error
@@ -96,7 +129,7 @@ class Shipment extends EasypostResource
     }
 
     /**
-     * buy a shipment
+     * Buy a shipment.
      *
      * @param mixed $params
      * @return $this
@@ -120,7 +153,7 @@ class Shipment extends EasypostResource
     }
 
     /**
-     * refund a shipment
+     * Refund a shipment.
      *
      * @param mixed $params
      * @return $this
@@ -138,7 +171,7 @@ class Shipment extends EasypostResource
     }
 
     /**
-     * get the shipment label
+     * Get the shipment label.
      *
      * @param mixed $params
      * @return $this
@@ -162,7 +195,7 @@ class Shipment extends EasypostResource
     }
 
     /**
-     * insure the shipment
+     * Insure the shipment.
      *
      * @param mixed $params
      * @return $this
@@ -186,7 +219,7 @@ class Shipment extends EasypostResource
     }
 
     /**
-     * get the lowest rate for the shipment
+     * Get the lowest rate for the shipment.
      *
      * @param array $carriers
      * @param array $services
@@ -243,7 +276,7 @@ class Shipment extends EasypostResource
             }
 
             if (!$lowest_rate || floatval($this->rates[$i]->rate) < floatval($lowest_rate->rate)) {
-                $lowest_rate = clone($this->rates[$i]);
+                $lowest_rate = clone ($this->rates[$i]);
             }
         }
 

@@ -2,10 +2,27 @@
 
 namespace EasyPost;
 
+/**
+ * @package EasyPost
+ * @property string $id
+ * @property string $object
+ * @property string $reference
+ * @property string $mode
+ * @property Address $to_address
+ * @property Address $from_address
+ * @property Address $return_address
+ * @property Address $buyer_address
+ * @property Shipment[] $shipments
+ * @property Rates[] $rates
+ * @property Message[] $messages
+ * @property bool $is_return
+ * @property string $created_at
+ * @property string $updated_at
+ */
 class Order extends EasypostResource
 {
     /**
-     * retrieve an order
+     * Retrieve an order.
      *
      * @param string $id
      * @param string $apiKey
@@ -17,7 +34,7 @@ class Order extends EasypostResource
     }
 
     /**
-     * retrieve all orders
+     * Retrieve all orders.
      *
      * @param mixed  $params
      * @param string $apiKey
@@ -29,7 +46,7 @@ class Order extends EasypostResource
     }
 
     /**
-     * create an order
+     * Create an order.
      *
      * @param mixed $params
      * @param string $apiKey
@@ -47,7 +64,7 @@ class Order extends EasypostResource
     }
 
     /**
-     * get rates for a order
+     * Get rates for a order.
      *
      * @param mixed $params
      * @return $this
@@ -64,7 +81,7 @@ class Order extends EasypostResource
     }
 
     /**
-     * buy an order
+     * Buy an order.
      *
      * @param mixed $params
      * @return $this

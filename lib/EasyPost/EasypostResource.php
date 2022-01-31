@@ -5,6 +5,8 @@ namespace EasyPost;
 abstract class EasypostResource extends EasyPostObject
 {
     /**
+     * The class name of an object.
+     *
      * @param string $class
      * @return string
      */
@@ -26,6 +28,8 @@ abstract class EasypostResource extends EasyPostObject
     }
 
     /**
+     * The class URL of an object.
+     *
      * @param string $class
      * @return string
      */
@@ -40,6 +44,8 @@ abstract class EasypostResource extends EasyPostObject
     }
 
     /**
+     * The instance URL of an object.
+     *
      * @return string
      * @throws \EasyPost\Error
      */
@@ -57,6 +63,8 @@ abstract class EasypostResource extends EasyPostObject
     }
 
     /**
+     * Refresh the object from the API.
+     *
      * @return $this
      * @throws \EasyPost\Error
      */
@@ -72,8 +80,10 @@ abstract class EasypostResource extends EasyPostObject
     }
 
     /**
+     * Validate usage library.
+     *
      * @param string $method
-     * @param array  $params
+     * @param array $params
      * @param string $apiKey
      * @throws \EasyPost\Error
      */
@@ -88,8 +98,10 @@ abstract class EasypostResource extends EasyPostObject
     }
 
     /**
+     * Internal retrieve method.
+     *
      * @param string $class
-     * @param mixed  $id
+     * @param mixed $id
      * @param string $apiKey
      * @return mixed
      */
@@ -105,8 +117,10 @@ abstract class EasypostResource extends EasyPostObject
     }
 
     /**
+     * Internal retrieve all method.
+     *
      * @param string $class
-     * @param mixed  $params
+     * @param mixed $params
      * @param string $apiKey
      * @return mixed
      * @throws \EasyPost\Error
@@ -122,8 +136,10 @@ abstract class EasypostResource extends EasyPostObject
     }
 
     /**
+     * Internal create method.
+     *
      * @param string $class
-     * @param mixed  $params
+     * @param mixed $params
      * @param string $apiKey
      * @param string $urlModifier
      * @return mixed
@@ -144,6 +160,8 @@ abstract class EasypostResource extends EasyPostObject
     }
 
     /**
+     * Internal update (save) method.
+     *
      * @param string $class
      * @return $this
      * @throws \EasyPost\Error
@@ -163,8 +181,10 @@ abstract class EasypostResource extends EasyPostObject
     }
 
     /**
+     * Internal delete method.
+     *
      * @param string $class
-     * @param mixed  $params
+     * @param mixed $params
      * @return $this
      * @throws \EasyPost\Error
      */
@@ -182,8 +202,10 @@ abstract class EasypostResource extends EasyPostObject
     }
 
     /**
+     * Internal update method.
+     *
      * @param string $class
-     * @param mixed  $params
+     * @param mixed $params
      * @return $this
      * @throws \EasyPost\Error
      */

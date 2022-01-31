@@ -2,10 +2,26 @@
 
 namespace EasyPost;
 
+/**
+ * @package EasyPost
+ * @property string $id
+ * @property string $reference
+ * @property string $object
+ * @property string $mode
+ * @property string $state
+ * @property int $num_shipments
+ * @property array $shipments
+ * @property object $status
+ * @property string $label_url
+ * @property ScanForm $scan_form
+ * @property Pickup $pickup
+ * @property string $created_at
+ * @property string $updated_at
+ */
 class Batch extends EasypostResource
 {
     /**
-     * retrieve a batch
+     * Retrieve a batch.
      *
      * @param string $id
      * @param string $apiKey
@@ -17,9 +33,9 @@ class Batch extends EasypostResource
     }
 
     /**
-     * retrieve all batches
+     * Retrieve all batches.
      *
-     * @param mixed  $params
+     * @param mixed $params
      * @param string $apiKey
      * @return mixed
      */
@@ -29,9 +45,9 @@ class Batch extends EasypostResource
     }
 
     /**
-     * create a batch
+     * Create a batch.
      *
-     * @param mixed  $params
+     * @param mixed $params
      * @param string $apiKey
      * @return mixed
      */
@@ -47,9 +63,9 @@ class Batch extends EasypostResource
     }
 
     /**
-     * create and buy a batch
+     * Create and buy a batch.
      *
-     * @param mixed  $params
+     * @param mixed $params
      * @param string $apiKey
      * @return mixed
      */
@@ -70,7 +86,7 @@ class Batch extends EasypostResource
     }
 
     /**
-     * buy a batch
+     * Buy a batch.
      *
      * @param mixed $params
      * @return $this
@@ -88,6 +104,8 @@ class Batch extends EasypostResource
     }
 
     /**
+     * Create a batch label.
+     *
      * @param mixed $params
      * @return $this
      * @throws \EasyPost\Error
@@ -104,7 +122,7 @@ class Batch extends EasypostResource
     }
 
     /**
-     * remove shipments from a batch
+     * Remove shipments from a batch.
      *
      * @param mixed $params
      * @return $this
@@ -122,7 +140,7 @@ class Batch extends EasypostResource
     }
 
     /**
-     * add shipments to a batch
+     * Add shipments to a batch.
      *
      * @param mixed $params
      * @return $this
@@ -140,7 +158,7 @@ class Batch extends EasypostResource
     }
 
     /**
-     * create a batch scan form
+     * Create a batch scanform.
      *
      * @param mixed $params
      * @return mixed

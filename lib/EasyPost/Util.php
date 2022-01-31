@@ -5,7 +5,7 @@ namespace EasyPost;
 abstract class Util
 {
     /**
-     * check if input is a list
+     * Check if input is a list.
      *
      * @param $array
      * @return bool
@@ -25,7 +25,7 @@ abstract class Util
     }
 
     /**
-     * convert EasyPost object to an array
+     * Convert EasyPost object to an array.
      *
      * @param mixed $values
      * @return array
@@ -47,9 +47,9 @@ abstract class Util
     }
 
     /**
-     * convert input to an EasyPost object
+     * Convert input to an EasyPost object.
      *
-     * @param mixed  $response
+     * @param mixed $response
      * @param string $apiKey
      * @param string $parent
      * @param string $name
@@ -61,15 +61,18 @@ abstract class Util
             'Address'               => '\EasyPost\Address',
             'Batch'                 => '\EasyPost\Batch',
             'CarrierAccount'        => '\EasyPost\CarrierAccount',
+            'CarrierDetail'         => '\EasyPost\CarrierDetail',
             'CustomsInfo'           => '\EasyPost\CustomsInfo',
             'CustomsItem'           => '\EasyPost\CustomsItem',
             'Event'                 => '\EasyPost\Event',
             'Fee'                   => '\EasyPost\Fee',
             'Insurance'             => '\EasyPost\Insurance',
+            'Message'               => '\EasyPost\Message',
             'Order'                 => '\EasyPost\Order',
             'Parcel'                => '\EasyPost\Parcel',
             'PaymentLogReport'      => '\EasyPost\Report',
             'Pickup'                => '\EasyPost\Pickup',
+            'PickupRate'            => '\EasyPost\PickupRate',
             'PostageLabel'          => '\EasyPost\PostageLabel',
             'Rate'                  => '\EasyPost\Rate',
             'Refund'                => '\EasyPost\Refund',
@@ -81,8 +84,13 @@ abstract class Util
             'ShipmentReport'        => '\EasyPost\Report',
             'TaxIdentifier'         => '\EasyPost\TaxIdentifier',
             'Tracker'               => '\EasyPost\Tracker',
+            'TrackingDetail'        => '\EasyPost\TrackingDetail',
+            'TrackingLocation'      => '\EasyPost\TrackingLocation',
             'TrackerReport'         => '\EasyPost\Report',
             'User'                  => '\EasyPost\User',
+            'Verification'          => '\EasyPost\Verification',
+            'VerificationDetails'   => '\EasyPost\VerificationDetails',
+            'Verifictions'          => '\EasyPost\Verifications',
             'Webhook'               => '\EasyPost\Webhook',
         );
 

@@ -2,10 +2,28 @@
 
 namespace EasyPost;
 
+/**
+ * @package EasyPost
+ * @property string $id
+ * @property string $object
+ * @property string $parent_id
+ * @property string $name
+ * @property string $email
+ * @property string $phone_number
+ * @property string $balance
+ * @property string $price_per_shipment
+ * @property string $recharge_amount
+ * @property string $secondary_recharge_amount
+ * @property string $recharge_threshold
+ * @property string $cc_fee_rate
+ * @property string $insurance_fee_rate
+ * @property string $insurance_fee_minimum
+ * @property User[] $children
+ */
 class User extends EasypostResource
 {
     /**
-     * retrieve a user
+     * Retrieve a user.
      *
      * @param string $id
      * @param string $apiKey
@@ -17,7 +35,7 @@ class User extends EasypostResource
     }
 
     /**
-     * save a user
+     * Save (update) a user.
      *
      * @return $this
      */
@@ -27,7 +45,7 @@ class User extends EasypostResource
     }
 
     /**
-     * create a user
+     * Create a child user.
      *
      * @param mixed  $params
      * @param string $apiKey
@@ -44,7 +62,7 @@ class User extends EasypostResource
     }
 
     /**
-     * retrieve me
+     * Retrieve me (the authenticated user).
      *
      * @param string $apiKey
      * @return mixed
@@ -66,7 +84,7 @@ class User extends EasypostResource
     }
 
     /**
-     * get all API keys
+     * Get all API keys including child user keys.
      *
      * @param null $apiKey
      * @return mixed
@@ -79,7 +97,7 @@ class User extends EasypostResource
     }
 
     /**
-     * api keys
+     * Get my API keys.
      *
      * @param string $apiKey
      * @return array|null

@@ -5,16 +5,22 @@ namespace EasyPost;
 abstract class EasyPost
 {
     /**
+     * The API key of the authenticated user.
+     *
      * @var string
      */
     public static $apiKey;
 
     /**
+     * The base url to use for all requests.
+     *
      * @var string
      */
     public static $apiBase = 'https://api.easypost.com/v2';
 
     /**
+     * The API version used in requests.
+     *
      * @var string
      */
     public static $apiVersion = '2';
@@ -38,12 +44,14 @@ abstract class EasyPost
     public static $responseTimeout = 60000;
 
     /**
+     * The version of this PHP client library.
+     *
      * @var string
      */
     const VERSION = '4.0.2';
 
     /**
-     * get the API key.
+     * Get the API key.
      *
      * @return string
      */
@@ -53,7 +61,7 @@ abstract class EasyPost
     }
 
     /**
-     * set the API key.
+     * Set the API key.
      *
      * @param string $apiKey
      */
@@ -63,7 +71,7 @@ abstract class EasyPost
     }
 
     /**
-     * get the API base URL.
+     * Get the API base URL.
      *
      * @return string
      */
@@ -73,7 +81,7 @@ abstract class EasyPost
     }
 
     /**
-     * set the API base URL.
+     * Set the API base URL.
      *
      * @param string $apiBase
      */
@@ -83,7 +91,7 @@ abstract class EasyPost
     }
 
     /**
-     * get the API version.
+     * Get the API version.
      *
      * @return string
      */
@@ -93,7 +101,7 @@ abstract class EasyPost
     }
 
     /**
-     * set the API version.
+     * Set the API version.
      *
      * @param $apiVersion
      */

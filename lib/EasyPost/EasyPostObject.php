@@ -40,7 +40,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     private $_name;
 
     /**
-     * constructor
+     * Constructor for EasyPost objects.
      *
      * @param string $id
      * @param string $apiKey
@@ -72,7 +72,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     }
 
     /**
-     * Standard accessor magic methods
+     * Standard accessor magic methods.
      *
      * @param string $k
      * @param mixed $v
@@ -100,7 +100,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     }
 
     /**
-     * isset magic method
+     * `isset` magic method.
      *
      * @param string $k
      * @return bool
@@ -111,7 +111,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     }
 
     /**
-     * unset magic method
+     * `unset` magic method.
      *
      * @param string $k
      */
@@ -140,7 +140,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     }
 
     /**
-     * getter
+     * Getter.
      *
      * @param string $k
      * @return mixed
@@ -158,7 +158,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     }
 
     /**
-     * construct from
+     * Construct from.
      *
      * @param array  $values
      * @param string $class
@@ -180,7 +180,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     }
 
     /**
-     * refresh from
+     * Refresh from.
      *
      * @param array  $values
      * @param string $apiKey
@@ -218,7 +218,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     }
 
     /**
-     * ArrayAccess methods
+     * ArrayAccess methods.
      *
      * @param string $k
      * @param mixed $v
@@ -230,7 +230,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     }
 
     /**
-     * ArrayAccess methods
+     * ArrayAccess methods.
      *
      * @param string $k
      * @return bool
@@ -242,7 +242,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     }
 
     /**
-     * ArrayAccess methods
+     * ArrayAccess methods.
      *
      * @param string $k
      */
@@ -253,7 +253,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     }
 
     /**
-     * ArrayAccess methods
+     * ArrayAccess methods.
      *
      * @param string $k
      * @return mixed
@@ -265,7 +265,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     }
 
     /**
-     * Iterator methods
+     * Iterator methods.
      *
      * @return void
      */
@@ -276,7 +276,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     }
 
     /**
-     * Iterator methods
+     * Iterator methods.
      *
      * @return mixed
      */
@@ -287,7 +287,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     }
 
     /**
-     * Iterator methods
+     * Iterator methods.
      *
      * @return mixed
      */
@@ -298,7 +298,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     }
 
     /**
-     * Iterator methods
+     * Iterator methods.
      *
      * @return mixed
      */
@@ -309,7 +309,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     }
 
     /**
-     * Iterator methods
+     * Iterator methods.
      *
      * @return bool
      */
@@ -321,7 +321,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     }
 
     /**
-     * convert object to JSON
+     * Convert object to JSON.
      *
      * @return string
      */
@@ -335,7 +335,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     }
 
     /**
-     * convert object to a string
+     * Convert object to a string.
      *
      * @return string
      */
@@ -345,7 +345,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     }
 
     /**
-     * convert object to an array
+     * Convert object to an array.
      *
      * @param bool $recursive
      * @return array

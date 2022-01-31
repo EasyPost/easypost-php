@@ -5,7 +5,7 @@ namespace EasyPost;
 class Refund extends EasypostResource
 {
     /**
-     * retrieve a refund
+     * Retrieve a refund.
      *
      * @param string $id
      * @param string $apiKey
@@ -17,9 +17,9 @@ class Refund extends EasypostResource
     }
 
     /**
-     * retrieve all refunds
+     * Retrieve all refunds.
      *
-     * @param mixed  $params
+     * @param mixed $params
      * @param string $apiKey
      * @return mixed
      */
@@ -29,9 +29,9 @@ class Refund extends EasypostResource
     }
 
     /**
-     * create a refund
+     * Create a refund.
      *
-     * @param mixed  $params
+     * @param mixed $params
      * @param string $apiKey
      * @return mixed
      */

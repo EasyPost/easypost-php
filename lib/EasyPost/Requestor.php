@@ -10,7 +10,7 @@ class Requestor
     public $apiKey;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param string $apiKey
      */
@@ -20,7 +20,7 @@ class Requestor
     }
 
     /**
-     * Get the API URL
+     * Get the API URL.
      *
      * @param string $url
      * @return string
@@ -33,7 +33,7 @@ class Requestor
     }
 
     /**
-     * Converts a set of values to UTF-8 encoding
+     * Converts a set of values to UTF-8 encoding.
      *
      * @param mixed $value
      * @return string
@@ -48,7 +48,7 @@ class Requestor
     }
 
     /**
-     * Encodes an EasyPost object and prepares the data for the request
+     * Encodes an EasyPost object and prepares the data for the request.
      *
      * @param mixed $data
      * @return array|string
@@ -78,10 +78,10 @@ class Requestor
     }
 
     /**
-     * URL Encodes data for GET requests
+     * URL Encodes data for GET requests.
      *
      * @param mixed $arr
-     * @param null  $prefix
+     * @param null $prefix
      * @return string
      */
     public static function _urlEncode($arr, $prefix = null)
@@ -113,11 +113,11 @@ class Requestor
     }
 
     /**
-     * Make a request to the EasyPost API
+     * Make a request to the EasyPost API.
      *
      * @param string $method
      * @param string $url
-     * @param mixed  $params
+     * @param mixed $params
      * @return array
      * @throws \EasyPost\Error
      */
@@ -130,11 +130,11 @@ class Requestor
     }
 
     /**
-     * Internal logic required to make a request to the EasyPost API
+     * Internal logic required to make a request to the EasyPost API.
      *
      * @param string $method
      * @param string $url
-     * @param mixed  $params
+     * @param mixed $params
      * @return array
      * @throws \EasyPost\Error
      */
@@ -178,12 +178,12 @@ class Requestor
     }
 
     /**
-     * Build the cURL request
+     * Build the cURL request.
      *
      * @param string $method
      * @param string $absUrl
-     * @param mixed  $headers
-     * @param mixed  $params
+     * @param mixed $headers
+     * @param mixed $params
      * @param string $myApiKey
      * @return array
      * @throws \EasyPost\Error
@@ -259,10 +259,10 @@ class Requestor
     }
 
     /**
-     * Interpret the response body we receive from the API
+     * Interpret the response body we receive from the API.
      *
      * @param string $httpBody
-     * @param int    $httpStatus
+     * @param int $httpStatus
      * @return mixed
      * @throws \EasyPost\Error
      */
@@ -281,11 +281,11 @@ class Requestor
     }
 
     /**
-     * Handles API errors returned from EasyPost
+     * Handles API errors returned from EasyPost.
      *
      * @param string $httpBody
-     * @param int    $httpStatus
-     * @param array  $response
+     * @param int $httpStatus
+     * @param array $response
      * @throws \EasyPost\Error
      */
     public function handleApiError($httpBody, $httpStatus, $response)
@@ -297,9 +297,9 @@ class Requestor
     }
 
     /**
-     * Handle errors related to curling the API
+     * Handle errors related to curling the API.
      *
-     * @param int    $errorNum
+     * @param int $errorNum
      * @param string $message
      * @throws \EasyPost\Error
      */

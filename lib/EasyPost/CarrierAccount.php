@@ -2,10 +2,24 @@
 
 namespace EasyPost;
 
+/**
+ * @package EasyPost
+ * @property string $id
+ * @property string $object
+ * @property string $type
+ * @property bool $clone
+ * @property string $description
+ * @property string $reference
+ * @property string $readable
+ * @property object $credentials
+ * @property object $test_credentials
+ * @property string $created_at
+ * @property string $updated_at
+ */
 class CarrierAccount extends EasypostResource
 {
     /**
-     * retrieve a carrier account
+     * Retrieve a carrier account.
      *
      * @param string $id
      * @param string $apiKey
@@ -17,9 +31,9 @@ class CarrierAccount extends EasypostResource
     }
 
     /**
-     * retrieve all carrier accounts
+     * Retrieve all carrier accounts.
      *
-     * @param mixed  $params
+     * @param mixed $params
      * @param string $apiKey
      * @return mixed
      */
@@ -29,7 +43,7 @@ class CarrierAccount extends EasypostResource
     }
 
     /**
-     * save carrier account
+     * Update (save) a carrier account.
      *
      * @return $this
      */
@@ -39,7 +53,7 @@ class CarrierAccount extends EasypostResource
     }
 
     /**
-     * delete carrier account
+     * Delete a carrier account.
      *
      * @return $this
      */
@@ -49,9 +63,9 @@ class CarrierAccount extends EasypostResource
     }
 
     /**
-     * create carrier account
+     * Create a carrier account.
      *
-     * @param mixed  $params
+     * @param mixed $params
      * @param string $apiKey
      * @return mixed
      */
@@ -66,9 +80,9 @@ class CarrierAccount extends EasypostResource
     }
 
     /**
-     * get types of carrier account
+     * Get the types of carrier accounts available to the user.
      *
-     * @param mixed  $params
+     * @param mixed $params
      * @param string $apiKey
      * @return mixed
      */
