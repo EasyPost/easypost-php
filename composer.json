@@ -19,14 +19,13 @@
   "require": {
     "ext-curl": "*",
     "ext-json": "*",
-    "php": ">=5.3.0"
+    "php": ">=7.3"
   },
   "require-dev": {
     "allejo/php-vcr-sanitizer": "^1.0.9",
     "php-vcr/php-vcr": "^1.5",
-    "phpunit/php-token-stream": "3.*",
     "phpunit/phpunit": "^9",
-    "squizlabs/php_codesniffer": "^3.0"
+    "squizlabs/php_codesniffer": "^3.6"
   },
   "scripts": {
     "coverage": "XDEBUG_MODE=coverage ./bin/phpunit --coverage-html clover.html --coverage-clover clover.xml",
