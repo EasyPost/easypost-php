@@ -2,6 +2,7 @@
 
 ### NEXT RELEASE
 
+* Bumped minimum PHP version supported from 5.3 to 7.3
 * Adds the `update_brand()` method on the user object
 * Set a default timeout of 30 seconds for connections and 60 seconds for requests
 * Fixes the tracker `create_list` method's encoding to properly send through the parameters
