@@ -2,13 +2,19 @@
 
 namespace EasyPost;
 
+/**
+ * @package EasyPost
+ * @property string $code
+ * @property string $message
+ * @property FieldError[] $errors
+ */
 class Error extends \Exception
 {
     /**
-     * constructor
+     * Constructor.
      *
      * @param string $message
-     * @param int    $httpStatus
+     * @param int $httpStatus
      * @param string $httpBody
      */
     public function __construct($message = null, $httpStatus = null, $httpBody = null)

@@ -2,10 +2,18 @@
 
 namespace EasyPost;
 
+/**
+ * @package EasyPost
+ * @property string $id
+ * @property string $object
+ * @property string $modoe
+ * @property string $url
+ * @property string $disabled_at
+ */
 class Webhook extends EasypostResource
 {
     /**
-     * retrieve a webhook
+     * Retrieve a webhook.
      *
      * @param string $id
      * @param string $apiKey
@@ -17,7 +25,7 @@ class Webhook extends EasypostResource
     }
 
     /**
-     * retrieve all webhooks
+     * Retrieve all webhooks.
      *
      * @param mixed  $params
      * @param string $apiKey
@@ -29,7 +37,7 @@ class Webhook extends EasypostResource
     }
 
     /**
-     * delete a webhook
+     * Delete a webhook.
      *
      * @param string $apiKey
      * @return $this
@@ -40,7 +48,7 @@ class Webhook extends EasypostResource
     }
 
     /**
-     * update a webhook
+     * Update a webhook.
      *
      * @param mixed  $params
      * @param string $apiKey
@@ -58,7 +66,7 @@ class Webhook extends EasypostResource
     }
 
     /**
-     * create a webhook
+     * Create a webhook.
      *
      * @param mixed  $params
      * @param string $apiKey

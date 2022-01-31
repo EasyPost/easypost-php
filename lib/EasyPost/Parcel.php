@@ -2,10 +2,23 @@
 
 namespace EasyPost;
 
+/**
+ * @package EasyPost
+ * @property string $id
+ * @property string $object
+ * @property string $mode
+ * @property float $length
+ * @property float $width
+ * @property float $height
+ * @property float $wiehgt
+ * @property string $predefined_package
+ * @property string $created_at
+ * @property string $updated_at
+ */
 class Parcel extends EasypostResource
 {
     /**
-     * retrieve a parcel
+     * Retrieve a parcel.
      *
      * @param string $id
      * @param string $apiKey
@@ -17,9 +30,9 @@ class Parcel extends EasypostResource
     }
 
     /**
-     * retrieve all parcels
+     * Retrieve all parcels.
      *
-     * @param mixed  $params
+     * @param mixed $params
      * @param string $apiKey
      * @return mixed
      */
@@ -29,9 +42,9 @@ class Parcel extends EasypostResource
     }
 
     /**
-     * create a parcel
+     * Create a parcel.
      *
-     * @param mixed  $params
+     * @param mixed $params
      * @param string $apiKey
      * @return mixed
      */

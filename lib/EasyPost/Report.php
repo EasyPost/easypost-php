@@ -2,10 +2,25 @@
 
 namespace EasyPost;
 
+/**
+ * @package EasyPost
+ * @property string $id
+ * @property string $object
+ * @property string $mode
+ * @property string $status
+ * @property string $start_date
+ * @property string $end_date
+ * @property bool $include_children
+ * @property string $url
+ * @property string $url_expires_at
+ * @property bool $send_email
+ * @property string $created_at
+ * @property string $updated_at
+ */
 class Report extends EasypostResource
 {
     /**
-     * retrieve a report
+     * Retrieve a report.
      *
      * @param string $id
      * @param string $apiKey
@@ -18,9 +33,9 @@ class Report extends EasypostResource
     }
 
     /**
-     * retrieve all reports
+     * Retrieve all reports.
      *
-     * @param mixed  $params
+     * @param mixed $params
      * @param string $apiKey
      * @return mixed
      * @throws \EasyPost\Error
@@ -44,9 +59,9 @@ class Report extends EasypostResource
     }
 
     /**
-     * create a report
+     * Create a report.
      *
-     * @param mixed  $params
+     * @param mixed $params
      * @param string $apiKey
      * @return mixed
      */
@@ -68,7 +83,7 @@ class Report extends EasypostResource
     }
 
     /**
-     * generate report url format
+     * Generate report url format.
      *
      * @param string $type
      * @return mixed
