@@ -80,14 +80,13 @@ abstract class EasypostResource extends EasyPostObject
     }
 
     /**
-     * Validate usage library.
+     * Validate library usage.
      *
-     * @param string $method
      * @param array $params
      * @param string $apiKey
      * @throws \EasyPost\Error
      */
-    protected static function _validate($method, $params = null, $apiKey = null)
+    protected static function _validate($params = null, $apiKey = null)
     {
         if ($params && !is_array($params)) {
             throw new Error("You must pass an array as the first argument to EasyPost API method calls.");
@@ -127,7 +126,7 @@ abstract class EasypostResource extends EasyPostObject
      */
     protected static function _all($class, $params = null, $apiKey = null)
     {
-        self::_validate('all', $params, $apiKey);
+        self::_validate($params, $apiKey);
         $requestor = new Requestor($apiKey);
         $url = self::classUrl($class);
         list($response, $apiKey) = $requestor->request('get', $url, $params);
@@ -147,7 +146,7 @@ abstract class EasypostResource extends EasyPostObject
      */
     protected static function _create($class, $params = null, $apiKey = null, $urlModifier = null, $apiKeyRequired = true)
     {
-        self::_validate('create', $params, $apiKey);
+        self::_validate($params, $apiKey);
         $requestor = new Requestor($apiKey);
         $url = self::classUrl($class);
         if ($urlModifier != null) {
@@ -168,7 +167,7 @@ abstract class EasypostResource extends EasyPostObject
      */
     protected function _save($class)
     {
-        self::_validate('save');
+        self::_validate();
         if (count($this->_unsavedValues)) {
             $requestor = new Requestor($this->_apiKey);
             $url = $this->instanceUrl();
@@ -183,14 +182,13 @@ abstract class EasypostResource extends EasyPostObject
     /**
      * Internal delete method.
      *
-     * @param string $class
      * @param mixed $params
      * @return $this
      * @throws \EasyPost\Error
      */
-    protected function _delete($class, $params = null, $no_refresh = null)
+    protected function _delete($params = null, $no_refresh = null)
     {
-        self::_validate('delete');
+        self::_validate();
         $requestor = new Requestor($this->_apiKey);
         $url = $this->instanceUrl();
         list($response, $apiKey) = $requestor->request('delete', $url, $params);
@@ -204,14 +202,13 @@ abstract class EasypostResource extends EasyPostObject
     /**
      * Internal update method.
      *
-     * @param string $class
      * @param mixed $params
      * @return $this
      * @throws \EasyPost\Error
      */
-    protected function _update($class, $params = null)
+    protected function _update($params = null)
     {
-        self::_validate('put');
+        self::_validate();
         $requestor = new Requestor($this->_apiKey);
         $url = $this->instanceUrl();
         list($response, $apiKey) = $requestor->request('put', $url, $params);

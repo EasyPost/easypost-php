@@ -88,6 +88,8 @@ class Tracker extends EasypostResource
 
         $requestor = new Requestor($apiKey);
         $url = self::classUrl($class);
-        list($response, $apiKey) = $requestor->request('post', $url . '/create_list', $encoded_params);
+        list($_, $apiKey) = $requestor->request('post', $url . '/create_list', $encoded_params);
+
+        return true;
     }
 }

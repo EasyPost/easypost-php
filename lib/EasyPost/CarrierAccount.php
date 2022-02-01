@@ -49,7 +49,7 @@ class CarrierAccount extends EasypostResource
      */
     public function save()
     {
-        return self::_save(get_class());
+        return $this->_save(get_class());
     }
 
     /**
@@ -59,7 +59,7 @@ class CarrierAccount extends EasypostResource
      */
     public function delete()
     {
-        return self::_delete(get_class());
+        return $this->_delete();
     }
 
     /**

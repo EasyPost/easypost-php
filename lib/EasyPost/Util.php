@@ -53,7 +53,7 @@ abstract class Util
      * @param string $apiKey
      * @param string $parent
      * @param string $name
-     * @return array
+     * @return mixed
      */
     public static function convertToEasyPostObject($response, $apiKey, $parent = null, $name = null)
     {
