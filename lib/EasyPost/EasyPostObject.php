@@ -160,7 +160,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     /**
      * Construct from.
      *
-     * @param array  $values
+     * @param array $values
      * @param string $class
      * @param string $apiKey
      * @param string $parent
@@ -182,7 +182,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     /**
      * Refresh from.
      *
-     * @param array  $values
+     * @param array $values
      * @param string $apiKey
      * @param bool $partial
      */

@@ -41,7 +41,7 @@ class User extends EasypostResource
      */
     public function save()
     {
-        return self::_save(get_class());
+        return $this->_save(get_class());
     }
 
     /**
@@ -80,7 +80,7 @@ class User extends EasypostResource
      */
     public function delete($params = null, $apiKey = null)
     {
-        return self::_delete(get_class(), $params, true);
+        return $this->_delete($params, true);
     }
 
     /**

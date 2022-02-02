@@ -48,7 +48,7 @@ class Error extends \Exception
     }
 
     /**
-     * get the HTTP status code
+     * Get the HTTP status code.
      *
      * @return int
      */
@@ -58,7 +58,7 @@ class Error extends \Exception
     }
 
     /**
-     * get the HTTP body
+     * Get the HTTP body.
      *
      * @return string
      */
@@ -68,7 +68,7 @@ class Error extends \Exception
     }
 
     /**
-     * print out the error
+     * Pretty print the error.
      *
      * @return void
      */

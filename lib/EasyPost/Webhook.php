@@ -27,7 +27,7 @@ class Webhook extends EasypostResource
     /**
      * Retrieve all webhooks.
      *
-     * @param mixed  $params
+     * @param mixed $params
      * @param string $apiKey
      * @return mixed
      */
@@ -44,13 +44,13 @@ class Webhook extends EasypostResource
      */
     public function delete($params = null, $apiKey = null)
     {
-        return self::_delete(get_class(), $params, true);
+        return $this->_delete($params, true);
     }
 
     /**
      * Update a webhook.
      *
-     * @param mixed  $params
+     * @param mixed $params
      * @param string $apiKey
      * @return $this
      */
@@ -62,13 +62,13 @@ class Webhook extends EasypostResource
             $params['webhook'] = $clone;
         }
 
-        return self::_update(get_class(), $params);
+        return $this->_update($params);
     }
 
     /**
      * Create a webhook.
      *
-     * @param mixed  $params
+     * @param mixed $params
      * @param string $apiKey
      * @return mixed
      */

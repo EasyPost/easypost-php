@@ -123,7 +123,7 @@ class Shipment extends EasypostResource
     {
         $requestor = new Requestor($this->_apiKey);
         $url = $this->instanceUrl() . '/smartrate';
-        list($response, $apiKey) = $requestor->request('get', $url);
+        list($response, $_) = $requestor->request('get', $url);
 
         return isset($response['result']) ? $response['result'] : [];
     }

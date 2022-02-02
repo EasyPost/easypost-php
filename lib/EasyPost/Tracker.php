@@ -74,10 +74,10 @@ class Tracker extends EasypostResource
      *
      * @param mixed  $params
      * @param string $apiKey
+     * @return bool
      */
     public static function create_list($params = null, $apiKey = null)
     {
-        $class = get_class();
         if (!isset($params['trackers']) || !is_array($params['trackers'])) {
             $clone = $params;
             unset($params);
@@ -87,7 +87,9 @@ class Tracker extends EasypostResource
         $encoded_params = str_replace("\\", '', json_encode($params));
 
         $requestor = new Requestor($apiKey);
-        $url = self::classUrl($class);
-        list($response, $apiKey) = $requestor->request('post', $url . '/create_list', $encoded_params);
+        $url = self::classUrl(get_class());
+        list($_, $apiKey) = $requestor->request('post', $url . '/create_list', $encoded_params);
+
+        return true;
     }
 }

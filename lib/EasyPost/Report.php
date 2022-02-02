@@ -47,7 +47,7 @@ class Report extends EasypostResource
         } else {
             $type = $params['type'];
 
-            self::_validate('all', $params, $apiKey);
+            self::_validate($params, $apiKey);
             $requestor = new Requestor($apiKey);
 
             $url = self::reportUrl($type);
@@ -72,7 +72,7 @@ class Report extends EasypostResource
         } else {
             $type = $params['type'];
 
-            self::_validate('create', $params, $apiKey);
+            self::_validate($params, $apiKey);
             $requestor = new Requestor($apiKey);
 
             $url = self::reportUrl($type);
