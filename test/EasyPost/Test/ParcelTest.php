@@ -6,7 +6,7 @@ use VCR\VCR;
 use EasyPost\Parcel;
 use EasyPost\EasyPost;
 
-EasyPost::setApiKey(getenv('API_KEY'));
+EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
 
 class ParcelTest extends \PHPUnit\Framework\TestCase
 {

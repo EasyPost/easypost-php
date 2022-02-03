@@ -6,7 +6,7 @@ use VCR\VCR;
 use EasyPost\Report;
 use EasyPost\EasyPost;
 
-EasyPost::setApiKey(getenv('API_KEY'));
+EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
 define('REPORT_START_DATE', '2021-01-03');
 define('REPORT_END_DATE', '2021-01-04');
 
