@@ -226,13 +226,13 @@ class Shipment extends EasypostResource
      * @return bool
      * @throws \EasyPost\Error
      */
-    public function lowest_rate($carriers = array(), $services = array())
+    public function lowest_rate($carriers = [], $services = [])
     {
         $lowest_rate = false;
-        $carriers_include = array();
-        $carriers_exclude = array();
-        $services_include = array();
-        $services_exclude = array();
+        $carriers_include = [];
+        $carriers_exclude = [];
+        $services_include = [];
+        $services_exclude = [];
 
         if (!is_array($carriers)) {
             $carriers = explode(',', $carriers);

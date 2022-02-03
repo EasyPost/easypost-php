@@ -40,28 +40,28 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('shipments/create.yml');
 
-        $shipment = Shipment::create(array(
-            "to_address" => array(
+        $shipment = Shipment::create([
+            "to_address" => [
                 "street1"   => "388 Townsend St",
                 "street2"   => "Apt 20",
                 "city"      => "San Francisco",
                 "state"     => "CA",
                 "zip"       => "94107",
-            ),
-            "from_address" => array(
+            ],
+            "from_address" => [
                 "street1"   => "388 Townsend St",
                 "street2"   => "Apt 20",
                 "city"      => "San Francisco",
                 "state"     => "CA",
                 "zip"       => "94107",
-            ),
-            "parcel" => array(
+            ],
+            "parcel" => [
                 "length"    => "10",
                 "width"     => "8",
                 "height"    => "4",
                 "weight"    => "15",
-            ),
-            "customs_info"  => array(
+            ],
+            "customs_info"  => [
                 "eel_pfc" => 'NOEEI 30.37(a)',
                 "customs_certify" => true,
                 "customs_signer" => 'Steve Brule',
@@ -69,23 +69,23 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
                 "contents_explanation" => '',
                 "restriction_type" => 'none',
                 "non_delivery_option" => 'return',
-                "customs_items" => array(
-                    array(
+                "customs_items" => [
+                    [
                         "description" => 'Sweet shirts',
                         "quantity" => 2,
                         "weight" => 11,
                         "value" => 23,
                         "hs_tariff_number" => '654321',
                         "origin_country" => 'US'
-                    ),
-                ),
-            ),
-            "options" => array(
+                    ],
+                ],
+            ],
+            "options" => [
                 "label_format"      => "PDF",
                 "invoice_number"    => 123 // Tests that we encode integers to strings where appropriate
-            ),
+            ],
             "reference" => 123 // Tests that we encode integers to strings where appropriate
-        ));
+        ]);
 
         $this->assertInstanceOf('\EasyPost\Shipment', $shipment);
         $this->assertIsString($shipment->id);
@@ -131,9 +131,9 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('shipments/buy.yml');
 
-        $shipment->buy(array(
+        $shipment->buy([
             'rate' => $shipment->lowest_rate(),
-        ));
+        ]);
 
         $this->assertNotNull($shipment->postage_label);
     }
@@ -147,28 +147,28 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('shipments/smartrates.yml');
 
-        $shipment = Shipment::create(array(
-            "to_address" => array(
+        $shipment = Shipment::create([
+            "to_address" => [
                 "street1"   => "388 Townsend St",
                 "street2"   => "Apt 20",
                 "city"      => "San Francisco",
                 "state"     => "CA",
                 "zip"       => "94107",
-            ),
-            "from_address" => array(
+            ],
+            "from_address" => [
                 "street1"   => "388 Townsend St",
                 "street2"   => "Apt 20",
                 "city"      => "San Francisco",
                 "state"     => "CA",
                 "zip"       => "94107",
-            ),
-            "parcel" => array(
+            ],
+            "parcel" => [
                 "length"    => "10",
                 "width"     => "8",
                 "height"    => "4",
                 "weight"    => "15",
-            )
-        ));
+            ],
+        ]);
 
         $this->assertNotNull($shipment->rates);
 
@@ -192,34 +192,34 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('shipments/createEmptyObjects.yml');
 
-        $shipment = Shipment::create(array(
-            "to_address" => array(
+        $shipment = Shipment::create([
+            "to_address" => [
                 "street1"   => "388 Townsend St",
                 "street2"   => "Apt 20",
                 "city"      => "San Francisco",
                 "state"     => "CA",
                 "zip"       => "94107",
-            ),
-            "from_address" => array(
+            ],
+            "from_address" => [
                 "street1"   => "388 Townsend St",
                 "street2"   => "Apt 20",
                 "city"      => "San Francisco",
                 "state"     => "CA",
                 "zip"       => "94107",
-            ),
-            "parcel" => array(
+            ],
+            "parcel" => [
                 "length"    => null,
                 "width"     => "",
                 "height"    => null,
                 "weight"    => "15",
-            ),
-            "customs_info" => array(
-                "customs_items" => array()
-            ),
+            ],
+            "customs_info" => [
+                "customs_items" => []
+            ],
             "options" => null,
             "tax_identifiers" => null,
             "reference" => "",
-        ));
+        ]);
 
         $this->assertInstanceOf('\EasyPost\Shipment', $shipment);
         $this->assertIsString($shipment->id);
@@ -238,36 +238,36 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('shipments/createTaxIdentifiers.yml');
 
-        $shipment = Shipment::create(array(
-            "to_address" => array(
+        $shipment = Shipment::create([
+            "to_address" => [
                 "street1"   => "388 Townsend St",
                 "street2"   => "Apt 20",
                 "city"      => "San Francisco",
                 "state"     => "CA",
                 "zip"       => "94107",
-            ),
-            "from_address" => array(
+            ],
+            "from_address" => [
                 "street1"   => "388 Townsend St",
                 "street2"   => "Apt 20",
                 "city"      => "San Francisco",
                 "state"     => "CA",
                 "zip"       => "94107",
-            ),
-            "parcel" => array(
+            ],
+            "parcel" => [
                 "length"    => "10",
                 "width"     => "8",
                 "height"    => "4",
                 "weight"    => "15",
-            ),
-            "tax_identifiers" => array(
-                array(
+            ],
+            "tax_identifiers" => [
+                [
                     "entity" => "SENDER",
                     "tax_id_type" => "IOSS",
                     "tax_id" => "12345",
                     "issuing_country" => "GB",
-                )
-            )
-        ));
+                ],
+            ],
+        ]);
 
         $this->assertInstanceOf('\EasyPost\Shipment', $shipment);
         $this->assertIsString($shipment->id);

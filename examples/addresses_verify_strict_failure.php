@@ -6,8 +6,8 @@ require_once("../lib/easypost.php");
 
 try {
     // create address
-    $address_params = array(
-        "verify_strict"  =>  array("delivery"),
+    $address_params = [
+        "verify_strict"  =>  ["delivery"],
         "street1"        => "UNDELIEVRABLE ST",
         "street2"        => "FL 4",
         "city"           => "San Francisco",
@@ -16,7 +16,7 @@ try {
         "country"        => "US",
         "company"        => "EasyPost",
         "phone"          => "415-123-4567"
-    );
+    ];
 
     $address = \EasyPost\Address::create($address_params);
 } catch (Exception $e) {

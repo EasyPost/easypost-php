@@ -4,17 +4,19 @@ require_once("../vendor/autoload.php");
 \EasyPost\EasyPost::setApiKey(getenv('API_KEY'));
 
 // Parcel: create
-$params = array("length" => 20.2,
-                "width"  => 10.9,
-                "height" => 5,
-                //"predefined_package" => null,
-                "weight" => 14.8
-);
+$params = [
+    "length" => 20.2,
+    "width"  => 10.9,
+    "height" => 5,
+    //"predefined_package" => null,
+    "weight" => 14.8
+];
 $parcel = \EasyPost\Parcel::create($params);
 
-$params = array("predefined_package" => 'SmallFlatRateBox',
-                "weight"             => 38.1
-);
+$params = [
+    "predefined_package" => 'SmallFlatRateBox',
+    "weight"             => 38.1
+];
 $parcel = \EasyPost\Parcel::create($params);
 
 // retrieve

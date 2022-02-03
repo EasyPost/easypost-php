@@ -4,10 +4,10 @@ require_once("../lib/easypost.php");
 
 \EasyPost\EasyPost::setApiKey(getenv('API_KEY'));
 
-$trackers_rep = array();
+$trackers_rep = [];
 
 for ($i = 1; $i < 6; $i++) {
-    $tracker = array();
+    $tracker = [];
     $tracker["tracking_code"] = "EZ200000000$i";
     $tracker["carrier"] = "USPS";
     array_push($trackers_rep, $tracker);

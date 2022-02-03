@@ -42,11 +42,11 @@ class ReportTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('reports/createPaymentLogReport.yml');
 
-        $payment_log_report = Report::create(array(
+        $payment_log_report = Report::create([
             "start_date" => REPORT_START_DATE,
             "end_date" => REPORT_END_DATE,
             "type" => "payment_log"
-        ));
+        ]);
 
         $this->assertInstanceOf('\EasyPost\Report', $payment_log_report);
         $this->assertIsString($payment_log_report->id);
@@ -65,11 +65,11 @@ class ReportTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('reports/createRefundReport.yml');
 
-        $refund_report = Report::create(array(
+        $refund_report = Report::create([
             "start_date" => REPORT_START_DATE,
             "end_date" => REPORT_END_DATE,
             "type" => "refund"
-        ));
+        ]);
 
         $this->assertInstanceOf('\EasyPost\Report', $refund_report);
         $this->assertIsString($refund_report->id);
@@ -88,11 +88,11 @@ class ReportTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('reports/createShipmentReport.yml');
 
-        $shipment_report = Report::create(array(
+        $shipment_report = Report::create([
             "start_date" => REPORT_START_DATE,
             "end_date" => REPORT_END_DATE,
             "type" => "shipment"
-        ));
+        ]);
 
         $this->assertInstanceOf('\EasyPost\Report', $shipment_report);
         $this->assertIsString($shipment_report->id);
@@ -111,11 +111,11 @@ class ReportTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('reports/createShipmentInvoiceReport.yml');
 
-        $shipment_invoice_report = Report::create(array(
+        $shipment_invoice_report = Report::create([
             "start_date" => REPORT_START_DATE,
             "end_date" => REPORT_END_DATE,
             "type" => "shipment_invoice"
-        ));
+        ]);
 
         $this->assertInstanceOf('\EasyPost\Report', $shipment_invoice_report);
         $this->assertIsString($shipment_invoice_report->id);
@@ -134,11 +134,11 @@ class ReportTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('reports/createTrackerReport.yml');
 
-        $tracker_report = Report::create(array(
+        $tracker_report = Report::create([
             "start_date" => REPORT_START_DATE,
             "end_date" => REPORT_END_DATE,
             "type" => "tracker"
-        ));
+        ]);
 
         $this->assertInstanceOf('\EasyPost\Report', $tracker_report);
         $this->assertIsString($tracker_report->id);

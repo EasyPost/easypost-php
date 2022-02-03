@@ -40,12 +40,12 @@ class ParcelTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('parcels/create.yml');
 
-        $parcel = Parcel::create(array(
+        $parcel = Parcel::create([
             "length"    => "10",
             "width"     => "8",
             "height"    => "4",
             "weight"    => 15.4,
-        ));
+        ]);
 
         $this->assertInstanceOf('\EasyPost\Parcel', $parcel);
         $this->assertIsString($parcel->id);

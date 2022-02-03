@@ -6,13 +6,15 @@ require_once("../lib/easypost.php");
 
 try {
     // create address
-    $address_params = array("name"    => "Sawyer Bateman",
-                            "street1" => "388 Townasend St",
-                            //"street2" => "Apt 20",
-                            "city"    => "San Francisco",
-                            "state"   => "CA",
-                            "zip"     => "94107",
-                            "country" => "US");
+    $address_params = [
+        "name"    => "Sawyer Bateman",
+        "street1" => "388 Townasend St",
+        //"street2" => "Apt 20",
+        "city"    => "San Francisco",
+        "state"   => "CA",
+        "zip"     => "94107",
+        "country" => "US"
+    ];
 
     $address = \EasyPost\Address::create($address_params);
     print_r($address);

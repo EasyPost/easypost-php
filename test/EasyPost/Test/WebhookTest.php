@@ -40,9 +40,9 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('webhooks/create.yml');
 
-        $webhook = Webhook::create(array(
+        $webhook = Webhook::create([
             "url" => "http://example.com"
-        ));
+        ]);
 
         $this->assertInstanceOf('\EasyPost\Webhook', $webhook);
         $this->assertIsString($webhook->id);
