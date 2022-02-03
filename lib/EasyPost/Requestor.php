@@ -56,15 +56,15 @@ class Requestor
     private static function _encodeObjects($data)
     {
         if (is_null($data)) {
-            return array();
+            return [];
         } elseif ($data instanceof EasypostResource) {
-            return array("id" => self::utf8($data->id));
+            return ["id" => self::utf8($data->id)];
         } elseif ($data === true) {
             return 'true';
         } elseif ($data === false) {
             return 'false';
         } elseif (is_array($data)) {
-            $resource = array();
+            $resource = [];
             foreach ($data as $k => $v) {
                 if (!is_null($v) and ($v !== "") and (!is_array($v) or !empty($v))) {
                     $resource[$k] = self::_encodeObjects($v);
@@ -90,7 +90,7 @@ class Requestor
             return $arr;
         }
 
-        $r = array();
+        $r = [];
         foreach ($arr as $k => $v) {
             if (is_null($v)) {
                 continue;
@@ -126,7 +126,7 @@ class Requestor
         list($httpBody, $httpStatus, $myApiKey) = $this->_requestRaw($method, $url, $params, $apiKeyRequired);
         $response = $this->_interpretResponse($httpBody, $httpStatus);
 
-        return array($response, $myApiKey);
+        return [$response, $myApiKey];
     }
 
     /**
@@ -155,26 +155,26 @@ class Requestor
 
         $langVersion = phpversion();
         $uname = php_uname();
-        $ua = array(
+        $ua = [
             'bindings_version' => EasyPost::VERSION,
             'lang'             => 'php',
             'lang_version'     => $langVersion,
             'publisher'        => 'easypost',
             'uname'            => $uname
-        );
-        $headers = array(
+        ];
+        $headers = [
             'Accept: application/json',
             "Authorization: Bearer {$myApiKey}",
             'Content-Type: application/json',
             'User-Agent: EasyPost/v2 PhpClient/' . EasyPost::VERSION . ' PHP/' . phpversion(),
             'X-Client-User-Agent: ' . json_encode($ua),
-        );
+        ];
         if (EasyPost::$apiVersion) {
             $headers[] = 'EasyPost-Version: ' . EasyPost::$apiVersion;
         }
         list($httpBody, $httpStatus) = $this->_curlRequest($method, $absUrl, $headers, $params, $myApiKey);
 
-        return array($httpBody, $httpStatus, $myApiKey);
+        return [$httpBody, $httpStatus, $myApiKey];
     }
 
     /**
@@ -192,7 +192,7 @@ class Requestor
     {
         $curl = curl_init();
         $method = strtolower($method);
-        $curlOptions = array();
+        $curlOptions = [];
 
         // Setup the HTTP method and params to use on the request
         if ($method == 'get') {
@@ -255,7 +255,7 @@ class Requestor
         $httpStatus = curl_getinfo($curl, CURLINFO_HTTP_CODE);
         curl_close($curl);
 
-        return array($httpBody, $httpStatus);
+        return [$httpBody, $httpStatus];
     }
 
     /**

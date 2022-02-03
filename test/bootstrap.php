@@ -11,12 +11,12 @@ VCR::configure()->setCassettePath('test/cassettes')
     ->setStorage('yaml')
     ->setMode('once');
 
-VCRCleaner::enable(array(
-    'request' => array(
-        'ignoreHeaders' => array(
+VCRCleaner::enable([
+    'request' => [
+        'ignoreHeaders' => [
             'Authorization',        // Ignore credentials
             'User-Agent',           // Ignore varying user agents across test runs
             'X-Client-User-Agent',  // Ignore varying user agents across test runs
-        ),
-    ),
-));
+        ],
+    ],
+]);

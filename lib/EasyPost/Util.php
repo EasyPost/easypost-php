@@ -32,7 +32,7 @@ abstract class Util
      */
     public static function convertEasyPostObjectToArray($values)
     {
-        $results = array();
+        $results = [];
         foreach ($values as $k => $v) {
             if ($v instanceof EasyPostObject) {
                 $results[$k] = $v->__toArray(true);
@@ -57,7 +57,7 @@ abstract class Util
      */
     public static function convertToEasyPostObject($response, $apiKey, $parent = null, $name = null)
     {
-        $types = array(
+        $types = [
             'Address'               => '\EasyPost\Address',
             'Batch'                 => '\EasyPost\Batch',
             'CarrierAccount'        => '\EasyPost\CarrierAccount',
@@ -92,9 +92,9 @@ abstract class Util
             'VerificationDetails'   => '\EasyPost\VerificationDetails',
             'Verifictions'          => '\EasyPost\Verifications',
             'Webhook'               => '\EasyPost\Webhook',
-        );
+        ];
 
-        $prefixes = array(
+        $prefixes = [
             'adr'       => '\EasyPost\Address',
             'batch'     => '\EasyPost\Batch',
             'ca'        => '\EasyPost\CarrierAccount',
@@ -119,10 +119,10 @@ abstract class Util
             'trk'       => '\EasyPost\Tracker',
             'trkrep'    => '\EasyPost\Report',
             'user'      => '\EasyPost\User',
-        );
+        ];
 
         if (self::isList($response)) {
-            $mapped = array();
+            $mapped = [];
             foreach ($response as $object => $v) {
                 if (is_string($object) && isset($types[$object])) {
                     $v['object'] = $object;

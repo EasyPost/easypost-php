@@ -121,7 +121,7 @@ class User extends EasypostResource
         if (is_null($my_api_keys)) {
             return null;
         } else {
-            $response = array();
+            $response = [];
             foreach ($my_api_keys as $key) {
                 $response[$key->mode] = $key->key;
             }

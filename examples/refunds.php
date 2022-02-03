@@ -5,10 +5,10 @@ require_once("../vendor/autoload.php");
 
 try {
     // create refund
-    $refund = \EasyPost\Refund::create(array(
+    $refund = \EasyPost\Refund::create([
         "carrier" => "USPS",
         "tracking_codes" => "CJ123456789US,LN123456789US"
-    ));
+    ]);
     print_r($refund);
 
     // all

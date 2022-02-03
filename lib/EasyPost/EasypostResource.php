@@ -171,7 +171,7 @@ abstract class EasypostResource extends EasyPostObject
         if (count($this->_unsavedValues)) {
             $requestor = new Requestor($this->_apiKey);
             $url = $this->instanceUrl();
-            $params = array(self::className($class) => $this->_unsavedValues);
+            $params = [self::className($class) => $this->_unsavedValues];
             list($response, $apiKey) = $requestor->request('patch', $url, $params);
             $this->refreshFrom($response, $apiKey);
         }

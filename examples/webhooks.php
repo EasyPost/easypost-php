@@ -4,7 +4,7 @@ require_once("../lib/easypost.php");
 \EasyPost\EasyPost::setApiKey(getenv('API_KEY'));
 
 // Webhook: create
-$create_params = array("url" => "http://example.com");
+$create_params = ["url" => "http://example.com"];
 $webhook = \EasyPost\Webhook::create($create_params);
 var_dump($webhook->url);
 var_dump($webhook->id);

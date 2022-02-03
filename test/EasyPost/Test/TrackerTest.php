@@ -40,9 +40,9 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('trackers/create.yml');
 
-        $tracker = Tracker::create(array(
+        $tracker = Tracker::create([
             "tracking_code" => "EZ1000000001",
-        ));
+        ]);
 
         $this->assertInstanceOf('\EasyPost\Tracker', $tracker);
         $this->assertIsString($tracker->id);
@@ -82,9 +82,9 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
 
         $page_size = 5;
 
-        $trackers = Tracker::all(array(
+        $trackers = Tracker::all([
             'page_size' => $page_size,
-        ));
+        ]);
 
         $trackers_array = $trackers['trackers'];
         $first_tracker = $trackers['trackers'][0];
@@ -105,12 +105,12 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('trackers/createList.yml');
 
-        $tracker = Tracker::create_list(array(
-            array("tracking_code" => "EZ1000000001"),
-            array("tracking_code" => "EZ1000000002"),
-            array("tracking_code" => "EZ1000000003"),
-            array("tracking_code" => "EZ1000000004"),
-        ));
+        Tracker::create_list([
+            ["tracking_code" => "EZ1000000001"],
+            ["tracking_code" => "EZ1000000002"],
+            ["tracking_code" => "EZ1000000003"],
+            ["tracking_code" => "EZ1000000004"],
+        ]);
 
         // This endpoint/method does not return anything, just make sure the request doesn't fail
         $this->expectNotToPerformAssertions();

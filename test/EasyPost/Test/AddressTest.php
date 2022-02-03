@@ -40,13 +40,13 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('addresses/create.yml');
 
-        $address = Address::create(array(
+        $address = Address::create([
             "street1" => "388 Townsend St",
             "street2" => "Apt 20",
             "city"    => "San Francisco",
             "state"   => "CA",
             "zip"     => "94107",
-        ));
+        ]);
 
         $this->assertInstanceOf('\EasyPost\Address', $address);
         $this->assertIsString($address->id);
@@ -85,8 +85,8 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('addresses/createVerify.yml');
 
-        $address = Address::create(array(
-            "verify"  => array(true),
+        $address = Address::create([
+            "verify"  => [true],
             "street1" => "417 montgomery streat",
             "street2" => "FL 5",
             "city"    => "San Francisco",
@@ -95,7 +95,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
             "country" => "US",
             "company" => "EasyPost",
             "phone"   => "415-123-4567"
-        ));
+        ]);
 
         $this->assertInstanceOf('\EasyPost\Address', $address);
         $this->assertIsString($address->id);

@@ -12,7 +12,7 @@ $carrier = "USPS";
 \EasyPost\EasyPost::setResponseTimeout(0);
 
 // Creation of test tracker should not timeout
-$tracker = \EasyPost\Tracker::create(array('tracking_code' => $tracking_code, 'carrier' => $carrier));
+$tracker = \EasyPost\Tracker::create(['tracking_code' => $tracking_code, 'carrier' => $carrier]);
 var_dump($tracker->id);                      // This is random
 
 // Set timeouts to 1ms
@@ -21,4 +21,4 @@ var_dump($tracker->id);                      // This is random
 
 // Creation of test tracker should timeout
 // This is expected to raise an EasyPost\Error
-$tracker = \EasyPost\Tracker::create(array('tracking_code' => $tracking_code, 'carrier' => $carrier));
+$tracker = \EasyPost\Tracker::create(['tracking_code' => $tracking_code, 'carrier' => $carrier]);
