@@ -12,7 +12,7 @@ EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
 class RateTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * Set up VCR before running tests in this file
+     * Set up VCR before running tests in this file.
      *
      * @return void
      */
@@ -22,7 +22,7 @@ class RateTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Spin down VCR after running tests
+     * Spin down VCR after running tests.
      *
      * @return void
      */
@@ -33,7 +33,7 @@ class RateTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test retrieving a rate
+     * Test retrieving a rate.
      *
      * @return void
      */

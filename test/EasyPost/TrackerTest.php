@@ -12,7 +12,7 @@ EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
 class TrackerTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * Set up VCR before running tests in this file
+     * Set up VCR before running tests in this file.
      *
      * @return void
      */
@@ -22,7 +22,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Spin down VCR after running tests
+     * Spin down VCR after running tests.
      *
      * @return void
      */
@@ -33,7 +33,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test creating a Tracker
+     * Test creating a Tracker.
      *
      * @return void
      */
@@ -54,7 +54,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test retrieving a Tracker
+     * Test retrieving a Tracker.
      *
      * @param Tracker $tracker
      * @return void
@@ -72,7 +72,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test retrieving all trackers
+     * Test retrieving all trackers.
      *
      * @return void
      */
@@ -93,7 +93,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Tests that we can create a list of bulk trackers with one request
+     * Tests that we can create a list of bulk trackers with one request.
      *
      * @return void
      */

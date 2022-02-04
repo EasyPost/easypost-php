@@ -12,7 +12,7 @@ EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
 class ParcelTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * Set up VCR before running tests in this file
+     * Set up VCR before running tests in this file.
      *
      * @return void
      */
@@ -22,7 +22,7 @@ class ParcelTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Spin down VCR after running tests
+     * Spin down VCR after running tests.
      *
      * @return void
      */
@@ -33,7 +33,7 @@ class ParcelTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test creating a Parcel
+     * Test creating a Parcel.
      *
      * @return Parcel
      */
@@ -52,7 +52,7 @@ class ParcelTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test retrieving a Parcel
+     * Test retrieving a Parcel.
      *
      * @param Parcel $parcel
      * @return void

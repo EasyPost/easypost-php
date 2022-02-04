@@ -12,7 +12,7 @@ EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
 class AddressTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * Set up VCR before running tests in this file
+     * Set up VCR before running tests in this file.
      *
      * @return void
      */
@@ -22,7 +22,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Spin down VCR after running tests
+     * Spin down VCR after running tests.
      *
      * @return void
      */
@@ -33,7 +33,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test creating an address
+     * Test creating an address.
      *
      * @return Address
      */
@@ -52,7 +52,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test creating an address with verify_strict param
+     * Test creating an address with verify_strict param.
      *
      * @return Address
      */
@@ -74,7 +74,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test retrieving an address
+     * Test retrieving an address.
      *
      * @param Address $address
      * @return void
@@ -91,7 +91,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test retrieving all addresses
+     * Test retrieving all addresses.
      *
      * @return void
      */
@@ -112,8 +112,9 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test creating a verified address
-     * We purposefully pass in slightly incorrect data to get the corrected address back once verified
+     * Test creating a verified address.
+     *
+     * We purposefully pass in slightly incorrect data to get the corrected address back once verified.
      *
      * @return void
      */
@@ -129,8 +130,9 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test creating a verified address
-     * We purposefully pass in slightly incorrect data to get the corrected address back once verified
+     * Test creating a verified address.
+     *
+     * We purposefully pass in slightly incorrect data to get the corrected address back once verified.
      *
      * @return void
      */
@@ -146,7 +148,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test we can verify an already created address
+     * Test we can verify an already created address.
      *
      * @param Address $address
      * @return void

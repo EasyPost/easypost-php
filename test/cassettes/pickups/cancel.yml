@@ -1,0 +1,79 @@
+
+-
+    request:
+        method: POST
+        url: 'https://api.easypost.com/v2/pickups/pickup_d43777e62e3c4da38a0522caab636d71/cancel'
+        headers:
+            Host: api.easypost.com
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+            X-Client-User-Agent: ''
+            EasyPost-Version: '2'
+        body: '[]'
+    response:
+        status:
+            http_version: '2'
+            code: '200'
+            message: ''
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: 3e41fe5f61fd6bc3e788f2a500249cf4
+            cache-control: 'no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '1159'
+            etag: 'W/"90a7f55e6d14cbb1006f25c28797bfd5"'
+            x-request-id: bff07a54-7308-4891-abfc-0f8e41c113df
+            x-runtime: '1.223471'
+            x-node: bigweb3nuq
+            x-version-label: easypost-202202040049-9979bb7b5c-master
+            x-backend: easypost
+            x-proxied: ['intlb2nuq 88c34981dc', 'extlb1nuq 88c34981dc']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"id":"pickup_d43777e62e3c4da38a0522caab636d71","object":"Pickup","created_at":"2022-02-04T18:03:39Z","updated_at":"2022-02-04T18:09:09Z","mode":"test","status":"canceled","reference":null,"min_datetime":"2022-02-05T00:00:00Z","max_datetime":"2022-02-06T00:00:00Z","is_account_address":false,"instructions":"Pickup at front door","messages":[],"confirmation":"WTC61767082","address":{"id":"adr_c81973eb85e411ec9925ac1f6b0a0d1e","object":"Address","created_at":"2022-02-04T18:03:39+00:00","updated_at":"2022-02-04T18:03:39+00:00","name":"Jack Sparrow","company":"EasyPost","street1":"388 Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","country":"US","phone":"5555555555","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"carrier_accounts":[],"pickup_rates":[{"mode":"test","service":"NextDay","rate":"0.00","currency":"USD","created_at":"2022-02-04T18:03:40Z","updated_at":"2022-02-04T18:03:40Z","carrier":"USPS","pickup_id":"pickup_d43777e62e3c4da38a0522caab636d71","id":"pickuprate_8258770dc50e4301bcb12d43aedf678f","object":"PickupRate"}]}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/pickups/pickup_d43777e62e3c4da38a0522caab636d71/cancel'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 771
+            request_size: 599
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 1.428733
+            namelookup_time: 0.012621
+            connect_time: 0.070242
+            pretransfer_time: 0.145782
+            size_upload: 2.0
+            size_download: 1159.0
+            speed_download: 811.0
+            speed_upload: 1.0
+            download_content_length: 1159.0
+            upload_content_length: 2.0
+            starttransfer_time: 0.145804
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.62.110.131
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 10.130.6.7
+            local_port: 54762
+            http_version: 3
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 145387
+            connect_time_us: 70242
+            namelookup_time_us: 12621
+            pretransfer_time_us: 145782
+            redirect_time_us: 0
+            starttransfer_time_us: 145804
+            total_time_us: 1428733

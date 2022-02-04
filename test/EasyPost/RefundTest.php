@@ -4,6 +4,7 @@ namespace EasyPost\Test;
 
 use VCR\VCR;
 use EasyPost\Refund;
+use EasyPost\Shipment;
 use EasyPost\EasyPost;
 use EasyPost\Test\Fixture;
 
@@ -12,7 +13,7 @@ EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
 class RefundTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * Set up VCR before running tests in this file
+     * Set up VCR before running tests in this file.
      *
      * @return void
      */
@@ -22,7 +23,7 @@ class RefundTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Spin down VCR after running tests
+     * Spin down VCR after running tests.
      *
      * @return void
      */
@@ -33,27 +34,30 @@ class RefundTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test creating a refund
+     * Test creating a refund.
      *
-     * @param object $refunds
      * @return void
-     * @depends testAll
      */
-    // public function testCreate(object $refunds)
-    // {
-    //     VCR::insertCassette('refunds/create.yml');
+    public function testCreate()
+    {
+        VCR::insertCassette('refunds/create.yml');
 
-    //     $event = Refund::create([
-    //         'carrier' => 'USPS',
-    //         'tracking_codes' => $tracking_code,
-    //     ]);
+        $shipment_data = Fixture::one_call_buy_shipment();
 
-    //     $this->assertInstanceOf('\EasyPost\Refund', $event);
-    //     $this->assertStringMatchesFormat('rfnd_%s', $event->id);
-    // }
+        $shipment = Shipment::create($shipment_data);
+        $retrieved_shipment = Shipment::retrieve($shipment); // We need to retrieve the shipment so that the tracking_code has time to populate
+
+        $refund = Refund::create([
+            'carrier' => 'USPS',
+            'tracking_codes' => $retrieved_shipment->tracking_code,
+        ]);
+
+        $this->assertStringMatchesFormat('rfnd_%s', $refund[0]->id);
+        $this->assertEquals($refund[0]->status, 'submitted');
+    }
 
     /**
-     * Test retrieving all refunds
+     * Test retrieving all refunds.
      *
      * @return void
      */
@@ -77,7 +81,7 @@ class RefundTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test retrieving a refund
+     * Test retrieving a refund.
      *
      * @param object $refunds
      * @return void

@@ -12,7 +12,7 @@ EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
 class EventTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * Set up VCR before running tests in this file
+     * Set up VCR before running tests in this file.
      *
      * @return void
      */
@@ -22,7 +22,7 @@ class EventTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Spin down VCR after running tests
+     * Spin down VCR after running tests.
      *
      * @return void
      */
@@ -33,7 +33,7 @@ class EventTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test retrieving all events
+     * Test retrieving all events.
      *
      * @return void
      */
@@ -57,7 +57,7 @@ class EventTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test retrieving an events
+     * Test retrieving an event.
      *
      * @param object $events
      * @return void
@@ -71,5 +71,44 @@ class EventTest extends \PHPUnit\Framework\TestCase
 
         $this->assertInstanceOf('\EasyPost\Event', $event);
         $this->assertStringMatchesFormat('evt_%s', $event->id);
+    }
+
+    /**
+     * Test receiving (converting) an event.
+     *
+     * @param object $events
+     * @return void
+     * @depends testAll
+     */
+    public function testReceive(object $events)
+    {
+        $event = Event::receive($events['events'][0]);
+
+        $this->assertInstanceOf('\EasyPost\Event', $event);
+        $this->assertStringMatchesFormat('evt_%s', $event->id);
+    }
+
+    /**
+     * Test that we throw an error when bad input is received.
+     *
+     * @return void
+     */
+    public function testReceiveBadInput()
+    {
+        $this->expectException(\EasyPost\Error::class);
+
+        Event::receive('bad input');
+    }
+
+    /**
+     * Test that we throw an error when no input is received.
+     *
+     * @return void
+     */
+    public function testReceiveNoInput()
+    {
+        $this->expectException(\EasyPost\Error::class);
+
+        Event::receive();
     }
 }

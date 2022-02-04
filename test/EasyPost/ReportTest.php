@@ -12,7 +12,7 @@ EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
 class ReportTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * Set up VCR before running tests in this file
+     * Set up VCR before running tests in this file.
      *
      * @return void
      */
@@ -22,7 +22,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Spin down VCR after running tests
+     * Spin down VCR after running tests.
      *
      * @return void
      */
@@ -33,7 +33,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test creating a Payment Log report
+     * Test creating a Payment Log report.
      *
      * @return Report
      */
@@ -55,7 +55,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test creating a Refund report
+     * Test creating a Refund report.
      *
      * @return Report
      */
@@ -77,7 +77,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test creating a Shipment report
+     * Test creating a Shipment report.
      *
      * @return Report
      */
@@ -99,7 +99,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test creating a Shipment Invoice report
+     * Test creating a Shipment Invoice report.
      *
      * @return Report
      */
@@ -121,7 +121,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test creating a Tracker report
+     * Test creating a Tracker report.
      *
      * @return Report
      */
@@ -143,7 +143,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test retrieving a Payment Log report
+     * Test retrieving a Payment Log report.
      *
      * @param Report $payment_log_report
      * @return void
@@ -161,7 +161,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test retrieving a Refund report
+     * Test retrieving a Refund report.
      *
      * @param Report $refund_report
      * @return void
@@ -179,7 +179,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test retrieving a Shipment report
+     * Test retrieving a Shipment report.
      *
      * @param Report $shipment_report
      * @return void
@@ -197,7 +197,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test retrieving a Shipment Invoice report
+     * Test retrieving a Shipment Invoice report.
      *
      * @param Report $shipment_invoice_report
      * @return void
@@ -215,7 +215,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test retrieving a Tracker report
+     * Test retrieving a Tracker report.
      *
      * @param Report $tracker_report
      * @return void
@@ -233,7 +233,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test retrieving all reports
+     * Test retrieving all reports.
      *
      * @return void
      */
@@ -255,7 +255,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test throwing an error when creating a report with no report type set
+     * Test throwing an error when creating a report with no report type set.
      *
      * @return void
      */
@@ -267,7 +267,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test throwing an error when retrieving all reports with no report type set
+     * Test throwing an error when retrieving all reports with no report type set.
      *
      * @return void
      */

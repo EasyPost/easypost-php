@@ -12,7 +12,7 @@ EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
 class ShipmentTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * Set up VCR before running tests in this file
+     * Set up VCR before running tests in this file.
      *
      * @return void
      */
@@ -22,7 +22,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Spin down VCR after running tests
+     * Spin down VCR after running tests.
      *
      * @return void
      */
@@ -33,7 +33,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test creating a Shipment
+     * Test creating a Shipment.
      *
      * @return Shipment
      */
@@ -45,6 +45,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
         $this->assertInstanceOf('\EasyPost\Shipment', $shipment);
         $this->assertStringMatchesFormat('shp_%s', $shipment->id);
+        $this->assertNotNull($shipment->rates);
         $this->assertEquals($shipment->options->label_format, 'PNG');
         $this->assertEquals($shipment->options->invoice_number, '123');
         $this->assertEquals($shipment->reference, '123');
@@ -54,7 +55,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test retrieving a Shipment
+     * Test retrieving a Shipment.
      *
      * @param Shipment $shipment
      * @return void
@@ -71,7 +72,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test retrieving all shipments
+     * Test retrieving all shipments.
      *
      * @return void
      */
@@ -92,7 +93,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test retrieving rates for a shipment
+     * Test retrieving rates for a shipment.
      *
      * @param Shipment $shipment
      * @return void
@@ -113,7 +114,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test regenerating rates for a shipment
+     * Test regenerating rates for a shipment.
      *
      * @param Shipment $shipment
      * @return void
@@ -134,7 +135,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test buying a Shipment
+     * Test buying a Shipment.
      *
      * @param Shipment $shipment
      * @return void
@@ -146,14 +147,13 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
         $shipment->buy([
             'rate' => $shipment->lowest_rate(),
-            'insurance' => 0, // Set to 0 so we can insure the shipment later
         ]);
 
         $this->assertNotNull($shipment->postage_label);
     }
 
     /**
-     * Test converting the label format of a Shipment
+     * Test converting the label format of a Shipment.
      *
      * @param Shipment $shipment
      * @return void
@@ -171,18 +171,22 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test insuring a Shipment
+     * Test insuring a Shipment.
      *
      * If the shipment was purchased with a USPS rate, it must have had its insurance set to `0` when bought
      * so that USPS doesn't automatically insure it so we could manually insure it here.
      *
-     * @param Shipment $shipment
      * @return void
-     * @depends testCreate
      */
-    public function testInsure(Shipment $shipment)
+    public function testInsure()
     {
         VCR::insertCassette('shipments/insure.yml');
+
+        $shipment_data = Fixture::one_call_buy_shipment();
+        // Set to 0 so USPS doesn't insure this automatically and we can insure the shipment manually
+        $shipment_data['insurance'] = 0;
+
+        $shipment = Shipment::create($shipment_data);
 
         $shipment->insure([
             'amount' => '100',
@@ -192,19 +196,19 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test refunding a Shipment
+     * Test refunding a Shipment.
      *
      * Refunding a test shipment must happen within seconds of the shipment being created as test shipments naturally
      * follow a flow of created -> delivered to cycle through tracking events in test mode - as such anything older
      * than a few seconds in test mode may not be refundable.
      *
-     * @param Shipment $shipment
      * @return void
-     * @depends testCreate
      */
-    public function testRefund(Shipment $shipment)
+    public function testRefund()
     {
         VCR::insertCassette('shipments/refund.yml');
+
+        $shipment = Shipment::create(Fixture::one_call_buy_shipment());
 
         $shipment->refund();
 
@@ -212,7 +216,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test retrieving smartrates for a shipment
+     * Test retrieving smartrates for a shipment.
      *
      * @return void
      */
@@ -226,17 +230,17 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
         $smartrates = $shipment->get_smartrates();
         $this->assertEquals($shipment->rates[0]['id'], $smartrates[0]['id']);
-        $this->assertEquals($smartrates[0]['time_in_transit']['percentile_50'], 1);
-        $this->assertEquals($smartrates[0]['time_in_transit']['percentile_75'], 1);
-        $this->assertEquals($smartrates[0]['time_in_transit']['percentile_85'], 1);
-        $this->assertEquals($smartrates[0]['time_in_transit']['percentile_90'], 2);
-        $this->assertEquals($smartrates[0]['time_in_transit']['percentile_95'], 2);
-        $this->assertEquals($smartrates[0]['time_in_transit']['percentile_97'], 3);
-        $this->assertEquals($smartrates[0]['time_in_transit']['percentile_99'], 5);
+        $this->assertNotNull($smartrates[0]['time_in_transit']['percentile_50']);
+        $this->assertNotNull($smartrates[0]['time_in_transit']['percentile_75']);
+        $this->assertNotNull($smartrates[0]['time_in_transit']['percentile_85']);
+        $this->assertNotNull($smartrates[0]['time_in_transit']['percentile_90']);
+        $this->assertNotNull($smartrates[0]['time_in_transit']['percentile_95']);
+        $this->assertNotNull($smartrates[0]['time_in_transit']['percentile_97']);
+        $this->assertNotNull($smartrates[0]['time_in_transit']['percentile_99']);
     }
 
     /**
-     * Test creating a Shipment with empty or null objects and arrays
+     * Test creating a Shipment with empty or null objects and arrays.
      *
      * @return void
      */
@@ -260,7 +264,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test creating a Shipment with `tax_identifiers`
+     * Test creating a Shipment with `tax_identifiers`.
      *
      * @return void
      */

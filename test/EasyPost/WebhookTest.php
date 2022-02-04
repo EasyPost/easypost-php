@@ -12,7 +12,7 @@ EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
 class WebhookTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * Set up VCR before running tests in this file
+     * Set up VCR before running tests in this file.
      *
      * @return void
      */
@@ -22,7 +22,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Spin down VCR after running tests
+     * Spin down VCR after running tests.
      *
      * @return void
      */
@@ -33,7 +33,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test creating a Webhook
+     * Test creating a Webhook.
      *
      * @return Webhook
      */
@@ -54,7 +54,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test retrieving a Webhook
+     * Test retrieving a Webhook.
      *
      * @param Webhook $webhook
      * @return void
@@ -74,7 +74,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test retrieving all webhooks
+     * Test retrieving all webhooks.
      *
      * @return void
      */
@@ -95,7 +95,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test updating a Webhook
+     * Test updating a Webhook.
      *
      * @return void
      */
@@ -105,7 +105,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test deleting a Webhook
+     * Test deleting a Webhook.
      *
      * @param Webhook $webhook
      * @return void
