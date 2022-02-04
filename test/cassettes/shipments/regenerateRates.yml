@@ -1,0 +1,79 @@
+
+-
+    request:
+        method: POST
+        url: 'https://api.easypost.com/v2/shipments/shp_15d2f614e3de4cfa94dad611d75d4851/rerate'
+        headers:
+            Host: api.easypost.com
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+            X-Client-User-Agent: ''
+            EasyPost-Version: '2'
+        body: '[]'
+    response:
+        status:
+            http_version: '2'
+            code: '200'
+            message: ''
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: 64ca848761fc3ac0e78a93c900a51be0
+            cache-control: 'no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '2060'
+            etag: 'W/"8560f0442d737c77244a469ce88e2f5f"'
+            x-request-id: 7f301e7b-a14f-4fff-a127-dae2b3aaf899
+            x-runtime: '0.338997'
+            x-node: bigweb8nuq
+            x-version-label: easypost-202202031301-695ff25ef9-master
+            x-backend: easypost
+            x-proxied: ['intlb2nuq 88c34981dc', 'extlb2nuq 88c34981dc']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"rates":[{"id":"rate_0fd8ad433d84439d944c44802d699f2c","object":"Rate","created_at":"2022-02-03T20:27:45Z","updated_at":"2022-02-03T20:27:45Z","mode":"test","service":"ParcelSelect","carrier":"USPS","rate":"7.22","currency":"USD","retail_rate":"7.22","retail_currency":"USD","list_rate":"7.22","list_currency":"USD","delivery_days":2,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":2,"shipment_id":"shp_15d2f614e3de4cfa94dad611d75d4851","carrier_account_id":"ca_8dc116debcdb49b5a66a2ddee4612600"},{"id":"rate_c536a4d07d4a4c609f8ac80bc154644f","object":"Rate","created_at":"2022-02-03T20:27:45Z","updated_at":"2022-02-03T20:27:45Z","mode":"test","service":"Priority","carrier":"USPS","rate":"7.37","currency":"USD","retail_rate":"8.70","retail_currency":"USD","list_rate":"7.37","list_currency":"USD","delivery_days":1,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":1,"shipment_id":"shp_15d2f614e3de4cfa94dad611d75d4851","carrier_account_id":"ca_8dc116debcdb49b5a66a2ddee4612600"},{"id":"rate_e4855fe4621646219ccf87b16c15cda9","object":"Rate","created_at":"2022-02-03T20:27:45Z","updated_at":"2022-02-03T20:27:45Z","mode":"test","service":"First","carrier":"USPS","rate":"5.49","currency":"USD","retail_rate":"5.49","retail_currency":"USD","list_rate":"5.49","list_currency":"USD","delivery_days":2,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":2,"shipment_id":"shp_15d2f614e3de4cfa94dad611d75d4851","carrier_account_id":"ca_8dc116debcdb49b5a66a2ddee4612600"},{"id":"rate_f59c4679a0684a249287fdff574b14a2","object":"Rate","created_at":"2022-02-03T20:27:45Z","updated_at":"2022-02-03T20:27:45Z","mode":"test","service":"Express","carrier":"USPS","rate":"23.75","currency":"USD","retail_rate":"27.40","retail_currency":"USD","list_rate":"23.75","list_currency":"USD","delivery_days":null,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":null,"shipment_id":"shp_15d2f614e3de4cfa94dad611d75d4851","carrier_account_id":"ca_8dc116debcdb49b5a66a2ddee4612600"}]}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/shipments/shp_15d2f614e3de4cfa94dad611d75d4851/rerate'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 771
+            request_size: 598
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.525733
+            namelookup_time: 0.001454
+            connect_time: 0.057992
+            pretransfer_time: 0.128581
+            size_upload: 2.0
+            size_download: 2060.0
+            speed_download: 3918.0
+            speed_upload: 3.0
+            download_content_length: 2060.0
+            upload_content_length: 2.0
+            starttransfer_time: 0.128591
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.62.110.130
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 10.130.6.10
+            local_port: 57682
+            http_version: 3
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 128426
+            connect_time_us: 57992
+            namelookup_time_us: 1454
+            pretransfer_time_us: 128581
+            redirect_time_us: 0
+            starttransfer_time_us: 128591
+            total_time_us: 525733

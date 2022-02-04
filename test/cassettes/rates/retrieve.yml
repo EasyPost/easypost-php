@@ -2,7 +2,7 @@
 -
     request:
         method: GET
-        url: 'https://api.easypost.com/v2/webhooks/hook_17e61284851611ecbefe214c3352aec6'
+        url: 'https://api.easypost.com/v2/rates/rate_8d33b878a45f42d48b796dd0d6c434c1'
         headers:
             Host: api.easypost.com
             Accept: application/json
@@ -23,56 +23,56 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 57614ea861fc0fb8e7886aa700280ed8
+            x-ep-request-uuid: 64ca848661fc3b35e78a976400a53aa7
             cache-control: 'no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
-            content-length: '161'
-            etag: 'W/"34187efff007f2cda44316bed6814821"'
-            x-request-id: 54af26d0-4b0c-42ce-a504-153e507b400b
-            x-runtime: '0.030534'
-            x-node: bigweb6nuq
+            content-length: '475'
+            etag: 'W/"0a3450c80217e29399cd1d6f2beaebc0"'
+            x-request-id: 305187a7-f092-4179-a53d-7f06730a3c07
+            x-runtime: '0.111612'
+            x-node: bigweb9nuq
             x-version-label: easypost-202202031301-695ff25ef9-master
             x-backend: easypost
-            x-proxied: ['intlb1nuq 88c34981dc', 'extlb1nuq 88c34981dc']
+            x-proxied: ['intlb1nuq 88c34981dc', 'extlb2nuq 88c34981dc']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"hook_17e61284851611ecbefe214c3352aec6","object":"Webhook","mode":"test","url":"http://example.com","created_at":"2022-02-03T17:24:08Z","disabled_at":null}'
+        body: '{"id":"rate_8d33b878a45f42d48b796dd0d6c434c1","object":"Rate","created_at":"2022-02-03T20:27:40Z","updated_at":"2022-02-03T20:27:40Z","mode":"test","service":"Priority","carrier":"USPS","rate":"7.37","currency":"USD","retail_rate":"8.70","retail_currency":"USD","list_rate":"7.37","list_currency":"USD","delivery_days":1,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":1,"shipment_id":null,"carrier_account_id":"ca_8dc116debcdb49b5a66a2ddee4612600"}'
         curl_info:
-            url: 'https://api.easypost.com/v2/webhooks/hook_17e61284851611ecbefe214c3352aec6'
+            url: 'https://api.easypost.com/v2/rates/rate_8d33b878a45f42d48b796dd0d6c434c1'
             content_type: 'application/json; charset=utf-8'
             http_code: 200
             header_size: 770
-            request_size: 571
+            request_size: 568
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.261556
-            namelookup_time: 0.001724
-            connect_time: 0.099366
-            pretransfer_time: 0.172282
+            total_time: 0.344053
+            namelookup_time: 0.013315
+            connect_time: 0.072687
+            pretransfer_time: 0.171112
             size_upload: 0.0
-            size_download: 161.0
-            speed_download: 615.0
+            size_download: 475.0
+            speed_download: 1380.0
             speed_upload: 0.0
-            download_content_length: 161.0
+            download_content_length: 475.0
             upload_content_length: 0.0
-            starttransfer_time: 0.261519
+            starttransfer_time: 0.343963
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.131
+            primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
             local_ip: 10.130.6.10
-            local_port: 53873
+            local_port: 57731
             http_version: 3
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 172019
-            connect_time_us: 99366
-            namelookup_time_us: 1724
-            pretransfer_time_us: 172282
+            appconnect_time_us: 170124
+            connect_time_us: 72687
+            namelookup_time_us: 13315
+            pretransfer_time_us: 171112
             redirect_time_us: 0
-            starttransfer_time_us: 261519
-            total_time_us: 261556
+            starttransfer_time_us: 343963
+            total_time_us: 344053

@@ -171,7 +171,7 @@ class Shipment extends EasypostResource
     }
 
     /**
-     * Get the shipment label.
+     * Convert the label format of the shipment.
      *
      * @param mixed $params
      * @return $this

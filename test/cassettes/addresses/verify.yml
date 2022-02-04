@@ -1,0 +1,79 @@
+
+-
+    request:
+        method: GET
+        url: 'https://api.easypost.com/v2/addresses/adr_52f2ebdb851011ec8bd8ac1f6bc72124/verify?verify%5B0%5D=true&street1=417+montgomery+streat&street2=FL+5&city=San+Francisco&state=CA&zip=94104&country=US&company=EasyPost&phone=415-123-4567'
+        headers:
+            Host: api.easypost.com
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+            X-Client-User-Agent: ''
+            EasyPost-Version: '2'
+    response:
+        status:
+            http_version: '2'
+            code: '200'
+            message: ''
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: e7325d9661fc060ae787450500873b64
+            cache-control: 'no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            location: /api/v2/addresses/adr_53543f56851011ecbac2ac1f6bc7bdc6
+            content-type: 'application/json; charset=utf-8'
+            content-length: '626'
+            etag: 'W/"f726183cbc966547bf70a84e617ce6fe"'
+            x-request-id: dd2088f8-2017-43ea-bbb7-3852a4f7f95c
+            x-runtime: '0.125090'
+            x-node: bigweb6nuq
+            x-version-label: easypost-202202031301-695ff25ef9-master
+            x-backend: easypost
+            x-proxied: ['intlb1nuq 88c34981dc', 'intlb1wdc 88c34981dc', 'extlb3wdc 88c34981dc']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"address":{"id":"adr_53543f56851011ecbac2ac1f6bc7bdc6","object":"Address","created_at":"2022-02-03T16:42:50+00:00","updated_at":"2022-02-03T16:42:50+00:00","name":null,"company":null,"street1":"388 TOWNSEND ST APT 20","street2":"","city":"SAN FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":null,"email":null,"mode":"test","carrier_facility":null,"residential":true,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":37.77551,"longitude":-122.39697,"time_zone":"America/Los_Angeles"}}}}}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/addresses/adr_52f2ebdb851011ec8bd8ac1f6bc72124/verify?verify%5B0%5D=true&street1=417+montgomery+streat&street2=FL+5&city=San+Francisco&state=CA&zip=94104&country=US&company=EasyPost&phone=415-123-4567'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 869
+            request_size: 725
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.620599
+            namelookup_time: 0.002023
+            connect_time: 0.117051
+            pretransfer_time: 0.253524
+            size_upload: 0.0
+            size_download: 626.0
+            speed_download: 1008.0
+            speed_upload: 0.0
+            download_content_length: 626.0
+            upload_content_length: 0.0
+            starttransfer_time: 0.620576
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.47.33.18
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 10.130.6.10
+            local_port: 51567
+            http_version: 3
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 253300
+            connect_time_us: 117051
+            namelookup_time_us: 2023
+            pretransfer_time_us: 253524
+            redirect_time_us: 0
+            starttransfer_time_us: 620576
+            total_time_us: 620599

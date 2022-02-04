@@ -45,4 +45,4 @@ jobs:
       - name: install dependencies
         run: composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
       - name: test with phpunit on ${{ matrix.phpversion }}
-        run: API_KEY=123 composer test
+        run: EASYPOST_TEST_API_KEY=123 EASYPOST_PROD_API_KEY=123 composer test

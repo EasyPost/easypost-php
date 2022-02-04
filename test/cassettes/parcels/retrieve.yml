@@ -2,7 +2,7 @@
 -
     request:
         method: GET
-        url: 'https://api.easypost.com/v2/parcels/prcl_af72ae2d35164863aa22982f5f475288'
+        url: 'https://api.easypost.com/v2/parcels/prcl_e739a74638b54a6dad5976bef087764e'
         headers:
             Host: api.easypost.com
             Accept: application/json
@@ -13,9 +13,9 @@
             EasyPost-Version: '2'
     response:
         status:
-            http_version: '1.1'
+            http_version: '2'
             code: '200'
-            message: OK
+            message: ''
         headers:
             x-frame-options: SAMEORIGIN
             x-xss-protection: '1; mode=block'
@@ -23,56 +23,57 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: e739257b61704a9ae786c1890013596d
+            x-ep-request-uuid: e7325d9361fc0927e787e1e60088223e
             cache-control: 'no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '229'
-            etag: 'W/"ad1203c8080c0fce76189a6de588d590"'
-            x-request-id: 955907e6-14c5-4b6c-997c-dc346c60f5b7
-            x-runtime: '0.025698'
-            x-node: bigweb6nuq
-            x-version-label: easypost-202110192143-cc149f31de-master
+            etag: 'W/"fe8fd01bb97dfe13f8a3d8e942317610"'
+            x-request-id: b0e7bc15-492b-4bca-82c1-d78de3f48186
+            x-runtime: '0.091799'
+            x-node: bigweb7nuq
+            x-version-label: easypost-202202031301-695ff25ef9-master
             x-backend: easypost
-            x-proxied: ['intlb1nuq d40607e4ab', 'extlb2nuq d40607e4ab']
+            x-canary: direct
+            x-proxied: ['intlb2nuq 88c34981dc', 'intlb2wdc 88c34981dc', 'extlb3wdc 88c34981dc']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"prcl_af72ae2d35164863aa22982f5f475288","object":"Parcel","created_at":"2021-10-20T16:53:11Z","updated_at":"2021-10-20T16:53:11Z","length":10.0,"width":8.0,"height":4.0,"predefined_package":null,"weight":15.4,"mode":"test"}'
+        body: '{"id":"prcl_e739a74638b54a6dad5976bef087764e","object":"Parcel","created_at":"2022-02-03T16:56:06Z","updated_at":"2022-02-03T16:56:06Z","length":10.0,"width":8.0,"height":4.0,"predefined_package":null,"weight":15.4,"mode":"test"}'
         curl_info:
-            url: 'https://api.easypost.com/v2/parcels/prcl_af72ae2d35164863aa22982f5f475288'
+            url: 'https://api.easypost.com/v2/parcels/prcl_e739a74638b54a6dad5976bef087764e'
             content_type: 'application/json; charset=utf-8'
             http_code: 200
-            header_size: 774
-            request_size: 534
+            header_size: 821
+            request_size: 570
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.223089
-            namelookup_time: 0.001085
-            connect_time: 0.060377
-            pretransfer_time: 0.134617
-            size_upload: !!float 0
-            size_download: !!float 229
-            speed_download: !!float 1026
-            speed_upload: !!float 0
-            download_content_length: !!float 229
-            upload_content_length: !!float 0
-            starttransfer_time: 0.223059
-            redirect_time: !!float 0
+            total_time: 0.583339
+            namelookup_time: 0.001758
+            connect_time: 0.117656
+            pretransfer_time: 0.248178
+            size_upload: 0.0
+            size_download: 229.0
+            speed_download: 392.0
+            speed_upload: 0.0
+            download_content_length: 229.0
+            upload_content_length: 0.0
+            starttransfer_time: 0.583295
+            redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.130
+            primary_ip: 169.47.33.18
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.4
-            local_port: 50797
-            http_version: 2
+            local_ip: 10.130.6.10
+            local_port: 52927
+            http_version: 3
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 134589
-            connect_time_us: 60377
-            namelookup_time_us: 1085
-            pretransfer_time_us: 134617
+            appconnect_time_us: 248040
+            connect_time_us: 117656
+            namelookup_time_us: 1758
+            pretransfer_time_us: 248178
             redirect_time_us: 0
-            starttransfer_time_us: 223059
-            total_time_us: 223089
+            starttransfer_time_us: 583295
+            total_time_us: 583339
