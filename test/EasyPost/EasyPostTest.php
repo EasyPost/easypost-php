@@ -7,7 +7,18 @@ use EasyPost\EasyPost;
 class EasyPostTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * Reset API instance for future tests
+     * Setup the testing environment for this file.
+     *
+     * @return void
+     */
+    public static function setUpBeforeClass(): void
+    {
+        // Sleep to avoid PHPUnit running off to the next test before we are finished (known race condition).
+        usleep(500);
+    }
+
+    /**
+     * Cleanup the testing environment once finished.
      *
      * @return void
      */
