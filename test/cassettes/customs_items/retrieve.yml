@@ -1,0 +1,78 @@
+
+-
+    request:
+        method: GET
+        url: 'https://api.easypost.com/v2/customs_items/cstitem_fe47d41ba7e14cb9ac023a0b90568b50'
+        headers:
+            Host: api.easypost.com
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+            X-Client-User-Agent: ''
+            EasyPost-Version: '2'
+    response:
+        status:
+            http_version: '2'
+            code: '200'
+            message: ''
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: 80dc0e1d61fd7d45e789fa68002af6b5
+            cache-control: 'no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '375'
+            etag: 'W/"3e0cf649dcd4801c1065e6df025104c8"'
+            x-request-id: ec78fc74-2b80-4e66-89ff-01d7b1eff768
+            x-runtime: '0.027195'
+            x-node: bigweb1nuq
+            x-version-label: easypost-202202041839-ddebf73463-master
+            x-backend: easypost
+            x-proxied: ['intlb2nuq 88c34981dc', 'extlb2nuq 88c34981dc']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"id":"cstitem_fe47d41ba7e14cb9ac023a0b90568b50","object":"CustomsItem","created_at":"2022-02-04T19:23:33Z","updated_at":"2022-02-04T19:23:33Z","description":"Sweet shirts","hs_tariff_number":"654321","origin_country":"US","quantity":2,"value":"23.0","weight":11.0,"code":null,"mode":"test","manufacturer":null,"currency":null,"eccn":null,"printed_commodity_identifier":null}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/customs_items/cstitem_fe47d41ba7e14cb9ac023a0b90568b50'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 770
+            request_size: 579
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.237993
+            namelookup_time: 0.012449
+            connect_time: 0.070563
+            pretransfer_time: 0.151406
+            size_upload: 0.0
+            size_download: 375.0
+            speed_download: 1575.0
+            speed_upload: 0.0
+            download_content_length: 375.0
+            upload_content_length: 0.0
+            starttransfer_time: 0.237929
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.62.110.130
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 10.130.6.7
+            local_port: 56367
+            http_version: 3
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 151230
+            connect_time_us: 70563
+            namelookup_time_us: 12449
+            pretransfer_time_us: 151406
+            redirect_time_us: 0
+            starttransfer_time_us: 237929
+            total_time_us: 237993

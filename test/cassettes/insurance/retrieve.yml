@@ -1,0 +1,78 @@
+
+-
+    request:
+        method: GET
+        url: 'https://api.easypost.com/v2/insurances/ins_fc2b1998ce254a2c9d2329777aff67d8'
+        headers:
+            Host: api.easypost.com
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+            X-Client-User-Agent: ''
+            EasyPost-Version: '2'
+    response:
+        status:
+            http_version: '2'
+            code: '200'
+            message: ''
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: 80dc0e1e61fd76f0e7897e610028fa2d
+            cache-control: 'no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '3421'
+            etag: 'W/"8b641bf88107c839325078f83b0b4928"'
+            x-request-id: 97331c8e-b75c-4ed4-a18c-da023459a755
+            x-runtime: '0.104353'
+            x-node: bigweb1nuq
+            x-version-label: easypost-202202040049-9979bb7b5c-master
+            x-backend: easypost
+            x-proxied: ['intlb1nuq 88c34981dc', 'extlb2nuq 88c34981dc']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"id":"ins_fc2b1998ce254a2c9d2329777aff67d8","object":"Insurance","mode":"test","reference":null,"status":"pending","amount":"100.00000","provider":"easypost","provider_id":null,"to_address":{"id":"adr_3406d92285ec11eca2dfac1f6bc7b362","object":"Address","created_at":"2022-02-04T18:56:47+00:00","updated_at":"2022-02-04T18:56:47+00:00","name":"JACK SPARROW","company":"EASYPOST","street1":"388 TOWNSEND ST APT 20","street2":null,"city":"SAN FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"5555555555","email":null,"mode":"test","carrier_facility":null,"residential":true,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":37.77551,"longitude":-122.39697,"time_zone":"America/Los_Angeles"}}}},"from_address":{"id":"adr_340a9bd785ec11ecb15eac1f6bc72124","object":"Address","created_at":"2022-02-04T18:56:47+00:00","updated_at":"2022-02-04T18:56:47+00:00","name":"JACK SPARROW","company":"EASYPOST","street1":"388 TOWNSEND ST APT 20","street2":null,"city":"SAN FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"5555555555","email":null,"mode":"test","carrier_facility":null,"residential":true,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":37.77551,"longitude":-122.39697,"time_zone":"America/Los_Angeles"}}}},"shipment_id":null,"tracker":{"id":"trk_0ba6848aba924ab8934035367747eafa","object":"Tracker","mode":"test","tracking_code":"9400100895232105574841","status":"pre_transit","status_detail":"status_update","created_at":"2022-02-04T18:56:47Z","updated_at":"2022-02-04T18:56:47Z","signed_by":null,"weight":null,"est_delivery_date":"2022-02-04T18:56:47Z","shipment_id":"shp_d22e5e2814a8491485b2bbd32a703941","carrier":"USPS","tracking_details":[{"object":"TrackingDetail","message":"Pre-Shipment Info Sent to USPS","description":null,"status":"pre_transit","status_detail":"status_update","datetime":"2022-01-04T18:56:47Z","source":"USPS","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":null,"state":null,"country":null,"zip":null}},{"object":"TrackingDetail","message":"Shipping Label Created","description":null,"status":"pre_transit","status_detail":"status_update","datetime":"2022-01-05T07:33:47Z","source":"USPS","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":"HOUSTON","state":"TX","country":null,"zip":"77063"}}],"carrier_detail":{"object":"CarrierDetail","service":"First-Class Package Service","container_type":null,"est_delivery_date_local":null,"est_delivery_time_local":null,"origin_location":"HOUSTON TX, 77001","origin_tracking_location":{"object":"TrackingLocation","city":"HOUSTON","state":"TX","country":null,"zip":"77063"},"destination_location":"CHARLESTON SC, 29401","destination_tracking_location":null,"guaranteed_delivery_date":null,"alternate_identifier":null,"initial_delivery_attempt":null},"finalized":true,"is_return":false,"public_url":"https://track.easypost.com/djE6dHJrXzBiYTY4NDhhYmE5MjRhYjg5MzQwMzUzNjc3NDdlYWZh","fees":[]},"tracking_code":"9400100895232105574841","fee":{"object":"Fee","type":"InsuranceFee","amount":"0.50000","charged":true,"refunded":false},"messages":[],"created_at":"2022-02-04T18:56:47Z","updated_at":"2022-02-04T18:56:47Z"}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/insurances/ins_fc2b1998ce254a2c9d2329777aff67d8'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 771
+            request_size: 572
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.296808
+            namelookup_time: 0.001098
+            connect_time: 0.057387
+            pretransfer_time: 0.134693
+            size_upload: 0.0
+            size_download: 3421.0
+            speed_download: 11525.0
+            speed_upload: 0.0
+            download_content_length: 3421.0
+            upload_content_length: 0.0
+            starttransfer_time: 0.29677
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.62.110.130
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 10.130.6.7
+            local_port: 55712
+            http_version: 3
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 134509
+            connect_time_us: 57387
+            namelookup_time_us: 1098
+            pretransfer_time_us: 134693
+            redirect_time_us: 0
+            starttransfer_time_us: 296770
+            total_time_us: 296808

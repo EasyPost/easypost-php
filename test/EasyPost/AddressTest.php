@@ -7,22 +7,22 @@ use EasyPost\Address;
 use EasyPost\EasyPost;
 use EasyPost\Test\Fixture;
 
-EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
-
 class AddressTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * Set up VCR before running tests in this file.
+     * Setup the testing environment for this file.
      *
      * @return void
      */
     public static function setUpBeforeClass(): void
     {
+        EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
+
         VCR::turnOn();
     }
 
     /**
-     * Spin down VCR after running tests.
+     * Cleanup the testing environment once finished.
      *
      * @return void
      */

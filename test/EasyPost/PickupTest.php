@@ -8,22 +8,22 @@ use EasyPost\Shipment;
 use EasyPost\EasyPost;
 use EasyPost\Test\Fixture;
 
-EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
-
 class PickupTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * Set up VCR before running tests in this file.
+     * Setup the testing environment for this file.
      *
      * @return void
      */
     public static function setUpBeforeClass(): void
     {
+        EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
+
         VCR::turnOn();
     }
 
     /**
-     * Spin down VCR after running tests.
+     * Cleanup the testing environment once finished.
      *
      * @return void
      */
@@ -36,7 +36,7 @@ class PickupTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating a pickup.
      *
-     * @return void
+     * @return Pickup
      */
     public function testCreate()
     {
@@ -53,7 +53,7 @@ class PickupTest extends \PHPUnit\Framework\TestCase
         $this->assertStringMatchesFormat('pickup_%s', $pickup->id);
         $this->assertNotNull($pickup->pickup_rates);
 
-        // Return so the `retrieve` test can reuse this object
+        // Return so other tests can reuse this object
         return $pickup;
     }
 
@@ -86,7 +86,7 @@ class PickupTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('pickups/buy.yml');
 
         $bought_pickup = $pickup->buy([
-            'carrier' => 'USPS',
+            'carrier' => Fixture::usps(),
             'service' => 'NextDay',
         ]);
 

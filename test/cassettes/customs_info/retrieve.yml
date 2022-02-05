@@ -1,0 +1,78 @@
+
+-
+    request:
+        method: GET
+        url: 'https://api.easypost.com/v2/customs_infos/cstinfo_c0b0540aa3c84ef88fa65a0ca89f47cd'
+        headers:
+            Host: api.easypost.com
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+            X-Client-User-Agent: ''
+            EasyPost-Version: '2'
+    response:
+        status:
+            http_version: '2'
+            code: '200'
+            message: ''
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: 3e41fe5d61fd7d96e789fac40029d271
+            cache-control: 'no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '795'
+            etag: 'W/"b68a9e647b19e828ab2533f7ba7cd07f"'
+            x-request-id: acfab5a1-fefd-48a3-83d4-031d306c0278
+            x-runtime: '0.027420'
+            x-node: bigweb4nuq
+            x-version-label: easypost-202202041839-ddebf73463-master
+            x-backend: easypost
+            x-proxied: ['intlb2nuq 88c34981dc', 'extlb1nuq 88c34981dc']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"id":"cstinfo_c0b0540aa3c84ef88fa65a0ca89f47cd","object":"CustomsInfo","created_at":"2022-02-04T19:24:47Z","updated_at":"2022-02-04T19:24:47Z","contents_explanation":null,"contents_type":"merchandise","customs_certify":true,"customs_signer":"Steve Brule","eel_pfc":"NOEEI 30.37(a)","non_delivery_option":"return","restriction_comments":null,"restriction_type":"none","mode":"test","declaration":null,"customs_items":[{"id":"cstitem_a2f1c0b0164c46d88b28d39e82744a51","object":"CustomsItem","created_at":"2022-02-04T19:24:47Z","updated_at":"2022-02-04T19:24:47Z","description":"Sweet shirts","hs_tariff_number":"654321","origin_country":"US","quantity":2,"value":"23.0","weight":11.0,"code":null,"mode":"test","manufacturer":null,"currency":null,"eccn":null,"printed_commodity_identifier":null}]}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/customs_infos/cstinfo_c0b0540aa3c84ef88fa65a0ca89f47cd'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 770
+            request_size: 579
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.248546
+            namelookup_time: 0.03317
+            connect_time: 0.090061
+            pretransfer_time: 0.16346
+            size_upload: 0.0
+            size_download: 795.0
+            speed_download: 3198.0
+            speed_upload: 0.0
+            download_content_length: 795.0
+            upload_content_length: 0.0
+            starttransfer_time: 0.248507
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.62.110.131
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 10.130.6.7
+            local_port: 56390
+            http_version: 3
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 163165
+            connect_time_us: 90061
+            namelookup_time_us: 33170
+            pretransfer_time_us: 163460
+            redirect_time_us: 0
+            starttransfer_time_us: 248507
+            total_time_us: 248546

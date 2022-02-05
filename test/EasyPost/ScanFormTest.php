@@ -8,22 +8,22 @@ use EasyPost\Shipment;
 use EasyPost\EasyPost;
 use EasyPost\Test\Fixture;
 
-EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
-
 class ScanFormTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * Set up VCR before running tests in this file.
+     * Setup the testing environment for this file.
      *
      * @return void
      */
     public static function setUpBeforeClass(): void
     {
+        EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
+
         VCR::turnOn();
     }
 
     /**
-     * Spin down VCR after running tests.
+     * Cleanup the testing environment once finished.
      *
      * @return void
      */
@@ -51,7 +51,7 @@ class ScanFormTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf('\EasyPost\ScanForm', $scanform);
         $this->assertStringMatchesFormat('sf_%s', $scanform->id);
 
-        // Return so the `retrieve` test can reuse this object
+        // Return so other tests can reuse this object
         return $scanform;
     }
 

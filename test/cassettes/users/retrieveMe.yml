@@ -1,0 +1,78 @@
+
+-
+    request:
+        method: GET
+        url: 'https://api.easypost.com/v2/users'
+        headers:
+            Host: api.easypost.com
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+            X-Client-User-Agent: ''
+            EasyPost-Version: '2'
+    response:
+        status:
+            http_version: '2'
+            code: '200'
+            message: ''
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: 3e41fe6061fdb291e7995cde00376472
+            cache-control: 'no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '533'
+            etag: 'W/"aec3ee6d8fae379b2be5e47cb43b9c8e"'
+            x-request-id: 22dcdd61-674b-424c-adac-4a5d8198aef7
+            x-runtime: '0.039709'
+            x-node: bigweb1nuq
+            x-version-label: easypost-202202042220-76f9648007-master
+            x-backend: easypost
+            x-proxied: ['intlb2nuq 88c34981dc', 'extlb1nuq 88c34981dc']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"id":"user_465eab8bb86844108100be2d4d5288ab","object":"User","parent_id":null,"name":"EasyPost PHP Client Library Tests","phone_number":"5555555555","verified":true,"created_at":"2022-02-02T20:16:00Z","balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":null,"secondary_recharge_amount":null,"recharge_threshold":null,"has_billing_method":null,"cc_fee_rate":"0.0325","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"dev+easypost-php@easypost.com","children":[]}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/users'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 770
+            request_size: 530
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.271314
+            namelookup_time: 0.039498
+            connect_time: 0.096762
+            pretransfer_time: 0.172421
+            size_upload: 0.0
+            size_download: 533.0
+            speed_download: 1964.0
+            speed_upload: 0.0
+            download_content_length: 533.0
+            upload_content_length: 0.0
+            starttransfer_time: 0.271227
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.62.110.131
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 10.130.6.7
+            local_port: 61514
+            http_version: 3
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 172084
+            connect_time_us: 96762
+            namelookup_time_us: 39498
+            pretransfer_time_us: 172421
+            redirect_time_us: 0
+            starttransfer_time_us: 271227
+            total_time_us: 271314

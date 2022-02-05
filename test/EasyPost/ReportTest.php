@@ -7,22 +7,22 @@ use EasyPost\Report;
 use EasyPost\EasyPost;
 use EasyPost\Test\Fixture;
 
-EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
-
 class ReportTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * Set up VCR before running tests in this file.
+     * Setup the testing environment for this file.
      *
      * @return void
      */
     public static function setUpBeforeClass(): void
     {
+        EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
+
         VCR::turnOn();
     }
 
     /**
-     * Spin down VCR after running tests.
+     * Cleanup the testing environment once finished.
      *
      * @return void
      */
@@ -50,7 +50,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf('\EasyPost\Report', $payment_log_report);
         $this->assertStringMatchesFormat("plrep_%s", $payment_log_report->id);
 
-        // Return so the `retrieve` test can reuse this object
+        // Return so other tests can reuse this object
         return $payment_log_report;
     }
 
@@ -72,7 +72,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf('\EasyPost\Report', $refund_report);
         $this->assertStringMatchesFormat("refrep_%s", $refund_report->id);
 
-        // Return so the `retrieve` test can reuse this object
+        // Return so other tests can reuse this object
         return $refund_report;
     }
 
@@ -94,7 +94,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf('\EasyPost\Report', $shipment_report);
         $this->assertStringMatchesFormat("shprep_%s", $shipment_report->id);
 
-        // Return so the `retrieve` test can reuse this object
+        // Return so other tests can reuse this object
         return $shipment_report;
     }
 
@@ -116,7 +116,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf('\EasyPost\Report', $shipment_invoice_report);
         $this->assertStringMatchesFormat("shpinvrep_%s", $shipment_invoice_report->id);
 
-        // Return so the `retrieve` test can reuse this object
+        // Return so other tests can reuse this object
         return $shipment_invoice_report;
     }
 
@@ -138,7 +138,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf('\EasyPost\Report', $tracker_report);
         $this->assertStringMatchesFormat("trkrep_%s", $tracker_report->id);
 
-        // Return so the `retrieve` test can reuse this object
+        // Return so other tests can reuse this object
         return $tracker_report;
     }
 

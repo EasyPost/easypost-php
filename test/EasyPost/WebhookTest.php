@@ -7,22 +7,22 @@ use EasyPost\Webhook;
 use EasyPost\EasyPost;
 use EasyPost\Test\Fixture;
 
-EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
-
 class WebhookTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * Set up VCR before running tests in this file.
+     * Setup the testing environment for this file.
      *
      * @return void
      */
     public static function setUpBeforeClass(): void
     {
+        EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
+
         VCR::turnOn();
     }
 
     /**
-     * Spin down VCR after running tests.
+     * Cleanup the testing environment once finished.
      *
      * @return void
      */
@@ -49,7 +49,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
         $this->assertStringMatchesFormat('hook_%s', $webhook->id);
         $this->assertEquals($webhook->url, 'http://example.com');
 
-        // Return so the `retrieve` test can reuse this object
+        // Return so other tests can reuse this object
         return $webhook;
     }
 

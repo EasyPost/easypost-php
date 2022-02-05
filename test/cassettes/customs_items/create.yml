@@ -1,0 +1,80 @@
+
+-
+    request:
+        method: POST
+        url: 'https://api.easypost.com/v2/customs_items'
+        headers:
+            Host: api.easypost.com
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+            X-Client-User-Agent: ''
+            EasyPost-Version: '2'
+        body: '{"customs_item":{"description":"Sweet shirts","quantity":"2","weight":"11","value":"23","hs_tariff_number":"654321","origin_country":"US"}}'
+    response:
+        status:
+            http_version: '2'
+            code: '201'
+            message: ''
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: 80dc0e2261fd7d35e789fa67002af231
+            cache-control: 'no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            location: /api/v2/customs_items/cstitem_fe47d41ba7e14cb9ac023a0b90568b50
+            content-type: 'application/json; charset=utf-8'
+            content-length: '375'
+            etag: 'W/"3e0cf649dcd4801c1065e6df025104c8"'
+            x-request-id: f8b0bf44-ca3e-4618-aa8f-2e3c748fbfca
+            x-runtime: '0.026066'
+            x-node: bigweb9nuq
+            x-version-label: easypost-202202041839-ddebf73463-master
+            x-backend: easypost
+            x-proxied: ['intlb1nuq 88c34981dc', 'extlb2nuq 88c34981dc']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"id":"cstitem_fe47d41ba7e14cb9ac023a0b90568b50","object":"CustomsItem","created_at":"2022-02-04T19:23:33Z","updated_at":"2022-02-04T19:23:33Z","description":"Sweet shirts","hs_tariff_number":"654321","origin_country":"US","quantity":2,"value":"23.0","weight":11.0,"code":null,"mode":"test","manufacturer":null,"currency":null,"eccn":null,"printed_commodity_identifier":null}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/customs_items'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 201
+            header_size: 844
+            request_size: 560
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.234738
+            namelookup_time: 0.013355
+            connect_time: 0.072103
+            pretransfer_time: 0.149341
+            size_upload: 139.0
+            size_download: 375.0
+            speed_download: 1597.0
+            speed_upload: 592.0
+            download_content_length: 375.0
+            upload_content_length: 139.0
+            starttransfer_time: 0.149357
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.62.110.130
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 10.130.6.7
+            local_port: 56366
+            http_version: 3
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 149088
+            connect_time_us: 72103
+            namelookup_time_us: 13355
+            pretransfer_time_us: 149341
+            redirect_time_us: 0
+            starttransfer_time_us: 149357
+            total_time_us: 234738

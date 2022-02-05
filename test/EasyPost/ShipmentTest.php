@@ -12,17 +12,19 @@ EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
 class ShipmentTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * Set up VCR before running tests in this file.
+     * Setup the testing environment for this file.
      *
      * @return void
      */
     public static function setUpBeforeClass(): void
     {
+        EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
+
         VCR::turnOn();
     }
 
     /**
-     * Spin down VCR after running tests.
+     * Cleanup the testing environment once finished.
      *
      * @return void
      */
@@ -50,7 +52,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($shipment->options->invoice_number, '123');
         $this->assertEquals($shipment->reference, '123');
 
-        // Return so the `retrieve` test can reuse this object
+        // Return so other tests can reuse this object
         return $shipment;
     }
 

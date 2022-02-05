@@ -7,22 +7,22 @@ use EasyPost\Tracker;
 use EasyPost\EasyPost;
 use EasyPost\Test\Fixture;
 
-EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
-
 class TrackerTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * Set up VCR before running tests in this file.
+     * Setup the testing environment for this file.
      *
      * @return void
      */
     public static function setUpBeforeClass(): void
     {
+        EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
+
         VCR::turnOn();
     }
 
     /**
-     * Spin down VCR after running tests.
+     * Cleanup the testing environment once finished.
      *
      * @return void
      */
@@ -49,7 +49,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
         $this->assertStringMatchesFormat('trk_%s', $tracker->id);
         $this->assertEquals($tracker->status, 'pre_transit');
 
-        // Return so the `retrieve` test can reuse this object
+        // Return so other tests can reuse this object
         return $tracker;
     }
 
@@ -102,9 +102,9 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('trackers/createList.yml');
 
         $response = Tracker::create_list([
-            ["tracking_code" => "EZ1000000001"],
-            ["tracking_code" => "EZ1000000002"],
-            ["tracking_code" => "EZ1000000003"],
+            '0' => ["tracking_code" => "EZ1000000001"],
+            '1' => ["tracking_code" => "EZ1000000002"],
+            '2' => ["tracking_code" => "EZ1000000003"],
         ]);
 
         // This endpoint returns nothing so we assert the function returns true

@@ -4,21 +4,31 @@ namespace EasyPost\Test;
 
 class Fixture
 {
+    // We keep the page_size of retrieving `all` records small so cassettes stay small
     public static function page_size()
     {
         return 5;
     }
 
-    // This is the carrier account ID for the default USPS account that comes by default. All tests should use this carrier account.
+    // This is the carrier account ID for the default USPS account that comes by default. All tests should use this carrier account
     public static function usps_carrier_account_id()
     {
         return 'ca_8dc116debcdb49b5a66a2ddee4612600';
     }
 
-    // Use any rate ID from any of the shipment cassettes
-    public static function rate_id()
+    public static function child_user_id()
     {
-        return 'rate_8d33b878a45f42d48b796dd0d6c434c1';
+        return 'user_3878404c0bdd4321952d4cae45c1d184';
+    }
+
+    public static function usps()
+    {
+        return 'USPS';
+    }
+
+    public static function usps_service()
+    {
+        return 'First';
     }
 
     // If ever these need to change due to re-recording cassettes, simply increment this date by 1
@@ -153,7 +163,7 @@ class Fixture
             'to_address' => self::basic_address(),
             'from_address' => self::basic_address(),
             'parcel' => self::basic_parcel(),
-            'service' => 'First',
+            'service' => self::usps_service(),
             'carrier_accounts' => [self::usps_carrier_account_id()],
         ];
     }
@@ -195,7 +205,7 @@ class Fixture
                     [
                         'batch_status' => 'postage_purchased',
                         'batch_message' => null,
-                        'id' => 'shp_a5b1348307694736aaqqqq8fqda53f93'
+                        'id' => 'shp_123...'
                     ]
                 ],
                 'status' => [

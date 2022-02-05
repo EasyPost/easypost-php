@@ -7,22 +7,22 @@ use EasyPost\Parcel;
 use EasyPost\EasyPost;
 use EasyPost\Test\Fixture;
 
-EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
-
 class ParcelTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * Set up VCR before running tests in this file.
+     * Setup the testing environment for this file.
      *
      * @return void
      */
     public static function setUpBeforeClass(): void
     {
+        EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
+
         VCR::turnOn();
     }
 
     /**
-     * Spin down VCR after running tests.
+     * Cleanup the testing environment once finished.
      *
      * @return void
      */
@@ -47,7 +47,7 @@ class ParcelTest extends \PHPUnit\Framework\TestCase
         $this->assertStringMatchesFormat('prcl_%s', $parcel->id);
         $this->assertEquals($parcel->weight, 15.4);
 
-        // Return so the `retrieve` test can reuse this object
+        // Return so other tests can reuse this object
         return $parcel;
     }
 

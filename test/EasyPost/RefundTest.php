@@ -8,22 +8,22 @@ use EasyPost\Shipment;
 use EasyPost\EasyPost;
 use EasyPost\Test\Fixture;
 
-EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
-
 class RefundTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * Set up VCR before running tests in this file.
+     * Setup the testing environment for this file.
      *
      * @return void
      */
     public static function setUpBeforeClass(): void
     {
+        EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
+
         VCR::turnOn();
     }
 
     /**
-     * Spin down VCR after running tests.
+     * Cleanup the testing environment once finished.
      *
      * @return void
      */
@@ -48,7 +48,7 @@ class RefundTest extends \PHPUnit\Framework\TestCase
         $retrieved_shipment = Shipment::retrieve($shipment); // We need to retrieve the shipment so that the tracking_code has time to populate
 
         $refund = Refund::create([
-            'carrier' => 'USPS',
+            'carrier' => Fixture::usps(),
             'tracking_codes' => $retrieved_shipment->tracking_code,
         ]);
 
