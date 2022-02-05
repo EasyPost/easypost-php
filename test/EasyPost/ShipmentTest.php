@@ -116,6 +116,24 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
+     * Test buying a Shipment.
+     *
+     * @param Shipment $shipment
+     * @return void
+     * @depends testCreate
+     */
+    public function testBuy(Shipment $shipment)
+    {
+        VCR::insertCassette('shipments/buy.yml');
+
+        $shipment->buy([
+            'rate' => $shipment->lowest_rate(),
+        ]);
+
+        $this->assertNotNull($shipment->postage_label);
+    }
+
+    /**
      * Test regenerating rates for a shipment.
      *
      * @param Shipment $shipment
@@ -134,24 +152,6 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         foreach ($rates_array as $rate) {
             $this->assertInstanceOf('\EasyPost\Rate', $rate);
         }
-    }
-
-    /**
-     * Test buying a Shipment.
-     *
-     * @param Shipment $shipment
-     * @return void
-     * @depends testCreate
-     */
-    public function testBuy(Shipment $shipment)
-    {
-        VCR::insertCassette('shipments/buy.yml');
-
-        $shipment->buy([
-            'rate' => $shipment->lowest_rate(),
-        ]);
-
-        $this->assertNotNull($shipment->postage_label);
     }
 
     /**
