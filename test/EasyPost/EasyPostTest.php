@@ -7,30 +7,16 @@ use EasyPost\EasyPost;
 class EasyPostTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * Setup the testing environment for this file.
-     *
-     * @return void
-     */
-    public static function setUpBeforeClass(): void
-    {
-        // Sleep to avoid PHPUnit running off to the next test before we are finished (known race condition).
-        usleep(500);
-    }
-
-    /**
      * Cleanup the testing environment once finished.
      *
      * @return void
      */
     public static function tearDownAfterClass(): void
     {
-        EasyPost::setApiBase(EasyPost::$apiBase);
-        EasyPost::setApiVersion(EasyPost::$apiVersion);
-        EasyPost::setConnectTimeout(EasyPost::$connectTimeout);
-        EasyPost::setResponseTimeout(EasyPost::$responseTimeout);
-
-        // Sleep to avoid PHPUnit running off to the next test before we are finished (known race condition).
-        usleep(500);
+        EasyPost::setApiBase('https://api.easypost.com/v2');
+        EasyPost::setApiVersion('2');
+        EasyPost::setConnectTimeout(30000);
+        EasyPost::setResponseTimeout(60000);
     }
 
     /**
