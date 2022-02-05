@@ -13,6 +13,7 @@ class EasyPostTest extends \PHPUnit\Framework\TestCase
      */
     public static function tearDownAfterClass(): void
     {
+        // Set all the defaults again so other tests don't fail
         EasyPost::setApiBase('https://api.easypost.com/v2');
         EasyPost::setApiVersion('2');
         EasyPost::setConnectTimeout(30000);

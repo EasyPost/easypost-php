@@ -2,7 +2,7 @@
 -
     request:
         method: GET
-        url: 'https://api.easypost.com/v2/addresses/adr_57026b0a85e011ec8ce4ac1f6bc7b362/verify?verify%5B0%5D=true&street1=417+montgomery+streat&street2=FL+5&city=San+Francisco&state=CA&zip=94104&country=US&company=EasyPost&phone=415-123-4567'
+        url: 'https://api.easypost.com/v2/addresses/adr_6d9747d7861911ecb030ac1f6bc7bdc6/verify?verify%5B0%5D=true&street1=417+montgomery+streat&street2=FL+5&city=San+Francisco&state=CA&zip=94104&country=US&company=EasyPost&phone=415-123-4567'
         headers:
             Host: api.easypost.com
             Accept: application/json
@@ -23,24 +23,24 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 3e41fe5d61fd6308e787cd200021f074
+            x-ep-request-uuid: 80dc0e2461fdc2d0e79a6d3c003ff4f8
             cache-control: 'no-cache, no-store'
             pragma: no-cache
             expires: '0'
-            location: /api/v2/addresses/adr_5751740d85e011ec8d00ac1f6bc7b362
+            location: /api/v2/addresses/adr_6e2dab3f861911ecba2bac1f6b0a0d1e
             content-type: 'application/json; charset=utf-8'
             content-length: '650'
-            etag: 'W/"9d2b3191526f5498c9b754946318811c"'
-            x-request-id: 412a3d86-024c-4fcd-b33e-8be49a2e871e
-            x-runtime: '0.055492'
-            x-node: bigweb3nuq
-            x-version-label: easypost-202202040049-9979bb7b5c-master
+            etag: 'W/"690e8855b7ff3b3bf3411e8f16bdf5e0"'
+            x-request-id: d27f7dae-0e70-4e41-b293-c967d6a15834
+            x-runtime: '0.051912'
+            x-node: bigweb6nuq
+            x-version-label: easypost-202202042220-76f9648007-master
             x-backend: easypost
-            x-proxied: ['intlb1nuq 88c34981dc', 'extlb1nuq 88c34981dc']
+            x-proxied: ['intlb1nuq 88c34981dc', 'extlb2nuq 88c34981dc']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"address":{"id":"adr_5751740d85e011ec8d00ac1f6bc7b362","object":"Address","created_at":"2022-02-04T17:31:52+00:00","updated_at":"2022-02-04T17:31:52+00:00","name":"JACK SPARROW","company":"EASYPOST","street1":"388 TOWNSEND ST APT 20","street2":"","city":"SAN FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"5555555555","email":null,"mode":"test","carrier_facility":null,"residential":true,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":37.77551,"longitude":-122.39697,"time_zone":"America/Los_Angeles"}}}}}'
+        body: '{"address":{"id":"adr_6e2dab3f861911ecba2bac1f6b0a0d1e","object":"Address","created_at":"2022-02-05T00:20:32+00:00","updated_at":"2022-02-05T00:20:32+00:00","name":"JACK SPARROW","company":"EASYPOST","street1":"388 TOWNSEND ST APT 20","street2":"","city":"SAN FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"5555555555","email":null,"mode":"test","carrier_facility":null,"residential":true,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":37.77551,"longitude":-122.39697,"time_zone":"America/Los_Angeles"}}}}}'
         curl_info:
-            url: 'https://api.easypost.com/v2/addresses/adr_57026b0a85e011ec8ce4ac1f6bc7b362/verify?verify%5B0%5D=true&street1=417+montgomery+streat&street2=FL+5&city=San+Francisco&state=CA&zip=94104&country=US&company=EasyPost&phone=415-123-4567'
+            url: 'https://api.easypost.com/v2/addresses/adr_6d9747d7861911ecb030ac1f6bc7bdc6/verify?verify%5B0%5D=true&street1=417+montgomery+streat&street2=FL+5&city=San+Francisco&state=CA&zip=94104&country=US&company=EasyPost&phone=415-123-4567'
             content_type: 'application/json; charset=utf-8'
             http_code: 200
             header_size: 836
@@ -48,32 +48,32 @@
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.256257
-            namelookup_time: 0.001287
-            connect_time: 0.057582
-            pretransfer_time: 0.139409
+            total_time: 0.248031
+            namelookup_time: 0.001618
+            connect_time: 0.057845
+            pretransfer_time: 0.138624
             size_upload: 0.0
             size_download: 650.0
-            speed_download: 2536.0
+            speed_download: 2620.0
             speed_upload: 0.0
             download_content_length: 650.0
             upload_content_length: 0.0
-            starttransfer_time: 0.2562
+            starttransfer_time: 0.247979
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.131
+            primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
             local_ip: 10.130.6.7
-            local_port: 52462
+            local_port: 63321
             http_version: 3
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 139221
-            connect_time_us: 57582
-            namelookup_time_us: 1287
-            pretransfer_time_us: 139409
+            appconnect_time_us: 138467
+            connect_time_us: 57845
+            namelookup_time_us: 1618
+            pretransfer_time_us: 138624
             redirect_time_us: 0
-            starttransfer_time_us: 256200
-            total_time_us: 256257
+            starttransfer_time_us: 247979
+            total_time_us: 248031

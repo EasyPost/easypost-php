@@ -2,7 +2,7 @@
 -
     request:
         method: POST
-        url: 'https://api.easypost.com/v2/pickups/pickup_d43777e62e3c4da38a0522caab636d71/cancel'
+        url: 'https://api.easypost.com/v2/pickups/pickup_47d8b438c80e48168b8d07efd57c08c9/cancel'
         headers:
             Host: api.easypost.com
             Accept: application/json
@@ -24,23 +24,23 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 3e41fe5f61fd6bc3e788f2a500249cf4
+            x-ep-request-uuid: 80dc0e1f61fdc2d4e79a6d41003ff629
             cache-control: 'no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '1159'
-            etag: 'W/"90a7f55e6d14cbb1006f25c28797bfd5"'
-            x-request-id: bff07a54-7308-4891-abfc-0f8e41c113df
-            x-runtime: '1.223471'
-            x-node: bigweb3nuq
-            x-version-label: easypost-202202040049-9979bb7b5c-master
+            etag: 'W/"6aa53ebacbc82bc9cec0f4cfaf30bf27"'
+            x-request-id: a6ca57d1-7b84-4d98-a7eb-cf29ce93d6e5
+            x-runtime: '1.038627'
+            x-node: bigweb8nuq
+            x-version-label: easypost-202202042220-76f9648007-master
             x-backend: easypost
-            x-proxied: ['intlb2nuq 88c34981dc', 'extlb1nuq 88c34981dc']
+            x-proxied: ['intlb2nuq 88c34981dc', 'extlb2nuq 88c34981dc']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"pickup_d43777e62e3c4da38a0522caab636d71","object":"Pickup","created_at":"2022-02-04T18:03:39Z","updated_at":"2022-02-04T18:09:09Z","mode":"test","status":"canceled","reference":null,"min_datetime":"2022-02-05T00:00:00Z","max_datetime":"2022-02-06T00:00:00Z","is_account_address":false,"instructions":"Pickup at front door","messages":[],"confirmation":"WTC61767082","address":{"id":"adr_c81973eb85e411ec9925ac1f6b0a0d1e","object":"Address","created_at":"2022-02-04T18:03:39+00:00","updated_at":"2022-02-04T18:03:39+00:00","name":"Jack Sparrow","company":"EasyPost","street1":"388 Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","country":"US","phone":"5555555555","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"carrier_accounts":[],"pickup_rates":[{"mode":"test","service":"NextDay","rate":"0.00","currency":"USD","created_at":"2022-02-04T18:03:40Z","updated_at":"2022-02-04T18:03:40Z","carrier":"USPS","pickup_id":"pickup_d43777e62e3c4da38a0522caab636d71","id":"pickuprate_8258770dc50e4301bcb12d43aedf678f","object":"PickupRate"}]}'
+        body: '{"id":"pickup_47d8b438c80e48168b8d07efd57c08c9","object":"Pickup","created_at":"2022-02-05T00:20:34Z","updated_at":"2022-02-05T00:20:37Z","mode":"test","status":"canceled","reference":null,"min_datetime":"2022-02-05T00:00:00Z","max_datetime":"2022-02-06T00:00:00Z","is_account_address":false,"instructions":"Pickup at front door","messages":[],"confirmation":"WTC61767150","address":{"id":"adr_6f2f78e6861911eca2f4ac1f6bc72124","object":"Address","created_at":"2022-02-05T00:20:33+00:00","updated_at":"2022-02-05T00:20:33+00:00","name":"Jack Sparrow","company":"EasyPost","street1":"388 Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","country":"US","phone":"5555555555","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"carrier_accounts":[],"pickup_rates":[{"mode":"test","service":"NextDay","rate":"0.00","currency":"USD","created_at":"2022-02-05T00:20:34Z","updated_at":"2022-02-05T00:20:34Z","carrier":"USPS","pickup_id":"pickup_47d8b438c80e48168b8d07efd57c08c9","id":"pickuprate_c1e26deb19d146d58948383ce56ef5dd","object":"PickupRate"}]}'
         curl_info:
-            url: 'https://api.easypost.com/v2/pickups/pickup_d43777e62e3c4da38a0522caab636d71/cancel'
+            url: 'https://api.easypost.com/v2/pickups/pickup_47d8b438c80e48168b8d07efd57c08c9/cancel'
             content_type: 'application/json; charset=utf-8'
             http_code: 200
             header_size: 771
@@ -48,32 +48,32 @@
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 1.428733
-            namelookup_time: 0.012621
-            connect_time: 0.070242
-            pretransfer_time: 0.145782
+            total_time: 1.236806
+            namelookup_time: 0.001813
+            connect_time: 0.058966
+            pretransfer_time: 0.139139
             size_upload: 2.0
             size_download: 1159.0
-            speed_download: 811.0
+            speed_download: 937.0
             speed_upload: 1.0
             download_content_length: 1159.0
             upload_content_length: 2.0
-            starttransfer_time: 0.145804
+            starttransfer_time: 0.139161
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.131
+            primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
             local_ip: 10.130.6.7
-            local_port: 54762
+            local_port: 63326
             http_version: 3
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 145387
-            connect_time_us: 70242
-            namelookup_time_us: 12621
-            pretransfer_time_us: 145782
+            appconnect_time_us: 138928
+            connect_time_us: 58966
+            namelookup_time_us: 1813
+            pretransfer_time_us: 139139
             redirect_time_us: 0
-            starttransfer_time_us: 145804
-            total_time_us: 1428733
+            starttransfer_time_us: 139161
+            total_time_us: 1236806

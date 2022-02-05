@@ -24,22 +24,22 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 3e41fe6461fd6307e787cd060021f031
+            x-ep-request-uuid: 80dc0e1f61fdc2cee79a6d20003ff472
             cache-control: 'no-cache, no-store'
             pragma: no-cache
             expires: '0'
-            location: /api/v2/addresses/adr_56dcc41185e011ec9e77ac1f6bc72124
+            location: /api/v2/addresses/adr_6d21c783861911ec9527ac1f6bc7b362
             content-type: 'application/json; charset=utf-8'
             content-length: '644'
-            etag: 'W/"d126c6c25ce8f66fd05ee2d88fa357dc"'
-            x-request-id: 48127f01-8696-4530-b35d-3cca231011f2
-            x-runtime: '0.048201'
-            x-node: bigweb4nuq
-            x-version-label: easypost-202202040049-9979bb7b5c-master
+            etag: 'W/"96b9dbdc6d2ccf54d32f128dd84d5483"'
+            x-request-id: 49378c0c-7f2f-47e9-a182-bbe19b8ef3a5
+            x-runtime: '0.051301'
+            x-node: bigweb6nuq
+            x-version-label: easypost-202202042220-76f9648007-master
             x-backend: easypost
-            x-proxied: ['intlb2nuq 88c34981dc', 'extlb1nuq 88c34981dc']
+            x-proxied: ['intlb2nuq 88c34981dc', 'extlb2nuq 88c34981dc']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"address":{"id":"adr_56dcc41185e011ec9e77ac1f6bc72124","object":"Address","created_at":"2022-02-04T17:31:51+00:00","updated_at":"2022-02-04T17:31:51+00:00","name":null,"company":"EASYPOST","street1":"417 MONTGOMERY ST STE 500","street2":"","city":"SAN FRANCISCO","state":"CA","zip":"94104-1100","country":"US","phone":"4151234567","email":null,"mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":37.79342,"longitude":-122.40288,"time_zone":"America/Los_Angeles"}}}}}'
+        body: '{"address":{"id":"adr_6d21c783861911ec9527ac1f6bc7b362","object":"Address","created_at":"2022-02-05T00:20:30+00:00","updated_at":"2022-02-05T00:20:30+00:00","name":null,"company":"EASYPOST","street1":"417 MONTGOMERY ST STE 500","street2":"","city":"SAN FRANCISCO","state":"CA","zip":"94104-1100","country":"US","phone":"4151234567","email":null,"mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":37.79342,"longitude":-122.40288,"time_zone":"America/Los_Angeles"}}}}}'
         curl_info:
             url: 'https://api.easypost.com/v2/addresses/create_and_verify'
             content_type: 'application/json; charset=utf-8'
@@ -49,32 +49,32 @@
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.249103
-            namelookup_time: 0.001315
-            connect_time: 0.059486
-            pretransfer_time: 0.141037
+            total_time: 0.252876
+            namelookup_time: 0.001144
+            connect_time: 0.059412
+            pretransfer_time: 0.141581
             size_upload: 191.0
             size_download: 644.0
-            speed_download: 2585.0
-            speed_upload: 766.0
+            speed_download: 2546.0
+            speed_upload: 755.0
             download_content_length: 644.0
             upload_content_length: 191.0
-            starttransfer_time: 0.141054
+            starttransfer_time: 0.141598
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.131
+            primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
             local_ip: 10.130.6.7
-            local_port: 52459
+            local_port: 63316
             http_version: 3
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 140903
-            connect_time_us: 59486
-            namelookup_time_us: 1315
-            pretransfer_time_us: 141037
+            appconnect_time_us: 141201
+            connect_time_us: 59412
+            namelookup_time_us: 1144
+            pretransfer_time_us: 141581
             redirect_time_us: 0
-            starttransfer_time_us: 141054
-            total_time_us: 249103
+            starttransfer_time_us: 141598
+            total_time_us: 252876

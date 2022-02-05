@@ -23,21 +23,21 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 3e41fe6361fd630be787cd3f0021f18d
+            x-ep-request-uuid: 80dc0e2061fdc2e8e79a6e03003ffc53
             cache-control: 'no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '1509'
-            etag: 'W/"3b791e96de9aa8bea17cf0f0ddbfe1c1"'
-            x-request-id: 0c1aa9ac-6924-4f69-a026-be7d478c6b86
-            x-runtime: '0.132453'
-            x-node: bigweb8nuq
-            x-version-label: easypost-202202040049-9979bb7b5c-master
+            etag: 'W/"e92d162e421e06587e7f4fe94e141078"'
+            x-request-id: 2957ee99-bb36-4e3d-be92-3f9a6cd89cfb
+            x-runtime: '0.049455'
+            x-node: bigweb3nuq
+            x-version-label: easypost-202202042220-76f9648007-master
             x-backend: easypost
-            x-proxied: ['intlb1nuq 88c34981dc', 'extlb1nuq 88c34981dc']
+            x-proxied: ['intlb2nuq 88c34981dc', 'extlb2nuq 88c34981dc']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"refunds":[{"id":"rfnd_15443eff24784d599113589debed7028","object":"Refund","created_at":"2022-02-04T17:06:42Z","updated_at":"2022-02-04T17:06:42Z","tracking_code":"9400100895232105551835","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_d16ef41553c84a338efb2686714bdee8"},{"id":"rfnd_b7b605d9744f4c50b825d05569775227","object":"Refund","created_at":"2022-02-04T16:58:21Z","updated_at":"2022-02-04T16:58:21Z","tracking_code":"9400100895232105549702","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_79bb3fdfdbac48e897679b9c09501b1a"},{"id":"rfnd_41f6cf8e53534472ba7ee6e4f4deb656","object":"Refund","created_at":"2022-02-04T16:43:55Z","updated_at":"2022-02-04T16:43:55Z","tracking_code":"9400100895232105547517","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_74dd503b5bdb4e75843554c81ac70bd3"},{"id":"rfnd_96a33de16f8c4da3ba7fea71a6f16271","object":"Refund","created_at":"2022-02-04T16:41:45Z","updated_at":"2022-02-04T16:41:45Z","tracking_code":"9400100895232105547012","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_54763bba117b4dfe80095ba28d40da37"},{"id":"rfnd_29fa2b49403142c192e2e8f41a67b0b1","object":"Refund","created_at":"2022-02-04T16:32:59Z","updated_at":"2022-02-04T16:32:59Z","tracking_code":"9400100895232105543601","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_93ccdcb1c5404ef49c0563a38561c30c"}],"has_more":true}'
+        body: '{"refunds":[{"id":"rfnd_7130a30817a1442e924749a57a59c542","object":"Refund","created_at":"2022-02-05T00:20:47Z","updated_at":"2022-02-05T00:20:47Z","tracking_code":"9400100895232105611393","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_10f1e6b61eb44f2ea69d319c0b9c1569"},{"id":"rfnd_c7f8c8e9e0ef40649afc15db5d3bede2","object":"Refund","created_at":"2022-02-04T17:35:56Z","updated_at":"2022-02-04T17:35:56Z","tracking_code":"9400100895232105557196","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_701542814b584bf2a1f6969ccf85ff19"},{"id":"rfnd_b306d05ce1f842479cc7dd30866f47fc","object":"Refund","created_at":"2022-02-04T17:32:07Z","updated_at":"2022-02-04T17:32:07Z","tracking_code":"9400100895232105556403","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_2f2dea01650e4de38ad899eeb05a13c3"},{"id":"rfnd_6714355051c1446ea6d9b9d10fc62329","object":"Refund","created_at":"2022-02-04T17:31:57Z","updated_at":"2022-02-04T17:31:57Z","tracking_code":"9400100895232105556342","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_0766d7f6e6154352b23d21b1c876f249"},{"id":"rfnd_15443eff24784d599113589debed7028","object":"Refund","created_at":"2022-02-04T17:06:42Z","updated_at":"2022-02-04T17:06:42Z","tracking_code":"9400100895232105551835","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_d16ef41553c84a338efb2686714bdee8"}],"has_more":true}'
         curl_info:
             url: 'https://api.easypost.com/v2/refunds?page_size=5'
             content_type: 'application/json; charset=utf-8'
@@ -47,32 +47,32 @@
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.327014
-            namelookup_time: 0.001477
-            connect_time: 0.059551
-            pretransfer_time: 0.134297
+            total_time: 0.234731
+            namelookup_time: 0.001047
+            connect_time: 0.057568
+            pretransfer_time: 0.127458
             size_upload: 0.0
             size_download: 1509.0
-            speed_download: 4614.0
+            speed_download: 6428.0
             speed_upload: 0.0
             download_content_length: 1509.0
             upload_content_length: 0.0
-            starttransfer_time: 0.326959
+            starttransfer_time: 0.234694
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.131
+            primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
             local_ip: 10.130.6.7
-            local_port: 52470
+            local_port: 63382
             http_version: 3
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 134111
-            connect_time_us: 59551
-            namelookup_time_us: 1477
-            pretransfer_time_us: 134297
+            appconnect_time_us: 127388
+            connect_time_us: 57568
+            namelookup_time_us: 1047
+            pretransfer_time_us: 127458
             redirect_time_us: 0
-            starttransfer_time_us: 326959
-            total_time_us: 327014
+            starttransfer_time_us: 234694
+            total_time_us: 234731
