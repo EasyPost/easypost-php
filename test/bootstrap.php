@@ -7,8 +7,6 @@ if (!file_exists('test/cassettes')) {
     mkdir('test/cassettes', 0755, true);
 }
 
-VCR::turnOn();
-
 VCR::configure()->setCassettePath('test/cassettes')
     ->setStorage('yaml')
     ->setMode('once');
@@ -22,3 +20,5 @@ VCRCleaner::enable([
         ],
     ],
 ]);
+
+VCR::turnOn();
