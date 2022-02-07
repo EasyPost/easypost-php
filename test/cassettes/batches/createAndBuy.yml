@@ -1,0 +1,79 @@
+
+-
+    request:
+        method: POST
+        url: 'https://api.easypost.com/v2/batches/create_and_buy'
+        headers:
+            Host: api.easypost.com
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+            X-Client-User-Agent: ''
+            EasyPost-Version: '2'
+        body: '{"batch":{"shipment":{"0":{"to_address":{"name":"Jack Sparrow","company":"EasyPost","street1":"388 Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","phone":"5555555555"},"from_address":{"name":"Jack Sparrow","company":"EasyPost","street1":"388 Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","phone":"5555555555"},"parcel":{"length":"10","width":"8","height":"4","weight":"15.4"},"service":"First","carrier_accounts":["ca_8dc116debcdb49b5a66a2ddee4612600"],"carrier":"USPS"},"1":{"to_address":{"name":"Jack Sparrow","company":"EasyPost","street1":"388 Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","phone":"5555555555"},"from_address":{"name":"Jack Sparrow","company":"EasyPost","street1":"388 Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","phone":"5555555555"},"parcel":{"length":"10","width":"8","height":"4","weight":"15.4"},"service":"First","carrier_accounts":["ca_8dc116debcdb49b5a66a2ddee4612600"],"carrier":"USPS"}}}}'
+    response:
+        status:
+            http_version: '2'
+            code: '200'
+            message: ''
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: 888f661262015f1ce787c400004c8040
+            cache-control: 'no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '384'
+            etag: 'W/"2cf4c02d482c1a495dd5aebaa60e214a"'
+            x-request-id: 385811d3-4137-4fe1-a522-dc47fec981a4
+            x-runtime: '0.044614'
+            x-node: bigweb2nuq
+            x-version-label: easypost-202202042220-76f9648007-master
+            x-backend: easypost
+            x-proxied: ['intlb1nuq 88c34981dc', 'extlb1nuq 88c34981dc']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"id":"batch_e1b764f5be5e46e795efe406200b2642","object":"Batch","mode":"test","state":"creating","num_shipments":2,"reference":null,"created_at":"2022-02-07T18:04:12Z","updated_at":"2022-02-07T18:04:12Z","scan_form":null,"shipments":[],"status":{"created":0,"queued_for_purchase":0,"creation_failed":0,"postage_purchased":0,"postage_purchase_failed":0},"pickup":null,"label_url":null}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/batches/create_and_buy'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 770
+            request_size: 570
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.262452
+            namelookup_time: 0.013226
+            connect_time: 0.071659
+            pretransfer_time: 0.15827
+            size_upload: 1064.0
+            size_download: 384.0
+            speed_download: 1463.0
+            speed_upload: 4054.0
+            download_content_length: 384.0
+            upload_content_length: 1064.0
+            starttransfer_time: 0.158304
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.62.110.131
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 10.130.6.6
+            local_port: 52219
+            http_version: 3
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 157787
+            connect_time_us: 71659
+            namelookup_time_us: 13226
+            pretransfer_time_us: 158270
+            redirect_time_us: 0
+            starttransfer_time_us: 158304
+            total_time_us: 262452

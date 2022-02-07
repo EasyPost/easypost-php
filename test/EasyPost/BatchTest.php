@@ -99,17 +99,16 @@ class BatchTest extends \PHPUnit\Framework\TestCase
      */
     public function testCreateAndBuy()
     {
-        $this->markTestSkipped('This function does not encode its parameters properly and needs to be fixed.');
-
         VCR::insertCassette('batches/createAndBuy.yml');
 
         $batch = Batch::create_and_buy([
-            'shipment' => [Fixture::basic_shipment()],
+            Fixture::one_call_buy_shipment(),
+            Fixture::one_call_buy_shipment(),
         ]);
 
         $this->assertInstanceOf('\EasyPost\Batch', $batch);
         $this->assertStringMatchesFormat('batch_%s', $batch->id);
-        $this->assertNotNull($batch->shipments);
+        $this->assertEquals($batch->num_shipments, 2);
     }
 
     /**
@@ -122,7 +121,6 @@ class BatchTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('batches/buy.yml');
 
         $shipment_data = Fixture::one_call_buy_shipment();
-        $shipment_data['carrier'] = Fixture::usps();
 
         $batch = Batch::create([
             'shipments' => [$shipment_data],

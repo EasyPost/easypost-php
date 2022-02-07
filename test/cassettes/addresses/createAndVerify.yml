@@ -24,22 +24,22 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 80dc0e1f61fdc2cee79a6d20003ff472
+            x-ep-request-uuid: 888f660d62015c5de7874d84004b8638
             cache-control: 'no-cache, no-store'
             pragma: no-cache
             expires: '0'
-            location: /api/v2/addresses/adr_6d21c783861911ec9527ac1f6bc7b362
+            location: /api/v2/addresses/adr_b815c340883e11ec8b67ac1f6b0a0d1e
             content-type: 'application/json; charset=utf-8'
             content-length: '644'
-            etag: 'W/"96b9dbdc6d2ccf54d32f128dd84d5483"'
-            x-request-id: 49378c0c-7f2f-47e9-a182-bbe19b8ef3a5
-            x-runtime: '0.051301'
-            x-node: bigweb6nuq
+            etag: 'W/"228b5de9f945b6c77c4acaa8b477fabf"'
+            x-request-id: 6721668b-0320-4b99-8a19-c9367d1a2729
+            x-runtime: '0.051300'
+            x-node: bigweb5nuq
             x-version-label: easypost-202202042220-76f9648007-master
             x-backend: easypost
-            x-proxied: ['intlb2nuq 88c34981dc', 'extlb2nuq 88c34981dc']
+            x-proxied: ['intlb1nuq 88c34981dc', 'extlb1nuq 88c34981dc']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"address":{"id":"adr_6d21c783861911ec9527ac1f6bc7b362","object":"Address","created_at":"2022-02-05T00:20:30+00:00","updated_at":"2022-02-05T00:20:30+00:00","name":null,"company":"EASYPOST","street1":"417 MONTGOMERY ST STE 500","street2":"","city":"SAN FRANCISCO","state":"CA","zip":"94104-1100","country":"US","phone":"4151234567","email":null,"mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":37.79342,"longitude":-122.40288,"time_zone":"America/Los_Angeles"}}}}}'
+        body: '{"address":{"id":"adr_b815c340883e11ec8b67ac1f6b0a0d1e","object":"Address","created_at":"2022-02-07T17:52:29+00:00","updated_at":"2022-02-07T17:52:29+00:00","name":null,"company":"EASYPOST","street1":"417 MONTGOMERY ST STE 500","street2":"","city":"SAN FRANCISCO","state":"CA","zip":"94104-1100","country":"US","phone":"4151234567","email":null,"mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":37.79342,"longitude":-122.40288,"time_zone":"America/Los_Angeles"}}}}}'
         curl_info:
             url: 'https://api.easypost.com/v2/addresses/create_and_verify'
             content_type: 'application/json; charset=utf-8'
@@ -49,32 +49,32 @@
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.252876
-            namelookup_time: 0.001144
-            connect_time: 0.059412
-            pretransfer_time: 0.141581
+            total_time: 0.518593
+            namelookup_time: 0.001501
+            connect_time: 0.05832
+            pretransfer_time: 0.40891
             size_upload: 191.0
             size_download: 644.0
-            speed_download: 2546.0
-            speed_upload: 755.0
+            speed_download: 1241.0
+            speed_upload: 368.0
             download_content_length: 644.0
             upload_content_length: 191.0
-            starttransfer_time: 0.141598
+            starttransfer_time: 0.408926
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.130
+            primary_ip: 169.62.110.131
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.7
-            local_port: 63316
+            local_ip: 10.130.6.6
+            local_port: 51764
             http_version: 3
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 141201
-            connect_time_us: 59412
-            namelookup_time_us: 1144
-            pretransfer_time_us: 141581
+            appconnect_time_us: 408747
+            connect_time_us: 58320
+            namelookup_time_us: 1501
+            pretransfer_time_us: 408910
             redirect_time_us: 0
-            starttransfer_time_us: 141598
-            total_time_us: 252876
+            starttransfer_time_us: 408926
+            total_time_us: 518593

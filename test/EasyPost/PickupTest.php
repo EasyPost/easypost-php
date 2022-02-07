@@ -78,7 +78,7 @@ class PickupTest extends \PHPUnit\Framework\TestCase
      * Test buying a pickup.
      *
      * @param Pickup $pickup
-     * @return void
+     * @return Pickup
      * @depends testCreate
      */
     public function testBuy(Pickup $pickup)
@@ -94,14 +94,17 @@ class PickupTest extends \PHPUnit\Framework\TestCase
         $this->assertStringMatchesFormat('pickup_%s', $bought_pickup->id);
         $this->assertNotNull($bought_pickup->confirmation);
         $this->assertEquals($bought_pickup->status, 'scheduled');
+
+        // Return so other tests can reuse this object
+        return $pickup;
     }
 
     /**
-     * Test buyin a pickup.
+     * Test cancelling a pickup.
      *
      * @param Pickup $pickup
      * @return void
-     * @depends testCreate
+     * @depends testBuy
      */
     public function testCancel(Pickup $pickup)
     {

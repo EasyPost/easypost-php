@@ -2,7 +2,7 @@
 -
     request:
         method: GET
-        url: 'https://api.easypost.com/v2/refunds/rfnd_7130a30817a1442e924749a57a59c542'
+        url: 'https://api.easypost.com/v2/refunds/rfnd_17c772a6d7b44993a7fc66f002a9c3d6'
         headers:
             Host: api.easypost.com
             Accept: application/json
@@ -23,23 +23,23 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 80dc0e2261fdc2ebe79a6e07003ffd05
+            x-ep-request-uuid: 888f660c62015c77e7875186004b8e51
             cache-control: 'no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '295'
-            etag: 'W/"c492061b3e155f0d66701eaf6ae9f999"'
-            x-request-id: 35b4befc-0182-4485-9018-e3ffc64f7381
-            x-runtime: '0.036000'
-            x-node: bigweb1nuq
+            etag: 'W/"904fdbad771aa6bfc1c2deb4d87267c5"'
+            x-request-id: 3a87971d-f60d-40ec-a529-c84229873dff
+            x-runtime: '0.040922'
+            x-node: bigweb4nuq
             x-version-label: easypost-202202042220-76f9648007-master
             x-backend: easypost
-            x-proxied: ['intlb2nuq 88c34981dc', 'extlb2nuq 88c34981dc']
+            x-proxied: ['intlb2nuq 88c34981dc', 'extlb1nuq 88c34981dc']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"rfnd_7130a30817a1442e924749a57a59c542","object":"Refund","created_at":"2022-02-05T00:20:47Z","updated_at":"2022-02-05T00:20:47Z","tracking_code":"9400100895232105611393","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_10f1e6b61eb44f2ea69d319c0b9c1569"}'
+        body: '{"id":"rfnd_17c772a6d7b44993a7fc66f002a9c3d6","object":"Refund","created_at":"2022-02-07T17:52:43Z","updated_at":"2022-02-07T17:52:43Z","tracking_code":"9400100895232106014926","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_3132f1f5084c47fd9347b6a7d2a8c503"}'
         curl_info:
-            url: 'https://api.easypost.com/v2/refunds/rfnd_7130a30817a1442e924749a57a59c542'
+            url: 'https://api.easypost.com/v2/refunds/rfnd_17c772a6d7b44993a7fc66f002a9c3d6'
             content_type: 'application/json; charset=utf-8'
             http_code: 200
             header_size: 770
@@ -47,32 +47,32 @@
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.233674
-            namelookup_time: 0.001099
-            connect_time: 0.057496
-            pretransfer_time: 0.14008
+            total_time: 0.234451
+            namelookup_time: 0.001073
+            connect_time: 0.058914
+            pretransfer_time: 0.133832
             size_upload: 0.0
             size_download: 295.0
-            speed_download: 1262.0
+            speed_download: 1258.0
             speed_upload: 0.0
             download_content_length: 295.0
             upload_content_length: 0.0
-            starttransfer_time: 0.233652
+            starttransfer_time: 0.234413
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.130
+            primary_ip: 169.62.110.131
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.7
-            local_port: 63386
+            local_ip: 10.130.6.6
+            local_port: 51847
             http_version: 3
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 139881
-            connect_time_us: 57496
-            namelookup_time_us: 1099
-            pretransfer_time_us: 140080
+            appconnect_time_us: 133523
+            connect_time_us: 58914
+            namelookup_time_us: 1073
+            pretransfer_time_us: 133832
             redirect_time_us: 0
-            starttransfer_time_us: 233652
-            total_time_us: 233674
+            starttransfer_time_us: 234413
+            total_time_us: 234451

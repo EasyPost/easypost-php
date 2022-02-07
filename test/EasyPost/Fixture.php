@@ -165,6 +165,7 @@ class Fixture
             'parcel' => self::basic_parcel(),
             'service' => self::usps_service(),
             'carrier_accounts' => [self::usps_carrier_account_id()],
+            'carrier' => self::usps(),
         ];
     }
 
@@ -175,8 +176,8 @@ class Fixture
     {
         return [
             'address' => self::basic_address(),
-            'min_datetime' => '2022-02-05',
-            'max_datetime' => '2022-02-06',
+            'min_datetime' => '2022-02-08',
+            'max_datetime' => '2022-02-09',
             'instructions' => 'Pickup at front door',
         ];
     }

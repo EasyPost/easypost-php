@@ -2,7 +2,7 @@
 -
     request:
         method: GET
-        url: 'https://api.easypost.com/v2/carrier_accounts/ca_432e8db30e834b1fa084dcba623f4c06'
+        url: 'https://api.easypost.com/v2/carrier_accounts/ca_cb30d3df0bb1473685d49e1dc5cae799'
         headers:
             Host: api.easypost.com
             Accept: application/json
@@ -23,23 +23,23 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 80dc0e2361fdc367e79a71e100401b0c
+            x-ep-request-uuid: 888f660c62015c85e7875229004b9285
             cache-control: 'no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '432'
-            etag: 'W/"40adaa1fa796b377e705b6ea0e224dbd"'
-            x-request-id: cc6d0572-7fc1-4501-b886-bdedb28657df
-            x-runtime: '0.040816'
-            x-node: bigweb1nuq
+            etag: 'W/"330aa702e05d54beb19e8ab26af14775"'
+            x-request-id: 2a5d9197-951b-4d64-a507-f2d519c8e76c
+            x-runtime: '0.040999'
+            x-node: bigweb6nuq
             x-version-label: easypost-202202042220-76f9648007-master
             x-backend: easypost
-            x-proxied: ['intlb2nuq 88c34981dc', 'extlb2nuq 88c34981dc']
+            x-proxied: ['intlb1nuq 88c34981dc', 'extlb1nuq 88c34981dc']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"ca_432e8db30e834b1fa084dcba623f4c06","object":"CarrierAccount","type":"UpsAccount","clone":false,"created_at":"2022-02-05T00:23:03Z","updated_at":"2022-02-05T00:23:03Z","description":"UPS Account","reference":null,"readable":"UPS","logo":null,"fields":{"credentials":{"account_number":{"visibility":"readonly","label":"UPS Account Number","value":"A1A1A1"}}},"credentials":{"account_number":"A1A1A1"},"test_credentials":null}'
+        body: '{"id":"ca_cb30d3df0bb1473685d49e1dc5cae799","object":"CarrierAccount","type":"UpsAccount","clone":false,"created_at":"2022-02-07T17:53:08Z","updated_at":"2022-02-07T17:53:08Z","description":"UPS Account","reference":null,"readable":"UPS","logo":null,"fields":{"credentials":{"account_number":{"visibility":"readonly","label":"UPS Account Number","value":"A1A1A1"}}},"credentials":{"account_number":"A1A1A1"},"test_credentials":null}'
         curl_info:
-            url: 'https://api.easypost.com/v2/carrier_accounts/ca_432e8db30e834b1fa084dcba623f4c06'
+            url: 'https://api.easypost.com/v2/carrier_accounts/ca_cb30d3df0bb1473685d49e1dc5cae799'
             content_type: 'application/json; charset=utf-8'
             http_code: 200
             header_size: 770
@@ -47,32 +47,32 @@
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.245046
-            namelookup_time: 0.001843
-            connect_time: 0.065939
-            pretransfer_time: 0.145329
+            total_time: 0.252346
+            namelookup_time: 0.001129
+            connect_time: 0.058449
+            pretransfer_time: 0.141567
             size_upload: 0.0
             size_download: 432.0
-            speed_download: 1762.0
+            speed_download: 1711.0
             speed_upload: 0.0
             download_content_length: 432.0
             upload_content_length: 0.0
-            starttransfer_time: 0.245003
+            starttransfer_time: 0.252297
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.130
+            primary_ip: 169.62.110.131
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.7
-            local_port: 63452
+            local_ip: 10.130.6.6
+            local_port: 51895
             http_version: 3
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 145183
-            connect_time_us: 65939
-            namelookup_time_us: 1843
-            pretransfer_time_us: 145329
+            appconnect_time_us: 141382
+            connect_time_us: 58449
+            namelookup_time_us: 1129
+            pretransfer_time_us: 141567
             redirect_time_us: 0
-            starttransfer_time_us: 245003
-            total_time_us: 245046
+            starttransfer_time_us: 252297
+            total_time_us: 252346
