@@ -2,7 +2,7 @@
 -
     request:
         method: GET
-        url: 'https://api.easypost.com/v2/addresses/adr_aef9c7338a384dd0b75c0e0239cd35a1'
+        url: 'https://api.easypost.com/v2/addresses/adr_b863a663883e11ec8b78ac1f6b0a0d1e'
         headers:
             Host: api.easypost.com
             Accept: application/json
@@ -13,9 +13,9 @@
             EasyPost-Version: '2'
     response:
         status:
-            http_version: '1.1'
+            http_version: '2'
             code: '200'
-            message: OK
+            message: ''
         headers:
             x-frame-options: SAMEORIGIN
             x-xss-protection: '1; mode=block'
@@ -23,56 +23,56 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: e739257861704a98e786c1820013589c
+            x-ep-request-uuid: 888f661162015c5ee7874da3004b8681
             cache-control: 'no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
-            content-length: '429'
-            etag: 'W/"2e12bf9f14c69813dba0b8e1710f2d10"'
-            x-request-id: 89db7904-bdfb-489d-b344-46e112d6ec17
-            x-runtime: '0.031635'
-            x-node: bigweb2nuq
-            x-version-label: easypost-202110192143-cc149f31de-master
+            content-length: '453'
+            etag: 'W/"347ef9b7d04dd9222863678527c9dedf"'
+            x-request-id: b32da7a0-ee57-4f4c-89e9-fb4935f5e052
+            x-runtime: '0.031938'
+            x-node: bigweb6nuq
+            x-version-label: easypost-202202042220-76f9648007-master
             x-backend: easypost
-            x-proxied: ['intlb1nuq d40607e4ab', 'extlb2nuq d40607e4ab']
+            x-proxied: ['intlb2nuq 88c34981dc', 'extlb1nuq 88c34981dc']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"adr_aef9c7338a384dd0b75c0e0239cd35a1","object":"Address","created_at":"2021-10-20T16:53:00+00:00","updated_at":"2021-10-20T16:53:00+00:00","name":null,"company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","country":"US","phone":null,"email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}}'
+        body: '{"id":"adr_b863a663883e11ec8b78ac1f6b0a0d1e","object":"Address","created_at":"2022-02-07T17:52:30+00:00","updated_at":"2022-02-07T17:52:30+00:00","name":"Jack Sparrow","company":"EasyPost","street1":"388 Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","country":"US","phone":"5555555555","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}}'
         curl_info:
-            url: 'https://api.easypost.com/v2/addresses/adr_aef9c7338a384dd0b75c0e0239cd35a1'
+            url: 'https://api.easypost.com/v2/addresses/adr_b863a663883e11ec8b78ac1f6b0a0d1e'
             content_type: 'application/json; charset=utf-8'
             http_code: 200
-            header_size: 774
-            request_size: 535
+            header_size: 770
+            request_size: 571
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.239975
-            namelookup_time: 0.010202
-            connect_time: 0.06796
-            pretransfer_time: 0.149328
-            size_upload: !!float 0
-            size_download: !!float 429
-            speed_download: !!float 1787
-            speed_upload: !!float 0
-            download_content_length: !!float 429
-            upload_content_length: !!float 0
-            starttransfer_time: 0.239872
-            redirect_time: !!float 0
+            total_time: 0.231722
+            namelookup_time: 0.001619
+            connect_time: 0.057873
+            pretransfer_time: 0.132943
+            size_upload: 0.0
+            size_download: 453.0
+            speed_download: 1954.0
+            speed_upload: 0.0
+            download_content_length: 453.0
+            upload_content_length: 0.0
+            starttransfer_time: 0.231688
+            redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.130
+            primary_ip: 169.62.110.131
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.4
-            local_port: 50790
-            http_version: 2
+            local_ip: 10.130.6.6
+            local_port: 51772
+            http_version: 3
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 149065
-            connect_time_us: 67960
-            namelookup_time_us: 10202
-            pretransfer_time_us: 149328
+            appconnect_time_us: 132803
+            connect_time_us: 57873
+            namelookup_time_us: 1619
+            pretransfer_time_us: 132943
             redirect_time_us: 0
-            starttransfer_time_us: 239872
-            total_time_us: 239975
+            starttransfer_time_us: 231688
+            total_time_us: 231722

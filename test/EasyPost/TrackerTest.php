@@ -5,23 +5,24 @@ namespace EasyPost\Test;
 use VCR\VCR;
 use EasyPost\Tracker;
 use EasyPost\EasyPost;
-
-EasyPost::setApiKey(getenv('API_KEY'));
+use EasyPost\Test\Fixture;
 
 class TrackerTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * Set up VCR before running tests in this file
+     * Setup the testing environment for this file.
      *
      * @return void
      */
     public static function setUpBeforeClass(): void
     {
+        EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
+
         VCR::turnOn();
     }
 
     /**
-     * Spin down VCR after running tests
+     * Cleanup the testing environment once finished.
      *
      * @return void
      */
@@ -32,7 +33,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test the creation of a Tracker
+     * Test creating a Tracker.
      *
      * @return void
      */
@@ -45,16 +46,15 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
         ]);
 
         $this->assertInstanceOf('\EasyPost\Tracker', $tracker);
-        $this->assertIsString($tracker->id);
         $this->assertStringMatchesFormat('trk_%s', $tracker->id);
         $this->assertEquals($tracker->status, 'pre_transit');
 
-        // Return so the `retrieve` test can reuse this object
+        // Return so other tests can reuse this object
         return $tracker;
     }
 
     /**
-     * Test the retrieval of a Tracker
+     * Test retrieving a Tracker.
      *
      * @param Tracker $tracker
      * @return void
@@ -72,7 +72,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test the retrieval of all trackers
+     * Test retrieving all trackers.
      *
      * @return void
      */
@@ -80,24 +80,20 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('trackers/all.yml');
 
-        $page_size = 5;
-
         $trackers = Tracker::all([
-            'page_size' => $page_size,
+            'page_size' => Fixture::page_size(),
         ]);
 
         $trackers_array = $trackers['trackers'];
-        $first_tracker = $trackers['trackers'][0];
 
-        $this->assertIsArray($trackers_array);
-        $this->assertCount($page_size, $trackers_array);
-        $this->assertInstanceOf('\EasyPost\Tracker', $first_tracker);
-        $this->assertIsString($first_tracker->id);
-        $this->assertStringMatchesFormat('trk_%s', $first_tracker->id);
+        $this->assertLessThanOrEqual($trackers_array, Fixture::page_size());
+        foreach ($trackers_array as $tracker) {
+            $this->assertInstanceOf('\EasyPost\Tracker', $tracker);
+        }
     }
 
     /**
-     * Tests that we can create a list of bulk trackers with one request
+     * Tests that we can create a list of bulk trackers with one request.
      *
      * @return void
      */
@@ -105,14 +101,13 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('trackers/createList.yml');
 
-        Tracker::create_list([
-            ["tracking_code" => "EZ1000000001"],
-            ["tracking_code" => "EZ1000000002"],
-            ["tracking_code" => "EZ1000000003"],
-            ["tracking_code" => "EZ1000000004"],
+        $response = Tracker::create_list([
+            '0' => ["tracking_code" => "EZ1000000001"],
+            '1' => ["tracking_code" => "EZ1000000002"],
+            '2' => ["tracking_code" => "EZ1000000003"],
         ]);
 
-        // This endpoint/method does not return anything, just make sure the request doesn't fail
-        $this->expectNotToPerformAssertions();
+        // This endpoint returns nothing so we assert the function returns true
+        $this->assertEquals(true, $response);
     }
 }

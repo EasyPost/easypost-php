@@ -97,6 +97,7 @@ abstract class Util
         $prefixes = [
             'adr'       => '\EasyPost\Address',
             'batch'     => '\EasyPost\Batch',
+            'brd'       => '\EasyPost\Brand',
             'ca'        => '\EasyPost\CarrierAccount',
             'cstinfo'   => '\EasyPost\CustomsInfo',
             'cstitem'   => '\EasyPost\CustomsItem',

@@ -33,18 +33,6 @@ class CustomsInfo extends EasypostResource
     }
 
     /**
-     * Retrieve all customs info.
-     *
-     * @param mixed $params
-     * @param string $apiKey
-     * @return mixed
-     */
-    public static function all($params = null, $apiKey = null)
-    {
-        return self::_all(get_class(), $params, $apiKey);
-    }
-
-    /**
      * Create a customs info.
      *
      * @param mixed $params

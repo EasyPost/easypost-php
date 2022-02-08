@@ -5,23 +5,24 @@ namespace EasyPost\Test;
 use VCR\VCR;
 use EasyPost\Webhook;
 use EasyPost\EasyPost;
-
-EasyPost::setApiKey(getenv('API_KEY'));
+use EasyPost\Test\Fixture;
 
 class WebhookTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * Set up VCR before running tests in this file
+     * Setup the testing environment for this file.
      *
      * @return void
      */
     public static function setUpBeforeClass(): void
     {
+        EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
+
         VCR::turnOn();
     }
 
     /**
-     * Spin down VCR after running tests
+     * Cleanup the testing environment once finished.
      *
      * @return void
      */
@@ -32,7 +33,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test the creation of a Webhook
+     * Test creating a Webhook.
      *
      * @return Webhook
      */
@@ -45,16 +46,15 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
         ]);
 
         $this->assertInstanceOf('\EasyPost\Webhook', $webhook);
-        $this->assertIsString($webhook->id);
         $this->assertStringMatchesFormat('hook_%s', $webhook->id);
         $this->assertEquals($webhook->url, 'http://example.com');
 
-        // Return so the `retrieve` test can reuse this object
+        // Return so other tests can reuse this object
         return $webhook;
     }
 
     /**
-     * Test the retrieval of a Webhook
+     * Test retrieving a Webhook.
      *
      * @param Webhook $webhook
      * @return void
@@ -67,7 +67,6 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
         $retrieved_webhook = Webhook::retrieve($webhook->id);
 
         $this->assertInstanceOf('\EasyPost\Webhook', $retrieved_webhook);
-        $this->assertEquals($retrieved_webhook->id, $webhook->id);
         $this->assertEquals($retrieved_webhook, $webhook);
 
         // Return so the `delete` test can reuse this object
@@ -75,7 +74,38 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test the deletion of a Webhook
+     * Test retrieving all webhooks.
+     *
+     * @return void
+     */
+    public function testAll()
+    {
+        VCR::insertCassette('webhooks/all.yml');
+
+        $webhooks = Webhook::all([
+            'page_size' => Fixture::page_size(),
+        ]);
+
+        $webhook_array = $webhooks['webhooks'];
+
+        $this->assertLessThanOrEqual($webhook_array, Fixture::page_size());
+        foreach ($webhook_array as $webhook) {
+            $this->assertInstanceOf('\EasyPost\Webhook', $webhook);
+        }
+    }
+
+    /**
+     * Test updating a Webhook.
+     *
+     * @return void
+     */
+    public function testUpdate()
+    {
+        $this->markTestSkipped('Cannot be easily tested - requires a disabled webhook.');
+    }
+
+    /**
+     * Test deleting a Webhook.
      *
      * @param Webhook $webhook
      * @return void
@@ -85,9 +115,9 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('webhooks/delete.yml');
 
-        $webhook->delete();
+        $response = $webhook->delete();
 
         // This endpoint/method does not return anything, just make sure the request doesn't fail
-        $this->expectNotToPerformAssertions();
+        $this->assertInstanceOf('\EasyPost\Webhook', $response);
     }
 }

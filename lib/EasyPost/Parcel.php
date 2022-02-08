@@ -30,18 +30,6 @@ class Parcel extends EasypostResource
     }
 
     /**
-     * Retrieve all parcels.
-     *
-     * @param mixed $params
-     * @param string $apiKey
-     * @return mixed
-     */
-    public static function all($params = null, $apiKey = null)
-    {
-        return self::_all(get_class(), $params, $apiKey);
-    }
-
-    /**
      * Create a parcel.
      *
      * @param mixed $params

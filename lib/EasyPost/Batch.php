@@ -71,16 +71,28 @@ class Batch extends EasypostResource
      */
     public static function create_and_buy($params = null, $apiKey = null)
     {
-        $class = get_class();
         if (!isset($params['batch']) || !is_array($params['batch'])) {
             $clone = $params;
             unset($params);
-            $params['batch'] = $clone;
+
+            $shipments = (object)[];
+
+            foreach ($clone as $index => $shipment) {
+                $shipments->$index = $shipment;
+            }
+
+            $params = (object)[
+                'batch' => (object)[
+                    'shipment' => $shipments,
+                ],
+            ];
         }
 
+        $encoded_params = str_replace("\\", '', json_encode($params));
+
         $requestor = new Requestor($apiKey);
-        $url = self::classUrl($class);
-        list($response, $apiKey) = $requestor->request('post', $url . '/create_and_buy', $params);
+        $url = self::classUrl(get_class());
+        list($response, $apiKey) = $requestor->request('post', $url . '/create_and_buy', $encoded_params);
 
         return Util::convertToEasyPostObject($response, $apiKey);
     }

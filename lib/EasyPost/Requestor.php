@@ -203,7 +203,7 @@ class Requestor
             }
         } elseif ($method == 'post') {
             $curlOptions[CURLOPT_POST] = 1;
-            if (strpos($absUrl, 'trackers/create_list') !== false) {
+            if (strpos($absUrl, 'trackers/create_list') !== false || strpos($absUrl, 'batches/create_and_buy') !== false) {
                 // We must encode the params for the `trackers/create_list` endpoint differently because
                 // it expects a hash of hashes instead of a list of objects (handled in the `create_list` function)
                 $curlOptions[CURLOPT_POSTFIELDS] = $params;

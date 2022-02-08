@@ -109,8 +109,8 @@ composer lint
 composer fix
 
 # Run tests
-API_KEY=123... composer test
+EASYPOST_TEST_API_KEY=123... EASYPOST_PROD_API_KEY=123... composer test
 
 # Generate coverage reports (requires Xdebug)
-API_KEY=123... composer coverage
+EASYPOST_TEST_API_KEY=123... EASYPOST_PROD_API_KEY=123... composer coverage
 ```

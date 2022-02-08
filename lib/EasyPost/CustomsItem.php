@@ -32,18 +32,6 @@ class CustomsItem extends EasypostResource
     }
 
     /**
-     * Retrieve all customs items.
-     *
-     * @param mixed $params
-     * @param string $apiKey
-     * @return mixed
-     */
-    public static function all($params = null, $apiKey = null)
-    {
-        return self::_all(get_class(), $params, $apiKey);
-    }
-
-    /**
      * Create a customs item.
      *
      * @param mixed $params

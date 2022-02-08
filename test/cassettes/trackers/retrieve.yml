@@ -2,7 +2,7 @@
 -
     request:
         method: GET
-        url: 'https://api.easypost.com/v2/trackers/trk_872eb712b9cb401d91bee3675f117cd1'
+        url: 'https://api.easypost.com/v2/trackers/trk_d6113d718339419e82a1f2e0b90cf4f6'
         headers:
             Host: api.easypost.com
             Accept: application/json
@@ -23,56 +23,56 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: adaf02db61b39c3fe78748c200cc615a
+            x-ep-request-uuid: 888f660e62015c63e7874dea004b87c1
             cache-control: 'no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '1189'
-            etag: 'W/"b1bb1c1453af0ecf35880798ab0cd8c2"'
-            x-request-id: 1eecd3b2-aa80-4a5a-8d8d-71cd802ec0c0
-            x-runtime: '0.137048'
-            x-node: bigweb5nuq
-            x-version-label: easypost-202112100014-fe85439836-master
+            etag: 'W/"cd0602b247f45f3e170f6cdb62f2306f"'
+            x-request-id: b8963a26-6ae4-4626-b3cb-cb9ce0173c99
+            x-runtime: '0.055397'
+            x-node: bigweb9nuq
+            x-version-label: easypost-202202042220-76f9648007-master
             x-backend: easypost
-            x-proxied: ['intlb2nuq d40607e4ab', 'extlb1nuq ffc213653a']
+            x-proxied: ['intlb2nuq 88c34981dc', 'extlb1nuq 88c34981dc']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"trk_872eb712b9cb401d91bee3675f117cd1","object":"Tracker","mode":"test","tracking_code":"EZ1000000001","status":"pre_transit","status_detail":"unknown","created_at":"2021-12-10T18:28:14Z","updated_at":"2021-12-10T18:28:14Z","signed_by":null,"weight":17.6,"est_delivery_date":"2021-12-10T18:28:14Z","shipment_id":null,"carrier":"USPS","tracking_details":[{"object":"TrackingDetail","message":"Pre-Shipment information received","description":null,"status":"pre_transit","status_detail":null,"datetime":"2021-11-10T18:28:14Z","source":"EasyPost","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":null,"state":null,"country":null,"zip":null}},{"object":"TrackingDetail","message":"Shipping label created","description":null,"status":"pre_transit","status_detail":null,"datetime":"2021-11-11T13:17:14Z","source":"EasyPost","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":null,"state":null,"country":null,"zip":null}}],"fees":[{"object":"Fee","type":"TrackerFee","amount":"0.00000","charged":false,"refunded":false}],"carrier_detail":null,"public_url":"https://track.easypost.com/djE6dHJrXzg3MmViNzEyYjljYjQwMWQ5MWJlZTM2NzVmMTE3Y2Qx"}'
+        body: '{"id":"trk_d6113d718339419e82a1f2e0b90cf4f6","object":"Tracker","mode":"test","tracking_code":"EZ1000000001","status":"pre_transit","status_detail":"unknown","created_at":"2022-02-07T17:52:35Z","updated_at":"2022-02-07T17:52:35Z","signed_by":null,"weight":17.6,"est_delivery_date":"2022-02-07T17:52:35Z","shipment_id":null,"carrier":"USPS","tracking_details":[{"object":"TrackingDetail","message":"Pre-Shipment information received","description":null,"status":"pre_transit","status_detail":null,"datetime":"2022-01-07T17:52:35Z","source":"EasyPost","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":null,"state":null,"country":null,"zip":null}},{"object":"TrackingDetail","message":"Shipping label created","description":null,"status":"pre_transit","status_detail":null,"datetime":"2022-01-08T12:41:35Z","source":"EasyPost","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":null,"state":null,"country":null,"zip":null}}],"fees":[{"object":"Fee","type":"TrackerFee","amount":"0.02000","charged":false,"refunded":false}],"carrier_detail":null,"public_url":"https://track.easypost.com/djE6dHJrX2Q2MTEzZDcxODMzOTQxOWU4MmExZjJlMGI5MGNmNGY2"}'
         curl_info:
-            url: 'https://api.easypost.com/v2/trackers/trk_872eb712b9cb401d91bee3675f117cd1'
+            url: 'https://api.easypost.com/v2/trackers/trk_d6113d718339419e82a1f2e0b90cf4f6'
             content_type: 'application/json; charset=utf-8'
             http_code: 200
             header_size: 771
-            request_size: 532
+            request_size: 570
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.328479
-            namelookup_time: 0.001267
-            connect_time: 0.058444
-            pretransfer_time: 0.132024
-            size_upload: !!float 0
-            size_download: !!float 1189
-            speed_download: !!float 3619
-            speed_upload: !!float 0
-            download_content_length: !!float 1189
-            upload_content_length: !!float 0
-            starttransfer_time: 0.32844
-            redirect_time: !!float 0
+            total_time: 0.256536
+            namelookup_time: 0.001387
+            connect_time: 0.059647
+            pretransfer_time: 0.141045
+            size_upload: 0.0
+            size_download: 1189.0
+            speed_download: 4634.0
+            speed_upload: 0.0
+            download_content_length: 1189.0
+            upload_content_length: 0.0
+            starttransfer_time: 0.256491
+            redirect_time: 0.0
             redirect_url: ''
             primary_ip: 169.62.110.131
             certinfo: {  }
             primary_port: 443
             local_ip: 10.130.6.6
-            local_port: 51627
+            local_port: 51797
             http_version: 3
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 131757
-            connect_time_us: 58444
-            namelookup_time_us: 1267
-            pretransfer_time_us: 132024
+            appconnect_time_us: 140855
+            connect_time_us: 59647
+            namelookup_time_us: 1387
+            pretransfer_time_us: 141045
             redirect_time_us: 0
-            starttransfer_time_us: 328440
-            total_time_us: 328479
+            starttransfer_time_us: 256491
+            total_time_us: 256536

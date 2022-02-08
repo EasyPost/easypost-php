@@ -1,0 +1,79 @@
+
+-
+    request:
+        method: POST
+        url: 'https://api.easypost.com/v2/batches/batch_e0176c4fb597421790eba7a66acc8045/label'
+        headers:
+            Host: api.easypost.com
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+            X-Client-User-Agent: ''
+            EasyPost-Version: '2'
+        body: '{"file_format":"ZPL"}'
+    response:
+        status:
+            http_version: '2'
+            code: '200'
+            message: ''
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: 888f661162015c7ce78751c2004b8fec
+            cache-control: 'no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '551'
+            etag: 'W/"5564bc5fc5ec0a33c58cadc53acbc111"'
+            x-request-id: 08c838c5-4efc-4554-8e0e-d830dd884cda
+            x-runtime: '0.041270'
+            x-node: bigweb5nuq
+            x-version-label: easypost-202202042220-76f9648007-master
+            x-backend: easypost
+            x-proxied: ['intlb2nuq 88c34981dc', 'extlb1nuq 88c34981dc']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"id":"batch_e0176c4fb597421790eba7a66acc8045","object":"Batch","mode":"test","state":"label_generating","num_shipments":1,"reference":null,"created_at":"2022-02-07T17:52:57Z","updated_at":"2022-02-07T17:53:00Z","scan_form":null,"shipments":[{"batch_status":"postage_purchased","batch_message":null,"reference":null,"tracking_code":"9400100895232106014971","id":"shp_038c148fbd024689956fe7faed637a14"}],"status":{"created":0,"queued_for_purchase":0,"creation_failed":0,"postage_purchased":1,"postage_purchase_failed":0},"pickup":null,"label_url":null}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/batches/batch_e0176c4fb597421790eba7a66acc8045/label'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 770
+            request_size: 598
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.238532
+            namelookup_time: 0.001486
+            connect_time: 0.05865
+            pretransfer_time: 0.138661
+            size_upload: 21.0
+            size_download: 551.0
+            speed_download: 2309.0
+            speed_upload: 88.0
+            download_content_length: 551.0
+            upload_content_length: 21.0
+            starttransfer_time: 0.138683
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.62.110.131
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 10.130.6.6
+            local_port: 51861
+            http_version: 3
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 138453
+            connect_time_us: 58650
+            namelookup_time_us: 1486
+            pretransfer_time_us: 138661
+            redirect_time_us: 0
+            starttransfer_time_us: 138683
+            total_time_us: 238532

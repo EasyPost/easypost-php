@@ -5,8 +5,11 @@
 * Bumped minimum PHP version supported from 5.3 to 7.3
 * Adds the `update_brand()` method on the user object
 * Set a default timeout of 30 seconds for connections and 60 seconds for requests
-* Fixes the tracker `create_list` method's encoding to properly send through the parameters
+* Fixes the tracker `create_list()` method's encoding to properly send through the parameters
 * Adds the PHP version used to the `user-agent` header
+* Removed unusable `all()` method on the `Parcel` object
+* Removed unpaginated `all()` method on the `Order`, `CustomsInfo`, and `CustomsItem` objects
+* Removed the `get_rates()` method on the Shipment object since a Shipment object already has rates. If you need new rates for a shipment, use the `regenerate_rates()` function instead
 
 ### 4.0.2 2021-10-20
 

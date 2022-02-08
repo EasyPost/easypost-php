@@ -37,8 +37,13 @@
     "bin-dir": "bin"
   },
   "autoload": {
-    "psr-0": {
-      "EasyPost": "lib/"
+    "psr-4": {
+      "EasyPost\\": "lib/EasyPost/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "EasyPost\\Test\\": "test/EasyPost/"
     }
   },
   "version": "4.0.2"

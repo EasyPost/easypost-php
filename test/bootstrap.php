@@ -20,3 +20,5 @@ VCRCleaner::enable([
         ],
     ],
 ]);
+
+VCR::turnOn();
