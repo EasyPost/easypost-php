@@ -95,27 +95,6 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test retrieving rates for a shipment.
-     *
-     * @param Shipment $shipment
-     * @return void
-     * @depends testCreate
-     */
-    public function testGetRates(Shipment $shipment)
-    {
-        VCR::insertCassette('shipments/getRates.yml');
-
-        $rates = $shipment->get_rates();
-
-        $rates_array = $rates['rates'];
-
-        $this->assertIsArray($rates_array);
-        foreach ($rates_array as $rate) {
-            $this->assertInstanceOf('\EasyPost\Rate', $rate);
-        }
-    }
-
-    /**
      * Test buying a Shipment.
      *
      * @param Shipment $shipment

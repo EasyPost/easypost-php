@@ -80,23 +80,6 @@ class Shipment extends EasypostResource
     }
 
     /**
-     * Get rates for a shipment.
-     *
-     * @param mixed $params
-     * @return $this
-     * @throws \EasyPost\Error
-     */
-    public function get_rates($params = null)
-    {
-        $requestor = new Requestor($this->_apiKey);
-        $url = $this->instanceUrl() . '/rates';
-        list($response, $apiKey) = $requestor->request('get', $url, $params);
-        $this->refreshFrom($response, $apiKey, true);
-
-        return $this;
-    }
-
-    /**
      * Re-rate a shipment.
      *
      * @param mixed $params
