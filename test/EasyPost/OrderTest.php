@@ -69,7 +69,7 @@ class OrderTest extends \PHPUnit\Framework\TestCase
         $retrieved_order = Order::retrieve($order->id);
 
         $this->assertInstanceOf('\EasyPost\Order', $retrieved_order);
-        $this->assertEquals($retrieved_order->id, $order->id);
+        $this->assertEquals($order->id, $retrieved_order->id);
     }
 
     /**

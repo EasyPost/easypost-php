@@ -45,7 +45,7 @@ class CustomsInfoTest extends \PHPUnit\Framework\TestCase
 
         $this->assertInstanceOf('\EasyPost\CustomsInfo', $customs_item);
         $this->assertStringMatchesFormat('cstinfo_%s', $customs_item->id);
-        $this->assertEquals($customs_item->eel_pfc, 'NOEEI 30.37(a)');
+        $this->assertEquals('NOEEI 30.37(a)', $customs_item->eel_pfc);
 
         // Return so other tests can reuse this object
         return $customs_item;
@@ -65,6 +65,6 @@ class CustomsInfoTest extends \PHPUnit\Framework\TestCase
         $retrieved_customs_item = CustomsInfo::retrieve($customs_item->id);
 
         $this->assertInstanceOf('\EasyPost\CustomsInfo', $retrieved_customs_item);
-        $this->assertEquals($retrieved_customs_item, $customs_item);
+        $this->assertEquals($customs_item, $retrieved_customs_item);
     }
 }

@@ -53,7 +53,7 @@ class RefundTest extends \PHPUnit\Framework\TestCase
         ]);
 
         $this->assertStringMatchesFormat('rfnd_%s', $refund[0]->id);
-        $this->assertEquals($refund[0]->status, 'submitted');
+        $this->assertEquals('submitted', $refund[0]->status);
     }
 
     /**

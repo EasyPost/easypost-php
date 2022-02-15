@@ -45,7 +45,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
 
         $this->assertInstanceOf('\EasyPost\Address', $address);
         $this->assertStringMatchesFormat('adr_%s', $address->id);
-        $this->assertEquals($address->street1, '388 Townsend St');
+        $this->assertEquals('388 Townsend St', $address->street1);
 
         // Return so other tests can reuse this object
         return $address;
@@ -67,7 +67,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
 
         $this->assertInstanceOf('\EasyPost\Address', $address);
         $this->assertStringMatchesFormat('adr_%s', $address->id);
-        $this->assertEquals($address->street1, '388 TOWNSEND ST APT 20');
+        $this->assertEquals('388 TOWNSEND ST APT 20', $address->street1);
 
         // Return so other tests can reuse this object
         return $address;
@@ -87,7 +87,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
         $retrieved_address = Address::retrieve($address->id);
 
         $this->assertInstanceOf('\EasyPost\Address', $retrieved_address);
-        $this->assertEquals($retrieved_address, $address);
+        $this->assertEquals($address, $retrieved_address);
     }
 
     /**
@@ -126,7 +126,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
 
         $this->assertInstanceOf('\EasyPost\Address', $address);
         $this->assertStringMatchesFormat('adr_%s', $address->id);
-        $this->assertEquals($address->street1, '417 MONTGOMERY ST STE 500');
+        $this->assertEquals('417 MONTGOMERY ST STE 500', $address->street1);
     }
 
     /**
@@ -144,7 +144,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
 
         $this->assertInstanceOf('\EasyPost\Address', $address);
         $this->assertStringMatchesFormat('adr_%s', $address->id);
-        $this->assertEquals($address->street1, '417 MONTGOMERY ST STE 500');
+        $this->assertEquals('417 MONTGOMERY ST STE 500', $address->street1);
     }
 
     /**
@@ -162,6 +162,6 @@ class AddressTest extends \PHPUnit\Framework\TestCase
 
         $this->assertInstanceOf('\EasyPost\Address', $address);
         $this->assertStringMatchesFormat('adr_%s', $address->id);
-        $this->assertEquals($address->street1, '388 Townsend St');
+        $this->assertEquals('388 Townsend St', $address->street1);
     }
 }

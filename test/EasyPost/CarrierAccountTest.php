@@ -109,7 +109,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
 
         $this->assertInstanceOf('\EasyPost\CarrierAccount', $carrier_account);
         $this->assertStringMatchesFormat('ca_%s', $carrier_account->id);
-        $this->assertEquals($carrier_account->description, $test_description);
+        $this->assertEquals($test_description, $carrier_account->description);
     }
 
     /**

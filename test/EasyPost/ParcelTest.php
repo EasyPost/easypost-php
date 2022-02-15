@@ -45,7 +45,7 @@ class ParcelTest extends \PHPUnit\Framework\TestCase
 
         $this->assertInstanceOf('\EasyPost\Parcel', $parcel);
         $this->assertStringMatchesFormat('prcl_%s', $parcel->id);
-        $this->assertEquals($parcel->weight, 15.4);
+        $this->assertEquals(15.4, $parcel->weight);
 
         // Return so other tests can reuse this object
         return $parcel;
@@ -65,6 +65,6 @@ class ParcelTest extends \PHPUnit\Framework\TestCase
         $retrieved_parcel = Parcel::retrieve($parcel->id);
 
         $this->assertInstanceOf('\EasyPost\Parcel', $retrieved_parcel);
-        $this->assertEquals($retrieved_parcel, $parcel);
+        $this->assertEquals($parcel, $retrieved_parcel);
     }
 }

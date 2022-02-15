@@ -45,7 +45,7 @@ class CustomsItemTest extends \PHPUnit\Framework\TestCase
 
         $this->assertInstanceOf('\EasyPost\CustomsItem', $customs_item);
         $this->assertStringMatchesFormat('cstitem_%s', $customs_item->id);
-        $this->assertEquals($customs_item->value, '23.0');
+        $this->assertEquals('23.0', $customs_item->value);
 
         // Return so other tests can reuse this object
         return $customs_item;
@@ -65,6 +65,6 @@ class CustomsItemTest extends \PHPUnit\Framework\TestCase
         $retrieved_customs_item = CustomsItem::retrieve($customs_item->id);
 
         $this->assertInstanceOf('\EasyPost\CustomsItem', $retrieved_customs_item);
-        $this->assertEquals($retrieved_customs_item, $customs_item);
+        $this->assertEquals($customs_item, $retrieved_customs_item);
     }
 }

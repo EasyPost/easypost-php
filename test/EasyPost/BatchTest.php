@@ -68,7 +68,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
         $retrieved_batch = Batch::retrieve($batch->id);
 
         $this->assertInstanceOf('\EasyPost\Batch', $retrieved_batch);
-        $this->assertEquals($retrieved_batch->id, $batch->id);
+        $this->assertEquals($batch->id, $retrieved_batch->id);
     }
 
     /**
@@ -108,7 +108,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
 
         $this->assertInstanceOf('\EasyPost\Batch', $batch);
         $this->assertStringMatchesFormat('batch_%s', $batch->id);
-        $this->assertEquals($batch->num_shipments, 2);
+        $this->assertEquals(2, $batch->num_shipments);
     }
 
     /**
@@ -129,7 +129,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
         $batch->buy();
 
         $this->assertInstanceOf('\EasyPost\Batch', $batch);
-        $this->assertEquals($batch->num_shipments, 1);
+        $this->assertEquals(1, $batch->num_shipments);
 
         // Return so other tests can reuse this object
         return $batch;
@@ -168,12 +168,12 @@ class BatchTest extends \PHPUnit\Framework\TestCase
         $batch->add_shipments([
             'shipments' => [$shipment]
         ]);
-        $this->assertEquals($batch->num_shipments, 1);
+        $this->assertEquals(1, $batch->num_shipments);
 
         $batch->remove_shipments([
             'shipments' => [$shipment]
         ]);
-        $this->assertEquals($batch->num_shipments, 0);
+        $this->assertEquals(0, $batch->num_shipments);
     }
 
     /**
