@@ -45,7 +45,7 @@ class EasyPostTest extends \PHPUnit\Framework\TestCase
         EasyPost::setApiBase($test_base);
         $api_base = EasyPost::getApiBase();
 
-        $this->assertEquals($api_base, $test_base);
+        $this->assertEquals($test_base, $api_base);
     }
 
     /**
@@ -60,7 +60,7 @@ class EasyPostTest extends \PHPUnit\Framework\TestCase
         EasyPost::setApiVersion($test_version);
         $api_version = EasyPost::getApiVersion();
 
-        $this->assertEquals($api_version, $test_version);
+        $this->assertEquals($test_version, $api_version);
     }
 
     /**
@@ -75,7 +75,7 @@ class EasyPostTest extends \PHPUnit\Framework\TestCase
         EasyPost::setConnectTimeout($test_timeout);
         $connection_timeout = EasyPost::getConnectTimeout();
 
-        $this->assertEquals($connection_timeout, $test_timeout);
+        $this->assertEquals($test_timeout, $connection_timeout);
     }
 
     /**
@@ -90,6 +90,6 @@ class EasyPostTest extends \PHPUnit\Framework\TestCase
         EasyPost::setResponseTimeout($test_timeout);
         $connection_timeout = EasyPost::getResponseTimeout();
 
-        $this->assertEquals($connection_timeout, $test_timeout);
+        $this->assertEquals($test_timeout, $connection_timeout);
     }
 }

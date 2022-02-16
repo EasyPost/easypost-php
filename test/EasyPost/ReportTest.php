@@ -156,8 +156,8 @@ class ReportTest extends \PHPUnit\Framework\TestCase
         $retrieved_payment_log_report = Report::retrieve($payment_log_report->id);
 
         $this->assertInstanceOf('\EasyPost\Report', $retrieved_payment_log_report);
-        $this->assertEquals($retrieved_payment_log_report->start_date, $payment_log_report->start_date);
-        $this->assertEquals($retrieved_payment_log_report->end_date, $payment_log_report->end_date);
+        $this->assertEquals($payment_log_report->start_date, $retrieved_payment_log_report->start_date);
+        $this->assertEquals($payment_log_report->end_date, $retrieved_payment_log_report->end_date);
     }
 
     /**
@@ -174,8 +174,8 @@ class ReportTest extends \PHPUnit\Framework\TestCase
         $retrieved_refund_report = Report::retrieve($refund_report->id);
 
         $this->assertInstanceOf('\EasyPost\Report', $retrieved_refund_report);
-        $this->assertEquals($retrieved_refund_report->start_date, $refund_report->start_date);
-        $this->assertEquals($retrieved_refund_report->end_date, $refund_report->end_date);
+        $this->assertEquals($refund_report->start_date, $retrieved_refund_report->start_date);
+        $this->assertEquals($refund_report->end_date, $retrieved_refund_report->end_date);
     }
 
     /**
@@ -192,8 +192,8 @@ class ReportTest extends \PHPUnit\Framework\TestCase
         $retrieved_shipment_report = Report::retrieve($shipment_report->id);
 
         $this->assertInstanceOf('\EasyPost\Report', $retrieved_shipment_report);
-        $this->assertEquals($retrieved_shipment_report->start_date, $shipment_report->start_date);
-        $this->assertEquals($retrieved_shipment_report->end_date, $shipment_report->end_date);
+        $this->assertEquals($shipment_report->start_date, $retrieved_shipment_report->start_date);
+        $this->assertEquals($shipment_report->end_date, $retrieved_shipment_report->end_date);
     }
 
     /**
@@ -210,8 +210,8 @@ class ReportTest extends \PHPUnit\Framework\TestCase
         $retrieved_shipment_invoice_report = Report::retrieve($shipment_invoice_report->id);
 
         $this->assertInstanceOf('\EasyPost\Report', $retrieved_shipment_invoice_report);
-        $this->assertEquals($retrieved_shipment_invoice_report->start_date, $shipment_invoice_report->start_date);
-        $this->assertEquals($retrieved_shipment_invoice_report->end_date, $shipment_invoice_report->end_date);
+        $this->assertEquals($shipment_invoice_report->start_date, $retrieved_shipment_invoice_report->start_date);
+        $this->assertEquals($shipment_invoice_report->end_date, $retrieved_shipment_invoice_report->end_date);
     }
 
     /**
@@ -228,8 +228,8 @@ class ReportTest extends \PHPUnit\Framework\TestCase
         $retrieved_tracker_report = Report::retrieve($tracker_report->id);
 
         $this->assertInstanceOf('\EasyPost\Report', $retrieved_tracker_report);
-        $this->assertEquals($retrieved_tracker_report->start_date, $tracker_report->start_date);
-        $this->assertEquals($retrieved_tracker_report->end_date, $tracker_report->end_date);
+        $this->assertEquals($tracker_report->start_date, $retrieved_tracker_report->start_date);
+        $this->assertEquals($tracker_report->end_date, $retrieved_tracker_report->end_date);
     }
 
     /**

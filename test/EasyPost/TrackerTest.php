@@ -47,7 +47,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
 
         $this->assertInstanceOf('\EasyPost\Tracker', $tracker);
         $this->assertStringMatchesFormat('trk_%s', $tracker->id);
-        $this->assertEquals($tracker->status, 'pre_transit');
+        $this->assertEquals('pre_transit', $tracker->status);
 
         // Return so other tests can reuse this object
         return $tracker;
@@ -68,7 +68,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
         $retrieved_tracker = Tracker::retrieve($tracker->id);
 
         $this->assertInstanceOf('\EasyPost\Tracker', $retrieved_tracker);
-        $this->assertEquals($retrieved_tracker->id, $tracker->id);
+        $this->assertEquals($tracker->id, $retrieved_tracker->id);
     }
 
     /**

@@ -45,8 +45,8 @@ class ErrorTest extends \PHPUnit\Framework\TestCase
         try {
             $_ = Shipment::create();
         } catch (Error $error) {
-            $this->assertEquals($error->getHttpStatus(), 422);
-            $this->assertEquals($error->getHttpBody(), '{"error":{"code":"SHIPMENT.INVALID_PARAMS","message":"Unable to create shipment, one or more parameters were invalid.","errors":[{"to_address":"Required and missing."},{"from_address":"Required and missing."}]}}');
+            $this->assertEquals(422, $error->getHttpStatus());
+            $this->assertEquals('{"error":{"code":"SHIPMENT.INVALID_PARAMS","message":"Unable to create shipment, one or more parameters were invalid.","errors":[{"to_address":"Required and missing."},{"from_address":"Required and missing."}]}}', $error->getHttpBody());
 
             // We check that the printed output is the same here, leave the odd formatting as it is here and do not auto-format the next few lines
             $error->prettyPrint();

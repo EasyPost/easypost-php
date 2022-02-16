@@ -93,7 +93,7 @@ class PickupTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf('\EasyPost\Pickup', $bought_pickup);
         $this->assertStringMatchesFormat('pickup_%s', $bought_pickup->id);
         $this->assertNotNull($bought_pickup->confirmation);
-        $this->assertEquals($bought_pickup->status, 'scheduled');
+        $this->assertEquals('scheduled', $bought_pickup->status);
 
         // Return so other tests can reuse this object
         return $pickup;
@@ -114,6 +114,6 @@ class PickupTest extends \PHPUnit\Framework\TestCase
 
         $this->assertInstanceOf('\EasyPost\Pickup', $cancelled_pickup);
         $this->assertStringMatchesFormat('pickup_%s', $cancelled_pickup->id);
-        $this->assertNotNull($cancelled_pickup->status, 'canceled');
+        $this->assertEquals('canceled', $cancelled_pickup->status);
     }
 }

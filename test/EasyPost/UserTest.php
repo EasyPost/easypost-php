@@ -102,7 +102,7 @@ class UserTest extends \PHPUnit\Framework\TestCase
 
         $this->assertInstanceOf('\EasyPost\User', $user);
         $this->assertStringMatchesFormat('user_%s', $user->id);
-        $this->assertEquals($user->phone, $test_phone);
+        $this->assertEquals($test_phone, $user->phone);
     }
 
     /**
@@ -172,6 +172,6 @@ class UserTest extends \PHPUnit\Framework\TestCase
 
         $this->assertInstanceOf('\EasyPost\Brand', $brand);
         $this->assertStringMatchesFormat('brd_%s', $brand->id);
-        $this->assertEquals($brand->color, $color);
+        $this->assertEquals($color, $brand->color);
     }
 }

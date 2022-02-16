@@ -48,9 +48,9 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf('\EasyPost\Shipment', $shipment);
         $this->assertStringMatchesFormat('shp_%s', $shipment->id);
         $this->assertNotNull($shipment->rates);
-        $this->assertEquals($shipment->options->label_format, 'PNG');
-        $this->assertEquals($shipment->options->invoice_number, '123');
-        $this->assertEquals($shipment->reference, '123');
+        $this->assertEquals('PNG', $shipment->options->label_format);
+        $this->assertEquals('123', $shipment->options->invoice_number);
+        $this->assertEquals('123', $shipment->reference);
 
         // Return so other tests can reuse this object
         return $shipment;
@@ -70,7 +70,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         $retrieved_shipment = Shipment::retrieve($shipment->id);
 
         $this->assertInstanceOf('\EasyPost\Shipment', $retrieved_shipment);
-        $this->assertEquals($retrieved_shipment->id, $shipment->id);
+        $this->assertEquals($shipment->id, $retrieved_shipment->id);
     }
 
     /**
@@ -173,7 +173,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
             'amount' => '100',
         ]);
 
-        $this->assertEquals($shipment->insurance, '100.00');
+        $this->assertEquals('100.00', $shipment->insurance);
     }
 
     /**
@@ -193,7 +193,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
         $shipment->refund();
 
-        $this->assertEquals($shipment->refund_status, 'submitted');
+        $this->assertEquals('submitted', $shipment->refund_status);
     }
 
     /**
@@ -260,6 +260,6 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
         $this->assertInstanceOf('\EasyPost\Shipment', $shipment);
         $this->assertStringMatchesFormat('shp_%s', $shipment->id);
-        $this->assertEquals($shipment->tax_identifiers[0]['tax_id_type'], 'IOSS');
+        $this->assertEquals('IOSS', $shipment->tax_identifiers[0]['tax_id_type']);
     }
 }

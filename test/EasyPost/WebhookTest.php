@@ -47,7 +47,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
 
         $this->assertInstanceOf('\EasyPost\Webhook', $webhook);
         $this->assertStringMatchesFormat('hook_%s', $webhook->id);
-        $this->assertEquals($webhook->url, 'http://example.com');
+        $this->assertEquals('http://example.com', $webhook->url);
 
         // Return so other tests can reuse this object
         return $webhook;
@@ -67,7 +67,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
         $retrieved_webhook = Webhook::retrieve($webhook->id);
 
         $this->assertInstanceOf('\EasyPost\Webhook', $retrieved_webhook);
-        $this->assertEquals($retrieved_webhook, $webhook);
+        $this->assertEquals($webhook, $retrieved_webhook);
 
         // Return so the `delete` test can reuse this object
         return $webhook;
