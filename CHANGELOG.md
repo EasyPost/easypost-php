@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## NEXT RELEASE
+
+* Removes the `params` from the `Address->verify()` method since it's non-static and unused
+* Various corrections made to the test suite
+
 ## v5.0.0 (2022-02-09)
 
 * Bumped minimum PHP version supported from `5.3` to `7.3`
