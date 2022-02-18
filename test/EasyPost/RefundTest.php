@@ -91,9 +91,9 @@ class RefundTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('refunds/retrieve.yml');
 
-        $event = Refund::retrieve($refunds['refunds'][0]);
+        $refund = Refund::retrieve($refunds['refunds'][0]);
 
-        $this->assertInstanceOf('\EasyPost\Refund', $event);
-        $this->assertStringMatchesFormat('rfnd_%s', $event->id);
+        $this->assertInstanceOf('\EasyPost\Refund', $refund);
+        $this->assertStringMatchesFormat('rfnd_%s', $refund->id);
     }
 }
