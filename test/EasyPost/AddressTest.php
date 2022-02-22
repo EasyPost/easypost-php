@@ -106,6 +106,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
         $addresses_array = $addresses['addresses'];
 
         $this->assertLessThanOrEqual($addresses_array, Fixture::page_size());
+        $this->assertNotNull($addresses['has_more']);
         foreach ($addresses_array as $address) {
             $this->assertInstanceOf('\EasyPost\Address', $address);
         }

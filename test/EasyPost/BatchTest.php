@@ -87,6 +87,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
         $batches_array = $batches['batches'];
 
         $this->assertLessThanOrEqual($batches_array, Fixture::page_size());
+        $this->assertNotNull($batches['has_more']);
         foreach ($batches_array as $batch) {
             $this->assertInstanceOf('\EasyPost\Batch', $batch);
         }

@@ -88,6 +88,7 @@ class ScanFormTest extends \PHPUnit\Framework\TestCase
         $scanforms_array = $scanforms['scan_forms'];
 
         $this->assertLessThanOrEqual($scanforms_array, Fixture::page_size());
+        $this->assertNotNull($scanforms['has_more']);
         foreach ($scanforms_array as $scanform) {
             $this->assertInstanceOf('\EasyPost\ScanForm', $scanform);
         }

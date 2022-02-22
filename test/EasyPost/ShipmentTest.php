@@ -89,6 +89,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         $shipments_array = $shipments['shipments'];
 
         $this->assertLessThanOrEqual($shipments_array, Fixture::page_size());
+        $this->assertNotNull($shipments['has_more']);
         foreach ($shipments_array as $address) {
             $this->assertInstanceOf('\EasyPost\Shipment', $address);
         }
