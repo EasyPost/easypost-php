@@ -249,6 +249,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
         $reports_array = $reports['reports'];
 
         $this->assertLessThanOrEqual($reports_array, Fixture::page_size());
+        $this->assertNotNull($reports['has_more']);
         foreach ($reports_array as $report) {
             $this->assertInstanceOf('\EasyPost\Report', $report);
         }

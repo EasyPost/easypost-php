@@ -48,6 +48,7 @@ class EventTest extends \PHPUnit\Framework\TestCase
         $events_array = $events['events'];
 
         $this->assertLessThanOrEqual($events_array, Fixture::page_size());
+        $this->assertNotNull($events['has_more']);
         foreach ($events_array as $event) {
             $this->assertInstanceOf('\EasyPost\Event', $event);
         }
