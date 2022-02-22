@@ -159,7 +159,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('addresses/verify.yml');
 
-        $address->verify(Fixture::incorrect_address_to_verify());
+        $address->verify();
 
         $this->assertInstanceOf('\EasyPost\Address', $address);
         $this->assertStringMatchesFormat('adr_%s', $address->id);

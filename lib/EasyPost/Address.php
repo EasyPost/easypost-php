@@ -133,15 +133,15 @@ class Address extends EasypostResource
     /**
      * Verify an address.
      *
-     * @param mixed $params
      * @return mixed
      * @throws \EasyPost\Error
      */
-    public function verify($params = null)
+    public function verify()
     {
         $requestor = new Requestor($this->_apiKey);
         $url = $this->instanceUrl() . '/verify';
-        list($response, $apiKey) = $requestor->request('get', $url, $params);
+        list($response, $apiKey) = $requestor->request('get', $url, null);
+
         if (isset($response['address'])) {
             $verified_address = Util::convertToEasyPostObject($response['address'], $apiKey);
             if (!empty($response['message'])) {
