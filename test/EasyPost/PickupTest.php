@@ -71,7 +71,7 @@ class PickupTest extends \PHPUnit\Framework\TestCase
         $retrieved_pickup = Pickup::retrieve($pickup->id);
 
         $this->assertInstanceOf('\EasyPost\Pickup', $retrieved_pickup);
-        $this->assertStringMatchesFormat('pickup_%s', $retrieved_pickup->id);
+        $this->assertEquals($pickup, $retrieved_pickup);
     }
 
     /**

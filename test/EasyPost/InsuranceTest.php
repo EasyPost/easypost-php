@@ -54,6 +54,7 @@ class InsuranceTest extends \PHPUnit\Framework\TestCase
 
         $this->assertInstanceOf('\EasyPost\Insurance', $insurance);
         $this->assertStringMatchesFormat('ins_%s', $insurance->id);
+        $this->assertEquals('100.00000', $insurance->amount);
 
         // Return so other tests can reuse this object
         return $insurance;
@@ -70,10 +71,10 @@ class InsuranceTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('insurance/retrieve.yml');
 
-        $insurance = Insurance::retrieve($insurance->id);
+        $retrieved_insurance = Insurance::retrieve($insurance->id);
 
-        $this->assertInstanceOf('\EasyPost\Insurance', $insurance);
-        $this->assertStringMatchesFormat('ins_%s', $insurance->id);
+        $this->assertInstanceOf('\EasyPost\Insurance', $retrieved_insurance);
+        $this->assertEquals($insurance, $retrieved_insurance);
     }
 
     /**

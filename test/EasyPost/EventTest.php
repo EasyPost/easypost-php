@@ -77,13 +77,11 @@ class EventTest extends \PHPUnit\Framework\TestCase
     /**
      * Test receiving (converting) an event.
      *
-     * @param object $events
      * @return void
-     * @depends testAll
      */
-    public function testReceive(object $events)
+    public function testReceive()
     {
-        $event = Event::receive($events['events'][0]);
+        $event = Event::receive(Fixture::event());
 
         $this->assertInstanceOf('\EasyPost\Event', $event);
         $this->assertStringMatchesFormat('evt_%s', $event->id);
