@@ -86,9 +86,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
 
         $carrier_accounts = CarrierAccount::all();
 
-        foreach ($carrier_accounts as $carrier_account) {
-            $this->assertInstanceOf('\EasyPost\CarrierAccount', $carrier_account);
-        }
+        $this->assertContainsOnlyInstancesOf('\EasyPost\CarrierAccount', $carrier_accounts);
     }
 
     /**

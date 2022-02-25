@@ -89,9 +89,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
         $webhook_array = $webhooks['webhooks'];
 
         $this->assertLessThanOrEqual($webhook_array, Fixture::page_size());
-        foreach ($webhook_array as $webhook) {
-            $this->assertInstanceOf('\EasyPost\Webhook', $webhook);
-        }
+        $this->assertContainsOnlyInstancesOf('\EasyPost\Webhook', $webhook_array);
     }
 
     /**

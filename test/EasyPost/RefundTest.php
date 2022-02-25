@@ -71,9 +71,7 @@ class RefundTest extends \PHPUnit\Framework\TestCase
 
         $this->assertLessThanOrEqual($refunds_array, Fixture::page_size());
         $this->assertNotNull($refunds['has_more']);
-        foreach ($refunds_array as $address) {
-            $this->assertInstanceOf('\EasyPost\Refund', $address);
-        }
+        $this->assertContainsOnlyInstancesOf('\EasyPost\Refund', $refunds_array);
 
         // Return so other tests can reuse these objects
         return $refunds;

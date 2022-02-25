@@ -94,8 +94,6 @@ class InsuranceTest extends \PHPUnit\Framework\TestCase
 
         $this->assertLessThanOrEqual($insurance_array, Fixture::page_size());
         $this->assertNotNull($insurance['has_more']);
-        foreach ($insurance_array as $insurance) {
-            $this->assertInstanceOf('\EasyPost\Insurance', $insurance);
-        }
+        $this->assertContainsOnlyInstancesOf('\EasyPost\Insurance', $insurance_array);
     }
 }
