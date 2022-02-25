@@ -49,6 +49,7 @@ class UserTest extends \PHPUnit\Framework\TestCase
 
         $this->assertInstanceOf('\EasyPost\User', $user);
         $this->assertStringMatchesFormat('user_%s', $user->id);
+        $this->assertEquals('Test User', $user->name);
     }
 
     /**
@@ -154,7 +155,7 @@ class UserTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test retrieving the authenticated user's API keys.
+     * Test updating the authenticated user's Brand.
      *
      * @param User $user
      * @return void

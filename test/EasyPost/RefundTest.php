@@ -42,9 +42,7 @@ class RefundTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('refunds/create.yml');
 
-        $shipment_data = Fixture::one_call_buy_shipment();
-
-        $shipment = Shipment::create($shipment_data);
+        $shipment = Shipment::create(Fixture::one_call_buy_shipment());
         $retrieved_shipment = Shipment::retrieve($shipment); // We need to retrieve the shipment so that the tracking_code has time to populate
 
         $refund = Refund::create([
@@ -92,9 +90,9 @@ class RefundTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('refunds/retrieve.yml');
 
-        $refund = Refund::retrieve($refunds['refunds'][0]);
+        $retrieved_refund = Refund::retrieve($refunds['refunds'][0]);
 
-        $this->assertInstanceOf('\EasyPost\Refund', $refund);
-        $this->assertStringMatchesFormat('rfnd_%s', $refund->id);
+        $this->assertInstanceOf('\EasyPost\Refund', $retrieved_refund);
+        $this->assertEquals($refunds['refunds'][0]->id, $retrieved_refund->id);
     }
 }

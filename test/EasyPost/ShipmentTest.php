@@ -99,7 +99,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
      * Test buying a Shipment.
      *
      * @param Shipment $shipment
-     * @return void
+     * @return Shipment
      * @depends testCreate
      */
     public function testBuy(Shipment $shipment)
@@ -111,6 +111,9 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         ]);
 
         $this->assertNotNull($shipment->postage_label);
+
+        // Return so other tests can reuse this object
+        return $shipment;
     }
 
     /**
@@ -139,7 +142,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
      *
      * @param Shipment $shipment
      * @return void
-     * @depends testCreate
+     * @depends testBuy
      */
     public function testConvertLabel(Shipment $shipment)
     {

@@ -33,7 +33,7 @@ class OrderTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test creating a Order.
+     * Test creating an Order.
      *
      * @return Order
      */
@@ -56,7 +56,7 @@ class OrderTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test retrieving a Order.
+     * Test retrieving an Order.
      *
      * @param Order $order
      * @return void
@@ -94,7 +94,7 @@ class OrderTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test buying a Order.
+     * Test buying an Order.
      *
      * @param Order $order
      * @return void

@@ -69,7 +69,7 @@ class ScanFormTest extends \PHPUnit\Framework\TestCase
         $retrieved_scanform = ScanForm::retrieve($scanform->id);
 
         $this->assertInstanceOf('\EasyPost\ScanForm', $retrieved_scanform);
-        $this->assertStringMatchesFormat('sf_%s', $retrieved_scanform->id);
+        $this->assertEquals($scanform, $retrieved_scanform);
     }
 
     /**
