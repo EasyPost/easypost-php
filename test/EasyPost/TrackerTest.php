@@ -88,9 +88,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
 
         $this->assertLessThanOrEqual($trackers_array, Fixture::page_size());
         $this->assertNotNull($trackers['has_more']);
-        foreach ($trackers_array as $tracker) {
-            $this->assertInstanceOf('\EasyPost\Tracker', $tracker);
-        }
+        $this->assertContainsOnlyInstancesOf('\EasyPost\Tracker', $trackers_array);
     }
 
     /**

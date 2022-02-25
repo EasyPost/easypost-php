@@ -88,9 +88,7 @@ class OrderTest extends \PHPUnit\Framework\TestCase
         $rates_array = $rates['rates'];
 
         $this->assertIsArray($rates_array);
-        foreach ($rates_array as $rate) {
-            $this->assertInstanceOf('\EasyPost\Rate', $rate);
-        }
+        $this->assertContainsOnlyInstancesOf('\EasyPost\Rate', $rates_array);
     }
 
     /**
