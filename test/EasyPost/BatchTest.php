@@ -43,7 +43,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('batches/create.yml');
 
         $batch = Batch::create([
-            'shipments' => [Fixture::basic_shipment()],
+            'shipments' => [Fixture::one_call_buy_shipment()],
         ]);
 
         $this->assertInstanceOf('\EasyPost\Batch', $batch);
