@@ -2,10 +2,12 @@
 
 namespace EasyPost\Test;
 
-use VCR\VCR;
-use EasyPost\Shipment;
+use EasyPost\Address;
 use EasyPost\EasyPost;
+use EasyPost\Parcel;
+use EasyPost\Shipment;
 use EasyPost\Test\Fixture;
+use VCR\VCR;
 
 EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
 
@@ -263,5 +265,32 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf('\EasyPost\Shipment', $shipment);
         $this->assertStringMatchesFormat('shp_%s', $shipment->id);
         $this->assertEquals('IOSS', $shipment->tax_identifiers[0]['tax_id_type']);
+    }
+
+    /**
+     * Test creating a Shipment when only IDs are used.
+     *
+     * @return void
+     */
+    public function testCreateWithIds()
+    {
+        VCR::insertCassette('shipments/createWithIds.yml');
+
+        $from_address = Address::create(Fixture::basic_address());
+        $to_address = Address::create(Fixture::basic_address());
+        $parcel = Parcel::create(Fixture::basic_parcel());
+
+        $shipment = Shipment::create([
+            'from_address' => ['id' => $from_address->id],
+            'to_address' => ['id' => $to_address->id],
+            'parcel' => ['id' => $parcel->id],
+        ]);
+
+        $this->assertInstanceOf('\EasyPost\Shipment', $shipment);
+        $this->assertStringMatchesFormat('shp_%s', $shipment->id);
+        $this->assertStringMatchesFormat('adr_%s', $shipment->from_address->id);
+        $this->assertStringMatchesFormat('adr_%s', $shipment->to_address->id);
+        $this->assertStringMatchesFormat('prcl_%s', $shipment->parcel->id);
+        $this->assertEquals('388 Townsend St', $shipment->from_address->street1);
     }
 }
