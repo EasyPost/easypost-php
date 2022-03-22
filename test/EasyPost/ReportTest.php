@@ -158,10 +158,10 @@ class ReportTest extends \PHPUnit\Framework\TestCase
             'columns' => ['usps_zone']
         ]);
 
-        $this->assertInstanceOf('\EasyPost\Report', $report);
         // Reports are queued, so we can't retrieve it immediately.
         // Verifying columns would require parsing the CSV.
         // Verify parameters sent correctly by checking the URL in the cassette.
+        $this->assertInstanceOf('\EasyPost\Report', $report);
     }
 
     /**
@@ -180,10 +180,10 @@ class ReportTest extends \PHPUnit\Framework\TestCase
             'additional_columns' => ['from_name', 'from_company']
         ]);
 
-        $this->assertInstanceOf('\EasyPost\Report', $report);
         // Reports are queued, so we can't retrieve it immediately.
         // Verifying columns would require parsing the CSV.
         // Verify parameters sent correctly by checking the URL in the cassette.
+        $this->assertInstanceOf('\EasyPost\Report', $report);
     }
 
     /**
