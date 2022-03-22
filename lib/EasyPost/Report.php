@@ -67,6 +67,34 @@ class Report extends EasypostResource
      */
     public static function create($params = null, $apiKey = null)
     {
+        if ((isset($params['columns']) && is_array($params['columns'])) || (isset($params['additional_columns']) && is_array($params['additional_columns']))) {
+            $columns = "";
+            if (isset($params['columns'])) {
+                $columns = $params['columns'];
+                unset($params['columns']);
+            }
+
+            $additional_columns = "";
+            if (isset($params['additional_columns'])) {
+                $additional_columns = $params['additional_columns'];
+                unset($params['additional_columns']);
+            }
+
+            $urlMod = "?";
+
+            if (is_array($columns)) {
+                foreach ($columns as $column) {
+                    $urlMod .= "columns[]=" . $column . "&";
+                }
+            }
+
+            if (is_array($additional_columns)) {
+                foreach ($additional_columns as $additional_column) {
+                    $urlMod .= "additional_columns[]=" . $additional_column . "&";
+                }
+            }
+        }
+
         if (!isset($params['type'])) {
             throw new Error('Undetermined Report Type');
         } else {

@@ -1,0 +1,78 @@
+
+-
+    request:
+        method: POST
+        url: 'https://api.easypost.com/v2/reports/shipment/'
+        headers:
+            Host: api.easypost.com
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+            X-Client-User-Agent: ''
+            EasyPost-Version: '2'
+        body: '{"start_date":"2022-02-01","end_date":"2022-02-03","type":"shipment"}'
+    response:
+        status:
+            http_version: '2'
+            code: '201'
+            message: ''
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: 4e82e4b6623a42bbe79a878a00103454
+            cache-control: 'no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '283'
+            etag: 'W/"1cac57e2561db36fbe22b33a4f09901d"'
+            x-runtime: '0.069723'
+            x-node: bigweb5nuq
+            x-version-label: easypost-202203222036-024a84b010-master
+            x-backend: easypost
+            x-proxied: ['intlb1nuq 3e97db20d4', 'extlb2nuq 3e97db20d4']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"id":"shprep_712ddb89a5eb424f95828669278adc5e","object":"ShipmentReport","created_at":"2022-03-22T21:42:19Z","updated_at":"2022-03-22T21:42:19Z","start_date":"2022-02-01","end_date":"2022-02-03","mode":"test","status":"new","url":null,"url_expires_at":null,"include_children":false}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/reports/shipment/'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 201
+            header_size: 718
+            request_size: 542
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.48474
+            namelookup_time: 0.240789
+            connect_time: 0.28989
+            pretransfer_time: 0.364771
+            size_upload: 69.0
+            size_download: 283.0
+            speed_download: 583.0
+            speed_upload: 142.0
+            download_content_length: 283.0
+            upload_content_length: 69.0
+            starttransfer_time: 0.364779
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.62.110.130
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 10.130.6.32
+            local_port: 63983
+            http_version: 3
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 364588
+            connect_time_us: 289890
+            namelookup_time_us: 240789
+            pretransfer_time_us: 364771
+            redirect_time_us: 0
+            starttransfer_time_us: 364779
+            total_time_us: 484740
