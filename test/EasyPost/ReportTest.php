@@ -143,6 +143,50 @@ class ReportTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
+     * Test creating a report with custom columns
+     *
+     * @return void
+     */
+    public function testCreateCustomColumnReport()
+    {
+        VCR::insertCassette('reports/createCustomColumnReport.yml');
+
+        $report = Report::create([
+            'start_date' => Fixture::report_start_date(),
+            'end_date' => Fixture::report_end_date(),
+            'type' => 'shipment',
+            'columns' => ['usps_zone']
+        ]);
+
+        // Reports are queued, so we can't retrieve it immediately.
+        // Verifying columns would require parsing the CSV.
+        // Verify parameters sent correctly by checking the URL in the cassette.
+        $this->assertInstanceOf('\EasyPost\Report', $report);
+    }
+
+    /**
+     * Test creating a report with custom additional columns
+     *
+     * @return void
+     */
+    public function testCreateCustomAdditionalColumnReport()
+    {
+        VCR::insertCassette('reports/createCustomAdditionalColumnReport.yml');
+
+        $report = Report::create([
+            'start_date' => Fixture::report_start_date(),
+            'end_date' => Fixture::report_end_date(),
+            'type' => 'shipment',
+            'additional_columns' => ['from_name', 'from_company']
+        ]);
+
+        // Reports are queued, so we can't retrieve it immediately.
+        // Verifying columns would require parsing the CSV.
+        // Verify parameters sent correctly by checking the URL in the cassette.
+        $this->assertInstanceOf('\EasyPost\Report', $report);
+    }
+
+    /**
      * Test retrieving a Payment Log report.
      *
      * @param Report $report
