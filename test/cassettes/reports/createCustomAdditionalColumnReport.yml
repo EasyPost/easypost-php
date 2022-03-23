@@ -2,7 +2,7 @@
 -
     request:
         method: POST
-        url: 'https://api.easypost.com/v2/reports/shipment/?additional_columns%5B0%5D=from_name&additional_columns%5B1%5D=from_company'
+        url: 'https://api.easypost.com/v2/reports/shipment/'
         headers:
             Host: api.easypost.com
             Accept: application/json
@@ -11,7 +11,7 @@
             User-Agent: ''
             X-Client-User-Agent: ''
             EasyPost-Version: '2'
-        body: '{"start_date":"2022-02-01","end_date":"2022-02-03","type":"shipment"}'
+        body: '{"start_date":"2022-02-01","end_date":"2022-02-03","type":"shipment","additional_columns":["from_name","from_company"]}'
     response:
         status:
             http_version: '2'
@@ -24,55 +24,55 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: d6338b82623b6021f9c40ecb001851bc
+            x-ep-request-uuid: eb7f2774623b8fdbe78bacad00044e6e
             cache-control: 'no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '283'
-            etag: 'W/"6c94cad3df993e3f873dac307818cdc7"'
-            x-runtime: '0.041225'
-            x-node: bigweb2nuq
-            x-version-label: easypost-202203222149-4f3b000452-master
+            etag: 'W/"bfa4d739b066979ebfb52705aead45a7"'
+            x-runtime: '0.040866'
+            x-node: bigweb3nuq
+            x-version-label: easypost-202203231943-61a988cd70-master
             x-backend: easypost
-            x-proxied: ['intlb1nuq 3e97db20d4', 'intlb1wdc 3e97db20d4', 'extlb1wdc 3e97db20d4']
+            x-proxied: ['intlb1nuq 3e97db20d4', 'extlb2nuq 3e97db20d4']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"shprep_ca4c6b862125463199704b07a10afde4","object":"ShipmentReport","created_at":"2022-03-23T18:00:01Z","updated_at":"2022-03-23T18:00:01Z","start_date":"2022-02-01","end_date":"2022-02-03","mode":"test","status":"new","url":null,"url_expires_at":null,"include_children":false}'
+        body: '{"id":"shprep_fac059e5e2504e1eb78ee9ff68f638cb","object":"ShipmentReport","created_at":"2022-03-23T21:23:39Z","updated_at":"2022-03-23T21:23:39Z","start_date":"2022-02-01","end_date":"2022-02-03","mode":"test","status":"new","url":null,"url_expires_at":null,"include_children":false}'
         curl_info:
-            url: 'https://api.easypost.com/v2/reports/shipment/?additional_columns%5B0%5D=from_name&additional_columns%5B1%5D=from_company'
+            url: 'https://api.easypost.com/v2/reports/shipment/'
             content_type: 'application/json; charset=utf-8'
             http_code: 201
-            header_size: 751
-            request_size: 608
+            header_size: 718
+            request_size: 543
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.339235
-            namelookup_time: 0.001504
-            connect_time: 0.053013
-            pretransfer_time: 0.120282
-            size_upload: 69.0
+            total_time: 0.203478
+            namelookup_time: 0.001372
+            connect_time: 0.048199
+            pretransfer_time: 0.112971
+            size_upload: 119.0
             size_download: 283.0
-            speed_download: 834.0
-            speed_upload: 203.0
+            speed_download: 1390.0
+            speed_upload: 584.0
             download_content_length: 283.0
-            upload_content_length: 69.0
-            starttransfer_time: 0.120289
+            upload_content_length: 119.0
+            starttransfer_time: 0.112979
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.47.33.19
+            primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
-            local_ip: 172.168.1.123
-            local_port: 53899
+            local_ip: 10.130.6.22
+            local_port: 59693
             http_version: 3
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 120126
-            connect_time_us: 53013
-            namelookup_time_us: 1504
-            pretransfer_time_us: 120282
+            appconnect_time_us: 112860
+            connect_time_us: 48199
+            namelookup_time_us: 1372
+            pretransfer_time_us: 112971
             redirect_time_us: 0
-            starttransfer_time_us: 120289
-            total_time_us: 339235
+            starttransfer_time_us: 112979
+            total_time_us: 203478

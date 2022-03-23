@@ -73,28 +73,6 @@ class Report extends EasypostResource
 
         $url = self::reportUrl($params['type']);
 
-        $urlMod = "";
-
-        if ((isset($params['columns']) && is_array($params['columns']))) {
-            foreach ($params['columns'] as $column) {
-                $urlMod .= "columns[]=" . $column . "&";
-            }
-            // Removing from params since already used in query params
-            unset($params['columns']);
-        }
-
-        if ((isset($params['additional_columns']) && is_array($params['additional_columns']))) {
-            foreach ($params['additional_columns'] as $additional_column) {
-                $urlMod .= "additional_columns[]=" . $additional_column . "&";
-            }
-            // Removing from params since already used in query params
-            unset($params['additional_columns']);
-        }
-
-        if ($urlMod != "") {
-            $url .= "?" . $urlMod;
-        }
-
         self::_validate($params, $apiKey);
         $requestor = new Requestor($apiKey);
 
