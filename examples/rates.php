@@ -7,7 +7,7 @@ require_once("../lib/easypost.php");
 // get shipment rates (assumes you have a shipment object)
 // this is optional as rates are added to the obj when it's created if addresses and parcel are present
 if (count($shipment->rates) > 0) {
-    $shipment->get_rates();
+    $shipment->regenerate_rates();
     print_r($shipment);
 }
 
