@@ -246,6 +246,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         $this->assertNotEmpty($shipment->options); // The EasyPost API populates some default values here
         $this->assertEmpty($shipment->customs_info);
         $this->assertNull($shipment->reference);
+        $this->assertNull($shipment->tax_identifiers);
     }
 
     /**
