@@ -1,6 +1,7 @@
 # EasyPost PHP Client Library
 
 [![CI](https://github.com/EasyPost/easypost-php/workflows/CI/badge.svg)](https://github.com/EasyPost/easypost-php/actions?query=workflow%3ACI)
+[![PHP version](https://badge.fury.io/ph/easypost%2Feasypost-php.svg)](https://badge.fury.io/ph/easypost%2Feasypost-php)
 
 EasyPost, the simple shipping solution. You can sign up for an account at https://easypost.com.
 
