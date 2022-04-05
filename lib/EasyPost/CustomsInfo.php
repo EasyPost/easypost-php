@@ -17,6 +17,7 @@ namespace EasyPost;
  * @property CustomsItem[] $customs_items
  * @property string $created_at
  * @property string $updated_at
+ * @property string $declaration
  */
 class CustomsInfo extends EasypostResource
 {
