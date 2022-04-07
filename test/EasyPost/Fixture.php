@@ -61,7 +61,7 @@ class Fixture
     {
         return [
             'verify'  => [true],
-            'street1' => '417 montgomery streat',
+            'street1' => '417 montgomery street',
             'street2' => 'FL 5',
             'city'    => 'San Francisco',
             'state'   => 'CA',

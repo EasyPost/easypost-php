@@ -119,10 +119,6 @@ class Address extends EasypostResource
 
         if (isset($response['address'])) {
             $verified_address = Util::convertToEasyPostObject($response['address'], $apiKey);
-            if (!empty($response['message'])) {
-                $verified_address->message = $response['message'];
-                $verified_address->_immutableValues[] = 'message';
-            }
 
             return $verified_address;
         } else {

@@ -125,7 +125,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
 
         $this->assertInstanceOf('\EasyPost\Address', $address);
         $this->assertStringMatchesFormat('adr_%s', $address->id);
-        $this->assertEquals('417 MONTGOMERY ST STE 500', $address->street1);
+        $this->assertEquals('417 MONTGOMERY ST FL 5', $address->street1);
     }
 
     /**
@@ -143,7 +143,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
 
         $this->assertInstanceOf('\EasyPost\Address', $address);
         $this->assertStringMatchesFormat('adr_%s', $address->id);
-        $this->assertEquals('417 MONTGOMERY ST STE 500', $address->street1);
+        $this->assertEquals('417 MONTGOMERY ST FL 5', $address->street1);
     }
 
     /**
