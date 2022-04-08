@@ -43,6 +43,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
 
         $carrier_account = CarrierAccount::create(Fixture::basic_carrier_account());
 
+        $this->assertEquals('UpsAccount', $carrier_account->type);
         $this->assertInstanceOf('\EasyPost\CarrierAccount', $carrier_account);
         $this->assertStringMatchesFormat('ca_%s', $carrier_account->id);
 
