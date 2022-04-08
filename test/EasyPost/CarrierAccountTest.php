@@ -55,7 +55,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
      * Test retrieving a carrier account.
      *
      * @param CarrierAccount $carrier_account
-     * @return void
+     * @return CarrierAccount
      * @depends testCreate
      */
     public function testRetrieve(CarrierAccount $carrier_account)
@@ -66,6 +66,9 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
 
         $this->assertInstanceOf('\EasyPost\CarrierAccount', $retrieved_carrier_account);
         $this->assertEquals($carrier_account, $retrieved_carrier_account);
+
+        // Return so other tests can reuse this object
+        return $carrier_account;
     }
 
     /**
@@ -87,7 +90,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
      *
      * @param CarrierAccount $carrier_account
      * @return void
-     * @depends testCreate
+     * @depends testRetrieve
      */
     public function testUpdate(CarrierAccount $carrier_account)
     {
