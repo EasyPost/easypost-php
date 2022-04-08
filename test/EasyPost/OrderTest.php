@@ -41,11 +41,7 @@ class OrderTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('orders/create.yml');
 
-        $order = Order::create([
-            'to_address' => Fixture::basic_address(),
-            'from_address' => Fixture::basic_address(),
-            'shipments' => [Fixture::basic_shipment()],
-        ]);
+        $order = Order::create(Fixture::basic_order());
 
         $this->assertInstanceOf('\EasyPost\Order', $order);
         $this->assertStringMatchesFormat('order_%s', $order->id);

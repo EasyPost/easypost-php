@@ -44,13 +44,10 @@ class InsuranceTest extends \PHPUnit\Framework\TestCase
 
         $shipment = Shipment::create(Fixture::one_call_buy_shipment());
 
-        $insurance = Insurance::create([
-            'to_address' => Fixture::basic_address(),
-            'from_address' => Fixture::basic_address(),
-            'tracking_code' => $shipment->tracking_code,
-            'carrier' => Fixture::usps(),
-            'amount' => '100',
-        ]);
+        $insurance_data = Fixture::basic_insurance();
+        $insurance_data['tracking_code'] = $shipment->tracking_code;
+
+        $insurance = Insurance::create($insurance_data);
 
         $this->assertInstanceOf('\EasyPost\Insurance', $insurance);
         $this->assertStringMatchesFormat('ins_%s', $insurance->id);

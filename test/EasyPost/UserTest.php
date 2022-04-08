@@ -61,7 +61,9 @@ class UserTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('users/retrieve.yml');
 
-        $user = User::retrieve(Fixture::child_user_id());
+        $authenticated_user = User::retrieve_me();
+
+        $user = User::retrieve($authenticated_user['children'][0]['id']);
 
         $this->assertInstanceOf('\EasyPost\User', $user);
         $this->assertStringMatchesFormat('user_%s', $user->id);

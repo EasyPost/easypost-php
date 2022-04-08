@@ -41,15 +41,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('carrier_accounts/create.yml');
 
-        $carrier_account = CarrierAccount::create([
-            'type' => "UpsAccount",
-            'credentials' => [
-                'account_number' => "A1A1A1",
-                'user_id' => "USERID",
-                'password' => "PASSWORD",
-                'access_license_number' => "ALN"
-            ]
-        ]);
+        $carrier_account = CarrierAccount::create(Fixture::basic_carrier_account());
 
         $this->assertInstanceOf('\EasyPost\CarrierAccount', $carrier_account);
         $this->assertStringMatchesFormat('ca_%s', $carrier_account->id);
@@ -94,7 +86,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
      *
      * @param CarrierAccount $carrier_account
      * @return void
-     * @depends testUpdate
+     * @depends testCreate
      */
     public function testUpdate(CarrierAccount $carrier_account)
     {

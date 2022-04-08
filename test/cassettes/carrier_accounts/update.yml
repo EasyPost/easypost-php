@@ -1,7 +1,7 @@
 
 -
     request:
-        method: GET
+        method: PATCH
         url: 'https://api.easypost.com/v2/carrier_accounts/ca_ab8f48a1622f4fc9af4a23b3443b71f3'
         headers:
             Host: api.easypost.com
@@ -11,6 +11,7 @@
             User-Agent: ''
             X-Client-User-Agent: ''
             EasyPost-Version: '2'
+        body: '{"carrier_account":{"description":"My custom description"}}'
     response:
         status:
             http_version: '2'
@@ -23,56 +24,55 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 4ef5cded625087e9e2b7e673004d2774
+            x-ep-request-uuid: 4ef5cded625087e9e2b7e672004d2762
             cache-control: 'no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '442'
             etag: 'W/"f6fba2569c1fb631f3250a4c3eaf17a6"'
-            x-runtime: '0.026207'
-            x-node: bigweb7nuq
+            x-runtime: '0.185014'
+            x-node: bigweb6nuq
             x-version-label: easypost-202204071939-d894f5743c-master
             x-backend: easypost
-            x-canary: direct
-            x-proxied: ['intlb1nuq fde591f008', 'extlb1nuq fde591f008']
+            x-proxied: ['intlb2nuq fde591f008', 'extlb1nuq fde591f008']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
         body: '{"id":"ca_ab8f48a1622f4fc9af4a23b3443b71f3","object":"CarrierAccount","type":"UpsAccount","clone":false,"created_at":"2022-04-08T19:07:21Z","updated_at":"2022-04-08T19:07:21Z","description":"My custom description","reference":null,"readable":"UPS","logo":null,"fields":{"credentials":{"account_number":{"visibility":"readonly","label":"UPS Account Number","value":"A1A1A1"}}},"credentials":{"account_number":"A1A1A1"},"test_credentials":null}'
         curl_info:
             url: 'https://api.easypost.com/v2/carrier_accounts/ca_ab8f48a1622f4fc9af4a23b3443b71f3'
             content_type: 'application/json; charset=utf-8'
             http_code: 200
-            header_size: 736
-            request_size: 581
+            header_size: 718
+            request_size: 603
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.131584
-            namelookup_time: 0.001134
-            connect_time: 0.032071
-            pretransfer_time: 0.073501
-            size_upload: 0.0
+            total_time: 0.29003
+            namelookup_time: 0.001896
+            connect_time: 0.032958
+            pretransfer_time: 0.072379
+            size_upload: 59.0
             size_download: 442.0
-            speed_download: 3359.0
-            speed_upload: 0.0
+            speed_download: 1523.0
+            speed_upload: 203.0
             download_content_length: 442.0
-            upload_content_length: 0.0
-            starttransfer_time: 0.131557
+            upload_content_length: 59.0
+            starttransfer_time: 0.072382
             redirect_time: 0.0
             redirect_url: ''
             primary_ip: 169.62.110.131
             certinfo: {  }
             primary_port: 443
             local_ip: 192.168.1.201
-            local_port: 50707
+            local_port: 50706
             http_version: 3
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 73422
-            connect_time_us: 32071
-            namelookup_time_us: 1134
-            pretransfer_time_us: 73501
+            appconnect_time_us: 72301
+            connect_time_us: 32958
+            namelookup_time_us: 1896
+            pretransfer_time_us: 72379
             redirect_time_us: 0
-            starttransfer_time_us: 131557
-            total_time_us: 131584
+            starttransfer_time_us: 72382
+            total_time_us: 290030

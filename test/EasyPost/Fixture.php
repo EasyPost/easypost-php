@@ -10,15 +10,12 @@ class Fixture
         return 5;
     }
 
-    // This is the carrier account ID for the default USPS account that comes by default. All tests should use this carrier account
+    // This is the USPS carrier account ID that comes with your EasyPost account by default and should be used for all tests
     public static function usps_carrier_account_id()
     {
-        return 'ca_8dc116debcdb49b5a66a2ddee4612600';
-    }
-
-    public static function child_user_id()
-    {
-        return 'user_3878404c0bdd4321952d4cae45c1d184';
+        // Fallback to the EasyPost Ruby Client Library Test User USPS carrier account ID
+        $usps_carrier_account_id = getenv('USPS_CARRIER_ACCOUNT_ID') !== false ? getenv('USPS_CARRIER_ACCOUNT_ID') : 'ca_8dc116debcdb49b5a66a2ddee4612600';
+        return $usps_carrier_account_id;
     }
 
     public static function usps()
@@ -31,16 +28,24 @@ class Fixture
         return 'First';
     }
 
-    // If ever these need to change due to re-recording cassettes, simply increment this date by 1
-    public static function report_start_date()
+    public static function pickup_service()
     {
-        return '2022-02-01';
+        return 'NextDay';
     }
 
-    // If ever these need to change due to re-recording cassettes, simply increment this date by 1
+    public static function report_type()
+    {
+        return 'shipment';
+    }
+
+    public static function report_start_date()
+    {
+        return date('Y/m/d', strtotime('-2 day'));
+    }
+
     public static function report_end_date()
     {
-        return '2022-02-03';
+        return date('Y/m/d');
     }
 
     public static function basic_address()
@@ -151,9 +156,9 @@ class Fixture
             'customs_info'  => self::basic_customs_info(),
             'options' => [
                 'label_format' => 'PNG', // Must be PNG so we can convert to ZPL later
-                'invoice_number' => 123 // Tests that we encode integers to strings where appropriate
+                'invoice_number' => 123 // Tests that we encode integers to strings where appropriate (PHP lib feature)
             ],
-            'reference' => 123, // Tests that we encode integers to strings where appropriate
+            'reference' => 123, // Tests that we encode integers to strings where appropriate (PHP lib feature)
         ];
     }
 
@@ -170,15 +175,51 @@ class Fixture
     }
 
     // This fixture will require you to add a `shipment` key with a Shipment object from a test.
-    // If you need to re-record cassettes, simply iterate the dates below and ensure they're one day in the future,
     // USPS only does "next-day" pickups including Saturday but not Sunday or Holidays.
     public static function basic_pickup()
     {
+        $weekday_number = date('N');
+        $weekday_offset = ($weekday_number == 5) ? 3 : 2; // Push our pickup date to the "next day" based on the day of the week
+        $pickup_date = date('Y/m/d', strtotime("+$weekday_offset days"));
+
         return [
             'address' => self::basic_address(),
-            'min_datetime' => '2022-02-08',
-            'max_datetime' => '2022-02-09',
+            'min_datetime' => $pickup_date,
+            'max_datetime' => $pickup_date,
             'instructions' => 'Pickup at front door',
+        ];
+    }
+
+    public static function basic_carrier_account()
+    {
+        return [
+            'type' => 'UpsAccount',
+            'credentials' => [
+                'account_number' => 'A1A1A1',
+                'user_id' => 'USERID',
+                'password' => 'PASSWORD',
+                'access_license_number' => 'ALN',
+            ],
+        ];
+    }
+
+    // This fixture will require you to add a `tracking_code` key with a tracking code from a shipment
+    public static function basic_insurance()
+    {
+        return [
+            'from_address' => self::basic_address(),
+            'to_address' => self::basic_address(),
+            'carrier' => self::usps(),
+            'amount' => '100',
+        ];
+    }
+
+    public static function basic_order()
+    {
+        return [
+            'from_address' => self::basic_address(),
+            'to_address' => self::basic_address(),
+            'shipments' => [self::basic_shipment()],
         ];
     }
 

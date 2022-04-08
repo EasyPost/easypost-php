@@ -33,110 +33,22 @@ class ReportTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test creating a Payment Log report.
+     * Test creating a report.
      *
      * @return Report
      */
-    public function testCreatePaymentLogReport()
+    public function testCreateReport()
     {
-        VCR::insertCassette('reports/createPaymentLogReport.yml');
+        VCR::insertCassette('reports/createReport.yml');
 
         $report = Report::create([
             'start_date' => Fixture::report_start_date(),
             'end_date' => Fixture::report_end_date(),
-            'type' => 'payment_log'
-        ]);
-
-        $this->assertInstanceOf('\EasyPost\Report', $report);
-        $this->assertStringMatchesFormat('plrep_%s', $report->id);
-
-        // Return so other tests can reuse this object
-        return $report;
-    }
-
-    /**
-     * Test creating a Refund report.
-     *
-     * @return Report
-     */
-    public function testCreateRefundReport()
-    {
-        VCR::insertCassette('reports/createRefundReport.yml');
-
-        $report = Report::create([
-            'start_date' => Fixture::report_start_date(),
-            'end_date' => Fixture::report_end_date(),
-            'type' => 'refund'
-        ]);
-
-        $this->assertInstanceOf('\EasyPost\Report', $report);
-        $this->assertStringMatchesFormat('refrep_%s', $report->id);
-
-        // Return so other tests can reuse this object
-        return $report;
-    }
-
-    /**
-     * Test creating a Shipment report.
-     *
-     * @return Report
-     */
-    public function testCreateShipmentReport()
-    {
-        VCR::insertCassette('reports/createShipmentReport.yml');
-
-        $report = Report::create([
-            'start_date' => Fixture::report_start_date(),
-            'end_date' => Fixture::report_end_date(),
-            'type' => 'shipment'
+            'type' => Fixture::report_type(),
         ]);
 
         $this->assertInstanceOf('\EasyPost\Report', $report);
         $this->assertStringMatchesFormat('shprep_%s', $report->id);
-
-        // Return so other tests can reuse this object
-        return $report;
-    }
-
-    /**
-     * Test creating a Shipment Invoice report.
-     *
-     * @return Report
-     */
-    public function testCreateShipmentInvoiceReport()
-    {
-        VCR::insertCassette('reports/createShipmentInvoiceReport.yml');
-
-        $report = Report::create([
-            'start_date' => Fixture::report_start_date(),
-            'end_date' => Fixture::report_end_date(),
-            'type' => 'shipment_invoice'
-        ]);
-
-        $this->assertInstanceOf('\EasyPost\Report', $report);
-        $this->assertStringMatchesFormat('shpinvrep_%s', $report->id);
-
-        // Return so other tests can reuse this object
-        return $report;
-    }
-
-    /**
-     * Test creating a Tracker report.
-     *
-     * @return Report
-     */
-    public function testCreateTrackerReport()
-    {
-        VCR::insertCassette('reports/createTrackerReport.yml');
-
-        $report = Report::create([
-            'start_date' => Fixture::report_start_date(),
-            'end_date' => Fixture::report_end_date(),
-            'type' => 'tracker'
-        ]);
-
-        $this->assertInstanceOf('\EasyPost\Report', $report);
-        $this->assertStringMatchesFormat('trkrep_%s', $report->id);
 
         // Return so other tests can reuse this object
         return $report;
@@ -154,7 +66,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
         $report = Report::create([
             'start_date' => Fixture::report_start_date(),
             'end_date' => Fixture::report_end_date(),
-            'type' => 'shipment',
+            'type' => Fixture::report_type(),
             'columns' => ['usps_zone']
         ]);
 
@@ -176,7 +88,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
         $report = Report::create([
             'start_date' => Fixture::report_start_date(),
             'end_date' => Fixture::report_end_date(),
-            'type' => 'shipment',
+            'type' => Fixture::report_type(),
             'additional_columns' => ['from_name', 'from_company']
         ]);
 
@@ -187,87 +99,15 @@ class ReportTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test retrieving a Payment Log report.
+     * Test retrieving a report.
      *
      * @param Report $report
      * @return void
-     * @depends testCreatePaymentLogReport
+     * @depends testCreateReport
      */
-    public function testRetrievePaymentLogReport($report)
+    public function testRetrieveReport($report)
     {
-        VCR::insertCassette('reports/retrievePaymentLogReport.yml');
-
-        $retrieved_report = Report::retrieve($report->id);
-
-        $this->assertInstanceOf('\EasyPost\Report', $retrieved_report);
-        $this->assertEquals($report->start_date, $retrieved_report->start_date);
-        $this->assertEquals($report->end_date, $retrieved_report->end_date);
-    }
-
-    /**
-     * Test retrieving a Refund report.
-     *
-     * @param Report $report
-     * @return void
-     * @depends testCreateRefundReport
-     */
-    public function testRetrieveRefundReport($report)
-    {
-        VCR::insertCassette('reports/retrieveRefundReport.yml');
-
-        $retrieved_report = Report::retrieve($report->id);
-
-        $this->assertInstanceOf('\EasyPost\Report', $retrieved_report);
-        $this->assertEquals($report->start_date, $retrieved_report->start_date);
-        $this->assertEquals($report->end_date, $retrieved_report->end_date);
-    }
-
-    /**
-     * Test retrieving a Shipment report.
-     *
-     * @param Report $report
-     * @return void
-     * @depends testCreateShipmentReport
-     */
-    public function testRetrieveShipmentReport($report)
-    {
-        VCR::insertCassette('reports/retrieveShipmentReport.yml');
-
-        $retrieved_report = Report::retrieve($report->id);
-
-        $this->assertInstanceOf('\EasyPost\Report', $retrieved_report);
-        $this->assertEquals($report->start_date, $retrieved_report->start_date);
-        $this->assertEquals($report->end_date, $retrieved_report->end_date);
-    }
-
-    /**
-     * Test retrieving a Shipment Invoice report.
-     *
-     * @param Report $report
-     * @return void
-     * @depends testCreateShipmentInvoiceReport
-     */
-    public function testRetrieveShipmentInvoiceReport($report)
-    {
-        VCR::insertCassette('reports/retrieveShipmentReport.yml');
-
-        $retrieved_report = Report::retrieve($report->id);
-
-        $this->assertInstanceOf('\EasyPost\Report', $retrieved_report);
-        $this->assertEquals($report->start_date, $retrieved_report->start_date);
-        $this->assertEquals($report->end_date, $retrieved_report->end_date);
-    }
-
-    /**
-     * Test retrieving a Tracker report.
-     *
-     * @param Report $report
-     * @return void
-     * @depends testCreateTrackerReport
-     */
-    public function testRetrieveTrackerReport($report)
-    {
-        VCR::insertCassette('reports/retrieveTrackerReport.yml');
+        VCR::insertCassette('reports/retrieveReport.yml');
 
         $retrieved_report = Report::retrieve($report->id);
 
