@@ -11,7 +11,7 @@
             User-Agent: ''
             X-Client-User-Agent: ''
             EasyPost-Version: '2'
-        body: '{"start_date":"2022-02-01","end_date":"2022-02-03","type":"shipment"}'
+        body: '{"start_date":"2022\/04\/06","end_date":"2022\/04\/08","type":"shipment"}'
     response:
         status:
             http_version: '2'
@@ -24,55 +24,55 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: eb7f2770623b8fdbe78bacaf00044e85
+            x-ep-request-uuid: 58b8c5ba62507d38e2b7d59100422c92
             cache-control: 'no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '283'
-            etag: 'W/"0e86f48c00e65ad6272685eab8f16ad2"'
-            x-runtime: '0.039472'
-            x-node: bigweb4nuq
-            x-version-label: easypost-202203231943-61a988cd70-master
+            etag: 'W/"4f7cb0341275c622b7867de89b525c9a"'
+            x-runtime: '0.035071'
+            x-node: bigweb3nuq
+            x-version-label: easypost-202204071939-d894f5743c-master
             x-backend: easypost
-            x-proxied: ['intlb2nuq 3e97db20d4', 'extlb2nuq 3e97db20d4']
+            x-proxied: ['intlb2nuq fde591f008', 'intlb2wdc fde591f008', 'extlb3wdc fde591f008']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"shprep_216e94c28f71419bbc7ce994a10ffa2a","object":"ShipmentReport","created_at":"2022-03-23T21:23:39Z","updated_at":"2022-03-23T21:23:39Z","start_date":"2022-02-01","end_date":"2022-02-03","mode":"test","status":"new","url":null,"url_expires_at":null,"include_children":false}'
+        body: '{"id":"shprep_9b26e8cb64e6498eba8b7fbfc8a0550a","object":"ShipmentReport","created_at":"2022-04-08T18:21:45Z","updated_at":"2022-04-08T18:21:45Z","start_date":"2022-03-08","end_date":"2022-04-08","mode":"test","status":"new","url":null,"url_expires_at":null,"include_children":false}'
         curl_info:
             url: 'https://api.easypost.com/v2/reports/shipment/'
             content_type: 'application/json; charset=utf-8'
             http_code: 201
-            header_size: 718
-            request_size: 542
+            header_size: 751
+            request_size: 567
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.201808
-            namelookup_time: 0.001724
-            connect_time: 0.048578
-            pretransfer_time: 0.113429
-            size_upload: 69.0
+            total_time: 0.354584
+            namelookup_time: 0.002063
+            connect_time: 0.06035
+            pretransfer_time: 0.134849
+            size_upload: 73.0
             size_download: 283.0
-            speed_download: 1402.0
-            speed_upload: 341.0
+            speed_download: 798.0
+            speed_upload: 205.0
             download_content_length: 283.0
-            upload_content_length: 69.0
-            starttransfer_time: 0.113438
+            upload_content_length: 73.0
+            starttransfer_time: 0.134854
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.130
+            primary_ip: 169.47.33.18
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.22
-            local_port: 59695
+            local_ip: 192.168.1.201
+            local_port: 50318
             http_version: 3
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 113297
-            connect_time_us: 48578
-            namelookup_time_us: 1724
-            pretransfer_time_us: 113429
+            appconnect_time_us: 134724
+            connect_time_us: 60350
+            namelookup_time_us: 2063
+            pretransfer_time_us: 134849
             redirect_time_us: 0
-            starttransfer_time_us: 113438
-            total_time_us: 201808
+            starttransfer_time_us: 134854
+            total_time_us: 354584
