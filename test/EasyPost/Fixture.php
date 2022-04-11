@@ -13,8 +13,9 @@ class Fixture
     // This is the USPS carrier account ID that comes with your EasyPost account by default and should be used for all tests
     public static function usps_carrier_account_id()
     {
-        // Fallback to the EasyPost Ruby Client Library Test User USPS carrier account ID
+        // Fallback to the EasyPost PHP Client Library Test User USPS carrier account ID
         $usps_carrier_account_id = getenv('USPS_CARRIER_ACCOUNT_ID') !== false ? getenv('USPS_CARRIER_ACCOUNT_ID') : 'ca_8dc116debcdb49b5a66a2ddee4612600';
+
         return $usps_carrier_account_id;
     }
 
@@ -38,14 +39,15 @@ class Fixture
         return 'shipment';
     }
 
-    public static function report_start_date()
+    // If you need to re-record cassettes, increment this date by 1
+    public static function report_date()
     {
-        return date('Y/m/d', strtotime('-2 day'));
+        return '2022-04-09';
     }
 
-    public static function report_end_date()
+    public static function webhook_url()
     {
-        return date('Y/m/d');
+        return 'http://example.com';
     }
 
     public static function basic_address()
@@ -175,12 +177,11 @@ class Fixture
     }
 
     // This fixture will require you to add a `shipment` key with a Shipment object from a test.
+    // If you need to re-record cassettes, increment the date below and ensure it is one day in the future,
     // USPS only does "next-day" pickups including Saturday but not Sunday or Holidays.
     public static function basic_pickup()
     {
-        $weekday_number = date('N');
-        $weekday_offset = ($weekday_number == 5) ? 3 : 2; // Push our pickup date to the "next day" based on the day of the week
-        $pickup_date = date('Y/m/d', strtotime("+$weekday_offset days"));
+        $pickup_date = '2022-04-12';
 
         return [
             'address' => self::basic_address(),

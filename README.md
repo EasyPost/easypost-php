@@ -95,4 +95,6 @@ If you make an addition to this project, the request/response will get recorded 
 
 The test suite has been populated with various helpful fixtures that are available for use, each completely independent from a particular user **with the exception of the USPS carrier account ID** which has a fallback value to our internal testing user's ID. If you are a non-EasyPost employee and are re-recording cassettes, you may need to provide the `USPS_CARRIER_ACCOUNT_ID` environment variable with the ID associated with your USPS account (which will be associated with your API keys in use) for tests that use this fixture.
 
+**Note on dates:** Some fixtures use hard-coded dates that may need to be incremented if cassettes get re-recorded (such as reports or pickups).
+
 **Note on test order:** This project uses a special test ordering which follows a `create -> retrieve -> update -> delete` pattern. The create test will return the created object so that other tests such as retrieving, updating, and deleting tests can reuse that object for their own tests in an effort to cut down on object creation during testing. You'll see this denoted with a `@depends` decorator on tests where you can link the test order as needed.

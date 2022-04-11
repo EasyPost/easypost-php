@@ -87,7 +87,7 @@ class PickupTest extends \PHPUnit\Framework\TestCase
 
         $bought_pickup = $pickup->buy([
             'carrier' => Fixture::usps(),
-            'service' => 'NextDay',
+            'service' => Fixture::pickup_service(),
         ]);
 
         $this->assertInstanceOf('\EasyPost\Pickup', $bought_pickup);

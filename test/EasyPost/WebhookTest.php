@@ -42,12 +42,12 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('webhooks/create.yml');
 
         $webhook = Webhook::create([
-            "url" => "http://example.com"
+            "url" => Fixture::webhook_url(),
         ]);
 
         $this->assertInstanceOf('\EasyPost\Webhook', $webhook);
         $this->assertStringMatchesFormat('hook_%s', $webhook->id);
-        $this->assertEquals('http://example.com', $webhook->url);
+        $this->assertEquals(Fixture::webhook_url(), $webhook->url);
 
         // Return so other tests can reuse this object
         return $webhook;

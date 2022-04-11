@@ -42,8 +42,8 @@ class ReportTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('reports/createReport.yml');
 
         $report = Report::create([
-            'start_date' => Fixture::report_start_date(),
-            'end_date' => Fixture::report_end_date(),
+            'start_date' => Fixture::report_date(),
+            'end_date' => Fixture::report_date(),
             'type' => Fixture::report_type(),
         ]);
 
@@ -64,8 +64,8 @@ class ReportTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('reports/createCustomColumnReport.yml');
 
         $report = Report::create([
-            'start_date' => Fixture::report_start_date(),
-            'end_date' => Fixture::report_end_date(),
+            'start_date' => Fixture::report_date(),
+            'end_date' => Fixture::report_date(),
             'type' => Fixture::report_type(),
             'columns' => ['usps_zone']
         ]);
@@ -86,8 +86,8 @@ class ReportTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('reports/createCustomAdditionalColumnReport.yml');
 
         $report = Report::create([
-            'start_date' => Fixture::report_start_date(),
-            'end_date' => Fixture::report_end_date(),
+            'start_date' => Fixture::report_date(),
+            'end_date' => Fixture::report_date(),
             'type' => Fixture::report_type(),
             'additional_columns' => ['from_name', 'from_company']
         ]);
