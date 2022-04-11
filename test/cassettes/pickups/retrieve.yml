@@ -2,7 +2,7 @@
 -
     request:
         method: GET
-        url: 'https://api.easypost.com/v2/pickups/pickup_7070dd414b7246c0b12aec71c3013485'
+        url: 'https://api.easypost.com/v2/pickups/pickup_5451ee8718904b5f9d7faf67aa7c24a2'
         headers:
             Host: api.easypost.com
             Accept: application/json
@@ -23,22 +23,22 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 6583cdf86250864de2b7e337004c8307
+            x-ep-request-uuid: df63cd0962547161e786af58002398da
             cache-control: 'no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '1149'
-            etag: 'W/"88a7565d486534fede7cdf2e6b65640e"'
-            x-runtime: '0.070233'
-            x-node: bigweb6nuq
-            x-version-label: easypost-202204071939-d894f5743c-master
+            etag: 'W/"fb34023f4887501ea84c2959d881b235"'
+            x-runtime: '0.069650'
+            x-node: bigweb2nuq
+            x-version-label: easypost-202204082123-da17cc1ac2-master
             x-backend: easypost
-            x-proxied: ['intlb2nuq fde591f008', 'extlb2nuq fde591f008']
+            x-proxied: ['intlb2nuq fde591f008', 'extlb1nuq fde591f008']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"pickup_7070dd414b7246c0b12aec71c3013485","object":"Pickup","created_at":"2022-04-08T19:00:28Z","updated_at":"2022-04-08T19:00:28Z","mode":"test","status":"unknown","reference":null,"min_datetime":"2022-04-11T00:00:00Z","max_datetime":"2022-04-11T00:00:00Z","is_account_address":false,"instructions":"Pickup at front door","messages":[],"confirmation":null,"address":{"id":"adr_27dd58e7b76e11eca07cac1f6b0a0d1e","object":"Address","created_at":"2022-04-08T19:00:28+00:00","updated_at":"2022-04-08T19:00:28+00:00","name":"Jack Sparrow","company":"EasyPost","street1":"388 Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","country":"US","phone":"5555555555","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"carrier_accounts":[],"pickup_rates":[{"mode":"test","service":"NextDay","rate":"0.00","currency":"USD","created_at":"2022-04-08T19:00:29Z","updated_at":"2022-04-08T19:00:29Z","carrier":"USPS","pickup_id":"pickup_7070dd414b7246c0b12aec71c3013485","id":"pickuprate_637cccd602ec4d098e8c66c8980be4dc","object":"PickupRate"}]}'
+        body: '{"id":"pickup_5451ee8718904b5f9d7faf67aa7c24a2","object":"Pickup","created_at":"2022-04-11T18:20:15Z","updated_at":"2022-04-11T18:20:15Z","mode":"test","status":"unknown","reference":null,"min_datetime":"2022-04-12T00:00:00Z","max_datetime":"2022-04-12T00:00:00Z","is_account_address":false,"instructions":"Pickup at front door","messages":[],"confirmation":null,"address":{"id":"adr_08f58c9bb9c411ec9a46ac1f6bc72124","object":"Address","created_at":"2022-04-11T18:20:15+00:00","updated_at":"2022-04-11T18:20:15+00:00","name":"Jack Sparrow","company":"EasyPost","street1":"388 Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","country":"US","phone":"5555555555","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}},"carrier_accounts":[],"pickup_rates":[{"mode":"test","service":"NextDay","rate":"0.00","currency":"USD","created_at":"2022-04-11T18:20:17Z","updated_at":"2022-04-11T18:20:17Z","carrier":"USPS","pickup_id":"pickup_5451ee8718904b5f9d7faf67aa7c24a2","id":"pickuprate_2f9d75ab8de44ab9a77d36332752e442","object":"PickupRate"}]}'
         curl_info:
-            url: 'https://api.easypost.com/v2/pickups/pickup_7070dd414b7246c0b12aec71c3013485'
+            url: 'https://api.easypost.com/v2/pickups/pickup_5451ee8718904b5f9d7faf67aa7c24a2'
             content_type: 'application/json; charset=utf-8'
             http_code: 200
             header_size: 719
@@ -46,32 +46,32 @@
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.181909
-            namelookup_time: 0.002651
-            connect_time: 0.033804
-            pretransfer_time: 0.078714
+            total_time: 0.267987
+            namelookup_time: 0.001743
+            connect_time: 0.061457
+            pretransfer_time: 0.132788
             size_upload: 0.0
             size_download: 1149.0
-            speed_download: 6316.0
+            speed_download: 4287.0
             speed_upload: 0.0
             download_content_length: 1149.0
             upload_content_length: 0.0
-            starttransfer_time: 0.181843
+            starttransfer_time: 0.26795
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.130
+            primary_ip: 169.62.110.131
             certinfo: {  }
             primary_port: 443
-            local_ip: 192.168.1.201
-            local_port: 50684
+            local_ip: 10.130.6.21
+            local_port: 50303
             http_version: 3
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 78566
-            connect_time_us: 33804
-            namelookup_time_us: 2651
-            pretransfer_time_us: 78714
+            appconnect_time_us: 132700
+            connect_time_us: 61457
+            namelookup_time_us: 1743
+            pretransfer_time_us: 132788
             redirect_time_us: 0
-            starttransfer_time_us: 181843
-            total_time_us: 181909
+            starttransfer_time_us: 267950
+            total_time_us: 267987
