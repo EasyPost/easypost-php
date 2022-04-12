@@ -13,7 +13,8 @@ Please select the option(s) that are relevant to this PR.
 
 # Testing
 
-<!-- Please provide details on how you tested this code. See below.
+<!--
+Please provide details on how you tested this code. See below.
 
 - All pull requests must be tested (unit tests where possible with accompanying cassettes, or provide a screenshot of end-to-end testing when unit tests are not possible)
 - New features must get a new unit test
