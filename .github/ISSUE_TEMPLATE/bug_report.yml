@@ -1,0 +1,81 @@
+name: Bug Report
+description: File a bug report
+title: "[Bug]: "
+labels: [ "triage" ]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to report an issue in this repository. Please fill out the form below.
+  - type: input
+    id: software-version
+    attributes:
+      label: Software Version
+      # change this description for the specific repo
+      description: |
+        What version of our software are you running?
+        TIP: [Available versions](https://github.com/EasyPost/easypost-php/releases)
+    validations:
+      required: true
+  - type: input
+    id: language-version
+    attributes:
+      label: Language Version
+      # change this description for the specific language of the repo
+      description: |
+        What language version and/or framework are you using?
+        TIP: [How to find your PHP version](https://www.php.net/manual/en/function.phpversion.php)
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Operating System
+      description: What operating system are you running the software on?
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: What happened?
+      description: |
+        Please describe what happened in reproducible steps.
+        Include how often you see this issue, and any relevant links (i.e. GitHub issue, Stack Overflow, etc.).
+      value: |
+        1.
+        2.
+        3.
+        ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: What was expected?
+      description: Please describe what was expected to happen instead.
+    validations:
+      required: true
+  - type: textarea
+    id: sample-code
+    attributes:
+      label: Sample Code
+      description: |
+        Please provide any sample code that demonstrates the behavior.
+        This will be automatically formatted into the appropriate language, so no need for backticks.
+        **Do not include any private information such as API keys or passwords.**
+      # change this render to the appropriate language: https://github.com/github/linguist/blob/master/lib/linguist/languages.yml
+      render: inc
+    validations:
+      required: false
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs
+      description: |
+        Please copy and paste any relevant log output.
+        This will be automatically formatted into shell output, so no need for backticks.
+        If you have screenshots instead, please paste them below.
+        **Do not include any private information such as API keys or passwords.**
+      render: sh
+    validations:
+      required: false

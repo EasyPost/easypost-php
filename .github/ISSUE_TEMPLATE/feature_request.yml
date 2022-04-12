@@ -1,0 +1,37 @@
+name: Feature Request
+description: Request a new feature
+title: "[Feat]: "
+labels: [ "triage" ]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to request a new feature.
+        Please note, all feature requests are subject to review and approval.
+        We welcome all suggestions and ideas, but we cannot guarantee when or if we will implement them.
+        
+        We also welcome pull requests, if you would like to implement the feature yourself.
+        Doing so will likely accelerate the process of implementing the requested feature.
+  - type: checkboxes
+    id: searched
+    attributes:
+      label: Feature Request Is New
+      # change issue link below for the specific repo
+      description: |
+        Before we begin, please confirm that the requested feature does not already exist or has not [already been requested](https://github.com/EasyPost/easypost-php/issues).
+      options:
+        - label: I have verified that the requested feature does not already exist or has not already been requested.
+          required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description of the feature
+      description: |
+        Please provide a detailed description of the feature, including:
+        - What the feature is
+        - What value it adds to the application
+        - How it should be implemented (i.e. pseudo-code, or a high-level description of the user experience)
+        - Any other relevant information
+    validations:
+      required: true
+
