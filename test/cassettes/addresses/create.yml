@@ -24,57 +24,56 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 888f661062015c5ee7874d86004b8672
+            x-ep-request-uuid: b8f5271662589826ff234ea40059d5a0
             cache-control: 'no-cache, no-store'
             pragma: no-cache
             expires: '0'
-            location: /api/v2/addresses/adr_b863a663883e11ec8b78ac1f6b0a0d1e
+            location: /api/v2/addresses/adr_801f6354bc3d11ec87a5ac1f6b0a0d1e
             content-type: 'application/json; charset=utf-8'
             content-length: '453'
-            etag: 'W/"347ef9b7d04dd9222863678527c9dedf"'
-            x-request-id: 0ce4c70c-ea01-44fe-9ece-6323f39e3429
-            x-runtime: '0.038665'
-            x-node: bigweb4nuq
-            x-version-label: easypost-202202042220-76f9648007-master
+            etag: 'W/"e22d6ef9dc6e722fd215f1bcb596be44"'
+            x-runtime: '0.031613'
+            x-node: bigweb5nuq
+            x-version-label: easypost-202204142017-962a9659b5-master
             x-backend: easypost
-            x-proxied: ['intlb2nuq 88c34981dc', 'extlb1nuq 88c34981dc']
+            x-proxied: ['intlb2nuq fde591f008', 'extlb2nuq fde591f008']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"adr_b863a663883e11ec8b78ac1f6b0a0d1e","object":"Address","created_at":"2022-02-07T17:52:30+00:00","updated_at":"2022-02-07T17:52:30+00:00","name":"Jack Sparrow","company":"EasyPost","street1":"388 Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","country":"US","phone":"5555555555","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}}'
+        body: '{"id":"adr_801f6354bc3d11ec87a5ac1f6b0a0d1e","object":"Address","created_at":"2022-04-14T21:54:47+00:00","updated_at":"2022-04-14T21:54:47+00:00","name":"Jack Sparrow","company":"EasyPost","street1":"388 Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","country":"US","phone":"5555555555","email":null,"mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{}}'
         curl_info:
             url: 'https://api.easypost.com/v2/addresses'
             content_type: 'application/json; charset=utf-8'
             http_code: 201
-            header_size: 836
-            request_size: 556
+            header_size: 784
+            request_size: 539
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.242402
-            namelookup_time: 0.001195
-            connect_time: 0.059627
-            pretransfer_time: 0.144223
+            total_time: 0.269881
+            namelookup_time: 0.006046
+            connect_time: 0.075673
+            pretransfer_time: 0.165482
             size_upload: 174.0
             size_download: 453.0
-            speed_download: 1868.0
-            speed_upload: 717.0
+            speed_download: 1678.0
+            speed_upload: 644.0
             download_content_length: 453.0
             upload_content_length: 174.0
-            starttransfer_time: 0.144245
+            starttransfer_time: 0.165495
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.131
+            primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.6
-            local_port: 51766
+            local_ip: 192.168.1.156
+            local_port: 62497
             http_version: 3
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 144070
-            connect_time_us: 59627
-            namelookup_time_us: 1195
-            pretransfer_time_us: 144223
+            appconnect_time_us: 165255
+            connect_time_us: 75673
+            namelookup_time_us: 6046
+            pretransfer_time_us: 165482
             redirect_time_us: 0
-            starttransfer_time_us: 144245
-            total_time_us: 242402
+            starttransfer_time_us: 165495
+            total_time_us: 269881

@@ -67,7 +67,6 @@ class Fixture
     public static function incorrect_address_to_verify()
     {
         return [
-            'verify'  => [true],
             'street1' => '417 montgomery street',
             'street2' => 'FL 5',
             'city'    => 'San Francisco',

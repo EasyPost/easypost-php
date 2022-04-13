@@ -121,11 +121,15 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('addresses/createVerify.yml');
 
-        $address = Address::create(Fixture::incorrect_address_to_verify());
+        $addressData = Fixture::incorrect_address_to_verify();
+        $addressData['verify'] = [true];
+
+        $address = Address::create($addressData);
 
         $this->assertInstanceOf('\EasyPost\Address', $address);
         $this->assertStringMatchesFormat('adr_%s', $address->id);
         $this->assertEquals('417 MONTGOMERY ST FL 5', $address->street1);
+        $this->assertEquals('Invalid secondary information(Apt/Suite#)', $address->verifications->zip4->errors[0]->message);
     }
 
     /**
@@ -139,7 +143,10 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('addresses/createAndVerify.yml');
 
-        $address = Address::create_and_verify(Fixture::incorrect_address_to_verify());
+        $addressData = Fixture::incorrect_address_to_verify();
+        $addressData['verify'] = [true];
+
+        $address = Address::create_and_verify($addressData);
 
         $this->assertInstanceOf('\EasyPost\Address', $address);
         $this->assertStringMatchesFormat('adr_%s', $address->id);
