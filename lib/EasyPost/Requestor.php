@@ -210,7 +210,7 @@ class Requestor
             } else {
                 $curlOptions[CURLOPT_POSTFIELDS] = json_encode($params);
             }
-        } elseif ($method == 'patch' || $method == 'put') {
+        } elseif ($method == 'put') {
             $curlOptions[CURLOPT_CUSTOMREQUEST] = strtoupper($method);
             $curlOptions[CURLOPT_POSTFIELDS] = json_encode($params);
         } elseif ($method == 'delete') {

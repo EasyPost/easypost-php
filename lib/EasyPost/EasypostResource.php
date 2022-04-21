@@ -172,7 +172,7 @@ abstract class EasypostResource extends EasyPostObject
             $requestor = new Requestor($this->_apiKey);
             $url = $this->instanceUrl();
             $params = [self::className($class) => $this->_unsavedValues];
-            list($response, $apiKey) = $requestor->request('patch', $url, $params);
+            list($response, $apiKey) = $requestor->request('put', $url, $params);
             $this->refreshFrom($response, $apiKey);
         }
 
