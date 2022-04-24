@@ -8,6 +8,8 @@
 
 ## v5.0.0 (2022-02-09)
 
+Upgrading major versions of this project? Refer to the [Upgrade Guide](UPGRADE_GUIDE.md).
+
 - Bumped minimum PHP version supported from `5.3` to `7.3`
 - Adds a full test suite, all functions are now tested for each object
 - Adds class properties to every class (closes #96)
@@ -33,6 +35,8 @@
 - Properly handles empty lists and objects with JSON encoding (closes #114)
 
 ## v4.0.0 (2021-10-06)
+
+Upgrading major versions of this project? Refer to the [Upgrade Guide](UPGRADE_GUIDE.md).
 
 - JSON encodes POST bodies instead of form encoding them
 - Adds TaxIdentifier support

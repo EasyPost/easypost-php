@@ -66,6 +66,8 @@ echo $shipment;
 
 API Documentation can be found at: https://easypost.com/docs/api.
 
+Upgrading major versions of this project? Refer to the [Upgrade Guide](UPGRADE_GUIDE.md).
+
 ## Development
 
 **NOTE:** Recording VCR cassettes only works with PHP 7.3 or 7.4. Once recorded, tests can be run on PHP 7 or 8.
