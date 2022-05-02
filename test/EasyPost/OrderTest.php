@@ -2,10 +2,11 @@
 
 namespace EasyPost\Test;
 
-use VCR\VCR;
-use EasyPost\Order;
 use EasyPost\EasyPost;
+use EasyPost\Error;
+use EasyPost\Order;
 use EasyPost\Test\Fixture;
+use VCR\VCR;
 
 class OrderTest extends \PHPUnit\Framework\TestCase
 {
@@ -107,6 +108,37 @@ class OrderTest extends \PHPUnit\Framework\TestCase
 
         foreach ($shipments_array as $shipment) {
             $this->assertNotNull($shipment->postage_label);
+        }
+    }
+
+    /**
+     * Test various usage alterations of the lowest_rate method.
+     *
+     * @return void
+     */
+    public function testLowestRate()
+    {
+        VCR::insertCassette('orders/lowestRate.yml');
+
+        $order = Order::create(Fixture::basic_order());
+
+        // Test lowest rate with no filters
+        $lowest_rate = $order->lowest_rate();
+        $this->assertEquals('First', $lowest_rate['service']);
+        $this->assertEquals('5.49', $lowest_rate['rate']);
+        $this->assertEquals('USPS', $lowest_rate['carrier']);
+
+        // Test lowest rate with service filter (this rate is higher than the lowest but should filter)
+        $lowest_rate = $order->lowest_rate([], ['Priority']);
+        $this->assertEquals('Priority', $lowest_rate['service']);
+        $this->assertEquals('7.37', $lowest_rate['rate']);
+        $this->assertEquals('USPS', $lowest_rate['carrier']);
+
+        // Test lowest rate with carrier filter (should error due to bad carrier)
+        try {
+            $lowest_rate = $order->lowest_rate(['BAD CARRIER'], []);
+        } catch (Error $error) {
+            $this->assertEquals('No rates found.', $error->getMessage());
         }
     }
 }

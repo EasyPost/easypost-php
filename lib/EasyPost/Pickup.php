@@ -89,4 +89,19 @@ class Pickup extends EasypostResource
 
         return $this;
     }
+
+    /**
+     * Get the lowest rate for the pickup.
+     *
+     * @param array $carriers
+     * @param array $services
+     * @return Rate
+     * @throws \EasyPost\Error
+     */
+    public function lowest_rate($carriers = [], $services = [])
+    {
+        $lowest_rate = Util::getLowestObjectRate($this, $carriers, $services, 'pickup_rates');
+
+        return $lowest_rate;
+    }
 }

@@ -4,6 +4,7 @@ namespace EasyPost\Test;
 
 use EasyPost\Address;
 use EasyPost\EasyPost;
+use EasyPost\Error;
 use EasyPost\Parcel;
 use EasyPost\Shipment;
 use EasyPost\Test\Fixture;
@@ -292,5 +293,101 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         $this->assertStringMatchesFormat('adr_%s', $shipment->to_address->id);
         $this->assertStringMatchesFormat('prcl_%s', $shipment->parcel->id);
         $this->assertEquals('388 Townsend St', $shipment->from_address->street1);
+    }
+
+    /**
+     * Test various usage alterations of the lowest_rate method.
+     *
+     * @return void
+     */
+    public function testLowestRate()
+    {
+        VCR::insertCassette('shipments/lowestRate.yml');
+
+        $shipment = Shipment::create(Fixture::full_shipment());
+
+        // Test lowest rate with no filters
+        $lowest_rate = $shipment->lowest_rate();
+        $this->assertEquals('First', $lowest_rate['service']);
+        $this->assertEquals('5.49', $lowest_rate['rate']);
+        $this->assertEquals('USPS', $lowest_rate['carrier']);
+
+        // Test lowest rate with service filter (this rate is higher than the lowest but should filter)
+        $lowest_rate = $shipment->lowest_rate([], ['Priority']);
+        $this->assertEquals('Priority', $lowest_rate['service']);
+        $this->assertEquals('7.37', $lowest_rate['rate']);
+        $this->assertEquals('USPS', $lowest_rate['carrier']);
+
+        // Test lowest rate with carrier filter (should error due to bad carrier)
+        try {
+            $lowest_rate = $shipment->lowest_rate(['BAD CARRIER'], []);
+        } catch (Error $error) {
+            $this->assertEquals('No rates found.', $error->getMessage());
+        }
+    }
+
+    /**
+     * Test various usage alterations of the lowest_smartrate method.
+     *
+     * @return void
+     */
+    public function testLowestSmartrate()
+    {
+        VCR::insertCassette('shipments/lowestSmartrate.yml');
+
+        $shipment = Shipment::create(Fixture::full_shipment());
+
+        // Test lowest rate with no filters
+        $lowest_rate = $shipment->lowest_smartrate(1, 'percentile_90');
+        $this->assertEquals('Priority', $lowest_rate['service']);
+        $this->assertEquals(7.37, $lowest_rate['rate']);
+        $this->assertEquals('USPS', $lowest_rate['carrier']);
+
+        // Test lowest smartrate with invalid filters (should error due to strict delivery_days)
+        try {
+            $lowest_rate = $shipment->lowest_smartrate(0, 'percentile_90');
+        } catch (Error $error) {
+            $this->assertEquals('No rates found.', $error->getMessage());
+        }
+
+        // Test lowest smartrate with invalid filters (should error due to invalid delivery_accuracy)
+        try {
+            $lowest_rate = $shipment->lowest_rate(3, 'BAD_ACCURACY');
+        } catch (Error $error) {
+            $this->assertEquals('No rates found.', $error->getMessage());
+        }
+    }
+
+    /**
+     * Test various usage alterations of the get_lowest_smartrate method.
+     *
+     * @return void
+     */
+    public function testGetLowestSmartrate()
+    {
+        VCR::insertCassette('shipments/getLowestSmartrate.yml');
+
+        $shipment = Shipment::create(Fixture::full_shipment());
+        $smartrates = $shipment->get_smartrates();
+
+        // Test lowest smartrate with valid filters
+        $lowest_smartrate = Shipment::get_lowest_smartrate($smartrates, 1, 'percentile_90');
+        $this->assertEquals('Priority', $lowest_smartrate['service']);
+        $this->assertEquals(7.37, $lowest_smartrate['rate']);
+        $this->assertEquals('USPS', $lowest_smartrate['carrier']);
+
+        // Test lowest smartrate with invalid filters (should error due to strict delivery_days)
+        try {
+            $lowest_smartrate = Shipment::get_lowest_smartrate($smartrates, 0, 'percentile_90');
+        } catch (Error $error) {
+            $this->assertEquals('No rates found.', $error->getMessage());
+        }
+
+        // Test lowest smartrate with invalid filters (should error due to invalid delivery_accuracy)
+        try {
+            $lowest_smartrate = Shipment::get_lowest_smartrate($smartrates, 3, 'BAD_ACCURACY');
+        } catch (Error $error) {
+            $this->assertEquals('Invalid delivery_accuracy value, must be one of: ["percentile_50","percentile_75","percentile_85","percentile_90","percentile_95","percentile_97","percentile_99"]', $error->getMessage());
+        }
     }
 }

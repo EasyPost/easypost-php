@@ -2,11 +2,12 @@
 
 namespace EasyPost\Test;
 
-use VCR\VCR;
+use EasyPost\EasyPost;
+use EasyPost\Error;
 use EasyPost\Pickup;
 use EasyPost\Shipment;
-use EasyPost\EasyPost;
 use EasyPost\Test\Fixture;
+use VCR\VCR;
 
 class PickupTest extends \PHPUnit\Framework\TestCase
 {
@@ -60,14 +61,18 @@ class PickupTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving a pickup.
      *
-     * @param Pickup $pickup
      * @return void
-     * @depends testCreate
      */
-    public function testRetrieve(Pickup $pickup)
+    public function testRetrieve()
     {
         VCR::insertCassette('pickups/retrieve.yml');
 
+        $shipment = Shipment::create(Fixture::one_call_buy_shipment());
+
+        $pickup_data = Fixture::basic_pickup();
+        $pickup_data['shipment'] = $shipment;
+
+        $pickup = Pickup::create($pickup_data);
         $retrieved_pickup = Pickup::retrieve($pickup->id);
 
         $this->assertInstanceOf('\EasyPost\Pickup', $retrieved_pickup);
@@ -115,5 +120,42 @@ class PickupTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf('\EasyPost\Pickup', $cancelled_pickup);
         $this->assertStringMatchesFormat('pickup_%s', $cancelled_pickup->id);
         $this->assertEquals('canceled', $cancelled_pickup->status);
+    }
+
+    /**
+     * Test various usage alterations of the lowest_rate method.
+     *
+     * @return void
+     */
+    public function testLowestRate()
+    {
+        VCR::insertCassette('pickups/lowestRate.yml');
+
+        $shipment = Shipment::create(Fixture::one_call_buy_shipment());
+
+        $pickup_data = Fixture::basic_pickup();
+        $pickup_data['shipment'] = $shipment;
+
+        $pickup = Pickup::create($pickup_data);
+
+        // Test lowest rate with no filters
+        $lowest_rate = $pickup->lowest_rate();
+        $this->assertEquals('NextDay', $lowest_rate['service']);
+        $this->assertEquals('0.00', $lowest_rate['rate']);
+        $this->assertEquals('USPS', $lowest_rate['carrier']);
+
+        // Test lowest rate with service filter (should error due to bad service)
+        try {
+            $lowest_rate = $pickup->lowest_rate([], ['BAD SERVICE']);
+        } catch (Error $error) {
+            $this->assertEquals('No rates found.', $error->getMessage());
+        }
+
+        // Test lowest rate with carrier filter (should error due to bad carrier)
+        try {
+            $lowest_rate = $pickup->lowest_rate(['BAD CARRIER'], []);
+        } catch (Error $error) {
+            $this->assertEquals('No rates found.', $error->getMessage());
+        }
     }
 }
