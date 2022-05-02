@@ -206,67 +206,71 @@ class Shipment extends EasypostResource
      *
      * @param array $carriers
      * @param array $services
-     * @return bool
+     * @return Rate
      * @throws \EasyPost\Error
      */
     public function lowest_rate($carriers = [], $services = [])
     {
-        $lowest_rate = false;
-        $carriers_include = [];
-        $carriers_exclude = [];
-        $services_include = [];
-        $services_exclude = [];
-
-        if (!is_array($carriers)) {
-            $carriers = explode(',', $carriers);
-        }
-        for ($a = 0, $b = count($carriers); $a < $b; $a++) {
-            $carriers[$a] = trim(strtolower($carriers[$a]));
-            if (substr($carriers[$a], 0, 1) == '!') {
-                $carriers_exclude[] = substr($carriers[$a], 1);
-            } else {
-                $carriers_include[] = $carriers[$a];
-            }
-        }
-
-        if (!is_array($services)) {
-            $services = explode(',', $services);
-        }
-        for ($c = 0, $d = count($services); $c < $d; $c++) {
-            $services[$c] = trim(strtolower($services[$c]));
-            if (substr($services[$c], 0, 1) == '!') {
-                $services_exclude[] = substr($services[$c], 1);
-            } else {
-                $services_include[] = $services[$c];
-            }
-        }
-
-        for ($i = 0, $k = count($this->rates); $i < $k; $i++) {
-            $rate_carrier = strtolower($this->rates[$i]->carrier);
-            if (!empty($carriers_include[0]) && !in_array($rate_carrier, $carriers_include)) {
-                continue;
-            }
-            if (!empty($carriers_exclude[0]) && in_array($rate_carrier, $carriers_exclude)) {
-                continue;
-            }
-
-            $rate_service = strtolower($this->rates[$i]->service);
-            if (!empty($services_include[0]) && !in_array($rate_service, $services_include)) {
-                continue;
-            }
-            if (!empty($services_exclude[0]) && in_array($rate_service, $services_exclude)) {
-                continue;
-            }
-
-            if (!$lowest_rate || floatval($this->rates[$i]->rate) < floatval($lowest_rate->rate)) {
-                $lowest_rate = clone ($this->rates[$i]);
-            }
-        }
-
-        if ($lowest_rate == false) {
-            throw new Error('No rates found.');
-        }
+        $lowest_rate = Util::getLowestObjectRate($this, $carriers, $services);
 
         return $lowest_rate;
+    }
+
+    /**
+     * Get the lowest smartrate of the shipment.
+     *
+     * @param int $delivery_days
+     * @param string $delivery_accuracy
+     * @return Rate
+     * @throws \EasyPost\Error
+     */
+    public function lowest_smartrate($delivery_days, $delivery_accuracy)
+    {
+        $smartrates = $this->get_smartrates();
+        $lowest_rate = $this->get_lowest_smartrate($smartrates, $delivery_days, $delivery_accuracy);
+
+        return $lowest_rate;
+    }
+
+    /**
+     * Get the lowest smartrate from a list of smartrates.
+     *
+     * @param array $smartrates
+     * @param int $delivery_days
+     * @param string $delivery_accuracy
+     * @return Rate
+     * @throws \EasyPost\Error
+     */
+    public static function get_lowest_smartrate($smartrates, $delivery_days, $delivery_accuracy)
+    {
+        $valid_delivery_accuracy_values = [
+            'percentile_50',
+            'percentile_75',
+            'percentile_85',
+            'percentile_90',
+            'percentile_95',
+            'percentile_97',
+            'percentile_99',
+        ];
+        $lowest_smartrate = false;
+
+        if (!in_array(strtolower($delivery_accuracy), $valid_delivery_accuracy_values)) {
+            $json_valid_list = json_encode($valid_delivery_accuracy_values);
+            throw new Error("Invalid delivery_accuracy value, must be one of: $json_valid_list");
+        }
+
+        foreach ($smartrates as $rate) {
+            if ($rate['time_in_transit'][$delivery_accuracy] > intval($delivery_days)) {
+                continue;
+            } elseif (!$lowest_smartrate || floatval($rate['rate']) < floatval($lowest_smartrate['rate'])) {
+                $lowest_smartrate = $rate;
+            }
+        }
+
+        if ($lowest_smartrate == false) {
+            throw new Error("No rates found.");
+        }
+
+        return $lowest_smartrate;
     }
 }

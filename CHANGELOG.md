@@ -2,8 +2,9 @@
 
 ## NEXT RELEASE
 
+- Adds a `lowest_rate` function to Orders and Pickups
+- Adds `Shipment::get_lowest_smartrate()` and `$shipment.lowest_smartrate()` functions
 - Removes the `params` from the `Address->verify()` method since it's non-static and unused
-- Add `columns` and `additional_columns` support to `Report->create()`
 - Removes dead conditional `message` check in `Address::create_and_verify`
 
 ## v5.0.0 (2022-02-09)

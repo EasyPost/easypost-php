@@ -146,4 +146,73 @@ abstract class Util
             return $response;
         }
     }
+
+    /**
+     * @param object EasyPostObject
+     * @param array $carriers
+     * @param array $services
+     * @param string $rates_key
+     * @return Rate
+     * @throws \EasyPost\Error
+     */
+    public static function getLowestObjectRate($easypost_object, $carriers = [], $services = [], $rates_key = 'rates')
+    {
+        $lowest_rate = false;
+        $carriers_include = [];
+        $carriers_exclude = [];
+        $services_include = [];
+        $services_exclude = [];
+
+        if (!is_array($carriers)) {
+            $carriers = explode(',', $carriers);
+        }
+        for ($i = 0; $i < count($carriers); $i++) {
+            $carriers[$i] = trim(strtolower($carriers[$i]));
+            if (substr($carriers[$i], 0, 1) == '!') {
+                $carriers_exclude[] = substr($carriers[$i], 1);
+            } else {
+                $carriers_include[] = $carriers[$i];
+            }
+        }
+
+        if (!is_array($services)) {
+            $services = explode(',', $services);
+        }
+        for ($i = 0; $i < count($services); $i++) {
+            $services[$i] = trim(strtolower($services[$i]));
+            if (substr($services[$i], 0, 1) == '!') {
+                $services_exclude[] = substr($services[$i], 1);
+            } else {
+                $services_include[] = $services[$i];
+            }
+        }
+
+        for ($i = 0; $i < count($easypost_object->$rates_key); $i++) {
+            $rate_carrier = strtolower($easypost_object->$rates_key[$i]->carrier);
+            if (!empty($carriers_include[0]) && !in_array($rate_carrier, $carriers_include)) {
+                continue;
+            }
+            if (!empty($carriers_exclude[0]) && in_array($rate_carrier, $carriers_exclude)) {
+                continue;
+            }
+
+            $rate_service = strtolower($easypost_object->$rates_key[$i]->service);
+            if (!empty($services_include[0]) && !in_array($rate_service, $services_include)) {
+                continue;
+            }
+            if (!empty($services_exclude[0]) && in_array($rate_service, $services_exclude)) {
+                continue;
+            }
+
+            if (!$lowest_rate || floatval($easypost_object->$rates_key[$i]->rate) < floatval($lowest_rate->rate)) {
+                $lowest_rate = clone ($easypost_object->$rates_key[$i]);
+            }
+        }
+
+        if ($lowest_rate == false) {
+            throw new Error('No rates found.');
+        }
+
+        return $lowest_rate;
+    }
 }
