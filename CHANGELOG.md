@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v5.1.1 (2022-05-09)
+
+- Adds present but unimported supplemental EasyPost object classes such as `TrackingDetails` to the lib (closes #164)
+
 ## v5.1.0 (2022-05-09)
 
 - Adds a `lowest_rate()` function to Orders and Pickups
