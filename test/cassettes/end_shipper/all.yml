@@ -1,0 +1,78 @@
+
+-
+    request:
+        method: GET
+        url: 'https://api.easypost.com/beta/end_shippers?page_size=5'
+        headers:
+            Host: api.easypost.com
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+            X-Client-User-Agent: ''
+            EasyPost-Version: '2'
+    response:
+        status:
+            http_version: '2'
+            code: '200'
+            message: ''
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: d74fd111627e6f71ff147fa2002f2b7c
+            cache-control: 'no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '1801'
+            etag: 'W/"33af89c978697c0cc70f94343767d602"'
+            x-runtime: '0.053992'
+            x-node: bigweb7nuq
+            x-version-label: easypost-202205110022-b4df6b5700-master
+            x-backend: easypost
+            x-canary: direct
+            x-proxied: ['intlb1nuq 570dfcbc0a', 'intlb1wdc 570dfcbc0a', 'extlb3wdc c51cdb8bf2']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '[{"id":"es_1948a2c354604bc7afdc325b6674158f","object":"EndShipper","created_at":"2022-05-12T22:36:52+00:00","updated_at":"2022-05-12T22:36:52+00:00","name":"JACK SPARROW","company":"EASYPOST","street1":"388 TOWNSEND ST APT 20","street2":null,"city":"SAN FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"5555555555","email":"TEST@EXAMPLE.COM"},{"id":"es_7624b209347d4d2f9e154ff21d9281db","object":"EndShipper","created_at":"2022-05-12T22:39:21+00:00","updated_at":"2022-05-12T23:17:46+00:00","name":"JACK SPARROW","company":"EASYPOST","street1":"388 TOWNSEND ST APT 20","street2":null,"city":"SAN FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"9999999999","email":"TEST@EXAMPLE.COM"},{"id":"es_27f5b696dcdd4b919d4790f55a319828","object":"EndShipper","created_at":"2022-05-12T22:47:12+00:00","updated_at":"2022-05-12T22:47:12+00:00","name":"JACK SPARROW","company":"EASYPOST","street1":"388 TOWNSEND ST APT 20","street2":null,"city":"SAN FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"5555555555","email":"TEST@EXAMPLE.COM"},{"id":"es_cbf3f81c16d241d8aee7422ede8a745b","object":"EndShipper","created_at":"2022-05-12T22:53:45+00:00","updated_at":"2022-05-12T22:53:45+00:00","name":"JACK SPARROW","company":"EASYPOST","street1":"388 TOWNSEND ST APT 20","street2":null,"city":"SAN FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"5555555555","email":"TEST@EXAMPLE.COM"},{"id":"es_dfbe94718c424e92960989cc2cc0f496","object":"EndShipper","created_at":"2022-05-12T22:56:25+00:00","updated_at":"2022-05-12T22:56:26+00:00","name":"JACK SPARROW","company":"EASYPOST","street1":"388 TOWNSEND ST APT 20","street2":null,"city":"SAN FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"9999999999","email":"TEST@EXAMPLE.COM"}]'
+        curl_info:
+            url: 'https://api.easypost.com/beta/end_shippers?page_size=5'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 770
+            request_size: 534
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.24432
+            namelookup_time: 0.001289
+            connect_time: 0.014806
+            pretransfer_time: 0.04501
+            size_upload: 0.0
+            size_download: 1801.0
+            speed_download: 7371.0
+            speed_upload: 0.0
+            download_content_length: 1801.0
+            upload_content_length: 0.0
+            starttransfer_time: 0.24406
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.47.33.18
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 192.168.1.156
+            local_port: 58436
+            http_version: 3
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 44906
+            connect_time_us: 14806
+            namelookup_time_us: 1289
+            pretransfer_time_us: 45010
+            redirect_time_us: 0
+            starttransfer_time_us: 244060
+            total_time_us: 244320

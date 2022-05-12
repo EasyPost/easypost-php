@@ -68,12 +68,12 @@ abstract class EasypostResource extends EasyPostObject
      * @return $this
      * @throws \EasyPost\Error
      */
-    public function refresh()
+    public function refresh($beta)
     {
         $requestor = new Requestor($this->_apiKey);
         $url = $this->instanceUrl();
 
-        list($response, $apiKey) = $requestor->request('get', $url, $this->_retrieveOptions);
+        list($response, $apiKey) = $requestor->request('get', $url, $this->_retrieveOptions, true, $beta);
         $this->refreshFrom($response, $apiKey);
 
         return $this;
@@ -104,13 +104,13 @@ abstract class EasypostResource extends EasyPostObject
      * @param string $apiKey
      * @return mixed
      */
-    protected static function _retrieve($class, $id, $apiKey = null)
+    protected static function _retrieve($class, $id, $apiKey = null, $beta = false)
     {
         if ($id instanceof EasypostResource) {
             $id = $id->id;
         }
         $instance = new $class($id, $apiKey);
-        $instance->refresh();
+        $instance->refresh($beta);
 
         return $instance;
     }
@@ -124,12 +124,12 @@ abstract class EasypostResource extends EasyPostObject
      * @return mixed
      * @throws \EasyPost\Error
      */
-    protected static function _all($class, $params = null, $apiKey = null)
+    protected static function _all($class, $params = null, $apiKey = null, $beta = false)
     {
         self::_validate($params, $apiKey);
         $requestor = new Requestor($apiKey);
         $url = self::classUrl($class);
-        list($response, $apiKey) = $requestor->request('get', $url, $params);
+        list($response, $apiKey) = $requestor->request('get', $url, $params, true, $beta);
 
         return Util::convertToEasyPostObject($response, $apiKey);
     }
@@ -144,7 +144,7 @@ abstract class EasypostResource extends EasyPostObject
      * @return mixed
      * @throws \EasyPost\Error
      */
-    protected static function _create($class, $params = null, $apiKey = null, $urlModifier = null)
+    protected static function _create($class, $params = null, $apiKey = null, $urlModifier = null, $beta = false)
     {
         self::_validate($params, $apiKey);
         $requestor = new Requestor($apiKey);
@@ -153,7 +153,7 @@ abstract class EasypostResource extends EasyPostObject
             $url .= $urlModifier;
         }
 
-        list($response, $apiKey) = $requestor->request('post', $url, $params);
+        list($response, $apiKey) = $requestor->request('post', $url, $params, true, $beta);
 
         return Util::convertToEasyPostObject($response, $apiKey);
     }
@@ -165,14 +165,14 @@ abstract class EasypostResource extends EasyPostObject
      * @return $this
      * @throws \EasyPost\Error
      */
-    protected function _save($class)
+    protected function _save($class, $beta = false)
     {
         self::_validate();
         if (count($this->_unsavedValues)) {
             $requestor = new Requestor($this->_apiKey);
             $url = $this->instanceUrl();
             $params = [self::className($class) => $this->_unsavedValues];
-            list($response, $apiKey) = $requestor->request('put', $url, $params);
+            list($response, $apiKey) = $requestor->request('put', $url, $params, true, $beta);
             $this->refreshFrom($response, $apiKey);
         }
 

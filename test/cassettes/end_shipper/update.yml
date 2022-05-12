@@ -1,0 +1,78 @@
+
+-
+    request:
+        method: PUT
+        url: 'https://api.easypost.com/beta/end_shippers/es_90f50a58d0e546dcb7f3339a8e791a6a'
+        headers:
+            Host: api.easypost.com
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+            X-Client-User-Agent: ''
+            EasyPost-Version: '2'
+        body: '{"address":{"name":"Jack Sparrow","company":"EasyPost","street1":"388 Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","country":"US","phone":"9999999999","email":"test@example.com"}}'
+    response:
+        status:
+            http_version: '2'
+            code: '200'
+            message: ''
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: efec6382627e6f98ff147fc600328362
+            cache-control: 'no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '357'
+            etag: 'W/"257d6cc1b2ec64d28a30bb21a9c8889d"'
+            x-runtime: '0.179905'
+            x-node: bigweb5nuq
+            x-version-label: easypost-202205110022-b4df6b5700-master
+            x-backend: easypost
+            x-proxied: ['intlb2nuq 570dfcbc0a', 'extlb2nuq c51cdb8bf2']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"id":"es_90f50a58d0e546dcb7f3339a8e791a6a","object":"EndShipper","created_at":"2022-05-13T14:47:13+00:00","updated_at":"2022-05-13T14:47:52+00:00","name":"JACK SPARROW","company":"EASYPOST","street1":"388 TOWNSEND ST APT 20","street2":"","city":"SAN FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"9999999999","email":"TEST@EXAMPLE.COM"}'
+        curl_info:
+            url: 'https://api.easypost.com/beta/end_shippers/es_90f50a58d0e546dcb7f3339a8e791a6a'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 718
+            request_size: 579
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.542322
+            namelookup_time: 0.025103
+            connect_time: 0.097746
+            pretransfer_time: 0.182857
+            size_upload: 216.0
+            size_download: 357.0
+            speed_download: 658.0
+            speed_upload: 398.0
+            download_content_length: 357.0
+            upload_content_length: 216.0
+            starttransfer_time: 0.182866
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.62.110.130
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 192.168.1.156
+            local_port: 58449
+            http_version: 3
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 182712
+            connect_time_us: 97746
+            namelookup_time_us: 25103
+            pretransfer_time_us: 182857
+            redirect_time_us: 0
+            starttransfer_time_us: 182866
+            total_time_us: 542322

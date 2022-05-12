@@ -30,9 +30,13 @@ class Requestor
      * @param string $url
      * @return string
      */
-    public static function apiUrl($url = '')
+    public static function apiUrl($url = '', $beta = false)
     {
-        $apiBase = EasyPost::$apiBase;
+        if ($beta) {
+            $apiBase = EasyPost::$betaApiBase;
+        } else {
+            $apiBase = EasyPost::$apiBase;
+        }
 
         return "{$apiBase}{$url}";
     }
@@ -126,9 +130,9 @@ class Requestor
      * @return array
      * @throws \EasyPost\Error
      */
-    public function request($method, $url, $params = null, $apiKeyRequired = true)
+    public function request($method, $url, $params = null, $apiKeyRequired = true, $beta = false)
     {
-        list($httpBody, $httpStatus, $myApiKey) = $this->_requestRaw($method, $url, $params, $apiKeyRequired);
+        list($httpBody, $httpStatus, $myApiKey) = $this->_requestRaw($method, $url, $params, $apiKeyRequired, $beta);
         $response = $this->_interpretResponse($httpBody, $httpStatus);
 
         return [$response, $myApiKey];
@@ -143,7 +147,7 @@ class Requestor
      * @return array
      * @throws \EasyPost\Error
      */
-    private function _requestRaw($method, $url, $params, $apiKeyRequired = true)
+    private function _requestRaw($method, $url, $params, $apiKeyRequired = true, $beta = false)
     {
         $myApiKey = $this->_apiKey;
 
@@ -155,7 +159,7 @@ class Requestor
             }
         }
 
-        $absUrl = $this->apiUrl($url);
+        $absUrl = $this->apiUrl($url, $beta);
         $params = self::_encodeObjects($params);
 
         $langVersion = phpversion();
