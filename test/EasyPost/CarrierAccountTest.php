@@ -2,10 +2,10 @@
 
 namespace EasyPost\Test;
 
-use VCR\VCR;
 use EasyPost\CarrierAccount;
 use EasyPost\EasyPost;
 use EasyPost\Test\Fixture;
+use VCR\VCR;
 
 class CarrierAccountTest extends \PHPUnit\Framework\TestCase
 {
@@ -35,7 +35,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating a carrier account.
      *
-     * @return CarrierAccount
+     * @return void
      */
     public function testCreate()
     {
@@ -47,28 +47,26 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf('\EasyPost\CarrierAccount', $carrier_account);
         $this->assertStringMatchesFormat('ca_%s', $carrier_account->id);
 
-        // Return so other tests can reuse this object
-        return $carrier_account;
+        $carrier_account->delete(); // Delete the carrier account once it's done being tested.
     }
 
     /**
      * Test retrieving a carrier account.
      *
-     * @param CarrierAccount $carrier_account
-     * @return CarrierAccount
-     * @depends testCreate
+     * @return void
      */
-    public function testRetrieve(CarrierAccount $carrier_account)
+    public function testRetrieve()
     {
         VCR::insertCassette('carrier_accounts/retrieve.yml');
+
+        $carrier_account = CarrierAccount::create(Fixture::basic_carrier_account());
 
         $retrieved_carrier_account = CarrierAccount::retrieve($carrier_account->id);
 
         $this->assertInstanceOf('\EasyPost\CarrierAccount', $retrieved_carrier_account);
         $this->assertEquals($carrier_account, $retrieved_carrier_account);
 
-        // Return so other tests can reuse this object
-        return $carrier_account;
+        $carrier_account->delete(); // Delete the carrier account once it's done being tested.
     }
 
     /**
@@ -88,13 +86,13 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
     /**
      * Test updating a carrier account.
      *
-     * @param CarrierAccount $carrier_account
      * @return void
-     * @depends testRetrieve
      */
-    public function testUpdate(CarrierAccount $carrier_account)
+    public function testUpdate()
     {
         VCR::insertCassette('carrier_accounts/update.yml');
+
+        $carrier_account = CarrierAccount::create(Fixture::basic_carrier_account());
 
         $test_description = 'My custom description';
 
@@ -104,18 +102,20 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf('\EasyPost\CarrierAccount', $carrier_account);
         $this->assertStringMatchesFormat('ca_%s', $carrier_account->id);
         $this->assertEquals($test_description, $carrier_account->description);
+
+        $carrier_account->delete(); // Delete the carrier account once it's done being tested.
     }
 
     /**
      * Test deleting a carrier account.
      *
-     * @param CarrierAccount $carrier_account
      * @return void
-     * @depends testCreate
      */
-    public function testDelete(CarrierAccount $carrier_account)
+    public function testDelete()
     {
         VCR::insertCassette('carrier_accounts/delete.yml');
+
+        $carrier_account = CarrierAccount::create(Fixture::basic_carrier_account());
 
         $response = $carrier_account->delete();
 

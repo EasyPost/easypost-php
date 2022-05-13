@@ -2,11 +2,11 @@
 
 namespace EasyPost\Test;
 
-use VCR\VCR;
+use EasyPost\EasyPost;
 use EasyPost\Rate;
 use EasyPost\Shipment;
-use EasyPost\EasyPost;
 use EasyPost\Test\Fixture;
+use VCR\VCR;
 
 class RateTest extends \PHPUnit\Framework\TestCase
 {

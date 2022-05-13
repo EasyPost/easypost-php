@@ -36,7 +36,7 @@ class OrderTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating an Order.
      *
-     * @return Order
+     * @return void
      */
     public function testCreate()
     {
@@ -47,21 +47,18 @@ class OrderTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf('\EasyPost\Order', $order);
         $this->assertStringMatchesFormat('order_%s', $order->id);
         $this->assertNotNull($order->rates);
-
-        // Return so other tests can reuse this object
-        return $order;
     }
 
     /**
      * Test retrieving an Order.
      *
-     * @param Order $order
      * @return void
-     * @depends testCreate
      */
-    public function testRetrieve(Order $order)
+    public function testRetrieve()
     {
         VCR::insertCassette('orders/retrieve.yml');
+
+        $order = Order::create(Fixture::basic_order());
 
         $retrieved_order = Order::retrieve($order->id);
 
@@ -72,13 +69,13 @@ class OrderTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving rates for a order.
      *
-     * @param Order $order
      * @return void
-     * @depends testCreate
      */
-    public function testGetRates(Order $order)
+    public function testGetRates()
     {
         VCR::insertCassette('orders/getRates.yml');
+
+        $order = Order::create(Fixture::basic_order());
 
         $rates = $order->get_rates();
 
@@ -91,13 +88,13 @@ class OrderTest extends \PHPUnit\Framework\TestCase
     /**
      * Test buying an Order.
      *
-     * @param Order $order
      * @return void
-     * @depends testCreate
      */
-    public function testBuy(Order $order)
+    public function testBuy()
     {
         VCR::insertCassette('orders/buy.yml');
+
+        $order = Order::create(Fixture::basic_order());
 
         $order->buy([
             'carrier' => Fixture::usps(),

@@ -2,11 +2,11 @@
 
 namespace EasyPost\Test;
 
-use VCR\VCR;
 use EasyPost\Batch;
-use EasyPost\Shipment;
 use EasyPost\EasyPost;
+use EasyPost\Shipment;
 use EasyPost\Test\Fixture;
+use VCR\VCR;
 
 class BatchTest extends \PHPUnit\Framework\TestCase
 {
@@ -36,7 +36,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating a Batch.
      *
-     * @return Batch
+     * @return void
      */
     public function testCreate()
     {
@@ -49,21 +49,20 @@ class BatchTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf('\EasyPost\Batch', $batch);
         $this->assertStringMatchesFormat('batch_%s', $batch->id);
         $this->assertNotNull($batch->shipments);
-
-        // Return so other tests can reuse this object
-        return $batch;
     }
 
     /**
      * Test retrieving a Batch.
      *
-     * @param Batch $batch
      * @return void
-     * @depends testCreate
      */
-    public function testRetrieve(Batch $batch)
+    public function testRetrieve()
     {
         VCR::insertCassette('batches/retrieve.yml');
+
+        $batch = Batch::create([
+            'shipments' => [Fixture::basic_shipment()],
+        ]);
 
         $retrieved_batch = Batch::retrieve($batch->id);
 
@@ -94,7 +93,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating and buying a Batch in a single call.
      *
-     * @return Batch
+     * @return void
      */
     public function testCreateAndBuy()
     {
@@ -113,7 +112,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
     /**
      * Test buying a batch.
      *
-     * @return Batch
+     * @return void
      */
     public function testBuy()
     {
@@ -137,13 +136,23 @@ class BatchTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating a scanform for a batch.
      *
-     * @param Batch
      * @return void
-     * @depends testBuy
      */
-    public function testCreateScanForm(Batch $batch)
+    public function testCreateScanForm()
     {
-        VCR::insertCassette('batches/createScanForm.yml');
+        $cassette_name = 'batches/createScanForm.yml';
+        $test_requires_wait = true ? file_exists(dirname(__DIR__, 1) . "/cassettes/$cassette_name") === false : false;
+
+        VCR::insertCassette($cassette_name);
+
+        $batch = Batch::create([
+            'shipments' => [Fixture::one_call_buy_shipment()],
+        ]);
+        $batch->buy();
+
+        if ($test_requires_wait === true) {
+            sleep(5); // Wait enough time for the batch to process buying the shipment
+        }
 
         $batch->create_scan_form();
 
@@ -178,13 +187,23 @@ class BatchTest extends \PHPUnit\Framework\TestCase
     /**
      * Test generating a label for a Batch.
      *
-     * @param Batch $batch
      * @return void
-     * @depends testBuy
      */
-    public function testLabel(Batch $batch)
+    public function testLabel()
     {
-        VCR::insertCassette('batches/label.yml');
+        $cassette_name = 'batches/label.yml';
+        $test_requires_wait = true ? file_exists(dirname(__DIR__, 1) . "/cassettes/$cassette_name") === false : false;
+
+        VCR::insertCassette($cassette_name);
+
+        $batch = Batch::create([
+            'shipments' => [Fixture::one_call_buy_shipment()],
+        ]);
+        $batch->buy();
+
+        if ($test_requires_wait === true) {
+            sleep(5); // Wait enough time for the batch to process buying the shipment
+        }
 
         $batch->label([
             'file_format' => 'ZPL',

@@ -2,7 +2,7 @@
 -
     request:
         method: POST
-        url: 'https://api.easypost.com/v2/reports/shipment/'
+        url: 'https://api.easypost.com/v2/users'
         headers:
             Host: api.easypost.com
             Accept: application/json
@@ -11,7 +11,7 @@
             User-Agent: ''
             X-Client-User-Agent: ''
             EasyPost-Version: '2'
-        body: '{"start_date":"2022-04-09","end_date":"2022-04-09","type":"shipment"}'
+        body: '{"user":{"name":"Test User"}}'
     response:
         status:
             http_version: '2'
@@ -24,62 +24,63 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 2f26e940627ed41ee798bc220006fc4f
+            x-ep-request-uuid: 2f26e942627ed405e798bb980006f55f
             cache-control: 'no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
-            content-length: '283'
-            etag: 'W/"8cd663f7366e1344b343f380d7072256"'
-            x-runtime: '0.048797'
-            x-node: bigweb2nuq
+            content-length: '634'
+            etag: 'W/"6c2529a09383be5a47cef56d414e44e3"'
+            x-runtime: '0.551596'
+            x-node: bigweb7nuq
             x-version-label: easypost-202205131956-9146889ba0-master
             x-backend: easypost
+            x-canary: direct
             x-proxied: ['intlb1nuq 570dfcbc0a', 'extlb1nuq c51cdb8bf2']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"shprep_6748a0a8089947cabc9b8adfd63a10a0","object":"ShipmentReport","created_at":"2022-05-13T21:56:46Z","updated_at":"2022-05-13T21:56:46Z","start_date":"2022-04-09","end_date":"2022-04-09","mode":"test","status":"new","url":null,"url_expires_at":null,"include_children":false}'
+        body: '{"id":"user_f6f33df838d6452092d016c6de64198b","object":"User","parent_id":"user_465eab8bb86844108100be2d4d5288ab","name":"Test User","phone_number":"<REDACTED>","verified":true,"created_at":"2022-05-13T21:56:21Z","children":"<REDACTED>","api_keys":"<REDACTED>"}'
         curl_info:
-            url: 'https://api.easypost.com/v2/reports/shipment/'
+            url: 'https://api.easypost.com/v2/users'
             content_type: 'application/json; charset=utf-8'
             http_code: 201
-            header_size: 718
-            request_size: 567
+            header_size: 736
+            request_size: 555
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.245802
-            namelookup_time: 0.002399
-            connect_time: 0.062394
-            pretransfer_time: 0.134846
-            size_upload: 69.0
-            size_download: 283.0
-            speed_download: 1151.0
-            speed_upload: 280.0
-            download_content_length: 283.0
-            upload_content_length: 69.0
-            starttransfer_time: 0.134849
+            total_time: 0.746558
+            namelookup_time: 0.001882
+            connect_time: 0.06153
+            pretransfer_time: 0.133521
+            size_upload: 29.0
+            size_download: 634.0
+            speed_download: 849.0
+            speed_upload: 38.0
+            download_content_length: 634.0
+            upload_content_length: 29.0
+            starttransfer_time: 0.133526
             redirect_time: 0.0
             redirect_url: ''
             primary_ip: 169.62.110.131
             certinfo: {  }
             primary_port: 443
             local_ip: 10.130.6.6
-            local_port: 60087
+            local_port: 60041
             http_version: 3
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 134771
-            connect_time_us: 62394
-            namelookup_time_us: 2399
-            pretransfer_time_us: 134846
+            appconnect_time_us: 133422
+            connect_time_us: 61530
+            namelookup_time_us: 1882
+            pretransfer_time_us: 133521
             redirect_time_us: 0
-            starttransfer_time_us: 134849
-            total_time_us: 245802
+            starttransfer_time_us: 133526
+            total_time_us: 746558
 -
     request:
-        method: GET
-        url: 'https://api.easypost.com/v2/reports/shprep_6748a0a8089947cabc9b8adfd63a10a0'
+        method: DELETE
+        url: 'https://api.easypost.com/v2/users/user_f6f33df838d6452092d016c6de64198b'
         headers:
             Host: api.easypost.com
             Accept: application/json
@@ -91,7 +92,7 @@
     response:
         status:
             http_version: '2'
-            code: '200'
+            code: '204'
             message: ''
         headers:
             x-frame-options: SAMEORIGIN
@@ -100,55 +101,51 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 2f26e942627ed41fe798bc230006fc64
+            x-ep-request-uuid: 2f26e944627ed406e798bb990006f588
             cache-control: 'no-cache, no-store'
             pragma: no-cache
             expires: '0'
-            content-type: 'application/json; charset=utf-8'
-            content-length: '285'
-            etag: 'W/"ca3b6dc815891207adc3fede809b43d0"'
-            x-runtime: '0.029599'
-            x-node: bigweb5nuq
+            x-runtime: '0.114776'
+            x-node: bigweb6nuq
             x-version-label: easypost-202205131956-9146889ba0-master
             x-backend: easypost
             x-proxied: ['intlb2nuq 570dfcbc0a', 'extlb1nuq c51cdb8bf2']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"shprep_6748a0a8089947cabc9b8adfd63a10a0","object":"ShipmentReport","created_at":"2022-05-13T21:56:46Z","updated_at":"2022-05-13T21:56:47Z","start_date":"2022-04-09","end_date":"2022-04-09","mode":"test","status":"empty","url":null,"url_expires_at":null,"include_children":false}'
         curl_info:
-            url: 'https://api.easypost.com/v2/reports/shprep_6748a0a8089947cabc9b8adfd63a10a0'
-            content_type: 'application/json; charset=utf-8'
-            http_code: 200
-            header_size: 718
-            request_size: 576
+            url: 'https://api.easypost.com/v2/users/user_f6f33df838d6452092d016c6de64198b'
+            content_type: null
+            http_code: 204
+            header_size: 606
+            request_size: 575
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.232811
-            namelookup_time: 0.002198
-            connect_time: 0.061749
-            pretransfer_time: 0.141848
+            total_time: 0.317012
+            namelookup_time: 0.001778
+            connect_time: 0.062725
+            pretransfer_time: 0.140708
             size_upload: 0.0
-            size_download: 285.0
-            speed_download: 1224.0
+            size_download: 0.0
+            speed_download: 0.0
             speed_upload: 0.0
-            download_content_length: 285.0
+            download_content_length: 0.0
             upload_content_length: 0.0
-            starttransfer_time: 0.232763
+            starttransfer_time: 0.316953
             redirect_time: 0.0
             redirect_url: ''
             primary_ip: 169.62.110.131
             certinfo: {  }
             primary_port: 443
             local_ip: 10.130.6.6
-            local_port: 60088
+            local_port: 60042
             http_version: 3
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 141672
-            connect_time_us: 61749
-            namelookup_time_us: 2198
-            pretransfer_time_us: 141848
+            appconnect_time_us: 140464
+            connect_time_us: 62725
+            namelookup_time_us: 1778
+            pretransfer_time_us: 140708
             redirect_time_us: 0
-            starttransfer_time_us: 232763
-            total_time_us: 232811
+            starttransfer_time_us: 316953
+            total_time_us: 317012

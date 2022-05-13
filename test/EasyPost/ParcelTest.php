@@ -2,10 +2,10 @@
 
 namespace EasyPost\Test;
 
-use VCR\VCR;
-use EasyPost\Parcel;
 use EasyPost\EasyPost;
+use EasyPost\Parcel;
 use EasyPost\Test\Fixture;
+use VCR\VCR;
 
 class ParcelTest extends \PHPUnit\Framework\TestCase
 {
@@ -35,7 +35,7 @@ class ParcelTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating a Parcel.
      *
-     * @return Parcel
+     * @return void
      */
     public function testCreate()
     {
@@ -46,21 +46,18 @@ class ParcelTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf('\EasyPost\Parcel', $parcel);
         $this->assertStringMatchesFormat('prcl_%s', $parcel->id);
         $this->assertEquals(15.4, $parcel->weight);
-
-        // Return so other tests can reuse this object
-        return $parcel;
     }
 
     /**
      * Test retrieving a Parcel.
      *
-     * @param Parcel $parcel
      * @return void
-     * @depends testCreate
      */
-    public function testRetrieve(Parcel $parcel)
+    public function testRetrieve()
     {
         VCR::insertCassette('parcels/retrieve.yml');
+
+        $parcel = Parcel::create(Fixture::basic_parcel());
 
         $retrieved_parcel = Parcel::retrieve($parcel->id);
 

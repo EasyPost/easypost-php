@@ -2,10 +2,10 @@
 
 namespace EasyPost\Test;
 
-use VCR\VCR;
-use EasyPost\Report;
 use EasyPost\EasyPost;
+use EasyPost\Report;
 use EasyPost\Test\Fixture;
+use VCR\VCR;
 
 class ReportTest extends \PHPUnit\Framework\TestCase
 {
@@ -49,9 +49,6 @@ class ReportTest extends \PHPUnit\Framework\TestCase
 
         $this->assertInstanceOf('\EasyPost\Report', $report);
         $this->assertStringMatchesFormat('shprep_%s', $report->id);
-
-        // Return so other tests can reuse this object
-        return $report;
     }
 
     /**
@@ -101,13 +98,17 @@ class ReportTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving a report.
      *
-     * @param Report $report
      * @return void
-     * @depends testCreateReport
      */
-    public function testRetrieveReport($report)
+    public function testRetrieveReport()
     {
         VCR::insertCassette('reports/retrieveReport.yml');
+
+        $report = Report::create([
+            'start_date' => Fixture::report_date(),
+            'end_date' => Fixture::report_date(),
+            'type' => Fixture::report_type(),
+        ]);
 
         $retrieved_report = Report::retrieve($report->id);
 

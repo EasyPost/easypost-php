@@ -2,10 +2,10 @@
 
 namespace EasyPost\Test;
 
-use VCR\VCR;
-use EasyPost\Shipment;
 use EasyPost\EasyPost;
 use EasyPost\Error;
+use EasyPost\Shipment;
+use VCR\VCR;
 
 class ErrorTest extends \PHPUnit\Framework\TestCase
 {

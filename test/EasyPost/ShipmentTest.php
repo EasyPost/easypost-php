@@ -40,7 +40,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating a Shipment.
      *
-     * @return Shipment
+     * @return void
      */
     public function testCreate()
     {
@@ -54,21 +54,18 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('PNG', $shipment->options->label_format);
         $this->assertEquals('123', $shipment->options->invoice_number);
         $this->assertEquals('123', $shipment->reference);
-
-        // Return so other tests can reuse this object
-        return $shipment;
     }
 
     /**
      * Test retrieving a Shipment.
      *
-     * @param Shipment $shipment
      * @return void
-     * @depends testCreate
      */
-    public function testRetrieve(Shipment $shipment)
+    public function testRetrieve()
     {
         VCR::insertCassette('shipments/retrieve.yml');
+
+        $shipment = Shipment::create(Fixture::full_shipment());
 
         $retrieved_shipment = Shipment::retrieve($shipment->id);
 
@@ -99,34 +96,31 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     /**
      * Test buying a Shipment.
      *
-     * @param Shipment $shipment
-     * @return Shipment
-     * @depends testCreate
+     * @return void
      */
-    public function testBuy(Shipment $shipment)
+    public function testBuy()
     {
         VCR::insertCassette('shipments/buy.yml');
+
+        $shipment = Shipment::create(Fixture::full_shipment());
 
         $shipment->buy([
             'rate' => $shipment->lowest_rate(),
         ]);
 
         $this->assertNotNull($shipment->postage_label);
-
-        // Return so other tests can reuse this object
-        return $shipment;
     }
 
     /**
      * Test regenerating rates for a shipment.
      *
-     * @param Shipment $shipment
      * @return void
-     * @depends testCreate
      */
-    public function testRegenerateRates(Shipment $shipment)
+    public function testRegenerateRates()
     {
         VCR::insertCassette('shipments/regenerateRates.yml');
+
+        $shipment = Shipment::create(Fixture::one_call_buy_shipment());
 
         $rates = $shipment->regenerate_rates();
 
@@ -141,13 +135,13 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     /**
      * Test converting the label format of a Shipment.
      *
-     * @param Shipment $shipment
      * @return void
-     * @depends testBuy
      */
-    public function testConvertLabel(Shipment $shipment)
+    public function testConvertLabel()
     {
         VCR::insertCassette('shipments/convertLabel.yml');
+
+        $shipment = Shipment::create(Fixture::one_call_buy_shipment());
 
         $shipment->label([
             'file_format' => 'ZPL',
