@@ -2,10 +2,11 @@
 
 namespace EasyPost\Test;
 
-use VCR\VCR;
-use EasyPost\Event;
 use EasyPost\EasyPost;
+use EasyPost\Error;
+use EasyPost\Event;
 use EasyPost\Test\Fixture;
+use VCR\VCR;
 
 class EventTest extends \PHPUnit\Framework\TestCase
 {
@@ -35,7 +36,7 @@ class EventTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving all events.
      *
-     * @return object
+     * @return void
      */
     public function testAll()
     {
@@ -50,21 +51,20 @@ class EventTest extends \PHPUnit\Framework\TestCase
         $this->assertLessThanOrEqual($events_array, Fixture::page_size());
         $this->assertNotNull($events['has_more']);
         $this->assertContainsOnlyInstancesOf('\EasyPost\Event', $events_array);
-
-        // Return so other tests can reuse these objects
-        return $events;
     }
 
     /**
      * Test retrieving an event.
      *
-     * @param object $events
      * @return void
-     * @depends testAll
      */
-    public function testRetrieve(object $events)
+    public function testRetrieve()
     {
         VCR::insertCassette('events/retrieve.yml');
+
+        $events = Event::all([
+            'page_size' => Fixture::page_size(),
+        ]);
 
         $event = Event::retrieve($events['events'][0]);
 
@@ -92,7 +92,7 @@ class EventTest extends \PHPUnit\Framework\TestCase
      */
     public function testReceiveBadInput()
     {
-        $this->expectException(\EasyPost\Error::class);
+        $this->expectException(Error::class);
 
         Event::receive('bad input');
     }
@@ -104,7 +104,7 @@ class EventTest extends \PHPUnit\Framework\TestCase
      */
     public function testReceiveNoInput()
     {
-        $this->expectException(\EasyPost\Error::class);
+        $this->expectException(Error::class);
 
         Event::receive();
     }

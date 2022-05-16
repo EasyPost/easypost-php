@@ -2,10 +2,10 @@
 
 namespace EasyPost\Test;
 
-use VCR\VCR;
-use EasyPost\Webhook;
 use EasyPost\EasyPost;
 use EasyPost\Test\Fixture;
+use EasyPost\Webhook;
+use VCR\VCR;
 
 class WebhookTest extends \PHPUnit\Framework\TestCase
 {
@@ -49,28 +49,28 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
         $this->assertStringMatchesFormat('hook_%s', $webhook->id);
         $this->assertEquals(Fixture::webhook_url(), $webhook->url);
 
-        // Return so other tests can reuse this object
-        return $webhook;
+        $webhook->delete(); // We are deleting the webhook here so we don't keep sending events to a dead webhook.
     }
 
     /**
      * Test retrieving a Webhook.
      *
-     * @param Webhook $webhook
      * @return void
-     * @depends testCreate
      */
-    public function testRetrieve(Webhook $webhook)
+    public function testRetrieve()
     {
         VCR::insertCassette('webhooks/retrieve.yml');
+
+        $webhook = Webhook::create([
+            "url" => Fixture::webhook_url(),
+        ]);
 
         $retrieved_webhook = Webhook::retrieve($webhook->id);
 
         $this->assertInstanceOf('\EasyPost\Webhook', $retrieved_webhook);
         $this->assertEquals($webhook, $retrieved_webhook);
 
-        // Return so the `delete` test can reuse this object
-        return $webhook;
+        $webhook->delete(); // We are deleting the webhook here so we don't keep sending events to a dead webhook.
     }
 
     /**
@@ -99,19 +99,32 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
      */
     public function testUpdate()
     {
-        $this->markTestSkipped('Cannot be easily tested - requires a disabled webhook.');
+        VCR::insertCassette('webhooks/update.yml');
+
+        $webhook = Webhook::create([
+            "url" => Fixture::webhook_url(),
+        ]);
+
+        $response = $webhook->update();
+
+        // This endpoint/method does not return anything useful, just make sure the request doesn't fail
+        $this->assertInstanceOf('\EasyPost\Webhook', $response);
+
+        $response = $webhook->delete(); // We are deleting the webhook here so we don't keep sending events to a dead webhook.
     }
 
     /**
      * Test deleting a Webhook.
      *
-     * @param Webhook $webhook
      * @return void
-     * @depends testRetrieve
      */
-    public function testDelete(Webhook $webhook)
+    public function testDelete()
     {
         VCR::insertCassette('webhooks/delete.yml');
+
+        $webhook = Webhook::create([
+            "url" => Fixture::webhook_url(),
+        ]);
 
         $response = $webhook->delete();
 

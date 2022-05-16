@@ -2,10 +2,10 @@
 
 namespace EasyPost\Test;
 
-use VCR\VCR;
 use EasyPost\Address;
 use EasyPost\EasyPost;
 use EasyPost\Test\Fixture;
+use VCR\VCR;
 
 class AddressTest extends \PHPUnit\Framework\TestCase
 {
@@ -35,7 +35,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating an address.
      *
-     * @return Address
+     * @return void
      */
     public function testCreate()
     {
@@ -46,15 +46,12 @@ class AddressTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf('\EasyPost\Address', $address);
         $this->assertStringMatchesFormat('adr_%s', $address->id);
         $this->assertEquals('388 Townsend St', $address->street1);
-
-        // Return so other tests can reuse this object
-        return $address;
     }
 
     /**
      * Test creating an address with verify_strict param.
      *
-     * @return Address
+     * @return void
      */
     public function testCreateVerifyStrict()
     {
@@ -68,21 +65,18 @@ class AddressTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf('\EasyPost\Address', $address);
         $this->assertStringMatchesFormat('adr_%s', $address->id);
         $this->assertEquals('388 TOWNSEND ST APT 20', $address->street1);
-
-        // Return so other tests can reuse this object
-        return $address;
     }
 
     /**
      * Test retrieving an address.
      *
-     * @param Address $address
      * @return void
-     * @depends testCreate
      */
-    public function testRetrieve(Address $address)
+    public function testRetrieve()
     {
         VCR::insertCassette('addresses/retrieve.yml');
+
+        $address = Address::create(Fixture::basic_address());
 
         $retrieved_address = Address::retrieve($address->id);
 
@@ -156,13 +150,13 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     /**
      * Test we can verify an already created address.
      *
-     * @param Address $address
      * @return void
-     * @depends testCreate
      */
-    public function testVerify(Address $address)
+    public function testVerify()
     {
         VCR::insertCassette('addresses/verify.yml');
+
+        $address = Address::create(Fixture::basic_address());
 
         $address->verify();
 

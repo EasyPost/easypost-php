@@ -2,10 +2,10 @@
 
 namespace EasyPost\Test;
 
-use VCR\VCR;
-use EasyPost\Tracker;
 use EasyPost\EasyPost;
 use EasyPost\Test\Fixture;
+use EasyPost\Tracker;
+use VCR\VCR;
 
 class TrackerTest extends \PHPUnit\Framework\TestCase
 {
@@ -48,21 +48,20 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf('\EasyPost\Tracker', $tracker);
         $this->assertStringMatchesFormat('trk_%s', $tracker->id);
         $this->assertEquals('pre_transit', $tracker->status);
-
-        // Return so other tests can reuse this object
-        return $tracker;
     }
 
     /**
      * Test retrieving a Tracker.
      *
-     * @param Tracker $tracker
      * @return void
-     * @depends testCreate
      */
-    public function testRetrieve(Tracker $tracker)
+    public function testRetrieve()
     {
         VCR::insertCassette('trackers/retrieve.yml');
+
+        $tracker = Tracker::create([
+            "tracking_code" => "EZ1000000001",
+        ]);
 
         // Test trackers cycle through their "dummy" statuses automatically, the created and retrieved objects may differ
         $retrieved_tracker = Tracker::retrieve($tracker->id);

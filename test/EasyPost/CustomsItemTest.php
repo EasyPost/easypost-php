@@ -2,10 +2,10 @@
 
 namespace EasyPost\Test;
 
-use VCR\VCR;
 use EasyPost\CustomsItem;
 use EasyPost\EasyPost;
 use EasyPost\Test\Fixture;
+use VCR\VCR;
 
 class CustomsItemTest extends \PHPUnit\Framework\TestCase
 {
@@ -35,7 +35,7 @@ class CustomsItemTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating a CustomsItem.
      *
-     * @return CustomsItem
+     * @return void
      */
     public function testCreate()
     {
@@ -46,21 +46,18 @@ class CustomsItemTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf('\EasyPost\CustomsItem', $customs_item);
         $this->assertStringMatchesFormat('cstitem_%s', $customs_item->id);
         $this->assertEquals('23.0', $customs_item->value);
-
-        // Return so other tests can reuse this object
-        return $customs_item;
     }
 
     /**
      * Test retrieving a CustomsItem.
      *
-     * @param CustomsItem $customs_item
      * @return void
-     * @depends testCreate
      */
-    public function testRetrieve(CustomsItem $customs_item)
+    public function testRetrieve()
     {
         VCR::insertCassette('customs_items/retrieve.yml');
+
+        $customs_item = CustomsItem::create(Fixture::basic_customs_item());
 
         $retrieved_customs_item = CustomsItem::retrieve($customs_item->id);
 

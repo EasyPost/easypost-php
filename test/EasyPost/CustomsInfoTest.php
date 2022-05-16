@@ -2,10 +2,10 @@
 
 namespace EasyPost\Test;
 
-use VCR\VCR;
 use EasyPost\CustomsInfo;
 use EasyPost\EasyPost;
 use EasyPost\Test\Fixture;
+use VCR\VCR;
 
 class CustomsInfoTest extends \PHPUnit\Framework\TestCase
 {
@@ -35,7 +35,7 @@ class CustomsInfoTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating a CustomsInfo.
      *
-     * @return CustomsInfo
+     * @return void
      */
     public function testCreate()
     {
@@ -46,21 +46,18 @@ class CustomsInfoTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf('\EasyPost\CustomsInfo', $customs_info);
         $this->assertStringMatchesFormat('cstinfo_%s', $customs_info->id);
         $this->assertEquals('NOEEI 30.37(a)', $customs_info->eel_pfc);
-
-        // Return so other tests can reuse this object
-        return $customs_info;
     }
 
     /**
      * Test retrieving a CustomsInfo.
      *
-     * @param CustomsInfo $customs_info
      * @return void
-     * @depends testCreate
      */
-    public function testRetrieve(CustomsInfo $customs_info)
+    public function testRetrieve()
     {
         VCR::insertCassette('customs_info/retrieve.yml');
+
+        $customs_info = CustomsInfo::create(Fixture::basic_customs_info());
 
         $retrieved_customs_info = CustomsInfo::retrieve($customs_info->id);
 

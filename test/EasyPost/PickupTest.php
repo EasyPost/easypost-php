@@ -37,7 +37,7 @@ class PickupTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating a pickup.
      *
-     * @return Pickup
+     * @return void
      */
     public function testCreate()
     {
@@ -53,9 +53,6 @@ class PickupTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf('\EasyPost\Pickup', $pickup);
         $this->assertStringMatchesFormat('pickup_%s', $pickup->id);
         $this->assertNotNull($pickup->pickup_rates);
-
-        // Return so other tests can reuse this object
-        return $pickup;
     }
 
     /**
@@ -82,13 +79,18 @@ class PickupTest extends \PHPUnit\Framework\TestCase
     /**
      * Test buying a pickup.
      *
-     * @param Pickup $pickup
      * @return Pickup
-     * @depends testCreate
      */
-    public function testBuy(Pickup $pickup)
+    public function testBuy()
     {
         VCR::insertCassette('pickups/buy.yml');
+
+        $shipment = Shipment::create(Fixture::one_call_buy_shipment());
+
+        $pickup_data = Fixture::basic_pickup();
+        $pickup_data['shipment'] = $shipment;
+
+        $pickup = Pickup::create($pickup_data);
 
         $bought_pickup = $pickup->buy([
             'carrier' => Fixture::usps(),
@@ -99,23 +101,30 @@ class PickupTest extends \PHPUnit\Framework\TestCase
         $this->assertStringMatchesFormat('pickup_%s', $bought_pickup->id);
         $this->assertNotNull($bought_pickup->confirmation);
         $this->assertEquals('scheduled', $bought_pickup->status);
-
-        // Return so other tests can reuse this object
-        return $pickup;
     }
 
     /**
      * Test cancelling a pickup.
      *
-     * @param Pickup $pickup
      * @return void
-     * @depends testBuy
      */
-    public function testCancel(Pickup $pickup)
+    public function testCancel()
     {
         VCR::insertCassette('pickups/cancel.yml');
 
-        $cancelled_pickup = $pickup->cancel();
+        $shipment = Shipment::create(Fixture::one_call_buy_shipment());
+
+        $pickup_data = Fixture::basic_pickup();
+        $pickup_data['shipment'] = $shipment;
+
+        $pickup = Pickup::create($pickup_data);
+
+        $bought_pickup = $pickup->buy([
+            'carrier' => Fixture::usps(),
+            'service' => Fixture::pickup_service(),
+        ]);
+
+        $cancelled_pickup = $bought_pickup->cancel();
 
         $this->assertInstanceOf('\EasyPost\Pickup', $cancelled_pickup);
         $this->assertStringMatchesFormat('pickup_%s', $cancelled_pickup->id);

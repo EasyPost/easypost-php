@@ -24,56 +24,56 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: b8f5271062589827ff2351b50059d5b7
+            x-ep-request-uuid: 2f26e940627ed3f0e798bb370006f005
             cache-control: 'no-cache, no-store'
             pragma: no-cache
             expires: '0'
-            location: /api/v2/addresses/adr_804c20f2bc3d11ec87afac1f6b0a0d1e
+            location: /api/v2/addresses/adr_79fe46f2d30711ecb747ac1f6bc72124
             content-type: 'application/json; charset=utf-8'
             content-length: '905'
-            etag: 'W/"8a0bb931faa45c46b29a2c0b37e56f87"'
-            x-runtime: '0.039870'
+            etag: 'W/"47565ba736df9896cfdb6b2a27ff6652"'
+            x-runtime: '0.040916'
             x-node: bigweb9nuq
-            x-version-label: easypost-202204142017-962a9659b5-master
+            x-version-label: easypost-202205131956-9146889ba0-master
             x-backend: easypost
-            x-proxied: ['intlb1nuq fde591f008', 'extlb2nuq fde591f008']
+            x-proxied: ['intlb2nuq 570dfcbc0a', 'extlb1nuq c51cdb8bf2']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"address":{"id":"adr_804c20f2bc3d11ec87afac1f6b0a0d1e","object":"Address","created_at":"2022-04-14T21:54:47+00:00","updated_at":"2022-04-14T21:54:47+00:00","name":null,"company":"EASYPOST","street1":"417 MONTGOMERY ST FL 5","street2":"","city":"SAN FRANCISCO","state":"CA","zip":"94104-1129","country":"US","phone":"4151234567","email":null,"mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[{"code":"E.SECONDARY_INFORMATION.INVALID","field":"street2","message":"Invalid secondary information(Apt/Suite#)","suggestion":null}],"details":null},"delivery":{"success":true,"errors":[{"code":"E.SECONDARY_INFORMATION.INVALID","field":"street2","message":"Invalid secondary information(Apt/Suite#)","suggestion":null}],"details":{"latitude":37.79342,"longitude":-122.40288,"time_zone":"America/Los_Angeles"}}}}}'
+        body: '{"address":{"id":"adr_79fe46f2d30711ecb747ac1f6bc72124","object":"Address","created_at":"2022-05-13T21:56:00+00:00","updated_at":"2022-05-13T21:56:00+00:00","name":null,"company":"EASYPOST","street1":"417 MONTGOMERY ST FL 5","street2":"","city":"SAN FRANCISCO","state":"CA","zip":"94104-1129","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[{"code":"E.SECONDARY_INFORMATION.INVALID","field":"street2","message":"Invalid secondary information(Apt\/Suite#)","suggestion":null}],"details":null},"delivery":{"success":true,"errors":[{"code":"E.SECONDARY_INFORMATION.INVALID","field":"street2","message":"Invalid secondary information(Apt\/Suite#)","suggestion":null}],"details":{"latitude":37.79342,"longitude":-122.40288,"time_zone":"America\/Los_Angeles"}}}}}'
         curl_info:
             url: 'https://api.easypost.com/v2/addresses/create_and_verify'
             content_type: 'application/json; charset=utf-8'
             http_code: 200
             header_size: 784
-            request_size: 557
+            request_size: 578
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.28094
-            namelookup_time: 0.001193
-            connect_time: 0.074796
-            pretransfer_time: 0.165267
+            total_time: 0.233692
+            namelookup_time: 0.001922
+            connect_time: 0.061759
+            pretransfer_time: 0.13032
             size_upload: 191.0
             size_download: 905.0
-            speed_download: 3221.0
-            speed_upload: 679.0
+            speed_download: 3872.0
+            speed_upload: 817.0
             download_content_length: 905.0
             upload_content_length: 191.0
-            starttransfer_time: 0.165274
+            starttransfer_time: 0.130322
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.130
+            primary_ip: 169.62.110.131
             certinfo: {  }
             primary_port: 443
-            local_ip: 192.168.1.156
-            local_port: 62500
+            local_ip: 10.130.6.6
+            local_port: 60013
             http_version: 3
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 165162
-            connect_time_us: 74796
-            namelookup_time_us: 1193
-            pretransfer_time_us: 165267
+            appconnect_time_us: 130262
+            connect_time_us: 61759
+            namelookup_time_us: 1922
+            pretransfer_time_us: 130320
             redirect_time_us: 0
-            starttransfer_time_us: 165274
-            total_time_us: 280940
+            starttransfer_time_us: 130322
+            total_time_us: 233692

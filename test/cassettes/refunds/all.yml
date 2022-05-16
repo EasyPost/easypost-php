@@ -23,56 +23,55 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 888f661362015c74e7875182004b8c9d
+            x-ep-request-uuid: 2f26e940627ed41fe798bc240006fc72
             cache-control: 'no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
-            content-length: '1507'
-            etag: 'W/"23d7fffc785a0286d1fa16b3fb34ff4f"'
-            x-request-id: a56c78e0-946b-49d4-9e88-8edaeac300fc
-            x-runtime: '0.044391'
-            x-node: bigweb1nuq
-            x-version-label: easypost-202202042220-76f9648007-master
+            content-length: '1213'
+            etag: 'W/"38fd7e3168b7f826224c34b055b433d6"'
+            x-runtime: '0.038690'
+            x-node: bigweb5nuq
+            x-version-label: easypost-202205131956-9146889ba0-master
             x-backend: easypost
-            x-proxied: ['intlb2nuq 88c34981dc', 'extlb1nuq 88c34981dc']
+            x-proxied: ['intlb2nuq 570dfcbc0a', 'extlb1nuq c51cdb8bf2']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"refunds":[{"id":"rfnd_17c772a6d7b44993a7fc66f002a9c3d6","object":"Refund","created_at":"2022-02-07T17:52:43Z","updated_at":"2022-02-07T17:52:43Z","tracking_code":"9400100895232106014926","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_3132f1f5084c47fd9347b6a7d2a8c503"},{"id":"rfnd_fd5d9faf272c4027b7da56aa83df3904","object":"Refund","created_at":"2022-02-07T17:51:53Z","updated_at":"2022-02-07T17:51:53Z","tracking_code":"9400100895232106014766","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_17385e6d24ce4eefaf01096c780453f0"},{"id":"rfnd_c395d020a118462dabaf72cb3a8f865d","object":"Refund","created_at":"2022-02-07T17:51:41Z","updated_at":"2022-02-07T17:51:41Z","tracking_code":"9400100895232106014728","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_a2b976b013214e61b0419c292af23759"},{"id":"rfnd_0f81305e10ba4035b43fedc19fd079e4","object":"Refund","created_at":"2022-02-05T00:24:40Z","updated_at":"2022-02-06T00:24:40Z","tracking_code":"9400100895232105611980","confirmation_number":null,"status":"rejected","carrier":"USPS","shipment_id":"shp_62bbbff53e384652b344e12e6b952e3a"},{"id":"rfnd_708a86958aef406f981a364b124bc61b","object":"Refund","created_at":"2022-02-05T00:20:58Z","updated_at":"2022-02-06T00:21:02Z","tracking_code":"9400100895232105611430","confirmation_number":null,"status":"rejected","carrier":"USPS","shipment_id":"shp_823886d0324946c8a79368800bc4eb5a"}],"has_more":true}'
+        body: '{"refunds":[{"id":"rfnd_cb86c1b8ebd145ceb3fc9331773331a3","object":"Refund","created_at":"2022-05-13T21:56:37Z","updated_at":"2022-05-13T21:56:37Z","tracking_code":"9400100109361119108244","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_f86abcbed55a45edb4f7f064af50d64c"},{"id":"rfnd_2f997f52ac234796b4b7fa05ae7ea127","object":"Refund","created_at":"2022-05-13T20:29:51Z","updated_at":"2022-05-13T20:29:51Z","tracking_code":"9400100109361119097012","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_af94d9863ce64211a9f6438949e4cffd"},{"id":"rfnd_dbc81ec270684ee882dfcb2a8a8bc221","object":"Refund","created_at":"2022-05-13T20:29:37Z","updated_at":"2022-05-13T20:29:37Z","tracking_code":"9400100109361119096978","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_8c21a58fb9e743e3842eb95fd15dd480"},{"id":"rfnd_e251bfc0208c41cca729660c866f8c68","object":"Refund","created_at":"2022-04-20T16:36:12Z","updated_at":"2022-04-21T16:36:12Z","tracking_code":"9400100109361115889000","confirmation_number":null,"status":"rejected","carrier":"USPS","shipment_id":"shp_8d96b78291ad4a5b89fddb9ad55fd238"}],"has_more":false}'
         curl_info:
             url: 'https://api.easypost.com/v2/refunds?page_size=5'
             content_type: 'application/json; charset=utf-8'
             http_code: 200
-            header_size: 771
-            request_size: 544
+            header_size: 719
+            request_size: 548
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.239014
-            namelookup_time: 0.001138
-            connect_time: 0.057905
-            pretransfer_time: 0.135842
+            total_time: 0.228538
+            namelookup_time: 0.001858
+            connect_time: 0.059871
+            pretransfer_time: 0.130042
             size_upload: 0.0
-            size_download: 1507.0
-            speed_download: 6305.0
+            size_download: 1213.0
+            speed_download: 5307.0
             speed_upload: 0.0
-            download_content_length: 1507.0
+            download_content_length: 1213.0
             upload_content_length: 0.0
-            starttransfer_time: 0.238965
+            starttransfer_time: 0.228462
             redirect_time: 0.0
             redirect_url: ''
             primary_ip: 169.62.110.131
             certinfo: {  }
             primary_port: 443
             local_ip: 10.130.6.6
-            local_port: 51843
+            local_port: 60089
             http_version: 3
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 135699
-            connect_time_us: 57905
-            namelookup_time_us: 1138
-            pretransfer_time_us: 135842
+            appconnect_time_us: 129930
+            connect_time_us: 59871
+            namelookup_time_us: 1858
+            pretransfer_time_us: 130042
             redirect_time_us: 0
-            starttransfer_time_us: 238965
-            total_time_us: 239014
+            starttransfer_time_us: 228462
+            total_time_us: 228538

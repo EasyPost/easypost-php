@@ -2,11 +2,11 @@
 
 namespace EasyPost\Test;
 
-use VCR\VCR;
+use EasyPost\EasyPost;
 use EasyPost\Refund;
 use EasyPost\Shipment;
-use EasyPost\EasyPost;
 use EasyPost\Test\Fixture;
+use VCR\VCR;
 
 class RefundTest extends \PHPUnit\Framework\TestCase
 {
@@ -80,13 +80,15 @@ class RefundTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving a refund.
      *
-     * @param object $refunds
      * @return void
-     * @depends testAll
      */
-    public function testRetrieve(object $refunds)
+    public function testRetrieve()
     {
         VCR::insertCassette('refunds/retrieve.yml');
+
+        $refunds = Refund::all([
+            'page_size' => Fixture::page_size(),
+        ]);
 
         $retrieved_refund = Refund::retrieve($refunds['refunds'][0]);
 

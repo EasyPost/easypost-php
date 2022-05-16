@@ -2,10 +2,9 @@
 
 namespace EasyPost\Test;
 
-use VCR\VCR;
-use EasyPost\User;
 use EasyPost\EasyPost;
-use EasyPost\Test\Fixture;
+use EasyPost\User;
+use VCR\VCR;
 
 class UserTest extends \PHPUnit\Framework\TestCase
 {
@@ -39,8 +38,6 @@ class UserTest extends \PHPUnit\Framework\TestCase
      */
     public function testCreate()
     {
-        $this->markTestSkipped('This endpoint returns the child user keys in plain text, do not run this test.');
-
         VCR::insertCassette('users/create.yml');
 
         $user = User::create([
@@ -63,7 +60,7 @@ class UserTest extends \PHPUnit\Framework\TestCase
 
         $authenticated_user = User::retrieve_me();
 
-        $user = User::retrieve($authenticated_user['children'][0]['id']);
+        $user = User::retrieve($authenticated_user['id']);
 
         $this->assertInstanceOf('\EasyPost\User', $user);
         $this->assertStringMatchesFormat('user_%s', $user->id);
@@ -72,7 +69,7 @@ class UserTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving the authenticated user.
      *
-     * @return User
+     * @return void
      */
     public function testRetrieveMe()
     {
@@ -82,21 +79,18 @@ class UserTest extends \PHPUnit\Framework\TestCase
 
         $this->assertInstanceOf('\EasyPost\User', $user);
         $this->assertStringMatchesFormat('user_%s', $user->id);
-
-        // Return so other tests can reuse this object
-        return $user;
     }
 
     /**
      * Test updating the authenticated user.
      *
-     * @param User $user
      * @return void
-     * @depends testRetrieveMe
      */
-    public function testUpdate(User $user)
+    public function testUpdate()
     {
         VCR::insertCassette('users/update.yml');
+
+        $user = User::retrieve_me();
 
         $test_phone = '5555555555';
 
@@ -111,61 +105,65 @@ class UserTest extends \PHPUnit\Framework\TestCase
     /**
      * Test deleting a child user.
      *
-     * @param User $user
      * @return void
-     * @depends testCreate
      */
-    public function testDelete(User $user)
+    public function testDelete()
     {
-        $this->markTestSkipped('Due to our inability to create child users securely, we must also skip deleting them as we cannot replace the deleted ones easily.');
-
         VCR::insertCassette('users/delete.yml');
 
-        $user->delete();
+        $user = User::create([
+            'name' => 'Test User',
+        ]);
+
+        $response = $user->delete();
+
+        $this->assertNotNull($response);
     }
 
     /**
      * Test retrieving all API keys.
      *
-     * @param User $user
      * @return void
-     * @depends testRetrieveMe
      */
-    public function testAllApiKeys(User $user)
+    public function testAllApiKeys()
     {
-        $this->markTestSkipped('API keys are returned as plaintext, do not run this test.');
-
         VCR::insertCassette('users/all_api_keys.yml');
 
-        $user->all_api_keys();
+        $user = User::retrieve_me();
+
+        $api_keys = $user->all_api_keys();
+
+        $this->assertNotNull($api_keys->keys);
     }
 
     /**
      * Test retrieving the authenticated user's API keys.
      *
-     * @param User $user
      * @return void
-     * @depends testRetrieveMe
      */
-    public function testApiKeys(User $user)
+    public function testApiKeys()
     {
-        $this->markTestSkipped('API keys are returned as plaintext, do not run this test.');
+        $this->markTestSkipped("Due to redacting the `children` key in the cassettes, we can't run this test as the redacted key is then a string instead of an array and breaks.");
 
         VCR::insertCassette('users/api_keys.yml');
 
-        $user->api_keys();
+        $user = User::retrieve_me();
+
+        $api_keys = $user->api_keys();
+
+        $this->assertNotNull($api_keys->keys);
     }
 
     /**
      * Test updating the authenticated user's Brand.
      *
-     * @param User $user
      * @return void
-     * @depends testRetrieveMe
      */
-    public function testUpdateBrand(User $user)
+    public function testUpdateBrand()
     {
         VCR::insertCassette('users/brand.yml');
+
+        $user = User::retrieve_me();
 
         $color = '#123456';
 

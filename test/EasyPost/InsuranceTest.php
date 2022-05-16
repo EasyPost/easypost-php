@@ -2,11 +2,11 @@
 
 namespace EasyPost\Test;
 
-use VCR\VCR;
+use EasyPost\EasyPost;
 use EasyPost\Insurance;
 use EasyPost\Shipment;
-use EasyPost\EasyPost;
 use EasyPost\Test\Fixture;
+use VCR\VCR;
 
 class InsuranceTest extends \PHPUnit\Framework\TestCase
 {
@@ -36,7 +36,7 @@ class InsuranceTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating an insurance object.
      *
-     * @return Insurance
+     * @return void
      */
     public function testCreate()
     {
@@ -52,21 +52,23 @@ class InsuranceTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf('\EasyPost\Insurance', $insurance);
         $this->assertStringMatchesFormat('ins_%s', $insurance->id);
         $this->assertEquals('100.00000', $insurance->amount);
-
-        // Return so other tests can reuse this object
-        return $insurance;
     }
 
     /**
      * Test retrieving an insurance object.
      *
-     * @param object $insurance
      * @return void
-     * @depends testCreate
      */
-    public function testRetrieve(object $insurance)
+    public function testRetrieve()
     {
         VCR::insertCassette('insurance/retrieve.yml');
+
+        $shipment = Shipment::create(Fixture::one_call_buy_shipment());
+
+        $insurance_data = Fixture::basic_insurance();
+        $insurance_data['tracking_code'] = $shipment->tracking_code;
+
+        $insurance = Insurance::create($insurance_data);
 
         $retrieved_insurance = Insurance::retrieve($insurance->id);
 

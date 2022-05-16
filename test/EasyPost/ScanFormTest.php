@@ -2,11 +2,11 @@
 
 namespace EasyPost\Test;
 
-use VCR\VCR;
+use EasyPost\EasyPost;
 use EasyPost\ScanForm;
 use EasyPost\Shipment;
-use EasyPost\EasyPost;
 use EasyPost\Test\Fixture;
+use VCR\VCR;
 
 class ScanFormTest extends \PHPUnit\Framework\TestCase
 {
@@ -50,21 +50,22 @@ class ScanFormTest extends \PHPUnit\Framework\TestCase
 
         $this->assertInstanceOf('\EasyPost\ScanForm', $scanform);
         $this->assertStringMatchesFormat('sf_%s', $scanform->id);
-
-        // Return so other tests can reuse this object
-        return $scanform;
     }
 
     /**
      * Test retrieving a scanform.
      *
-     * @param ScanForm $scanform
      * @return void
-     * @depends testCreate
      */
-    public function testRetrieve(ScanForm $scanform)
+    public function testRetrieve()
     {
         VCR::insertCassette('scanforms/retrieve.yml');
+
+        $shipment = Shipment::create(Fixture::one_call_buy_shipment());
+
+        $scanform = ScanForm::create([
+            'shipments' => [$shipment],
+        ]);
 
         $retrieved_scanform = ScanForm::retrieve($scanform->id);
 
@@ -90,8 +91,5 @@ class ScanFormTest extends \PHPUnit\Framework\TestCase
         $this->assertLessThanOrEqual($scanforms_array, Fixture::page_size());
         $this->assertNotNull($scanforms['has_more']);
         $this->assertContainsOnlyInstancesOf('\EasyPost\ScanForm', $scanforms_array);
-
-        // Return so other tests can reuse these objects
-        return $scanforms;
     }
 }
