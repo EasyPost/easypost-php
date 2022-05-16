@@ -7,6 +7,11 @@ class Requestor
     /**
      * @var string
      */
+    private $supportEmail = 'support@easypost.com';
+
+    /**
+     * @var string
+     */
     public $apiKey;
 
     /**
@@ -138,14 +143,14 @@ class Requestor
      * @return array
      * @throws \EasyPost\Error
      */
-    private function _requestRaw($method, $url, $params, $apiKeyRequired)
+    private function _requestRaw($method, $url, $params, $apiKeyRequired = true)
     {
         $myApiKey = $this->_apiKey;
 
         if (!$myApiKey) {
             if (!$myApiKey = EasyPost::$apiKey) {
                 if ($apiKeyRequired) {
-                    throw new Error('No API key provided. Set your API key using "EasyPost::setApiKey(<API-KEY>)". See https://www.easypost.com/docs for details, or contact support@easypost.com for assistance.');
+                    throw new Error("No API key provided. Set your API key using \"EasyPost::setApiKey(<API-KEY>)\". See https://www.easypost.com/docs for details, or contact {$this->supportEmail} for assistance.");
                 }
             }
         }
@@ -172,7 +177,7 @@ class Requestor
         if (EasyPost::$apiVersion) {
             $headers[] = 'EasyPost-Version: ' . EasyPost::$apiVersion;
         }
-        list($httpBody, $httpStatus) = $this->_curlRequest($method, $absUrl, $headers, $params, $myApiKey);
+        list($httpBody, $httpStatus) = $this->_curlRequest($method, $absUrl, $headers, $params);
 
         return [$httpBody, $httpStatus, $myApiKey];
     }
@@ -184,11 +189,10 @@ class Requestor
      * @param string $absUrl
      * @param mixed $headers
      * @param mixed $params
-     * @param string $myApiKey
      * @return array
      * @throws \EasyPost\Error
      */
-    private function _curlRequest($method, $absUrl, $headers, $params, $myApiKey)
+    private function _curlRequest($method, $absUrl, $headers, $params)
     {
         $curl = curl_init();
         $method = strtolower($method);
@@ -306,20 +310,19 @@ class Requestor
     public function handleCurlError($errorNum, $message)
     {
         $apiBase = EasyPost::$apiBase;
-        $supportEmail = 'support@easypost.com';
 
         switch ($errorNum) {
             case CURLE_COULDNT_CONNECT:
             case CURLE_COULDNT_RESOLVE_HOST:
             case CURLE_OPERATION_TIMEDOUT:
-                $msg = "Could not connect to EasyPost ({$apiBase}). Please check your internet connection and try again.  If this problem persists please let us know at {$supportEmail}.";
+                $msg = "Could not connect to EasyPost ({$apiBase}). Please check your internet connection and try again.  If this problem persists please let us know at {$this->supportEmail}.";
                 break;
             case CURLE_SSL_CACERT:
             case CURLE_SSL_PEER_CERTIFICATE:
-                $msg = "Could not verify EasyPost's SSL certificate. Please make sure that your network is not intercepting certificates.  (Try going to {$apiBase} in your browser.)  If this problem persists, let us know at {$supportEmail}.";
+                $msg = "Could not verify EasyPost's SSL certificate. Please make sure that your network is not intercepting certificates.  (Try going to {$apiBase} in your browser.)  If this problem persists, let us know at {$this->supportEmail}.";
                 break;
             default:
-                $msg = "Unexpected error communicating with EasyPost. If this problem persists please let us know at {$supportEmail}.";
+                $msg = "Unexpected error communicating with EasyPost. If this problem persists please let us know at {$this->supportEmail}.";
         }
 
         $msg .= "\nNetwork error [errno {$errorNum}]: {$message})";

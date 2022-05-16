@@ -76,7 +76,7 @@ class Report extends EasypostResource
         self::_validate($params, $apiKey);
         $requestor = new Requestor($apiKey);
 
-        list($response, $apiKey) = $requestor->request('post', $url, $params, true);
+        list($response, $apiKey) = $requestor->request('post', $url, $params);
         return Util::convertToEasyPostObject($response, $apiKey);
     }
 
