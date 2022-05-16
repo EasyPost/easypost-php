@@ -58,7 +58,7 @@ class User extends EasypostResource
             unset($params);
             $params['user'] = $clone;
         }
-        return self::_create(get_class(), $params, $apiKey, null, false);
+        return self::_create(get_class(), $params, $apiKey, null);
     }
 
     /**
