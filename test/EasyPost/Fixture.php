@@ -264,4 +264,20 @@ class Fixture
             'object' => 'Event'
         ]);
     }
+
+    public static function end_shipper_address()
+    {
+        return [
+            'name'      => 'Jack Sparrow',
+            'company'   => 'EasyPost',
+            'street1'   => '388 Townsend St',
+            'street2'   => 'Apt 20',
+            'city'      => 'San Francisco',
+            'state'     => 'CA',
+            'zip'       => '94107',
+            'phone'     => '5555555555',
+            'country'   => 'US',
+            'email'     => 'test@example.com',
+        ];
+    }
 }
