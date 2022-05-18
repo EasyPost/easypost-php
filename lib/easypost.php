@@ -28,6 +28,7 @@ require(dirname(__FILE__) . '/EasyPost/CarrierAccount.php');
 require(dirname(__FILE__) . '/EasyPost/CarrierDetail.php');
 require(dirname(__FILE__) . '/EasyPost/CustomsInfo.php');
 require(dirname(__FILE__) . '/EasyPost/CustomsItem.php');
+require(dirname(__FILE__) . '/EasyPost/Beta/EndShipper.php');
 require(dirname(__FILE__) . '/EasyPost/Event.php');
 require(dirname(__FILE__) . '/EasyPost/Fee.php');
 require(dirname(__FILE__) . '/EasyPost/FieldError.php');
