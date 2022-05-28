@@ -68,7 +68,7 @@ abstract class EasypostResource extends EasyPostObject
      * @return $this
      * @throws \EasyPost\Error
      */
-    public function refresh($beta)
+    public function refresh($beta = false)
     {
         $requestor = new Requestor($this->_apiKey);
         $url = $this->instanceUrl();

@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## Next Release
+- Set `beta` parameter in `refresh` to `false` by default
+
 ## v5.2.0 (2022-05-19)
 
 - Adds the `EndShipper` Beta class with `create`, `retrieve`, `all`, and `save` functions
