@@ -65,10 +65,11 @@ abstract class EasypostResource extends EasyPostObject
     /**
      * Refresh the object from the API.
      *
+     * @param bool $beta Whether to use the beta endpoint (optional, default false)
      * @return $this
      * @throws \EasyPost\Error
      */
-    public function refresh($beta = false)
+    public function refresh(bool $beta = false)
     {
         $requestor = new Requestor($this->_apiKey);
         $url = $this->instanceUrl();
