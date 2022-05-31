@@ -1,7 +1,8 @@
 # CHANGELOG
 
-## Next Release
-- Set `beta` parameter in `refresh` to `false` by default
+## v5.2.1 (2022-05-31)
+
+- Fixes a missing parameter bug by setting the `beta` parameter in the `refresh` function to `false` by default
 
 ## v5.2.0 (2022-05-19)
 
