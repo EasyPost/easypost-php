@@ -1,0 +1,77 @@
+
+-
+    request:
+        method: GET
+        url: 'https://api.easypost.com/v2/payment_methods'
+        headers:
+            Host: api.easypost.com
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+            X-Client-User-Agent: ''
+            EasyPost-Version: '2'
+    response:
+        status:
+            http_version: '2'
+            code: '200'
+            message: ''
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: 51829876629681fcff10b998000e37f6
+            cache-control: 'no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '444'
+            etag: 'W/"17757f1fcead74e595d63a2f95d1c17c"'
+            x-runtime: '1.478262'
+            x-node: bigweb9nuq
+            x-version-label: easypost-202205272233-af67cc8d0c-master
+            x-backend: easypost
+            x-proxied: ['intlb2nuq 570dfcbc0a', 'intlb1wdc 570dfcbc0a', 'extlb3wdc 0910011e7e']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"id":"cust_4ccef5ad3a72475bbc9e5795033d74a0","object":"PaymentMethods","primary_payment_method":{"id":"card_8fa538a43da24e45a1987f7cee5a965f","disabled_at":null,"object":"CreditCard","name":null,"last4":"6170","exp_month":5,"exp_year":2028,"brand":"Visa"},"secondary_payment_method":{"id":"card_0dbef2a8abb04284bac3a69835f9cf03","disabled_at":null,"object":"CreditCard","name":null,"last4":"6170","exp_month":5,"exp_year":2028,"brand":"Visa"}}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/payment_methods'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 751
+            request_size: 523
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 1.750957
+            namelookup_time: 0.015689
+            connect_time: 0.034644
+            pretransfer_time: 0.073084
+            size_upload: 0.0
+            size_download: 444.0
+            speed_download: 253.0
+            speed_upload: 0.0
+            download_content_length: 444.0
+            upload_content_length: 0.0
+            starttransfer_time: 1.750912
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.47.33.18
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 192.168.1.156
+            local_port: 51802
+            http_version: 3
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 72854
+            connect_time_us: 34644
+            namelookup_time_us: 15689
+            pretransfer_time_us: 73084
+            redirect_time_us: 0
+            starttransfer_time_us: 1750912
+            total_time_us: 1750957
