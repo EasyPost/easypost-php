@@ -20,6 +20,11 @@ class PaymentMethod extends EasypostResource
      */
     public static function all($params = null, $apiKey = null)
     {
-        return self::_all(get_class(), $params, $apiKey);
+        $response = self::_all(get_class(), $params, $apiKey);
+
+        if ($response->id == null) {
+            throw new Error('Billing has not been setup for this user. Please add a payment method.');
+        }
+        return $response;
     }
 }
