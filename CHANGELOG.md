@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Adds `PaymentMethod::all()`, `CreditCard::fund()`, and `CreditCard::delete()` functions
+
 ## v5.2.1 (2022-05-31)
 
 - Fixes a missing parameter bug by setting the `beta` parameter in the `refresh` function to `false` by default
