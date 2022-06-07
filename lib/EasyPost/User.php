@@ -139,7 +139,7 @@ class User extends EasypostResource
     public function update_brand($params = null, $apiKey = null)
     {
         $requestor = new Requestor($apiKey);
-        list($response, $apiKey) = $requestor->request('put', $this->instanceUrl() . '/brand', $params);
+        list($response, $apiKey) = $requestor->request('patch', $this->instanceUrl() . '/brand', $params);
         return Util::convertToEasyPostObject($response, $apiKey);
     }
 }
