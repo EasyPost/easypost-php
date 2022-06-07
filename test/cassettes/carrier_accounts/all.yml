@@ -23,18 +23,18 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 2f26e940627ed4dfe798c084000722fe
+            x-ep-request-uuid: 62c3497c629fbafbe60e2d1400023e7a
             cache-control: 'no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '1941'
             etag: 'W/"be5816bc4808d74ae70b6ad5bb50cda1"'
-            x-runtime: '0.092652'
-            x-node: bigweb5nuq
-            x-version-label: easypost-202205131956-9146889ba0-master
+            x-runtime: '0.111722'
+            x-node: bigweb8nuq
+            x-version-label: easypost-202206071935-d56b35a2b3-master
             x-backend: easypost
-            x-proxied: ['intlb1nuq 570dfcbc0a', 'extlb1nuq c51cdb8bf2']
+            x-proxied: ['intlb1nuq 0910011e7e', 'extlb2nuq 0910011e7e']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
         body: '[{"id":"ca_8dc116debcdb49b5a66a2ddee4612600","object":"CarrierAccount","type":"UspsAccount","clone":false,"created_at":"2022-02-02T20:16:00Z","updated_at":"2022-02-03T18:01:23Z","description":"USPS Account","reference":null,"billing_type":"easypost","readable":"USPS","logo":null,"fields":{"credentials":{"company_name":{"visibility":"visible","label":"Account Holder Name","value":"EasyPost PHP Tests"},"address_street":{"visibility":"visible","label":"Street Address","value":"2889 Ashton Blvd"},"address_city":{"visibility":"visible","label":"City","value":"Lehi"},"address_state":{"visibility":"visible","label":"State","value":"UT"},"address_zip":{"visibility":"visible","label":"ZIP Code","value":"84043"},"phone":{"visibility":"visible","label":"Phone Number","value":""},"email":{"visibility":"visible","label":"Email Address","value":"dev+easypost-php@easypost.com"},"shipper_id":{"visibility":"visible","label":"Shipper Identifier (Optional)","value":""}}},"credentials":"<REDACTED>","test_credentials":"<REDACTED>"},{"id":"ca_5c0e4a9f106846abbe3a8d803b3d9dc4","object":"CarrierAccount","type":"DhlExpressDefaultAccount","clone":false,"created_at":"2022-02-02T20:16:00Z","updated_at":"2022-02-02T20:16:00Z","description":"DHL Express Account","reference":null,"billing_type":"easypost","readable":"DHL Express","logo":null,"fields":{"credentials":[]},"credentials":"<REDACTED>","test_credentials":"<REDACTED>"},{"id":"ca_495d701f4f7c464f86dfd10e6515b4c9","object":"CarrierAccount","type":"LsoDefaultAccount","clone":false,"created_at":"2022-02-02T20:16:00Z","updated_at":"2022-02-02T20:16:00Z","description":"LSO Account","reference":null,"billing_type":"easypost","readable":"LSO","logo":null,"fields":{"credentials":[]},"credentials":"<REDACTED>","test_credentials":"<REDACTED>"}]'
         curl_info:
@@ -42,36 +42,36 @@
             content_type: 'application/json; charset=utf-8'
             http_code: 200
             header_size: 719
-            request_size: 545
+            request_size: 520
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.293707
-            namelookup_time: 0.005885
-            connect_time: 0.067064
-            pretransfer_time: 0.133432
+            total_time: 0.224927
+            namelookup_time: 0.001377
+            connect_time: 0.031675
+            pretransfer_time: 0.079495
             size_upload: 0.0
             size_download: 1941.0
-            speed_download: 6608.0
+            speed_download: 8629.0
             speed_upload: 0.0
             download_content_length: 1941.0
             upload_content_length: 0.0
-            starttransfer_time: 0.293665
+            starttransfer_time: 0.224884
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.131
+            primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.6
-            local_port: 60197
+            local_ip: 192.168.1.154
+            local_port: 59061
             http_version: 3
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 133371
-            connect_time_us: 67064
-            namelookup_time_us: 5885
-            pretransfer_time_us: 133432
+            appconnect_time_us: 79347
+            connect_time_us: 31675
+            namelookup_time_us: 1377
+            pretransfer_time_us: 79495
             redirect_time_us: 0
-            starttransfer_time_us: 293665
-            total_time_us: 293707
+            starttransfer_time_us: 224884
+            total_time_us: 224927
