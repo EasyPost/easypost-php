@@ -166,14 +166,14 @@ abstract class EasypostResource extends EasyPostObject
      * @return $this
      * @throws \EasyPost\Error
      */
-    protected function _save($class, $beta = false)
+    protected function _save($class, $beta = false, $method = 'patch')
     {
         self::_validate();
         if (count($this->_unsavedValues)) {
             $requestor = new Requestor($this->_apiKey);
             $url = $this->instanceUrl();
             $params = [self::className($class) => $this->_unsavedValues];
-            list($response, $apiKey) = $requestor->request('put', $url, $params, true, $beta);
+            list($response, $apiKey) = $requestor->request($method, $url, $params, true, $beta);
             $this->refreshFrom($response, $apiKey);
         }
 
@@ -212,7 +212,7 @@ abstract class EasypostResource extends EasyPostObject
         self::_validate();
         $requestor = new Requestor($this->_apiKey);
         $url = $this->instanceUrl();
-        list($response, $apiKey) = $requestor->request('put', $url, $params);
+        list($response, $apiKey) = $requestor->request('patch', $url, $params);
         $this->refreshFrom($response, $apiKey);
 
         return $this;

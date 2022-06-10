@@ -67,6 +67,6 @@ class EndShipper extends EasypostResource
     public function save()
     {
         // We are passing the `Address` class here so that the request gets properly wrapped in the required object.
-        return $this->_save('EasyPost\Address', true);
+        return $this->_save('EasyPost\Address', true, 'put');
     }
 }

@@ -94,7 +94,9 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('end_shipper/update.yml');
 
-        $end_shipper->name = 'Jack Sparrow';
+        $new_name = 'NEW NAME';
+        // All caps because API will return all caps as part of verification.
+        $end_shipper->name = $new_name;
         $end_shipper->company = 'EasyPost';
         $end_shipper->street1 = '388 Townsend St';
         $end_shipper->street2 = 'Apt 20';
@@ -108,6 +110,6 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
 
         $this->assertInstanceOf('\EasyPost\Beta\EndShipper', $end_shipper);
         $this->assertStringMatchesFormat('es_%s', $end_shipper->id);
-        $this->assertEquals('9999999999', $end_shipper->phone);
+        $this->assertEquals($new_name, $end_shipper->name);
     }
 }
