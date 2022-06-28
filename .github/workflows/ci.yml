@@ -13,7 +13,7 @@ jobs:
       - name: set up php
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.1
+          php-version: "8.1"
       - name: install composer
         run: composer self-update
       - name: install dependencies
@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-20.04
     strategy:
       matrix:
-        phpversion: [7.3, 7.4, 8.0, 8.1]
+        phpversion: ["7.3", "7.4", "8.0", "8.1"]
     steps:
       - uses: actions/checkout@v3
       - name: set up php
@@ -46,3 +46,5 @@ jobs:
         run: composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
       - name: test with phpunit on ${{ matrix.phpversion }}
         run: EASYPOST_TEST_API_KEY=123 EASYPOST_PROD_API_KEY=123 composer test
+      - name: Security scan
+        run: composer update --dry-run roave/security-advisories
