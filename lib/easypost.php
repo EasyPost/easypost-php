@@ -22,6 +22,7 @@ require(dirname(__FILE__) . '/EasyPost/Requestor.php');
 
 // API Resources
 require(dirname(__FILE__) . '/EasyPost/Address.php');
+require(dirname(__FILE__) . '/EasyPost/BankAccount.php');
 require(dirname(__FILE__) . '/EasyPost/Batch.php');
 require(dirname(__FILE__) . '/EasyPost/Brand.php');
 require(dirname(__FILE__) . '/EasyPost/CarrierAccount.php');

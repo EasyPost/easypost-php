@@ -2,20 +2,10 @@
 
 namespace EasyPost;
 
-/**
- * @package EasyPost
- * @property string $id
- * @property string $object
- * @property string $name
- * @property string $last4
- * @property string $expiration_month
- * @property string $expiration_year
- * @property string $brand
- */
-class CreditCard extends EasypostResource
+class BankAccount extends EasypostResource
 {
     /**
-     * Fund your EasyPost wallet by charging your primary or secondary card on file.
+     * Fund your EasyPost wallet by charging your bank account.
      *
      * @param string $amount
      * @param string $primary_or_secondary
@@ -32,14 +22,14 @@ class CreditCard extends EasypostResource
         $payment_method_to_use = $payment_method_map[$primary_or_secondary] ?? null;
 
         if ($payment_methods->$payment_method_to_use != null) {
-            $card_id = $payment_methods->$payment_method_to_use->id;
+            $bank_id = $payment_methods->$payment_method_to_use->id;
         }
 
-        if ($payment_method_to_use === null || $card_id === null || strpos($card_id, 'card_') !== 0) {
-            throw new Error('The chosen payment method is not a credit card. Please try again.');
+        if ($payment_method_to_use === null || $bank_id === null || strpos($bank_id, 'bank_') !== 0) {
+            throw new Error('The chosen payment method is not a bank account. Please try again.');
         }
 
-        $url = self::classUrl(get_class()) . "/$card_id/charges";
+        $url = self::classUrl(get_class()) . "/$bank_id/charges";
         $wrapped_params = ['amount' => $amount];
         $requestor = new Requestor($api_key);
         list($response, $api_key) = $requestor->request('post', $url, $wrapped_params);
@@ -47,15 +37,15 @@ class CreditCard extends EasypostResource
     }
 
     /**
-     * Delete a credit card by ID.
+     * Delete a bank account by ID.
      *
-     * @param string $credit_card_id
+     * @param string $bank_account_id
      * @param string $api_key
      * @return mixed
      */
-    public static function delete($credit_card_id, $api_key = null)
+    public static function delete($bank_account_id, $api_key = null)
     {
-        $url = self::classUrl(get_class()) . "/$credit_card_id";
+        $url = self::classUrl(get_class()) . "/$bank_account_id";
         $requestor = new Requestor($api_key);
         list($response, $api_key) = $requestor->request('delete', $url);
         return Util::convertToEasyPostObject($response, $api_key);

@@ -3,6 +3,7 @@
 ## Next Release
 
 - Adds `PaymentMethod::all()`, `CreditCard::fund()`, and `CreditCard::delete()` functions
+- Adds `BankAccount::fund()`, and `BankAccount::delete()` functions
 
 ## v5.2.1 (2022-05-31)
 
