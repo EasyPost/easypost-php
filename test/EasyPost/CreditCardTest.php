@@ -42,7 +42,7 @@ class CreditCardTest extends \PHPUnit\Framework\TestCase
 
         VCR::insertCassette('credit_card/fund.yml');
 
-        $credit_card = CreditCard::fund(20, 'primary');
+        $credit_card = CreditCard::fund(2000, 'primary');
 
         $this->assertTrue($credit_card != null);
     }
