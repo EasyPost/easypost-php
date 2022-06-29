@@ -162,25 +162,18 @@ class Requestor
         $absUrl = $this->apiUrl($url, $beta);
         $params = self::_encodeObjects($params);
 
-        $langVersion = phpversion();
-        $uname = php_uname();
-        $ua = [
-            'bindings_version' => EasyPost::VERSION,
-            'lang'             => 'php',
-            'lang_version'     => $langVersion,
-            'publisher'        => 'easypost',
-            'uname'            => $uname
-        ];
+        $phpVersion = phpversion();
+        $osType = php_uname('s');
+        $osVersion = php_uname('r');
+        $osArch = php_uname('m');
+
         $headers = [
             'Accept: application/json',
             "Authorization: Bearer {$myApiKey}",
             'Content-Type: application/json',
-            'User-Agent: EasyPost/v2 PhpClient/' . EasyPost::VERSION . ' PHP/' . phpversion(),
-            'X-Client-User-Agent: ' . json_encode($ua),
+            'User-Agent: EasyPost/v2 PhpClient/' . EasyPost::VERSION . " PHP/$phpVersion OS/$osType OSVersion/$osVersion OSArch/$osArch",
         ];
-        if (EasyPost::$apiVersion) {
-            $headers[] = 'EasyPost-Version: ' . EasyPost::$apiVersion;
-        }
+
         list($httpBody, $httpStatus) = $this->_curlRequest($method, $absUrl, $headers, $params);
 
         return [$httpBody, $httpStatus, $myApiKey];
