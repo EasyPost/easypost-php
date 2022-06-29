@@ -47,4 +47,4 @@ jobs:
       - name: test with phpunit on ${{ matrix.phpversion }}
         run: EASYPOST_TEST_API_KEY=123 EASYPOST_PROD_API_KEY=123 composer test
       - name: Security scan
-        run: composer update --dry-run roave/security-advisories
+        run: composer scan

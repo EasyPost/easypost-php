@@ -33,6 +33,7 @@
     "coverage": "XDEBUG_MODE=coverage ./bin/phpunit --coverage-html clover.html --coverage-clover clover.xml",
     "fix": "./bin/phpcbf",
     "lint": "./bin/phpcs",
+    "scan": "composer update --dry-run roave/security-advisories",
     "test": "./bin/phpunit"
   },
   "config": {
