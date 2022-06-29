@@ -62,7 +62,6 @@ abstract class Util
             'Batch'                 => '\EasyPost\Batch',
             'CarrierAccount'        => '\EasyPost\CarrierAccount',
             'CarrierDetail'         => '\EasyPost\CarrierDetail',
-            'CreditCard'            => '\EasyPost\CreditCard',
             'CustomsInfo'           => '\EasyPost\CustomsInfo',
             'CustomsItem'           => '\EasyPost\CustomsItem',
             'EndShipper'            => '\EasyPost\Beta\EndShipper',

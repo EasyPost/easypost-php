@@ -2,7 +2,7 @@
 
 ## Next Release
 
-- Adds `PaymentMethod::all()`, `CreditCard::fund()`, and `CreditCard::delete()` functions
+- Adds `Billing::retrieve_payment_methods()`, `Billing::fund_wallet()`, and `Billing::delete_payment_method()` functions
 - Adds OS specific details to the `User-Agent` header
 
 ## v5.2.1 (2022-05-31)
