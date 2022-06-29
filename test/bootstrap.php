@@ -1,7 +1,7 @@
 <?php
 
-use VCR\VCR;
 use allejo\VCR\VCRCleaner;
+use VCR\VCR;
 
 if (!file_exists('test/cassettes')) {
     mkdir('test/cassettes', 0755, true);
@@ -30,7 +30,6 @@ VCRCleaner::enable([
         'ignoreHeaders' => [
             'Authorization',
             'User-Agent',
-            'X-Client-User-Agent',
         ],
         # TODO: Validate this works when we introduce the Beta Referral class
         'postFieldScrubbers' => [
