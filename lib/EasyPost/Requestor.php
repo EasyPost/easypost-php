@@ -154,6 +154,10 @@ class Requestor
         $params = self::_encodeObjects($params);
 
         $langVersion = phpversion();
+        $phpVersion = phpversion();
+        $osType = php_uname('s');
+        $osVersion = php_uname('r');
+        $osArch = php_uname('m');
         $uname = php_uname();
         $ua = array(
             'bindings_version' => EasyPost::VERSION,
@@ -166,7 +170,7 @@ class Requestor
             'Accept: application/json',
             "Authorization: Bearer {$myApiKey}",
             'Content-Type: application/json',
-            'User-Agent: EasyPost/v2 PhpClient/' . EasyPost::VERSION,
+            'User-Agent: EasyPost/v2 PhpClient/' . EasyPost::VERSION . " PHP/$phpVersion OS/$osType OSVersion/$osVersion OSArch/$osArch",
             'X-Client-User-Agent: ' . json_encode($ua),
         );
         if (EasyPost::$apiVersion) {
