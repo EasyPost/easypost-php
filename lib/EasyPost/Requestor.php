@@ -297,7 +297,7 @@ class Requestor
 
         $message = "";
 
-        if (is_array($response['error']) ) {
+        if (is_array($response['error'])) {
             $message = $response['error']['message'];
         } elseif (!empty($response['error'])) {
             $message = $response['error'];
