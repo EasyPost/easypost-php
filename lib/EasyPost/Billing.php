@@ -25,6 +25,7 @@ class Billing extends EasypostResource
         if ($payment_methods->id == null) {
             throw new Error('Billing has not been setup for this user. Please add a payment method.');
         }
+
         return $payment_methods;
     }
 
@@ -38,14 +39,13 @@ class Billing extends EasypostResource
      */
     public static function fund_wallet($amount, $primary_or_secondary = 'primary', $api_key = null)
     {
-        $payment_method_info = Billing::get_payment_info($primary_or_secondary);
-        $payment_method_endpoint = $payment_method_info[0];
-        $payment_method_id = $payment_method_info[1];
+        [$payment_method_endpoint, $payment_method_id] = Billing::get_payment_info($primary_or_secondary);
 
         $url = $payment_method_endpoint . "/$payment_method_id/charges";
         $wrapped_params = ['amount' => $amount];
         $requestor = new Requestor($api_key);
         list($response, $api_key) = $requestor->request('post', $url, $wrapped_params);
+
         return Util::convertToEasyPostObject($response, $api_key);
     }
 
@@ -58,13 +58,12 @@ class Billing extends EasypostResource
      */
     public static function delete_payment_method($primary_or_secondary, $api_key = null)
     {
-        $payment_method_info = Billing::get_payment_info($primary_or_secondary);
-        $payment_method_endpoint = $payment_method_info[0];
-        $payment_method_id = $payment_method_info[1];
+        [$payment_method_endpoint, $payment_method_id] = Billing::get_payment_info($primary_or_secondary);
 
         $url = $payment_method_endpoint . "/$payment_method_id";
         $requestor = new Requestor($api_key);
         list($response, $api_key) = $requestor->request('delete', $url);
+
         return Util::convertToEasyPostObject($response, $api_key);
     }
 
@@ -86,12 +85,13 @@ class Billing extends EasypostResource
         if ($payment_methods->$payment_method_to_use != null) {
             $payment_method_id = $payment_methods->$payment_method_to_use->id;
         }
-
+        echo "payment_method_id: " . $payment_method_id;
         if ($payment_method_to_use !== null && $payment_method_id !== null) {
-            if (strpos($payment_method_id, 'card_') !== 0) {
-                return array('credit_cards', $payment_methods->$payment_method_to_use->id);
-            } else if (strpos($payment_method_id, 'bank_') !== 0) {
-                return array('bank_accounts', $payment_methods->$payment_method_to_use->id);
+            if (strpos($payment_method_id, 'card_') === 0) {
+                return ['/credit_cards', $payment_methods->$payment_method_to_use->id];
+            } else if (strpos($payment_method_id, 'bank_') === 0) {
+                echo "\npayment_method_id went in here ";
+                return ['/bank_accounts', $payment_methods->$payment_method_to_use->id];
             }
         }
 

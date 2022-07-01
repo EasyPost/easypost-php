@@ -70,6 +70,8 @@ class BillingTest extends \PHPUnit\Framework\TestCase
      */
     public function testRetrievePaymentMethods()
     {
+        $this->markTestSkipped('Skipping due to the lack of an available real payment method in tests.');
+
         VCR::insertCassette('billing/retrievePaymentMethods.yml');
 
         $payment_methods = Billing::retrieve_payment_methods();
