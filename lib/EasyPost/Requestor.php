@@ -291,7 +291,7 @@ class Requestor
      */
     public function handleApiError($httpBody, $httpStatus, $response)
     {
-        if (!is_array($response) && (!isset($response['error']) || ! isset($response['errors']))) {
+        if (!is_array($response) || !isset($response['error'])) {
             throw new Error("Invalid response object from API: HTTP Status: ({$httpStatus}) {$httpBody})", $httpStatus, $httpBody);
         }
 
