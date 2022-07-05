@@ -82,23 +82,22 @@ class Billing extends EasypostResource
         ];
         $payment_method_to_use = $payment_method_map[$primary_or_secondary] ?? null;
 
-        if ($payment_methods->$payment_method_to_use != null) {
+        if ($payment_methods->$payment_method_to_use->id != null) {
             $payment_method_id = $payment_methods->$payment_method_to_use->id;
+        } else {
+            throw new Error('Did not find any chosen payment method. Please try again.');
         }
 
-        $endpoint = $payment_id = '';
         if ($payment_method_to_use !== null && $payment_method_id !== null) {
             if (strpos($payment_method_id, 'card_') === 0) {
                 $endpoint = '/credit_cards';
-                $payment_id = $payment_methods->$payment_method_to_use->id;
             } else if (strpos($payment_method_id, 'bank_') === 0) {
                 $endpoint = '/bank_accounts';
-                $payment_id = $payment_methods->$payment_method_to_use->id;
             } else {
                 throw new Error('The chosen payment method is not valid. Please try again.');
             }
         }
 
-        return [$endpoint, $payment_id];
+        return [$endpoint, $payment_method_id];
     }
 }
