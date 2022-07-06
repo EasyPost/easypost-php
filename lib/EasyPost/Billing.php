@@ -26,7 +26,7 @@ class Billing extends EasypostResource
             throw new Error('Billing has not been setup for this user. Please add a payment method.');
         }
 
-        return $payment_methods;
+        return Util::convertToEasyPostObject($payment_methods, $apiKey);
     }
 
     /**
@@ -34,37 +34,39 @@ class Billing extends EasypostResource
      *
      * @param string $amount
      * @param string $primary_or_secondary
-     * @param string $api_key
+     * @param string $apiKey
      * @return mixed
      */
-    public static function fund_wallet($amount, $primary_or_secondary = 'primary', $api_key = null)
+    public static function fund_wallet($amount, $primary_or_secondary = 'primary', $apiKey = null)
     {
         [$payment_method_endpoint, $payment_method_id] = Billing::get_payment_info(strtolower($primary_or_secondary));
 
         $url = $payment_method_endpoint . "/$payment_method_id/charges";
         $wrapped_params = ['amount' => $amount];
-        $requestor = new Requestor($api_key);
-        list($response, $api_key) = $requestor->request('post', $url, $wrapped_params);
+        $requestor = new Requestor($apiKey);
+        list($response, $apiKey) = $requestor->request('post', $url, $wrapped_params);
 
-        return Util::convertToEasyPostObject($response, $api_key);
+        // Return true if succeeds, an error will be thrown if it fails
+        return true;
     }
 
     /**
      * Delete a payment method.
      *
      * @param string $primary_or_secondary
-     * @param string $api_key
+     * @param string $apiKey
      * @return mixed
      */
-    public static function delete_payment_method($primary_or_secondary, $api_key = null)
+    public static function delete_payment_method($primary_or_secondary, $apiKey = null)
     {
         [$payment_method_endpoint, $payment_method_id] = Billing::get_payment_info(strtolower($primary_or_secondary));
 
         $url = $payment_method_endpoint . "/$payment_method_id";
-        $requestor = new Requestor($api_key);
-        list($response, $api_key) = $requestor->request('delete', $url);
+        $requestor = new Requestor($apiKey);
+        list($response, $apiKey) = $requestor->request('delete', $url);
 
-        return Util::convertToEasyPostObject($response, $api_key);
+        // Return true if succeeds, an error will be thrown if it fails
+        return true;
     }
 
     /**
