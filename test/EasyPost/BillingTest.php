@@ -44,7 +44,7 @@ class BillingTest extends \PHPUnit\Framework\TestCase
 
         $payment_method_fund = Billing::fund_wallet(2000, 'primary');
 
-        $this->assertTrue($payment_method_fund != null);
+        $this->assertTrue($payment_method_fund);
     }
 
     /**
@@ -60,7 +60,7 @@ class BillingTest extends \PHPUnit\Framework\TestCase
 
         $delete_payment_method = Billing::delete_payment_method('primary');
 
-        $this->assertTrue($delete_payment_method != null);
+        $this->assertTrue($delete_payment_method);
     }
 
     /**
