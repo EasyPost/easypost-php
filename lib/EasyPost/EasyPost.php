@@ -55,7 +55,7 @@ abstract class EasyPost
      *
      * @var string
      */
-    const VERSION = '5.2.1';
+    const VERSION = '5.3.0';
 
     /**
      * Get the API key.
