@@ -388,7 +388,8 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     /**
      * @throws Error
      */
-    public function testGenerateForm() {
+    public function testGenerateForm()
+    {
         VCR::insertCassette('shipments/generateForm.yml');
 
         $shipment = Shipment::create(Fixture::one_call_buy_shipment());
