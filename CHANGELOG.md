@@ -5,6 +5,7 @@
 - Adds `Billing::retrieve_payment_methods()`, `Billing::fund_wallet()`, and `Billing::delete_payment_method()` functions
 - Adds OS specific details to the `User-Agent` header
 - Applies a patch to coerce array error messages to strings where error mapping is done improperly (as is the case with carriers like GSO/GLS) (closes #181)
+- Add form creation via `generate_form()` function on a `Shipment` object
 
 ## v5.2.1 (2022-05-31)
 

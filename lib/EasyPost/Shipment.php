@@ -202,6 +202,28 @@ class Shipment extends EasypostResource
     }
 
     /**
+     * Generate a form for the shipment.
+     *
+     * @param string $formType
+     * @param mixed $formOptions
+     * @return $this
+     * @throws \EasyPost\Error
+     */
+    public function generate_form(string $formType, $formOptions = null): Shipment
+    {
+        $requestor = new Requestor($this->_apiKey);
+        $url = $this->instanceUrl() . '/forms';
+        $formOptions['type'] = $formType;
+
+        $params['form'] = $formOptions;
+
+        list($response, $apiKey) = $requestor->request('post', $url, $params);
+        $this->refreshFrom($response, $apiKey);
+
+        return $this;
+    }
+
+    /**
      * Get the lowest rate for the shipment.
      *
      * @param array $carriers
