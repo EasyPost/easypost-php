@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## Next Release
+- Add form creation via `generate_form()` function on a `Shipment` object
+
 ## v5.3.0 (2022-07-07)
 
 - Adds `Billing::retrieve_payment_methods()`, `Billing::fund_wallet()`, and `Billing::delete_payment_method()` functions

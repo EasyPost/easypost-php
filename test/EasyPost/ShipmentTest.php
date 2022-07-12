@@ -384,4 +384,29 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
             $this->assertEquals('Invalid delivery_accuracy value, must be one of: ["percentile_50","percentile_75","percentile_85","percentile_90","percentile_95","percentile_97","percentile_99"]', $error->getMessage());
         }
     }
+
+    /**
+     * Tests generating a form for a shipment.
+     *
+     * @throws Error
+     */
+    public function testGenerateForm()
+    {
+        VCR::insertCassette('shipments/generateForm.yml');
+
+        $shipment = Shipment::create(Fixture::one_call_buy_shipment());
+
+        $formType = "return_packing_slip";
+        $shipment->generate_form(
+            $formType,
+            Fixture::rma_form_options()
+        );
+
+        $this->assertEquals(1, count($shipment->forms));
+
+        $form = $shipment->forms[0];
+
+        $this->assertEquals($formType, $form->form_type);
+        $this->assertNotNull($form->form_url);
+    }
 }
