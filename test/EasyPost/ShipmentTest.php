@@ -386,6 +386,8 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
+     * Tests generating a form for a shipment.
+     *
      * @throws Error
      */
     public function testGenerateForm()
