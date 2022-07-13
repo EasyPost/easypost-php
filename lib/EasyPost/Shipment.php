@@ -249,7 +249,7 @@ class Shipment extends EasypostResource
     public function lowest_smartrate($delivery_days, $delivery_accuracy)
     {
         $smartrates = $this->get_smartrates();
-        $lowest_rate = $this->get_lowest_smartrate($smartrates, $delivery_days, $delivery_accuracy);
+        $lowest_rate = $this->get_lowest_smartrate($smartrates, $delivery_days, strtolower($delivery_accuracy));
 
         return $lowest_rate;
     }
