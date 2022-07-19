@@ -41,13 +41,13 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('carrier_accounts/create.yml');
 
-        $carrier_account = CarrierAccount::create(Fixture::basic_carrier_account());
+        $carrierAccount = CarrierAccount::create(Fixture::basic_carrier_account());
 
-        $this->assertEquals('UpsAccount', $carrier_account->type);
-        $this->assertInstanceOf('\EasyPost\CarrierAccount', $carrier_account);
-        $this->assertStringMatchesFormat('ca_%s', $carrier_account->id);
+        $this->assertEquals('UpsAccount', $carrierAccount->type);
+        $this->assertInstanceOf('\EasyPost\CarrierAccount', $carrierAccount);
+        $this->assertStringMatchesFormat('ca_%s', $carrierAccount->id);
 
-        $carrier_account->delete(); // Delete the carrier account once it's done being tested.
+        $carrierAccount->delete(); // Delete the carrier account once it's done being tested.
     }
 
     /**
@@ -59,14 +59,14 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('carrier_accounts/retrieve.yml');
 
-        $carrier_account = CarrierAccount::create(Fixture::basic_carrier_account());
+        $carrierAccount = CarrierAccount::create(Fixture::basic_carrier_account());
 
-        $retrieved_carrier_account = CarrierAccount::retrieve($carrier_account->id);
+        $retrievedCarrierAccount = CarrierAccount::retrieve($carrierAccount->id);
 
-        $this->assertInstanceOf('\EasyPost\CarrierAccount', $retrieved_carrier_account);
-        $this->assertEquals($carrier_account, $retrieved_carrier_account);
+        $this->assertInstanceOf('\EasyPost\CarrierAccount', $retrievedCarrierAccount);
+        $this->assertEquals($carrierAccount, $retrievedCarrierAccount);
 
-        $carrier_account->delete(); // Delete the carrier account once it's done being tested.
+        $carrierAccount->delete(); // Delete the carrier account once it's done being tested.
     }
 
     /**
@@ -78,9 +78,9 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('carrier_accounts/all.yml');
 
-        $carrier_accounts = CarrierAccount::all();
+        $carrierAccounts = CarrierAccount::all();
 
-        $this->assertContainsOnlyInstancesOf('\EasyPost\CarrierAccount', $carrier_accounts);
+        $this->assertContainsOnlyInstancesOf('\EasyPost\CarrierAccount', $carrierAccounts);
     }
 
     /**
@@ -92,18 +92,18 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('carrier_accounts/update.yml');
 
-        $carrier_account = CarrierAccount::create(Fixture::basic_carrier_account());
+        $carrierAccount = CarrierAccount::create(Fixture::basic_carrier_account());
 
-        $test_description = 'My custom description';
+        $testDescription = 'My custom description';
 
-        $carrier_account->description = $test_description;
-        $carrier_account->save();
+        $carrierAccount->description = $testDescription;
+        $carrierAccount->save();
 
-        $this->assertInstanceOf('\EasyPost\CarrierAccount', $carrier_account);
-        $this->assertStringMatchesFormat('ca_%s', $carrier_account->id);
-        $this->assertEquals($test_description, $carrier_account->description);
+        $this->assertInstanceOf('\EasyPost\CarrierAccount', $carrierAccount);
+        $this->assertStringMatchesFormat('ca_%s', $carrierAccount->id);
+        $this->assertEquals($testDescription, $carrierAccount->description);
 
-        $carrier_account->delete(); // Delete the carrier account once it's done being tested.
+        $carrierAccount->delete(); // Delete the carrier account once it's done being tested.
     }
 
     /**
@@ -115,9 +115,9 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('carrier_accounts/delete.yml');
 
-        $carrier_account = CarrierAccount::create(Fixture::basic_carrier_account());
+        $carrierAccount = CarrierAccount::create(Fixture::basic_carrier_account());
 
-        $response = $carrier_account->delete();
+        $response = $carrierAccount->delete();
 
         $this->assertIsObject($response);
     }

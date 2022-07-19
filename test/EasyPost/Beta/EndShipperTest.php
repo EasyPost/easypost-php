@@ -2,9 +2,9 @@
 
 namespace EasyPost\Test;
 
-use VCR\VCR;
-use EasyPost\EasyPost;
 use EasyPost\Beta\EndShipper;
+use EasyPost\EasyPost;
+use VCR\VCR;
 
 class EndShipperTest extends \PHPUnit\Framework\TestCase
 {
@@ -40,13 +40,13 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('end_shipper/create.yml');
 
-        $end_shipper = EndShipper::create(Fixture::end_shipper_address());
+        $endShipper = EndShipper::create(Fixture::end_shipper_address());
 
-        $this->assertInstanceOf('\EasyPost\Beta\EndShipper', $end_shipper);
-        $this->assertStringMatchesFormat('es_%s', $end_shipper->id);
-        $this->assertEquals('388 TOWNSEND ST APT 20', $end_shipper->street1);
+        $this->assertInstanceOf('\EasyPost\Beta\EndShipper', $endShipper);
+        $this->assertStringMatchesFormat('es_%s', $endShipper->id);
+        $this->assertEquals('388 TOWNSEND ST APT 20', $endShipper->street1);
 
-        return $end_shipper;
+        return $endShipper;
     }
 
     /**
@@ -55,16 +55,16 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
      * @depends testCreate
      * @return EndShipper
      */
-    public function testRetrieve(EndShipper $end_shipper)
+    public function testRetrieve(EndShipper $endShipper)
     {
         VCR::insertCassette('end_shipper/retrieve.yml');
 
-        $retrieved_end_shipper = EndShipper::retrieve($end_shipper->id);
+        $retrievedEndShipper = EndShipper::retrieve($endShipper->id);
 
-        $this->assertInstanceOf('\EasyPost\Beta\EndShipper', $retrieved_end_shipper);
-        $this->assertEquals($end_shipper->street1, $retrieved_end_shipper->street1);
+        $this->assertInstanceOf('\EasyPost\Beta\EndShipper', $retrievedEndShipper);
+        $this->assertEquals($endShipper->street1, $retrievedEndShipper->street1);
 
-        return $retrieved_end_shipper;
+        return $retrievedEndShipper;
     }
 
     /**
@@ -76,12 +76,12 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('end_shipper/all.yml');
 
-        $end_shipper = EndShipper::all([
+        $endShipper = EndShipper::all([
             'page_size' => Fixture::page_size(),
         ]);
 
-        $this->assertLessThanOrEqual($end_shipper, Fixture::page_size());
-        $this->assertContainsOnlyInstancesOf('\EasyPost\Beta\EndShipper', $end_shipper);
+        $this->assertLessThanOrEqual($endShipper, Fixture::page_size());
+        $this->assertContainsOnlyInstancesOf('\EasyPost\Beta\EndShipper', $endShipper);
     }
 
     /**
@@ -90,26 +90,27 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
      * @depends testCreate
      * @return EndShipper
      */
-    public function testUpdate(EndShipper $end_shipper)
+    public function testUpdate(EndShipper $endShipper)
     {
         VCR::insertCassette('end_shipper/update.yml');
 
-        $new_name = 'NEW NAME';
         // All caps because API will return all caps as part of verification.
-        $end_shipper->name = $new_name;
-        $end_shipper->company = 'EasyPost';
-        $end_shipper->street1 = '388 Townsend St';
-        $end_shipper->street2 = 'Apt 20';
-        $end_shipper->city = 'San Francisco';
-        $end_shipper->state = 'CA';
-        $end_shipper->zip = '94107';
-        $end_shipper->country = 'US';
-        $end_shipper->phone = '9999999999';
-        $end_shipper->email = 'test@example.com';
-        $end_shipper->save();
+        $newName = 'NEW NAME';
 
-        $this->assertInstanceOf('\EasyPost\Beta\EndShipper', $end_shipper);
-        $this->assertStringMatchesFormat('es_%s', $end_shipper->id);
-        $this->assertEquals($new_name, $end_shipper->name);
+        $endShipper->name = $newName;
+        $endShipper->company = 'EasyPost';
+        $endShipper->street1 = '388 Townsend St';
+        $endShipper->street2 = 'Apt 20';
+        $endShipper->city = 'San Francisco';
+        $endShipper->state = 'CA';
+        $endShipper->zip = '94107';
+        $endShipper->country = 'US';
+        $endShipper->phone = '9999999999';
+        $endShipper->email = 'test@example.com';
+        $endShipper->save();
+
+        $this->assertInstanceOf('\EasyPost\Beta\EndShipper', $endShipper);
+        $this->assertStringMatchesFormat('es_%s', $endShipper->id);
+        $this->assertEquals($newName, $endShipper->name);
     }
 }

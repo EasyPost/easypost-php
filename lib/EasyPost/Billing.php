@@ -20,13 +20,13 @@ class Billing extends EasypostResource
      */
     public static function retrieve_payment_methods($params = null, $apiKey = null)
     {
-        $payment_methods = self::_all("paymentMethod", $params, $apiKey);
+        $paymentMethods = self::allResources("paymentMethod", $params, $apiKey);
 
-        if ($payment_methods->id == null) {
+        if ($paymentMethods->id == null) {
             throw new Error('Billing has not been setup for this user. Please add a payment method.');
         }
 
-        return Util::convertToEasyPostObject($payment_methods, $apiKey);
+        return Util::convertToEasyPostObject($paymentMethods, $apiKey);
     }
 
     /**
@@ -39,12 +39,12 @@ class Billing extends EasypostResource
      */
     public static function fund_wallet($amount, $primary_or_secondary = 'primary', $apiKey = null)
     {
-        [$payment_method_endpoint, $payment_method_id] = Billing::get_payment_info(strtolower($primary_or_secondary));
+        [$paymentMethodEndpoint, $paymentMethodId] = Billing::get_payment_info(strtolower($primary_or_secondary));
 
-        $url = $payment_method_endpoint . "/$payment_method_id/charges";
-        $wrapped_params = ['amount' => $amount];
+        $url = $paymentMethodEndpoint . "/$paymentMethodId/charges";
+        $wrappedParams = ['amount' => $amount];
         $requestor = new Requestor($apiKey);
-        list($response, $apiKey) = $requestor->request('post', $url, $wrapped_params);
+        list($response, $apiKey) = $requestor->request('post', $url, $wrappedParams);
 
         // Return true if succeeds, an error will be thrown if it fails
         return true;
@@ -59,9 +59,9 @@ class Billing extends EasypostResource
      */
     public static function delete_payment_method($primary_or_secondary, $apiKey = null)
     {
-        [$payment_method_endpoint, $payment_method_id] = Billing::get_payment_info(strtolower($primary_or_secondary));
+        [$paymentMethodEndpoint, $paymentMethodId] = Billing::get_payment_info(strtolower($primary_or_secondary));
 
-        $url = $payment_method_endpoint . "/$payment_method_id";
+        $url = $paymentMethodEndpoint . "/$paymentMethodId";
         $requestor = new Requestor($apiKey);
         list($response, $apiKey) = $requestor->request('delete', $url);
 
@@ -77,28 +77,28 @@ class Billing extends EasypostResource
      */
     private static function get_payment_info($primary_or_secondary = 'primary')
     {
-        $payment_methods = Billing::retrieve_payment_methods();
-        $payment_method_map = [
+        $paymentMethods = Billing::retrieve_payment_methods();
+        $paymentMethodMap = [
             'primary' => 'primary_payment_method',
             'secondary' => 'secondary_payment_method'
         ];
-        $payment_method_to_use = $payment_method_map[$primary_or_secondary] ?? null;
+        $paymentMethodToUse = $paymentMethodMap[$primary_or_secondary] ?? null;
 
-        $error_string = 'The chosen payment method is not valid. Please try again.';
+        $errorString = 'The chosen payment method is not valid. Please try again.';
 
-        if ($payment_method_to_use != null && $payment_methods->$payment_method_to_use->id != null) {
-            $payment_method_id = $payment_methods->$payment_method_to_use->id;
-            if (strpos($payment_method_id, 'card_') === 0) {
+        if ($paymentMethodToUse != null && $paymentMethods->$paymentMethodToUse->id != null) {
+            $paymentMethodId = $paymentMethods->$paymentMethodToUse->id;
+            if (strpos($paymentMethodId, 'card_') === 0) {
                 $endpoint = '/credit_cards';
-            } else if (strpos($payment_method_id, 'bank_') === 0) {
+            } else if (strpos($paymentMethodId, 'bank_') === 0) {
                 $endpoint = '/bank_accounts';
             } else {
-                throw new Error($error_string);
+                throw new Error($errorString);
             }
         } else {
-            throw new Error($error_string);
+            throw new Error($errorString);
         }
 
-        return [$endpoint, $payment_method_id];
+        return [$endpoint, $paymentMethodId];
     }
 }

@@ -57,10 +57,10 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('addresses/createVerifyStrict.yml');
 
-        $address_data = Fixture::basic_address();
-        $address_data['verify_strict'] = [true];
+        $addressData = Fixture::basic_address();
+        $addressData['verify_strict'] = [true];
 
-        $address = Address::create($address_data);
+        $address = Address::create($addressData);
 
         $this->assertInstanceOf('\EasyPost\Address', $address);
         $this->assertStringMatchesFormat('adr_%s', $address->id);
@@ -78,10 +78,10 @@ class AddressTest extends \PHPUnit\Framework\TestCase
 
         $address = Address::create(Fixture::basic_address());
 
-        $retrieved_address = Address::retrieve($address->id);
+        $retrievedAddress = Address::retrieve($address->id);
 
-        $this->assertInstanceOf('\EasyPost\Address', $retrieved_address);
-        $this->assertEquals($address, $retrieved_address);
+        $this->assertInstanceOf('\EasyPost\Address', $retrievedAddress);
+        $this->assertEquals($address, $retrievedAddress);
     }
 
     /**
@@ -97,11 +97,11 @@ class AddressTest extends \PHPUnit\Framework\TestCase
             'page_size' => Fixture::page_size(),
         ]);
 
-        $addresses_array = $addresses['addresses'];
+        $addressesArray = $addresses['addresses'];
 
-        $this->assertLessThanOrEqual($addresses_array, Fixture::page_size());
+        $this->assertLessThanOrEqual($addressesArray, Fixture::page_size());
         $this->assertNotNull($addresses['has_more']);
-        $this->assertContainsOnlyInstancesOf('\EasyPost\Address', $addresses_array);
+        $this->assertContainsOnlyInstancesOf('\EasyPost\Address', $addressesArray);
     }
 
     /**

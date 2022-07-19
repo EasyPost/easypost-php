@@ -33,7 +33,7 @@ class Pickup extends EasypostResource
      */
     public static function retrieve($id, $apiKey = null)
     {
-        return self::_retrieve(get_class(), $id, $apiKey);
+        return self::retrieveResource(get_class(), $id, $apiKey);
     }
 
     /**
@@ -51,7 +51,7 @@ class Pickup extends EasypostResource
             $params['pickup'] = $clone;
         }
 
-        return self::_create(get_class(), $params, $apiKey);
+        return self::createResource(get_class(), $params, $apiKey);
     }
 
     /**
@@ -100,8 +100,8 @@ class Pickup extends EasypostResource
      */
     public function lowest_rate($carriers = [], $services = [])
     {
-        $lowest_rate = Util::getLowestObjectRate($this, $carriers, $services, 'pickup_rates');
+        $lowestRate = Util::getLowestObjectRate($this, $carriers, $services, 'pickup_rates');
 
-        return $lowest_rate;
+        return $lowestRate;
     }
 }

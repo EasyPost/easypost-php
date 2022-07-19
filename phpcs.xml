@@ -19,9 +19,16 @@
 
     <!-- Use the PSR12 ruleset -->
     <rule ref="PSR12">
-        <!-- None of our functions are camel caps and would be a massive breaking change -->
+        <!-- TODO: Change all function names to camel caps on the next major release -->
         <exclude name="PSR1.Methods.CamelCapsMethodName.NotCamelCaps" />
-        <!-- TODO: Rename functions with prefixed underscores -->
-        <exclude name="PSR2.Methods.MethodDeclaration.Underscore" />
+    </rule>
+
+    <!-- Enforce custom rules -->
+    <rule ref="Generic.Arrays.DisallowLongArraySyntax" />
+    <rule ref="Squiz.NamingConventions.ValidVariableName.NotCamelCaps">
+        <!-- TODO: Change $primary_or_secondary to $primaryOrSecondary on the next major release -->
+        <exclude-pattern>/lib/EasyPost/Billing\.php</exclude-pattern>
+        <!-- TODO: Change $delivery_days and $delivery_accuracy to camel caps on the next major release -->
+        <exclude-pattern>/lib/EasyPost/Shipment\.php</exclude-pattern>
     </rule>
 </ruleset>

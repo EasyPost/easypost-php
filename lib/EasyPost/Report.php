@@ -29,7 +29,7 @@ class Report extends EasypostResource
      */
     public static function retrieve($id, $apiKey = null)
     {
-        return self::_retrieve(get_class(), $id, $apiKey);
+        return self::retrieveResource(get_class(), $id, $apiKey);
     }
 
     /**
@@ -47,7 +47,7 @@ class Report extends EasypostResource
         } else {
             $type = $params['type'];
 
-            self::_validate($params, $apiKey);
+            self::validate($params, $apiKey);
             $requestor = new Requestor($apiKey);
 
             $url = self::reportUrl($type);
@@ -73,7 +73,7 @@ class Report extends EasypostResource
 
         $url = self::reportUrl($params['type']);
 
-        self::_validate($params, $apiKey);
+        self::validate($params, $apiKey);
         $requestor = new Requestor($apiKey);
 
         list($response, $apiKey) = $requestor->request('post', $url, $params);

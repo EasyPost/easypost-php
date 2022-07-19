@@ -43,11 +43,11 @@ class RefundTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('refunds/create.yml');
 
         $shipment = Shipment::create(Fixture::one_call_buy_shipment());
-        $retrieved_shipment = Shipment::retrieve($shipment); // We need to retrieve the shipment so that the tracking_code has time to populate
+        $retrievedShipment = Shipment::retrieve($shipment); // We need to retrieve the shipment so that the tracking_code has time to populate
 
         $refund = Refund::create([
             'carrier' => Fixture::usps(),
-            'tracking_codes' => $retrieved_shipment->tracking_code,
+            'tracking_codes' => $retrievedShipment->tracking_code,
         ]);
 
         $this->assertStringMatchesFormat('rfnd_%s', $refund[0]->id);
@@ -67,11 +67,11 @@ class RefundTest extends \PHPUnit\Framework\TestCase
             'page_size' => Fixture::page_size(),
         ]);
 
-        $refunds_array = $refunds['refunds'];
+        $refundsArray = $refunds['refunds'];
 
-        $this->assertLessThanOrEqual($refunds_array, Fixture::page_size());
+        $this->assertLessThanOrEqual($refundsArray, Fixture::page_size());
         $this->assertNotNull($refunds['has_more']);
-        $this->assertContainsOnlyInstancesOf('\EasyPost\Refund', $refunds_array);
+        $this->assertContainsOnlyInstancesOf('\EasyPost\Refund', $refundsArray);
 
         // Return so other tests can reuse these objects
         return $refunds;
@@ -90,9 +90,9 @@ class RefundTest extends \PHPUnit\Framework\TestCase
             'page_size' => Fixture::page_size(),
         ]);
 
-        $retrieved_refund = Refund::retrieve($refunds['refunds'][0]);
+        $retrievedRefund = Refund::retrieve($refunds['refunds'][0]);
 
-        $this->assertInstanceOf('\EasyPost\Refund', $retrieved_refund);
-        $this->assertEquals($refunds['refunds'][0]->id, $retrieved_refund->id);
+        $this->assertInstanceOf('\EasyPost\Refund', $retrievedRefund);
+        $this->assertEquals($refunds['refunds'][0]->id, $retrievedRefund->id);
     }
 }

@@ -46,7 +46,7 @@ class Shipment extends EasypostResource
      */
     public static function retrieve($id, $apiKey = null)
     {
-        return self::_retrieve(get_class(), $id, $apiKey);
+        return self::retrieveResource(get_class(), $id, $apiKey);
     }
 
     /**
@@ -58,7 +58,7 @@ class Shipment extends EasypostResource
      */
     public static function all($params = null, $apiKey = null)
     {
-        return self::_all(get_class(), $params, $apiKey);
+        return self::allResources(get_class(), $params, $apiKey);
     }
 
     /**
@@ -76,7 +76,7 @@ class Shipment extends EasypostResource
             $params['shipment'] = $clone;
         }
 
-        return self::_create(get_class(), $params, $apiKey);
+        return self::createResource(get_class(), $params, $apiKey);
     }
 
     /**
@@ -106,7 +106,7 @@ class Shipment extends EasypostResource
     {
         $requestor = new Requestor($this->_apiKey);
         $url = $this->instanceUrl() . '/smartrate';
-        list($response, $_) = $requestor->request('get', $url);
+        list($response, $apiKey) = $requestor->request('get', $url);
 
         return isset($response['result']) ? $response['result'] : [];
     }
@@ -233,9 +233,9 @@ class Shipment extends EasypostResource
      */
     public function lowest_rate($carriers = [], $services = [])
     {
-        $lowest_rate = Util::getLowestObjectRate($this, $carriers, $services);
+        $lowestRate = Util::getLowestObjectRate($this, $carriers, $services);
 
-        return $lowest_rate;
+        return $lowestRate;
     }
 
     /**
@@ -249,9 +249,9 @@ class Shipment extends EasypostResource
     public function lowest_smartrate($delivery_days, $delivery_accuracy)
     {
         $smartrates = $this->get_smartrates();
-        $lowest_rate = $this->get_lowest_smartrate($smartrates, $delivery_days, strtolower($delivery_accuracy));
+        $lowestRate = $this->get_lowest_smartrate($smartrates, $delivery_days, strtolower($delivery_accuracy));
 
-        return $lowest_rate;
+        return $lowestRate;
     }
 
     /**
@@ -265,7 +265,7 @@ class Shipment extends EasypostResource
      */
     public static function get_lowest_smartrate($smartrates, $delivery_days, $delivery_accuracy)
     {
-        $valid_delivery_accuracy_values = [
+        $validDeliveryAccuracyValues = [
             'percentile_50',
             'percentile_75',
             'percentile_85',
@@ -274,25 +274,25 @@ class Shipment extends EasypostResource
             'percentile_97',
             'percentile_99',
         ];
-        $lowest_smartrate = false;
+        $lowestSmartrate = false;
 
-        if (!in_array(strtolower($delivery_accuracy), $valid_delivery_accuracy_values)) {
-            $json_valid_list = json_encode($valid_delivery_accuracy_values);
-            throw new Error("Invalid delivery_accuracy value, must be one of: $json_valid_list");
+        if (!in_array(strtolower($delivery_accuracy), $validDeliveryAccuracyValues)) {
+            $jsonValidList = json_encode($validDeliveryAccuracyValues);
+            throw new Error("Invalid delivery_accuracy value, must be one of: $jsonValidList");
         }
 
         foreach ($smartrates as $rate) {
             if ($rate['time_in_transit'][$delivery_accuracy] > intval($delivery_days)) {
                 continue;
-            } elseif (!$lowest_smartrate || floatval($rate['rate']) < floatval($lowest_smartrate['rate'])) {
-                $lowest_smartrate = $rate;
+            } elseif (!$lowestSmartrate || floatval($rate['rate']) < floatval($lowestSmartrate['rate'])) {
+                $lowestSmartrate = $rate;
             }
         }
 
-        if ($lowest_smartrate == false) {
+        if ($lowestSmartrate == false) {
             throw new Error("No rates found.");
         }
 
-        return $lowest_smartrate;
+        return $lowestSmartrate;
     }
 }

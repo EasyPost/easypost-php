@@ -2,8 +2,8 @@
 
 namespace EasyPost\Test;
 
-use EasyPost\EasyPost;
 use EasyPost\Billing;
+use EasyPost\EasyPost;
 use VCR\VCR;
 
 class BillingTest extends \PHPUnit\Framework\TestCase
@@ -42,9 +42,9 @@ class BillingTest extends \PHPUnit\Framework\TestCase
 
         VCR::insertCassette('billing/fundWallet.yml');
 
-        $payment_method_fund = Billing::fund_wallet(2000, 'primary');
+        $fundSuccess = Billing::fund_wallet(2000, 'primary');
 
-        $this->assertTrue($payment_method_fund);
+        $this->assertTrue($fundSuccess);
     }
 
     /**
@@ -58,9 +58,9 @@ class BillingTest extends \PHPUnit\Framework\TestCase
 
         VCR::insertCassette('billing/deletePaymentMethod.yml');
 
-        $delete_payment_method = Billing::delete_payment_method('primary');
+        $deletedPaymentMethod = Billing::delete_payment_method('primary');
 
-        $this->assertTrue($delete_payment_method);
+        $this->assertTrue($deletedPaymentMethod);
     }
 
     /**
@@ -74,10 +74,10 @@ class BillingTest extends \PHPUnit\Framework\TestCase
 
         VCR::insertCassette('billing/retrievePaymentMethods.yml');
 
-        $payment_methods = Billing::retrieve_payment_methods();
+        $paymentMethods = Billing::retrieve_payment_methods();
 
-        $this->assertTrue($payment_methods->primary_payment_method != null);
-        // $this->assertTrue($payment_methods->secondary_payment_method != null);
+        $this->assertTrue($paymentMethods->primary_payment_method != null);
+        // $this->assertTrue($paymentMethods->secondary_payment_method != null);
         // uncomment above assertion if there is a secondary payment in your account.
     }
 }

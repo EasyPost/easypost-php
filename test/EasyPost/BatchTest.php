@@ -64,10 +64,10 @@ class BatchTest extends \PHPUnit\Framework\TestCase
             'shipments' => [Fixture::basic_shipment()],
         ]);
 
-        $retrieved_batch = Batch::retrieve($batch->id);
+        $retrievedBatch = Batch::retrieve($batch->id);
 
-        $this->assertInstanceOf('\EasyPost\Batch', $retrieved_batch);
-        $this->assertEquals($batch->id, $retrieved_batch->id);
+        $this->assertInstanceOf('\EasyPost\Batch', $retrievedBatch);
+        $this->assertEquals($batch->id, $retrievedBatch->id);
     }
 
     /**
@@ -83,11 +83,11 @@ class BatchTest extends \PHPUnit\Framework\TestCase
             'page_size' => Fixture::page_size(),
         ]);
 
-        $batches_array = $batches['batches'];
+        $batchesArray = $batches['batches'];
 
-        $this->assertLessThanOrEqual($batches_array, Fixture::page_size());
+        $this->assertLessThanOrEqual($batchesArray, Fixture::page_size());
         $this->assertNotNull($batches['has_more']);
-        $this->assertContainsOnlyInstancesOf('\EasyPost\Batch', $batches_array);
+        $this->assertContainsOnlyInstancesOf('\EasyPost\Batch', $batchesArray);
     }
 
     /**
@@ -118,10 +118,10 @@ class BatchTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('batches/buy.yml');
 
-        $shipment_data = Fixture::one_call_buy_shipment();
+        $shipmentData = Fixture::one_call_buy_shipment();
 
         $batch = Batch::create([
-            'shipments' => [$shipment_data],
+            'shipments' => [$shipmentData],
         ]);
 
         $batch->buy();
@@ -140,17 +140,17 @@ class BatchTest extends \PHPUnit\Framework\TestCase
      */
     public function testCreateScanForm()
     {
-        $cassette_name = 'batches/createScanForm.yml';
-        $test_requires_wait = true ? file_exists(dirname(__DIR__, 1) . "/cassettes/$cassette_name") === false : false;
+        $cassetteName = 'batches/createScanForm.yml';
+        $testRequiresWait = true ? file_exists(dirname(__DIR__, 1) . "/cassettes/$cassetteName") === false : false;
 
-        VCR::insertCassette($cassette_name);
+        VCR::insertCassette($cassetteName);
 
         $batch = Batch::create([
             'shipments' => [Fixture::one_call_buy_shipment()],
         ]);
         $batch->buy();
 
-        if ($test_requires_wait === true) {
+        if ($testRequiresWait === true) {
             sleep(5); // Wait enough time for the batch to process buying the shipment
         }
 
@@ -191,17 +191,17 @@ class BatchTest extends \PHPUnit\Framework\TestCase
      */
     public function testLabel()
     {
-        $cassette_name = 'batches/label.yml';
-        $test_requires_wait = true ? file_exists(dirname(__DIR__, 1) . "/cassettes/$cassette_name") === false : false;
+        $cassetteName = 'batches/label.yml';
+        $testRequiresWait = true ? file_exists(dirname(__DIR__, 1) . "/cassettes/$cassetteName") === false : false;
 
-        VCR::insertCassette($cassette_name);
+        VCR::insertCassette($cassetteName);
 
         $batch = Batch::create([
             'shipments' => [Fixture::one_call_buy_shipment()],
         ]);
         $batch->buy();
 
-        if ($test_requires_wait === true) {
+        if ($testRequiresWait === true) {
             sleep(5); // Wait enough time for the batch to process buying the shipment
         }
 

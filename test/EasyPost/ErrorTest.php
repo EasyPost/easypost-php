@@ -43,7 +43,7 @@ class ErrorTest extends \PHPUnit\Framework\TestCase
 
         // Create a bad shipment so we can work with errors
         try {
-            $_ = Shipment::create();
+            Shipment::create();
         } catch (Error $error) {
             $this->assertEquals(422, $error->getHttpStatus());
             $this->assertEquals('SHIPMENT.INVALID_PARAMS', $error->ecode);

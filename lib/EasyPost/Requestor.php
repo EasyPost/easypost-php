@@ -62,7 +62,7 @@ class Requestor
      * @param mixed $data
      * @return array|string
      */
-    private static function _encodeObjects($data)
+    private static function encodeObjects($data)
     {
         if (is_null($data)) {
             return [];
@@ -76,7 +76,7 @@ class Requestor
             $resource = [];
             foreach ($data as $k => $v) {
                 if (!is_null($v) and ($v !== "") and (!is_array($v) or !empty($v))) {
-                    $resource[$k] = self::_encodeObjects($v);
+                    $resource[$k] = self::encodeObjects($v);
                 }
             }
 
@@ -93,7 +93,7 @@ class Requestor
      * @param null $prefix
      * @return string
      */
-    public static function _urlEncode($arr, $prefix = null)
+    public static function urlEncode($arr, $prefix = null)
     {
         if (!is_array($arr)) {
             return $arr;
@@ -112,7 +112,7 @@ class Requestor
             }
 
             if (is_array($v)) {
-                $r[] = self::_urlEncode($v, $k, true);
+                $r[] = self::urlEncode($v, $k, true);
             } else {
                 $r[] = urlencode($k) . "=" . urlencode($v);
             }
@@ -132,8 +132,8 @@ class Requestor
      */
     public function request($method, $url, $params = null, $apiKeyRequired = true, $beta = false)
     {
-        list($httpBody, $httpStatus, $myApiKey) = $this->_requestRaw($method, $url, $params, $apiKeyRequired, $beta);
-        $response = $this->_interpretResponse($httpBody, $httpStatus);
+        list($httpBody, $httpStatus, $myApiKey) = $this->requestRaw($method, $url, $params, $apiKeyRequired, $beta);
+        $response = $this->interpretResponse($httpBody, $httpStatus);
 
         return [$response, $myApiKey];
     }
@@ -147,7 +147,7 @@ class Requestor
      * @return array
      * @throws \EasyPost\Error
      */
-    private function _requestRaw($method, $url, $params, $apiKeyRequired = true, $beta = false)
+    private function requestRaw($method, $url, $params, $apiKeyRequired = true, $beta = false)
     {
         $myApiKey = $this->_apiKey;
 
@@ -160,7 +160,7 @@ class Requestor
         }
 
         $absUrl = $this->apiUrl($url, $beta);
-        $params = self::_encodeObjects($params);
+        $params = self::encodeObjects($params);
 
         $phpVersion = phpversion();
         $osType = php_uname('s');
@@ -174,7 +174,7 @@ class Requestor
             'User-Agent: EasyPost/v2 PhpClient/' . EasyPost::VERSION . " PHP/$phpVersion OS/$osType OSVersion/$osVersion OSArch/$osArch",
         ];
 
-        list($httpBody, $httpStatus) = $this->_curlRequest($method, $absUrl, $headers, $params);
+        list($httpBody, $httpStatus) = $this->curlRequest($method, $absUrl, $headers, $params);
 
         return [$httpBody, $httpStatus, $myApiKey];
     }
@@ -189,7 +189,7 @@ class Requestor
      * @return array
      * @throws \EasyPost\Error
      */
-    private function _curlRequest($method, $absUrl, $headers, $params)
+    private function curlRequest($method, $absUrl, $headers, $params)
     {
         $curl = curl_init();
         $method = strtolower($method);
@@ -199,7 +199,7 @@ class Requestor
         if ($method == 'get') {
             $curlOptions[CURLOPT_HTTPGET] = 1;
             if (isset($params) && !empty($params)) {
-                $urlParams = self::_urlEncode($params);
+                $urlParams = self::urlEncode($params);
                 $absUrl = "$absUrl?$urlParams";
             }
         } elseif ($method == 'post') {
@@ -217,7 +217,7 @@ class Requestor
         } elseif ($method == 'delete') {
             $curlOptions[CURLOPT_CUSTOMREQUEST] = strtoupper($method);
             if (isset($params) && !empty($params)) {
-                $urlParams = self::_urlEncode($params);
+                $urlParams = self::urlEncode($params);
                 $absUrl = "$absUrl?$urlParams";
             }
         } else {
@@ -267,7 +267,7 @@ class Requestor
      * @return mixed
      * @throws \EasyPost\Error
      */
-    private function _interpretResponse($httpBody, $httpStatus)
+    private function interpretResponse($httpBody, $httpStatus)
     {
         try {
             $response = json_decode($httpBody, true);

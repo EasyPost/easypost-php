@@ -87,7 +87,7 @@ abstract class EasypostResource extends EasyPostObject
      * @param string $apiKey
      * @throws \EasyPost\Error
      */
-    protected static function _validate($params = null, $apiKey = null)
+    protected static function validate($params = null, $apiKey = null)
     {
         if ($params && !is_array($params)) {
             throw new Error("You must pass an array as the first argument to EasyPost API method calls.");
@@ -105,7 +105,7 @@ abstract class EasypostResource extends EasyPostObject
      * @param string $apiKey
      * @return mixed
      */
-    protected static function _retrieve($class, $id, $apiKey = null, $beta = false)
+    protected static function retrieveResource($class, $id, $apiKey = null, $beta = false)
     {
         if ($id instanceof EasypostResource) {
             $id = $id->id;
@@ -125,9 +125,9 @@ abstract class EasypostResource extends EasyPostObject
      * @return mixed
      * @throws \EasyPost\Error
      */
-    protected static function _all($class, $params = null, $apiKey = null, $beta = false)
+    protected static function allResources($class, $params = null, $apiKey = null, $beta = false)
     {
-        self::_validate($params, $apiKey);
+        self::validate($params, $apiKey);
         $requestor = new Requestor($apiKey);
         $url = self::classUrl($class);
         list($response, $apiKey) = $requestor->request('get', $url, $params, true, $beta);
@@ -145,9 +145,9 @@ abstract class EasypostResource extends EasyPostObject
      * @return mixed
      * @throws \EasyPost\Error
      */
-    protected static function _create($class, $params = null, $apiKey = null, $urlModifier = null, $beta = false)
+    protected static function createResource($class, $params = null, $apiKey = null, $urlModifier = null, $beta = false)
     {
-        self::_validate($params, $apiKey);
+        self::validate($params, $apiKey);
         $requestor = new Requestor($apiKey);
         $url = self::classUrl($class);
         if ($urlModifier != null) {
@@ -166,9 +166,9 @@ abstract class EasypostResource extends EasyPostObject
      * @return $this
      * @throws \EasyPost\Error
      */
-    protected function _save($class, $beta = false, $method = 'patch')
+    protected function saveResource($class, $beta = false, $method = 'patch')
     {
-        self::_validate();
+        self::validate();
         if (count($this->_unsavedValues)) {
             $requestor = new Requestor($this->_apiKey);
             $url = $this->instanceUrl();
@@ -187,13 +187,13 @@ abstract class EasypostResource extends EasyPostObject
      * @return $this
      * @throws \EasyPost\Error
      */
-    protected function _delete($params = null, $no_refresh = null)
+    protected function deleteResource($params = null, $noRefresh = null)
     {
-        self::_validate();
+        self::validate();
         $requestor = new Requestor($this->_apiKey);
         $url = $this->instanceUrl();
         list($response, $apiKey) = $requestor->request('delete', $url, $params);
-        if (!$no_refresh) {
+        if (!$noRefresh) {
             $this->refreshFrom($response, $apiKey);
         }
 
@@ -207,9 +207,9 @@ abstract class EasypostResource extends EasyPostObject
      * @return $this
      * @throws \EasyPost\Error
      */
-    protected function _update($params = null)
+    protected function updateResource($params = null)
     {
-        self::_validate();
+        self::validate();
         $requestor = new Requestor($this->_apiKey);
         $url = $this->instanceUrl();
         list($response, $apiKey) = $requestor->request('patch', $url, $params);

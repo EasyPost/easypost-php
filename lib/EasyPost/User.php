@@ -31,7 +31,7 @@ class User extends EasypostResource
      */
     public static function retrieve($id, $apiKey = null)
     {
-        return self::_retrieve(get_class(), $id, $apiKey);
+        return self::retrieveResource(get_class(), $id, $apiKey);
     }
 
     /**
@@ -41,7 +41,7 @@ class User extends EasypostResource
      */
     public function save()
     {
-        return $this->_save(get_class());
+        return $this->saveResource(get_class());
     }
 
     /**
@@ -58,7 +58,7 @@ class User extends EasypostResource
             unset($params);
             $params['user'] = $clone;
         }
-        return self::_create(get_class(), $params, $apiKey, null);
+        return self::createResource(get_class(), $params, $apiKey, null);
     }
 
     /**
@@ -69,7 +69,7 @@ class User extends EasypostResource
      */
     public static function retrieve_me($apiKey = null)
     {
-        return self::_all(get_class(), null, $apiKey);
+        return self::allResources(get_class(), null, $apiKey);
     }
 
     /**
@@ -80,7 +80,7 @@ class User extends EasypostResource
      */
     public function delete($params = null, $apiKey = null)
     {
-        return $this->_delete($params, true);
+        return $this->deleteResource($params, true);
     }
 
     /**
@@ -104,25 +104,25 @@ class User extends EasypostResource
      */
     public function api_keys($apiKey = null)
     {
-        $api_keys = self::all_api_keys();
-        $my_api_keys = null;
+        $apiKeys = self::all_api_keys();
+        $myApiKeys = null;
 
-        if ($api_keys->id == $this->id) {
-            $my_api_keys = $api_keys->keys;
+        if ($apiKeys->id == $this->id) {
+            $myApiKeys = $apiKeys->keys;
         }
-        if (is_null($my_api_keys)) {
-            foreach ($api_keys->children as $children_keys) {
-                if ($children_keys->id == $this->id) {
-                    $my_api_keys = $children_keys->keys;
+        if (is_null($myApiKeys)) {
+            foreach ($apiKeys->children as $childrenKeys) {
+                if ($childrenKeys->id == $this->id) {
+                    $myApiKeys = $childrenKeys->keys;
                 }
             }
         }
 
-        if (is_null($my_api_keys)) {
+        if (is_null($myApiKeys)) {
             return null;
         } else {
             $response = [];
-            foreach ($my_api_keys as $key) {
+            foreach ($myApiKeys as $key) {
                 $response[$key->mode] = $key->key;
             }
             return $response;

@@ -45,10 +45,10 @@ class PickupTest extends \PHPUnit\Framework\TestCase
 
         $shipment = Shipment::create(Fixture::one_call_buy_shipment());
 
-        $pickup_data = Fixture::basic_pickup();
-        $pickup_data['shipment'] = $shipment;
+        $pickupData = Fixture::basic_pickup();
+        $pickupData['shipment'] = $shipment;
 
-        $pickup = Pickup::create($pickup_data);
+        $pickup = Pickup::create($pickupData);
 
         $this->assertInstanceOf('\EasyPost\Pickup', $pickup);
         $this->assertStringMatchesFormat('pickup_%s', $pickup->id);
@@ -66,14 +66,14 @@ class PickupTest extends \PHPUnit\Framework\TestCase
 
         $shipment = Shipment::create(Fixture::one_call_buy_shipment());
 
-        $pickup_data = Fixture::basic_pickup();
-        $pickup_data['shipment'] = $shipment;
+        $pickupData = Fixture::basic_pickup();
+        $pickupData['shipment'] = $shipment;
 
-        $pickup = Pickup::create($pickup_data);
-        $retrieved_pickup = Pickup::retrieve($pickup->id);
+        $pickup = Pickup::create($pickupData);
+        $retrievedPickup = Pickup::retrieve($pickup->id);
 
-        $this->assertInstanceOf('\EasyPost\Pickup', $retrieved_pickup);
-        $this->assertEquals($pickup, $retrieved_pickup);
+        $this->assertInstanceOf('\EasyPost\Pickup', $retrievedPickup);
+        $this->assertEquals($pickup, $retrievedPickup);
     }
 
     /**
@@ -87,20 +87,20 @@ class PickupTest extends \PHPUnit\Framework\TestCase
 
         $shipment = Shipment::create(Fixture::one_call_buy_shipment());
 
-        $pickup_data = Fixture::basic_pickup();
-        $pickup_data['shipment'] = $shipment;
+        $pickupData = Fixture::basic_pickup();
+        $pickupData['shipment'] = $shipment;
 
-        $pickup = Pickup::create($pickup_data);
+        $pickup = Pickup::create($pickupData);
 
-        $bought_pickup = $pickup->buy([
+        $boughtPickup = $pickup->buy([
             'carrier' => Fixture::usps(),
             'service' => Fixture::pickup_service(),
         ]);
 
-        $this->assertInstanceOf('\EasyPost\Pickup', $bought_pickup);
-        $this->assertStringMatchesFormat('pickup_%s', $bought_pickup->id);
-        $this->assertNotNull($bought_pickup->confirmation);
-        $this->assertEquals('scheduled', $bought_pickup->status);
+        $this->assertInstanceOf('\EasyPost\Pickup', $boughtPickup);
+        $this->assertStringMatchesFormat('pickup_%s', $boughtPickup->id);
+        $this->assertNotNull($boughtPickup->confirmation);
+        $this->assertEquals('scheduled', $boughtPickup->status);
     }
 
     /**
@@ -114,21 +114,21 @@ class PickupTest extends \PHPUnit\Framework\TestCase
 
         $shipment = Shipment::create(Fixture::one_call_buy_shipment());
 
-        $pickup_data = Fixture::basic_pickup();
-        $pickup_data['shipment'] = $shipment;
+        $pickupData = Fixture::basic_pickup();
+        $pickupData['shipment'] = $shipment;
 
-        $pickup = Pickup::create($pickup_data);
+        $pickup = Pickup::create($pickupData);
 
-        $bought_pickup = $pickup->buy([
+        $boughtPickup = $pickup->buy([
             'carrier' => Fixture::usps(),
             'service' => Fixture::pickup_service(),
         ]);
 
-        $cancelled_pickup = $bought_pickup->cancel();
+        $cancelledPickup = $boughtPickup->cancel();
 
-        $this->assertInstanceOf('\EasyPost\Pickup', $cancelled_pickup);
-        $this->assertStringMatchesFormat('pickup_%s', $cancelled_pickup->id);
-        $this->assertEquals('canceled', $cancelled_pickup->status);
+        $this->assertInstanceOf('\EasyPost\Pickup', $cancelledPickup);
+        $this->assertStringMatchesFormat('pickup_%s', $cancelledPickup->id);
+        $this->assertEquals('canceled', $cancelledPickup->status);
     }
 
     /**
@@ -142,27 +142,27 @@ class PickupTest extends \PHPUnit\Framework\TestCase
 
         $shipment = Shipment::create(Fixture::one_call_buy_shipment());
 
-        $pickup_data = Fixture::basic_pickup();
-        $pickup_data['shipment'] = $shipment;
+        $pickupData = Fixture::basic_pickup();
+        $pickupData['shipment'] = $shipment;
 
-        $pickup = Pickup::create($pickup_data);
+        $pickup = Pickup::create($pickupData);
 
         // Test lowest rate with no filters
-        $lowest_rate = $pickup->lowest_rate();
-        $this->assertEquals('NextDay', $lowest_rate['service']);
-        $this->assertEquals('0.00', $lowest_rate['rate']);
-        $this->assertEquals('USPS', $lowest_rate['carrier']);
+        $lowestRate = $pickup->lowest_rate();
+        $this->assertEquals('NextDay', $lowestRate['service']);
+        $this->assertEquals('0.00', $lowestRate['rate']);
+        $this->assertEquals('USPS', $lowestRate['carrier']);
 
         // Test lowest rate with service filter (should error due to bad service)
         try {
-            $lowest_rate = $pickup->lowest_rate([], ['BAD SERVICE']);
+            $lowestRate = $pickup->lowest_rate([], ['BAD SERVICE']);
         } catch (Error $error) {
             $this->assertEquals('No rates found.', $error->getMessage());
         }
 
         // Test lowest rate with carrier filter (should error due to bad carrier)
         try {
-            $lowest_rate = $pickup->lowest_rate(['BAD CARRIER'], []);
+            $lowestRate = $pickup->lowest_rate(['BAD CARRIER'], []);
         } catch (Error $error) {
             $this->assertEquals('No rates found.', $error->getMessage());
         }

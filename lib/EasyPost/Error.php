@@ -78,8 +78,8 @@ class Error extends \Exception
             $this->getMessage() . "\n");
         if (!empty($this->errors)) {
             print("Field errors:\n");
-            foreach ($this->errors as $field_error) {
-                foreach ($field_error as $k => $v) {
+            foreach ($this->errors as $fieldError) {
+                foreach ($fieldError as $k => $v) {
                     print("  " . $k . ": " . $v . "\n");
                 }
                 print("\n");

@@ -41,11 +41,11 @@ class CustomsItemTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('customs_items/create.yml');
 
-        $customs_item = CustomsItem::create(Fixture::basic_customs_item());
+        $customsItem = CustomsItem::create(Fixture::basic_customs_item());
 
-        $this->assertInstanceOf('\EasyPost\CustomsItem', $customs_item);
-        $this->assertStringMatchesFormat('cstitem_%s', $customs_item->id);
-        $this->assertEquals('23.0', $customs_item->value);
+        $this->assertInstanceOf('\EasyPost\CustomsItem', $customsItem);
+        $this->assertStringMatchesFormat('cstitem_%s', $customsItem->id);
+        $this->assertEquals('23.0', $customsItem->value);
     }
 
     /**
@@ -57,11 +57,11 @@ class CustomsItemTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('customs_items/retrieve.yml');
 
-        $customs_item = CustomsItem::create(Fixture::basic_customs_item());
+        $customsItem = CustomsItem::create(Fixture::basic_customs_item());
 
-        $retrieved_customs_item = CustomsItem::retrieve($customs_item->id);
+        $retrievedCustomsItem = CustomsItem::retrieve($customsItem->id);
 
-        $this->assertInstanceOf('\EasyPost\CustomsItem', $retrieved_customs_item);
-        $this->assertEquals($customs_item, $retrieved_customs_item);
+        $this->assertInstanceOf('\EasyPost\CustomsItem', $retrievedCustomsItem);
+        $this->assertEquals($customsItem, $retrievedCustomsItem);
     }
 }

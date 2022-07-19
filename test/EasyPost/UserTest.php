@@ -58,9 +58,9 @@ class UserTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('users/retrieve.yml');
 
-        $authenticated_user = User::retrieve_me();
+        $authenticatedUser = User::retrieve_me();
 
-        $user = User::retrieve($authenticated_user['id']);
+        $user = User::retrieve($authenticatedUser['id']);
 
         $this->assertInstanceOf('\EasyPost\User', $user);
         $this->assertStringMatchesFormat('user_%s', $user->id);
@@ -92,14 +92,14 @@ class UserTest extends \PHPUnit\Framework\TestCase
 
         $user = User::retrieve_me();
 
-        $test_phone = '5555555555';
+        $testPhone = '5555555555';
 
-        $user->phone = $test_phone;
+        $user->phone = $testPhone;
         $user->save();
 
         $this->assertInstanceOf('\EasyPost\User', $user);
         $this->assertStringMatchesFormat('user_%s', $user->id);
-        $this->assertEquals($test_phone, $user->phone);
+        $this->assertEquals($testPhone, $user->phone);
     }
 
     /**
@@ -131,9 +131,9 @@ class UserTest extends \PHPUnit\Framework\TestCase
 
         $user = User::retrieve_me();
 
-        $api_keys = $user->all_api_keys();
+        $apiKeys = $user->all_api_keys();
 
-        $this->assertNotNull($api_keys->keys);
+        $this->assertNotNull($apiKeys->keys);
     }
 
     /**
@@ -149,9 +149,9 @@ class UserTest extends \PHPUnit\Framework\TestCase
 
         $user = User::retrieve_me();
 
-        $api_keys = $user->api_keys();
+        $apiKeys = $user->api_keys();
 
-        $this->assertNotNull($api_keys->keys);
+        $this->assertNotNull($apiKeys->keys);
     }
 
     /**

@@ -29,10 +29,10 @@ class EndShipper extends EasypostResource
      */
     public static function create($params = null, $apiKey = null)
     {
-        $wrapped_params = [];
-        $wrapped_params["address"] = $params;
+        $wrappedParams = [];
+        $wrappedParams["address"] = $params;
 
-        return self::_create(get_class(), $wrapped_params, $apiKey, null, true);
+        return self::createResource(get_class(), $wrappedParams, $apiKey, null, true);
     }
 
     /**
@@ -44,7 +44,7 @@ class EndShipper extends EasypostResource
      */
     public static function retrieve($id, $apiKey = null)
     {
-        return self::_retrieve(get_class(), $id, $apiKey, true);
+        return self::retrieveResource(get_class(), $id, $apiKey, true);
     }
 
     /**
@@ -56,7 +56,7 @@ class EndShipper extends EasypostResource
      */
     public static function all($params = null, $apiKey = null)
     {
-        return self::_all(get_class(), $params, $apiKey, true);
+        return self::allResources(get_class(), $params, $apiKey, true);
     }
 
     /**
@@ -67,6 +67,6 @@ class EndShipper extends EasypostResource
     public function save()
     {
         // We are passing the `Address` class here so that the request gets properly wrapped in the required object.
-        return $this->_save('EasyPost\Address', true, 'put');
+        return $this->saveResource('EasyPost\Address', true, 'put');
     }
 }

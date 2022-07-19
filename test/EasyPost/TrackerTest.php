@@ -64,10 +64,10 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
         ]);
 
         // Test trackers cycle through their "dummy" statuses automatically, the created and retrieved objects may differ
-        $retrieved_tracker = Tracker::retrieve($tracker->id);
+        $retrievedTracker = Tracker::retrieve($tracker->id);
 
-        $this->assertInstanceOf('\EasyPost\Tracker', $retrieved_tracker);
-        $this->assertEquals($tracker->id, $retrieved_tracker->id);
+        $this->assertInstanceOf('\EasyPost\Tracker', $retrievedTracker);
+        $this->assertEquals($tracker->id, $retrievedTracker->id);
     }
 
     /**
@@ -83,11 +83,11 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
             'page_size' => Fixture::page_size(),
         ]);
 
-        $trackers_array = $trackers['trackers'];
+        $trackersArray = $trackers['trackers'];
 
-        $this->assertLessThanOrEqual($trackers_array, Fixture::page_size());
+        $this->assertLessThanOrEqual($trackersArray, Fixture::page_size());
         $this->assertNotNull($trackers['has_more']);
-        $this->assertContainsOnlyInstancesOf('\EasyPost\Tracker', $trackers_array);
+        $this->assertContainsOnlyInstancesOf('\EasyPost\Tracker', $trackersArray);
     }
 
     /**
