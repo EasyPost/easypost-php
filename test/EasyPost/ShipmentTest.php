@@ -10,6 +10,8 @@ use EasyPost\Shipment;
 use EasyPost\Test\Fixture;
 use VCR\VCR;
 
+use function PHPUnit\Framework\assertTrue;
+
 EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
 
 class ShipmentTest extends \PHPUnit\Framework\TestCase
@@ -332,9 +334,9 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         $shipment = Shipment::create(Fixture::full_shipment());
 
         // Test lowest rate with no filters
-        $lowestRate = $shipment->lowest_smartrate(1, 'percentile_90');
-        $this->assertEquals('Priority', $lowestRate['service']);
-        $this->assertEquals(7.37, $lowestRate['rate']);
+        $lowestRate = $shipment->lowest_smartrate(2, 'percentile_90');
+        $this->assertEquals('First', $lowestRate['service']);
+        $this->assertEquals(5.49, $lowestRate['rate']);
         $this->assertEquals('USPS', $lowestRate['carrier']);
 
         // Test lowest smartrate with invalid filters (should error due to strict delivery_days)
@@ -365,9 +367,9 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         $smartrates = $shipment->get_smartrates();
 
         // Test lowest smartrate with valid filters
-        $lowestSmartrate = Shipment::get_lowest_smartrate($smartrates, 1, 'percentile_90');
-        $this->assertEquals('Priority', $lowestSmartrate['service']);
-        $this->assertEquals(7.37, $lowestSmartrate['rate']);
+        $lowestSmartrate = Shipment::get_lowest_smartrate($smartrates, 2, 'percentile_90');
+        $this->assertEquals('First', $lowestSmartrate['service']);
+        $this->assertEquals(5.49, $lowestSmartrate['rate']);
         $this->assertEquals('USPS', $lowestSmartrate['carrier']);
 
         // Test lowest smartrate with invalid filters (should error due to strict delivery_days)
@@ -408,5 +410,85 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals($formType, $form->form_type);
         $this->assertNotNull($form->form_url);
+    }
+
+    /**
+     * Tests creating a carbon offset shipment.
+     *
+     */
+    public function testCreateCarbonOffsetShipment()
+    {
+        VCR::insertCassette('shipments/createCarbonOffsetShipment.yml');
+
+        $shipment = Shipment::create(Fixture::carbonOffsetShipment(), null, true);
+
+        $this->assertInstanceOf('\EasyPost\Shipment', $shipment);
+
+        foreach ($shipment->rates as $rate) {
+            assertTrue($rate->carbon_offset != null);
+        }
+    }
+
+    /**
+     * Tests buying a carbon offset shipment.
+     *
+     */
+    public function testBuyCarbonOffsetShipment()
+    {
+        VCR::insertCassette('shipments/buyCarbonOffsetShipment.yml');
+
+        $shipment = Shipment::create(Fixture::carbonOffsetShipment());
+
+        $shipment->buy(
+            [
+            'rate' => $shipment->lowest_rate(),
+            ],
+            true,
+        );
+
+        $this->assertInstanceOf('\EasyPost\Shipment', $shipment);
+
+        $foundCarbonOffset = false;
+
+        foreach ($shipment->fees as $fee) {
+            if ($fee->type == 'CarbonOffsetFee') {
+                $foundCarbonOffset = true;
+            }
+        }
+
+        assertTrue($foundCarbonOffset);
+    }
+
+    /**
+     * Tests one call buy a carbon offset shipment.
+     *
+     */
+    public function testOneCallBuyCarbonOffsetShipment()
+    {
+        VCR::insertCassette('shipments/oneCallBuyCarbonOffsetShipment.yml');
+
+        $shipment = Shipment::create(Fixture::carbon_offset_shipment_one_call_buy(), null, true);
+
+        $this->assertInstanceOf('\EasyPost\Shipment', $shipment);
+
+        foreach ($shipment->rates as $rate) {
+            assertTrue($rate->carbon_offset != null);
+        }
+    }
+
+    /**
+     * Tests rerate a shipment with carbon offset.
+     *
+     */
+    public function testRerateShipmentWithCarbonOffset()
+    {
+        VCR::insertCassette('shipments/rerateCarbonOffsetShipment.yml');
+
+        $shipment = Shipment::create(Fixture::carbon_offset_shipment_one_call_buy());
+
+        $newCarbonOffset = $shipment->regenerate_rates(null, true);
+        foreach ($newCarbonOffset->rates as $rate) {
+            assertTrue($rate->carbon_offset != null);
+        }
     }
 }
