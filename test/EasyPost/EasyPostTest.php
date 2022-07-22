@@ -28,9 +28,9 @@ class EasyPostTest extends \PHPUnit\Framework\TestCase
     public function testApiKey()
     {
         EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
-        $api_key = EasyPost::getApiKey();
+        $apiKey = EasyPost::getApiKey();
 
-        $this->assertNotNull($api_key);
+        $this->assertNotNull($apiKey);
     }
 
     /**
@@ -40,12 +40,12 @@ class EasyPostTest extends \PHPUnit\Framework\TestCase
      */
     public function testApiBase()
     {
-        $test_base = 'http://example.com';
+        $testBase = 'http://example.com';
 
-        EasyPost::setApiBase($test_base);
-        $api_base = EasyPost::getApiBase();
+        EasyPost::setApiBase($testBase);
+        $apiBase = EasyPost::getApiBase();
 
-        $this->assertEquals($test_base, $api_base);
+        $this->assertEquals($testBase, $apiBase);
     }
 
     /**
@@ -55,12 +55,12 @@ class EasyPostTest extends \PHPUnit\Framework\TestCase
      */
     public function testApiVersion()
     {
-        $test_version = '100';
+        $testVersion = '100';
 
-        EasyPost::setApiVersion($test_version);
-        $api_version = EasyPost::getApiVersion();
+        EasyPost::setApiVersion($testVersion);
+        $apiVersion = EasyPost::getApiVersion();
 
-        $this->assertEquals($test_version, $api_version);
+        $this->assertEquals($testVersion, $apiVersion);
     }
 
     /**
@@ -70,12 +70,12 @@ class EasyPostTest extends \PHPUnit\Framework\TestCase
      */
     public function testConnectionTimeout()
     {
-        $test_timeout = '1';
+        $testTimeout = '1';
 
-        EasyPost::setConnectTimeout($test_timeout);
-        $connection_timeout = EasyPost::getConnectTimeout();
+        EasyPost::setConnectTimeout($testTimeout);
+        $connectionTimeout = EasyPost::getConnectTimeout();
 
-        $this->assertEquals($test_timeout, $connection_timeout);
+        $this->assertEquals($testTimeout, $connectionTimeout);
     }
 
     /**
@@ -85,11 +85,11 @@ class EasyPostTest extends \PHPUnit\Framework\TestCase
      */
     public function testRequestTimeout()
     {
-        $test_timeout = '1';
+        $testTimeout = '1';
 
-        EasyPost::setResponseTimeout($test_timeout);
-        $connection_timeout = EasyPost::getResponseTimeout();
+        EasyPost::setResponseTimeout($testTimeout);
+        $connectionTimeout = EasyPost::getResponseTimeout();
 
-        $this->assertEquals($test_timeout, $connection_timeout);
+        $this->assertEquals($testTimeout, $connectionTimeout);
     }
 }

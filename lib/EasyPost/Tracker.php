@@ -32,7 +32,7 @@ class Tracker extends EasypostResource
      */
     public static function retrieve($id, $apiKey = null)
     {
-        return self::_retrieve(get_class(), $id, $apiKey);
+        return self::retrieveResource(get_class(), $id, $apiKey);
     }
 
     /**
@@ -44,7 +44,7 @@ class Tracker extends EasypostResource
      */
     public static function all($params = null, $apiKey = null)
     {
-        return self::_all(get_class(), $params, $apiKey);
+        return self::allResources(get_class(), $params, $apiKey);
     }
 
     /**
@@ -66,7 +66,7 @@ class Tracker extends EasypostResource
             $params['tracker'] = $clone;
         }
 
-        return self::_create(get_class(), $params, $apiKey);
+        return self::createResource(get_class(), $params, $apiKey);
     }
 
     /**
@@ -84,12 +84,13 @@ class Tracker extends EasypostResource
             $params['trackers'] = (object)$clone;
         }
 
-        $encoded_params = str_replace("\\", '', json_encode($params));
+        $encodedParams = str_replace("\\", '', json_encode($params));
 
         $requestor = new Requestor($apiKey);
         $url = self::classUrl(get_class());
-        list($_, $apiKey) = $requestor->request('post', $url . '/create_list', $encoded_params);
+        list($response, $apiKey) = $requestor->request('post', $url . '/create_list', $encodedParams);
 
+        // The response is empty, we return true if no error
         return true;
     }
 }

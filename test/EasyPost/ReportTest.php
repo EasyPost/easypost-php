@@ -110,11 +110,11 @@ class ReportTest extends \PHPUnit\Framework\TestCase
             'type' => Fixture::report_type(),
         ]);
 
-        $retrieved_report = Report::retrieve($report->id);
+        $retrievedReport = Report::retrieve($report->id);
 
-        $this->assertInstanceOf('\EasyPost\Report', $retrieved_report);
-        $this->assertEquals($report->start_date, $retrieved_report->start_date);
-        $this->assertEquals($report->end_date, $retrieved_report->end_date);
+        $this->assertInstanceOf('\EasyPost\Report', $retrievedReport);
+        $this->assertEquals($report->start_date, $retrievedReport->start_date);
+        $this->assertEquals($report->end_date, $retrievedReport->end_date);
     }
 
     /**
@@ -131,11 +131,11 @@ class ReportTest extends \PHPUnit\Framework\TestCase
             'page_size' => Fixture::page_size(),
         ]);
 
-        $reports_array = $reports['reports'];
+        $reportsArray = $reports['reports'];
 
-        $this->assertLessThanOrEqual($reports_array, Fixture::page_size());
+        $this->assertLessThanOrEqual($reportsArray, Fixture::page_size());
         $this->assertNotNull($reports['has_more']);
-        $this->assertContainsOnlyInstancesOf('\EasyPost\Report', $reports_array);
+        $this->assertContainsOnlyInstancesOf('\EasyPost\Report', $reportsArray);
     }
 
     /**

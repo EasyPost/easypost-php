@@ -67,10 +67,10 @@ class ScanFormTest extends \PHPUnit\Framework\TestCase
             'shipments' => [$shipment],
         ]);
 
-        $retrieved_scanform = ScanForm::retrieve($scanform->id);
+        $retrievedScanform = ScanForm::retrieve($scanform->id);
 
-        $this->assertInstanceOf('\EasyPost\ScanForm', $retrieved_scanform);
-        $this->assertEquals($scanform, $retrieved_scanform);
+        $this->assertInstanceOf('\EasyPost\ScanForm', $retrievedScanform);
+        $this->assertEquals($scanform, $retrievedScanform);
     }
 
     /**
@@ -86,10 +86,10 @@ class ScanFormTest extends \PHPUnit\Framework\TestCase
             'page_size' => Fixture::page_size(),
         ]);
 
-        $scanforms_array = $scanforms['scan_forms'];
+        $scanformsArray = $scanforms['scan_forms'];
 
-        $this->assertLessThanOrEqual($scanforms_array, Fixture::page_size());
+        $this->assertLessThanOrEqual($scanformsArray, Fixture::page_size());
         $this->assertNotNull($scanforms['has_more']);
-        $this->assertContainsOnlyInstancesOf('\EasyPost\ScanForm', $scanforms_array);
+        $this->assertContainsOnlyInstancesOf('\EasyPost\ScanForm', $scanformsArray);
     }
 }

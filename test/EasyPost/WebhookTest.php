@@ -65,10 +65,10 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
             "url" => Fixture::webhook_url(),
         ]);
 
-        $retrieved_webhook = Webhook::retrieve($webhook->id);
+        $retrievedWebhook = Webhook::retrieve($webhook->id);
 
-        $this->assertInstanceOf('\EasyPost\Webhook', $retrieved_webhook);
-        $this->assertEquals($webhook, $retrieved_webhook);
+        $this->assertInstanceOf('\EasyPost\Webhook', $retrievedWebhook);
+        $this->assertEquals($webhook, $retrievedWebhook);
 
         $webhook->delete(); // We are deleting the webhook here so we don't keep sending events to a dead webhook.
     }
@@ -86,10 +86,10 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
             'page_size' => Fixture::page_size(),
         ]);
 
-        $webhook_array = $webhooks['webhooks'];
+        $webhookArray = $webhooks['webhooks'];
 
-        $this->assertLessThanOrEqual($webhook_array, Fixture::page_size());
-        $this->assertContainsOnlyInstancesOf('\EasyPost\Webhook', $webhook_array);
+        $this->assertLessThanOrEqual($webhookArray, Fixture::page_size());
+        $this->assertContainsOnlyInstancesOf('\EasyPost\Webhook', $webhookArray);
     }
 
     /**

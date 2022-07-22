@@ -30,7 +30,7 @@ class Order extends EasypostResource
      */
     public static function retrieve($id, $apiKey = null)
     {
-        return self::_retrieve(get_class(), $id, $apiKey);
+        return self::retrieveResource(get_class(), $id, $apiKey);
     }
 
     /**
@@ -48,7 +48,7 @@ class Order extends EasypostResource
             $params['order'] = $clone;
         }
 
-        return self::_create(get_class(), $params, $apiKey);
+        return self::createResource(get_class(), $params, $apiKey);
     }
 
     /**
@@ -103,8 +103,8 @@ class Order extends EasypostResource
      */
     public function lowest_rate($carriers = [], $services = [])
     {
-        $lowest_rate = Util::getLowestObjectRate($this, $carriers, $services);
+        $lowestRate = Util::getLowestObjectRate($this, $carriers, $services);
 
-        return $lowest_rate;
+        return $lowestRate;
     }
 }

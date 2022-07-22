@@ -29,7 +29,7 @@ class Batch extends EasypostResource
      */
     public static function retrieve($id, $apiKey = null)
     {
-        return self::_retrieve(get_class(), $id, $apiKey);
+        return self::retrieveResource(get_class(), $id, $apiKey);
     }
 
     /**
@@ -41,7 +41,7 @@ class Batch extends EasypostResource
      */
     public static function all($params = null, $apiKey = null)
     {
-        return self::_all(get_class(), $params, $apiKey);
+        return self::allResources(get_class(), $params, $apiKey);
     }
 
     /**
@@ -59,7 +59,7 @@ class Batch extends EasypostResource
             $params['batch'] = $clone;
         }
 
-        return self::_create(get_class(), $params, $apiKey);
+        return self::createResource(get_class(), $params, $apiKey);
     }
 
     /**
@@ -88,11 +88,11 @@ class Batch extends EasypostResource
             ];
         }
 
-        $encoded_params = str_replace("\\", '', json_encode($params));
+        $encodedParams = str_replace("\\", '', json_encode($params));
 
         $requestor = new Requestor($apiKey);
         $url = self::classUrl(get_class());
-        list($response, $apiKey) = $requestor->request('post', $url . '/create_and_buy', $encoded_params);
+        list($response, $apiKey) = $requestor->request('post', $url . '/create_and_buy', $encodedParams);
 
         return Util::convertToEasyPostObject($response, $apiKey);
     }

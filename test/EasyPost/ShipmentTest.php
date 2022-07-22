@@ -67,10 +67,10 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
         $shipment = Shipment::create(Fixture::full_shipment());
 
-        $retrieved_shipment = Shipment::retrieve($shipment->id);
+        $retrievedShipment = Shipment::retrieve($shipment->id);
 
-        $this->assertInstanceOf('\EasyPost\Shipment', $retrieved_shipment);
-        $this->assertEquals($shipment->id, $retrieved_shipment->id);
+        $this->assertInstanceOf('\EasyPost\Shipment', $retrievedShipment);
+        $this->assertEquals($shipment->id, $retrievedShipment->id);
     }
 
     /**
@@ -86,11 +86,11 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
             'page_size' => Fixture::page_size(),
         ]);
 
-        $shipments_array = $shipments['shipments'];
+        $shipmentsArray = $shipments['shipments'];
 
-        $this->assertLessThanOrEqual($shipments_array, Fixture::page_size());
+        $this->assertLessThanOrEqual($shipmentsArray, Fixture::page_size());
         $this->assertNotNull($shipments['has_more']);
-        $this->assertContainsOnlyInstancesOf('\EasyPost\Shipment', $shipments_array);
+        $this->assertContainsOnlyInstancesOf('\EasyPost\Shipment', $shipmentsArray);
     }
 
     /**
@@ -124,10 +124,10 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
         $rates = $shipment->regenerate_rates();
 
-        $rates_array = $rates['rates'];
+        $ratesArray = $rates['rates'];
 
-        $this->assertIsArray($rates_array);
-        foreach ($rates_array as $rate) {
+        $this->assertIsArray($ratesArray);
+        foreach ($ratesArray as $rate) {
             $this->assertInstanceOf('\EasyPost\Rate', $rate);
         }
     }
@@ -162,11 +162,11 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('shipments/insure.yml');
 
-        $shipment_data = Fixture::one_call_buy_shipment();
+        $shipmentData = Fixture::one_call_buy_shipment();
         // Set to 0 so USPS doesn't insure this automatically and we can insure the shipment manually
-        $shipment_data['insurance'] = 0;
+        $shipmentData['insurance'] = 0;
 
-        $shipment = Shipment::create($shipment_data);
+        $shipment = Shipment::create($shipmentData);
 
         $shipment->insure([
             'amount' => '100',
@@ -228,13 +228,13 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('shipments/createEmptyObjects.yml');
 
-        $shipment_data = Fixture::basic_shipment();
-        $shipment_data['customs_info']['customs_items'] = [];
-        $shipment_data['options'] = null;
-        $shipment_data['tax_identifiers'] = null;
-        $shipment_data['reference'] = '';
+        $shipmentData = Fixture::basic_shipment();
+        $shipmentData['customs_info']['customs_items'] = [];
+        $shipmentData['options'] = null;
+        $shipmentData['tax_identifiers'] = null;
+        $shipmentData['reference'] = '';
 
-        $shipment = Shipment::create($shipment_data);
+        $shipment = Shipment::create($shipmentData);
 
         $this->assertInstanceOf('\EasyPost\Shipment', $shipment);
         $this->assertStringMatchesFormat('shp_%s', $shipment->id);
@@ -252,10 +252,10 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('shipments/createTaxIdentifiers.yml');
 
-        $shipment_data = Fixture::basic_shipment();
-        $shipment_data['tax_identifiers'] = [Fixture::tax_identifier()];
+        $shipmentData = Fixture::basic_shipment();
+        $shipmentData['tax_identifiers'] = [Fixture::tax_identifier()];
 
-        $shipment = Shipment::create($shipment_data);
+        $shipment = Shipment::create($shipmentData);
 
         $this->assertInstanceOf('\EasyPost\Shipment', $shipment);
         $this->assertStringMatchesFormat('shp_%s', $shipment->id);
@@ -271,13 +271,13 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('shipments/createWithIds.yml');
 
-        $from_address = Address::create(Fixture::basic_address());
-        $to_address = Address::create(Fixture::basic_address());
+        $fromAddress = Address::create(Fixture::basic_address());
+        $toAddress = Address::create(Fixture::basic_address());
         $parcel = Parcel::create(Fixture::basic_parcel());
 
         $shipment = Shipment::create([
-            'from_address' => ['id' => $from_address->id],
-            'to_address' => ['id' => $to_address->id],
+            'from_address' => ['id' => $fromAddress->id],
+            'to_address' => ['id' => $toAddress->id],
             'parcel' => ['id' => $parcel->id],
         ]);
 
@@ -301,20 +301,20 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         $shipment = Shipment::create(Fixture::full_shipment());
 
         // Test lowest rate with no filters
-        $lowest_rate = $shipment->lowest_rate();
-        $this->assertEquals('First', $lowest_rate['service']);
-        $this->assertEquals('5.49', $lowest_rate['rate']);
-        $this->assertEquals('USPS', $lowest_rate['carrier']);
+        $lowestRate = $shipment->lowest_rate();
+        $this->assertEquals('First', $lowestRate['service']);
+        $this->assertEquals('5.49', $lowestRate['rate']);
+        $this->assertEquals('USPS', $lowestRate['carrier']);
 
         // Test lowest rate with service filter (this rate is higher than the lowest but should filter)
-        $lowest_rate = $shipment->lowest_rate([], ['Priority']);
-        $this->assertEquals('Priority', $lowest_rate['service']);
-        $this->assertEquals('7.37', $lowest_rate['rate']);
-        $this->assertEquals('USPS', $lowest_rate['carrier']);
+        $lowestRate = $shipment->lowest_rate([], ['Priority']);
+        $this->assertEquals('Priority', $lowestRate['service']);
+        $this->assertEquals('7.37', $lowestRate['rate']);
+        $this->assertEquals('USPS', $lowestRate['carrier']);
 
         // Test lowest rate with carrier filter (should error due to bad carrier)
         try {
-            $lowest_rate = $shipment->lowest_rate(['BAD CARRIER'], []);
+            $lowestRate = $shipment->lowest_rate(['BAD CARRIER'], []);
         } catch (Error $error) {
             $this->assertEquals('No rates found.', $error->getMessage());
         }
@@ -332,21 +332,21 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         $shipment = Shipment::create(Fixture::full_shipment());
 
         // Test lowest rate with no filters
-        $lowest_rate = $shipment->lowest_smartrate(1, 'percentile_90');
-        $this->assertEquals('Priority', $lowest_rate['service']);
-        $this->assertEquals(7.37, $lowest_rate['rate']);
-        $this->assertEquals('USPS', $lowest_rate['carrier']);
+        $lowestRate = $shipment->lowest_smartrate(1, 'percentile_90');
+        $this->assertEquals('Priority', $lowestRate['service']);
+        $this->assertEquals(7.37, $lowestRate['rate']);
+        $this->assertEquals('USPS', $lowestRate['carrier']);
 
         // Test lowest smartrate with invalid filters (should error due to strict delivery_days)
         try {
-            $lowest_rate = $shipment->lowest_smartrate(0, 'percentile_90');
+            $lowestRate = $shipment->lowest_smartrate(0, 'percentile_90');
         } catch (Error $error) {
             $this->assertEquals('No rates found.', $error->getMessage());
         }
 
         // Test lowest smartrate with invalid filters (should error due to invalid delivery_accuracy)
         try {
-            $lowest_rate = $shipment->lowest_rate(3, 'BAD_ACCURACY');
+            $lowestRate = $shipment->lowest_rate(3, 'BAD_ACCURACY');
         } catch (Error $error) {
             $this->assertEquals('No rates found.', $error->getMessage());
         }
@@ -365,21 +365,21 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         $smartrates = $shipment->get_smartrates();
 
         // Test lowest smartrate with valid filters
-        $lowest_smartrate = Shipment::get_lowest_smartrate($smartrates, 1, 'percentile_90');
-        $this->assertEquals('Priority', $lowest_smartrate['service']);
-        $this->assertEquals(7.37, $lowest_smartrate['rate']);
-        $this->assertEquals('USPS', $lowest_smartrate['carrier']);
+        $lowestSmartrate = Shipment::get_lowest_smartrate($smartrates, 1, 'percentile_90');
+        $this->assertEquals('Priority', $lowestSmartrate['service']);
+        $this->assertEquals(7.37, $lowestSmartrate['rate']);
+        $this->assertEquals('USPS', $lowestSmartrate['carrier']);
 
         // Test lowest smartrate with invalid filters (should error due to strict delivery_days)
         try {
-            $lowest_smartrate = Shipment::get_lowest_smartrate($smartrates, 0, 'percentile_90');
+            $lowestSmartrate = Shipment::get_lowest_smartrate($smartrates, 0, 'percentile_90');
         } catch (Error $error) {
             $this->assertEquals('No rates found.', $error->getMessage());
         }
 
         // Test lowest smartrate with invalid filters (should error due to invalid delivery_accuracy)
         try {
-            $lowest_smartrate = Shipment::get_lowest_smartrate($smartrates, 3, 'BAD_ACCURACY');
+            $lowestSmartrate = Shipment::get_lowest_smartrate($smartrates, 3, 'BAD_ACCURACY');
         } catch (Error $error) {
             $this->assertEquals('Invalid delivery_accuracy value, must be one of: ["percentile_50","percentile_75","percentile_85","percentile_90","percentile_95","percentile_97","percentile_99"]', $error->getMessage());
         }

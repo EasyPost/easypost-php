@@ -91,8 +91,8 @@ class EasyPostObject implements \ArrayAccess, \Iterator
                 $current = $current->_parent;
             } else {
                 reset($param);
-                $first_key = key($param);
-                $current->_unsavedValues[$first_key] = $param[$first_key];
+                $firstKey = key($param);
+                $current->_unsavedValues[$firstKey] = $param[$firstKey];
                 break;
             }
             $i++;
@@ -130,8 +130,8 @@ class EasyPostObject implements \ArrayAccess, \Iterator
                     $current = $current->_parent;
                 } else {
                     reset($param);
-                    $first_key = key($param);
-                    unset($current->_unsavedValues[$first_key]);
+                    $firstKey = key($param);
+                    unset($current->_unsavedValues[$firstKey]);
                     break;
                 }
                 $i++;

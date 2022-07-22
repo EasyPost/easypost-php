@@ -44,10 +44,10 @@ class InsuranceTest extends \PHPUnit\Framework\TestCase
 
         $shipment = Shipment::create(Fixture::one_call_buy_shipment());
 
-        $insurance_data = Fixture::basic_insurance();
-        $insurance_data['tracking_code'] = $shipment->tracking_code;
+        $insuranceData = Fixture::basic_insurance();
+        $insuranceData['tracking_code'] = $shipment->tracking_code;
 
-        $insurance = Insurance::create($insurance_data);
+        $insurance = Insurance::create($insuranceData);
 
         $this->assertInstanceOf('\EasyPost\Insurance', $insurance);
         $this->assertStringMatchesFormat('ins_%s', $insurance->id);
@@ -65,15 +65,15 @@ class InsuranceTest extends \PHPUnit\Framework\TestCase
 
         $shipment = Shipment::create(Fixture::one_call_buy_shipment());
 
-        $insurance_data = Fixture::basic_insurance();
-        $insurance_data['tracking_code'] = $shipment->tracking_code;
+        $insuranceData = Fixture::basic_insurance();
+        $insuranceData['tracking_code'] = $shipment->tracking_code;
 
-        $insurance = Insurance::create($insurance_data);
+        $insurance = Insurance::create($insuranceData);
 
-        $retrieved_insurance = Insurance::retrieve($insurance->id);
+        $retrievedInsurance = Insurance::retrieve($insurance->id);
 
-        $this->assertInstanceOf('\EasyPost\Insurance', $retrieved_insurance);
-        $this->assertEquals($insurance, $retrieved_insurance);
+        $this->assertInstanceOf('\EasyPost\Insurance', $retrievedInsurance);
+        $this->assertEquals($insurance, $retrievedInsurance);
     }
 
     /**
@@ -89,10 +89,10 @@ class InsuranceTest extends \PHPUnit\Framework\TestCase
             'page_size' => Fixture::page_size(),
         ]);
 
-        $insurance_array = $insurance['insurances'];
+        $insuranceArray = $insurance['insurances'];
 
-        $this->assertLessThanOrEqual($insurance_array, Fixture::page_size());
+        $this->assertLessThanOrEqual($insuranceArray, Fixture::page_size());
         $this->assertNotNull($insurance['has_more']);
-        $this->assertContainsOnlyInstancesOf('\EasyPost\Insurance', $insurance_array);
+        $this->assertContainsOnlyInstancesOf('\EasyPost\Insurance', $insuranceArray);
     }
 }

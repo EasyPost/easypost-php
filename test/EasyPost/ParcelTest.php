@@ -59,9 +59,9 @@ class ParcelTest extends \PHPUnit\Framework\TestCase
 
         $parcel = Parcel::create(Fixture::basic_parcel());
 
-        $retrieved_parcel = Parcel::retrieve($parcel->id);
+        $retrievedParcel = Parcel::retrieve($parcel->id);
 
-        $this->assertInstanceOf('\EasyPost\Parcel', $retrieved_parcel);
-        $this->assertEquals($parcel, $retrieved_parcel);
+        $this->assertInstanceOf('\EasyPost\Parcel', $retrievedParcel);
+        $this->assertEquals($parcel, $retrievedParcel);
     }
 }

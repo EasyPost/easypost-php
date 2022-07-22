@@ -14,9 +14,9 @@ class Fixture
     public static function usps_carrier_account_id()
     {
         // Fallback to the EasyPost PHP Client Library Test User USPS carrier account ID
-        $usps_carrier_account_id = getenv('USPS_CARRIER_ACCOUNT_ID') !== false ? getenv('USPS_CARRIER_ACCOUNT_ID') : 'ca_8dc116debcdb49b5a66a2ddee4612600';
+        $uspsCarrierAccountId = getenv('USPS_CARRIER_ACCOUNT_ID') !== false ? getenv('USPS_CARRIER_ACCOUNT_ID') : 'ca_8dc116debcdb49b5a66a2ddee4612600';
 
-        return $usps_carrier_account_id;
+        return $uspsCarrierAccountId;
     }
 
     public static function usps()
@@ -180,12 +180,12 @@ class Fixture
     // USPS only does "next-day" pickups including Saturday but not Sunday or Holidays.
     public static function basic_pickup()
     {
-        $pickup_date = '2022-05-16';
+        $pickupDate = '2022-05-16';
 
         return [
             'address' => self::basic_address(),
-            'min_datetime' => $pickup_date,
-            'max_datetime' => $pickup_date,
+            'min_datetime' => $pickupDate,
+            'max_datetime' => $pickupDate,
             'instructions' => 'Pickup at front door',
         ];
     }

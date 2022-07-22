@@ -41,11 +41,11 @@ class CustomsInfoTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('customs_info/create.yml');
 
-        $customs_info = CustomsInfo::create(Fixture::basic_customs_info());
+        $customsInfo = CustomsInfo::create(Fixture::basic_customs_info());
 
-        $this->assertInstanceOf('\EasyPost\CustomsInfo', $customs_info);
-        $this->assertStringMatchesFormat('cstinfo_%s', $customs_info->id);
-        $this->assertEquals('NOEEI 30.37(a)', $customs_info->eel_pfc);
+        $this->assertInstanceOf('\EasyPost\CustomsInfo', $customsInfo);
+        $this->assertStringMatchesFormat('cstinfo_%s', $customsInfo->id);
+        $this->assertEquals('NOEEI 30.37(a)', $customsInfo->eel_pfc);
     }
 
     /**
@@ -57,11 +57,11 @@ class CustomsInfoTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('customs_info/retrieve.yml');
 
-        $customs_info = CustomsInfo::create(Fixture::basic_customs_info());
+        $customsInfo = CustomsInfo::create(Fixture::basic_customs_info());
 
-        $retrieved_customs_info = CustomsInfo::retrieve($customs_info->id);
+        $retrievedCustomsInfo = CustomsInfo::retrieve($customsInfo->id);
 
-        $this->assertInstanceOf('\EasyPost\CustomsInfo', $retrieved_customs_info);
-        $this->assertEquals($customs_info, $retrieved_customs_info);
+        $this->assertInstanceOf('\EasyPost\CustomsInfo', $retrievedCustomsInfo);
+        $this->assertEquals($customsInfo, $retrievedCustomsInfo);
     }
 }
