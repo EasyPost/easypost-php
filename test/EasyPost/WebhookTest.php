@@ -3,6 +3,7 @@
 namespace EasyPost\Test;
 
 use EasyPost\EasyPost;
+use EasyPost\Error;
 use EasyPost\Test\Fixture;
 use EasyPost\Webhook;
 use VCR\VCR;
@@ -130,5 +131,62 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
 
         // This endpoint/method does not return anything, just make sure the request doesn't fail
         $this->assertInstanceOf('\EasyPost\Webhook', $response);
+    }
+
+    /**
+     * Test a webhook signature that is originated from EasyPost by comparing the HMAC header
+     * to a shared secret.
+     *
+     * @return void
+     */
+    public function testValidateWebhook()
+    {
+        $webhookSecret = "sécret";
+        $expectedHmacSignature = "hmac-sha256-hex=e93977c8ccb20363d51a62b3fe1fc402b7829be1152da9e88cf9e8d07115a46b";
+        $headers = [
+            "X-Hmac-Signature" => $expectedHmacSignature
+        ];
+
+        $webhookBody = Webhook::validateWebhook(Fixture::webhookBody(), $headers, $webhookSecret);
+
+        $this->assertEquals("batch.created", $webhookBody->description);
+    }
+
+    /**
+     * Test a webhook signature that has invalid secret.
+     *
+     * @return void
+     */
+    public function testValidateWebhookInvalidSecret()
+    {
+        $webhookSecret = "invalid_secret";
+        $headers = [
+            "X-Hmac-Signature" => "some-signature"
+        ];
+
+        try {
+            $response = Webhook::validateWebhook(Fixture::webhookBody(), $headers, $webhookSecret);
+        } catch (Error $error) {
+            $this->assertEquals('Webhook received did not originate from EasyPost or had a webhook secret mismatch.', $error->getMessage());
+        }
+    }
+
+    /**
+     * Test a webhook signature does not have HMAC signature header.
+     *
+     * @return void
+     */
+    public function testValidateWebhookMissingSecret()
+    {
+        $webhookSecret = "123";
+        $headers = [
+            "some-header" => "some-signature"
+        ];
+
+        try {
+            $response = Webhook::validateWebhook(Fixture::webhookBody(), $headers, $webhookSecret);
+        } catch (Error $error) {
+            $this->assertEquals('Webhook received does not contain an HMAC signature.', $error->getMessage());
+        }
     }
 }

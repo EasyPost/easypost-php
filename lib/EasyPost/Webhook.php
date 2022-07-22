@@ -2,6 +2,8 @@
 
 namespace EasyPost;
 
+use Normalizer;
+
 /**
  * @package EasyPost
  * @property string $id
@@ -81,5 +83,38 @@ class Webhook extends EasypostResource
         }
 
         return self::createResource(get_class(), $params, $apiKey);
+    }
+
+    /**
+     * Validate a webhook originated from EasyPost by comparing the HMAC header to a shared secret.
+     * If the signatures do not match, an error will be raised signifying the webhook either did not originate
+     * from EasyPost or the secrets do not match. If the signatures do match, the `event_body` will be returned as JSON.
+     *
+     * @param mixed $eventBody
+     * @param mixed $headers
+     * @param string $webhookSecret
+     * @return mixed
+     */
+    public static function validateWebhook($eventBody, $headers, $webhookSecret)
+    {
+        $easypostHmacSignature = $headers["X-Hmac-Signature"] ?? null;
+
+        if ($easypostHmacSignature != null) {
+            $normalizedSecret = Normalizer::normalize($webhookSecret, Normalizer::FORM_KD);
+            $encodedSecret = mb_convert_encoding(utf8_encode($normalizedSecret), "ISO-8859-1", "UTF-8");
+
+            $expectedSignature = hash_hmac("sha256", $eventBody, $encodedSecret);
+            $digest = "hmac-sha256-hex=" . $expectedSignature;
+
+            if (hash_equals($digest, $easypostHmacSignature)) {
+                $webhookBody = json_decode($eventBody);
+            } else {
+                throw new Error("Webhook received did not originate from EasyPost or had a webhook secret mismatch.");
+            }
+        } else {
+            throw new Error("Webhook received does not contain an HMAC signature.");
+        }
+
+        return $webhookBody;
     }
 }
