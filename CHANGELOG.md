@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Adds `validateWebhook` function that returns your webhook or raises an error if there is a `webhookSecret` mismatch
+
 ## v5.4.0 (2022-07-18)
 
 - Add ability to generate forms for shipments via `generate_form()` function
