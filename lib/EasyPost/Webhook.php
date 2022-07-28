@@ -101,10 +101,10 @@ class Webhook extends EasypostResource
 
         if ($easypostHmacSignature != null) {
             $normalizedSecret = Normalizer::normalize($webhookSecret, Normalizer::FORM_KD);
-            $encodedSecret = mb_convert_encoding(utf8_encode($normalizedSecret), "ISO-8859-1", "UTF-8");
+            $encodedSecret = mb_convert_encoding($normalizedSecret, "UTF-8");
 
             $expectedSignature = hash_hmac("sha256", $eventBody, $encodedSecret);
-            $digest = "hmac-sha256-hex=" . $expectedSignature;
+            $digest = "hmac-sha256-hex=$expectedSignature";
 
             if (hash_equals($digest, $easypostHmacSignature)) {
                 $webhookBody = json_decode($eventBody);
