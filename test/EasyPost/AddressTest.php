@@ -160,7 +160,6 @@ class AddressTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('addresses/createAndVerify.yml');
 
         $addressData = Fixture::incorrect_address_to_verify();
-        $addressData['verify'] = true;
 
         $address = Address::create_and_verify($addressData);
 
