@@ -425,7 +425,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf('\EasyPost\Shipment', $shipment);
 
         foreach ($shipment->rates as $rate) {
-            assertTrue($rate->carbon_offset != null);
+            $this->assertNotNull($rate->carbon_offset);
         }
     }
 
@@ -456,7 +456,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
             }
         }
 
-        assertTrue($foundCarbonOffset);
+        $this->assertTrue($foundCarbonOffset);
     }
 
     /**
@@ -472,7 +472,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf('\EasyPost\Shipment', $shipment);
 
         foreach ($shipment->rates as $rate) {
-            assertTrue($rate->carbon_offset != null);
+            $this->assertNotNull($rate->carbon_offset);
         }
     }
 
@@ -488,7 +488,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
         $newCarbonOffset = $shipment->regenerate_rates(null, true);
         foreach ($newCarbonOffset->rates as $rate) {
-            assertTrue($rate->carbon_offset != null);
+            $this->assertNotNull($rate->carbon_offset);
         }
     }
 }

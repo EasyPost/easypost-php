@@ -65,11 +65,11 @@ class Shipment extends EasypostResource
      * Create a shipment.
      *
      * @param mixed $params
-     * @param string $apiKey
+     * @param string|null $apiKey
      * @param boolean $carbonOffset
      * @return mixed
      */
-    public static function create($params = null, $apiKey = null, $carbonOffset = false)
+    public static function create($params = null, bool $carbonOffset = false, string $apiKey = null)
     {
         if (!isset($params['shipment']) || !is_array($params['shipment'])) {
             $clone = $params;
@@ -90,7 +90,7 @@ class Shipment extends EasypostResource
      * @return $this
      * @throws \EasyPost\Error
      */
-    public function regenerate_rates($params = null, $carbonOffset = false)
+    public function regenerate_rates($params = null, bool $carbonOffset = false)
     {
         $requestor = new Requestor($this->_apiKey);
         $url = $this->instanceUrl() . '/rerate';
