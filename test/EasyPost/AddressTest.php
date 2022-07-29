@@ -49,6 +49,28 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
+     * Test creating a verified address.
+     *
+     * We purposefully pass in slightly incorrect data to get the corrected address back once verified.
+     *
+     * @return void
+     */
+    public function testCreateVerify()
+    {
+        VCR::insertCassette('addresses/createVerify.yml');
+
+        $addressData = Fixture::incorrect_address_to_verify();
+        $addressData['verify'] = true;
+
+        $address = Address::create($addressData);
+
+        $this->assertInstanceOf('\EasyPost\Address', $address);
+        $this->assertStringMatchesFormat('adr_%s', $address->id);
+        $this->assertEquals('417 MONTGOMERY ST FL 5', $address->street1);
+        $this->assertEquals('Invalid secondary information(Apt/Suite#)', $address->verifications->zip4->errors[0]->message);
+    }
+
+    /**
      * Test creating an address with verify_strict param.
      *
      * @return void
@@ -58,13 +80,35 @@ class AddressTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('addresses/createVerifyStrict.yml');
 
         $addressData = Fixture::basic_address();
-        $addressData['verify_strict'] = [true];
+        $addressData['verify_strict'] = true;
 
         $address = Address::create($addressData);
 
         $this->assertInstanceOf('\EasyPost\Address', $address);
         $this->assertStringMatchesFormat('adr_%s', $address->id);
         $this->assertEquals('388 TOWNSEND ST APT 20', $address->street1);
+    }
+
+    /**
+     * Test creating a verified address using the old array syntax for the `verify` key.
+     *
+     * We purposefully pass in slightly incorrect data to get the corrected address back once verified.
+     *
+     * @return void
+     */
+    public function testCreateVerifyArray()
+    {
+        VCR::insertCassette('addresses/createVerifyArray.yml');
+
+        $addressData = Fixture::incorrect_address_to_verify();
+        $addressData['verify'] = [true];
+
+        $address = Address::create($addressData);
+
+        $this->assertInstanceOf('\EasyPost\Address', $address);
+        $this->assertStringMatchesFormat('adr_%s', $address->id);
+        $this->assertEquals('417 MONTGOMERY ST FL 5', $address->street1);
+        $this->assertEquals('Invalid secondary information(Apt/Suite#)', $address->verifications->zip4->errors[0]->message);
     }
 
     /**
@@ -111,34 +155,12 @@ class AddressTest extends \PHPUnit\Framework\TestCase
      *
      * @return void
      */
-    public function testCreateVerify()
-    {
-        VCR::insertCassette('addresses/createVerify.yml');
-
-        $addressData = Fixture::incorrect_address_to_verify();
-        $addressData['verify'] = [true];
-
-        $address = Address::create($addressData);
-
-        $this->assertInstanceOf('\EasyPost\Address', $address);
-        $this->assertStringMatchesFormat('adr_%s', $address->id);
-        $this->assertEquals('417 MONTGOMERY ST FL 5', $address->street1);
-        $this->assertEquals('Invalid secondary information(Apt/Suite#)', $address->verifications->zip4->errors[0]->message);
-    }
-
-    /**
-     * Test creating a verified address.
-     *
-     * We purposefully pass in slightly incorrect data to get the corrected address back once verified.
-     *
-     * @return void
-     */
     public function testCreateAndVerify()
     {
         VCR::insertCassette('addresses/createAndVerify.yml');
 
         $addressData = Fixture::incorrect_address_to_verify();
-        $addressData['verify'] = [true];
+        $addressData['verify'] = true;
 
         $address = Address::create_and_verify($addressData);
 

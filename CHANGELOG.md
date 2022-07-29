@@ -3,6 +3,7 @@
 ## Next Release
 
 - Adds `validateWebhook` function that returns your webhook or raises an error if there is a `webhookSecret` mismatch
+- Fixes a bug that required the values of `verify` and `verify_strict` params on an Address creation call to be arrays since passing `true` as a boolean is also valid (passing an array will continue to work but is no longer required)
 
 ## v5.4.0 (2022-07-18)
 
