@@ -20,6 +20,7 @@ namespace EasyPost;
  * @property int $delivery_days
  * @property string $delivery_date
  * @property bool $delivery_date_guaranteed
+ * @property CarbonOffset $carbon_offset
  * @property string $created_at
  * @property string $updated_at
  */

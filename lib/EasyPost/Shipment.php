@@ -65,16 +65,19 @@ class Shipment extends EasypostResource
      * Create a shipment.
      *
      * @param mixed $params
-     * @param string $apiKey
+     * @param string|null $apiKey
+     * @param boolean $withCarbonOffset
      * @return mixed
      */
-    public static function create($params = null, $apiKey = null)
+    public static function create($params = null, $apiKey = null, $withCarbonOffset = false)
     {
         if (!isset($params['shipment']) || !is_array($params['shipment'])) {
             $clone = $params;
             unset($params);
             $params['shipment'] = $clone;
         }
+
+        $params['carbon_offset'] = $withCarbonOffset;
 
         return self::createResource(get_class(), $params, $apiKey);
     }
@@ -83,13 +86,15 @@ class Shipment extends EasypostResource
      * Re-rate a shipment.
      *
      * @param mixed $params
+     * @param boolean $withCarbonOffset
      * @return $this
      * @throws \EasyPost\Error
      */
-    public function regenerate_rates($params = null)
+    public function regenerate_rates($params = null, $withCarbonOffset = false)
     {
         $requestor = new Requestor($this->_apiKey);
         $url = $this->instanceUrl() . '/rerate';
+        $params['carbon_offset'] = $withCarbonOffset;
         list($response, $apiKey) = $requestor->request('post', $url, $params);
         $this->refreshFrom($response, $apiKey, true);
 
@@ -115,10 +120,11 @@ class Shipment extends EasypostResource
      * Buy a shipment.
      *
      * @param mixed $params
+     * @param boolean $withCarbonOffset
      * @return $this
      * @throws \EasyPost\Error
      */
-    public function buy($params = null)
+    public function buy($params = null, $withCarbonOffset = false)
     {
         $requestor = new Requestor($this->_apiKey);
         $url = $this->instanceUrl() . '/buy';
@@ -129,6 +135,7 @@ class Shipment extends EasypostResource
             $params['rate'] = $clone;
         }
 
+        $params['carbon_offset'] = $withCarbonOffset;
         list($response, $apiKey) = $requestor->request('post', $url, $params);
         $this->refreshFrom($response, $apiKey, true);
 

@@ -24,6 +24,7 @@ require(dirname(__FILE__) . '/EasyPost/Requestor.php');
 require(dirname(__FILE__) . '/EasyPost/Address.php');
 require(dirname(__FILE__) . '/EasyPost/Batch.php');
 require(dirname(__FILE__) . '/EasyPost/Brand.php');
+require(dirname(__FILE__) . '/EasyPost/CarbonOffset.php');
 require(dirname(__FILE__) . '/EasyPost/CarrierAccount.php');
 require(dirname(__FILE__) . '/EasyPost/CarrierDetail.php');
 require(dirname(__FILE__) . '/EasyPost/CreditCard.php');
