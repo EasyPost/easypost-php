@@ -60,13 +60,13 @@ class Address extends EasypostResource
     {
         $wrappedParams = [];
 
-        if (isset($params['verify']) && is_array($params['verify'])) {
+        if (isset($params['verify'])) {
             $verify = $params['verify'];
             unset($params['verify']);
             $wrappedParams['verify'] = $verify;
         }
 
-        if (isset($params['verify_strict']) && is_array($params['verify_strict'])) {
+        if (isset($params['verify_strict'])) {
             $verifyStrict = $params['verify_strict'];
             unset($params['verify_strict']);
             $wrappedParams['verify_strict'] = $verifyStrict;
