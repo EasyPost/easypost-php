@@ -1,12 +1,13 @@
 # CHANGELOG
 
-## Next Release
+## v5.5.0 (2022-08-02)
 
+- Adds Carbon Offset support
+  - Adds ability to create a shipment with carbon offset
+  - Adds ability to buy a shipment with carbon offset
+  - Adds ability to one-call-buy a shipment with carbon offset
+  - Adds ability to rerate a shipment with carbon offset
 - Adds `validateWebhook` function that returns your webhook or raises an error if there is a `webhookSecret` mismatch
-- Adds ability to create a shipment with carbon offset
-- Adds ability to buy a shipment with carbon offset
-- Adds ability to one-call-buy a shipment with carbon offset
-- Adds ability to rerate a shipment with carbon offset
 - Fixes a bug that required the values of `verify` and `verify_strict` params on an Address creation call to be arrays since passing `true` as a boolean is also valid (passing an array will continue to work but is no longer required)
 
 ## v5.4.0 (2022-07-18)
