@@ -74,19 +74,25 @@ Upgrading major versions of this project? Refer to the [Upgrade Guide](UPGRADE_G
 
 ```bash
 # Install dependencies
-composer install
+make install
+
+# Update dependencies
+make update
 
 # Lint project
-composer lint
+make lint
 
 # Fix linting errors
-composer fix
+make fix
 
 # Run tests
-EASYPOST_TEST_API_KEY=123... EASYPOST_PROD_API_KEY=123... composer test
+EASYPOST_TEST_API_KEY=123... EASYPOST_PROD_API_KEY=123... make test
 
 # Generate coverage reports (requires Xdebug for HTML report)
-EASYPOST_TEST_API_KEY=123... EASYPOST_PROD_API_KEY=123... composer coverage
+EASYPOST_TEST_API_KEY=123... EASYPOST_PROD_API_KEY=123... make coverage
+
+# Run security analysis
+make scan
 ```
 
 ### Testing
