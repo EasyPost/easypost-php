@@ -12,8 +12,6 @@ class ScanFormTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Setup the testing environment for this file.
-     *
-     * 
      */
     public static function setUpBeforeClass(): void
     {
@@ -24,8 +22,6 @@ class ScanFormTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Cleanup the testing environment once finished.
-     *
-     * 
      */
     public static function tearDownAfterClass(): void
     {
@@ -35,8 +31,6 @@ class ScanFormTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test creating a scanform.
-     *
-     * 
      */
     public function testCreate()
     {
@@ -54,8 +48,6 @@ class ScanFormTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test retrieving a scanform.
-     *
-     * 
      */
     public function testRetrieve()
     {
@@ -75,8 +67,6 @@ class ScanFormTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test retrieving all scanforms.
-     *
-     * 
      */
     public function testAll()
     {

@@ -12,8 +12,6 @@ class BatchTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Setup the testing environment for this file.
-     *
-     * 
      */
     public static function setUpBeforeClass(): void
     {
@@ -24,8 +22,6 @@ class BatchTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Cleanup the testing environment once finished.
-     *
-     * 
      */
     public static function tearDownAfterClass(): void
     {
@@ -35,8 +31,6 @@ class BatchTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test creating a Batch.
-     *
-     * 
      */
     public function testCreate()
     {
@@ -53,8 +47,6 @@ class BatchTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test retrieving a Batch.
-     *
-     * 
      */
     public function testRetrieve()
     {
@@ -72,8 +64,6 @@ class BatchTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test retrieving all batches.
-     *
-     * 
      */
     public function testAll()
     {
@@ -92,8 +82,6 @@ class BatchTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test creating and buying a Batch in a single call.
-     *
-     * 
      */
     public function testCreateAndBuy()
     {
@@ -111,8 +99,6 @@ class BatchTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test buying a batch.
-     *
-     * 
      */
     public function testBuy()
     {
@@ -135,8 +121,6 @@ class BatchTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test creating a scanform for a batch.
-     *
-     * 
      */
     public function testCreateScanForm()
     {
@@ -162,8 +146,6 @@ class BatchTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test adding and removing a shipment from a batch.
-     *
-     * 
      */
     public function testAddRemoveShipment()
     {
@@ -186,8 +168,6 @@ class BatchTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test generating a label for a Batch.
-     *
-     * 
      */
     public function testLabel()
     {

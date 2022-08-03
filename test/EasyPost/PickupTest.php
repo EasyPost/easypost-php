@@ -13,8 +13,6 @@ class PickupTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Setup the testing environment for this file.
-     *
-     * 
      */
     public static function setUpBeforeClass(): void
     {
@@ -25,8 +23,6 @@ class PickupTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Cleanup the testing environment once finished.
-     *
-     * 
      */
     public static function tearDownAfterClass(): void
     {
@@ -36,8 +32,6 @@ class PickupTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test creating a pickup.
-     *
-     * 
      */
     public function testCreate()
     {
@@ -57,8 +51,6 @@ class PickupTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test retrieving a pickup.
-     *
-     * 
      */
     public function testRetrieve()
     {
@@ -103,8 +95,6 @@ class PickupTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test cancelling a pickup.
-     *
-     * 
      */
     public function testCancel()
     {
@@ -131,8 +121,6 @@ class PickupTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test various usage alterations of the lowest_rate method.
-     *
-     * 
      */
     public function testLowestRate()
     {

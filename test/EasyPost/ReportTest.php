@@ -11,8 +11,6 @@ class ReportTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Setup the testing environment for this file.
-     *
-     * 
      */
     public static function setUpBeforeClass(): void
     {
@@ -23,8 +21,6 @@ class ReportTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Cleanup the testing environment once finished.
-     *
-     * 
      */
     public static function tearDownAfterClass(): void
     {
@@ -51,8 +47,6 @@ class ReportTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test creating a report with custom columns
-     *
-     * 
      */
     public function testCreateCustomColumnReport()
     {
@@ -73,8 +67,6 @@ class ReportTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test creating a report with custom additional columns
-     *
-     * 
      */
     public function testCreateCustomAdditionalColumnReport()
     {
@@ -95,8 +87,6 @@ class ReportTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test retrieving a report.
-     *
-     * 
      */
     public function testRetrieveReport()
     {
@@ -117,8 +107,6 @@ class ReportTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test retrieving all reports.
-     *
-     * 
      */
     public function testAll()
     {
@@ -138,8 +126,6 @@ class ReportTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test throwing an error when creating a report with no report type set.
-     *
-     * 
      */
     public function testCreateNoType()
     {
@@ -150,8 +136,6 @@ class ReportTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test throwing an error when retrieving all reports with no report type set.
-     *
-     * 
      */
     public function testAllNoType()
     {

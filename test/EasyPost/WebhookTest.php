@@ -12,8 +12,6 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Setup the testing environment for this file.
-     *
-     * 
      */
     public static function setUpBeforeClass(): void
     {
@@ -24,8 +22,6 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Cleanup the testing environment once finished.
-     *
-     * 
      */
     public static function tearDownAfterClass(): void
     {
@@ -53,8 +49,6 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test retrieving a Webhook.
-     *
-     * 
      */
     public function testRetrieve()
     {
@@ -74,8 +68,6 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test retrieving all webhooks.
-     *
-     * 
      */
     public function testAll()
     {
@@ -93,8 +85,6 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test updating a Webhook.
-     *
-     * 
      */
     public function testUpdate()
     {
@@ -114,8 +104,6 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test deleting a Webhook.
-     *
-     * 
      */
     public function testDelete()
     {
@@ -134,8 +122,6 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
     /**
      * Test a webhook signature that is originated from EasyPost by comparing the HMAC header
      * to a shared secret.
-     *
-     * 
      */
     public function testValidateWebhook()
     {
@@ -152,8 +138,6 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test a webhook signature that has invalid secret.
-     *
-     * 
      */
     public function testValidateWebhookInvalidSecret()
     {
@@ -171,8 +155,6 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test a webhook signature does not have HMAC signature header.
-     *
-     * 
      */
     public function testValidateWebhookMissingSecret()
     {

@@ -11,8 +11,6 @@ class ParcelTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Setup the testing environment for this file.
-     *
-     * 
      */
     public static function setUpBeforeClass(): void
     {
@@ -23,8 +21,6 @@ class ParcelTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Cleanup the testing environment once finished.
-     *
-     * 
      */
     public static function tearDownAfterClass(): void
     {
@@ -34,8 +30,6 @@ class ParcelTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test creating a Parcel.
-     *
-     * 
      */
     public function testCreate()
     {
@@ -50,8 +44,6 @@ class ParcelTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test retrieving a Parcel.
-     *
-     * 
      */
     public function testRetrieve()
     {

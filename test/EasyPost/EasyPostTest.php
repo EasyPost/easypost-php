@@ -8,8 +8,6 @@ class EasyPostTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Cleanup the testing environment once finished.
-     *
-     * 
      */
     public static function tearDownAfterClass(): void
     {
@@ -22,8 +20,6 @@ class EasyPostTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test setting and getting the API key.
-     *
-     * 
      */
     public function testApiKey()
     {
@@ -35,8 +31,6 @@ class EasyPostTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test setting and getting the API base.
-     *
-     * 
      */
     public function testApiBase()
     {
@@ -50,8 +44,6 @@ class EasyPostTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test setting and getting the API version.
-     *
-     * 
      */
     public function testApiVersion()
     {
@@ -65,8 +57,6 @@ class EasyPostTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test setting and getting the connection timeout.
-     *
-     * 
      */
     public function testConnectionTimeout()
     {
@@ -80,8 +70,6 @@ class EasyPostTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test setting and getting the request timeout.
-     *
-     * 
      */
     public function testRequestTimeout()
     {

@@ -10,8 +10,6 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Setup the testing environment for this file.
-     *
-     *
      */
     public static function setUpBeforeClass(): void
     {
@@ -22,8 +20,6 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Cleanup the testing environment once finished.
-     *
-     *
      */
     public static function tearDownAfterClass(): void
     {
@@ -62,8 +58,6 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test retrieving all EndShippers.
-     *
-     *
      */
     public function testAll()
     {

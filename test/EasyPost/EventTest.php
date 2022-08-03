@@ -12,8 +12,6 @@ class EventTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Setup the testing environment for this file.
-     *
-     *
      */
     public static function setUpBeforeClass(): void
     {
@@ -24,8 +22,6 @@ class EventTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Cleanup the testing environment once finished.
-     *
-     *
      */
     public static function tearDownAfterClass(): void
     {
@@ -35,8 +31,6 @@ class EventTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test retrieving all events.
-     *
-     *
      */
     public function testAll()
     {
@@ -55,8 +49,6 @@ class EventTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test retrieving an event.
-     *
-     *
      */
     public function testRetrieve()
     {
@@ -74,8 +66,6 @@ class EventTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test receiving (converting) an event.
-     *
-     *
      */
     public function testReceive()
     {
@@ -87,8 +77,6 @@ class EventTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test that we throw an error when bad input is received.
-     *
-     *
      */
     public function testReceiveBadInput()
     {
@@ -99,8 +87,6 @@ class EventTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test that we throw an error when no input is received.
-     *
-     *
      */
     public function testReceiveNoInput()
     {

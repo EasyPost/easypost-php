@@ -10,8 +10,6 @@ class BillingTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Setup the testing environment for this file.
-     *
-     *
      */
     public static function setUpBeforeClass(): void
     {
@@ -22,8 +20,6 @@ class BillingTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Cleanup the testing environment once finished.
-     *
-     *
      */
     public static function tearDownAfterClass(): void
     {
@@ -33,8 +29,6 @@ class BillingTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test funding a EasyPost wallet by using either primary or secondary payment method.
-     *
-     *
      */
     public function testFundWallet()
     {
@@ -49,8 +43,6 @@ class BillingTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test deleting a payment method.
-     *
-     *
      */
     public function testDeletePaymentMethod()
     {
@@ -65,8 +57,6 @@ class BillingTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test retrieving all payment methods.
-     *
-     *
      */
     public function testRetrievePaymentMethods()
     {
