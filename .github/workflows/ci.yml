@@ -17,9 +17,9 @@ jobs:
       - name: install composer
         run: composer self-update
       - name: install dependencies
-        run: composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+        run: make install
       - name: lint
-        run: composer lint
+        run: make lint
   run-tests:
     runs-on: ubuntu-20.04
     strategy:
@@ -43,8 +43,8 @@ jobs:
       - name: install composer
         run: composer self-update
       - name: install dependencies
-        run: composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+        run: make install
       - name: test with phpunit on ${{ matrix.phpversion }}
-        run: EASYPOST_TEST_API_KEY=123 EASYPOST_PROD_API_KEY=123 composer test
+        run: EASYPOST_TEST_API_KEY=123 EASYPOST_PROD_API_KEY=123 make test
       - name: Security scan
-        run: composer scan
+        run: make scan
