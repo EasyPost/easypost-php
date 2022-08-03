@@ -12,7 +12,7 @@ class ErrorTest extends \PHPUnit\Framework\TestCase
     /**
      * Setup the testing environment for this file.
      *
-     * @return void
+     *
      */
     public static function setUpBeforeClass(): void
     {
@@ -24,7 +24,7 @@ class ErrorTest extends \PHPUnit\Framework\TestCase
     /**
      * Cleanup the testing environment once finished.
      *
-     * @return void
+     *
      */
     public static function tearDownAfterClass(): void
     {
@@ -35,7 +35,7 @@ class ErrorTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating a bad shipment and retrieving errors.
      *
-     * @return void
+     *
      */
     public function testError()
     {

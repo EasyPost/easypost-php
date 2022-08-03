@@ -13,7 +13,7 @@ class RateTest extends \PHPUnit\Framework\TestCase
     /**
      * Setup the testing environment for this file.
      *
-     * @return void
+     * 
      */
     public static function setUpBeforeClass(): void
     {
@@ -25,7 +25,7 @@ class RateTest extends \PHPUnit\Framework\TestCase
     /**
      * Cleanup the testing environment once finished.
      *
-     * @return void
+     * 
      */
     public static function tearDownAfterClass(): void
     {
@@ -36,7 +36,7 @@ class RateTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving a rate.
      *
-     * @return void
+     * 
      */
     public function testRetrieve()
     {

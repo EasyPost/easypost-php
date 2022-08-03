@@ -13,7 +13,7 @@ class InsuranceTest extends \PHPUnit\Framework\TestCase
     /**
      * Setup the testing environment for this file.
      *
-     * @return void
+     * 
      */
     public static function setUpBeforeClass(): void
     {
@@ -25,7 +25,7 @@ class InsuranceTest extends \PHPUnit\Framework\TestCase
     /**
      * Cleanup the testing environment once finished.
      *
-     * @return void
+     * 
      */
     public static function tearDownAfterClass(): void
     {
@@ -36,7 +36,7 @@ class InsuranceTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating an insurance object.
      *
-     * @return void
+     * 
      */
     public function testCreate()
     {
@@ -57,7 +57,7 @@ class InsuranceTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving an insurance object.
      *
-     * @return void
+     * 
      */
     public function testRetrieve()
     {
@@ -79,7 +79,7 @@ class InsuranceTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving all insurance.
      *
-     * @return void
+     * 
      */
     public function testAll()
     {

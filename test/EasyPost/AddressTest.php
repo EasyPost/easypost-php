@@ -12,7 +12,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     /**
      * Setup the testing environment for this file.
      *
-     * @return void
+     *
      */
     public static function setUpBeforeClass(): void
     {
@@ -24,7 +24,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     /**
      * Cleanup the testing environment once finished.
      *
-     * @return void
+     *
      */
     public static function tearDownAfterClass(): void
     {
@@ -35,7 +35,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating an address.
      *
-     * @return void
+     *
      */
     public function testCreate()
     {
@@ -53,7 +53,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
      *
      * We purposefully pass in slightly incorrect data to get the corrected address back once verified.
      *
-     * @return void
+     *
      */
     public function testCreateVerify()
     {
@@ -73,7 +73,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating an address with verify_strict param.
      *
-     * @return void
+     *
      */
     public function testCreateVerifyStrict()
     {
@@ -94,7 +94,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
      *
      * We purposefully pass in slightly incorrect data to get the corrected address back once verified.
      *
-     * @return void
+     *
      */
     public function testCreateVerifyArray()
     {
@@ -114,7 +114,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving an address.
      *
-     * @return void
+     *
      */
     public function testRetrieve()
     {
@@ -131,7 +131,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving all addresses.
      *
-     * @return void
+     *
      */
     public function testAll()
     {
@@ -153,7 +153,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
      *
      * We purposefully pass in slightly incorrect data to get the corrected address back once verified.
      *
-     * @return void
+     *
      */
     public function testCreateAndVerify()
     {
@@ -171,7 +171,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     /**
      * Test we can verify an already created address.
      *
-     * @return void
+     *
      */
     public function testVerify()
     {

@@ -12,7 +12,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
     /**
      * Setup the testing environment for this file.
      *
-     * @return void
+     * 
      */
     public static function setUpBeforeClass(): void
     {
@@ -24,7 +24,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
     /**
      * Cleanup the testing environment once finished.
      *
-     * @return void
+     * 
      */
     public static function tearDownAfterClass(): void
     {
@@ -35,7 +35,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating a Tracker.
      *
-     * @return void
+     * 
      */
     public function testCreate()
     {
@@ -53,7 +53,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving a Tracker.
      *
-     * @return void
+     * 
      */
     public function testRetrieve()
     {
@@ -73,7 +73,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving all trackers.
      *
-     * @return void
+     * 
      */
     public function testAll()
     {
@@ -93,7 +93,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
     /**
      * Tests that we can create a list of bulk trackers with one request.
      *
-     * @return void
+     * 
      */
     public function testCreateList()
     {

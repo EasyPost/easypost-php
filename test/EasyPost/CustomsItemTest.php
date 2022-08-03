@@ -12,7 +12,7 @@ class CustomsItemTest extends \PHPUnit\Framework\TestCase
     /**
      * Setup the testing environment for this file.
      *
-     * @return void
+     *
      */
     public static function setUpBeforeClass(): void
     {
@@ -24,7 +24,7 @@ class CustomsItemTest extends \PHPUnit\Framework\TestCase
     /**
      * Cleanup the testing environment once finished.
      *
-     * @return void
+     *
      */
     public static function tearDownAfterClass(): void
     {
@@ -35,7 +35,7 @@ class CustomsItemTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating a CustomsItem.
      *
-     * @return void
+     *
      */
     public function testCreate()
     {
@@ -51,7 +51,7 @@ class CustomsItemTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving a CustomsItem.
      *
-     * @return void
+     *
      */
     public function testRetrieve()
     {
