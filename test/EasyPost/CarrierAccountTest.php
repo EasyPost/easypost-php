@@ -11,8 +11,6 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Setup the testing environment for this file.
-     *
-     * @return void
      */
     public static function setUpBeforeClass(): void
     {
@@ -23,8 +21,6 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Cleanup the testing environment once finished.
-     *
-     * @return void
      */
     public static function tearDownAfterClass(): void
     {
@@ -34,8 +30,6 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test creating a carrier account.
-     *
-     * @return void
      */
     public function testCreate()
     {
@@ -52,8 +46,6 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test retrieving a carrier account.
-     *
-     * @return void
      */
     public function testRetrieve()
     {
@@ -71,8 +63,6 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test retrieving all carrier accounts.
-     *
-     * @return void
      */
     public function testAll()
     {
@@ -85,8 +75,6 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test updating a carrier account.
-     *
-     * @return void
      */
     public function testUpdate()
     {
@@ -108,8 +96,6 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test deleting a carrier account.
-     *
-     * @return void
      */
     public function testDelete()
     {
@@ -124,8 +110,6 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test retrieving the carrier account types available.
-     *
-     * @return void
      */
     public function testTypes()
     {

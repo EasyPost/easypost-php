@@ -10,8 +10,6 @@ class UserTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Setup the testing environment for this file.
-     *
-     * @return void
      */
     public static function setUpBeforeClass(): void
     {
@@ -22,8 +20,6 @@ class UserTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Cleanup the testing environment once finished.
-     *
-     * @return void
      */
     public static function tearDownAfterClass(): void
     {
@@ -33,8 +29,6 @@ class UserTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test creating a child user.
-     *
-     * @return void
      */
     public function testCreate()
     {
@@ -51,8 +45,6 @@ class UserTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test retrieving a child user.
-     *
-     * @return void
      */
     public function testRetrieve()
     {
@@ -68,8 +60,6 @@ class UserTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test retrieving the authenticated user.
-     *
-     * @return void
      */
     public function testRetrieveMe()
     {
@@ -83,8 +73,6 @@ class UserTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test updating the authenticated user.
-     *
-     * @return void
      */
     public function testUpdate()
     {
@@ -104,8 +92,6 @@ class UserTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test deleting a child user.
-     *
-     * @return void
      */
     public function testDelete()
     {
@@ -122,8 +108,6 @@ class UserTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test retrieving all API keys.
-     *
-     * @return void
      */
     public function testAllApiKeys()
     {
@@ -138,8 +122,6 @@ class UserTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test retrieving the authenticated user's API keys.
-     *
-     * @return void
      */
     public function testApiKeys()
     {
@@ -156,8 +138,6 @@ class UserTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test updating the authenticated user's Brand.
-     *
-     * @return void
      */
     public function testUpdateBrand()
     {

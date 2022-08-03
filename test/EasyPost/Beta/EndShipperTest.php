@@ -10,8 +10,6 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Setup the testing environment for this file.
-     *
-     * @return void
      */
     public static function setUpBeforeClass(): void
     {
@@ -22,8 +20,6 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Cleanup the testing environment once finished.
-     *
-     * @return void
      */
     public static function tearDownAfterClass(): void
     {
@@ -33,8 +29,6 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test creating an EndShipper.
-     *
-     * @return EndShipper
      */
     public function testCreate()
     {
@@ -45,32 +39,25 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf('\EasyPost\Beta\EndShipper', $endShipper);
         $this->assertStringMatchesFormat('es_%s', $endShipper->id);
         $this->assertEquals('388 TOWNSEND ST APT 20', $endShipper->street1);
-
-        return $endShipper;
     }
 
     /**
      * Test retrieving an EndShipper.
-     *
-     * @depends testCreate
-     * @return EndShipper
      */
-    public function testRetrieve(EndShipper $endShipper)
+    public function testRetrieve()
     {
         VCR::insertCassette('end_shipper/retrieve.yml');
+
+        $endShipper = EndShipper::create(Fixture::end_shipper_address());
 
         $retrievedEndShipper = EndShipper::retrieve($endShipper->id);
 
         $this->assertInstanceOf('\EasyPost\Beta\EndShipper', $retrievedEndShipper);
         $this->assertEquals($endShipper->street1, $retrievedEndShipper->street1);
-
-        return $retrievedEndShipper;
     }
 
     /**
      * Test retrieving all EndShippers.
-     *
-     * @return void
      */
     public function testAll()
     {
@@ -86,13 +73,12 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test updating an EndShipper.
-     *
-     * @depends testCreate
-     * @return EndShipper
      */
-    public function testUpdate(EndShipper $endShipper)
+    public function testUpdate()
     {
         VCR::insertCassette('end_shipper/update.yml');
+
+        $endShipper = EndShipper::create(Fixture::end_shipper_address());
 
         // All caps because API will return all caps as part of verification.
         $newName = 'NEW NAME';

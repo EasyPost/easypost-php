@@ -12,8 +12,6 @@ class OrderTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Setup the testing environment for this file.
-     *
-     * @return void
      */
     public static function setUpBeforeClass(): void
     {
@@ -24,8 +22,6 @@ class OrderTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Cleanup the testing environment once finished.
-     *
-     * @return void
      */
     public static function tearDownAfterClass(): void
     {
@@ -35,8 +31,6 @@ class OrderTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test creating an Order.
-     *
-     * @return void
      */
     public function testCreate()
     {
@@ -51,8 +45,6 @@ class OrderTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test retrieving an Order.
-     *
-     * @return void
      */
     public function testRetrieve()
     {
@@ -68,8 +60,6 @@ class OrderTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test retrieving rates for a order.
-     *
-     * @return void
      */
     public function testGetRates()
     {
@@ -87,8 +77,6 @@ class OrderTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test buying an Order.
-     *
-     * @return void
      */
     public function testBuy()
     {
@@ -110,8 +98,6 @@ class OrderTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test various usage alterations of the lowest_rate method.
-     *
-     * @return void
      */
     public function testLowestRate()
     {

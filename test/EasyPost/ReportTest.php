@@ -11,8 +11,6 @@ class ReportTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Setup the testing environment for this file.
-     *
-     * @return void
      */
     public static function setUpBeforeClass(): void
     {
@@ -23,8 +21,6 @@ class ReportTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Cleanup the testing environment once finished.
-     *
-     * @return void
      */
     public static function tearDownAfterClass(): void
     {
@@ -34,8 +30,6 @@ class ReportTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test creating a report.
-     *
-     * @return Report
      */
     public function testCreateReport()
     {
@@ -53,8 +47,6 @@ class ReportTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test creating a report with custom columns
-     *
-     * @return void
      */
     public function testCreateCustomColumnReport()
     {
@@ -75,8 +67,6 @@ class ReportTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test creating a report with custom additional columns
-     *
-     * @return void
      */
     public function testCreateCustomAdditionalColumnReport()
     {
@@ -97,8 +87,6 @@ class ReportTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test retrieving a report.
-     *
-     * @return void
      */
     public function testRetrieveReport()
     {
@@ -119,8 +107,6 @@ class ReportTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test retrieving all reports.
-     *
-     * @return void
      */
     public function testAll()
     {
@@ -140,8 +126,6 @@ class ReportTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test throwing an error when creating a report with no report type set.
-     *
-     * @return void
      */
     public function testCreateNoType()
     {
@@ -152,8 +136,6 @@ class ReportTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test throwing an error when retrieving all reports with no report type set.
-     *
-     * @return void
      */
     public function testAllNoType()
     {

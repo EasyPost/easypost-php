@@ -12,8 +12,6 @@ class BatchTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Setup the testing environment for this file.
-     *
-     * @return void
      */
     public static function setUpBeforeClass(): void
     {
@@ -24,8 +22,6 @@ class BatchTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Cleanup the testing environment once finished.
-     *
-     * @return void
      */
     public static function tearDownAfterClass(): void
     {
@@ -35,8 +31,6 @@ class BatchTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test creating a Batch.
-     *
-     * @return void
      */
     public function testCreate()
     {
@@ -53,8 +47,6 @@ class BatchTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test retrieving a Batch.
-     *
-     * @return void
      */
     public function testRetrieve()
     {
@@ -72,8 +64,6 @@ class BatchTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test retrieving all batches.
-     *
-     * @return void
      */
     public function testAll()
     {
@@ -92,8 +82,6 @@ class BatchTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test creating and buying a Batch in a single call.
-     *
-     * @return void
      */
     public function testCreateAndBuy()
     {
@@ -111,8 +99,6 @@ class BatchTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test buying a batch.
-     *
-     * @return void
      */
     public function testBuy()
     {
@@ -135,8 +121,6 @@ class BatchTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test creating a scanform for a batch.
-     *
-     * @return void
      */
     public function testCreateScanForm()
     {
@@ -162,8 +146,6 @@ class BatchTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test adding and removing a shipment from a batch.
-     *
-     * @return void
      */
     public function testAddRemoveShipment()
     {
@@ -186,8 +168,6 @@ class BatchTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test generating a label for a Batch.
-     *
-     * @return void
      */
     public function testLabel()
     {

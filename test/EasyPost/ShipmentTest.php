@@ -18,8 +18,6 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Setup the testing environment for this file.
-     *
-     * @return void
      */
     public static function setUpBeforeClass(): void
     {
@@ -30,8 +28,6 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Cleanup the testing environment once finished.
-     *
-     * @return void
      */
     public static function tearDownAfterClass(): void
     {
@@ -41,8 +37,6 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test creating a Shipment.
-     *
-     * @return void
      */
     public function testCreate()
     {
@@ -60,8 +54,6 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test retrieving a Shipment.
-     *
-     * @return void
      */
     public function testRetrieve()
     {
@@ -77,8 +69,6 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test retrieving all shipments.
-     *
-     * @return void
      */
     public function testAll()
     {
@@ -97,8 +87,6 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test buying a Shipment.
-     *
-     * @return void
      */
     public function testBuy()
     {
@@ -115,8 +103,6 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test regenerating rates for a shipment.
-     *
-     * @return void
      */
     public function testRegenerateRates()
     {
@@ -136,8 +122,6 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test converting the label format of a Shipment.
-     *
-     * @return void
      */
     public function testConvertLabel()
     {
@@ -157,8 +141,6 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
      *
      * If the shipment was purchased with a USPS rate, it must have had its insurance set to `0` when bought
      * so that USPS doesn't automatically insure it so we could manually insure it here.
-     *
-     * @return void
      */
     public function testInsure()
     {
@@ -183,8 +165,6 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
      * Refunding a test shipment must happen within seconds of the shipment being created as test shipments naturally
      * follow a flow of created -> delivered to cycle through tracking events in test mode - as such anything older
      * than a few seconds in test mode may not be refundable.
-     *
-     * @return void
      */
     public function testRefund()
     {
@@ -199,8 +179,6 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test retrieving smartrates for a shipment.
-     *
-     * @return void
      */
     public function testSmartrate()
     {
@@ -223,8 +201,6 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test creating a Shipment with empty or null objects and arrays.
-     *
-     * @return void
      */
     public function testCreateEmptyObjects()
     {
@@ -247,8 +223,6 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test creating a Shipment with `tax_identifiers`.
-     *
-     * @return void
      */
     public function testCreateTaxIdentifiers()
     {
@@ -266,8 +240,6 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test creating a Shipment when only IDs are used.
-     *
-     * @return void
      */
     public function testCreateWithIds()
     {
@@ -293,8 +265,6 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test various usage alterations of the lowest_rate method.
-     *
-     * @return void
      */
     public function testLowestRate()
     {
@@ -324,8 +294,6 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test various usage alterations of the lowest_smartrate method.
-     *
-     * @return void
      */
     public function testLowestSmartrate()
     {
@@ -356,8 +324,6 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test various usage alterations of the get_lowest_smartrate method.
-     *
-     * @return void
      */
     public function testGetLowestSmartrate()
     {
