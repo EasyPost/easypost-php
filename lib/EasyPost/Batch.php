@@ -88,7 +88,7 @@ class Batch extends EasypostResource
             ];
         }
 
-        $encodedParams = str_replace("\\", '', json_encode($params));
+        $encodedParams = str_replace('\\', '', json_encode($params));
 
         $requestor = new Requestor($apiKey);
         $url = self::classUrl(get_class());

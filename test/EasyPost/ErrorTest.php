@@ -42,8 +42,8 @@ class ErrorTest extends \PHPUnit\Framework\TestCase
             $this->assertEquals(422, $error->getHttpStatus());
             $this->assertEquals('SHIPMENT.INVALID_PARAMS', $error->ecode);
             $this->assertEquals('Unable to create shipment, one or more parameters were invalid.', $error->getMessage());
-            $this->assertEquals(["to_address" => "Required and missing."], $error->errors[0]);
-            $this->assertEquals(["from_address" => "Required and missing."], $error->errors[1]);
+            $this->assertEquals(['to_address' => 'Required and missing.'], $error->errors[0]);
+            $this->assertEquals(['from_address' => 'Required and missing.'], $error->errors[1]);
             $this->assertEquals('{"error":{"code":"SHIPMENT.INVALID_PARAMS","message":"Unable to create shipment, one or more parameters were invalid.","errors":[{"to_address":"Required and missing."},{"from_address":"Required and missing."}]}}', $error->getHttpBody());
 
             // We check that the pretty printed output is the same here, leave the odd formatting as it is here and do not auto-format the next few lines

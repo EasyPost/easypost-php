@@ -30,7 +30,7 @@ class EndShipper extends EasypostResource
     public static function create($params = null, $apiKey = null)
     {
         $wrappedParams = [];
-        $wrappedParams["address"] = $params;
+        $wrappedParams['address'] = $params;
 
         return self::createResource(get_class(), $wrappedParams, $apiKey, null, true);
     }

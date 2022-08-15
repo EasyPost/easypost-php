@@ -74,13 +74,13 @@ class Error extends \Exception
      */
     public function prettyPrint()
     {
-        print($this->ecode . " (" . $this->getHttpStatus() . "): " .
+        print($this->ecode . ' (' . $this->getHttpStatus() . '): ' .
             $this->getMessage() . "\n");
         if (!empty($this->errors)) {
             print("Field errors:\n");
             foreach ($this->errors as $fieldError) {
                 foreach ($fieldError as $k => $v) {
-                    print("  " . $k . ": " . $v . "\n");
+                    print('  ' . $k . ': ' . $v . "\n");
                 }
                 print("\n");
             }

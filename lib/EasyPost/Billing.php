@@ -20,7 +20,7 @@ class Billing extends EasypostResource
      */
     public static function retrieve_payment_methods($params = null, $apiKey = null)
     {
-        $paymentMethods = self::allResources("paymentMethod", $params, $apiKey);
+        $paymentMethods = self::allResources('paymentMethod', $params, $apiKey);
 
         if ($paymentMethods->id == null) {
             throw new Error('Billing has not been setup for this user. Please add a payment method.');

@@ -138,8 +138,8 @@ abstract class Util
         } elseif (is_array($response)) {
             if (isset($response['object']) && is_string($response['object']) && isset($types[$response['object']])) {
                 $class = $types[$response['object']];
-            } elseif (isset($response['id']) && isset($prefixes[substr($response['id'], 0, strpos($response['id'], "_"))])) {
-                $class = $prefixes[substr($response['id'], 0, strpos($response['id'], "_"))];
+            } elseif (isset($response['id']) && isset($prefixes[substr($response['id'], 0, strpos($response['id'], '_'))])) {
+                $class = $prefixes[substr($response['id'], 0, strpos($response['id'], '_'))];
             } else {
                 $class = '\EasyPost\EasyPostObject';
             }

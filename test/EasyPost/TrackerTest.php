@@ -36,7 +36,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('trackers/create.yml');
 
         $tracker = Tracker::create([
-            "tracking_code" => "EZ1000000001",
+            'tracking_code' => 'EZ1000000001',
         ]);
 
         $this->assertInstanceOf('\EasyPost\Tracker', $tracker);
@@ -52,7 +52,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('trackers/retrieve.yml');
 
         $tracker = Tracker::create([
-            "tracking_code" => "EZ1000000001",
+            'tracking_code' => 'EZ1000000001',
         ]);
 
         // Test trackers cycle through their "dummy" statuses automatically, the created and retrieved objects may differ
@@ -88,9 +88,9 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('trackers/createList.yml');
 
         $response = Tracker::create_list([
-            '0' => ["tracking_code" => "EZ1000000001"],
-            '1' => ["tracking_code" => "EZ1000000002"],
-            '2' => ["tracking_code" => "EZ1000000003"],
+            '0' => ['tracking_code' => 'EZ1000000001'],
+            '1' => ['tracking_code' => 'EZ1000000002'],
+            '2' => ['tracking_code' => 'EZ1000000003'],
         ]);
 
         // This endpoint returns nothing so we assert the function returns true

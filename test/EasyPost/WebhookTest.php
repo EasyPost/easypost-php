@@ -37,7 +37,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('webhooks/create.yml');
 
         $webhook = Webhook::create([
-            "url" => Fixture::webhook_url(),
+            'url' => Fixture::webhook_url(),
         ]);
 
         $this->assertInstanceOf('\EasyPost\Webhook', $webhook);
@@ -55,7 +55,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('webhooks/retrieve.yml');
 
         $webhook = Webhook::create([
-            "url" => Fixture::webhook_url(),
+            'url' => Fixture::webhook_url(),
         ]);
 
         $retrievedWebhook = Webhook::retrieve($webhook->id);
@@ -91,7 +91,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('webhooks/update.yml');
 
         $webhook = Webhook::create([
-            "url" => Fixture::webhook_url(),
+            'url' => Fixture::webhook_url(),
         ]);
 
         $response = $webhook->update();
@@ -110,7 +110,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('webhooks/delete.yml');
 
         $webhook = Webhook::create([
-            "url" => Fixture::webhook_url(),
+            'url' => Fixture::webhook_url(),
         ]);
 
         $response = $webhook->delete();
@@ -125,15 +125,15 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
      */
     public function testValidateWebhook()
     {
-        $webhookSecret = "sécret";
-        $expectedHmacSignature = "hmac-sha256-hex=e93977c8ccb20363d51a62b3fe1fc402b7829be1152da9e88cf9e8d07115a46b";
+        $webhookSecret = 'sécret';
+        $expectedHmacSignature = 'hmac-sha256-hex=e93977c8ccb20363d51a62b3fe1fc402b7829be1152da9e88cf9e8d07115a46b';
         $headers = [
-            "X-Hmac-Signature" => $expectedHmacSignature
+            'X-Hmac-Signature' => $expectedHmacSignature
         ];
 
         $webhookBody = Webhook::validateWebhook(Fixture::webhookBody(), $headers, $webhookSecret);
 
-        $this->assertEquals("batch.created", $webhookBody->description);
+        $this->assertEquals('batch.created', $webhookBody->description);
     }
 
     /**
@@ -141,9 +141,9 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
      */
     public function testValidateWebhookInvalidSecret()
     {
-        $webhookSecret = "invalid_secret";
+        $webhookSecret = 'invalid_secret';
         $headers = [
-            "X-Hmac-Signature" => "some-signature"
+            'X-Hmac-Signature' => 'some-signature'
         ];
 
         try {
@@ -158,9 +158,9 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
      */
     public function testValidateWebhookMissingSecret()
     {
-        $webhookSecret = "123";
+        $webhookSecret = '123';
         $headers = [
-            "some-header" => "some-signature"
+            'some-header' => 'some-signature'
         ];
 
         try {

@@ -364,7 +364,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
         $shipment = Shipment::create(Fixture::one_call_buy_shipment());
 
-        $formType = "return_packing_slip";
+        $formType = 'return_packing_slip';
         $shipment->generate_form(
             $formType,
             Fixture::rma_form_options()
