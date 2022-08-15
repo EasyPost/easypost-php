@@ -297,7 +297,7 @@ class Shipment extends EasypostResource
         }
 
         if ($lowestSmartrate == false) {
-            throw new Error("No rates found.");
+            throw new Error('No rates found.');
         }
 
         return $lowestSmartrate;

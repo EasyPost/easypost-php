@@ -49,7 +49,7 @@ class Requestor
      */
     public static function utf8($value)
     {
-        if (is_string($value) && mb_detect_encoding($value, "UTF-8", true) != "UTF-8") {
+        if (is_string($value) && mb_detect_encoding($value, 'UTF-8', true) != 'UTF-8') {
             return utf8_encode($value);
         }
 
@@ -67,7 +67,7 @@ class Requestor
         if (is_null($data)) {
             return [];
         } elseif ($data instanceof EasypostResource) {
-            return ["id" => self::utf8($data->id)];
+            return ['id' => self::utf8($data->id)];
         } elseif ($data === true) {
             return 'true';
         } elseif ($data === false) {
@@ -75,7 +75,7 @@ class Requestor
         } elseif (is_array($data)) {
             $resource = [];
             foreach ($data as $k => $v) {
-                if (!is_null($v) and ($v !== "") and (!is_array($v) or !empty($v))) {
+                if (!is_null($v) and ($v !== '') and (!is_array($v) or !empty($v))) {
                     $resource[$k] = self::encodeObjects($v);
                 }
             }
@@ -106,19 +106,19 @@ class Requestor
             }
 
             if ($prefix && isset($k)) {
-                $k = $prefix . "[" . $k . "]";
+                $k = $prefix . '[' . $k . ']';
             } elseif ($prefix) {
-                $k = $prefix . "[]";
+                $k = $prefix . '[]';
             }
 
             if (is_array($v)) {
                 $r[] = self::urlEncode($v, $k, true);
             } else {
-                $r[] = urlencode($k) . "=" . urlencode($v);
+                $r[] = urlencode($k) . '=' . urlencode($v);
             }
         }
 
-        return implode("&", $r);
+        return implode('&', $r);
     }
 
     /**

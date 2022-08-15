@@ -97,22 +97,22 @@ class Webhook extends EasypostResource
      */
     public static function validateWebhook($eventBody, $headers, $webhookSecret)
     {
-        $easypostHmacSignature = $headers["X-Hmac-Signature"] ?? null;
+        $easypostHmacSignature = $headers['X-Hmac-Signature'] ?? null;
 
         if ($easypostHmacSignature != null) {
             $normalizedSecret = Normalizer::normalize($webhookSecret, Normalizer::FORM_KD);
-            $encodedSecret = mb_convert_encoding($normalizedSecret, "UTF-8");
+            $encodedSecret = mb_convert_encoding($normalizedSecret, 'UTF-8');
 
-            $expectedSignature = hash_hmac("sha256", $eventBody, $encodedSecret);
+            $expectedSignature = hash_hmac('sha256', $eventBody, $encodedSecret);
             $digest = "hmac-sha256-hex=$expectedSignature";
 
             if (hash_equals($digest, $easypostHmacSignature)) {
                 $webhookBody = json_decode($eventBody);
             } else {
-                throw new Error("Webhook received did not originate from EasyPost or had a webhook secret mismatch.");
+                throw new Error('Webhook received did not originate from EasyPost or had a webhook secret mismatch.');
             }
         } else {
-            throw new Error("Webhook received does not contain an HMAC signature.");
+            throw new Error('Webhook received does not contain an HMAC signature.');
         }
 
         return $webhookBody;

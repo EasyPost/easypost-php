@@ -72,7 +72,7 @@ class Address extends EasypostResource
             $wrappedParams['verify_strict'] = $verifyStrict;
         }
 
-        $wrappedParams["address"] = $params;
+        $wrappedParams['address'] = $params;
 
         return self::createResource(get_class(), $wrappedParams, $apiKey);
     }

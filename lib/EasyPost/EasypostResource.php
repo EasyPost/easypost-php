@@ -20,7 +20,7 @@ abstract class EasypostResource extends EasyPostObject
             $class = substr($class, strlen('EasyPost'));
         }
         $class = str_replace('_', '', $class);
-        $class = substr($class, 0, 1) . preg_replace("/([A-Z])/", "_$1", substr($class, 1)); // Camel -> snake
+        $class = substr($class, 0, 1) . preg_replace('/([A-Z])/', '_$1', substr($class, 1)); // Camel -> snake
         $name = urlencode($class);
         $name = strtolower($name);
 
@@ -36,7 +36,7 @@ abstract class EasypostResource extends EasyPostObject
     public static function classUrl($class)
     {
         $className = self::className($class);
-        if (substr($className, -1) !== "s" && substr($className, -1) !== "h") {
+        if (substr($className, -1) !== 's' && substr($className, -1) !== 'h') {
             return "/{$className}s";
         }
 
@@ -90,7 +90,7 @@ abstract class EasypostResource extends EasyPostObject
     protected static function validate($params = null, $apiKey = null)
     {
         if ($params && !is_array($params)) {
-            throw new Error("You must pass an array as the first argument to EasyPost API method calls.");
+            throw new Error('You must pass an array as the first argument to EasyPost API method calls.');
         }
         if ($apiKey && !is_string($apiKey)) {
             throw new Error('The second argument to EasyPost API method calls is an optional per-request apiKey, which must be a string.');
