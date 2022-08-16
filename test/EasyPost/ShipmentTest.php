@@ -8,8 +8,6 @@ use EasyPost\Error;
 use EasyPost\Parcel;
 use EasyPost\Shipment;
 use EasyPost\Test\Fixture;
-use function PHPUnit\Framework\assertTrue;
-
 use VCR\VCR;
 
 EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
