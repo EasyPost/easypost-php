@@ -36,7 +36,7 @@ class RateTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('rates/retrieve.yml');
 
-        $shipment = Shipment::create(Fixture::basic_shipment());
+        $shipment = Shipment::create(Fixture::basicShipment());
 
         $rate = Rate::retrieve($shipment->rates[0]['id']);
 

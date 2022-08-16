@@ -35,7 +35,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('addresses/create.yml');
 
-        $address = Address::create(Fixture::basic_address());
+        $address = Address::create(Fixture::caAddress1());
 
         $this->assertInstanceOf('\EasyPost\Address', $address);
         $this->assertStringMatchesFormat('adr_%s', $address->id);
@@ -51,7 +51,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('addresses/createVerify.yml');
 
-        $addressData = Fixture::incorrect_address_to_verify();
+        $addressData = Fixture::incorrectAddress();
         $addressData['verify'] = true;
 
         $address = Address::create($addressData);
@@ -69,7 +69,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('addresses/createVerifyStrict.yml');
 
-        $addressData = Fixture::basic_address();
+        $addressData = Fixture::caAddress1();
         $addressData['verify_strict'] = true;
 
         $address = Address::create($addressData);
@@ -88,7 +88,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('addresses/createVerifyArray.yml');
 
-        $addressData = Fixture::incorrect_address_to_verify();
+        $addressData = Fixture::incorrectAddress();
         $addressData['verify'] = [true];
 
         $address = Address::create($addressData);
@@ -106,7 +106,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('addresses/retrieve.yml');
 
-        $address = Address::create(Fixture::basic_address());
+        $address = Address::create(Fixture::caAddress1());
 
         $retrievedAddress = Address::retrieve($address->id);
 
@@ -122,12 +122,12 @@ class AddressTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('addresses/all.yml');
 
         $addresses = Address::all([
-            'page_size' => Fixture::page_size(),
+            'page_size' => Fixture::pageSize(),
         ]);
 
         $addressesArray = $addresses['addresses'];
 
-        $this->assertLessThanOrEqual($addressesArray, Fixture::page_size());
+        $this->assertLessThanOrEqual($addressesArray, Fixture::pageSize());
         $this->assertNotNull($addresses['has_more']);
         $this->assertContainsOnlyInstancesOf('\EasyPost\Address', $addressesArray);
     }
@@ -141,7 +141,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('addresses/createAndVerify.yml');
 
-        $addressData = Fixture::incorrect_address_to_verify();
+        $addressData = Fixture::incorrectAddress();
 
         $address = Address::create_and_verify($addressData);
 
@@ -157,7 +157,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('addresses/verify.yml');
 
-        $address = Address::create(Fixture::basic_address());
+        $address = Address::create(Fixture::caAddress1());
 
         $address->verify();
 

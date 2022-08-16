@@ -36,9 +36,9 @@ class ReportTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('reports/createReport.yml');
 
         $report = Report::create([
-            'start_date' => Fixture::report_date(),
-            'end_date' => Fixture::report_date(),
-            'type' => Fixture::report_type(),
+            'start_date' => Fixture::reportDate(),
+            'end_date' => Fixture::reportDate(),
+            'type' => Fixture::reportType(),
         ]);
 
         $this->assertInstanceOf('\EasyPost\Report', $report);
@@ -53,9 +53,9 @@ class ReportTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('reports/createCustomColumnReport.yml');
 
         $report = Report::create([
-            'start_date' => Fixture::report_date(),
-            'end_date' => Fixture::report_date(),
-            'type' => Fixture::report_type(),
+            'start_date' => Fixture::reportDate(),
+            'end_date' => Fixture::reportDate(),
+            'type' => Fixture::reportType(),
             'columns' => ['usps_zone']
         ]);
 
@@ -73,9 +73,9 @@ class ReportTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('reports/createCustomAdditionalColumnReport.yml');
 
         $report = Report::create([
-            'start_date' => Fixture::report_date(),
-            'end_date' => Fixture::report_date(),
-            'type' => Fixture::report_type(),
+            'start_date' => Fixture::reportDate(),
+            'end_date' => Fixture::reportDate(),
+            'type' => Fixture::reportType(),
             'additional_columns' => ['from_name', 'from_company']
         ]);
 
@@ -93,9 +93,9 @@ class ReportTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('reports/retrieveReport.yml');
 
         $report = Report::create([
-            'start_date' => Fixture::report_date(),
-            'end_date' => Fixture::report_date(),
-            'type' => Fixture::report_type(),
+            'start_date' => Fixture::reportDate(),
+            'end_date' => Fixture::reportDate(),
+            'type' => Fixture::reportType(),
         ]);
 
         $retrievedReport = Report::retrieve($report->id);
@@ -114,12 +114,12 @@ class ReportTest extends \PHPUnit\Framework\TestCase
 
         $reports = Report::all([
             'type' => 'shipment',
-            'page_size' => Fixture::page_size(),
+            'page_size' => Fixture::pageSize(),
         ]);
 
         $reportsArray = $reports['reports'];
 
-        $this->assertLessThanOrEqual($reportsArray, Fixture::page_size());
+        $this->assertLessThanOrEqual($reportsArray, Fixture::pageSize());
         $this->assertNotNull($reports['has_more']);
         $this->assertContainsOnlyInstancesOf('\EasyPost\Report', $reportsArray);
     }

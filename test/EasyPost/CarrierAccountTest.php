@@ -35,9 +35,9 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('carrier_accounts/create.yml');
 
-        $carrierAccount = CarrierAccount::create(Fixture::basic_carrier_account());
+        $carrierAccount = CarrierAccount::create(Fixture::basicCarrierAccount());
 
-        $this->assertEquals('UpsAccount', $carrierAccount->type);
+        $this->assertEquals('DhlEcsAccount', $carrierAccount->type);
         $this->assertInstanceOf('\EasyPost\CarrierAccount', $carrierAccount);
         $this->assertStringMatchesFormat('ca_%s', $carrierAccount->id);
 
@@ -51,7 +51,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('carrier_accounts/retrieve.yml');
 
-        $carrierAccount = CarrierAccount::create(Fixture::basic_carrier_account());
+        $carrierAccount = CarrierAccount::create(Fixture::basicCarrierAccount());
 
         $retrievedCarrierAccount = CarrierAccount::retrieve($carrierAccount->id);
 
@@ -80,7 +80,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('carrier_accounts/update.yml');
 
-        $carrierAccount = CarrierAccount::create(Fixture::basic_carrier_account());
+        $carrierAccount = CarrierAccount::create(Fixture::basicCarrierAccount());
 
         $testDescription = 'My custom description';
 
@@ -101,7 +101,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('carrier_accounts/delete.yml');
 
-        $carrierAccount = CarrierAccount::create(Fixture::basic_carrier_account());
+        $carrierAccount = CarrierAccount::create(Fixture::basicCarrierAccount());
 
         $response = $carrierAccount->delete();
 

@@ -40,19 +40,17 @@ class ErrorTest extends \PHPUnit\Framework\TestCase
             Shipment::create();
         } catch (Error $error) {
             $this->assertEquals(422, $error->getHttpStatus());
-            $this->assertEquals('SHIPMENT.INVALID_PARAMS', $error->ecode);
-            $this->assertEquals('Unable to create shipment, one or more parameters were invalid.', $error->getMessage());
-            $this->assertEquals(['to_address' => 'Required and missing.'], $error->errors[0]);
-            $this->assertEquals(['from_address' => 'Required and missing.'], $error->errors[1]);
-            $this->assertEquals('{"error":{"code":"SHIPMENT.INVALID_PARAMS","message":"Unable to create shipment, one or more parameters were invalid.","errors":[{"to_address":"Required and missing."},{"from_address":"Required and missing."}]}}', $error->getHttpBody());
+            $this->assertEquals('PARAMETER.REQUIRED', $error->ecode);
+            $this->assertEquals('Missing required parameter.', $error->getMessage());
+            $this->assertEquals(['field' => 'shipment', 'message' => 'cannot be blank'], $error->errors[0]);
+            $this->assertEquals('{"error":{"code":"PARAMETER.REQUIRED","message":"Missing required parameter.","errors":[{"field":"shipment","message":"cannot be blank"}]}}', $error->getHttpBody());
 
             // We check that the pretty printed output is the same here, leave the odd formatting as it is here and do not auto-format the next few lines
             $error->prettyPrint();
-            $this->expectOutputString('SHIPMENT.INVALID_PARAMS (422): Unable to create shipment, one or more parameters were invalid.
+            $this->expectOutputString('PARAMETER.REQUIRED (422): Missing required parameter.
 Field errors:
-  to_address: Required and missing.
-
-  from_address: Required and missing.
+  field: shipment
+  message: cannot be blank
 
 ');
         }

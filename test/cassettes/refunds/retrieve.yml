@@ -21,62 +21,62 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 2f26e943627ed421e798bc3f0006fce2
-            cache-control: 'no-cache, no-store'
+            x-ep-request-uuid: 9e568e3e62fbd74ae78755e70008e5b0
+            cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
-            content-length: '1509'
-            etag: 'W/"b92aca4d4b024c8015e76d90aa255e2e"'
-            x-runtime: '0.133977'
-            x-node: bigweb8nuq
-            x-version-label: easypost-202205131956-9146889ba0-master
+            content-length: '1506'
+            etag: 'W/"81482cd37190227ddef66a5036ab1c29"'
+            x-runtime: '0.040976'
+            x-node: bigweb9nuq
+            x-version-label: easypost-202208152354-15cac62d1c-master
             x-backend: easypost
-            x-proxied: ['intlb2nuq 570dfcbc0a', 'extlb1nuq c51cdb8bf2']
+            x-proxied: ['intlb1nuq 6aa9972c1e', 'extlb1nuq 9ce216bfac']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"refunds":[{"id":"rfnd_b241d169d7eb46e1952a2f7f73907c59","object":"Refund","created_at":"2022-05-13T21:56:49Z","updated_at":"2022-05-13T21:56:49Z","tracking_code":"9400100109361119108305","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_9e2c19ab579247e394a495fa4508cf52"},{"id":"rfnd_cb86c1b8ebd145ceb3fc9331773331a3","object":"Refund","created_at":"2022-05-13T21:56:37Z","updated_at":"2022-05-13T21:56:37Z","tracking_code":"9400100109361119108244","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_f86abcbed55a45edb4f7f064af50d64c"},{"id":"rfnd_2f997f52ac234796b4b7fa05ae7ea127","object":"Refund","created_at":"2022-05-13T20:29:51Z","updated_at":"2022-05-13T20:29:51Z","tracking_code":"9400100109361119097012","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_af94d9863ce64211a9f6438949e4cffd"},{"id":"rfnd_dbc81ec270684ee882dfcb2a8a8bc221","object":"Refund","created_at":"2022-05-13T20:29:37Z","updated_at":"2022-05-13T20:29:37Z","tracking_code":"9400100109361119096978","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_8c21a58fb9e743e3842eb95fd15dd480"},{"id":"rfnd_e251bfc0208c41cca729660c866f8c68","object":"Refund","created_at":"2022-04-20T16:36:12Z","updated_at":"2022-04-21T16:36:12Z","tracking_code":"9400100109361115889000","confirmation_number":null,"status":"rejected","carrier":"USPS","shipment_id":"shp_8d96b78291ad4a5b89fddb9ad55fd238"}],"has_more":false}'
+        body: '{"refunds":[{"id":"rfnd_ddf2f9a09af8445cb33d08705ca19be0","object":"Refund","created_at":"2022-08-16T17:42:51Z","updated_at":"2022-08-16T17:42:51Z","tracking_code":"9400100109361133346592","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_b948e155624f4fc89627e78844e454c7"},{"id":"rfnd_697d8c1d15524a159623f45740dd4089","object":"Refund","created_at":"2022-08-03T17:54:06Z","updated_at":"2022-08-04T17:54:06Z","tracking_code":"9400100109361131431702","confirmation_number":null,"status":"rejected","carrier":"USPS","shipment_id":"shp_c424035514d94792badfa20e65adec1d"},{"id":"rfnd_e940ad90dd5044d5aea7740bd17557e9","object":"Refund","created_at":"2022-08-03T17:53:41Z","updated_at":"2022-08-04T17:53:41Z","tracking_code":"9400100109361131431542","confirmation_number":null,"status":"rejected","carrier":"USPS","shipment_id":"shp_6c251c70d1974c1f912b1022b49e4e24"},{"id":"rfnd_ec119f430d9e4c5ab65a4c0bd1ceb023","object":"Refund","created_at":"2022-07-28T21:45:13Z","updated_at":"2022-07-29T21:45:13Z","tracking_code":"9400100109361130510330","confirmation_number":null,"status":"rejected","carrier":"USPS","shipment_id":"shp_6cb46e80e08b4927bd6b85561c0fd477"},{"id":"rfnd_9c548038611346a99eb0281bdfbb3797","object":"Refund","created_at":"2022-07-28T21:40:28Z","updated_at":"2022-07-29T21:40:31Z","tracking_code":"9400100109361130507163","confirmation_number":null,"status":"rejected","carrier":"USPS","shipment_id":"shp_5950e9ceb0f6429e89a81e7ce54e8afd"}],"has_more":false}'
         curl_info:
             url: 'https://api.easypost.com/v2/refunds?page_size=5'
             content_type: 'application/json; charset=utf-8'
             http_code: 200
-            header_size: 719
-            request_size: 548
+            header_size: 728
+            request_size: 294
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.329514
-            namelookup_time: 0.00289
-            connect_time: 0.062772
-            pretransfer_time: 0.134386
+            total_time: 0.300328
+            namelookup_time: 0.002488
+            connect_time: 0.076311
+            pretransfer_time: 0.176193
             size_upload: 0.0
-            size_download: 1509.0
-            speed_download: 4579.0
+            size_download: 1506.0
+            speed_download: 5014.0
             speed_upload: 0.0
-            download_content_length: 1509.0
+            download_content_length: 1506.0
             upload_content_length: 0.0
-            starttransfer_time: 0.329477
+            starttransfer_time: 0.300216
             redirect_time: 0.0
             redirect_url: ''
             primary_ip: 169.62.110.131
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.6
-            local_port: 60093
+            local_ip: 10.130.6.17
+            local_port: 51956
             http_version: 3
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 134304
-            connect_time_us: 62772
-            namelookup_time_us: 2890
-            pretransfer_time_us: 134386
+            appconnect_time_us: 175936
+            connect_time_us: 76311
+            namelookup_time_us: 2488
+            pretransfer_time_us: 176193
             redirect_time_us: 0
-            starttransfer_time_us: 329477
-            total_time_us: 329514
+            starttransfer_time_us: 300216
+            total_time_us: 300328
 -
     request:
         method: GET
-        url: 'https://api.easypost.com/v2/refunds/rfnd_b241d169d7eb46e1952a2f7f73907c59'
+        url: 'https://api.easypost.com/v2/refunds/rfnd_ddf2f9a09af8445cb33d08705ca19be0'
         headers:
             Host: api.easypost.com
             Accept: application/json
@@ -95,55 +95,55 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 2f26e943627ed421e798bc400006fcf6
-            cache-control: 'no-cache, no-store'
+            x-ep-request-uuid: 9e568e3c62fbd74ae78755e80008e5ca
+            cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '295'
-            etag: 'W/"ee72c9c7696bb51b2326fc4788c4599a"'
-            x-runtime: '0.086328'
-            x-node: bigweb3nuq
-            x-version-label: easypost-202205131956-9146889ba0-master
+            etag: 'W/"cd25ce03c890e7b2685fb41c0a7f9437"'
+            x-runtime: '0.031092'
+            x-node: bigweb5nuq
+            x-version-label: easypost-202208152354-15cac62d1c-master
             x-backend: easypost
-            x-proxied: ['intlb2nuq 570dfcbc0a', 'extlb1nuq c51cdb8bf2']
+            x-proxied: ['intlb2nuq 6aa9972c1e', 'extlb1nuq 9ce216bfac']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"rfnd_b241d169d7eb46e1952a2f7f73907c59","object":"Refund","created_at":"2022-05-13T21:56:49Z","updated_at":"2022-05-13T21:56:49Z","tracking_code":"9400100109361119108305","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_9e2c19ab579247e394a495fa4508cf52"}'
+        body: '{"id":"rfnd_ddf2f9a09af8445cb33d08705ca19be0","object":"Refund","created_at":"2022-08-16T17:42:51Z","updated_at":"2022-08-16T17:42:51Z","tracking_code":"9400100109361133346592","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_b948e155624f4fc89627e78844e454c7"}'
         curl_info:
-            url: 'https://api.easypost.com/v2/refunds/rfnd_b241d169d7eb46e1952a2f7f73907c59'
+            url: 'https://api.easypost.com/v2/refunds/rfnd_ddf2f9a09af8445cb33d08705ca19be0'
             content_type: 'application/json; charset=utf-8'
             http_code: 200
-            header_size: 718
-            request_size: 574
+            header_size: 727
+            request_size: 320
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.291025
-            namelookup_time: 0.002641
-            connect_time: 0.062312
-            pretransfer_time: 0.139877
+            total_time: 0.274705
+            namelookup_time: 0.002189
+            connect_time: 0.076525
+            pretransfer_time: 0.168211
             size_upload: 0.0
             size_download: 295.0
-            speed_download: 1013.0
+            speed_download: 1073.0
             speed_upload: 0.0
             download_content_length: 295.0
             upload_content_length: 0.0
-            starttransfer_time: 0.290954
+            starttransfer_time: 0.274606
             redirect_time: 0.0
             redirect_url: ''
             primary_ip: 169.62.110.131
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.6
-            local_port: 60094
+            local_ip: 10.130.6.17
+            local_port: 51957
             http_version: 3
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 139687
-            connect_time_us: 62312
-            namelookup_time_us: 2641
-            pretransfer_time_us: 139877
+            appconnect_time_us: 167973
+            connect_time_us: 76525
+            namelookup_time_us: 2189
+            pretransfer_time_us: 168211
             redirect_time_us: 0
-            starttransfer_time_us: 290954
-            total_time_us: 291025
+            starttransfer_time_us: 274606
+            total_time_us: 274705

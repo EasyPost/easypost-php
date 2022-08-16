@@ -16,6 +16,8 @@ fix:
 
 ## install - Install dependencies
 install:
+	git submodule init
+	git submodule update
 	composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
 ## lint - Lint the project
@@ -37,6 +39,8 @@ test:
 
 ## update - Update dependencies
 update:
+	git submodule init
+	git submodule update --remote
 	composer update
 
 .PHONY: help clean fix install lint release scan test update

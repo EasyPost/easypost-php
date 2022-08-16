@@ -35,7 +35,7 @@ class ParcelTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('parcels/create.yml');
 
-        $parcel = Parcel::create(Fixture::basic_parcel());
+        $parcel = Parcel::create(Fixture::basicParcel());
 
         $this->assertInstanceOf('\EasyPost\Parcel', $parcel);
         $this->assertStringMatchesFormat('prcl_%s', $parcel->id);
@@ -49,7 +49,7 @@ class ParcelTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('parcels/retrieve.yml');
 
-        $parcel = Parcel::create(Fixture::basic_parcel());
+        $parcel = Parcel::create(Fixture::basicParcel());
 
         $retrievedParcel = Parcel::retrieve($parcel->id);
 

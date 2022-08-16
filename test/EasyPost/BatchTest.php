@@ -37,7 +37,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('batches/create.yml');
 
         $batch = Batch::create([
-            'shipments' => [Fixture::basic_shipment()],
+            'shipments' => [Fixture::basicShipment()],
         ]);
 
         $this->assertInstanceOf('\EasyPost\Batch', $batch);
@@ -53,7 +53,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('batches/retrieve.yml');
 
         $batch = Batch::create([
-            'shipments' => [Fixture::basic_shipment()],
+            'shipments' => [Fixture::basicShipment()],
         ]);
 
         $retrievedBatch = Batch::retrieve($batch->id);
@@ -70,12 +70,12 @@ class BatchTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('batches/all.yml');
 
         $batches = Batch::all([
-            'page_size' => Fixture::page_size(),
+            'page_size' => Fixture::pageSize(),
         ]);
 
         $batchesArray = $batches['batches'];
 
-        $this->assertLessThanOrEqual($batchesArray, Fixture::page_size());
+        $this->assertLessThanOrEqual($batchesArray, Fixture::pageSize());
         $this->assertNotNull($batches['has_more']);
         $this->assertContainsOnlyInstancesOf('\EasyPost\Batch', $batchesArray);
     }
@@ -88,8 +88,8 @@ class BatchTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('batches/createAndBuy.yml');
 
         $batch = Batch::create_and_buy([
-            Fixture::one_call_buy_shipment(),
-            Fixture::one_call_buy_shipment(),
+            Fixture::oneCallBuyShipment(),
+            Fixture::oneCallBuyShipment(),
         ]);
 
         $this->assertInstanceOf('\EasyPost\Batch', $batch);
@@ -104,7 +104,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('batches/buy.yml');
 
-        $shipmentData = Fixture::one_call_buy_shipment();
+        $shipmentData = Fixture::oneCallBuyShipment();
 
         $batch = Batch::create([
             'shipments' => [$shipmentData],
@@ -130,7 +130,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette($cassetteName);
 
         $batch = Batch::create([
-            'shipments' => [Fixture::one_call_buy_shipment()],
+            'shipments' => [Fixture::oneCallBuyShipment()],
         ]);
         $batch->buy();
 
@@ -151,7 +151,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('batches/addRemoveShipment.yml');
 
-        $shipment = Shipment::create(Fixture::one_call_buy_shipment());
+        $shipment = Shipment::create(Fixture::oneCallBuyShipment());
 
         $batch = Batch::create();
 
@@ -177,7 +177,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette($cassetteName);
 
         $batch = Batch::create([
-            'shipments' => [Fixture::one_call_buy_shipment()],
+            'shipments' => [Fixture::oneCallBuyShipment()],
         ]);
         $batch->buy();
 
