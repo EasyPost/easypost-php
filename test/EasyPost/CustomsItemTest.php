@@ -35,11 +35,11 @@ class CustomsItemTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('customs_items/create.yml');
 
-        $customsItem = CustomsItem::create(Fixture::basic_customs_item());
+        $customsItem = CustomsItem::create(Fixture::basicCustomsItem());
 
         $this->assertInstanceOf('\EasyPost\CustomsItem', $customsItem);
         $this->assertStringMatchesFormat('cstitem_%s', $customsItem->id);
-        $this->assertEquals('23.0', $customsItem->value);
+        $this->assertEquals('23.25', $customsItem->value);
     }
 
     /**
@@ -49,7 +49,7 @@ class CustomsItemTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('customs_items/retrieve.yml');
 
-        $customsItem = CustomsItem::create(Fixture::basic_customs_item());
+        $customsItem = CustomsItem::create(Fixture::basicCustomsItem());
 
         $retrievedCustomsItem = CustomsItem::retrieve($customsItem->id);
 

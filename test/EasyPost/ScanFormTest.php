@@ -36,7 +36,7 @@ class ScanFormTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('scanforms/create.yml');
 
-        $shipment = Shipment::create(Fixture::one_call_buy_shipment());
+        $shipment = Shipment::create(Fixture::oneCallBuyShipment());
 
         $scanform = ScanForm::create([
             'shipments' => [$shipment],
@@ -53,7 +53,7 @@ class ScanFormTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('scanforms/retrieve.yml');
 
-        $shipment = Shipment::create(Fixture::one_call_buy_shipment());
+        $shipment = Shipment::create(Fixture::oneCallBuyShipment());
 
         $scanform = ScanForm::create([
             'shipments' => [$shipment],
@@ -73,12 +73,12 @@ class ScanFormTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('scanforms/all.yml');
 
         $scanforms = ScanForm::all([
-            'page_size' => Fixture::page_size(),
+            'page_size' => Fixture::pageSize(),
         ]);
 
         $scanformsArray = $scanforms['scan_forms'];
 
-        $this->assertLessThanOrEqual($scanformsArray, Fixture::page_size());
+        $this->assertLessThanOrEqual($scanformsArray, Fixture::pageSize());
         $this->assertNotNull($scanforms['has_more']);
         $this->assertContainsOnlyInstancesOf('\EasyPost\ScanForm', $scanformsArray);
     }

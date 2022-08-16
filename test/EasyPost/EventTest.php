@@ -37,12 +37,12 @@ class EventTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('events/all.yml');
 
         $events = Event::all([
-            'page_size' => Fixture::page_size(),
+            'page_size' => Fixture::pageSize(),
         ]);
 
         $eventsArray = $events['events'];
 
-        $this->assertLessThanOrEqual($eventsArray, Fixture::page_size());
+        $this->assertLessThanOrEqual($eventsArray, Fixture::pageSize());
         $this->assertNotNull($events['has_more']);
         $this->assertContainsOnlyInstancesOf('\EasyPost\Event', $eventsArray);
     }
@@ -55,7 +55,7 @@ class EventTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('events/retrieve.yml');
 
         $events = Event::all([
-            'page_size' => Fixture::page_size(),
+            'page_size' => Fixture::pageSize(),
         ]);
 
         $event = Event::retrieve($events['events'][0]);
@@ -69,7 +69,7 @@ class EventTest extends \PHPUnit\Framework\TestCase
      */
     public function testReceive()
     {
-        $event = Event::receive(Fixture::event());
+        $event = Event::receive(Fixture::eventJson());
 
         $this->assertInstanceOf('\EasyPost\Event', $event);
         $this->assertStringMatchesFormat('evt_%s', $event->id);

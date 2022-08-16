@@ -34,7 +34,7 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('end_shipper/create.yml');
 
-        $endShipper = EndShipper::create(Fixture::end_shipper_address());
+        $endShipper = EndShipper::create(Fixture::caAddress1());
 
         $this->assertInstanceOf('\EasyPost\Beta\EndShipper', $endShipper);
         $this->assertStringMatchesFormat('es_%s', $endShipper->id);
@@ -48,7 +48,7 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('end_shipper/retrieve.yml');
 
-        $endShipper = EndShipper::create(Fixture::end_shipper_address());
+        $endShipper = EndShipper::create(Fixture::caAddress1());
 
         $retrievedEndShipper = EndShipper::retrieve($endShipper->id);
 
@@ -64,10 +64,10 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('end_shipper/all.yml');
 
         $endShipper = EndShipper::all([
-            'page_size' => Fixture::page_size(),
+            'page_size' => Fixture::pageSize(),
         ]);
 
-        $this->assertLessThanOrEqual($endShipper, Fixture::page_size());
+        $this->assertLessThanOrEqual($endShipper, Fixture::pageSize());
         $this->assertContainsOnlyInstancesOf('\EasyPost\Beta\EndShipper', $endShipper);
     }
 
@@ -78,7 +78,7 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('end_shipper/update.yml');
 
-        $endShipper = EndShipper::create(Fixture::end_shipper_address());
+        $endShipper = EndShipper::create(Fixture::caAddress1());
 
         // All caps because API will return all caps as part of verification.
         $newName = 'NEW NAME';

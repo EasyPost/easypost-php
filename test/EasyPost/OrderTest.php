@@ -36,7 +36,7 @@ class OrderTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('orders/create.yml');
 
-        $order = Order::create(Fixture::basic_order());
+        $order = Order::create(Fixture::basicOrder());
 
         $this->assertInstanceOf('\EasyPost\Order', $order);
         $this->assertStringMatchesFormat('order_%s', $order->id);
@@ -50,7 +50,7 @@ class OrderTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('orders/retrieve.yml');
 
-        $order = Order::create(Fixture::basic_order());
+        $order = Order::create(Fixture::basicOrder());
 
         $retrievedOrder = Order::retrieve($order->id);
 
@@ -65,7 +65,7 @@ class OrderTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('orders/getRates.yml');
 
-        $order = Order::create(Fixture::basic_order());
+        $order = Order::create(Fixture::basicOrder());
 
         $rates = $order->get_rates();
 
@@ -82,11 +82,11 @@ class OrderTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('orders/buy.yml');
 
-        $order = Order::create(Fixture::basic_order());
+        $order = Order::create(Fixture::basicOrder());
 
         $order->buy([
             'carrier' => Fixture::usps(),
-            'service' => Fixture::usps_service(),
+            'service' => Fixture::uspsService(),
         ]);
 
         $shipmentsArray = $order['shipments'];
@@ -103,18 +103,18 @@ class OrderTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('orders/lowestRate.yml');
 
-        $order = Order::create(Fixture::basic_order());
+        $order = Order::create(Fixture::basicOrder());
 
         // Test lowest rate with no filters
         $lowestRate = $order->lowest_rate();
         $this->assertEquals('First', $lowestRate['service']);
-        $this->assertEquals('5.49', $lowestRate['rate']);
+        $this->assertEquals('5.57', $lowestRate['rate']);
         $this->assertEquals('USPS', $lowestRate['carrier']);
 
         // Test lowest rate with service filter (this rate is higher than the lowest but should filter)
         $lowestRate = $order->lowest_rate([], ['Priority']);
         $this->assertEquals('Priority', $lowestRate['service']);
-        $this->assertEquals('7.37', $lowestRate['rate']);
+        $this->assertEquals('7.90', $lowestRate['rate']);
         $this->assertEquals('USPS', $lowestRate['carrier']);
 
         // Test lowest rate with carrier filter (should error due to bad carrier)

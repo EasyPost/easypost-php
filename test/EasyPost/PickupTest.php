@@ -37,9 +37,9 @@ class PickupTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('pickups/create.yml');
 
-        $shipment = Shipment::create(Fixture::one_call_buy_shipment());
+        $shipment = Shipment::create(Fixture::oneCallBuyShipment());
 
-        $pickupData = Fixture::basic_pickup();
+        $pickupData = Fixture::basicPickup();
         $pickupData['shipment'] = $shipment;
 
         $pickup = Pickup::create($pickupData);
@@ -56,9 +56,9 @@ class PickupTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('pickups/retrieve.yml');
 
-        $shipment = Shipment::create(Fixture::one_call_buy_shipment());
+        $shipment = Shipment::create(Fixture::oneCallBuyShipment());
 
-        $pickupData = Fixture::basic_pickup();
+        $pickupData = Fixture::basicPickup();
         $pickupData['shipment'] = $shipment;
 
         $pickup = Pickup::create($pickupData);
@@ -75,16 +75,16 @@ class PickupTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('pickups/buy.yml');
 
-        $shipment = Shipment::create(Fixture::one_call_buy_shipment());
+        $shipment = Shipment::create(Fixture::oneCallBuyShipment());
 
-        $pickupData = Fixture::basic_pickup();
+        $pickupData = Fixture::basicPickup();
         $pickupData['shipment'] = $shipment;
 
         $pickup = Pickup::create($pickupData);
 
         $boughtPickup = $pickup->buy([
             'carrier' => Fixture::usps(),
-            'service' => Fixture::pickup_service(),
+            'service' => Fixture::pickupService(),
         ]);
 
         $this->assertInstanceOf('\EasyPost\Pickup', $boughtPickup);
@@ -100,16 +100,16 @@ class PickupTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('pickups/cancel.yml');
 
-        $shipment = Shipment::create(Fixture::one_call_buy_shipment());
+        $shipment = Shipment::create(Fixture::oneCallBuyShipment());
 
-        $pickupData = Fixture::basic_pickup();
+        $pickupData = Fixture::basicPickup();
         $pickupData['shipment'] = $shipment;
 
         $pickup = Pickup::create($pickupData);
 
         $boughtPickup = $pickup->buy([
             'carrier' => Fixture::usps(),
-            'service' => Fixture::pickup_service(),
+            'service' => Fixture::pickupService(),
         ]);
 
         $cancelledPickup = $boughtPickup->cancel();
@@ -126,9 +126,9 @@ class PickupTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('pickups/lowestRate.yml');
 
-        $shipment = Shipment::create(Fixture::one_call_buy_shipment());
+        $shipment = Shipment::create(Fixture::oneCallBuyShipment());
 
-        $pickupData = Fixture::basic_pickup();
+        $pickupData = Fixture::basicPickup();
         $pickupData['shipment'] = $shipment;
 
         $pickup = Pickup::create($pickupData);

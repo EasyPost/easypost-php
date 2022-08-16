@@ -36,7 +36,7 @@ class RefundTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('refunds/create.yml');
 
-        $shipment = Shipment::create(Fixture::one_call_buy_shipment());
+        $shipment = Shipment::create(Fixture::oneCallBuyShipment());
         $retrievedShipment = Shipment::retrieve($shipment); // We need to retrieve the shipment so that the tracking_code has time to populate
 
         $refund = Refund::create([
@@ -56,12 +56,12 @@ class RefundTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('refunds/all.yml');
 
         $refunds = Refund::all([
-            'page_size' => Fixture::page_size(),
+            'page_size' => Fixture::pageSize(),
         ]);
 
         $refundsArray = $refunds['refunds'];
 
-        $this->assertLessThanOrEqual($refundsArray, Fixture::page_size());
+        $this->assertLessThanOrEqual($refundsArray, Fixture::pageSize());
         $this->assertNotNull($refunds['has_more']);
         $this->assertContainsOnlyInstancesOf('\EasyPost\Refund', $refundsArray);
 
@@ -77,7 +77,7 @@ class RefundTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('refunds/retrieve.yml');
 
         $refunds = Refund::all([
-            'page_size' => Fixture::page_size(),
+            'page_size' => Fixture::pageSize(),
         ]);
 
         $retrievedRefund = Refund::retrieve($refunds['refunds'][0]);

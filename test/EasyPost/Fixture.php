@@ -4,16 +4,25 @@ namespace EasyPost\Test;
 
 class Fixture
 {
-    // We keep the page_size of retrieving `all` records small so cassettes stay small
-    public static function page_size()
+    // Read fixture data from the fixtures JSON file
+    private static function readFixtureData()
     {
-        return 5;
+        $currentDir = getcwd();
+        $data = file_get_contents("$currentDir/examples/official/fixtures/client-library-fixtures.json");
+
+        return json_decode($data, true);
+    }
+
+    // We keep the page_size of retrieving `all` records small so cassettes stay small
+    public static function pageSize()
+    {
+        return self::readFixtureData()['page_sizes']['five_results'];
     }
 
     // This is the USPS carrier account ID that comes with your EasyPost account by default and should be used for all tests
-    public static function usps_carrier_account_id()
+    public static function uspsCarrierAccountId()
     {
-        // Fallback to the EasyPost PHP Client Library Test User USPS carrier account ID
+        // Fallback to the EasyPost PHP Client Library Test User USPS carrier account ID due to strict matching
         $uspsCarrierAccountId = getenv('USPS_CARRIER_ACCOUNT_ID') !== false ? getenv('USPS_CARRIER_ACCOUNT_ID') : 'ca_8dc116debcdb49b5a66a2ddee4612600';
 
         return $uspsCarrierAccountId;
@@ -21,156 +30,87 @@ class Fixture
 
     public static function usps()
     {
-        return 'USPS';
+        return self::readFixtureData()['carrier_strings']['usps'];
     }
 
-    public static function usps_service()
+    public static function uspsService()
     {
-        return 'First';
+        return self::readFixtureData()['service_names']['usps']['first_service'];
     }
 
-    public static function pickup_service()
+    public static function pickupService()
     {
-        return 'NextDay';
+        return self::readFixtureData()['service_names']['usps']['pickup_service'];
     }
 
-    public static function report_type()
+    public static function reportType()
     {
-        return 'shipment';
+        return self::readFixtureData()['report_types']['shipment'];
     }
 
-    // If you need to re-record cassettes, increment this date by 1
-    public static function report_date()
+    public static function reportDate()
     {
         return '2022-04-09';
     }
 
-    public static function webhook_url()
+    public static function webhookUrl()
     {
-        return 'http://example.com';
+        return self::readFixtureData()['webhook_url'];
     }
 
-    public static function basic_address()
+    public static function caAddress1()
     {
-        return [
-            'name'      => 'Jack Sparrow',
-            'company'   => 'EasyPost',
-            'street1'   => '388 Townsend St',
-            'street2'   => 'Apt 20',
-            'city'      => 'San Francisco',
-            'state'     => 'CA',
-            'zip'       => '94107',
-            'phone'     => '5555555555',
-        ];
+        return self::readFixtureData()['addresses']['ca_address_1'];
     }
 
-    public static function incorrect_address_to_verify()
+    public static function caAddress2()
     {
-        return [
-            'street1' => '417 montgomery street',
-            'street2' => 'FL 5',
-            'city'    => 'San Francisco',
-            'state'   => 'CA',
-            'zip'     => '94104',
-            'country' => 'US',
-            'company' => 'EasyPost',
-            'phone'   => '415-123-4567',
-        ];
+        return self::readFixtureData()['addresses']['ca_address_2'];
     }
 
-    public static function pickup_address()
+    public static function incorrectAddress()
     {
-        return [
-            'name' => 'Dr. Steve Brule',
-            'street1' => '179 N Harbor Dr',
-            'city' => 'Redondo Beach',
-            'state' => 'CA',
-            'zip' => '90277',
-            'country' => 'US',
-            'phone' => '3331114444',
-        ];
+        return self::readFixtureData()['addresses']['incorrect'];
     }
 
-    public static function basic_parcel()
+    public static function basicParcel()
     {
-        return [
-            'length'    => '10',
-            'width'     => '8',
-            'height'    => '4',
-            'weight'    => '15.4',
-        ];
+        return self::readFixtureData()['parcels']['basic'];
     }
 
-    public static function basic_customs_item()
+    public static function basicCustomsItem()
     {
-        return [
-            'description' => 'Sweet shirts',
-            'quantity' => 2,
-            'weight' => 11,
-            'value' => 23,
-            'hs_tariff_number' => '654321',
-            'origin_country' => 'US',
-        ];
+        return self::readFixtureData()['customs_items']['basic'];
     }
 
-    public static function basic_customs_info()
+    public static function basicCustomsInfo()
     {
-        return [
-            'eel_pfc' => 'NOEEI 30.37(a)',
-            'customs_certify' => true,
-            'customs_signer' => 'Steve Brule',
-            'contents_type' => 'merchandise',
-            'contents_explanation' => '',
-            'restriction_type' => 'none',
-            'non_delivery_option' => 'return',
-            'customs_items' => [
-                self::basic_customs_item(),
-            ]
-        ];
+        return self::readFixtureData()['customs_infos']['basic'];
     }
 
-    public static function tax_identifier()
+    public static function taxIdentifier()
     {
-        return [
-            'entity' => 'SENDER',
-            'tax_id_type' => 'IOSS',
-            'tax_id' => '12345',
-            'issuing_country' => 'GB',
-        ];
+        return self::readFixtureData()['tax_identifiers']['basic'];
     }
 
-    public static function basic_shipment()
+    public static function basicShipment()
     {
-        return [
-            'to_address' => self::basic_address(),
-            'from_address' => self::basic_address(),
-            'parcel' => self::basic_parcel(),
-        ];
+        return self::readFixtureData()['shipments']['basic_domestic'];
     }
 
-    public static function full_shipment()
+    public static function fullShipment()
     {
-        return [
-            'to_address' => self::basic_address(),
-            'from_address' => self::basic_address(),
-            'parcel' => self::basic_parcel(),
-            'customs_info'  => self::basic_customs_info(),
-            'options' => [
-                'label_format' => 'PNG', // Must be PNG so we can convert to ZPL later
-                'invoice_number' => 123 // Tests that we encode integers to strings where appropriate (PHP lib feature)
-            ],
-            'reference' => 123, // Tests that we encode integers to strings where appropriate (PHP lib feature)
-        ];
+        return self::readFixtureData()['shipments']['full'];
     }
 
-    public static function one_call_buy_shipment()
+    public static function oneCallBuyShipment()
     {
         return [
-            'to_address' => self::basic_address(),
-            'from_address' => self::basic_address(),
-            'parcel' => self::basic_parcel(),
-            'service' => self::usps_service(),
-            'carrier_accounts' => [self::usps_carrier_account_id()],
+            'to_address' => self::caAddress1(),
+            'from_address' => self::caAddress2(),
+            'parcel' => self::basicParcel(),
+            'service' => self::uspsService(),
+            'carrier_accounts' => [self::uspsCarrierAccountId()],
             'carrier' => self::usps(),
         ];
     }
@@ -178,202 +118,53 @@ class Fixture
     // This fixture will require you to add a `shipment` key with a Shipment object from a test.
     // If you need to re-record cassettes, increment the date below and ensure it is one day in the future,
     // USPS only does "next-day" pickups including Saturday but not Sunday or Holidays.
-    public static function basic_pickup()
+    public static function basicPickup()
     {
-        $pickupDate = '2022-07-29';
+        $pickupDate = '2022-08-18';
 
-        return [
-            'address' => self::basic_address(),
-            'min_datetime' => $pickupDate,
-            'max_datetime' => $pickupDate,
-            'instructions' => 'Pickup at front door',
-        ];
+        $pickupData = self::readFixtureData()['pickups']['basic'];
+        $pickupData['min_datetime'] = $pickupDate;
+        $pickupData['max_datetime'] = $pickupDate;
+
+        return $pickupData;
     }
 
-    public static function basic_carrier_account()
+    public static function basicCarrierAccount()
     {
-        return [
-            'type' => 'UpsAccount',
-            'credentials' => [
-                'account_number' => 'A1A1A1',
-                'user_id' => 'USERID',
-                'password' => 'PASSWORD',
-                'access_license_number' => 'ALN',
-            ],
-        ];
+        return self::readFixtureData()['carrier_accounts']['basic'];
     }
 
     // This fixture will require you to add a `tracking_code` key with a tracking code from a shipment
-    public static function basic_insurance()
+    public static function basicInsurance()
     {
-        return [
-            'from_address' => self::basic_address(),
-            'to_address' => self::basic_address(),
-            'carrier' => self::usps(),
-            'amount' => '100',
-        ];
+        return self::readFixtureData()['insurances']['basic'];
     }
 
-    public static function basic_order()
+    public static function basicOrder()
     {
-        return [
-            'from_address' => self::basic_address(),
-            'to_address' => self::basic_address(),
-            'shipments' => [self::basic_shipment()],
-        ];
+        return self::readFixtureData()['orders']['basic'];
     }
 
-    public static function event()
+    public static function eventJson()
     {
-        return json_encode([
-            'mode' => 'production',
-            'description' => 'batch.created',
-            'previous_attributes' => ['state' => 'purchasing'],
-            'pending_urls' => ['example.com/easypost-webhook'],
-            'completed_urls' => [],
-            'created_at' => '2015-12-03T19:09:19Z',
-            'updated_at' => '2015-12-03T19:09:19Z',
-            'result' => [
-                'id' => 'batch_...',
-                'object' => 'Batch',
-                'mode' => 'production',
-                'state' => 'purchased',
-                'num_shipments' => 1,
-                'reference' => null,
-                'created_at' => '2015-12-03T19:09:19Z',
-                'updated_at' => '2015-12-03T19:09:19Z',
-                'scan_form' => null,
-                'shipments' => [
-                    [
-                        'batch_status' => 'postage_purchased',
-                        'batch_message' => null,
-                        'id' => 'shp_123...'
-                    ]
-                ],
-                'status' => [
-                    'created' => 0,
-                    'queued_for_purchase' => 0,
-                    'creation_failed' => 0,
-                    'postage_purchased' => 1,
-                    'postage_purchase_failed' => 0
-                ],
-                'pickup' => null,
-                'label_url' => null
-            ],
-            'id' => 'evt_...',
-            'object' => 'Event'
-        ]);
+        return json_encode(self::readFixtureData()['event_body']);
     }
 
-    public static function end_shipper_address()
+    public static function eventBytes()
     {
-        return [
-            'name'      => 'Jack Sparrow',
-            'company'   => 'EasyPost',
-            'street1'   => '388 Townsend St',
-            'street2'   => 'Apt 20',
-            'city'      => 'San Francisco',
-            'state'     => 'CA',
-            'zip'       => '94107',
-            'phone'     => '5555555555',
-            'country'   => 'US',
-            'email'     => 'test@example.com',
-        ];
+        return utf8_encode(json_encode(self::readFixtureData()['event_body']));
     }
 
-    public static function rma_form_options()
+    // The credit card details below are for a valid proxy card usable
+    // for tests only and cannot be used for real transactions.
+    // DO NOT alter these details with real credit card information.
+    public static function creditCardDetails()
     {
-        return [
-            'barcode' => 'RMA12345678900',
-            'line_items' => [
-                [
-                    'product' => [
-                        'title' => 'Square Reader',
-                        'barcode' => '855658003251',
-                    ],
-                    'units' => 8,
-                ],
-            ],
-        ];
+        return self::readFixtureData()['credit_cards']['test'];
     }
 
-    public static function webhookBody()
+    public static function rmaFormOtions()
     {
-        $data = [
-            'result' => [
-                'id' => 'batch_123...',
-                'object' => 'Batch',
-                'mode' => 'test',
-                'state' => 'created',
-                'num_shipments' => 0,
-                'reference' => null,
-                'created_at' => '2022-07-26T17:22:32Z',
-                'updated_at' => '2022-07-26T17:22:32Z',
-                'scan_form' => null,
-                'shipments' => [],
-                'status' => [
-                    'created' => 0,
-                    'queued_for_purchase' => 0,
-                    'creation_failed' => 0,
-                    'postage_purchased' => 0,
-                    'postage_purchase_failed' => 0,
-                ],
-                'pickup' => null,
-                'label_url' => null,
-            ],
-            'description' => 'batch.created',
-            'mode' => 'test',
-            'previous_attributes' => null,
-            'completed_urls' => null,
-            'user_id' => 'user_123...',
-            'status' => 'pending',
-            'object' => 'Event',
-            'id' => 'evt_123...',
-        ];
-
-        return utf8_encode(json_encode($data));
-    }
-
-    public static function carbonOffsetShipment()
-    {
-        return [
-            'to_address' => [
-                'name' => 'Dr. Steve Brule',
-                'street1' => '179 N Harbor Dr',
-                'city' => 'Redondo Beach',
-                'state' => 'CA',
-                'zip' => '90277',
-                'country' => 'US',
-                'phone' => '8573875756',
-                'email' => 'dr_steve_brule@gmail.com',
-            ],
-            'from_address' => [
-                'name' => 'EasyPost',
-                'street1' => '417 Montgomery Street',
-                'street2' => '5th Floor',
-                'city' => 'San Francisco',
-                'state' => 'CA',
-                'zip' => '94104',
-                'country' => 'US',
-                'phone' => '4153334445',
-                'email' => 'support@easypost.com',
-            ],
-            'parcel' => [
-                'length' => '20.2',
-                'width' => '10.9',
-                'height' => '5',
-                'weight' => '65.9',
-            ],
-        ];
-    }
-
-    public static function carbon_offset_shipment_one_call_buy()
-    {
-        $carbonOffsetShipment = Fixture::carbonOffsetShipment();
-        $carbonOffsetShipment['service'] = 'Priority';
-        $carbonOffsetShipment['carrier_accounts'] = Fixture::usps_carrier_account_id();
-        $carbonOffsetShipment['carrier'] = Fixture::usps();
-
-        return $carbonOffsetShipment;
+        return self::readFixtureData()['form_options']['rma'];
     }
 }

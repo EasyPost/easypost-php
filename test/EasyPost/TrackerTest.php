@@ -70,12 +70,12 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('trackers/all.yml');
 
         $trackers = Tracker::all([
-            'page_size' => Fixture::page_size(),
+            'page_size' => Fixture::pageSize(),
         ]);
 
         $trackersArray = $trackers['trackers'];
 
-        $this->assertLessThanOrEqual($trackersArray, Fixture::page_size());
+        $this->assertLessThanOrEqual($trackersArray, Fixture::pageSize());
         $this->assertNotNull($trackers['has_more']);
         $this->assertContainsOnlyInstancesOf('\EasyPost\Tracker', $trackersArray);
     }

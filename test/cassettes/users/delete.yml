@@ -22,62 +22,62 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 62c34979629fbaffe664b40d00023fdc
-            cache-control: 'no-cache, no-store'
+            x-ep-request-uuid: 9e568e3c62fbd702e787515e0008cdab
+            cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '634'
-            etag: 'W/"6a3d3e2f76121ac60c0eb25eedb84650"'
-            x-runtime: '0.673930'
-            x-node: bigweb3nuq
-            x-version-label: easypost-202206072045-d56b35a2b3-master
+            etag: 'W/"4a69f0f8da1f31c21056353e9098fc77"'
+            x-runtime: '0.830793'
+            x-node: bigweb1nuq
+            x-version-label: easypost-202208152354-15cac62d1c-master
             x-backend: easypost
-            x-proxied: ['intlb2nuq 0910011e7e', 'extlb2nuq 0910011e7e']
+            x-proxied: ['intlb2nuq 6aa9972c1e', 'extlb1nuq 9ce216bfac']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"user_d2997cac78ca4e10a2c74cb73a26584a","object":"User","parent_id":"user_465eab8bb86844108100be2d4d5288ab","name":"Test User","phone_number":"<REDACTED>","verified":true,"created_at":"2022-06-07T20:54:24Z","children":"<REDACTED>","api_keys":"<REDACTED>"}'
+        body: '{"id":"user_e03b6d4dd5a7409a822e9d164df4e1c0","object":"User","parent_id":"user_465eab8bb86844108100be2d4d5288ab","name":"Test User","phone_number":"<REDACTED>","verified":true,"created_at":"2022-08-16T17:42:27Z","children":"<REDACTED>","api_keys":"<REDACTED>"}'
         curl_info:
             url: 'https://api.easypost.com/v2/users'
             content_type: 'application/json; charset=utf-8'
             http_code: 201
-            header_size: 718
-            request_size: 530
+            header_size: 727
+            request_size: 301
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.787274
-            namelookup_time: 0.00147
-            connect_time: 0.032438
-            pretransfer_time: 0.080516
+            total_time: 1.080898
+            namelookup_time: 0.002221
+            connect_time: 0.076759
+            pretransfer_time: 0.174214
             size_upload: 29.0
             size_download: 634.0
-            speed_download: 805.0
-            speed_upload: 36.0
+            speed_download: 586.0
+            speed_upload: 26.0
             download_content_length: 634.0
             upload_content_length: 29.0
-            starttransfer_time: 0.080523
+            starttransfer_time: 0.174223
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.130
+            primary_ip: 169.62.110.131
             certinfo: {  }
             primary_port: 443
-            local_ip: 192.168.1.154
-            local_port: 59079
+            local_ip: 10.130.6.17
+            local_port: 51830
             http_version: 3
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 80350
-            connect_time_us: 32438
-            namelookup_time_us: 1470
-            pretransfer_time_us: 80516
+            appconnect_time_us: 173911
+            connect_time_us: 76759
+            namelookup_time_us: 2221
+            pretransfer_time_us: 174214
             redirect_time_us: 0
-            starttransfer_time_us: 80523
-            total_time_us: 787274
+            starttransfer_time_us: 174223
+            total_time_us: 1080898
 -
     request:
         method: DELETE
-        url: 'https://api.easypost.com/v2/users/user_d2997cac78ca4e10a2c74cb73a26584a'
+        url: 'https://api.easypost.com/v2/users/user_e03b6d4dd5a7409a822e9d164df4e1c0'
         headers:
             Host: api.easypost.com
             Accept: application/json
@@ -96,51 +96,51 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 62c3497e629fbb00e61fb5930002401c
-            cache-control: 'no-cache, no-store'
+            x-ep-request-uuid: 9e568e3c62fbd704e787515f0008ce1f
+            cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
-            x-runtime: '0.113842'
-            x-node: bigweb3nuq
-            x-version-label: easypost-202206072045-d56b35a2b3-master
+            x-runtime: '0.130901'
+            x-node: bigweb1nuq
+            x-version-label: easypost-202208152354-15cac62d1c-master
             x-backend: easypost
-            x-proxied: ['intlb1nuq 0910011e7e', 'extlb2nuq 0910011e7e']
+            x-proxied: ['intlb2nuq 6aa9972c1e', 'extlb1nuq 9ce216bfac']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
         curl_info:
-            url: 'https://api.easypost.com/v2/users/user_d2997cac78ca4e10a2c74cb73a26584a'
+            url: 'https://api.easypost.com/v2/users/user_e03b6d4dd5a7409a822e9d164df4e1c0'
             content_type: null
             http_code: 204
-            header_size: 606
-            request_size: 550
+            header_size: 615
+            request_size: 321
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.233693
-            namelookup_time: 0.001346
-            connect_time: 0.033732
-            pretransfer_time: 0.084941
+            total_time: 0.386848
+            namelookup_time: 0.001563
+            connect_time: 0.075808
+            pretransfer_time: 0.17979
             size_upload: 0.0
             size_download: 0.0
             speed_download: 0.0
             speed_upload: 0.0
             download_content_length: 0.0
             upload_content_length: 0.0
-            starttransfer_time: 0.233654
+            starttransfer_time: 0.386781
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.130
+            primary_ip: 169.62.110.131
             certinfo: {  }
             primary_port: 443
-            local_ip: 192.168.1.154
-            local_port: 59080
+            local_ip: 10.130.6.17
+            local_port: 51831
             http_version: 3
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 84732
-            connect_time_us: 33732
-            namelookup_time_us: 1346
-            pretransfer_time_us: 84941
+            appconnect_time_us: 179563
+            connect_time_us: 75808
+            namelookup_time_us: 1563
+            pretransfer_time_us: 179790
             redirect_time_us: 0
-            starttransfer_time_us: 233654
-            total_time_us: 233693
+            starttransfer_time_us: 386781
+            total_time_us: 386848

@@ -9,7 +9,7 @@
             Authorization: ''
             Content-Type: application/json
             User-Agent: ''
-        body: '{"batch":{"shipment":{"0":{"to_address":{"name":"Jack Sparrow","company":"EasyPost","street1":"388 Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","phone":"5555555555"},"from_address":{"name":"Jack Sparrow","company":"EasyPost","street1":"388 Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","phone":"5555555555"},"parcel":{"length":"10","width":"8","height":"4","weight":"15.4"},"service":"First","carrier_accounts":["ca_8dc116debcdb49b5a66a2ddee4612600"],"carrier":"USPS"},"1":{"to_address":{"name":"Jack Sparrow","company":"EasyPost","street1":"388 Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","phone":"5555555555"},"from_address":{"name":"Jack Sparrow","company":"EasyPost","street1":"388 Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","phone":"5555555555"},"parcel":{"length":"10","width":"8","height":"4","weight":"15.4"},"service":"First","carrier_accounts":["ca_8dc116debcdb49b5a66a2ddee4612600"],"carrier":"USPS"}}}}'
+        body: '{"batch":{"shipment":{"0":{"to_address":{"name":"Jack Sparrow","street1":"388 Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","country":"US","email":"test@example.com","phone":"5555555555"},"from_address":{"name":"Elizabeth Swan","street1":"179 N Harbor Dr","city":"Redondo Beach","state":"CA","zip":"90277","country":"US","email":"test@example.com","phone":"5555555555"},"parcel":{"length":10,"width":8,"height":4,"weight":15.4},"service":"First","carrier_accounts":["ca_8dc116debcdb49b5a66a2ddee4612600"],"carrier":"USPS"},"1":{"to_address":{"name":"Jack Sparrow","street1":"388 Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","country":"US","email":"test@example.com","phone":"5555555555"},"from_address":{"name":"Elizabeth Swan","street1":"179 N Harbor Dr","city":"Redondo Beach","state":"CA","zip":"90277","country":"US","email":"test@example.com","phone":"5555555555"},"parcel":{"length":10,"width":8,"height":4,"weight":15.4},"service":"First","carrier_accounts":["ca_8dc116debcdb49b5a66a2ddee4612600"],"carrier":"USPS"}}}}'
     response:
         status:
             http_version: '2'
@@ -22,55 +22,55 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 2f26e941627ed424e798bf560006fd89
-            cache-control: 'no-cache, no-store'
+            x-ep-request-uuid: 9e568e3862fbd6f1e78750ff0008c665
+            cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '384'
-            etag: 'W/"188e1ea5fa9c6dd264e8c61364b423b4"'
-            x-runtime: '0.038961'
-            x-node: bigweb9nuq
-            x-version-label: easypost-202205131956-9146889ba0-master
+            etag: 'W/"35a561a29e7310fad19a87e6fb943516"'
+            x-runtime: '0.041567'
+            x-node: bigweb2nuq
+            x-version-label: easypost-202208152354-15cac62d1c-master
             x-backend: easypost
-            x-proxied: ['intlb1nuq 570dfcbc0a', 'extlb1nuq c51cdb8bf2']
+            x-proxied: ['intlb2nuq 6aa9972c1e', 'extlb1nuq 9ce216bfac']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"batch_0aa34fb806b14bc0a967b8a54a10e446","object":"Batch","mode":"test","state":"creating","num_shipments":2,"reference":null,"created_at":"2022-05-13T21:56:52Z","updated_at":"2022-05-13T21:56:52Z","scan_form":null,"shipments":[],"status":{"created":0,"queued_for_purchase":0,"creation_failed":0,"postage_purchased":0,"postage_purchase_failed":0},"pickup":null,"label_url":null}'
+        body: '{"id":"batch_f3e181b1e52c446e972a42b2258f0753","object":"Batch","mode":"test","state":"creating","num_shipments":2,"reference":null,"created_at":"2022-08-16T17:42:09Z","updated_at":"2022-08-16T17:42:09Z","scan_form":null,"shipments":[],"status":{"created":0,"queued_for_purchase":0,"creation_failed":0,"postage_purchased":0,"postage_purchase_failed":0},"pickup":null,"label_url":null}'
         curl_info:
             url: 'https://api.easypost.com/v2/batches/create_and_buy'
             content_type: 'application/json; charset=utf-8'
             http_code: 200
-            header_size: 718
-            request_size: 574
+            header_size: 727
+            request_size: 320
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.227676
-            namelookup_time: 0.002114
-            connect_time: 0.060344
-            pretransfer_time: 0.129014
-            size_upload: 1064.0
+            total_time: 0.281578
+            namelookup_time: 0.001774
+            connect_time: 0.074067
+            pretransfer_time: 0.165605
+            size_upload: 1098.0
             size_download: 384.0
-            speed_download: 1686.0
-            speed_upload: 4673.0
+            speed_download: 1363.0
+            speed_upload: 3899.0
             download_content_length: 384.0
-            upload_content_length: 1064.0
-            starttransfer_time: 0.129016
+            upload_content_length: 1098.0
+            starttransfer_time: 0.165614
             redirect_time: 0.0
             redirect_url: ''
             primary_ip: 169.62.110.131
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.6
-            local_port: 60102
+            local_ip: 10.130.6.17
+            local_port: 51804
             http_version: 3
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 128968
-            connect_time_us: 60344
-            namelookup_time_us: 2114
-            pretransfer_time_us: 129014
+            appconnect_time_us: 165464
+            connect_time_us: 74067
+            namelookup_time_us: 1774
+            pretransfer_time_us: 165605
             redirect_time_us: 0
-            starttransfer_time_us: 129016
-            total_time_us: 227676
+            starttransfer_time_us: 165614
+            total_time_us: 281578

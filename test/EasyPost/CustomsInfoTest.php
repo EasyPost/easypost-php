@@ -35,7 +35,7 @@ class CustomsInfoTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('customs_info/create.yml');
 
-        $customsInfo = CustomsInfo::create(Fixture::basic_customs_info());
+        $customsInfo = CustomsInfo::create(Fixture::basicCustomsInfo());
 
         $this->assertInstanceOf('\EasyPost\CustomsInfo', $customsInfo);
         $this->assertStringMatchesFormat('cstinfo_%s', $customsInfo->id);
@@ -49,7 +49,7 @@ class CustomsInfoTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('customs_info/retrieve.yml');
 
-        $customsInfo = CustomsInfo::create(Fixture::basic_customs_info());
+        $customsInfo = CustomsInfo::create(Fixture::basicCustomsInfo());
 
         $retrievedCustomsInfo = CustomsInfo::retrieve($customsInfo->id);
 

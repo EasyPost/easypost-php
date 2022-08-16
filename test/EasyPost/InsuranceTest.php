@@ -36,9 +36,9 @@ class InsuranceTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('insurance/create.yml');
 
-        $shipment = Shipment::create(Fixture::one_call_buy_shipment());
+        $shipment = Shipment::create(Fixture::oneCallBuyShipment());
 
-        $insuranceData = Fixture::basic_insurance();
+        $insuranceData = Fixture::basicInsurance();
         $insuranceData['tracking_code'] = $shipment->tracking_code;
 
         $insurance = Insurance::create($insuranceData);
@@ -55,9 +55,9 @@ class InsuranceTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('insurance/retrieve.yml');
 
-        $shipment = Shipment::create(Fixture::one_call_buy_shipment());
+        $shipment = Shipment::create(Fixture::oneCallBuyShipment());
 
-        $insuranceData = Fixture::basic_insurance();
+        $insuranceData = Fixture::basicInsurance();
         $insuranceData['tracking_code'] = $shipment->tracking_code;
 
         $insurance = Insurance::create($insuranceData);
@@ -76,12 +76,12 @@ class InsuranceTest extends \PHPUnit\Framework\TestCase
         VCR::insertCassette('insurance/all.yml');
 
         $insurance = Insurance::all([
-            'page_size' => Fixture::page_size(),
+            'page_size' => Fixture::pageSize(),
         ]);
 
         $insuranceArray = $insurance['insurances'];
 
-        $this->assertLessThanOrEqual($insuranceArray, Fixture::page_size());
+        $this->assertLessThanOrEqual($insuranceArray, Fixture::pageSize());
         $this->assertNotNull($insurance['has_more']);
         $this->assertContainsOnlyInstancesOf('\EasyPost\Insurance', $insuranceArray);
     }
