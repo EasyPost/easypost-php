@@ -2,7 +2,7 @@
 
 namespace EasyPost\Test;
 
-use EasyPost\Beta\EndShipper;
+use EasyPost\EndShipper;
 use EasyPost\EasyPost;
 use VCR\VCR;
 
@@ -63,12 +63,15 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('end_shipper/all.yml');
 
-        $endShipper = EndShipper::all([
+        $endShippers = EndShipper::all([
             'page_size' => Fixture::pageSize(),
         ]);
 
-        $this->assertLessThanOrEqual($endShipper, Fixture::pageSize());
-        $this->assertContainsOnlyInstancesOf('\EasyPost\Beta\EndShipper', $endShipper);
+        $endShipperArray = $endShippers['end_shippers'];
+
+        $this->assertLessThanOrEqual($endShipperArray, Fixture::pageSize());
+        $this->assertNotNull($endShippers['has_more']);
+        $this->assertContainsOnlyInstancesOf('\EasyPost\EndShipper', $endShipperArray);
     }
 
     /**
