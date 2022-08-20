@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v5.5.1 (2022-08-20)
+
+- Removes some extra imports that no longer exist causing errors when importing this library. Adds a regression test to protect against this in the future.
+
 ## v5.5.0 (2022-08-02)
 
 - Adds Carbon Offset support
