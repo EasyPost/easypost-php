@@ -147,12 +147,19 @@ class Fixture
 
     public static function eventJson()
     {
-        return json_encode(self::readFixtureData()['event_body']);
+        $currentDir = getcwd();
+        $data = file_get_contents("$currentDir/examples/official/fixtures/event-body.json");
+
+        return json_encode(json_decode($data, true));
     }
 
     public static function eventBytes()
     {
-        return utf8_encode(json_encode(self::readFixtureData()['event_body']));
+        $currentDir = getcwd();
+        $eventBytesFilepath = file("$currentDir/examples/official/fixtures/event-body.json");
+        $data = $eventBytesFilepath[0];
+
+        return utf8_encode(json_encode(json_decode($data, true)));
     }
 
     // The credit card details below are for a valid proxy card usable
