@@ -147,7 +147,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
         ];
 
         try {
-            $response = Webhook::validateWebhook(Fixture::eventBytes(), $headers, $webhookSecret);
+            Webhook::validateWebhook(Fixture::eventBytes(), $headers, $webhookSecret);
         } catch (Error $error) {
             $this->assertEquals('Webhook received did not originate from EasyPost or had a webhook secret mismatch.', $error->getMessage());
         }
@@ -164,7 +164,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
         ];
 
         try {
-            $response = Webhook::validateWebhook(Fixture::eventBytes(), $headers, $webhookSecret);
+            Webhook::validateWebhook(Fixture::eventBytes(), $headers, $webhookSecret);
         } catch (Error $error) {
             $this->assertEquals('Webhook received does not contain an HMAC signature.', $error->getMessage());
         }
