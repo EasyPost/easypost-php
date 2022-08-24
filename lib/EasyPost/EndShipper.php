@@ -1,11 +1,11 @@
 <?php
 
-namespace EasyPost\Beta;
-
-use EasyPost\EasypostResource;
+namespace EasyPost;
 
 /**
- * @package EasyPost\Beta
+ * @package EasyPost
+ * @property string $name
+ * @property string $company
  * @property string $id
  * @property string $street1
  * @property string $street2
@@ -13,11 +13,8 @@ use EasyPost\EasypostResource;
  * @property string $state
  * @property string $zip
  * @property string $country
- * @property string $name
- * @property string $company
  * @property string $phone
- *
- * @deprecated Use EasyPost\EndShipper instead.
+ * @property string $email
  */
 
 class EndShipper extends EasypostResource
@@ -34,7 +31,7 @@ class EndShipper extends EasypostResource
         $wrappedParams = [];
         $wrappedParams['address'] = $params;
 
-        return self::createResource(get_class(), $wrappedParams, $apiKey, null, true);
+        return self::createResource(get_class(), $wrappedParams, $apiKey);
     }
 
     /**
@@ -46,7 +43,7 @@ class EndShipper extends EasypostResource
      */
     public static function retrieve($id, $apiKey = null)
     {
-        return self::retrieveResource(get_class(), $id, $apiKey, true);
+        return self::retrieveResource(get_class(), $id, $apiKey);
     }
 
     /**
@@ -58,7 +55,7 @@ class EndShipper extends EasypostResource
      */
     public static function all($params = null, $apiKey = null)
     {
-        return self::allResources(get_class(), $params, $apiKey, true);
+        return self::allResources(get_class(), $params, $apiKey);
     }
 
     /**
@@ -69,6 +66,6 @@ class EndShipper extends EasypostResource
     public function save()
     {
         // We are passing the `Address` class here so that the request gets properly wrapped in the required object.
-        return $this->saveResource('EasyPost\Address', true, 'put');
+        return $this->saveResource('EasyPost\Address', false, 'put');
     }
 }

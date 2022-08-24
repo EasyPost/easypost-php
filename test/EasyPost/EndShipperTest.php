@@ -2,7 +2,7 @@
 
 namespace EasyPost\Test;
 
-use EasyPost\Beta\EndShipper;
+use EasyPost\EndShipper;
 use EasyPost\EasyPost;
 use VCR\VCR;
 
@@ -36,7 +36,7 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
 
         $endShipper = EndShipper::create(Fixture::caAddress1());
 
-        $this->assertInstanceOf('\EasyPost\Beta\EndShipper', $endShipper);
+        $this->assertInstanceOf('\EasyPost\EndShipper', $endShipper);
         $this->assertStringMatchesFormat('es_%s', $endShipper->id);
         $this->assertEquals('388 TOWNSEND ST APT 20', $endShipper->street1);
     }
@@ -52,7 +52,7 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
 
         $retrievedEndShipper = EndShipper::retrieve($endShipper->id);
 
-        $this->assertInstanceOf('\EasyPost\Beta\EndShipper', $retrievedEndShipper);
+        $this->assertInstanceOf('\EasyPost\EndShipper', $retrievedEndShipper);
         $this->assertEquals($endShipper->street1, $retrievedEndShipper->street1);
     }
 
@@ -63,12 +63,15 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
     {
         VCR::insertCassette('end_shipper/all.yml');
 
-        $endShipper = EndShipper::all([
+        $endShippers = EndShipper::all([
             'page_size' => Fixture::pageSize(),
         ]);
 
-        $this->assertLessThanOrEqual($endShipper, Fixture::pageSize());
-        $this->assertContainsOnlyInstancesOf('\EasyPost\Beta\EndShipper', $endShipper);
+        $endShipperArray = $endShippers['end_shippers'];
+
+        $this->assertLessThanOrEqual($endShipperArray, Fixture::pageSize());
+        $this->assertNotNull($endShippers['has_more']);
+        $this->assertContainsOnlyInstancesOf('\EasyPost\EndShipper', $endShipperArray);
     }
 
     /**
@@ -95,7 +98,7 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
         $endShipper->email = 'test@example.com';
         $endShipper->save();
 
-        $this->assertInstanceOf('\EasyPost\Beta\EndShipper', $endShipper);
+        $this->assertInstanceOf('\EasyPost\EndShipper', $endShipper);
         $this->assertStringMatchesFormat('es_%s', $endShipper->id);
         $this->assertEquals($newName, $endShipper->name);
     }

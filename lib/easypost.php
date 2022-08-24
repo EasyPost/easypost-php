@@ -30,6 +30,7 @@ require_once(dirname(__FILE__) . '/EasyPost/CarrierDetail.php');
 require_once(dirname(__FILE__) . '/EasyPost/CustomsInfo.php');
 require_once(dirname(__FILE__) . '/EasyPost/CustomsItem.php');
 require_once(dirname(__FILE__) . '/EasyPost/Beta/EndShipper.php');
+require_once(dirname(__FILE__) . '/EasyPost/EndShipper.php');
 require_once(dirname(__FILE__) . '/EasyPost/Event.php');
 require_once(dirname(__FILE__) . '/EasyPost/Fee.php');
 require_once(dirname(__FILE__) . '/EasyPost/FieldError.php');
