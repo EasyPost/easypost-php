@@ -4,6 +4,8 @@ namespace EasyPost;
 
 /**
  * @package EasyPost
+ * @property string $name
+ * @property string $company
  * @property string $id
  * @property string $street1
  * @property string $street2
@@ -11,9 +13,8 @@ namespace EasyPost;
  * @property string $state
  * @property string $zip
  * @property string $country
- * @property string $name
- * @property string $company
  * @property string $phone
+ * @property string $email
  */
 
 class EndShipper extends EasypostResource
