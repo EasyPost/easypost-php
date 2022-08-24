@@ -36,7 +36,7 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
 
         $endShipper = EndShipper::create(Fixture::caAddress1());
 
-        $this->assertInstanceOf('\EasyPost\Beta\EndShipper', $endShipper);
+        $this->assertInstanceOf('\EasyPost\EndShipper', $endShipper);
         $this->assertStringMatchesFormat('es_%s', $endShipper->id);
         $this->assertEquals('388 TOWNSEND ST APT 20', $endShipper->street1);
     }
@@ -52,7 +52,7 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
 
         $retrievedEndShipper = EndShipper::retrieve($endShipper->id);
 
-        $this->assertInstanceOf('\EasyPost\Beta\EndShipper', $retrievedEndShipper);
+        $this->assertInstanceOf('\EasyPost\EndShipper', $retrievedEndShipper);
         $this->assertEquals($endShipper->street1, $retrievedEndShipper->street1);
     }
 
@@ -98,7 +98,7 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
         $endShipper->email = 'test@example.com';
         $endShipper->save();
 
-        $this->assertInstanceOf('\EasyPost\Beta\EndShipper', $endShipper);
+        $this->assertInstanceOf('\EasyPost\EndShipper', $endShipper);
         $this->assertStringMatchesFormat('es_%s', $endShipper->id);
         $this->assertEquals($newName, $endShipper->name);
     }

@@ -1,0 +1,150 @@
+
+-
+    request:
+        method: POST
+        url: 'https://api.easypost.com/v2/end_shippers'
+        headers:
+            Host: api.easypost.com
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+        body: '{"address":{"name":"Jack Sparrow","street1":"388 Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","country":"US","email":"test@example.com","phone":"5555555555"}}'
+    response:
+        status:
+            http_version: '2'
+            code: '201'
+            message: ''
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: 7605edc1630694cbf7db5a2e007a67e8
+            cache-control: 'private, no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '351'
+            etag: 'W/"7fe6a421d107c1ba11c01d1e35466a4f"'
+            x-runtime: '0.123826'
+            x-node: bigweb5nuq
+            x-version-label: easypost-202208241853-b300c23ebd-master
+            x-backend: easypost
+            x-proxied: ['intlb1nuq 6aa9972c1e', 'intlb2wdc 6aa9972c1e', 'extlb4wdc 9ce216bfac']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"id":"es_8bbc790aa31d45c2a2d7c933fe004d01","object":"EndShipper","created_at":"2022-08-24T21:14:52+00:00","updated_at":"2022-08-24T21:14:52+00:00","name":"JACK SPARROW","company":null,"street1":"388 TOWNSEND ST APT 20","street2":"","city":"SAN FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":"<REDACTED>"}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/end_shippers'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 201
+            header_size: 760
+            request_size: 310
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.45052
+            namelookup_time: 0.007778
+            connect_time: 0.066446
+            pretransfer_time: 0.141275
+            size_upload: 195.0
+            size_download: 351.0
+            speed_download: 779.0
+            speed_upload: 432.0
+            download_content_length: 351.0
+            upload_content_length: 195.0
+            starttransfer_time: 0.141283
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.47.33.19
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 192.168.1.154
+            local_port: 54417
+            http_version: 3
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 140889
+            connect_time_us: 66446
+            namelookup_time_us: 7778
+            pretransfer_time_us: 141275
+            redirect_time_us: 0
+            starttransfer_time_us: 141283
+            total_time_us: 450520
+-
+    request:
+        method: GET
+        url: 'https://api.easypost.com/v2/end_shippers/es_8bbc790aa31d45c2a2d7c933fe004d01'
+        headers:
+            Host: api.easypost.com
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+    response:
+        status:
+            http_version: '2'
+            code: '200'
+            message: ''
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: 7605edc5630694ccf8013455007a6800
+            cache-control: 'private, no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '353'
+            etag: 'W/"d50cf999261597b8b33cf49fc8dc312d"'
+            x-runtime: '0.035314'
+            x-node: bigweb5nuq
+            x-version-label: easypost-202208241853-b300c23ebd-master
+            x-backend: easypost
+            x-proxied: ['intlb2nuq 6aa9972c1e', 'intlb2wdc 6aa9972c1e', 'extlb4wdc 9ce216bfac']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"id":"es_8bbc790aa31d45c2a2d7c933fe004d01","object":"EndShipper","created_at":"2022-08-24T21:14:52+00:00","updated_at":"2022-08-24T21:14:52+00:00","name":"JACK SPARROW","company":null,"street1":"388 TOWNSEND ST APT 20","street2":null,"city":"SAN FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":"<REDACTED>"}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/end_shippers/es_8bbc790aa31d45c2a2d7c933fe004d01'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 760
+            request_size: 324
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.340359
+            namelookup_time: 0.001315
+            connect_time: 0.052757
+            pretransfer_time: 0.123606
+            size_upload: 0.0
+            size_download: 353.0
+            speed_download: 1037.0
+            speed_upload: 0.0
+            download_content_length: 353.0
+            upload_content_length: 0.0
+            starttransfer_time: 0.340335
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.47.33.19
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 192.168.1.154
+            local_port: 54418
+            http_version: 3
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 123466
+            connect_time_us: 52757
+            namelookup_time_us: 1315
+            pretransfer_time_us: 123606
+            redirect_time_us: 0
+            starttransfer_time_us: 340335
+            total_time_us: 340359

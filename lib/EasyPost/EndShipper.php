@@ -3,7 +3,7 @@
 namespace EasyPost;
 
 /**
- * @package EasyPost\Beta
+ * @package EasyPost
  * @property string $id
  * @property string $street1
  * @property string $street2
