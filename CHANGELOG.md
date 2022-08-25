@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v5.6.0 (2022-08-25)
+
+- Moves EndShipper out of beta into the general library namespace
+
 ## v5.5.1 (2022-08-20)
 
 - Removes some extra imports that no longer exist causing errors when importing this library. Adds a regression test to protect against this in the future.
