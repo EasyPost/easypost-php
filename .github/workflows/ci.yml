@@ -7,21 +7,19 @@ on:
 
 jobs:
   lint:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: set up php
         uses: shivammathur/setup-php@v2
         with:
           php-version: "8.1"
-      - name: install composer
-        run: composer self-update
       - name: install dependencies
         run: make install
       - name: lint
         run: make lint
   run-tests:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         phpversion: ["7.3", "7.4", "8.0", "8.1"]
@@ -40,8 +38,6 @@ jobs:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-${{ matrix.phpversion }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: ${{ runner.os }}-${{ matrix.phpversion }}-composer-
-      - name: install composer
-        run: composer self-update
       - name: install dependencies
         run: make install
       - name: test with phpunit on ${{ matrix.phpversion }}
