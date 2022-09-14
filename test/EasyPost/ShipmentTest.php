@@ -378,7 +378,6 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Tests creating a carbon offset shipment.
-     *
      */
     public function testCreatebasicShipment()
     {
@@ -395,7 +394,6 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Tests buying a carbon offset shipment.
-     *
      */
     public function testBuybasicShipment()
     {
@@ -425,7 +423,6 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Tests one call buy a carbon offset shipment.
-     *
      */
     public function testOneCallBuybasicShipment()
     {
@@ -442,7 +439,6 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Tests rerate a shipment with carbon offset.
-     *
      */
     public function testRerateShipmentWithCarbonOffset()
     {

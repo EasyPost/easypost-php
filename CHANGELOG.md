@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## NEXT RELEASE
+
+- Adds support to specify an `$endShipperId` on the buy call of a Shipment
+
 ## v5.6.0 (2022-08-25)
 
 - Moves EndShipper out of beta into the general library namespace

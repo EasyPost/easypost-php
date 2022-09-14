@@ -124,7 +124,7 @@ class Shipment extends EasypostResource
      * @return $this
      * @throws \EasyPost\Error
      */
-    public function buy($params = null, $withCarbonOffset = false)
+    public function buy($params = null, $withCarbonOffset = false, $endShipperId = false)
     {
         $requestor = new Requestor($this->_apiKey);
         $url = $this->instanceUrl() . '/buy';
@@ -136,6 +136,12 @@ class Shipment extends EasypostResource
         }
 
         $params['carbon_offset'] = $withCarbonOffset;
+        // @codeCoverageIgnoreStart
+        if ($endShipperId !== false) {
+            $params['end_shipper_id'] = $endShipperId;
+        }
+        // @codeCoverageIgnoreEnd
+
         list($response, $apiKey) = $requestor->request('post', $url, $params);
         $this->refreshFrom($response, $apiKey, true);
 
