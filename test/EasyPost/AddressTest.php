@@ -3,6 +3,7 @@
 namespace EasyPost\Test;
 
 use EasyPost\Address;
+use EasyPost\Error;
 
 class AddressTest extends \PHPUnit\Framework\TestCase
 {
@@ -170,7 +171,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
         try {
             $address = Address::create(['street1' => 'invalid']);
             $address->verify();
-        } catch (\EasyPost\Error $error) {
+        } catch (Error $error) {
             $this->assertEquals('Unable to verify address.', $error->getMessage());
         }
     }

@@ -5,6 +5,8 @@
         url: 'https://api.easypost.com/v2/referral_customers'
         headers:
             Host: api.easypost.com
+            Expect: ''
+            Accept-Encoding: ''
             Accept: application/json
             Authorization: ''
             Content-Type: application/json
@@ -12,9 +14,9 @@
         body: '{"user":{"name":"Test Referral","email":"test@test.com","phone":"8888888888"}}'
     response:
         status:
-            http_version: '2'
+            http_version: '1.1'
             code: '201'
-            message: ''
+            message: Created
         headers:
             x-frame-options: SAMEORIGIN
             x-xss-protection: '1; mode=block'
@@ -22,55 +24,55 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: fcf3b5836324d8cae788f30f00005c6e
+            x-ep-request-uuid: 29a8d13c638a3e14e2bbb4d700271f0a
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
-            content-length: '965'
-            etag: 'W/"a4b05d4476f8f6a7ce8bf0aecac4b1d1"'
-            x-runtime: '0.977614'
-            x-node: bigweb1nuq
-            x-version-label: easypost-202209152244-6075a793a4-master
+            content-length: '995'
+            etag: 'W/"69fa3b2581e315f3f32d3668b49bd31c"'
+            x-runtime: '1.088344'
+            x-node: bigweb4nuq
+            x-version-label: easypost-202212011955-aa9a4d99eb-master
             x-backend: easypost
-            x-proxied: ['intlb2nuq 6aa9972c1e', 'extlb1nuq 9ce216bfac']
+            x-proxied: ['intlb2nuq 29913d444b', 'extlb1nuq 29913d444b']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"user_b8c1cdbf420146bd892b1498555dc7cb","object":"User","parent_id":null,"name":"Test Referral","phone_number":"<REDACTED>","verified":true,"created_at":"2022-09-16T20:12:58Z","balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":null,"secondary_recharge_amount":null,"recharge_threshold":null,"has_billing_method":null,"cc_fee_rate":"0.0375","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"<REDACTED>","children":"<REDACTED>","api_keys":"<REDACTED>"}'
+        body: '{"id":"user_9681e3a64fdd482d87adeb243d2fc6ea","object":"User","parent_id":null,"name":"Test Referral","phone_number":"<REDACTED>","verified":true,"created_at":"2022-12-02T18:04:04Z","default_carbon_offset":false,"balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":null,"secondary_recharge_amount":null,"recharge_threshold":null,"has_billing_method":null,"cc_fee_rate":"0.0375","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"<REDACTED>","children":[],"api_keys":[{"object":"ApiKey","key":"<REDACTED>","mode":"test","created_at":"2022-12-02T18:04:04Z","active":true,"id":"ak_c659c81ff01b4a30b6a340b32bb14a8f"},{"object":"ApiKey","key":"<REDACTED>","mode":"production","created_at":"2022-12-02T18:04:04Z","active":true,"id":"ak_63715873c2d64c82a53c243c8575cb5f"}]}'
         curl_info:
             url: 'https://api.easypost.com/v2/referral_customers'
             content_type: 'application/json; charset=utf-8'
             http_code: 201
-            header_size: 727
-            request_size: 314
+            header_size: 736
+            request_size: 394
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 1.16806
-            namelookup_time: 0.008735
-            connect_time: 0.066305
-            pretransfer_time: 0.131235
+            total_time: 1.197338
+            namelookup_time: 0.002298
+            connect_time: 0.032459
+            pretransfer_time: 0.076769
             size_upload: 78.0
-            size_download: 965.0
-            speed_download: 826.0
-            speed_upload: 66.0
-            download_content_length: 965.0
+            size_download: 995.0
+            speed_download: 831.0
+            speed_upload: 65.0
+            download_content_length: 995.0
             upload_content_length: 78.0
-            starttransfer_time: 0.131238
+            starttransfer_time: 1.19726
             redirect_time: 0.0
             redirect_url: ''
             primary_ip: 169.62.110.131
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.10
-            local_port: 54799
-            http_version: 3
+            local_ip: 192.168.1.201
+            local_port: 57524
+            http_version: 2
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 131170
-            connect_time_us: 66305
-            namelookup_time_us: 8735
-            pretransfer_time_us: 131235
+            appconnect_time_us: 76710
+            connect_time_us: 32459
+            namelookup_time_us: 2298
+            pretransfer_time_us: 76769
             redirect_time_us: 0
-            starttransfer_time_us: 131238
-            total_time_us: 1168060
+            starttransfer_time_us: 1197260
+            total_time_us: 1197338

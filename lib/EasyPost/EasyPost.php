@@ -33,22 +33,13 @@ abstract class EasyPost
     public static $apiVersion = '2';
 
     /**
-     * Time in milliseconds to wait for a connection.
+     * Time in seconds to wait for a response.
      *
      * Zero or null means no timeout.
      *
-     * @var int|null
+     * @var float|null
      */
-    public static $connectTimeout = 30000;
-
-    /**
-     * Time in milliseconds to wait for a response.
-     *
-     * Zero or null means no timeout.
-     *
-     * @var int|null
-     */
-    public static $responseTimeout = 60000;
+    public static $timeout = 60.0;
 
     /**
      * The version of this PHP client library.
@@ -118,50 +109,26 @@ abstract class EasyPost
     }
 
     /**
-     * Get time in milliseconds to wait for a connection.
+     * Get timeout in seconds.
      *
      * Zero or null means no timeout.
      *
      * @return int|null
      */
-    public static function getConnectTimeout()
+    public static function getTimeout()
     {
-        return self::$connectTimeout;
+        return self::$timeout;
     }
 
     /**
-     * Set time in milliseconds to wait for a connection.
+     * Set timeout in seconds.
      *
      * Zero or null means no timeout.
      *
-     * @param int|null $connectTimeout
+     * @param float|null $timeout
      */
-    public static function setConnectTimeout($connectTimeout)
+    public static function setTimeout($timeout)
     {
-        self::$connectTimeout = $connectTimeout;
-    }
-
-    /**
-     * Get time in milliseconds to wait for a response.
-     *
-     * Zero or null means no timeout.
-     *
-     * @return int|null
-     */
-    public static function getResponseTimeout()
-    {
-        return self::$responseTimeout;
-    }
-
-    /**
-     * Set time in milliseconds to wait for a response.
-     *
-     * Zero or null means no timeout.
-     *
-     * @param int|null $responseTimeout
-     */
-    public static function setResponseTimeout($responseTimeout)
-    {
-        self::$responseTimeout = $responseTimeout;
+        self::$timeout = $timeout;
     }
 }

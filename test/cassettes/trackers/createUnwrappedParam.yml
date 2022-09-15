@@ -5,6 +5,8 @@
         url: 'https://api.easypost.com/v2/trackers'
         headers:
             Host: api.easypost.com
+            Expect: ''
+            Accept-Encoding: ''
             Accept: application/json
             Authorization: ''
             Content-Type: application/json
@@ -12,9 +14,9 @@
         body: '{"tracker":{"tracking_code":"EZ1000000001"}}'
     response:
         status:
-            http_version: '2'
+            http_version: '1.1'
             code: '201'
-            message: ''
+            message: Created
         headers:
             x-frame-options: SAMEORIGIN
             x-xss-protection: '1; mode=block'
@@ -22,56 +24,56 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: f060eadf632a1723e788ee270007e912
+            x-ep-request-uuid: 29a8d139638a3dcae2bbb07a0026fb37
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
-            location: /api/v2/trackers/trk_e8012c29d4ea438d91d5da68aa324e16
+            location: /api/v2/trackers/trk_623e0038f2824062b9ad4b113cd24e52
             content-type: 'application/json; charset=utf-8'
             content-length: '1224'
-            etag: 'W/"62b92ba3645167bb018827e96257a7bc"'
-            x-runtime: '0.116480'
-            x-node: bigweb3nuq
-            x-version-label: easypost-202209201859-4397aee39f-master
+            etag: 'W/"d833d0e2efa3199f9a01d7200e607d8c"'
+            x-runtime: '0.126767'
+            x-node: bigweb9nuq
+            x-version-label: easypost-202212011955-aa9a4d99eb-master
             x-backend: easypost
-            x-proxied: ['intlb2nuq 29913d444b', 'extlb2nuq 29913d444b']
+            x-proxied: ['intlb1nuq 29913d444b', 'extlb1nuq 29913d444b']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"trk_e8012c29d4ea438d91d5da68aa324e16","object":"Tracker","mode":"test","tracking_code":"EZ1000000001","status":"pre_transit","status_detail":"unknown","created_at":"2022-09-20T19:40:19Z","updated_at":"2022-09-20T19:40:19Z","signed_by":null,"weight":17.6,"est_delivery_date":"2022-09-20T19:40:19Z","shipment_id":null,"carrier":"USPS","tracking_details":[{"object":"TrackingDetail","message":"Pre-Shipment information received","description":null,"status":"pre_transit","status_detail":null,"datetime":"2022-08-20T19:40:19Z","source":"EasyPost","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":null,"state":null,"country":null,"zip":null}},{"object":"TrackingDetail","message":"Shipping label created","description":null,"status":"pre_transit","status_detail":null,"datetime":"2022-08-21T14:29:19Z","source":"EasyPost","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":null,"state":null,"country":null,"zip":null}}],"carrier_detail":null,"finalized":true,"is_return":false,"public_url":"https:\/\/track.easypost.com\/djE6dHJrX2U4MDEyYzI5ZDRlYTQzOGQ5MWQ1ZGE2OGFhMzI0ZTE2","fees":[{"object":"Fee","type":"TrackerFee","amount":"0.02000","charged":false,"refunded":false}]}'
+        body: '{"id":"trk_623e0038f2824062b9ad4b113cd24e52","object":"Tracker","mode":"test","tracking_code":"EZ1000000001","status":"pre_transit","status_detail":"unknown","created_at":"2022-12-02T18:02:50Z","updated_at":"2022-12-02T18:02:50Z","signed_by":null,"weight":17.6,"est_delivery_date":"2022-12-02T18:02:50Z","shipment_id":null,"carrier":"USPS","tracking_details":[{"object":"TrackingDetail","message":"Pre-Shipment information received","description":null,"status":"pre_transit","status_detail":null,"datetime":"2022-11-02T18:02:50Z","source":"EasyPost","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":null,"state":null,"country":null,"zip":null}},{"object":"TrackingDetail","message":"Shipping label created","description":null,"status":"pre_transit","status_detail":null,"datetime":"2022-11-03T12:51:50Z","source":"EasyPost","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":null,"state":null,"country":null,"zip":null}}],"carrier_detail":null,"finalized":true,"is_return":false,"public_url":"https:\/\/track.easypost.com\/djE6dHJrXzYyM2UwMDM4ZjI4MjQwNjJiOWFkNGIxMTNjZDI0ZTUy","fees":[{"object":"Fee","type":"TrackerFee","amount":"0.02000","charged":false,"refunded":false}]}'
         curl_info:
             url: 'https://api.easypost.com/v2/trackers'
             content_type: 'application/json; charset=utf-8'
             http_code: 201
-            header_size: 793
-            request_size: 304
+            header_size: 802
+            request_size: 350
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.356272
-            namelookup_time: 0.00586
-            connect_time: 0.080613
-            pretransfer_time: 0.16315
+            total_time: 0.237681
+            namelookup_time: 0.001357
+            connect_time: 0.034925
+            pretransfer_time: 0.076872
             size_upload: 44.0
             size_download: 1224.0
-            speed_download: 3435.0
-            speed_upload: 123.0
+            speed_download: 5149.0
+            speed_upload: 185.0
             download_content_length: 1224.0
             upload_content_length: 44.0
-            starttransfer_time: 0.163154
+            starttransfer_time: 0.237657
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.130
+            primary_ip: 169.62.110.131
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.16
-            local_port: 54647
-            http_version: 3
+            local_ip: 192.168.1.201
+            local_port: 57419
+            http_version: 2
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 163072
-            connect_time_us: 80613
-            namelookup_time_us: 5860
-            pretransfer_time_us: 163150
+            appconnect_time_us: 76837
+            connect_time_us: 34925
+            namelookup_time_us: 1357
+            pretransfer_time_us: 76872
             redirect_time_us: 0
-            starttransfer_time_us: 163154
-            total_time_us: 356272
+            starttransfer_time_us: 237657
+            total_time_us: 237681

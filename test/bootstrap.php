@@ -10,7 +10,8 @@ if (!file_exists('test/cassettes')) {
 
 VCR::configure()->setCassettePath('test/cassettes')
     ->setStorage('yaml')
-    ->setMode('once');
+    ->setMode('once')
+    ->setWhiteList(['vendor/guzzle']);
 
 $scrubbedString = '<REDACTED>';
 $scrubbedArray = []; // In PHP, this could be either an array or object
@@ -66,25 +67,29 @@ function scrubCassette($data)
             if (Util::isList($data)) {
                 foreach ($data as $index => $item) {
                     if (is_array($index)) {
-                        if (array_key_exists($key, $item)) {
-                            $data[$index][$key] = $replacement;
+                        if (is_array($item)) {
+                            if (array_key_exists($key, $item)) {
+                                $data[$index][$key] = $replacement;
+                            }
                         }
                     }
                 }
             } else {
                 // Root-level key scrubbing
-                if (array_key_exists($key, $data)) {
-                    $data[$key] = $replacement;
-                } else {
-                    // Nested scrubbing
-                    foreach ($data as $index => $item) {
-                        if (is_array($item)) {
-                            if (Util::isList($item)) {
-                                foreach ($item as $nestedIndex => $nestedItem) {
-                                    $data[$index][$nestedIndex] = scrubCassette($nestedItem);
+                if (is_array($data)) {
+                    if (array_key_exists($key, $data)) {
+                        $data[$key] = $replacement;
+                    } else {
+                        // Nested scrubbing
+                        foreach ($data as $index => $item) {
+                            if (is_array($item)) {
+                                if (Util::isList($item)) {
+                                    foreach ($item as $nestedIndex => $nestedItem) {
+                                        $data[$index][$nestedIndex] = scrubCassette($nestedItem);
+                                    }
+                                } elseif (!Util::isList($item)) {
+                                    $data[$index] = scrubCassette($item);
                                 }
-                            } elseif (!Util::isList($item)) {
-                                $data[$index] = scrubCassette($item);
                             }
                         }
                     }

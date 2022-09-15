@@ -2,6 +2,8 @@
 
 namespace EasyPost;
 
+use GuzzleHttp\Client;
+
 class Requestor
 {
     /**
@@ -132,10 +134,10 @@ class Requestor
      */
     public function request($method, $url, $params = null, $apiKeyRequired = true, $beta = false)
     {
-        list($httpBody, $httpStatus, $myApiKey) = $this->requestRaw($method, $url, $params, $apiKeyRequired, $beta);
-        $response = $this->interpretResponse($httpBody, $httpStatus);
+        list($responseBody, $httpStatus, $myApiKey) = $this->requestRaw($method, $url, $params, $apiKeyRequired, $beta);
+        $httpBody = $this->interpretResponse($responseBody, $httpStatus);
 
-        return [$response, $myApiKey];
+        return [$httpBody, $myApiKey];
     }
 
     /**
@@ -160,7 +162,16 @@ class Requestor
         }
 
         $absUrl = $this->apiUrl($url, $beta);
+        $requestOptions = [
+            'http_errors' => false, // we set this false here so we can do our own error handling
+            'timeout' => EasyPost::getTimeout(),
+        ];
         $params = self::encodeObjects($params);
+        if (in_array(strtolower($method), ['get', 'delete'])) {
+            $requestOptions['query'] = $params;
+        } else {
+            $requestOptions['json'] = $params;
+        }
 
         $phpVersion = phpversion();
         $osType = php_uname('s');
@@ -168,96 +179,30 @@ class Requestor
         $osArch = php_uname('m');
 
         $headers = [
-            'Accept: application/json',
-            "Authorization: Bearer {$myApiKey}",
-            'Content-Type: application/json',
-            'User-Agent: EasyPost/v2 PhpClient/' . EasyPost::VERSION . " PHP/$phpVersion OS/$osType OSVersion/$osVersion OSArch/$osArch",
+            'Accept' => 'application/json',
+            'Authorization' => "Bearer {$myApiKey}",
+            'Content-Type' => 'application/json',
+            'User-Agent' => 'EasyPost/v2 PhpClient/' . EasyPost::VERSION . " PHP/$phpVersion OS/$osType OSVersion/$osVersion OSArch/$osArch",
         ];
 
-        list($httpBody, $httpStatus) = $this->curlRequest($method, $absUrl, $headers, $params);
-
-        return [$httpBody, $httpStatus, $myApiKey];
-    }
-
-    /**
-     * Build the cURL request.
-     *
-     * @param string $method
-     * @param string $absUrl
-     * @param mixed $headers
-     * @param mixed $params
-     * @return array
-     * @throws \EasyPost\Error
-     */
-    public function curlRequest($method, $absUrl, $headers, $params)
-    {
-        // TODO: Make this function private again once we switch to `guzzle`
-        $curl = curl_init();
-        $method = strtolower($method);
-        $curlOptions = [];
-
-        // Setup the HTTP method and params to use on the request
-        if ($method == 'get') {
-            $curlOptions[CURLOPT_HTTPGET] = 1;
-            if (isset($params) && !empty($params)) {
-                $urlParams = self::urlEncode($params);
-                $absUrl = "$absUrl?$urlParams";
-            }
-        } elseif ($method == 'post') {
-            $curlOptions[CURLOPT_POST] = 1;
-            if (strpos($absUrl, 'trackers/create_list') !== false || strpos($absUrl, 'batches/create_and_buy') !== false) {
-                // We must encode the params for the `trackers/create_list` endpoint differently because
-                // it expects a hash of hashes instead of a list of objects (handled in the `create_list` function)
-                $curlOptions[CURLOPT_POSTFIELDS] = $params;
-            } else {
-                $curlOptions[CURLOPT_POSTFIELDS] = json_encode($params);
-            }
-        } elseif ($method == 'patch' || $method == 'put') {
-            $curlOptions[CURLOPT_CUSTOMREQUEST] = strtoupper($method);
-            $curlOptions[CURLOPT_POSTFIELDS] = json_encode($params);
-        } elseif ($method == 'delete') {
-            $curlOptions[CURLOPT_CUSTOMREQUEST] = strtoupper($method);
-            if (isset($params) && !empty($params)) {
-                $urlParams = self::urlEncode($params);
-                $absUrl = "$absUrl?$urlParams";
-            }
-        } else {
-            throw new Error("Unrecognized method {$method}");
+        $guzzleClient = new Client();
+        $requestOptions['headers'] = $headers;
+        try {
+            $response = $guzzleClient->request($method, $absUrl, $requestOptions);
+        } catch (\GuzzleHttp\Exception\ConnectException $error) {
+            $message = "Unexpected error communicating with EasyPost. If this problem persists please let us know at {$this->supportEmail}. {$error->getMessage()}";
+            throw new Error($message, null, null);
         }
 
-        $absUrl = self::utf8($absUrl);
-        $curlOptions[CURLOPT_URL] = $absUrl;
-        $curlOptions[CURLOPT_RETURNTRANSFER] = true;
-        $curlOptions[CURLOPT_HTTPHEADER] = $headers;
-
-        if ($timeout = EasyPost::getConnectTimeout()) {
-            $curlOptions[CURLOPT_CONNECTTIMEOUT_MS] = $timeout;
+        // Guzzle does not have a native way of catching timeout exceptions... If we don't have a response at this point, it's likely due to a timeout
+        if (!isset($response)) {
+            throw new Error('Did not receive a response from the API.', null, null);
         }
 
-        if ($timeout = EasyPost::getResponseTimeout()) {
-            $curlOptions[CURLOPT_TIMEOUT_MS] = $timeout;
-        }
+        $responseBody = $response->getBody();
+        $httpStatus = $response->getStatusCode();
 
-        curl_setopt_array($curl, $curlOptions);
-        $httpBody = curl_exec($curl);
-
-        $errorNum = curl_errno($curl);
-        if ($errorNum == CURLE_SSL_CACERT || $errorNum == CURLE_SSL_PEER_CERTIFICATE || $errorNum == 77) {
-            curl_setopt($curl, CURLOPT_CAINFO, dirname(__FILE__) . '/../cacert.pem');
-            $httpBody = curl_exec($curl);
-        }
-
-        if ($httpBody === false) {
-            $errorNum = curl_errno($curl);
-            $message = curl_error($curl);
-            curl_close($curl);
-            $this->handleCurlError($errorNum, $message);
-        }
-
-        $httpStatus = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-        curl_close($curl);
-
-        return [$httpBody, $httpStatus];
+        return [$responseBody, $httpStatus, $myApiKey];
     }
 
     /**
@@ -270,7 +215,6 @@ class Requestor
      */
     public function interpretResponse($httpBody, $httpStatus)
     {
-        // TODO: Make this function private again once we switch to `guzzle`
         try {
             $response = json_decode($httpBody, true);
         } catch (\Exception $e) {
@@ -280,6 +224,7 @@ class Requestor
         if ($httpStatus < 200 || $httpStatus >= 300) {
             $this->handleApiError($httpBody, $httpStatus, $response);
         }
+
         return $response;
     }
 
@@ -307,34 +252,5 @@ class Requestor
         }
 
         throw new Error($message, $httpStatus, $httpBody);
-    }
-
-    /**
-     * Handle errors related to curling the API.
-     *
-     * @param int $errorNum
-     * @param string $message
-     * @throws \EasyPost\Error
-     */
-    public function handleCurlError($errorNum, $message)
-    {
-        $apiBase = EasyPost::$apiBase;
-
-        switch ($errorNum) {
-            case CURLE_COULDNT_CONNECT:
-            case CURLE_COULDNT_RESOLVE_HOST:
-            case CURLE_OPERATION_TIMEDOUT:
-                $msg = "Could not connect to EasyPost ({$apiBase}). Please check your internet connection and try again.  If this problem persists please let us know at {$this->supportEmail}.";
-                break;
-            case CURLE_SSL_CACERT:
-            case CURLE_SSL_PEER_CERTIFICATE:
-                $msg = "Could not verify EasyPost's SSL certificate. Please make sure that your network is not intercepting certificates.  (Try going to {$apiBase} in your browser.)  If this problem persists, let us know at {$this->supportEmail}.";
-                break;
-            default:
-                $msg = "Unexpected error communicating with EasyPost. If this problem persists please let us know at {$this->supportEmail}.";
-        }
-
-        $msg .= "\nNetwork error [errno {$errorNum}]: {$message})";
-        throw new Error($msg);
     }
 }

@@ -14,8 +14,7 @@ class EasyPostTest extends \PHPUnit\Framework\TestCase
         // Set all the defaults again so other tests don't fail
         EasyPost::setApiBase('https://api.easypost.com/v2');
         EasyPost::setApiVersion('2');
-        EasyPost::setConnectTimeout(30000);
-        EasyPost::setResponseTimeout(60000);
+        EasyPost::setTimeout(60.0);
     }
 
     /**
@@ -56,27 +55,14 @@ class EasyPostTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test setting and getting the connection timeout.
+     * Test setting and getting the timeout.
      */
-    public function testConnectionTimeout()
+    public function testTimeout()
     {
-        $testTimeout = '1';
+        $testTimeout = 1.0;
 
-        EasyPost::setConnectTimeout($testTimeout);
-        $connectionTimeout = EasyPost::getConnectTimeout();
-
-        $this->assertEquals($testTimeout, $connectionTimeout);
-    }
-
-    /**
-     * Test setting and getting the request timeout.
-     */
-    public function testRequestTimeout()
-    {
-        $testTimeout = '1';
-
-        EasyPost::setResponseTimeout($testTimeout);
-        $connectionTimeout = EasyPost::getResponseTimeout();
+        EasyPost::setTimeout($testTimeout);
+        $connectionTimeout = EasyPost::getTimeout();
 
         $this->assertEquals($testTimeout, $connectionTimeout);
     }

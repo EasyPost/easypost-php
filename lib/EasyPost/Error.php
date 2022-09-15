@@ -25,6 +25,7 @@ class Error extends \Exception
 
         try {
             $this->jsonBody = json_decode($httpBody, true);
+            // TODO: Check if this `param` field is a thing, remove if not in next major release
             if (isset($this->jsonBody) && !empty($this->jsonBody['error']['param'])) {
                 $this->param = $this->jsonBody['error']['param'];
             } else {

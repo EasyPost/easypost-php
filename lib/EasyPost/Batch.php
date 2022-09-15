@@ -75,24 +75,22 @@ class Batch extends EasypostResource
             $clone = $params;
             unset($params);
 
-            $shipments = (object)[];
+            $shipments = [];
 
             foreach ($clone as $index => $shipment) {
-                $shipments->$index = $shipment;
+                $shipments[$index] = $shipment;
             }
 
-            $params = (object)[
-                'batch' => (object)[
+            $params = [
+                'batch' => [
                     'shipment' => $shipments,
                 ],
             ];
         }
 
-        $encodedParams = str_replace('\\', '', json_encode($params));
-
         $requestor = new Requestor($apiKey);
         $url = self::classUrl(get_class());
-        list($response, $apiKey) = $requestor->request('post', $url . '/create_and_buy', $encodedParams);
+        list($response, $apiKey) = $requestor->request('post', $url . '/create_and_buy', $params);
 
         return Util::convertToEasyPostObject($response, $apiKey);
     }

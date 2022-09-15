@@ -5,15 +5,16 @@
         url: 'https://api.easypost.com/v2/carrier_accounts'
         headers:
             Host: api.easypost.com
+            Accept-Encoding: ''
             Accept: application/json
             Authorization: ''
             Content-Type: application/json
             User-Agent: ''
     response:
         status:
-            http_version: '2'
+            http_version: '1.1'
             code: '200'
-            message: ''
+            message: OK
         headers:
             x-frame-options: SAMEORIGIN
             x-xss-protection: '1; mode=block'
@@ -21,55 +22,55 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: f060eade632a363be78aa02b0012bf0e
+            x-ep-request-uuid: 29a8d13b638a3e58e2bbb919002741aa
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '3411'
             etag: 'W/"393b9cfb3451f44e6a0e91db21615161"'
-            x-runtime: '0.071122'
-            x-node: bigweb5nuq
-            x-version-label: easypost-202209201859-4397aee39f-master
+            x-runtime: '0.057375'
+            x-node: bigweb11nuq
+            x-version-label: easypost-202212011955-aa9a4d99eb-master
             x-backend: easypost
-            x-proxied: ['intlb2nuq 29913d444b', 'extlb2nuq 29913d444b']
+            x-proxied: ['intlb1nuq 29913d444b', 'extlb1nuq 29913d444b']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '[{"id":"ca_8dc116debcdb49b5a66a2ddee4612600","object":"CarrierAccount","type":"UspsAccount","clone":false,"created_at":"2022-02-02T20:16:00Z","updated_at":"2022-02-03T18:01:23Z","description":"USPS Account","reference":null,"billing_type":"easypost","readable":"USPS","logo":null,"fields":[],"credentials":[],"test_credentials":[]},{"id":"ca_5c0e4a9f106846abbe3a8d803b3d9dc4","object":"CarrierAccount","type":"DhlExpressDefaultAccount","clone":false,"created_at":"2022-02-02T20:16:00Z","updated_at":"2022-02-02T20:16:00Z","description":"DHL Express Account","reference":null,"billing_type":"easypost","readable":"DHL Express","logo":null,"fields":[],"credentials":[],"test_credentials":[]},{"id":"ca_495d701f4f7c464f86dfd10e6515b4c9","object":"CarrierAccount","type":"LsoDefaultAccount","clone":false,"created_at":"2022-02-02T20:16:00Z","updated_at":"2022-02-02T20:16:00Z","description":"LSO Account","reference":null,"billing_type":"easypost","readable":"LSO","logo":null,"fields":[],"credentials":[],"test_credentials":[]},{"id":"ca_cd846680a6f74c23891086de730769d6","object":"CarrierAccount","type":"DhlEcsAccount","clone":false,"created_at":"2022-08-16T17:43:41Z","updated_at":"2022-08-16T17:43:41Z","description":"DHL eCommerce Solutions Account","reference":null,"billing_type":"carrier","readable":"DHL eCommerce Solutions","logo":null,"fields":[],"credentials":[],"test_credentials":[]}]'
+        body: '[{"id":"ca_8dc116debcdb49b5a66a2ddee4612600","object":"CarrierAccount","type":"UspsAccount","clone":false,"created_at":"2022-02-02T20:16:00Z","updated_at":"2022-02-03T18:01:23Z","description":"USPS Account","reference":null,"billing_type":"easypost","readable":"USPS","logo":null,"fields":{"credentials":{"company_name":{"visibility":"visible","label":"Account Holder Name","value":"EasyPost PHP Tests"},"address_street":{"visibility":"visible","label":"Street Address","value":"2889 Ashton Blvd"},"address_city":{"visibility":"visible","label":"City","value":"Lehi"},"address_state":{"visibility":"visible","label":"State","value":"UT"},"address_zip":{"visibility":"visible","label":"ZIP Code","value":"84043"},"phone":{"visibility":"visible","label":"Phone Number","value":""},"email":{"visibility":"visible","label":"Email Address","value":"dev+easypost-php@easypost.com"},"shipper_id":{"visibility":"visible","label":"Shipper Identifier (Optional)","value":""}}},"credentials":{"company_name":"EasyPost PHP Tests","address_street":"2889 Ashton Blvd","address_city":"Lehi","address_state":"UT","address_zip":"84043","phone":"","email":"dev+easypost-php@easypost.com","shipper_id":""},"test_credentials":null},{"id":"ca_5c0e4a9f106846abbe3a8d803b3d9dc4","object":"CarrierAccount","type":"DhlExpressDefaultAccount","clone":false,"created_at":"2022-02-02T20:16:00Z","updated_at":"2022-02-02T20:16:00Z","description":"DHL Express Account","reference":null,"billing_type":"easypost","readable":"DHL Express","logo":null,"fields":{"credentials":[]},"credentials":[],"test_credentials":null},{"id":"ca_495d701f4f7c464f86dfd10e6515b4c9","object":"CarrierAccount","type":"LsoDefaultAccount","clone":false,"created_at":"2022-02-02T20:16:00Z","updated_at":"2022-02-02T20:16:00Z","description":"LSO Account","reference":null,"billing_type":"easypost","readable":"LSO","logo":null,"fields":{"credentials":[]},"credentials":[],"test_credentials":null},{"id":"ca_cd846680a6f74c23891086de730769d6","object":"CarrierAccount","type":"DhlEcsAccount","clone":false,"created_at":"2022-08-16T17:43:41Z","updated_at":"2022-08-16T17:43:41Z","description":"DHL eCommerce Solutions Account","reference":null,"billing_type":"carrier","readable":"DHL eCommerce Solutions","logo":null,"fields":{"credentials":{"client_id":{"visibility":"visible","label":"DHL eCommerce Solutions client ID","value":"123456"},"client_secret":{"visibility":"password","label":"DHL eCommerce Solutions client secret","value":"********"},"pickup_id":{"visibility":"visible","label":"DHL eCommerce Solutions pickup ID","value":"123456"},"distribution_center":{"visibility":"visible","label":"DHL eCommerce Solutions distribution center","value":"USLAX1"}},"test_credentials":{"client_id":{"visibility":"visible","label":"Test DHL eCommerce Solutions client ID","value":"123456"},"client_secret":{"visibility":"password","label":"Test DHL eCommerce Solutions client secret","value":"********"},"pickup_id":{"visibility":"visible","label":"Test DHL eCommerce Solutions pickup ID","value":"123456"},"distribution_center":{"visibility":"visible","label":"Test DHL eCommerce Solutions distribution center","value":"USLAX1"}}},"credentials":{"client_id":"123456","client_secret":"********","pickup_id":"123456","distribution_center":"USLAX1"},"test_credentials":{"client_id":"123456","client_secret":"********","pickup_id":"123456","distribution_center":"USLAX1"}}]'
         curl_info:
             url: 'https://api.easypost.com/v2/carrier_accounts'
             content_type: 'application/json; charset=utf-8'
             http_code: 200
-            header_size: 728
-            request_size: 291
+            header_size: 733
+            request_size: 293
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.336773
-            namelookup_time: 0.036371
-            connect_time: 0.109241
-            pretransfer_time: 0.190563
+            total_time: 0.168616
+            namelookup_time: 0.001584
+            connect_time: 0.035512
+            pretransfer_time: 0.076511
             size_upload: 0.0
             size_download: 3411.0
-            speed_download: 10128.0
+            speed_download: 20229.0
             speed_upload: 0.0
             download_content_length: 3411.0
             upload_content_length: 0.0
-            starttransfer_time: 0.336696
+            starttransfer_time: 0.168584
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.130
+            primary_ip: 169.62.110.131
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.16
-            local_port: 57954
-            http_version: 3
+            local_ip: 192.168.1.201
+            local_port: 57625
+            http_version: 2
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 190484
-            connect_time_us: 109241
-            namelookup_time_us: 36371
-            pretransfer_time_us: 190563
+            appconnect_time_us: 76484
+            connect_time_us: 35512
+            namelookup_time_us: 1584
+            pretransfer_time_us: 76511
             redirect_time_us: 0
-            starttransfer_time_us: 336696
-            total_time_us: 336773
+            starttransfer_time_us: 168584
+            total_time_us: 168616
