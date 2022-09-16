@@ -59,8 +59,10 @@ VCRCleaner::enable([
                         # so we check what kind of array it is here and scrub the data accordingly
                         if (array_keys($responseBodyJson) == range(0, count($responseBodyJson) - 1)) {
                             foreach ($responseBodyJson as $index => $element) {
-                                if (array_key_exists($scrubber, $element)) {
-                                    $responseBodyJson[$index][$scrubber] = CASSETTE_REPLACEMENT_VALUE;
+                                if (is_array($element)) {
+                                    if (array_key_exists($scrubber, $element)) {
+                                        $responseBodyJson[$index][$scrubber] = CASSETTE_REPLACEMENT_VALUE;
+                                    }
                                 }
                             }
                         } else {

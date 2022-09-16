@@ -2,6 +2,11 @@
 
 ## NEXT RELEASE
 
+- Adds Partner White Label (Referral) Support
+  - Adds ability to create a referral user
+  - Adds ability to update a referral user's email
+  - Adds ability to retrieve all referral users
+  - Adds ability to add a credit card to a referral user's account
 - Adds support to specify an `$endShipperId` on the buy call of a Shipment
 
 ## v5.6.0 (2022-08-25)
