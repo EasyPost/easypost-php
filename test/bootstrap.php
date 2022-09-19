@@ -31,19 +31,9 @@ VCRCleaner::enable([
             'Authorization',
             'User-Agent',
         ],
-        # TODO: Validate this works when we introduce the Beta Referral class
-        'postFieldScrubbers' => [
-            function ($postFields) {
-                if (isset($postFields['card[number]'])) {
-                    $postFields['card[number]'] = CASSETTE_REPLACEMENT_VALUE;
-                }
-                if (isset($postFields['card[number]'])) {
-                    $postFields['card[cvc]'] = CASSETTE_REPLACEMENT_VALUE;
-                }
-
-                return $postFields;
-            }
-        ],
+        'ignoreQueryFields' => [
+            'card',
+        ]
     ],
     'response' => [
         # Scrub sensitive data from response bodies (at the root level or in a root list)

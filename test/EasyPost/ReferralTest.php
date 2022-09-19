@@ -76,4 +76,26 @@ class ReferralTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals($referralUser, true);
     }
+
+    /**
+     * Test that we can add a credit card to a referral user.
+     *
+     * This test requires a partner user's production API key via PARTNER_USER_PROD_API_KEY
+     * as well as one of that user's referral's production API keys via REFERRAL_USER_PROD_API_KEY.
+     */
+    public function testReferralAddCreditCard()
+    {
+        VCR::insertCassette('referrals/addCreditCard.yml');
+
+        $creditCard = Referral::add_credit_card(
+            getenv('REFERRAL_USER_PROD_API_KEY'),
+            Fixture::creditCardDetails()['number'],
+            Fixture::creditCardDetails()['expiration_month'],
+            Fixture::creditCardDetails()['expiration_year'],
+            Fixture::creditCardDetails()['cvc']
+        );
+
+        $this->assertStringMatchesFormat('card_%s', $creditCard->id);
+        $this->assertEquals('6170', $creditCard->last4);
+    }
 }

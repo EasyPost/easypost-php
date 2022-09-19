@@ -131,7 +131,8 @@ class Referral extends EasypostResource
     private static function create_stripe_token($number, $expirationMonth, $expirationYear, $cvc, $easypostStripeKey)
     {
         $headers = [
-            'Content-type' => 'application/x-www-form-urlencoded'
+            'Content-Type: application/x-www-form-urlencoded',
+            "Authorization: Bearer $easypostStripeKey",
         ];
 
         $creditCardDetails = [
@@ -143,11 +144,12 @@ class Referral extends EasypostResource
             ]
         ];
 
-        $formEncodedParams = 'TODO'; // TODO: Make a utility to form-encode the params
-        $url = 'https://api.stripe.com/v1/tokens';
-
         $requestor = new Requestor();
-        // list($response, $apiKey) = $requestor->request('post', $url, ); // TODO: We need to be able to override the $headers for this request
+        $formEncodedParams = $requestor->urlEncode($creditCardDetails);
+        $url = "https://api.stripe.com/v1/tokens?$formEncodedParams";
+
+        list($httpBody, $httpStatus) = $requestor->curlRequest('POST', $url, $headers, null);
+        $response = $requestor->interpretResponse($httpBody, $httpStatus);
 
         return $response;
     }

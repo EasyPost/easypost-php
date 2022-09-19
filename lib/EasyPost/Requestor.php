@@ -112,7 +112,7 @@ class Requestor
             }
 
             if (is_array($v)) {
-                $r[] = self::urlEncode($v, $k, true);
+                $r[] = self::urlEncode($v, $k);
             } else {
                 $r[] = urlencode($k) . '=' . urlencode($v);
             }
@@ -189,8 +189,9 @@ class Requestor
      * @return array
      * @throws \EasyPost\Error
      */
-    private function curlRequest($method, $absUrl, $headers, $params)
+    public function curlRequest($method, $absUrl, $headers, $params)
     {
+        // TODO: Make this function private again once we switch to `guzzle`
         $curl = curl_init();
         $method = strtolower($method);
         $curlOptions = [];
@@ -267,8 +268,9 @@ class Requestor
      * @return mixed
      * @throws \EasyPost\Error
      */
-    private function interpretResponse($httpBody, $httpStatus)
+    public function interpretResponse($httpBody, $httpStatus)
     {
+        // TODO: Make this function private again once we switch to `guzzle`
         try {
             $response = json_decode($httpBody, true);
         } catch (\Exception $e) {

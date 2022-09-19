@@ -1,0 +1,220 @@
+
+-
+    request:
+        method: GET
+        url: 'https://api.easypost.com/v2/partners/stripe_public_key'
+        headers:
+            Host: api.easypost.com
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+    response:
+        status:
+            http_version: '2'
+            code: '200'
+            message: ''
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: de141eb56328aca7e2b8779b0021086b
+            cache-control: 'private, no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '49'
+            etag: 'W/"86cc970265a111486b443bf66ef85e91"'
+            x-runtime: '0.017159'
+            x-node: bigweb4nuq
+            x-version-label: easypost-202209152244-6075a793a4-master
+            x-backend: easypost
+            x-proxied: ['intlb1nuq 6aa9972c1e', 'extlb2nuq 9ce216bfac']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"public_key":"pk_x3JSr5eOVWNTLRej8cZDde9VQ0AT5"}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/partners/stripe_public_key'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 726
+            request_size: 301
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.158947
+            namelookup_time: 0.035318
+            connect_time: 0.067698
+            pretransfer_time: 0.107469
+            size_upload: 0.0
+            size_download: 49.0
+            speed_download: 308.0
+            speed_upload: 0.0
+            download_content_length: 49.0
+            upload_content_length: 0.0
+            starttransfer_time: 0.158927
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.62.110.130
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 192.168.1.201
+            local_port: 51849
+            http_version: 3
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 107393
+            connect_time_us: 67698
+            namelookup_time_us: 35318
+            pretransfer_time_us: 107469
+            redirect_time_us: 0
+            starttransfer_time_us: 158927
+            total_time_us: 158947
+-
+    request:
+        method: POST
+        url: 'https://api.stripe.com/v1/tokens?'
+        headers:
+            Host: api.stripe.com
+            Content-Type: application/x-www-form-urlencoded
+            Authorization: ''
+        body: 'null'
+    response:
+        status:
+            http_version: '2'
+            code: '200'
+            message: ''
+        headers:
+            server: nginx
+            date: 'Mon, 19 Sep 2022 17:53:44 GMT'
+            content-type: application/json
+            content-length: '719'
+            access-control-allow-credentials: 'true'
+            access-control-allow-methods: 'GET, POST, HEAD, OPTIONS, DELETE'
+            access-control-allow-origin: '*'
+            access-control-expose-headers: 'Request-Id, Stripe-Manage-Version, X-Stripe-External-Auth-Required, X-Stripe-Privileged-Session-Required'
+            access-control-max-age: '300'
+            cache-control: 'no-cache, no-store'
+            idempotency-key: 40ed65f2-d266-4a44-81b1-f463d3cbe8c3
+            original-request: req_glwq6uzRYLVyr5
+            request-id: req_glwq6uzRYLVyr5
+            stripe-should-retry: 'false'
+            stripe-version: '2020-08-27'
+            strict-transport-security: 'max-age=63072000; includeSubDomains; preload'
+        body: '{"id":"tok_0LjoA8DqT4huGUvdF8KHLiDg","object":"token","card":{"id":"card_0LjoA8DqT4huGUvdtJkjPBl8","object":"card","address_city":null,"address_country":null,"address_line1":null,"address_line1_check":null,"address_line2":null,"address_state":null,"address_zip":null,"address_zip_check":null,"brand":"Visa","country":"US","cvc_check":"unchecked","dynamic_last4":null,"exp_month":5,"exp_year":2028,"funding":"credit","last4":"6170","name":null,"tokenization_method":null},"client_ip":"<REDACTED>","created":1663610024,"livemode":true,"type":"card","used":false}'
+        curl_info:
+            url: 'https://api.stripe.com/v1/tokens?'
+            content_type: application/json
+            http_code: 200
+            header_size: 711
+            request_size: 284
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.647635
+            namelookup_time: 0.032749
+            connect_time: 0.084273
+            pretransfer_time: 0.195089
+            size_upload: 4.0
+            size_download: 719.0
+            speed_download: 1110.0
+            speed_upload: 6.0
+            download_content_length: 719.0
+            upload_content_length: 4.0
+            starttransfer_time: 0.195115
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 54.149.153.72
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 192.168.1.201
+            local_port: 51850
+            http_version: 3
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 194933
+            connect_time_us: 84273
+            namelookup_time_us: 32749
+            pretransfer_time_us: 195089
+            redirect_time_us: 0
+            starttransfer_time_us: 195115
+            total_time_us: 647635
+-
+    request:
+        method: POST
+        url: 'https://api.easypost.com/v2/credit_cards'
+        headers:
+            Host: api.easypost.com
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+        body: '{"credit_card":{"stripe_object_id":"tok_0LjoA8DqT4huGUvdF8KHLiDg","priority":"primary"}}'
+    response:
+        status:
+            http_version: '2'
+            code: '201'
+            message: ''
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: de141eb46328aca8e2b877b4002108b2
+            cache-control: 'private, no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '159'
+            etag: 'W/"ea36f11aaad052f34d5a6b2c241d4e27"'
+            x-runtime: '3.333149'
+            x-node: bigweb3nuq
+            x-version-label: easypost-202209152244-6075a793a4-master
+            x-backend: easypost
+            x-proxied: ['intlb1nuq 6aa9972c1e', 'extlb2nuq 9ce216bfac']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"id":"card_5fe4ad35fd344c4db22608a51a72a275","disabled_at":null,"object":"CreditCard","name":null,"last4":"6170","exp_month":5,"exp_year":2028,"brand":"Visa"}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/credit_cards'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 201
+            header_size: 727
+            request_size: 308
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 3.446645
+            namelookup_time: 0.001827
+            connect_time: 0.034839
+            pretransfer_time: 0.079168
+            size_upload: 88.0
+            size_download: 159.0
+            speed_download: 46.0
+            speed_upload: 25.0
+            download_content_length: 159.0
+            upload_content_length: 88.0
+            starttransfer_time: 0.079175
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.62.110.130
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 192.168.1.201
+            local_port: 51851
+            http_version: 3
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 79043
+            connect_time_us: 34839
+            namelookup_time_us: 1827
+            pretransfer_time_us: 79168
+            redirect_time_us: 0
+            starttransfer_time_us: 79175
+            total_time_us: 3446645
