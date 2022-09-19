@@ -13,7 +13,8 @@ class ReferralTest extends \PHPUnit\Framework\TestCase
      */
     public static function setUpBeforeClass(): void
     {
-        EasyPost::setApiKey(getenv('PARTNER_USER_PROD_API_KEY'));
+        $partnerUserProdApiKey = getenv('PARTNER_USER_PROD_API_KEY') !== false ? getenv('PARTNER_USER_PROD_API_KEY') : '123';
+        EasyPost::setApiKey($partnerUserProdApiKey);
 
         VCR::turnOn();
     }
