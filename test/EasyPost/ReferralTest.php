@@ -72,7 +72,7 @@ class ReferralTest extends \PHPUnit\Framework\TestCase
 
         $referralUsers = Referral::all();
 
-        $referralUser = Referral::update_email("email@example.com", $referralUsers['referral_customers'][0]['id']);
+        $referralUser = Referral::update_email('email@example.com', $referralUsers['referral_customers'][0]['id']);
 
         $this->assertEquals($referralUser, true);
     }

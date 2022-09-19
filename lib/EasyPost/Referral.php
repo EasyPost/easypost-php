@@ -113,7 +113,7 @@ class Referral extends EasypostResource
     private static function retrieve_easypost_stripe_api_key()
     {
         $requestor = new Requestor();
-        list($response, $apiKey) = $requestor->request('get', "/partners/stripe_public_key");
+        list($response, $apiKey) = $requestor->request('get', '/partners/stripe_public_key');
 
         return $response['public_key'] ?? '';
     }
