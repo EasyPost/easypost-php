@@ -31,19 +31,9 @@ VCRCleaner::enable([
             'Authorization',
             'User-Agent',
         ],
-        # TODO: Validate this works when we introduce the Beta Referral class
-        'postFieldScrubbers' => [
-            function ($postFields) {
-                if (isset($postFields['card[number]'])) {
-                    $postFields['card[number]'] = CASSETTE_REPLACEMENT_VALUE;
-                }
-                if (isset($postFields['card[number]'])) {
-                    $postFields['card[cvc]'] = CASSETTE_REPLACEMENT_VALUE;
-                }
-
-                return $postFields;
-            }
-        ],
+        'ignoreQueryFields' => [
+            'card',
+        ]
     ],
     'response' => [
         # Scrub sensitive data from response bodies (at the root level or in a root list)
@@ -59,8 +49,10 @@ VCRCleaner::enable([
                         # so we check what kind of array it is here and scrub the data accordingly
                         if (array_keys($responseBodyJson) == range(0, count($responseBodyJson) - 1)) {
                             foreach ($responseBodyJson as $index => $element) {
-                                if (array_key_exists($scrubber, $element)) {
-                                    $responseBodyJson[$index][$scrubber] = CASSETTE_REPLACEMENT_VALUE;
+                                if (is_array($element)) {
+                                    if (array_key_exists($scrubber, $element)) {
+                                        $responseBodyJson[$index][$scrubber] = CASSETTE_REPLACEMENT_VALUE;
+                                    }
                                 }
                             }
                         } else {
