@@ -9,6 +9,7 @@ clean:
 ## coverage - Runs the test suite and generates a coverage report
 coverage:
 	composer coverage
+	bin/coverage-check clover.xml 88 --only-percentage
 
 ## fix - Fix linting errors
 fix:

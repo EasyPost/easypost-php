@@ -125,15 +125,14 @@ class UserTest extends \PHPUnit\Framework\TestCase
      */
     public function testApiKeys()
     {
-        $this->markTestSkipped("Due to redacting the `children` key in the cassettes, we can't run this test as the redacted key is then a string instead of an array and breaks.");
-
         VCR::insertCassette('users/api_keys.yml');
 
         $user = User::retrieve_me();
 
         $apiKeys = $user->api_keys();
 
-        $this->assertNotNull($apiKeys->keys);
+        // Due to scrubbing, we don't populate this at all
+        $this->assertNotNull($apiKeys);
     }
 
     /**

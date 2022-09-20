@@ -2,11 +2,11 @@
 
 namespace EasyPost\Test;
 
+use EasyPost\Beta\EndShipper;
 use EasyPost\EasyPost;
-use EasyPost\EndShipper;
 use VCR\VCR;
 
-class EndShipperTest extends \PHPUnit\Framework\TestCase
+class EndShipperBetaTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Setup the testing environment for this file.
@@ -32,7 +32,7 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
      */
     public function testCreate()
     {
-        VCR::insertCassette('end_shipper/create.yml');
+        VCR::insertCassette('beta/end_shipper/create.yml');
 
         $endShipper = EndShipper::create(Fixture::caAddress1());
 
@@ -46,13 +46,13 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
      */
     public function testRetrieve()
     {
-        VCR::insertCassette('end_shipper/retrieve.yml');
+        VCR::insertCassette('beta/end_shipper/retrieve.yml');
 
         $endShipper = EndShipper::create(Fixture::caAddress1());
 
         $retrievedEndShipper = EndShipper::retrieve($endShipper->id);
 
-        $this->assertInstanceOf('\EasyPost\EndShipper', $retrievedEndShipper);
+        $this->assertInstanceOf('\EasyPost\Beta\EndShipper', $retrievedEndShipper);
         $this->assertEquals($endShipper->street1, $retrievedEndShipper->street1);
     }
 
@@ -61,17 +61,14 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
      */
     public function testAll()
     {
-        VCR::insertCassette('end_shipper/all.yml');
+        VCR::insertCassette('beta/end_shipper/all.yml');
 
         $endShippers = EndShipper::all([
             'page_size' => Fixture::pageSize(),
         ]);
 
-        $endShipperArray = $endShippers['end_shippers'];
-
-        $this->assertLessThanOrEqual($endShipperArray, Fixture::pageSize());
-        $this->assertNotNull($endShippers['has_more']);
-        $this->assertContainsOnlyInstancesOf('\EasyPost\EndShipper', $endShipperArray);
+        $this->assertLessThanOrEqual($endShippers, Fixture::pageSize());
+        $this->assertContainsOnlyInstancesOf('\EasyPost\EndShipper', $endShippers);
     }
 
     /**
@@ -79,7 +76,7 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
      */
     public function testUpdate()
     {
-        VCR::insertCassette('end_shipper/update.yml');
+        VCR::insertCassette('beta/end_shipper/update.yml');
 
         $endShipper = EndShipper::create(Fixture::caAddress1());
 

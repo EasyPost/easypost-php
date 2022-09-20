@@ -97,6 +97,24 @@ class OrderTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
+     * Test buying an Order with a Rate object.
+     */
+    public function testBuyRateObject()
+    {
+        VCR::insertCassette('orders/buyRateObject.yml');
+
+        $order = Order::create(Fixture::basicOrder());
+
+        $order->buy($order->rates[0]);
+
+        $shipmentsArray = $order['shipments'];
+
+        foreach ($shipmentsArray as $shipment) {
+            $this->assertNotNull($shipment->postage_label);
+        }
+    }
+
+    /**
      * Test various usage alterations of the lowest_rate method.
      */
     public function testLowestRate()

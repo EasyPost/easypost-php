@@ -1,0 +1,76 @@
+
+-
+    request:
+        method: POST
+        url: 'https://api.easypost.com/beta/end_shippers'
+        headers:
+            Host: api.easypost.com
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+        body: '{"address":{"name":"Jack Sparrow","street1":"388 Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","country":"US","email":"test@example.com","phone":"5555555555"}}'
+    response:
+        status:
+            http_version: '2'
+            code: '201'
+            message: ''
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: f060eadf632a15d3e788e984000762f1
+            cache-control: 'private, no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '371'
+            etag: 'W/"1d71f84b4bdad7a18de0813d18974f34"'
+            x-runtime: '0.045639'
+            x-node: bigweb5nuq
+            x-version-label: easypost-202209201859-4397aee39f-master
+            x-backend: easypost
+            x-proxied: ['intlb1nuq 29913d444b', 'extlb2nuq 29913d444b']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"id":"es_4dea90eebcea4a43a239810835ec93a5","object":"EndShipper","mode":"production","created_at":"2022-09-20T19:34:43+00:00","updated_at":"2022-09-20T19:34:43+00:00","name":"JACK SPARROW","company":null,"street1":"388 TOWNSEND ST APT 20","street2":"","city":"SAN FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":"<REDACTED>"}'
+        curl_info:
+            url: 'https://api.easypost.com/beta/end_shippers'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 201
+            header_size: 727
+            request_size: 311
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.318775
+            namelookup_time: 0.037863
+            connect_time: 0.112781
+            pretransfer_time: 0.196515
+            size_upload: 195.0
+            size_download: 371.0
+            speed_download: 1163.0
+            speed_upload: 611.0
+            download_content_length: 371.0
+            upload_content_length: 195.0
+            starttransfer_time: 0.196519
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.62.110.130
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 10.130.6.16
+            local_port: 54518
+            http_version: 3
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 196429
+            connect_time_us: 112781
+            namelookup_time_us: 37863
+            pretransfer_time_us: 196515
+            redirect_time_us: 0
+            starttransfer_time_us: 196519
+            total_time_us: 318775
