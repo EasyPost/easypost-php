@@ -42,6 +42,7 @@ require_once(dirname(__FILE__) . '/EasyPost/Pickup.php');
 require_once(dirname(__FILE__) . '/EasyPost/PickupRate.php');
 require_once(dirname(__FILE__) . '/EasyPost/PostageLabel.php');
 require_once(dirname(__FILE__) . '/EasyPost/Rate.php');
+require_once(dirname(__FILE__) . '/EasyPost/Referral.php');
 require_once(dirname(__FILE__) . '/EasyPost/Refund.php');
 require_once(dirname(__FILE__) . '/EasyPost/Report.php');
 require_once(dirname(__FILE__) . '/EasyPost/ScanForm.php');
