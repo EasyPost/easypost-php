@@ -41,10 +41,12 @@ class UserTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf('\EasyPost\User', $user);
         $this->assertStringMatchesFormat('user_%s', $user->id);
         $this->assertEquals('Test User', $user->name);
+
+        $user->delete(); // Delete the user once done so we don't pollute with hundreds of child users
     }
 
     /**
-     * Test retrieving a child user.
+     * Test retrieving a user.
      */
     public function testRetrieve()
     {
@@ -131,7 +133,7 @@ class UserTest extends \PHPUnit\Framework\TestCase
 
         $apiKeys = $user->api_keys();
 
-        // Due to scrubbing, we don't populate this at all
+        // Because we scrubbed the keys, the PHP lib returns an empty array instead of populating empty keys
         $this->assertNotNull($apiKeys);
     }
 
