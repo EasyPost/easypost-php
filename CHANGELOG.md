@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## NEXT RELEASE
+## v5.7.0 (2022-09-21)
 
 - Adds Partner White Label (Referral) Support
   - Adds ability to create a referral user
@@ -8,6 +8,7 @@
   - Adds ability to retrieve all referral users
   - Adds ability to add a credit card to a referral user's account
 - Adds support to specify an `$endShipperId` on the buy call of a Shipment
+- Removes unreachable code in the address verification flow that checked for the existence of an address (errors will continue to be thrown on failure)
 
 ## v5.6.0 (2022-08-25)
 
