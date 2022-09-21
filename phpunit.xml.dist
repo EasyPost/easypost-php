@@ -10,5 +10,9 @@
         <include>
             <directory suffix=".php">./lib/EasyPost/</directory>
         </include>
+        <exclude>
+            <!-- We exclude the Billing module because it cannot be easily tested. -->
+            <directory>./lib/EasyPost/Billing.php</directory>
+        </exclude>
     </coverage>
 </phpunit>

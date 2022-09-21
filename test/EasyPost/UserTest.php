@@ -41,10 +41,12 @@ class UserTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf('\EasyPost\User', $user);
         $this->assertStringMatchesFormat('user_%s', $user->id);
         $this->assertEquals('Test User', $user->name);
+
+        $user->delete(); // Delete the user once done so we don't pollute with hundreds of child users
     }
 
     /**
-     * Test retrieving a child user.
+     * Test retrieving a user.
      */
     public function testRetrieve()
     {
@@ -125,15 +127,14 @@ class UserTest extends \PHPUnit\Framework\TestCase
      */
     public function testApiKeys()
     {
-        $this->markTestSkipped("Due to redacting the `children` key in the cassettes, we can't run this test as the redacted key is then a string instead of an array and breaks.");
-
         VCR::insertCassette('users/api_keys.yml');
 
         $user = User::retrieve_me();
 
         $apiKeys = $user->api_keys();
 
-        $this->assertNotNull($apiKeys->keys);
+        // Because we scrubbed the keys, the PHP lib returns an empty array instead of populating empty keys
+        $this->assertNotNull($apiKeys);
     }
 
     /**

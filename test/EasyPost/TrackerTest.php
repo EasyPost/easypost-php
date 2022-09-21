@@ -45,6 +45,20 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
+     * Test creating a Tracker when we don't wrap the param.
+     */
+    public function testCreateUnwrappedParam()
+    {
+        VCR::insertCassette('trackers/createUnwrappedParam.yml');
+
+        $tracker = Tracker::create('EZ1000000001');
+
+        $this->assertInstanceOf('\EasyPost\Tracker', $tracker);
+        $this->assertStringMatchesFormat('trk_%s', $tracker->id);
+        $this->assertEquals('pre_transit', $tracker->status);
+    }
+
+    /**
      * Test retrieving a Tracker.
      */
     public function testRetrieve()

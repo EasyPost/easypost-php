@@ -100,6 +100,20 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
+     * Test buying a Shipment with a Rate object.
+     */
+    public function testBuyRateObject()
+    {
+        VCR::insertCassette('shipments/buyRateObject.yml');
+
+        $shipment = Shipment::create(Fixture::fullShipment());
+
+        $shipment->buy($shipment->lowest_rate());
+
+        $this->assertNotNull($shipment->postage_label);
+    }
+
+    /**
      * Test regenerating rates for a shipment.
      */
     public function testRegenerateRates()
@@ -135,6 +149,20 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
+     * Test converting the label format of a Shipment when we don't wrap the format.
+     */
+    public function testConvertLabelUnwrappedParam()
+    {
+        VCR::insertCassette('shipments/convertLabelUnwrappedParam.yml');
+
+        $shipment = Shipment::create(Fixture::oneCallBuyShipment());
+
+        $shipment->label('ZPL');
+
+        $this->assertNotNull($shipment->postage_label->label_zpl_url);
+    }
+
+    /**
      * Test insuring a Shipment.
      *
      * If the shipment was purchased with a USPS rate, it must have had its insurance set to `0` when bought
@@ -153,6 +181,27 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         $shipment->insure([
             'amount' => '100',
         ]);
+
+        $this->assertEquals('100.00', $shipment->insurance);
+    }
+
+    /**
+     * Test insuring a Shipment when we don't wrap the params.
+     *
+     * If the shipment was purchased with a USPS rate, it must have had its insurance set to `0` when bought
+     * so that USPS doesn't automatically insure it so we could manually insure it here.
+     */
+    public function testInsureUnwrappedParam()
+    {
+        VCR::insertCassette('shipments/insureUnwrappedParam.yml');
+
+        $shipmentData = Fixture::oneCallBuyShipment();
+        // Set to 0 so USPS doesn't insure this automatically and we can insure the shipment manually
+        $shipmentData['insurance'] = 0;
+
+        $shipment = Shipment::create($shipmentData);
+
+        $shipment->insure('100');
 
         $this->assertEquals('100.00', $shipment->insurance);
     }
@@ -288,6 +337,28 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         } catch (Error $error) {
             $this->assertEquals('No rates found.', $error->getMessage());
         }
+    }
+
+    /**
+     * Test various usage alterations of the lowest_rate method when excluding params.
+     */
+    public function testLowestRateExclusions()
+    {
+        VCR::insertCassette('shipments/lowestRateExclusions.yml');
+
+        $shipment = Shipment::create(Fixture::fullShipment());
+
+        // Test lowest rate by excluding the Asendia carrier
+        $lowestRate = $shipment->lowest_rate(['!Asendia']);
+        $this->assertEquals('First', $lowestRate['service']);
+        $this->assertEquals('5.57', $lowestRate['rate']);
+        $this->assertEquals('USPS', $lowestRate['carrier']);
+
+        // Test lowest rate by excluding the `Priority` service
+        $lowestRate = $shipment->lowest_rate([], ['!Priority']);
+        $this->assertEquals('First', $lowestRate['service']);
+        $this->assertEquals('5.57', $lowestRate['rate']);
+        $this->assertEquals('USPS', $lowestRate['carrier']);
     }
 
     /**
