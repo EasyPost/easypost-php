@@ -97,13 +97,7 @@ class Address extends EasypostResource
         $url = self::classUrl($class);
         list($response, $apiKey) = $requestor->request('post', $url . '/create_and_verify', $params);
 
-        if (isset($response['address'])) {
-            $verifiedAddress = Util::convertToEasyPostObject($response['address'], $apiKey);
-
-            return $verifiedAddress;
-        } else {
-            return Util::convertToEasyPostObject($response, $apiKey);
-        }
+        return Util::convertToEasyPostObject($response['address'], $apiKey);
     }
 
     /**
@@ -118,12 +112,6 @@ class Address extends EasypostResource
         $url = $this->instanceUrl() . '/verify';
         list($response, $apiKey) = $requestor->request('get', $url, null);
 
-        if (isset($response['address'])) {
-            $verifiedAddress = Util::convertToEasyPostObject($response['address'], $apiKey);
-
-            return $verifiedAddress;
-        } else {
-            return Util::convertToEasyPostObject($response, $apiKey);
-        }
+        return Util::convertToEasyPostObject($response['address'], $apiKey);
     }
 }
