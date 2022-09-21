@@ -165,4 +165,19 @@ class AddressTest extends \PHPUnit\Framework\TestCase
         $this->assertStringMatchesFormat('adr_%s', $address->id);
         $this->assertEquals('388 Townsend St', $address->street1);
     }
+
+    /**
+     * Test we throw an error for an invalid address verification.
+     */
+    public function testVerifyInvalid()
+    {
+        VCR::insertCassette('addresses/verifyInvalid.yml');
+
+        try {
+            $address = Address::create(['street1' => 'invalid']);
+            $address->verify();
+        } catch (\EasyPost\Error $error) {
+            $this->assertEquals('Unable to verify address.', $error->getMessage());
+        }
+    }
 }
