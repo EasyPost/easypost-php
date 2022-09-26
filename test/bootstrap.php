@@ -64,7 +64,7 @@ function scrubCassette($responseBodyJson)
             $replacement = $scrubber[1];
 
             // Root-level list scrubbing
-            if (isArrayAssociative($responseBodyJson)) {
+            if (isArraySequential($responseBodyJson)) {
                 foreach ($responseBodyJson as $index => $element) {
                     if (is_array($element)) {
                         if (array_key_exists($key, $element)) {
@@ -79,6 +79,7 @@ function scrubCassette($responseBodyJson)
                 } else {
                     // Recursively scrub each element of a response
                     foreach ($responseBodyJson as $index => $element) {
+                        // Both sequential and associative arrays will get handled via the recursive call
                         if (is_array($element)) {
                             $responseBodyJson[$index] = scrubCassette($element);
                         }
@@ -92,7 +93,7 @@ function scrubCassette($responseBodyJson)
 }
 
 /**
- * Determines if an array is associative (eg: JSON) or not.
+ * Determines if an array is sequential.
  *
  * PHP treats JSON objects (associative arrays) and lists (sequential arrays) as the
  * same thing (array), so one can use this function to determine what kind of array something is.
@@ -100,7 +101,7 @@ function scrubCassette($responseBodyJson)
  * @param array $array
  * @return boolean
  */
-function isArrayAssociative($array)
+function isArraySequential($array)
 {
     return array_keys($array) == range(0, count($array) - 1);
 }
