@@ -41,6 +41,6 @@ jobs:
       - name: install dependencies
         run: make install
       - name: test with phpunit on ${{ matrix.phpversion }}
-        run: EASYPOST_TEST_API_KEY=123 EASYPOST_PROD_API_KEY=123 make test
+        run: EASYPOST_TEST_API_KEY=123 EASYPOST_PROD_API_KEY=123 make coverage
       - name: Security scan
         run: make scan
