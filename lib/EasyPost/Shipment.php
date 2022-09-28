@@ -239,6 +239,8 @@ class Shipment extends EasypostResource
     /**
      * Get the lowest rate for the shipment.
      *
+     * To exclude a carrier or service, prepend the string with `!`.
+     *
      * @param array $carriers
      * @param array $services
      * @return Rate
@@ -253,6 +255,8 @@ class Shipment extends EasypostResource
 
     /**
      * Get the lowest smartrate of the shipment.
+     *
+     * To exclude a carrier or service, prepend the string with `!`.
      *
      * @param int $delivery_days
      * @param string $delivery_accuracy
@@ -269,6 +273,8 @@ class Shipment extends EasypostResource
 
     /**
      * Get the lowest smartrate from a list of smartrates.
+     *
+     * To exclude a carrier or service, prepend the string with `!`.
      *
      * @param array $smartrates
      * @param int $delivery_days

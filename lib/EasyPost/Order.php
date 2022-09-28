@@ -96,6 +96,8 @@ class Order extends EasypostResource
     /**
      * Get the lowest rate for the order.
      *
+     * To exclude a carrier or service, prepend the string with `!`.
+     *
      * @param array $carriers
      * @param array $services
      * @return Rate
