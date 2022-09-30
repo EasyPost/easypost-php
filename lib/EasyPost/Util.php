@@ -151,6 +151,11 @@ abstract class Util
     }
 
     /**
+     * Get the lowest rate of an EasyPost object (eg: Shipment, Order, Pickup).
+     * To exclude a carrier or service, prepend the string with `!`.
+     *
+     * This internal utility is intended to be used by other EasyPost `lowest_rate` functions.
+     *
      * @param object EasyPostObject
      * @param array $carriers
      * @param array $services

@@ -340,7 +340,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test various usage alterations of the lowest_rate method when excluding params.
+     * Test various usage alterations of the lowest_rate method when excluding params by appending `!` to the string.
      */
     public function testLowestRateExclusions()
     {
@@ -348,8 +348,8 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
         $shipment = Shipment::create(Fixture::fullShipment());
 
-        // Test lowest rate by excluding the Asendia carrier
-        $lowestRate = $shipment->lowest_rate(['!Asendia']);
+        // Test lowest rate by excluding a carrier (this is a weak test but we cannot assume existence of a non-USPS carrier)
+        $lowestRate = $shipment->lowest_rate(['!RandomCarrier']);
         $this->assertEquals('First', $lowestRate['service']);
         $this->assertEquals('5.57', $lowestRate['rate']);
         $this->assertEquals('USPS', $lowestRate['carrier']);
