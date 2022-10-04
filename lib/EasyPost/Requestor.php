@@ -297,9 +297,7 @@ class Requestor
             throw new Error("Invalid response object from API: HTTP Status: ({$httpStatus}) {$httpBody})", $httpStatus, $httpBody);
         }
 
-        // Errors from some carriers may be an array improperly assigned to the `message` field, check for those here (eg: GSO)
-        // TODO: This is a bandaid fix until the GSO service maps its error messages correctly. More dtails can be found here:
-        // https://github.com/EasyPost/easypost-php/pull/189
+        // Errors may be an array improperly assigned to the `message` field instead of the `errors` field, concatenate those here
         if (is_array($response['error'])) {
             $message = is_array($response['error']['message'])
                 ? json_encode($response['error']['message'])
