@@ -11,6 +11,10 @@ coverage:
 	composer coverage
 	bin/coverage-check clover.xml 88 --only-percentage
 
+## docs - Generate documentation for the library
+docs:
+	php phpDocumentor.phar -d lib -t docs
+
 ## fix - Fix linting errors
 fix:
 	composer fix
@@ -44,4 +48,4 @@ update:
 	git submodule update --remote
 	composer update
 
-.PHONY: help clean fix install lint release scan test update
+.PHONY: help clean docs fix install lint release scan test update

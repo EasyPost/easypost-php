@@ -94,6 +94,9 @@ EASYPOST_TEST_API_KEY=123... EASYPOST_PROD_API_KEY=123... make coverage
 # Run security analysis
 make scan
 
+# Generate library documentation (requires phpDocumentor.phar in the root of the project)
+make docs
+
 # Update submodules
 git submodule init
 git submodule update --remote
