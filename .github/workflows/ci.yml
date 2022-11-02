@@ -43,5 +43,10 @@ jobs:
         run: make install
       - name: test with phpunit on ${{ matrix.phpversion }}
         run: EASYPOST_TEST_API_KEY=123 EASYPOST_PROD_API_KEY=123 make coverage
+      - name: Coveralls
+        if: github.ref == 'refs/heads/master'
+        env:
+          COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ./bin/php-coveralls --coverage_clover=clover.xml -v
       - name: Security scan
         run: make scan
