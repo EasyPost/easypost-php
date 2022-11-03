@@ -47,6 +47,6 @@ jobs:
         if: github.ref == 'refs/heads/master'
         env:
           COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./bin/php-coveralls --coverage_clover=clover.xml -v
+        run: ./bin/php-coveralls --coverage_clover=build/logs/clover.xml -v
       - name: Security scan
         run: make scan
