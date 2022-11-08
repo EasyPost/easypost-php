@@ -160,7 +160,7 @@ class Shipment extends EasypostResource
         $requestor = new Requestor($this->_apiKey);
         $url = $this->instanceUrl() . '/refund';
 
-        list($response, $apiKey) = $requestor->request('get', $url, $params);
+        list($response, $apiKey) = $requestor->request('post', $url, $params);
         $this->refreshFrom($response, $apiKey, true);
 
         return $this;
