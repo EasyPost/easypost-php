@@ -4,6 +4,7 @@ namespace EasyPost\Test;
 
 use EasyPost\CarrierAccount;
 use EasyPost\EasyPost;
+use EasyPost\FieldError;
 use EasyPost\Test\Fixture;
 use VCR\VCR;
 
@@ -42,6 +43,42 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
         $this->assertStringMatchesFormat('ca_%s', $carrierAccount->id);
 
         $carrierAccount->delete(); // Delete the carrier account once it's done being tested.
+    }
+
+    /**
+     * Test creating a carrier account with custom workflow.
+     */
+    public function testCreateWithCustomWorkflow()
+    {
+        VCR::insertCassette('carrier_accounts/create_with_custom_workflow.yml');
+
+        $data = Fixture::basicCarrierAccount();
+        $data['type'] = 'FedexAccount';
+        // We have to send some registration data, otherwise API will throw a 400 Bad Request.
+        $data['registration_data'] = [
+            'some' => 'data',
+        ];
+
+        // catch exception
+        try {
+            $carrierAccount = CarrierAccount::create($data);
+            // Delete the carrier account once it's done being tested (should not be reached).
+            $carrierAccount->delete();
+        } catch (\EasyPost\Error $e) {
+            $this->assertEquals(422, $e->getHttpStatus());
+            $this->assertNotEmpty($e->errors);
+            $error_found = false;
+            $errors = $e->errors;
+            foreach ($errors as $error) {
+                if ($error['field'] == 'account_number' && $error['message'] == 'must be present and a string') {
+                    $error_found = true;
+                    unset($error);
+                    break;
+                }
+                unset($error);
+            }
+            $this->assertTrue($error_found);
+        }
     }
 
     /**

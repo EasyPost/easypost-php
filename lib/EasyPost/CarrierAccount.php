@@ -68,6 +68,7 @@ class CarrierAccount extends EasypostResource
      * @param mixed $params
      * @param string $apiKey
      * @return mixed
+     * @throws Error
      */
     public static function create($params = null, $apiKey = null)
     {
@@ -76,7 +77,14 @@ class CarrierAccount extends EasypostResource
             unset($params);
             $params['carrier_account'] = $clone;
         }
-        return self::createResource(get_class(), $params, $apiKey);
+        $type = $params['carrier_account']['type'];
+        if (is_null($type)) {
+            throw new Error('type is required');
+        }
+        $url = self::selectCarrierAccountCreationEndpoint($type);
+        $requestor = new Requestor($apiKey);
+        list($response, $apiKey) = $requestor->request('post', $url, $params);
+        return Util::convertToEasyPostObject($response, $apiKey);
     }
 
     /**
@@ -91,5 +99,14 @@ class CarrierAccount extends EasypostResource
         $requestor = new Requestor($apiKey);
         list($response, $apiKey) = $requestor->request('get', '/carrier_types', $params);
         return Util::convertToEasyPostObject($response, $apiKey);
+    }
+
+    private static function selectCarrierAccountCreationEndpoint($carrier_account_type): string
+    {
+        if (in_array($carrier_account_type, Constants::CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_WORKFLOWS)) {
+            return "/carrier_accounts/register";
+        } else {
+            return "/carrier_accounts";
+        }
     }
 }

@@ -1,0 +1,75 @@
+
+-
+    request:
+        method: POST
+        url: 'https://api.easypost.com/v2/carrier_accounts/register'
+        headers:
+            Host: api.easypost.com
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+        body: '{"carrier_account":{"type":"FedexAccount","credentials":{"client_id":"123456","client_secret":"123abc","distribution_center":"USLAX1","pickup_id":"123456"},"test_credentials":{"client_id":"123456","client_secret":"123abc","distribution_center":"USLAX1","pickup_id":"123456"},"registration_data":{"some":"data"}}}'
+    response:
+        status:
+            http_version: '2'
+            code: '422'
+            message: ''
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: fa9a2bd8637e9a76eca35f5100183c5f
+            cache-control: 'private, no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '1347'
+            x-runtime: '0.033562'
+            x-node: bigweb8nuq
+            x-version-label: easypost-202211231902-b75422a88e-master
+            x-backend: easypost
+            x-proxied: ['intlb1nuq 29913d444b', 'extlb1nuq 29913d444b']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"error":{"code":"UNPROCESSABLE_ENTITY","message":"The request was understood, but cannot be processed.","errors":[{"field":"shipping_streets","message":"must be present and a string"},{"field":"shipping_city","message":"must be present and a string"},{"field":"shipping_state","message":"must be present and a string"},{"field":"shipping_postal_code","message":"must be present and a string"},{"field":"shipping_country_code","message":"must be present and a string"},{"field":"corporate_first_name","message":"must be present and a string"},{"field":"corporate_last_name","message":"must be present and a string"},{"field":"corporate_job_title","message":"must be present and a string"},{"field":"corporate_company_name","message":"must be present and a string"},{"field":"corporate_phone_number","message":"must be present and a string"},{"field":"corporate_email_address","message":"must be present and a string"},{"field":"corporate_streets","message":"must be present and a string"},{"field":"corporate_city","message":"must be present and a string"},{"field":"corporate_state","message":"must be present and a string"},{"field":"corporate_postal_code","message":"must be present and a string"},{"field":"corporate_country_code","message":"must be present and a string"},{"field":"account_number","message":"must be present and a string"}]}}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/carrier_accounts/register'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 422
+            header_size: 684
+            request_size: 323
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.2231
+            namelookup_time: 0.005623
+            connect_time: 0.098497
+            pretransfer_time: 0.145922
+            size_upload: 312.0
+            size_download: 1347.0
+            speed_download: 6037.0
+            speed_upload: 1398.0
+            download_content_length: 1347.0
+            upload_content_length: 312.0
+            starttransfer_time: 0.145929
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.62.110.131
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 172.168.100.113
+            local_port: 64410
+            http_version: 3
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 145723
+            connect_time_us: 98497
+            namelookup_time_us: 5623
+            pretransfer_time_us: 145922
+            redirect_time_us: 0
+            starttransfer_time_us: 145929
+            total_time_us: 223100
