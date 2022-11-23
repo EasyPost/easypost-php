@@ -15,13 +15,11 @@ $scrubbedString = '<REDACTED>';
 $scrubbedArray = []; // In PHP, this could be either an array or object
 
 define('RESPONSE_BODY_SCRUBBERS', [
-    ['api_keys', $scrubbedArray],
     ['client_ip', $scrubbedString],
     ['credentials', $scrubbedArray],
     ['email', $scrubbedString],
-    ['fields', $scrubbedArray], // credential fields
+    ['fields', $scrubbedArray],
     ['key', $scrubbedString],
-    ['keys', $scrubbedArray],
     ['phone_number', $scrubbedString],
     ['phone', $scrubbedString],
     ['test_credentials', $scrubbedArray],
@@ -53,35 +51,40 @@ VCRCleaner::enable([
 /**
  * Scrub sensitive information from cassette files prior to persisting on disk.
  *
- * @param mixed $responseBodyJson
+ * @param mixed $data
  * @return mixed
  */
-function scrubCassette($responseBodyJson)
+function scrubCassette($data)
 {
-    if (isset($responseBodyJson)) {
+    if (isset($data)) {
         foreach (RESPONSE_BODY_SCRUBBERS as $scrubber) {
             $key = $scrubber[0];
             $replacement = $scrubber[1];
 
             // Root-level list scrubbing
-            if (isArraySequential($responseBodyJson)) {
-                foreach ($responseBodyJson as $index => $element) {
-                    if (is_array($element)) {
-                        if (array_key_exists($key, $element)) {
-                            $responseBodyJson[$index][$key] = $replacement;
+            if (isArraySequential($data)) {
+                foreach ($data as $index => $item) {
+                    if (is_array($index)) {
+                        if (array_key_exists($key, $item)) {
+                            $data[$index][$key] = $replacement;
                         }
                     }
                 }
             } else {
                 // Root-level key scrubbing
-                if (array_key_exists($key, $responseBodyJson)) {
-                    $responseBodyJson[$key] = $replacement;
+                if (array_key_exists($key, $data)) {
+                    $data[$key] = $replacement;
                 } else {
-                    // Recursively scrub each element of a response
-                    foreach ($responseBodyJson as $index => $element) {
-                        // Both sequential and associative arrays will get handled via the recursive call
-                        if (is_array($element)) {
-                            $responseBodyJson[$index] = scrubCassette($element);
+                    // Nested scrubbing
+                    foreach ($data as $index => $item) {
+                        if (is_array($item)) {
+                            if (isArraySequential($item)) {
+                                foreach ($item as $nestedIndex => $nestedItem) {
+                                    $data[$index][$nestedIndex] = scrubCassette($nestedItem);
+                                }
+                            } elseif (!isArraySequential($item)) {
+                                $data[$index] = scrubCassette($item);
+                            }
                         }
                     }
                 }
@@ -89,7 +92,7 @@ function scrubCassette($responseBodyJson)
         }
     }
 
-    return $responseBodyJson;
+    return $data;
 }
 
 /**

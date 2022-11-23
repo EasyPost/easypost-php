@@ -84,10 +84,10 @@ class User extends EasypostResource
     }
 
     /**
-     * Get all API keys including child user keys.
+     * Retrieve a list of all API keys.
      *
      * @param null $apiKey
-     * @return mixed
+     * @return object
      */
     public static function all_api_keys($apiKey = null)
     {
@@ -97,36 +97,36 @@ class User extends EasypostResource
     }
 
     /**
-     * Get my API keys.
+     * Retrieve a list of API keys (works for the authenticated user or a child user).
      *
      * @param string $apiKey
-     * @return array|null
+     * @return array
      */
-    public function api_keys($apiKey = null)
+    public function api_keys()
     {
         $apiKeys = self::all_api_keys();
-        $myApiKeys = null;
 
         if ($apiKeys->id == $this->id) {
+            // This function was called on the authenticated user
             $myApiKeys = $apiKeys->keys;
-        }
-        if (is_null($myApiKeys)) {
+        } else {
+            // This function was called on a child user (authenticated as parent, only return this child user's details).
+            $myApiKeys = [];
             foreach ($apiKeys->children as $childrenKeys) {
                 if ($childrenKeys->id == $this->id) {
                     $myApiKeys = $childrenKeys->keys;
+                    break;
                 }
             }
         }
 
-        if (is_null($myApiKeys)) {
-            return null;
-        } else {
-            $response = [];
-            foreach ($myApiKeys as $key) {
-                $response[$key->mode] = $key->key;
-            }
-            return $response;
+        // TODO: Don't rewrap objects here, return the direct response objects
+        $result = [];
+        foreach ($myApiKeys as $key) {
+            $result[$key->mode] = $key->key;
         }
+
+        return $result;
     }
 
     /**
