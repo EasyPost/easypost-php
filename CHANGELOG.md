@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- [ADDED] Carrier account creation accounts for carriers that require custom workflow
+
 ## v5.7.0 (2022-09-21)
 
 - Adds Partner White Label (Referral) Support
