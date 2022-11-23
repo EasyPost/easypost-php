@@ -101,12 +101,12 @@ class CarrierAccount extends EasypostResource
         return Util::convertToEasyPostObject($response, $apiKey);
     }
 
-    private static function selectCarrierAccountCreationEndpoint($carrier_account_type): string
+    private static function selectCarrierAccountCreationEndpoint($carrierAccountType): string
     {
-        if (in_array($carrier_account_type, Constants::CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_WORKFLOWS)) {
-            return "/carrier_accounts/register";
+        if (in_array($carrierAccountType, Constants::CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_WORKFLOWS)) {
+            return '/carrier_accounts/register';
         } else {
-            return "/carrier_accounts";
+            return '/carrier_accounts';
         }
     }
 }

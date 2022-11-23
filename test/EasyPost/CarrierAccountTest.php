@@ -67,17 +67,17 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
         } catch (\EasyPost\Error $e) {
             $this->assertEquals(422, $e->getHttpStatus());
             $this->assertNotEmpty($e->errors);
-            $error_found = false;
+            $errorFound = false;
             $errors = $e->errors;
             foreach ($errors as $error) {
                 if ($error['field'] == 'account_number' && $error['message'] == 'must be present and a string') {
-                    $error_found = true;
+                    $errorFound = true;
                     unset($error);
                     break;
                 }
                 unset($error);
             }
-            $this->assertTrue($error_found);
+            $this->assertTrue($errorFound);
         }
     }
 
