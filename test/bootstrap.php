@@ -1,6 +1,7 @@
 <?php
 
 use allejo\VCR\VCRCleaner;
+use EasyPost\Util;
 use VCR\VCR;
 
 if (!file_exists('test/cassettes')) {
@@ -62,7 +63,7 @@ function scrubCassette($data)
             $replacement = $scrubber[1];
 
             // Root-level list scrubbing
-            if (isArraySequential($data)) {
+            if (Util::isList($data)) {
                 foreach ($data as $index => $item) {
                     if (is_array($index)) {
                         if (array_key_exists($key, $item)) {
@@ -78,11 +79,11 @@ function scrubCassette($data)
                     // Nested scrubbing
                     foreach ($data as $index => $item) {
                         if (is_array($item)) {
-                            if (isArraySequential($item)) {
+                            if (Util::isList($item)) {
                                 foreach ($item as $nestedIndex => $nestedItem) {
                                     $data[$index][$nestedIndex] = scrubCassette($nestedItem);
                                 }
-                            } elseif (!isArraySequential($item)) {
+                            } elseif (!Util::isList($item)) {
                                 $data[$index] = scrubCassette($item);
                             }
                         }
@@ -93,20 +94,6 @@ function scrubCassette($data)
     }
 
     return $data;
-}
-
-/**
- * Determines if an array is sequential.
- *
- * PHP treats JSON objects (associative arrays) and lists (sequential arrays) as the
- * same thing (array), so one can use this function to determine what kind of array something is.
- *
- * @param array $array
- * @return boolean
- */
-function isArraySequential($array)
-{
-    return array_keys($array) == range(0, count($array) - 1);
 }
 
 VCR::turnOn();

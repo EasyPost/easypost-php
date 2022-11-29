@@ -5,7 +5,10 @@ namespace EasyPost;
 abstract class Util
 {
     /**
-     * Check if input is a list.
+     * Check if input is a list (eg: sequential array).
+     *
+     * PHP treats JSON objects (associative arrays) and lists (sequential arrays) as the
+     * same thing (array), so one can use this function to determine what kind of array something is.
      *
      * @param $array
      * @return bool
@@ -15,8 +18,9 @@ abstract class Util
         if (!is_array($array)) {
             return false;
         }
-        foreach (array_keys($array) as $k) {
-            if (!is_numeric($k)) {
+
+        foreach (array_keys($array) as $key) {
+            if (!is_numeric($key)) {
                 return false;
             }
         }

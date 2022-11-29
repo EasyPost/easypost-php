@@ -2,10 +2,7 @@
 
 namespace EasyPost\Test;
 
-use EasyPost\EasyPost;
-use EasyPost\Test\Fixture;
 use EasyPost\Tracker;
-use VCR\VCR;
 
 class TrackerTest extends \PHPUnit\Framework\TestCase
 {
@@ -14,9 +11,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
      */
     public static function setUpBeforeClass(): void
     {
-        EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
-
-        VCR::turnOn();
+        TestUtil::setupVcrTests('EASYPOST_TEST_API_KEY');
     }
 
     /**
@@ -24,8 +19,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
      */
     public static function tearDownAfterClass(): void
     {
-        VCR::eject();
-        VCR::turnOff();
+        TestUtil::teardownVcrTests();
     }
 
     /**
@@ -33,7 +27,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
      */
     public function testCreate()
     {
-        VCR::insertCassette('trackers/create.yml');
+        TestUtil::setupCassette('trackers/create.yml');
 
         $tracker = Tracker::create([
             'tracking_code' => 'EZ1000000001',
@@ -49,7 +43,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
      */
     public function testCreateUnwrappedParam()
     {
-        VCR::insertCassette('trackers/createUnwrappedParam.yml');
+        TestUtil::setupCassette('trackers/createUnwrappedParam.yml');
 
         $tracker = Tracker::create('EZ1000000001');
 
@@ -63,7 +57,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
      */
     public function testRetrieve()
     {
-        VCR::insertCassette('trackers/retrieve.yml');
+        TestUtil::setupCassette('trackers/retrieve.yml');
 
         $tracker = Tracker::create([
             'tracking_code' => 'EZ1000000001',
@@ -81,7 +75,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
      */
     public function testAll()
     {
-        VCR::insertCassette('trackers/all.yml');
+        TestUtil::setupCassette('trackers/all.yml');
 
         $trackers = Tracker::all([
             'page_size' => Fixture::pageSize(),
@@ -99,7 +93,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
      */
     public function testCreateList()
     {
-        VCR::insertCassette('trackers/createList.yml');
+        TestUtil::setupCassette('trackers/createList.yml');
 
         $response = Tracker::create_list([
             '0' => ['tracking_code' => 'EZ1000000001'],

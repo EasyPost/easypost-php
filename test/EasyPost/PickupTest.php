@@ -2,12 +2,9 @@
 
 namespace EasyPost\Test;
 
-use EasyPost\EasyPost;
 use EasyPost\Error;
 use EasyPost\Pickup;
 use EasyPost\Shipment;
-use EasyPost\Test\Fixture;
-use VCR\VCR;
 
 class PickupTest extends \PHPUnit\Framework\TestCase
 {
@@ -16,9 +13,7 @@ class PickupTest extends \PHPUnit\Framework\TestCase
      */
     public static function setUpBeforeClass(): void
     {
-        EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
-
-        VCR::turnOn();
+        TestUtil::setupVcrTests('EASYPOST_TEST_API_KEY');
     }
 
     /**
@@ -26,8 +21,7 @@ class PickupTest extends \PHPUnit\Framework\TestCase
      */
     public static function tearDownAfterClass(): void
     {
-        VCR::eject();
-        VCR::turnOff();
+        TestUtil::teardownVcrTests();
     }
 
     /**
@@ -35,7 +29,7 @@ class PickupTest extends \PHPUnit\Framework\TestCase
      */
     public function testCreate()
     {
-        VCR::insertCassette('pickups/create.yml');
+        TestUtil::setupCassette('pickups/create.yml');
 
         $shipment = Shipment::create(Fixture::oneCallBuyShipment());
 
@@ -54,7 +48,7 @@ class PickupTest extends \PHPUnit\Framework\TestCase
      */
     public function testRetrieve()
     {
-        VCR::insertCassette('pickups/retrieve.yml');
+        TestUtil::setupCassette('pickups/retrieve.yml');
 
         $shipment = Shipment::create(Fixture::oneCallBuyShipment());
 
@@ -73,7 +67,7 @@ class PickupTest extends \PHPUnit\Framework\TestCase
      */
     public function testBuy()
     {
-        VCR::insertCassette('pickups/buy.yml');
+        TestUtil::setupCassette('pickups/buy.yml');
 
         $shipment = Shipment::create(Fixture::oneCallBuyShipment());
 
@@ -98,7 +92,7 @@ class PickupTest extends \PHPUnit\Framework\TestCase
      */
     public function testCancel()
     {
-        VCR::insertCassette('pickups/cancel.yml');
+        TestUtil::setupCassette('pickups/cancel.yml');
 
         $shipment = Shipment::create(Fixture::oneCallBuyShipment());
 
@@ -124,7 +118,7 @@ class PickupTest extends \PHPUnit\Framework\TestCase
      */
     public function testLowestRate()
     {
-        VCR::insertCassette('pickups/lowestRate.yml');
+        TestUtil::setupCassette('pickups/lowestRate.yml');
 
         $shipment = Shipment::create(Fixture::oneCallBuyShipment());
 

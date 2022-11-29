@@ -3,9 +3,6 @@
 namespace EasyPost\Test;
 
 use EasyPost\CustomsItem;
-use EasyPost\EasyPost;
-use EasyPost\Test\Fixture;
-use VCR\VCR;
 
 class CustomsItemTest extends \PHPUnit\Framework\TestCase
 {
@@ -14,9 +11,7 @@ class CustomsItemTest extends \PHPUnit\Framework\TestCase
      */
     public static function setUpBeforeClass(): void
     {
-        EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
-
-        VCR::turnOn();
+        TestUtil::setupVcrTests('EASYPOST_TEST_API_KEY');
     }
 
     /**
@@ -24,8 +19,7 @@ class CustomsItemTest extends \PHPUnit\Framework\TestCase
      */
     public static function tearDownAfterClass(): void
     {
-        VCR::eject();
-        VCR::turnOff();
+        TestUtil::teardownVcrTests();
     }
 
     /**
@@ -33,7 +27,7 @@ class CustomsItemTest extends \PHPUnit\Framework\TestCase
      */
     public function testCreate()
     {
-        VCR::insertCassette('customs_items/create.yml');
+        TestUtil::setupCassette('customs_items/create.yml');
 
         $customsItem = CustomsItem::create(Fixture::basicCustomsItem());
 
@@ -47,7 +41,7 @@ class CustomsItemTest extends \PHPUnit\Framework\TestCase
      */
     public function testRetrieve()
     {
-        VCR::insertCassette('customs_items/retrieve.yml');
+        TestUtil::setupCassette('customs_items/retrieve.yml');
 
         $customsItem = CustomsItem::create(Fixture::basicCustomsItem());
 
