@@ -22,6 +22,7 @@ require_once(dirname(__FILE__) . '/EasyPost/Requestor.php');
 
 // API Resources
 require_once(dirname(__FILE__) . '/EasyPost/Address.php');
+require_once(dirname(__FILE__) . '/EasyPost/ApiKey.php');
 require_once(dirname(__FILE__) . '/EasyPost/Batch.php');
 require_once(dirname(__FILE__) . '/EasyPost/Brand.php');
 require_once(dirname(__FILE__) . '/EasyPost/CarbonOffset.php');
