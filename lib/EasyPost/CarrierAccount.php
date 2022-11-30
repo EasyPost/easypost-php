@@ -77,13 +77,17 @@ class CarrierAccount extends EasypostResource
             unset($params);
             $params['carrier_account'] = $clone;
         }
+
         $type = $params['carrier_account']['type'];
-        if (is_null($type)) {
+        if (!isset($type)) {
             throw new Error('type is required');
         }
+
         $url = self::selectCarrierAccountCreationEndpoint($type);
+
         $requestor = new Requestor($apiKey);
         list($response, $apiKey) = $requestor->request('post', $url, $params);
+
         return Util::convertToEasyPostObject($response, $apiKey);
     }
 
@@ -101,9 +105,15 @@ class CarrierAccount extends EasypostResource
         return Util::convertToEasyPostObject($response, $apiKey);
     }
 
+    /**
+     * Select the endpoint for creating a carrier account based on the type of carrier account.
+     *
+     * @param string $carrierAccountType The type of carrier account to create.
+     * @return string The endpoint for creating a carrier account.
+     */
     private static function selectCarrierAccountCreationEndpoint($carrierAccountType): string
     {
-        if (in_array($carrierAccountType, Constants::CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_WORKFLOWS)) {
+        if (in_array($carrierAccountType, CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_WORKFLOWS)) {
             return '/carrier_accounts/register';
         } else {
             return '/carrier_accounts';
