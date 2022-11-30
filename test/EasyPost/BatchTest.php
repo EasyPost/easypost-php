@@ -3,10 +3,7 @@
 namespace EasyPost\Test;
 
 use EasyPost\Batch;
-use EasyPost\EasyPost;
 use EasyPost\Shipment;
-use EasyPost\Test\Fixture;
-use VCR\VCR;
 
 class BatchTest extends \PHPUnit\Framework\TestCase
 {
@@ -15,9 +12,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
      */
     public static function setUpBeforeClass(): void
     {
-        EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
-
-        VCR::turnOn();
+        TestUtil::setupVcrTests('EASYPOST_TEST_API_KEY');
     }
 
     /**
@@ -25,8 +20,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
      */
     public static function tearDownAfterClass(): void
     {
-        VCR::eject();
-        VCR::turnOff();
+        TestUtil::teardownVcrTests();
     }
 
     /**
@@ -34,7 +28,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
      */
     public function testCreate()
     {
-        VCR::insertCassette('batches/create.yml');
+        TestUtil::setupCassette('batches/create.yml');
 
         $batch = Batch::create([
             'shipments' => [Fixture::basicShipment()],
@@ -50,7 +44,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
      */
     public function testRetrieve()
     {
-        VCR::insertCassette('batches/retrieve.yml');
+        TestUtil::setupCassette('batches/retrieve.yml');
 
         $batch = Batch::create([
             'shipments' => [Fixture::basicShipment()],
@@ -67,7 +61,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
      */
     public function testAll()
     {
-        VCR::insertCassette('batches/all.yml');
+        TestUtil::setupCassette('batches/all.yml');
 
         $batches = Batch::all([
             'page_size' => Fixture::pageSize(),
@@ -85,7 +79,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
      */
     public function testCreateAndBuy()
     {
-        VCR::insertCassette('batches/createAndBuy.yml');
+        TestUtil::setupCassette('batches/createAndBuy.yml');
 
         $batch = Batch::create_and_buy([
             Fixture::oneCallBuyShipment(),
@@ -102,7 +96,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
      */
     public function testBuy()
     {
-        VCR::insertCassette('batches/buy.yml');
+        TestUtil::setupCassette('batches/buy.yml');
 
         $shipmentData = Fixture::oneCallBuyShipment();
 
@@ -127,7 +121,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
         $cassetteName = 'batches/createScanForm.yml';
         $testRequiresWait = true ? file_exists(dirname(__DIR__, 1) . "/cassettes/$cassetteName") === false : false;
 
-        VCR::insertCassette($cassetteName);
+        TestUtil::setupCassette($cassetteName);
 
         $batch = Batch::create([
             'shipments' => [Fixture::oneCallBuyShipment()],
@@ -149,7 +143,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
      */
     public function testAddRemoveShipment()
     {
-        VCR::insertCassette('batches/addRemoveShipment.yml');
+        TestUtil::setupCassette('batches/addRemoveShipment.yml');
 
         $shipment = Shipment::create(Fixture::oneCallBuyShipment());
 
@@ -174,7 +168,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
         $cassetteName = 'batches/label.yml';
         $testRequiresWait = true ? file_exists(dirname(__DIR__, 1) . "/cassettes/$cassetteName") === false : false;
 
-        VCR::insertCassette($cassetteName);
+        TestUtil::setupCassette($cassetteName);
 
         $batch = Batch::create([
             'shipments' => [Fixture::oneCallBuyShipment()],

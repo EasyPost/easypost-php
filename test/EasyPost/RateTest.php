@@ -2,11 +2,8 @@
 
 namespace EasyPost\Test;
 
-use EasyPost\EasyPost;
 use EasyPost\Rate;
 use EasyPost\Shipment;
-use EasyPost\Test\Fixture;
-use VCR\VCR;
 
 class RateTest extends \PHPUnit\Framework\TestCase
 {
@@ -15,9 +12,7 @@ class RateTest extends \PHPUnit\Framework\TestCase
      */
     public static function setUpBeforeClass(): void
     {
-        EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
-
-        VCR::turnOn();
+        TestUtil::setupVcrTests('EASYPOST_TEST_API_KEY');
     }
 
     /**
@@ -25,8 +20,7 @@ class RateTest extends \PHPUnit\Framework\TestCase
      */
     public static function tearDownAfterClass(): void
     {
-        VCR::eject();
-        VCR::turnOff();
+        TestUtil::teardownVcrTests();
     }
 
     /**
@@ -34,7 +28,7 @@ class RateTest extends \PHPUnit\Framework\TestCase
      */
     public function testRetrieve()
     {
-        VCR::insertCassette('rates/retrieve.yml');
+        TestUtil::setupCassette('rates/retrieve.yml');
 
         $shipment = Shipment::create(Fixture::basicShipment());
 

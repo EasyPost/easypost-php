@@ -2,11 +2,8 @@
 
 namespace EasyPost\Test;
 
-use EasyPost\EasyPost;
 use EasyPost\ScanForm;
 use EasyPost\Shipment;
-use EasyPost\Test\Fixture;
-use VCR\VCR;
 
 class ScanFormTest extends \PHPUnit\Framework\TestCase
 {
@@ -15,9 +12,7 @@ class ScanFormTest extends \PHPUnit\Framework\TestCase
      */
     public static function setUpBeforeClass(): void
     {
-        EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
-
-        VCR::turnOn();
+        TestUtil::setupVcrTests('EASYPOST_TEST_API_KEY');
     }
 
     /**
@@ -25,8 +20,7 @@ class ScanFormTest extends \PHPUnit\Framework\TestCase
      */
     public static function tearDownAfterClass(): void
     {
-        VCR::eject();
-        VCR::turnOff();
+        TestUtil::teardownVcrTests();
     }
 
     /**
@@ -34,7 +28,7 @@ class ScanFormTest extends \PHPUnit\Framework\TestCase
      */
     public function testCreate()
     {
-        VCR::insertCassette('scanforms/create.yml');
+        TestUtil::setupCassette('scanforms/create.yml');
 
         $shipment = Shipment::create(Fixture::oneCallBuyShipment());
 
@@ -51,7 +45,7 @@ class ScanFormTest extends \PHPUnit\Framework\TestCase
      */
     public function testRetrieve()
     {
-        VCR::insertCassette('scanforms/retrieve.yml');
+        TestUtil::setupCassette('scanforms/retrieve.yml');
 
         $shipment = Shipment::create(Fixture::oneCallBuyShipment());
 
@@ -70,7 +64,7 @@ class ScanFormTest extends \PHPUnit\Framework\TestCase
      */
     public function testAll()
     {
-        VCR::insertCassette('scanforms/all.yml');
+        TestUtil::setupCassette('scanforms/all.yml');
 
         $scanforms = ScanForm::all([
             'page_size' => Fixture::pageSize(),

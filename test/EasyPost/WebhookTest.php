@@ -2,11 +2,8 @@
 
 namespace EasyPost\Test;
 
-use EasyPost\EasyPost;
 use EasyPost\Error;
-use EasyPost\Test\Fixture;
 use EasyPost\Webhook;
-use VCR\VCR;
 
 class WebhookTest extends \PHPUnit\Framework\TestCase
 {
@@ -15,9 +12,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
      */
     public static function setUpBeforeClass(): void
     {
-        EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
-
-        VCR::turnOn();
+        TestUtil::setupVcrTests('EASYPOST_TEST_API_KEY');
     }
 
     /**
@@ -25,8 +20,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
      */
     public static function tearDownAfterClass(): void
     {
-        VCR::eject();
-        VCR::turnOff();
+        TestUtil::teardownVcrTests();
     }
 
     /**
@@ -34,7 +28,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
      */
     public function testCreate()
     {
-        VCR::insertCassette('webhooks/create.yml');
+        TestUtil::setupCassette('webhooks/create.yml');
 
         $webhook = Webhook::create([
             'url' => Fixture::webhookUrl(),
@@ -52,7 +46,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
      */
     public function testRetrieve()
     {
-        VCR::insertCassette('webhooks/retrieve.yml');
+        TestUtil::setupCassette('webhooks/retrieve.yml');
 
         $webhook = Webhook::create([
             'url' => Fixture::webhookUrl(),
@@ -71,7 +65,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
      */
     public function testAll()
     {
-        VCR::insertCassette('webhooks/all.yml');
+        TestUtil::setupCassette('webhooks/all.yml');
 
         $webhooks = Webhook::all([
             'page_size' => Fixture::pageSize(),
@@ -88,7 +82,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
      */
     public function testUpdate()
     {
-        VCR::insertCassette('webhooks/update.yml');
+        TestUtil::setupCassette('webhooks/update.yml');
 
         $webhook = Webhook::create([
             'url' => Fixture::webhookUrl(),
@@ -107,7 +101,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
      */
     public function testDelete()
     {
-        VCR::insertCassette('webhooks/delete.yml');
+        TestUtil::setupCassette('webhooks/delete.yml');
 
         $webhook = Webhook::create([
             'url' => Fixture::webhookUrl(),

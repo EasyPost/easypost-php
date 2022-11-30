@@ -2,9 +2,7 @@
 
 namespace EasyPost\Test;
 
-use EasyPost\EasyPost;
 use EasyPost\User;
-use VCR\VCR;
 
 class UserTest extends \PHPUnit\Framework\TestCase
 {
@@ -13,9 +11,7 @@ class UserTest extends \PHPUnit\Framework\TestCase
      */
     public static function setUpBeforeClass(): void
     {
-        EasyPost::setApiKey(getenv('EASYPOST_PROD_API_KEY'));
-
-        VCR::turnOn();
+        TestUtil::setupVcrTests('EASYPOST_PROD_API_KEY');
     }
 
     /**
@@ -23,8 +19,7 @@ class UserTest extends \PHPUnit\Framework\TestCase
      */
     public static function tearDownAfterClass(): void
     {
-        VCR::eject();
-        VCR::turnOff();
+        TestUtil::teardownVcrTests();
     }
 
     /**
@@ -32,7 +27,7 @@ class UserTest extends \PHPUnit\Framework\TestCase
      */
     public function testCreate()
     {
-        VCR::insertCassette('users/create.yml');
+        TestUtil::setupCassette('users/create.yml');
 
         $user = User::create([
             'name' => 'Test User',
@@ -50,7 +45,7 @@ class UserTest extends \PHPUnit\Framework\TestCase
      */
     public function testRetrieve()
     {
-        VCR::insertCassette('users/retrieve.yml');
+        TestUtil::setupCassette('users/retrieve.yml');
 
         $authenticatedUser = User::retrieve_me();
 
@@ -65,7 +60,7 @@ class UserTest extends \PHPUnit\Framework\TestCase
      */
     public function testRetrieveMe()
     {
-        VCR::insertCassette('users/retrieveMe.yml');
+        TestUtil::setupCassette('users/retrieveMe.yml');
 
         $user = User::retrieve_me();
 
@@ -78,7 +73,7 @@ class UserTest extends \PHPUnit\Framework\TestCase
      */
     public function testUpdate()
     {
-        VCR::insertCassette('users/update.yml');
+        TestUtil::setupCassette('users/update.yml');
 
         $user = User::retrieve_me();
 
@@ -97,7 +92,7 @@ class UserTest extends \PHPUnit\Framework\TestCase
      */
     public function testDelete()
     {
-        VCR::insertCassette('users/delete.yml');
+        TestUtil::setupCassette('users/delete.yml');
 
         $user = User::create([
             'name' => 'Test User',
@@ -113,7 +108,7 @@ class UserTest extends \PHPUnit\Framework\TestCase
      */
     public function testAllApiKeys()
     {
-        VCR::insertCassette('users/all_api_keys.yml');
+        TestUtil::setupCassette('users/all_api_keys.yml');
 
         $user = User::retrieve_me();
 
@@ -134,7 +129,7 @@ class UserTest extends \PHPUnit\Framework\TestCase
      */
     public function testAuthenticatedUserApiKeys()
     {
-        VCR::insertCassette('users/authenticated_user_api_keys.yml');
+        TestUtil::setupCassette('users/authenticated_user_api_keys.yml');
 
         $user = User::retrieve_me();
 
@@ -152,7 +147,7 @@ class UserTest extends \PHPUnit\Framework\TestCase
      */
     public function testChildUserApiKeys()
     {
-        VCR::insertCassette('users/child_user_api_keys.yml');
+        TestUtil::setupCassette('users/child_user_api_keys.yml');
 
         $user = User::create([
             'name' => 'Test User',
@@ -175,7 +170,7 @@ class UserTest extends \PHPUnit\Framework\TestCase
      */
     public function testUpdateBrand()
     {
-        VCR::insertCassette('users/brand.yml');
+        TestUtil::setupCassette('users/brand.yml');
 
         $user = User::retrieve_me();
 

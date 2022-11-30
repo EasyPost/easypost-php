@@ -3,9 +3,6 @@
 namespace EasyPost\Test;
 
 use EasyPost\Address;
-use EasyPost\EasyPost;
-use EasyPost\Test\Fixture;
-use VCR\VCR;
 
 class AddressTest extends \PHPUnit\Framework\TestCase
 {
@@ -14,9 +11,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
      */
     public static function setUpBeforeClass(): void
     {
-        EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
-
-        VCR::turnOn();
+        TestUtil::setupVcrTests('EASYPOST_TEST_API_KEY');
     }
 
     /**
@@ -24,8 +19,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
      */
     public static function tearDownAfterClass(): void
     {
-        VCR::eject();
-        VCR::turnOff();
+        TestUtil::teardownVcrTests();
     }
 
     /**
@@ -33,7 +27,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
      */
     public function testCreate()
     {
-        VCR::insertCassette('addresses/create.yml');
+        TestUtil::setupCassette('addresses/create.yml');
 
         $address = Address::create(Fixture::caAddress1());
 
@@ -49,7 +43,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
      */
     public function testCreateVerify()
     {
-        VCR::insertCassette('addresses/createVerify.yml');
+        TestUtil::setupCassette('addresses/createVerify.yml');
 
         $addressData = Fixture::incorrectAddress();
         $addressData['verify'] = true;
@@ -67,7 +61,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
      */
     public function testCreateVerifyStrict()
     {
-        VCR::insertCassette('addresses/createVerifyStrict.yml');
+        TestUtil::setupCassette('addresses/createVerifyStrict.yml');
 
         $addressData = Fixture::caAddress1();
         $addressData['verify_strict'] = true;
@@ -86,7 +80,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
      */
     public function testCreateVerifyArray()
     {
-        VCR::insertCassette('addresses/createVerifyArray.yml');
+        TestUtil::setupCassette('addresses/createVerifyArray.yml');
 
         $addressData = Fixture::incorrectAddress();
         $addressData['verify'] = [true];
@@ -104,7 +98,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
      */
     public function testRetrieve()
     {
-        VCR::insertCassette('addresses/retrieve.yml');
+        TestUtil::setupCassette('addresses/retrieve.yml');
 
         $address = Address::create(Fixture::caAddress1());
 
@@ -119,7 +113,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
      */
     public function testAll()
     {
-        VCR::insertCassette('addresses/all.yml');
+        TestUtil::setupCassette('addresses/all.yml');
 
         $addresses = Address::all([
             'page_size' => Fixture::pageSize(),
@@ -139,7 +133,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
      */
     public function testCreateAndVerify()
     {
-        VCR::insertCassette('addresses/createAndVerify.yml');
+        TestUtil::setupCassette('addresses/createAndVerify.yml');
 
         $addressData = Fixture::incorrectAddress();
 
@@ -155,7 +149,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
      */
     public function testVerify()
     {
-        VCR::insertCassette('addresses/verify.yml');
+        TestUtil::setupCassette('addresses/verify.yml');
 
         $address = Address::create(Fixture::caAddress1());
 
@@ -171,7 +165,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
      */
     public function testVerifyInvalid()
     {
-        VCR::insertCassette('addresses/verifyInvalid.yml');
+        TestUtil::setupCassette('addresses/verifyInvalid.yml');
 
         try {
             $address = Address::create(['street1' => 'invalid']);

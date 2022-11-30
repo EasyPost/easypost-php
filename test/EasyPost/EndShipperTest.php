@@ -2,9 +2,7 @@
 
 namespace EasyPost\Test;
 
-use EasyPost\EasyPost;
 use EasyPost\EndShipper;
-use VCR\VCR;
 
 class EndShipperTest extends \PHPUnit\Framework\TestCase
 {
@@ -13,9 +11,7 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
      */
     public static function setUpBeforeClass(): void
     {
-        EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
-
-        VCR::turnOn();
+        TestUtil::setupVcrTests('EASYPOST_TEST_API_KEY');
     }
 
     /**
@@ -23,8 +19,7 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
      */
     public static function tearDownAfterClass(): void
     {
-        VCR::eject();
-        VCR::turnOff();
+        TestUtil::teardownVcrTests();
     }
 
     /**
@@ -32,7 +27,7 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
      */
     public function testCreate()
     {
-        VCR::insertCassette('end_shipper/create.yml');
+        TestUtil::setupCassette('end_shipper/create.yml');
 
         $endShipper = EndShipper::create(Fixture::caAddress1());
 
@@ -46,7 +41,7 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
      */
     public function testRetrieve()
     {
-        VCR::insertCassette('end_shipper/retrieve.yml');
+        TestUtil::setupCassette('end_shipper/retrieve.yml');
 
         $endShipper = EndShipper::create(Fixture::caAddress1());
 
@@ -61,7 +56,7 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
      */
     public function testAll()
     {
-        VCR::insertCassette('end_shipper/all.yml');
+        TestUtil::setupCassette('end_shipper/all.yml');
 
         $endShippers = EndShipper::all([
             'page_size' => Fixture::pageSize(),
@@ -79,7 +74,7 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
      */
     public function testUpdate()
     {
-        VCR::insertCassette('end_shipper/update.yml');
+        TestUtil::setupCassette('end_shipper/update.yml');
 
         $endShipper = EndShipper::create(Fixture::caAddress1());
 
