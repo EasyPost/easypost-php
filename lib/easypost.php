@@ -57,4 +57,3 @@ require_once(dirname(__FILE__) . '/EasyPost/Verification.php');
 require_once(dirname(__FILE__) . '/EasyPost/VerificationDetails.php');
 require_once(dirname(__FILE__) . '/EasyPost/Verifications.php');
 require_once(dirname(__FILE__) . '/EasyPost/Webhook.php');
-
