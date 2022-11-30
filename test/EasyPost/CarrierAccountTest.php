@@ -3,10 +3,7 @@
 namespace EasyPost\Test;
 
 use EasyPost\CarrierAccount;
-use EasyPost\EasyPost;
-use EasyPost\FieldError;
 use EasyPost\Test\Fixture;
-use VCR\VCR;
 
 class CarrierAccountTest extends \PHPUnit\Framework\TestCase
 {
