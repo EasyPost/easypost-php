@@ -3,6 +3,8 @@
 ## Next Release
 
 - [ADDED] Carrier account creation accounts for carriers that require custom workflow
+- [FIXED] Instead of returning `null` when a list of child API keys cannot be returned (eg: when you call `api_keys` on a non-user object) it will return an empty list. The expected impact to end users is extremely low
+- [IMPROVED] Retrieving child user API keys for users with large numbers of child users should see much faster results as we now break on the match instead of iterating the entire list
 
 ## v5.7.0 (2022-09-21)
 

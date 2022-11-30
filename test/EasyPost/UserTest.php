@@ -117,24 +117,57 @@ class UserTest extends \PHPUnit\Framework\TestCase
 
         $user = User::retrieve_me();
 
-        $apiKeys = $user->all_api_keys();
+        $apiKeys = $user::all_api_keys();
 
-        $this->assertNotNull($apiKeys->keys);
+        $this->assertNotNull($apiKeys['keys']);
+        $this->assertNotNull($apiKeys['children']);
+
+        // TODO: When the output of this function is fixed, swap the tests for the below
+        // $this->assertContainsOnlyInstancesOf('\EasyPost\ApiKey', $apiKeys);
+        // foreach ($apiKeys['children'] as $child) {
+        //     $this->assertContainsOnlyInstancesOf('\EasyPost\ApiKey', $child['keys']);
+        // }
     }
 
     /**
      * Test retrieving the authenticated user's API keys.
      */
-    public function testApiKeys()
+    public function testAuthenticatedUserApiKeys()
     {
-        VCR::insertCassette('users/api_keys.yml');
+        VCR::insertCassette('users/authenticated_user_api_keys.yml');
 
         $user = User::retrieve_me();
 
         $apiKeys = $user->api_keys();
 
-        // Because we scrubbed the keys, the PHP lib returns an empty array instead of populating empty keys
-        $this->assertNotNull($apiKeys);
+        $this->assertNotNull($apiKeys['production']);
+        $this->assertNotNull($apiKeys['test']);
+
+        // TODO: When the output of this function is fixed, swap the tests for the below
+        // $this->assertContainsOnlyInstancesOf('\EasyPost\ApiKey', $apiKeys);
+    }
+
+    /**
+     * Test retrieving the authenticated user's API keys.
+     */
+    public function testChildUserApiKeys()
+    {
+        VCR::insertCassette('users/child_user_api_keys.yml');
+
+        $user = User::create([
+            'name' => 'Test User',
+        ]);
+        $childUser = User::retrieve($user->id);
+
+        $apiKeys = $childUser->api_keys();
+
+        $this->assertNotNull($apiKeys['production']);
+        $this->assertNotNull($apiKeys['test']);
+
+        // TODO: When the output of this function is fixed, swap the tests for the below
+        // $this->assertContainsOnlyInstancesOf('\EasyPost\ApiKey', $apiKeys);
+
+        $user->delete(); // Delete the user once done so we don't pollute with hundreds of child users
     }
 
     /**
