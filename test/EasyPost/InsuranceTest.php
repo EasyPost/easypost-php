@@ -2,11 +2,8 @@
 
 namespace EasyPost\Test;
 
-use EasyPost\EasyPost;
 use EasyPost\Insurance;
 use EasyPost\Shipment;
-use EasyPost\Test\Fixture;
-use VCR\VCR;
 
 class InsuranceTest extends \PHPUnit\Framework\TestCase
 {
@@ -15,9 +12,7 @@ class InsuranceTest extends \PHPUnit\Framework\TestCase
      */
     public static function setUpBeforeClass(): void
     {
-        EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
-
-        VCR::turnOn();
+        TestUtil::setupVcrTests('EASYPOST_TEST_API_KEY');
     }
 
     /**
@@ -25,8 +20,7 @@ class InsuranceTest extends \PHPUnit\Framework\TestCase
      */
     public static function tearDownAfterClass(): void
     {
-        VCR::eject();
-        VCR::turnOff();
+        TestUtil::teardownVcrTests();
     }
 
     /**
@@ -34,7 +28,7 @@ class InsuranceTest extends \PHPUnit\Framework\TestCase
      */
     public function testCreate()
     {
-        VCR::insertCassette('insurance/create.yml');
+        TestUtil::setupCassette('insurance/create.yml');
 
         $shipment = Shipment::create(Fixture::oneCallBuyShipment());
 
@@ -53,7 +47,7 @@ class InsuranceTest extends \PHPUnit\Framework\TestCase
      */
     public function testRetrieve()
     {
-        VCR::insertCassette('insurance/retrieve.yml');
+        TestUtil::setupCassette('insurance/retrieve.yml');
 
         $shipment = Shipment::create(Fixture::oneCallBuyShipment());
 
@@ -73,7 +67,7 @@ class InsuranceTest extends \PHPUnit\Framework\TestCase
      */
     public function testAll()
     {
-        VCR::insertCassette('insurance/all.yml');
+        TestUtil::setupCassette('insurance/all.yml');
 
         $insurance = Insurance::all([
             'page_size' => Fixture::pageSize(),

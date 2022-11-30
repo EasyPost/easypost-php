@@ -3,9 +3,6 @@
 namespace EasyPost\Test;
 
 use EasyPost\CarrierAccount;
-use EasyPost\EasyPost;
-use EasyPost\Test\Fixture;
-use VCR\VCR;
 
 class CarrierAccountTest extends \PHPUnit\Framework\TestCase
 {
@@ -14,9 +11,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
      */
     public static function setUpBeforeClass(): void
     {
-        EasyPost::setApiKey(getenv('EASYPOST_PROD_API_KEY'));
-
-        VCR::turnOn();
+        TestUtil::setupVcrTests('EASYPOST_PROD_API_KEY');
     }
 
     /**
@@ -24,8 +19,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
      */
     public static function tearDownAfterClass(): void
     {
-        VCR::eject();
-        VCR::turnOff();
+        TestUtil::teardownVcrTests();
     }
 
     /**
@@ -33,7 +27,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
      */
     public function testCreate()
     {
-        VCR::insertCassette('carrier_accounts/create.yml');
+        TestUtil::setupCassette('carrier_accounts/create.yml');
 
         $carrierAccount = CarrierAccount::create(Fixture::basicCarrierAccount());
 
@@ -49,7 +43,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
      */
     public function testRetrieve()
     {
-        VCR::insertCassette('carrier_accounts/retrieve.yml');
+        TestUtil::setupCassette('carrier_accounts/retrieve.yml');
 
         $carrierAccount = CarrierAccount::create(Fixture::basicCarrierAccount());
 
@@ -66,7 +60,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
      */
     public function testAll()
     {
-        VCR::insertCassette('carrier_accounts/all.yml');
+        TestUtil::setupCassette('carrier_accounts/all.yml');
 
         $carrierAccounts = CarrierAccount::all();
 
@@ -78,7 +72,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
      */
     public function testUpdate()
     {
-        VCR::insertCassette('carrier_accounts/update.yml');
+        TestUtil::setupCassette('carrier_accounts/update.yml');
 
         $carrierAccount = CarrierAccount::create(Fixture::basicCarrierAccount());
 
@@ -99,7 +93,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
      */
     public function testDelete()
     {
-        VCR::insertCassette('carrier_accounts/delete.yml');
+        TestUtil::setupCassette('carrier_accounts/delete.yml');
 
         $carrierAccount = CarrierAccount::create(Fixture::basicCarrierAccount());
 
@@ -113,7 +107,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
      */
     public function testTypes()
     {
-        VCR::insertCassette('carrier_accounts/types.yml');
+        TestUtil::setupCassette('carrier_accounts/types.yml');
 
         $types = CarrierAccount::types();
 

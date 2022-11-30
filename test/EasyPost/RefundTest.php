@@ -2,11 +2,8 @@
 
 namespace EasyPost\Test;
 
-use EasyPost\EasyPost;
 use EasyPost\Refund;
 use EasyPost\Shipment;
-use EasyPost\Test\Fixture;
-use VCR\VCR;
 
 class RefundTest extends \PHPUnit\Framework\TestCase
 {
@@ -15,9 +12,7 @@ class RefundTest extends \PHPUnit\Framework\TestCase
      */
     public static function setUpBeforeClass(): void
     {
-        EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
-
-        VCR::turnOn();
+        TestUtil::setupVcrTests('EASYPOST_TEST_API_KEY');
     }
 
     /**
@@ -25,8 +20,7 @@ class RefundTest extends \PHPUnit\Framework\TestCase
      */
     public static function tearDownAfterClass(): void
     {
-        VCR::eject();
-        VCR::turnOff();
+        TestUtil::teardownVcrTests();
     }
 
     /**
@@ -34,7 +28,7 @@ class RefundTest extends \PHPUnit\Framework\TestCase
      */
     public function testCreate()
     {
-        VCR::insertCassette('refunds/create.yml');
+        TestUtil::setupCassette('refunds/create.yml');
 
         $shipment = Shipment::create(Fixture::oneCallBuyShipment());
         $retrievedShipment = Shipment::retrieve($shipment); // We need to retrieve the shipment so that the tracking_code has time to populate
@@ -53,7 +47,7 @@ class RefundTest extends \PHPUnit\Framework\TestCase
      */
     public function testAll()
     {
-        VCR::insertCassette('refunds/all.yml');
+        TestUtil::setupCassette('refunds/all.yml');
 
         $refunds = Refund::all([
             'page_size' => Fixture::pageSize(),
@@ -74,7 +68,7 @@ class RefundTest extends \PHPUnit\Framework\TestCase
      */
     public function testRetrieve()
     {
-        VCR::insertCassette('refunds/retrieve.yml');
+        TestUtil::setupCassette('refunds/retrieve.yml');
 
         $refunds = Refund::all([
             'page_size' => Fixture::pageSize(),

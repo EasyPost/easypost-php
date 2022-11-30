@@ -2,10 +2,8 @@
 
 namespace EasyPost\Test;
 
-use EasyPost\EasyPost;
 use EasyPost\Error;
 use EasyPost\Shipment;
-use VCR\VCR;
 
 class ErrorTest extends \PHPUnit\Framework\TestCase
 {
@@ -14,9 +12,7 @@ class ErrorTest extends \PHPUnit\Framework\TestCase
      */
     public static function setUpBeforeClass(): void
     {
-        EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
-
-        VCR::turnOn();
+        TestUtil::setupVcrTests('EASYPOST_TEST_API_KEY');
     }
 
     /**
@@ -24,8 +20,7 @@ class ErrorTest extends \PHPUnit\Framework\TestCase
      */
     public static function tearDownAfterClass(): void
     {
-        VCR::eject();
-        VCR::turnOff();
+        TestUtil::teardownVcrTests();
     }
 
     /**
@@ -33,7 +28,7 @@ class ErrorTest extends \PHPUnit\Framework\TestCase
      */
     public function testError()
     {
-        VCR::insertCassette('errors/errors.yml');
+        TestUtil::setupCassette('errors/errors.yml');
 
         // Create a bad shipment so we can work with errors
         try {

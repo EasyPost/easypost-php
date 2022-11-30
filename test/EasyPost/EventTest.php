@@ -2,11 +2,8 @@
 
 namespace EasyPost\Test;
 
-use EasyPost\EasyPost;
 use EasyPost\Error;
 use EasyPost\Event;
-use EasyPost\Test\Fixture;
-use VCR\VCR;
 
 class EventTest extends \PHPUnit\Framework\TestCase
 {
@@ -15,9 +12,7 @@ class EventTest extends \PHPUnit\Framework\TestCase
      */
     public static function setUpBeforeClass(): void
     {
-        EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
-
-        VCR::turnOn();
+        TestUtil::setupVcrTests('EASYPOST_TEST_API_KEY');
     }
 
     /**
@@ -25,8 +20,7 @@ class EventTest extends \PHPUnit\Framework\TestCase
      */
     public static function tearDownAfterClass(): void
     {
-        VCR::eject();
-        VCR::turnOff();
+        TestUtil::teardownVcrTests();
     }
 
     /**
@@ -34,7 +28,7 @@ class EventTest extends \PHPUnit\Framework\TestCase
      */
     public function testAll()
     {
-        VCR::insertCassette('events/all.yml');
+        TestUtil::setupCassette('events/all.yml');
 
         $events = Event::all([
             'page_size' => Fixture::pageSize(),
@@ -52,7 +46,7 @@ class EventTest extends \PHPUnit\Framework\TestCase
      */
     public function testRetrieve()
     {
-        VCR::insertCassette('events/retrieve.yml');
+        TestUtil::setupCassette('events/retrieve.yml');
 
         $events = Event::all([
             'page_size' => Fixture::pageSize(),

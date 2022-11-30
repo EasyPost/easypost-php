@@ -2,7 +2,6 @@
 
 namespace EasyPost\Test;
 
-use EasyPost\EasyPost;
 use EasyPost\Util;
 
 class EasyPostObjectTest extends \PHPUnit\Framework\TestCase
@@ -20,14 +19,15 @@ class EasyPostObjectTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test using `get` magic method.
+     * Test using `get` magic method with an invalid property.
      */
-    public function testGetMagicMethod()
+    public function testGetMagicMethodInvalidProperty()
     {
         $object = Util::convertToEasyPostObject(Fixture::caAddress1(), null);
 
         $invalidProperty = $object->invalidProperty;
 
+        // TODO: This doesn't capture the `error_log()` call correctly, refactor the code so we can test this output
         $this->assertNull($invalidProperty);
     }
 

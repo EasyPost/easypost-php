@@ -2,9 +2,7 @@
 
 namespace EasyPost\Test;
 
-use EasyPost\EasyPost;
 use EasyPost\Referral;
-use VCR\VCR;
 
 class ReferralTest extends \PHPUnit\Framework\TestCase
 {
@@ -13,10 +11,7 @@ class ReferralTest extends \PHPUnit\Framework\TestCase
      */
     public static function setUpBeforeClass(): void
     {
-        $partnerUserProdApiKey = getenv('PARTNER_USER_PROD_API_KEY') !== false ? getenv('PARTNER_USER_PROD_API_KEY') : '123';
-        EasyPost::setApiKey($partnerUserProdApiKey);
-
-        VCR::turnOn();
+        TestUtil::setupVcrTests('PARTNER_USER_PROD_API_KEY');
     }
 
     /**
@@ -24,8 +19,7 @@ class ReferralTest extends \PHPUnit\Framework\TestCase
      */
     public static function tearDownAfterClass(): void
     {
-        VCR::eject();
-        VCR::turnOff();
+        TestUtil::teardownVcrTests();
     }
 
     /**
@@ -33,7 +27,7 @@ class ReferralTest extends \PHPUnit\Framework\TestCase
      */
     public function testCreate()
     {
-        VCR::insertCassette('referrals/create.yml');
+        TestUtil::setupCassette('referrals/create.yml');
 
         $referral = Referral::create([
             'name' => 'Test Referral',
@@ -51,7 +45,7 @@ class ReferralTest extends \PHPUnit\Framework\TestCase
      */
     public function testAll()
     {
-        VCR::insertCassette('referrals/all.yml');
+        TestUtil::setupCassette('referrals/all.yml');
 
         $referralUsers = Referral::all([
             'page_size' => Fixture::pageSize(),
@@ -69,7 +63,7 @@ class ReferralTest extends \PHPUnit\Framework\TestCase
      */
     public function testUpdateEmail()
     {
-        VCR::insertCassette('referrals/updateEmail.yml');
+        TestUtil::setupCassette('referrals/updateEmail.yml');
 
         $referralUsers = Referral::all();
 
@@ -86,7 +80,7 @@ class ReferralTest extends \PHPUnit\Framework\TestCase
      */
     public function testReferralAddCreditCard()
     {
-        VCR::insertCassette('referrals/addCreditCard.yml');
+        TestUtil::setupCassette('referrals/addCreditCard.yml');
 
         $creditCard = Referral::add_credit_card(
             getenv('REFERRAL_USER_PROD_API_KEY'),

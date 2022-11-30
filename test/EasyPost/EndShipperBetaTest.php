@@ -3,8 +3,6 @@
 namespace EasyPost\Test;
 
 use EasyPost\Beta\EndShipper;
-use EasyPost\EasyPost;
-use VCR\VCR;
 
 class EndShipperBetaTest extends \PHPUnit\Framework\TestCase
 {
@@ -13,9 +11,7 @@ class EndShipperBetaTest extends \PHPUnit\Framework\TestCase
      */
     public static function setUpBeforeClass(): void
     {
-        EasyPost::setApiKey(getenv('EASYPOST_TEST_API_KEY'));
-
-        VCR::turnOn();
+        TestUtil::setupVcrTests('EASYPOST_TEST_API_KEY');
     }
 
     /**
@@ -23,8 +19,7 @@ class EndShipperBetaTest extends \PHPUnit\Framework\TestCase
      */
     public static function tearDownAfterClass(): void
     {
-        VCR::eject();
-        VCR::turnOff();
+        TestUtil::teardownVcrTests();
     }
 
     /**
@@ -32,7 +27,7 @@ class EndShipperBetaTest extends \PHPUnit\Framework\TestCase
      */
     public function testCreate()
     {
-        VCR::insertCassette('beta/end_shipper/create.yml');
+        TestUtil::setupCassette('beta/end_shipper/create.yml');
 
         $endShipper = EndShipper::create(Fixture::caAddress1());
 
@@ -46,7 +41,7 @@ class EndShipperBetaTest extends \PHPUnit\Framework\TestCase
      */
     public function testRetrieve()
     {
-        VCR::insertCassette('beta/end_shipper/retrieve.yml');
+        TestUtil::setupCassette('beta/end_shipper/retrieve.yml');
 
         $endShipper = EndShipper::create(Fixture::caAddress1());
 
@@ -61,7 +56,7 @@ class EndShipperBetaTest extends \PHPUnit\Framework\TestCase
      */
     public function testAll()
     {
-        VCR::insertCassette('beta/end_shipper/all.yml');
+        TestUtil::setupCassette('beta/end_shipper/all.yml');
 
         $endShippers = EndShipper::all([
             'page_size' => Fixture::pageSize(),
@@ -76,7 +71,7 @@ class EndShipperBetaTest extends \PHPUnit\Framework\TestCase
      */
     public function testUpdate()
     {
-        VCR::insertCassette('beta/end_shipper/update.yml');
+        TestUtil::setupCassette('beta/end_shipper/update.yml');
 
         $endShipper = EndShipper::create(Fixture::caAddress1());
 
