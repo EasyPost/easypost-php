@@ -44,7 +44,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
      */
     public function testCreateWithCustomWorkflow()
     {
-        VCR::insertCassette('carrier_accounts/create_with_custom_workflow.yml');
+        TestUtil::setupCassette('carrier_accounts/createWithCustomWorkflow.yml');
 
         $data = Fixture::basicCarrierAccount();
         $data['type'] = 'FedexAccount';
