@@ -14,7 +14,6 @@ if (!function_exists('json_decode')) {
 require_once(dirname(__FILE__) . '/EasyPost/EasyPost.php');
 require_once(dirname(__FILE__) . '/EasyPost/Util.php');
 require_once(dirname(__FILE__) . '/EasyPost/Error.php');
-require_once(dirname(__FILE__) . '/EasyPost/Constants.php');
 
 // Guts
 require_once(dirname(__FILE__) . '/EasyPost/EasyPostObject.php');
@@ -58,3 +57,4 @@ require_once(dirname(__FILE__) . '/EasyPost/Verification.php');
 require_once(dirname(__FILE__) . '/EasyPost/VerificationDetails.php');
 require_once(dirname(__FILE__) . '/EasyPost/Verifications.php');
 require_once(dirname(__FILE__) . '/EasyPost/Webhook.php');
+

@@ -2,6 +2,11 @@
 
 namespace EasyPost;
 
+const CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_WORKFLOWS = [
+    'FedexAccount',
+    'UpsAccount'
+];
+
 /**
  * @package EasyPost
  * @property string $id
@@ -113,10 +118,9 @@ class CarrierAccount extends EasypostResource
      */
     private static function selectCarrierAccountCreationEndpoint($carrierAccountType): string
     {
-        if (in_array($carrierAccountType, CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_WORKFLOWS)) {
+        if (in_array($carrierAccountType, CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_WORKFLOWS, true)) {
             return '/carrier_accounts/register';
-        } else {
-            return '/carrier_accounts';
         }
+        return '/carrier_accounts';
     }
 }
