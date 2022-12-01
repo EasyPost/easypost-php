@@ -1,0 +1,75 @@
+
+-
+    request:
+        method: POST
+        url: 'https://api.easypost.com/v2/carrier_accounts/register'
+        headers:
+            Host: api.easypost.com
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+        body: '{"carrier_account":{"type":"FedexAccount","registration_data":{"some":"data"}}}'
+    response:
+        status:
+            http_version: '2'
+            code: '422'
+            message: ''
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: e660f0006387f304ee77b12300145680
+            cache-control: 'private, no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '1347'
+            x-runtime: '0.036115'
+            x-node: bigweb2nuq
+            x-version-label: easypost-202211251832-642412d65d-master
+            x-backend: easypost
+            x-proxied: ['intlb2nuq 29913d444b', 'intlb1wdc 29913d444b', 'extlb3wdc 29913d444b']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"error":{"code":"UNPROCESSABLE_ENTITY","message":"The request was understood, but cannot be processed.","errors":[{"field":"shipping_streets","message":"must be present and a string"},{"field":"shipping_city","message":"must be present and a string"},{"field":"shipping_state","message":"must be present and a string"},{"field":"shipping_postal_code","message":"must be present and a string"},{"field":"shipping_country_code","message":"must be present and a string"},{"field":"corporate_first_name","message":"must be present and a string"},{"field":"corporate_last_name","message":"must be present and a string"},{"field":"corporate_job_title","message":"must be present and a string"},{"field":"corporate_company_name","message":"must be present and a string"},{"field":"corporate_phone_number","message":"must be present and a string"},{"field":"corporate_email_address","message":"must be present and a string"},{"field":"corporate_streets","message":"must be present and a string"},{"field":"corporate_city","message":"must be present and a string"},{"field":"corporate_state","message":"must be present and a string"},{"field":"corporate_postal_code","message":"must be present and a string"},{"field":"corporate_country_code","message":"must be present and a string"},{"field":"account_number","message":"must be present and a string"}]}}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/carrier_accounts/register'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 422
+            header_size: 717
+            request_size: 322
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.330485
+            namelookup_time: 0.05998
+            connect_time: 0.084151
+            pretransfer_time: 0.122985
+            size_upload: 79.0
+            size_download: 1347.0
+            speed_download: 4075.0
+            speed_upload: 239.0
+            download_content_length: 1347.0
+            upload_content_length: 79.0
+            starttransfer_time: 0.122991
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: '2607:f0d0:3803:ca::2'
+            certinfo: {  }
+            primary_port: 443
+            local_ip: '2601:cb:8000:2091:6574:30b2:c0d3:f690'
+            local_port: 57963
+            http_version: 3
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 122822
+            connect_time_us: 84151
+            namelookup_time_us: 59980
+            pretransfer_time_us: 122985
+            redirect_time_us: 0
+            starttransfer_time_us: 122991
+            total_time_us: 330485

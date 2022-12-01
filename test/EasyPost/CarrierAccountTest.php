@@ -39,6 +39,38 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
+     * Test creating a carrier account with custom workflow.
+     */
+    public function testCreateWithCustomWorkflow()
+    {
+        TestUtil::setupCassette('carrier_accounts/createWithCustomWorkflow.yml');
+
+        $data = [];
+        $data['type'] = 'FedexAccount';
+        // We have to send some registration data, otherwise API will throw a 400 Bad Request.
+        $data['registration_data'] = [
+            'some' => 'data',
+        ];
+
+        try {
+            $carrierAccount = CarrierAccount::create($data);
+            // Delete the carrier account once it's done being tested (should not be reached).
+            $carrierAccount->delete();
+        } catch (\EasyPost\Error $e) {
+            $this->assertEquals(422, $e->getHttpStatus());
+            $errorFound = false;
+            $errors = $e->errors;
+            foreach ($errors as $error) {
+                if ($error['field'] == 'account_number' && $error['message'] == 'must be present and a string') {
+                    $errorFound = true;
+                    break;
+                }
+            }
+            $this->assertTrue($errorFound);
+        }
+    }
+
+    /**
      * Test retrieving a carrier account.
      */
     public function testRetrieve()

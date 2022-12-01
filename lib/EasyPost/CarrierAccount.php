@@ -2,6 +2,11 @@
 
 namespace EasyPost;
 
+const CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_WORKFLOWS = [
+    'FedexAccount',
+    'UpsAccount'
+];
+
 /**
  * @package EasyPost
  * @property string $id
@@ -68,6 +73,7 @@ class CarrierAccount extends EasypostResource
      * @param mixed $params
      * @param string $apiKey
      * @return mixed
+     * @throws Error
      */
     public static function create($params = null, $apiKey = null)
     {
@@ -76,7 +82,18 @@ class CarrierAccount extends EasypostResource
             unset($params);
             $params['carrier_account'] = $clone;
         }
-        return self::createResource(get_class(), $params, $apiKey);
+
+        $type = $params['carrier_account']['type'];
+        if (!isset($type)) {
+            throw new Error('type is required');
+        }
+
+        $url = self::selectCarrierAccountCreationEndpoint($type);
+
+        $requestor = new Requestor($apiKey);
+        list($response, $apiKey) = $requestor->request('post', $url, $params);
+
+        return Util::convertToEasyPostObject($response, $apiKey);
     }
 
     /**
@@ -91,5 +108,19 @@ class CarrierAccount extends EasypostResource
         $requestor = new Requestor($apiKey);
         list($response, $apiKey) = $requestor->request('get', '/carrier_types', $params);
         return Util::convertToEasyPostObject($response, $apiKey);
+    }
+
+    /**
+     * Select the endpoint for creating a carrier account based on the type of carrier account.
+     *
+     * @param string $carrierAccountType The type of carrier account to create.
+     * @return string The endpoint for creating a carrier account.
+     */
+    private static function selectCarrierAccountCreationEndpoint($carrierAccountType): string
+    {
+        if (in_array($carrierAccountType, CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_WORKFLOWS, true)) {
+            return '/carrier_accounts/register';
+        }
+        return '/carrier_accounts';
     }
 }
