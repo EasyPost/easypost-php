@@ -3,7 +3,6 @@
 namespace EasyPost\Test;
 
 use EasyPost\CarrierAccount;
-use EasyPost\Test\Fixture;
 
 class CarrierAccountTest extends \PHPUnit\Framework\TestCase
 {
@@ -46,30 +45,26 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('carrier_accounts/createWithCustomWorkflow.yml');
 
-        $data = Fixture::basicCarrierAccount();
+        $data = [];
         $data['type'] = 'FedexAccount';
         // We have to send some registration data, otherwise API will throw a 400 Bad Request.
         $data['registration_data'] = [
             'some' => 'data',
         ];
 
-        // catch exception
         try {
             $carrierAccount = CarrierAccount::create($data);
             // Delete the carrier account once it's done being tested (should not be reached).
             $carrierAccount->delete();
         } catch (\EasyPost\Error $e) {
             $this->assertEquals(422, $e->getHttpStatus());
-            $this->assertNotEmpty($e->errors);
             $errorFound = false;
             $errors = $e->errors;
             foreach ($errors as $error) {
                 if ($error['field'] == 'account_number' && $error['message'] == 'must be present and a string') {
                     $errorFound = true;
-                    unset($error);
                     break;
                 }
-                unset($error);
             }
             $this->assertTrue($errorFound);
         }
