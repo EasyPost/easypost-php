@@ -74,7 +74,7 @@ class Tracker extends EasypostResource
      *
      * @param mixed  $params
      * @param string $apiKey
-     * @return bool
+     * @return void
      */
     public static function createList($params = null, $apiKey = null)
     {
@@ -88,9 +88,6 @@ class Tracker extends EasypostResource
 
         $requestor = new Requestor($apiKey);
         $url = self::classUrl(get_class());
-        list($response, $apiKey) = $requestor->request('post', $url . '/create_list', $encodedParams);
-
-        // The response is empty, we return true if no error
-        return true;
+        $requestor->request('post', $url . '/create_list', $encodedParams);
     }
 }

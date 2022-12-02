@@ -67,9 +67,10 @@ class ReferralTest extends \PHPUnit\Framework\TestCase
 
         $referralUsers = Referral::all();
 
-        $referralUser = Referral::updateEmail('email@example.com', $referralUsers['referral_customers'][0]['id']);
+        Referral::updateEmail('email@example.com', $referralUsers['referral_customers'][0]['id']);
 
-        $this->assertEquals($referralUser, true);
+        // This endpoint returns nothing so we only assert a failure doesn't happen
+        $this->expectNotToPerformAssertions();
     }
 
     /**

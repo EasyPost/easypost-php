@@ -35,7 +35,7 @@ class Billing extends EasypostResource
      * @param string $amount
      * @param string $primaryOrSecondary
      * @param string $apiKey
-     * @return mixed
+     * @return void
      */
     public static function fundWallet($amount, $primaryOrSecondary = 'primary', $apiKey = null)
     {
@@ -44,10 +44,7 @@ class Billing extends EasypostResource
         $url = $paymentMethodEndpoint . "/$paymentMethodId/charges";
         $wrappedParams = ['amount' => $amount];
         $requestor = new Requestor($apiKey);
-        list($response, $apiKey) = $requestor->request('post', $url, $wrappedParams);
-
-        // Return true if succeeds, an error will be thrown if it fails
-        return true;
+        $requestor->request('post', $url, $wrappedParams);
     }
 
     /**
@@ -55,7 +52,7 @@ class Billing extends EasypostResource
      *
      * @param string $primaryOrSecondary
      * @param string $apiKey
-     * @return mixed
+     * @return void
      */
     public static function deletePaymentMethod($primaryOrSecondary, $apiKey = null)
     {
@@ -63,10 +60,7 @@ class Billing extends EasypostResource
 
         $url = $paymentMethodEndpoint . "/$paymentMethodId";
         $requestor = new Requestor($apiKey);
-        list($response, $apiKey) = $requestor->request('delete', $url);
-
-        // Return true if succeeds, an error will be thrown if it fails
-        return true;
+        $requestor->request('delete', $url);
     }
 
     /**
