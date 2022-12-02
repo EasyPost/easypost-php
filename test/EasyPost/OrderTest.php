@@ -61,7 +61,7 @@ class OrderTest extends \PHPUnit\Framework\TestCase
 
         $order = Order::create(Fixture::basicOrder());
 
-        $rates = $order->get_rates();
+        $rates = $order->getRates();
 
         $ratesArray = $rates['rates'];
 
@@ -118,20 +118,20 @@ class OrderTest extends \PHPUnit\Framework\TestCase
         $order = Order::create(Fixture::basicOrder());
 
         // Test lowest rate with no filters
-        $lowestRate = $order->lowest_rate();
+        $lowestRate = $order->lowestRate();
         $this->assertEquals('First', $lowestRate['service']);
         $this->assertEquals('5.57', $lowestRate['rate']);
         $this->assertEquals('USPS', $lowestRate['carrier']);
 
         // Test lowest rate with service filter (this rate is higher than the lowest but should filter)
-        $lowestRate = $order->lowest_rate([], ['Priority']);
+        $lowestRate = $order->lowestRate([], ['Priority']);
         $this->assertEquals('Priority', $lowestRate['service']);
         $this->assertEquals('7.90', $lowestRate['rate']);
         $this->assertEquals('USPS', $lowestRate['carrier']);
 
         // Test lowest rate with carrier filter (should error due to bad carrier)
         try {
-            $lowestRate = $order->lowest_rate(['BAD CARRIER'], []);
+            $lowestRate = $order->lowestRate(['BAD CARRIER'], []);
         } catch (Error $error) {
             $this->assertEquals('No rates found.', $error->getMessage());
         }

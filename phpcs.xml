@@ -18,19 +18,11 @@
     <arg value="np" />
 
     <!-- Use the PSR12 ruleset -->
-    <rule ref="PSR12">
-        <!-- TODO: Change all function names to camel caps on the next major release -->
-        <exclude name="PSR1.Methods.CamelCapsMethodName.NotCamelCaps" />
-    </rule>
+    <rule ref="PSR12" />
 
     <!-- Enforce custom rules -->
     <rule ref="Generic.Arrays.DisallowLongArraySyntax" />
-    <rule ref="Squiz.NamingConventions.ValidVariableName.NotCamelCaps">
-        <!-- TODO: Change $primary_or_secondary to $primaryOrSecondary on the next major release -->
-        <exclude-pattern>/lib/EasyPost/Billing\.php</exclude-pattern>
-        <!-- TODO: Change $delivery_days and $delivery_accuracy to camel caps on the next major release -->
-        <exclude-pattern>/lib/EasyPost/Shipment\.php</exclude-pattern>
-    </rule>
+    <rule ref="Squiz.NamingConventions.ValidVariableName.NotCamelCaps" />
     <rule ref="Squiz.Strings.DoubleQuoteUsage.NotRequired" />
     <rule ref="vendor/squizlabs/php_codesniffer/src/Standards/PEAR/Sniffs/Commenting/InlineCommentSniff.php" />
 </ruleset>

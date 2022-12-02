@@ -81,7 +81,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('batches/createAndBuy.yml');
 
-        $batch = Batch::create_and_buy([
+        $batch = Batch::reateAndBuy([
             Fixture::oneCallBuyShipment(),
             Fixture::oneCallBuyShipment(),
         ]);
@@ -132,7 +132,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
             sleep(5); // Wait enough time for the batch to process buying the shipment
         }
 
-        $batch->create_scan_form();
+        $batch->createScanForm();
 
         // We can't assert anything meaningful here because the scanform gets queued for generation and may not be immediately available
         $this->assertInstanceOf('\EasyPost\Batch', $batch);
@@ -149,12 +149,12 @@ class BatchTest extends \PHPUnit\Framework\TestCase
 
         $batch = Batch::create();
 
-        $batch->add_shipments([
+        $batch->addShipments([
             'shipments' => [$shipment]
         ]);
         $this->assertEquals(1, $batch->num_shipments);
 
-        $batch->remove_shipments([
+        $batch->removeShipments([
             'shipments' => [$shipment]
         ]);
         $this->assertEquals(0, $batch->num_shipments);

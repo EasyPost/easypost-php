@@ -69,7 +69,7 @@ class Batch extends EasypostResource
      * @param string $apiKey
      * @return mixed
      */
-    public static function create_and_buy($params = null, $apiKey = null)
+    public static function reateAndBuy($params = null, $apiKey = null)
     {
         if (!isset($params['batch']) || !is_array($params['batch'])) {
             $clone = $params;
@@ -140,7 +140,7 @@ class Batch extends EasypostResource
      * @return $this
      * @throws \EasyPost\Error
      */
-    public function remove_shipments($params = null)
+    public function removeShipments($params = null)
     {
         $requestor = new Requestor($this->_apiKey);
         $url = $this->instanceUrl() . '/remove_shipments';
@@ -158,7 +158,7 @@ class Batch extends EasypostResource
      * @return $this
      * @throws \EasyPost\Error
      */
-    public function add_shipments($params = null)
+    public function addShipments($params = null)
     {
         $requestor = new Requestor($this->_apiKey);
         $url = $this->instanceUrl() . '/add_shipments';
@@ -176,7 +176,7 @@ class Batch extends EasypostResource
      * @return mixed
      * @throws \EasyPost\Error
      */
-    public function create_scan_form($params = null)
+    public function createScanForm($params = null)
     {
         $requestor = new Requestor($this->_apiKey);
         $url = $this->instanceUrl() . '/scan_form';

@@ -60,7 +60,7 @@ class Referral extends EasypostResource
      * @param string $apiKey
      * @return boolean
      */
-    public static function update_email($email, $userId, $apiKey = null)
+    public static function updateEmail($email, $userId, $apiKey = null)
     {
         $wrappedParams = [
             'user' => [
@@ -88,19 +88,19 @@ class Referral extends EasypostResource
      * @param string $primaryOrSecondary
      * @return mixed
      */
-    public static function add_credit_card($referralApiKey, $number, $expirationMonth, $expirationYear, $cvc, $primaryOrSecondary = 'primary')
+    public static function addCreditCard($referralApiKey, $number, $expirationMonth, $expirationYear, $cvc, $primaryOrSecondary = 'primary')
     {
-        $easypostStripeApiKey = Referral::retrieve_easypost_stripe_api_key();
+        $easypostStripeApiKey = Referral::retrieveEasypostStripeApiKey();
 
         try {
-            $stripeToken = Referral::create_stripe_token($number, $expirationMonth, $expirationYear, $cvc, $easypostStripeApiKey);
+            $stripeToken = Referral::createStripeToken($number, $expirationMonth, $expirationYear, $cvc, $easypostStripeApiKey);
         } catch (\Exception $error) {
             throw new Error('Could not send card details to Stripe, please try again later');
         }
 
         $stripeToken = $stripeToken['id'] ?? '';
 
-        $response = Referral::create_easypost_credit_card($referralApiKey, $stripeToken, $primaryOrSecondary);
+        $response = Referral::createEasypostCreditCard($referralApiKey, $stripeToken, $primaryOrSecondary);
 
         return Util::convertToEasyPostObject($response, null);
     }
@@ -110,7 +110,7 @@ class Referral extends EasypostResource
      *
      * @return string
      */
-    private static function retrieve_easypost_stripe_api_key()
+    private static function retrieveEasypostStripeApiKey()
     {
         $requestor = new Requestor();
         list($response, $apiKey) = $requestor->request('get', '/partners/stripe_public_key');
@@ -128,7 +128,7 @@ class Referral extends EasypostResource
      * @param string $easypostStripeKey
      * @return mixed
      */
-    private static function create_stripe_token($number, $expirationMonth, $expirationYear, $cvc, $easypostStripeKey)
+    private static function createStripeToken($number, $expirationMonth, $expirationYear, $cvc, $easypostStripeKey)
     {
         $headers = [
             'Content-Type: application/x-www-form-urlencoded',
@@ -162,7 +162,7 @@ class Referral extends EasypostResource
      * @param string @priority
      * @return mixed
      */
-    private static function create_easypost_credit_card($referralApiKey, $stripeObjectId, $priority = 'primary')
+    private static function createEasypostCreditCard($referralApiKey, $stripeObjectId, $priority = 'primary')
     {
         $params = [
             'credit_card' => [

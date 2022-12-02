@@ -95,7 +95,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('trackers/createList.yml');
 
-        $response = Tracker::create_list([
+        $response = Tracker::createList([
             '0' => ['tracking_code' => 'EZ1000000001'],
             '1' => ['tracking_code' => 'EZ1000000002'],
             '2' => ['tracking_code' => 'EZ1000000003'],

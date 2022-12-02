@@ -58,7 +58,7 @@ $shipment = \EasyPost\Shipment::create([
     ],
 ]);
 
-$shipment->buy($shipment->lowest_rate());
+$shipment->buy($shipment->lowestRate());
 
 echo $shipment;
 ```

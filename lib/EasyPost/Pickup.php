@@ -100,7 +100,7 @@ class Pickup extends EasypostResource
      * @return Rate
      * @throws \EasyPost\Error
      */
-    public function lowest_rate($carriers = [], $services = [])
+    public function lowestRate($carriers = [], $services = [])
     {
         $lowestRate = Util::getLowestObjectRate($this, $carriers, $services, 'pickup_rates');
 

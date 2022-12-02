@@ -47,7 +47,7 @@ class UserTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('users/retrieve.yml');
 
-        $authenticatedUser = User::retrieve_me();
+        $authenticatedUser = User::retrieveMe();
 
         $user = User::retrieve($authenticatedUser['id']);
 
@@ -62,7 +62,7 @@ class UserTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('users/retrieveMe.yml');
 
-        $user = User::retrieve_me();
+        $user = User::retrieveMe();
 
         $this->assertInstanceOf('\EasyPost\User', $user);
         $this->assertStringMatchesFormat('user_%s', $user->id);
@@ -75,7 +75,7 @@ class UserTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('users/update.yml');
 
-        $user = User::retrieve_me();
+        $user = User::retrieveMe();
 
         $testPhone = '5555555555';
 
@@ -108,11 +108,11 @@ class UserTest extends \PHPUnit\Framework\TestCase
      */
     public function testAllApiKeys()
     {
-        TestUtil::setupCassette('users/all_api_keys.yml');
+        TestUtil::setupCassette('users/allApiKeys.yml');
 
-        $user = User::retrieve_me();
+        $user = User::retrieveMe();
 
-        $apiKeys = $user::all_api_keys();
+        $apiKeys = $user::allApiKeys();
 
         $this->assertNotNull($apiKeys['keys']);
         $this->assertNotNull($apiKeys['children']);
@@ -129,11 +129,11 @@ class UserTest extends \PHPUnit\Framework\TestCase
      */
     public function testAuthenticatedUserApiKeys()
     {
-        TestUtil::setupCassette('users/authenticated_user_api_keys.yml');
+        TestUtil::setupCassette('users/authenticatedUserApiKeys.yml');
 
-        $user = User::retrieve_me();
+        $user = User::retrieveMe();
 
-        $apiKeys = $user->api_keys();
+        $apiKeys = $user->apiKeys();
 
         $this->assertNotNull($apiKeys['production']);
         $this->assertNotNull($apiKeys['test']);
@@ -147,14 +147,14 @@ class UserTest extends \PHPUnit\Framework\TestCase
      */
     public function testChildUserApiKeys()
     {
-        TestUtil::setupCassette('users/child_user_api_keys.yml');
+        TestUtil::setupCassette('users/childUserApiKeys.yml');
 
         $user = User::create([
             'name' => 'Test User',
         ]);
         $childUser = User::retrieve($user->id);
 
-        $apiKeys = $childUser->api_keys();
+        $apiKeys = $childUser->apiKeys();
 
         $this->assertNotNull($apiKeys['production']);
         $this->assertNotNull($apiKeys['test']);
@@ -172,11 +172,11 @@ class UserTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('users/brand.yml');
 
-        $user = User::retrieve_me();
+        $user = User::retrieveMe();
 
         $color = '#123456';
 
-        $brand = $user->update_brand([
+        $brand = $user->updateBrand([
             'color' => $color,
         ]);
 
