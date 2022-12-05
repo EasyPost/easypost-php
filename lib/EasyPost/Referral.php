@@ -58,7 +58,7 @@ class Referral extends EasypostResource
      * @param string $email
      * @param string $userId
      * @param string $apiKey
-     * @return boolean
+     * @return void
      */
     public static function updateEmail($email, $userId, $apiKey = null)
     {
@@ -69,10 +69,7 @@ class Referral extends EasypostResource
         ];
 
         $requestor = new Requestor($apiKey);
-        list($response, $apiKey) = $requestor->request('put', "/referral_customers/{$userId}", $wrappedParams);
-
-        // Return true if successful, an error will be thrown if the request failed
-        return true;
+        $requestor->request('put', "/referral_customers/{$userId}", $wrappedParams);
     }
 
     /**

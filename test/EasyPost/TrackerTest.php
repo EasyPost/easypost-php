@@ -95,13 +95,13 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('trackers/createList.yml');
 
-        $response = Tracker::createList([
+        Tracker::createList([
             '0' => ['tracking_code' => 'EZ1000000001'],
             '1' => ['tracking_code' => 'EZ1000000002'],
             '2' => ['tracking_code' => 'EZ1000000003'],
         ]);
 
-        // This endpoint returns nothing so we assert the function returns true
-        $this->assertEquals(true, $response);
+        // This endpoint returns nothing so we only assert a failure doesn't happen
+        $this->expectNotToPerformAssertions();
     }
 }

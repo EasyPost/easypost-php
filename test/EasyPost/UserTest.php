@@ -98,9 +98,10 @@ class UserTest extends \PHPUnit\Framework\TestCase
             'name' => 'Test User',
         ]);
 
-        $response = $user->delete();
+        $user->delete();
 
-        $this->assertNotNull($response);
+        // This endpoint returns nothing so we only assert a failure doesn't happen
+        $this->expectNotToPerformAssertions();
     }
 
     /**
