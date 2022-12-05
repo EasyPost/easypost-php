@@ -18,7 +18,7 @@ class Billing extends EasypostResource
      * @param string $apiKey
      * @return mixed
      */
-    public static function retrieve_payment_methods($params = null, $apiKey = null)
+    public static function retrievePaymentMethods($params = null, $apiKey = null)
     {
         $paymentMethods = self::allResources('paymentMethod', $params, $apiKey);
 
@@ -33,13 +33,13 @@ class Billing extends EasypostResource
      * Fund your EasyPost wallet by charging your primary or secondary payment method.
      *
      * @param string $amount
-     * @param string $primary_or_secondary
+     * @param string $primaryOrSecondary
      * @param string $apiKey
      * @return mixed
      */
-    public static function fund_wallet($amount, $primary_or_secondary = 'primary', $apiKey = null)
+    public static function fundWallet($amount, $primaryOrSecondary = 'primary', $apiKey = null)
     {
-        [$paymentMethodEndpoint, $paymentMethodId] = Billing::get_payment_info(strtolower($primary_or_secondary));
+        [$paymentMethodEndpoint, $paymentMethodId] = Billing::getPaymentInfo(strtolower($primaryOrSecondary));
 
         $url = $paymentMethodEndpoint . "/$paymentMethodId/charges";
         $wrappedParams = ['amount' => $amount];
@@ -53,13 +53,13 @@ class Billing extends EasypostResource
     /**
      * Delete a payment method.
      *
-     * @param string $primary_or_secondary
+     * @param string $primaryOrSecondary
      * @param string $apiKey
      * @return mixed
      */
-    public static function delete_payment_method($primary_or_secondary, $apiKey = null)
+    public static function deletePaymentMethod($primaryOrSecondary, $apiKey = null)
     {
-        [$paymentMethodEndpoint, $paymentMethodId] = Billing::get_payment_info(strtolower($primary_or_secondary));
+        [$paymentMethodEndpoint, $paymentMethodId] = Billing::getPaymentInfo(strtolower($primaryOrSecondary));
 
         $url = $paymentMethodEndpoint . "/$paymentMethodId";
         $requestor = new Requestor($apiKey);
@@ -72,17 +72,17 @@ class Billing extends EasypostResource
     /**
      * Get payment info (type of the payment method and ID of the payment method)
      *
-     * @param string $primary_or_secondary
+     * @param string $primaryOrSecondary
      * @return array
      */
-    private static function get_payment_info($primary_or_secondary = 'primary')
+    private static function getPaymentInfo($primaryOrSecondary = 'primary')
     {
-        $paymentMethods = Billing::retrieve_payment_methods();
+        $paymentMethods = Billing::retrievePaymentMethods();
         $paymentMethodMap = [
             'primary' => 'primary_payment_method',
             'secondary' => 'secondary_payment_method'
         ];
-        $paymentMethodToUse = $paymentMethodMap[$primary_or_secondary] ?? null;
+        $paymentMethodToUse = $paymentMethodMap[$primaryOrSecondary] ?? null;
 
         $errorString = 'The chosen payment method is not valid. Please try again.';
 

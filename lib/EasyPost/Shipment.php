@@ -90,7 +90,7 @@ class Shipment extends EasypostResource
      * @return $this
      * @throws \EasyPost\Error
      */
-    public function regenerate_rates($params = null, $withCarbonOffset = false)
+    public function regenerateRates($params = null, $withCarbonOffset = false)
     {
         $requestor = new Requestor($this->_apiKey);
         $url = $this->instanceUrl() . '/rerate';
@@ -107,7 +107,7 @@ class Shipment extends EasypostResource
      * @return array
      * @throws \EasyPost\Error
      */
-    public function get_smartrates()
+    public function getSmartrates()
     {
         $requestor = new Requestor($this->_apiKey);
         $url = $this->instanceUrl() . '/smartrate';
@@ -222,7 +222,7 @@ class Shipment extends EasypostResource
      * @return $this
      * @throws \EasyPost\Error
      */
-    public function generate_form(string $formType, $formOptions = null): Shipment
+    public function generateForm(string $formType, $formOptions = null): Shipment
     {
         $requestor = new Requestor($this->_apiKey);
         $url = $this->instanceUrl() . '/forms';
@@ -246,7 +246,7 @@ class Shipment extends EasypostResource
      * @return Rate
      * @throws \EasyPost\Error
      */
-    public function lowest_rate($carriers = [], $services = [])
+    public function lowestRate($carriers = [], $services = [])
     {
         $lowestRate = Util::getLowestObjectRate($this, $carriers, $services);
 
@@ -258,15 +258,15 @@ class Shipment extends EasypostResource
      *
      * To exclude a carrier or service, prepend the string with `!`.
      *
-     * @param int $delivery_days
-     * @param string $delivery_accuracy
+     * @param int $deliveryDays
+     * @param string $deliveryAccuracy
      * @return Rate
      * @throws \EasyPost\Error
      */
-    public function lowest_smartrate($delivery_days, $delivery_accuracy)
+    public function lowestSmartrate($deliveryDays, $deliveryAccuracy)
     {
-        $smartrates = $this->get_smartrates();
-        $lowestRate = $this->get_lowest_smartrate($smartrates, $delivery_days, strtolower($delivery_accuracy));
+        $smartrates = $this->getSmartrates();
+        $lowestRate = $this->getLowestSmartrate($smartrates, $deliveryDays, strtolower($deliveryAccuracy));
 
         return $lowestRate;
     }
@@ -277,12 +277,12 @@ class Shipment extends EasypostResource
      * To exclude a carrier or service, prepend the string with `!`.
      *
      * @param array $smartrates
-     * @param int $delivery_days
-     * @param string $delivery_accuracy
+     * @param int $deliveryDays
+     * @param string $deliveryAccuracy
      * @return Rate
      * @throws \EasyPost\Error
      */
-    public static function get_lowest_smartrate($smartrates, $delivery_days, $delivery_accuracy)
+    public static function getLowestSmartrate($smartrates, $deliveryDays, $deliveryAccuracy)
     {
         $validDeliveryAccuracyValues = [
             'percentile_50',
@@ -295,13 +295,13 @@ class Shipment extends EasypostResource
         ];
         $lowestSmartrate = false;
 
-        if (!in_array(strtolower($delivery_accuracy), $validDeliveryAccuracyValues)) {
+        if (!in_array(strtolower($deliveryAccuracy), $validDeliveryAccuracyValues)) {
             $jsonValidList = json_encode($validDeliveryAccuracyValues);
             throw new Error("Invalid delivery_accuracy value, must be one of: $jsonValidList");
         }
 
         foreach ($smartrates as $rate) {
-            if ($rate['time_in_transit'][$delivery_accuracy] > intval($delivery_days)) {
+            if ($rate['time_in_transit'][$deliveryAccuracy] > intval($deliveryDays)) {
                 continue;
             } elseif (!$lowestSmartrate || floatval($rate['rate']) < floatval($lowestSmartrate['rate'])) {
                 $lowestSmartrate = $rate;

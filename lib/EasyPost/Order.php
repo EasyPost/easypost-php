@@ -58,7 +58,7 @@ class Order extends EasypostResource
      * @return $this
      * @throws \EasyPost\Error
      */
-    public function get_rates($params = null)
+    public function getRates($params = null)
     {
         $requestor = new Requestor($this->_apiKey);
         $url = $this->instanceUrl() . '/rates';
@@ -103,7 +103,7 @@ class Order extends EasypostResource
      * @return Rate
      * @throws \EasyPost\Error
      */
-    public function lowest_rate($carriers = [], $services = [])
+    public function lowestRate($carriers = [], $services = [])
     {
         $lowestRate = Util::getLowestObjectRate($this, $carriers, $services);
 

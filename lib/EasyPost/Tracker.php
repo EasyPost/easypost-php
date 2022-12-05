@@ -76,7 +76,7 @@ class Tracker extends EasypostResource
      * @param string $apiKey
      * @return bool
      */
-    public static function create_list($params = null, $apiKey = null)
+    public static function createList($params = null, $apiKey = null)
     {
         if (!isset($params['trackers']) || !is_array($params['trackers'])) {
             $clone = $params;

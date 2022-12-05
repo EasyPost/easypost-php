@@ -137,7 +137,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
 
         $addressData = Fixture::incorrectAddress();
 
-        $address = Address::create_and_verify($addressData);
+        $address = Address::createAndVerify($addressData);
 
         $this->assertInstanceOf('\EasyPost\Address', $address);
         $this->assertStringMatchesFormat('adr_%s', $address->id);

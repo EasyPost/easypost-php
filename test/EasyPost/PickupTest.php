@@ -128,21 +128,21 @@ class PickupTest extends \PHPUnit\Framework\TestCase
         $pickup = Pickup::create($pickupData);
 
         // Test lowest rate with no filters
-        $lowestRate = $pickup->lowest_rate();
+        $lowestRate = $pickup->lowestRate();
         $this->assertEquals('NextDay', $lowestRate['service']);
         $this->assertEquals('0.00', $lowestRate['rate']);
         $this->assertEquals('USPS', $lowestRate['carrier']);
 
         // Test lowest rate with service filter (should error due to bad service)
         try {
-            $lowestRate = $pickup->lowest_rate([], ['BAD SERVICE']);
+            $lowestRate = $pickup->lowestRate([], ['BAD SERVICE']);
         } catch (Error $error) {
             $this->assertEquals('No rates found.', $error->getMessage());
         }
 
         // Test lowest rate with carrier filter (should error due to bad carrier)
         try {
-            $lowestRate = $pickup->lowest_rate(['BAD CARRIER'], []);
+            $lowestRate = $pickup->lowestRate(['BAD CARRIER'], []);
         } catch (Error $error) {
             $this->assertEquals('No rates found.', $error->getMessage());
         }

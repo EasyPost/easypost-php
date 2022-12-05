@@ -84,7 +84,7 @@ class Address extends EasypostResource
      * @param string $apiKey
      * @return mixed
      */
-    public static function create_and_verify($params = null, $apiKey = null)
+    public static function createAndVerify($params = null, $apiKey = null)
     {
         $class = get_class();
         if (!isset($params['address']) || !is_array($params['address'])) {

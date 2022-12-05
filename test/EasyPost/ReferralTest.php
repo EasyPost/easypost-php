@@ -67,7 +67,7 @@ class ReferralTest extends \PHPUnit\Framework\TestCase
 
         $referralUsers = Referral::all();
 
-        $referralUser = Referral::update_email('email@example.com', $referralUsers['referral_customers'][0]['id']);
+        $referralUser = Referral::updateEmail('email@example.com', $referralUsers['referral_customers'][0]['id']);
 
         $this->assertEquals($referralUser, true);
     }
@@ -82,7 +82,7 @@ class ReferralTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('referrals/addCreditCard.yml');
 
-        $creditCard = Referral::add_credit_card(
+        $creditCard = Referral::addCreditCard(
             getenv('REFERRAL_USER_PROD_API_KEY'),
             Fixture::creditCardDetails()['number'],
             Fixture::creditCardDetails()['expiration_month'],

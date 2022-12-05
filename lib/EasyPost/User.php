@@ -67,7 +67,7 @@ class User extends EasypostResource
      * @param string $apiKey
      * @return mixed
      */
-    public static function retrieve_me($apiKey = null)
+    public static function retrieveMe($apiKey = null)
     {
         return self::allResources(get_class(), null, $apiKey);
     }
@@ -89,7 +89,7 @@ class User extends EasypostResource
      * @param null $apiKey
      * @return object
      */
-    public static function all_api_keys($apiKey = null)
+    public static function allApiKeys($apiKey = null)
     {
         $requestor = new Requestor($apiKey);
         list($response, $apiKey) = $requestor->request('get', '/api_keys');
@@ -102,9 +102,9 @@ class User extends EasypostResource
      * @param string $apiKey
      * @return array
      */
-    public function api_keys()
+    public function apiKeys()
     {
-        $apiKeys = self::all_api_keys();
+        $apiKeys = self::allApiKeys();
 
         if ($apiKeys->id == $this->id) {
             // This function was called on the authenticated user
@@ -136,7 +136,7 @@ class User extends EasypostResource
      * @param string $apiKey
      * @return mixed
      */
-    public function update_brand($params = null, $apiKey = null)
+    public function updateBrand($params = null, $apiKey = null)
     {
         $requestor = new Requestor($apiKey);
         list($response, $apiKey) = $requestor->request('patch', $this->instanceUrl() . '/brand', $params);
