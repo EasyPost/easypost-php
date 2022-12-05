@@ -63,6 +63,7 @@ abstract class Util
     {
         $types = [
             'Address'               => '\EasyPost\Address',
+            'ApiKey'                => '\EasyPost\ApiKey',
             'Batch'                 => '\EasyPost\Batch',
             'CarrierAccount'        => '\EasyPost\CarrierAccount',
             'CarrierDetail'         => '\EasyPost\CarrierDetail',
@@ -102,6 +103,7 @@ abstract class Util
 
         $prefixes = [
             'adr'       => '\EasyPost\Address',
+            'ak'        => '\EasyPost\ApiKey',
             'batch'     => '\EasyPost\Batch',
             'brd'       => '\EasyPost\Brand',
             'ca'        => '\EasyPost\CarrierAccount',
