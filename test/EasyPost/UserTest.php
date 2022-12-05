@@ -115,14 +115,10 @@ class UserTest extends \PHPUnit\Framework\TestCase
 
         $apiKeys = $user::allApiKeys();
 
-        $this->assertNotNull($apiKeys['keys']);
-        $this->assertNotNull($apiKeys['children']);
-
-        // TODO: When the output of this function is fixed, swap the tests for the below
-        // $this->assertContainsOnlyInstancesOf('\EasyPost\ApiKey', $apiKeys);
-        // foreach ($apiKeys['children'] as $child) {
-        //     $this->assertContainsOnlyInstancesOf('\EasyPost\ApiKey', $child['keys']);
-        // }
+        $this->assertContainsOnlyInstancesOf('\EasyPost\ApiKey', $apiKeys['keys']);
+        foreach ($apiKeys['children'] as $child) {
+            $this->assertContainsOnlyInstancesOf('\EasyPost\ApiKey', $child['keys']);
+        }
     }
 
     /**
@@ -136,11 +132,7 @@ class UserTest extends \PHPUnit\Framework\TestCase
 
         $apiKeys = $user->apiKeys();
 
-        $this->assertNotNull($apiKeys['production']);
-        $this->assertNotNull($apiKeys['test']);
-
-        // TODO: When the output of this function is fixed, swap the tests for the below
-        // $this->assertContainsOnlyInstancesOf('\EasyPost\ApiKey', $apiKeys);
+        $this->assertContainsOnlyInstancesOf('\EasyPost\ApiKey', $apiKeys);
     }
 
     /**
@@ -157,11 +149,7 @@ class UserTest extends \PHPUnit\Framework\TestCase
 
         $apiKeys = $childUser->apiKeys();
 
-        $this->assertNotNull($apiKeys['production']);
-        $this->assertNotNull($apiKeys['test']);
-
-        // TODO: When the output of this function is fixed, swap the tests for the below
-        // $this->assertContainsOnlyInstancesOf('\EasyPost\ApiKey', $apiKeys);
+        $this->assertContainsOnlyInstancesOf('\EasyPost\ApiKey', $apiKeys);
 
         $user->delete(); // Delete the user once done so we don't pollute with hundreds of child users
     }

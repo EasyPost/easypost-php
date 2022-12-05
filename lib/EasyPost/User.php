@@ -120,13 +120,7 @@ class User extends EasypostResource
             }
         }
 
-        // TODO: Don't rewrap objects here, return the direct response objects
-        $result = [];
-        foreach ($myApiKeys as $key) {
-            $result[$key->mode] = $key->key;
-        }
-
-        return $result;
+        return $myApiKeys;
     }
 
     /**
