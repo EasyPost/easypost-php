@@ -5,16 +5,18 @@
         url: 'https://api.easypost.com/v2/trackers/create_list'
         headers:
             Host: api.easypost.com
+            Expect: ''
+            Accept-Encoding: ''
             Accept: application/json
             Authorization: ''
             Content-Type: application/json
             User-Agent: ''
-        body: '{"trackers":{"0":{"tracking_code":"EZ1000000001"},"1":{"tracking_code":"EZ1000000002"},"2":{"tracking_code":"EZ1000000003"}}}'
+        body: '{"trackers":{"tracker0":{"tracking_code":"EZ1000000001"},"tracker1":{"tracking_code":"EZ1000000002"},"tracker2":{"tracking_code":"EZ1000000003"}}}'
     response:
         status:
-            http_version: '2'
+            http_version: '1.1'
             code: '200'
-            message: ''
+            message: OK
         headers:
             x-frame-options: SAMEORIGIN
             x-xss-protection: '1; mode=block'
@@ -22,55 +24,55 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: b5225cc362fbd707e787517f00075565
+            x-ep-request-uuid: 6d866446638a701be2c9ee970009c0c5
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '2'
             etag: 'W/"44136fa355b3678a1146ad16f7e8649e"'
-            x-runtime: '0.037020'
-            x-node: bigweb9nuq
-            x-version-label: easypost-202208152354-15cac62d1c-master
+            x-runtime: '0.046377'
+            x-node: bigweb12nuq
+            x-version-label: easypost-202212011955-aa9a4d99eb-master
             x-backend: easypost
-            x-proxied: ['intlb1nuq 6aa9972c1e', 'extlb2nuq 9ce216bfac']
+            x-proxied: ['intlb1nuq 29913d444b', 'extlb2nuq 29913d444b']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
         body: '[]'
         curl_info:
             url: 'https://api.easypost.com/v2/trackers/create_list'
             content_type: 'application/json; charset=utf-8'
             http_code: 200
-            header_size: 725
-            request_size: 317
+            header_size: 730
+            request_size: 465
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.283094
-            namelookup_time: 0.00189
-            connect_time: 0.07635
-            pretransfer_time: 0.170476
-            size_upload: 125.0
+            total_time: 0.182117
+            namelookup_time: 0.020556
+            connect_time: 0.055791
+            pretransfer_time: 0.099109
+            size_upload: 146.0
             size_download: 2.0
-            speed_download: 7.0
-            speed_upload: 441.0
+            speed_download: 10.0
+            speed_upload: 801.0
             download_content_length: 2.0
-            upload_content_length: 125.0
-            starttransfer_time: 0.170482
+            upload_content_length: 146.0
+            starttransfer_time: 0.182093
             redirect_time: 0.0
             redirect_url: ''
             primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.17
-            local_port: 51840
-            http_version: 3
+            local_ip: 192.168.1.201
+            local_port: 60359
+            http_version: 2
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 170300
-            connect_time_us: 76350
-            namelookup_time_us: 1890
-            pretransfer_time_us: 170476
+            appconnect_time_us: 99054
+            connect_time_us: 55791
+            namelookup_time_us: 20556
+            pretransfer_time_us: 99109
             redirect_time_us: 0
-            starttransfer_time_us: 170482
-            total_time_us: 283094
+            starttransfer_time_us: 182093
+            total_time_us: 182117

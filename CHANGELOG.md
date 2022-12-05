@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Adopts `Guzzle` as the HTTP client for this library. This should provide a much more consistent experience, better encoding, faster request times in some cases
+
 ## v5.8.0 (2022-12-01)
 
 - [ADDED] Carrier account creation routes requests correctly for carriers that require custom workflows

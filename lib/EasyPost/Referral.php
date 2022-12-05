@@ -2,6 +2,8 @@
 
 namespace EasyPost;
 
+use GuzzleHttp\Client;
+
 /**
  * @package EasyPost
  * @property string $id
@@ -128,8 +130,8 @@ class Referral extends EasypostResource
     private static function createStripeToken($number, $expirationMonth, $expirationYear, $cvc, $easypostStripeKey)
     {
         $headers = [
-            'Content-Type: application/x-www-form-urlencoded',
-            "Authorization: Bearer $easypostStripeKey",
+            'Content-Type' => 'application/x-www-form-urlencoded',
+            'Authorization' => "Bearer $easypostStripeKey",
         ];
 
         $creditCardDetails = [
@@ -145,8 +147,26 @@ class Referral extends EasypostResource
         $formEncodedParams = $requestor->urlEncode($creditCardDetails);
         $url = "https://api.stripe.com/v1/tokens?$formEncodedParams";
 
-        list($httpBody, $httpStatus) = $requestor->curlRequest('POST', $url, $headers, null);
-        $response = $requestor->interpretResponse($httpBody, $httpStatus);
+        $guzzleClient = new Client();
+
+        $requestOptions['headers'] = $headers;
+        $requestOptions['http_errors'] = false;
+
+        try {
+            $response = $guzzleClient->request('POST', $url, $requestOptions);
+        } catch (\GuzzleHttp\Exception\ConnectException $error) {
+            $message = "Unexpected error communicating with Stripe. If this problem persists please let us know at {$requestor->supportEmail}. {$error->getMessage()}";
+            throw new Error($message, null, null);
+        }
+
+        // Guzzle does not have a native way of catching timeout exceptions... If we don't have a response at this point, it's likely due to a timeout
+        if (!isset($response)) {
+            throw new Error('Did not receive a response from the API.', null, null);
+        }
+
+        $responseBody = $response->getBody();
+        $httpStatus = $response->getStatusCode();
+        $response = $requestor->interpretResponse($responseBody, $httpStatus);
 
         return $response;
     }

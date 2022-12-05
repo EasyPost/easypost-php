@@ -5,6 +5,8 @@
         url: 'https://api.easypost.com/v2/addresses'
         headers:
             Host: api.easypost.com
+            Expect: ''
+            Accept-Encoding: ''
             Accept: application/json
             Authorization: ''
             Content-Type: application/json
@@ -12,9 +14,9 @@
         body: '{"address":{"street1":"invalid"}}'
     response:
         status:
-            http_version: '2'
+            http_version: '1.1'
             code: '201'
-            message: ''
+            message: Created
         headers:
             x-frame-options: SAMEORIGIN
             x-xss-protection: '1; mode=block'
@@ -22,74 +24,75 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: ad419059632b34c2e2b8733800140722
+            x-ep-request-uuid: deb37560638a3db8e2bbad17000b2926
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
-            location: /api/v2/addresses/adr_4d905f7e39c611edb140ac1f6bc72124
+            location: /api/v2/addresses/adr_7e633808726b11edb0d7ac1f6bc7bdc6
             content-type: 'application/json; charset=utf-8'
             content-length: '403'
-            etag: 'W/"2d2a93b97fcf2bd581bba1fb126047a8"'
-            x-runtime: '0.046253'
+            etag: 'W/"2c769ad94b2d69f65bc5218b6794dc1c"'
+            x-runtime: '0.036701'
             x-node: bigweb3nuq
-            x-version-label: easypost-202209210008-610ad55e3f-master
+            x-version-label: easypost-202212011955-aa9a4d99eb-master
             x-backend: easypost
-            x-proxied: ['intlb2nuq 29913d444b', 'extlb2nuq 29913d444b']
+            x-proxied: ['intlb1nuq 29913d444b', 'extlb2nuq 29913d444b']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"adr_4d905f7e39c611edb140ac1f6bc72124","object":"Address","created_at":"2022-09-21T15:58:58+00:00","updated_at":"2022-09-21T15:58:58+00:00","name":null,"company":null,"street1":"invalid","street2":null,"city":null,"state":null,"zip":null,"country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":[]}'
+        body: '{"id":"adr_7e633808726b11edb0d7ac1f6bc7bdc6","object":"Address","created_at":"2022-12-02T18:02:32+00:00","updated_at":"2022-12-02T18:02:32+00:00","name":null,"company":null,"street1":"invalid","street2":null,"city":null,"state":null,"zip":null,"country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":[]}'
         curl_info:
             url: 'https://api.easypost.com/v2/addresses'
             content_type: 'application/json; charset=utf-8'
             http_code: 201
-            header_size: 793
-            request_size: 305
+            header_size: 802
+            request_size: 340
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.191658
-            namelookup_time: 0.035518
-            connect_time: 0.068513
-            pretransfer_time: 0.111175
+            total_time: 0.159651
+            namelookup_time: 0.001167
+            connect_time: 0.034591
+            pretransfer_time: 0.074895
             size_upload: 33.0
             size_download: 403.0
-            speed_download: 2102.0
-            speed_upload: 172.0
+            speed_download: 2524.0
+            speed_upload: 206.0
             download_content_length: 403.0
             upload_content_length: 33.0
-            starttransfer_time: 0.111178
+            starttransfer_time: 0.159627
             redirect_time: 0.0
             redirect_url: ''
             primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
             local_ip: 192.168.1.201
-            local_port: 51738
-            http_version: 3
+            local_port: 57380
+            http_version: 2
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 109532
-            connect_time_us: 68513
-            namelookup_time_us: 35518
-            pretransfer_time_us: 111175
+            appconnect_time_us: 74864
+            connect_time_us: 34591
+            namelookup_time_us: 1167
+            pretransfer_time_us: 74895
             redirect_time_us: 0
-            starttransfer_time_us: 111178
-            total_time_us: 191658
+            starttransfer_time_us: 159627
+            total_time_us: 159651
 -
     request:
         method: GET
-        url: 'https://api.easypost.com/v2/addresses/adr_4d905f7e39c611edb140ac1f6bc72124/verify'
+        url: 'https://api.easypost.com/v2/addresses/adr_7e633808726b11edb0d7ac1f6bc7bdc6/verify'
         headers:
             Host: api.easypost.com
+            Accept-Encoding: ''
             Accept: application/json
             Authorization: ''
             Content-Type: application/json
             User-Agent: ''
     response:
         status:
-            http_version: '2'
+            http_version: '1.1'
             code: '422'
-            message: ''
+            message: 'Unprocessable Entity'
         headers:
             x-frame-options: SAMEORIGIN
             x-xss-protection: '1; mode=block'
@@ -97,55 +100,54 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: ad419056632b34c2e2b873390014072f
+            x-ep-request-uuid: deb37565638a3db8e2bbad18000b293b
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '295'
-            x-runtime: '0.031686'
-            x-node: bigweb7nuq
-            x-version-label: easypost-202209210008-610ad55e3f-master
+            x-runtime: '0.039369'
+            x-node: bigweb6nuq
+            x-version-label: easypost-202212011955-aa9a4d99eb-master
             x-backend: easypost
-            x-canary: direct
             x-proxied: ['intlb2nuq 29913d444b', 'extlb2nuq 29913d444b']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
         body: '{"error":{"code":"ADDRESS.VERIFY.FAILURE","message":"Unable to verify address.","errors":[{"code":"E.ADDRESS.NOT_FOUND","field":"address","message":"Address not found","suggestion":null},{"code":"E.HOUSE_NUMBER.MISSING","field":"street1","message":"House number is missing","suggestion":null}]}}'
         curl_info:
-            url: 'https://api.easypost.com/v2/addresses/adr_4d905f7e39c611edb140ac1f6bc72124/verify'
+            url: 'https://api.easypost.com/v2/addresses/adr_7e633808726b11edb0d7ac1f6bc7bdc6/verify'
             content_type: 'application/json; charset=utf-8'
             http_code: 422
-            header_size: 701
-            request_size: 328
+            header_size: 705
+            request_size: 330
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.146737
-            namelookup_time: 0.001897
-            connect_time: 0.036264
-            pretransfer_time: 0.080092
+            total_time: 0.143312
+            namelookup_time: 0.00188
+            connect_time: 0.03212
+            pretransfer_time: 0.071869
             size_upload: 0.0
             size_download: 295.0
-            speed_download: 2010.0
+            speed_download: 2058.0
             speed_upload: 0.0
             download_content_length: 295.0
             upload_content_length: 0.0
-            starttransfer_time: 0.146712
+            starttransfer_time: 0.143275
             redirect_time: 0.0
             redirect_url: ''
             primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
             local_ip: 192.168.1.201
-            local_port: 51739
-            http_version: 3
+            local_port: 57381
+            http_version: 2
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 80023
-            connect_time_us: 36264
-            namelookup_time_us: 1897
-            pretransfer_time_us: 80092
+            appconnect_time_us: 71829
+            connect_time_us: 32120
+            namelookup_time_us: 1880
+            pretransfer_time_us: 71869
             redirect_time_us: 0
-            starttransfer_time_us: 146712
-            total_time_us: 146737
+            starttransfer_time_us: 143275
+            total_time_us: 143312

@@ -314,13 +314,13 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         // Test lowest rate with no filters
         $lowestRate = $shipment->lowestRate();
         $this->assertEquals('First', $lowestRate['service']);
-        $this->assertEquals('5.57', $lowestRate['rate']);
+        $this->assertEquals('5.82', $lowestRate['rate']);
         $this->assertEquals('USPS', $lowestRate['carrier']);
 
         // Test lowest rate with service filter (this rate is higher than the lowest but should filter)
         $lowestRate = $shipment->lowestRate([], ['Priority']);
         $this->assertEquals('Priority', $lowestRate['service']);
-        $this->assertEquals('7.90', $lowestRate['rate']);
+        $this->assertEquals('8.15', $lowestRate['rate']);
         $this->assertEquals('USPS', $lowestRate['carrier']);
 
         // Test lowest rate with carrier filter (should error due to bad carrier)
@@ -343,13 +343,13 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         // Test lowest rate by excluding a carrier (this is a weak test but we cannot assume existence of a non-USPS carrier)
         $lowestRate = $shipment->lowestRate(['!RandomCarrier']);
         $this->assertEquals('First', $lowestRate['service']);
-        $this->assertEquals('5.57', $lowestRate['rate']);
+        $this->assertEquals('5.82', $lowestRate['rate']);
         $this->assertEquals('USPS', $lowestRate['carrier']);
 
         // Test lowest rate by excluding the `Priority` service
         $lowestRate = $shipment->lowestRate([], ['!Priority']);
         $this->assertEquals('First', $lowestRate['service']);
-        $this->assertEquals('5.57', $lowestRate['rate']);
+        $this->assertEquals('5.82', $lowestRate['rate']);
         $this->assertEquals('USPS', $lowestRate['carrier']);
     }
 
@@ -363,9 +363,9 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         $shipment = Shipment::create(Fixture::fullShipment());
 
         // Test lowest rate with no filters
-        $lowestRate = $shipment->lowestSmartrate(2, 'percentile_90');
-        $this->assertEquals('First', $lowestRate['service']);
-        $this->assertEquals(5.57, $lowestRate['rate']);
+        $lowestRate = $shipment->lowestSmartrate(2, 'percentile_85');
+        $this->assertEquals('Priority', $lowestRate['service']);
+        $this->assertEquals(8.15, $lowestRate['rate']);
         $this->assertEquals('USPS', $lowestRate['carrier']);
 
         // Test lowest smartrate with invalid filters (should error due to strict delivery_days)
@@ -394,9 +394,9 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         $smartrates = $shipment->getSmartrates();
 
         // Test lowest smartrate with valid filters
-        $lowestSmartrate = Shipment::getLowestSmartrate($smartrates, 2, 'percentile_90');
-        $this->assertEquals('First', $lowestSmartrate['service']);
-        $this->assertEquals(5.57, $lowestSmartrate['rate']);
+        $lowestSmartrate = Shipment::getLowestSmartrate($smartrates, 2, 'percentile_85');
+        $this->assertEquals('Priority', $lowestSmartrate['service']);
+        $this->assertEquals(8.15, $lowestSmartrate['rate']);
         $this->assertEquals('USPS', $lowestSmartrate['carrier']);
 
         // Test lowest smartrate with invalid filters (should error due to strict delivery_days)
@@ -442,7 +442,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     /**
      * Tests creating a carbon offset shipment.
      */
-    public function testCreatebasicShipment()
+    public function testCreateCarbonOffsetShipment()
     {
         TestUtil::setupCassette('shipments/createCarbonOffsetShipment.yml');
 
@@ -458,7 +458,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     /**
      * Tests buying a carbon offset shipment.
      */
-    public function testBuybasicShipment()
+    public function testBuyCarbonOffsetShipment()
     {
         TestUtil::setupCassette('shipments/buyCarbonOffsetShipment.yml');
 
@@ -487,7 +487,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     /**
      * Tests one call buy a carbon offset shipment.
      */
-    public function testOneCallBuybasicShipment()
+    public function testOneCallBuyCarbonOffsetShipment()
     {
         TestUtil::setupCassette('shipments/oneCallBuyCarbonOffsetShipment.yml');
 

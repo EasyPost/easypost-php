@@ -5,6 +5,8 @@
         url: 'https://api.easypost.com/v2/carrier_accounts'
         headers:
             Host: api.easypost.com
+            Expect: ''
+            Accept-Encoding: ''
             Accept: application/json
             Authorization: ''
             Content-Type: application/json
@@ -12,9 +14,9 @@
         body: '{"carrier_account":{"type":"DhlEcsAccount","credentials":{"client_id":"123456","client_secret":"123abc","distribution_center":"USLAX1","pickup_id":"123456"},"test_credentials":{"client_id":"123456","client_secret":"123abc","distribution_center":"USLAX1","pickup_id":"123456"}}}'
     response:
         status:
-            http_version: '2'
+            http_version: '1.1'
             code: '201'
-            message: ''
+            message: Created
         headers:
             x-frame-options: SAMEORIGIN
             x-xss-protection: '1; mode=block'
@@ -22,73 +24,75 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: f060eae0632a3654e78aa02f0012c56a
+            x-ep-request-uuid: 29a8d137638a3e58e2bbb91c0027420f
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '1469'
-            etag: 'W/"6fb29d19157640d3acb47b63b23fd5ce"'
-            x-runtime: '0.124772'
-            x-node: bigweb5nuq
-            x-version-label: easypost-202209201859-4397aee39f-master
+            etag: 'W/"0e4d3839830d34df48212bcc6816eef4"'
+            x-runtime: '0.111087'
+            x-node: bigweb7nuq
+            x-version-label: easypost-202212011955-aa9a4d99eb-master
             x-backend: easypost
-            x-proxied: ['intlb2nuq 29913d444b', 'extlb2nuq 29913d444b']
+            x-canary: direct
+            x-proxied: ['intlb2nuq 29913d444b', 'extlb1nuq 29913d444b']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"ca_fea2921a7a474eaaa9a2a7d1c5853a4b","object":"CarrierAccount","type":"DhlEcsAccount","clone":false,"created_at":"2022-09-20T21:53:24Z","updated_at":"2022-09-20T21:53:24Z","description":"DHL eCommerce Solutions Account","reference":null,"billing_type":"carrier","readable":"DHL eCommerce Solutions","logo":null,"fields":[],"credentials":[],"test_credentials":[]}'
+        body: '{"id":"ca_3d30564903bb440eb78d0931b445305b","object":"CarrierAccount","type":"DhlEcsAccount","clone":false,"created_at":"2022-12-02T18:05:12Z","updated_at":"2022-12-02T18:05:12Z","description":"DHL eCommerce Solutions Account","reference":null,"billing_type":"carrier","readable":"DHL eCommerce Solutions","logo":null,"fields":[],"credentials":[],"test_credentials":[]}'
         curl_info:
             url: 'https://api.easypost.com/v2/carrier_accounts'
             content_type: 'application/json; charset=utf-8'
             http_code: 201
-            header_size: 728
-            request_size: 313
+            header_size: 755
+            request_size: 592
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.379251
-            namelookup_time: 0.021893
-            connect_time: 0.095605
-            pretransfer_time: 0.177468
+            total_time: 0.216763
+            namelookup_time: 0.00215
+            connect_time: 0.032555
+            pretransfer_time: 0.073919
             size_upload: 277.0
             size_download: 1469.0
-            speed_download: 3873.0
-            speed_upload: 730.0
+            speed_download: 6776.0
+            speed_upload: 1277.0
             download_content_length: 1469.0
             upload_content_length: 277.0
-            starttransfer_time: 0.177472
+            starttransfer_time: 0.216689
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.130
+            primary_ip: 169.62.110.131
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.16
-            local_port: 57958
-            http_version: 3
+            local_ip: 192.168.1.201
+            local_port: 57628
+            http_version: 2
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 177389
-            connect_time_us: 95605
-            namelookup_time_us: 21893
-            pretransfer_time_us: 177468
+            appconnect_time_us: 73872
+            connect_time_us: 32555
+            namelookup_time_us: 2150
+            pretransfer_time_us: 73919
             redirect_time_us: 0
-            starttransfer_time_us: 177472
-            total_time_us: 379251
+            starttransfer_time_us: 216689
+            total_time_us: 216763
 -
     request:
         method: DELETE
-        url: 'https://api.easypost.com/v2/carrier_accounts/ca_fea2921a7a474eaaa9a2a7d1c5853a4b'
+        url: 'https://api.easypost.com/v2/carrier_accounts/ca_3d30564903bb440eb78d0931b445305b'
         headers:
             Host: api.easypost.com
+            Accept-Encoding: ''
             Accept: application/json
             Authorization: ''
             Content-Type: application/json
             User-Agent: ''
     response:
         status:
-            http_version: '2'
+            http_version: '1.1'
             code: '200'
-            message: ''
+            message: OK
         headers:
             x-frame-options: SAMEORIGIN
             x-xss-protection: '1; mode=block'
@@ -96,55 +100,55 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: f060eae0632a3655e78aa0300012c584
+            x-ep-request-uuid: 29a8d13a638a3e58e2bbb91d0027422c
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '2'
             etag: 'W/"44136fa355b3678a1146ad16f7e8649e"'
-            x-runtime: '0.132271'
-            x-node: bigweb3nuq
-            x-version-label: easypost-202209201859-4397aee39f-master
+            x-runtime: '0.123011'
+            x-node: bigweb1nuq
+            x-version-label: easypost-202212011955-aa9a4d99eb-master
             x-backend: easypost
-            x-proxied: ['intlb2nuq 29913d444b', 'extlb2nuq 29913d444b']
+            x-proxied: ['intlb2nuq 29913d444b', 'extlb1nuq 29913d444b']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
         body: '[]'
         curl_info:
-            url: 'https://api.easypost.com/v2/carrier_accounts/ca_fea2921a7a474eaaa9a2a7d1c5853a4b'
+            url: 'https://api.easypost.com/v2/carrier_accounts/ca_3d30564903bb440eb78d0931b445305b'
             content_type: 'application/json; charset=utf-8'
             http_code: 200
-            header_size: 725
-            request_size: 330
+            header_size: 729
+            request_size: 332
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.368715
-            namelookup_time: 0.001941
-            connect_time: 0.075144
-            pretransfer_time: 0.159028
+            total_time: 0.242583
+            namelookup_time: 0.00183
+            connect_time: 0.037241
+            pretransfer_time: 0.082687
             size_upload: 0.0
             size_download: 2.0
-            speed_download: 5.0
+            speed_download: 8.0
             speed_upload: 0.0
             download_content_length: 2.0
             upload_content_length: 0.0
-            starttransfer_time: 0.368674
+            starttransfer_time: 0.242495
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.130
+            primary_ip: 169.62.110.131
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.16
-            local_port: 57959
-            http_version: 3
+            local_ip: 192.168.1.201
+            local_port: 57629
+            http_version: 2
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 158943
-            connect_time_us: 75144
-            namelookup_time_us: 1941
-            pretransfer_time_us: 159028
+            appconnect_time_us: 82638
+            connect_time_us: 37241
+            namelookup_time_us: 1830
+            pretransfer_time_us: 82687
             redirect_time_us: 0
-            starttransfer_time_us: 368674
-            total_time_us: 368715
+            starttransfer_time_us: 242495
+            total_time_us: 242583

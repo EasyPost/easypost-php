@@ -81,13 +81,11 @@ class Tracker extends EasypostResource
         if (!isset($params['trackers']) || !is_array($params['trackers'])) {
             $clone = $params;
             unset($params);
-            $params['trackers'] = (object)$clone;
+            $params = ['trackers' => $clone];
         }
-
-        $encodedParams = str_replace('\\', '', json_encode($params));
 
         $requestor = new Requestor($apiKey);
         $url = self::classUrl(get_class());
-        $requestor->request('post', $url . '/create_list', $encodedParams);
+        $requestor->request('post', $url . '/create_list', $params);
     }
 }

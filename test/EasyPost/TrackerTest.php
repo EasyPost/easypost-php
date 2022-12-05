@@ -95,10 +95,12 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('trackers/createList.yml');
 
-        Tracker::createList([
-            '0' => ['tracking_code' => 'EZ1000000001'],
-            '1' => ['tracking_code' => 'EZ1000000002'],
-            '2' => ['tracking_code' => 'EZ1000000003'],
+        // PHP is dumb and tries to make indexed arrays into a list instead of an object.
+        // Naming the index for PHP is the workaround.
+        $response = Tracker::createList([
+            'tracker0' => ['tracking_code' => 'EZ1000000001'],
+            'tracker1' => ['tracking_code' => 'EZ1000000002'],
+            'tracker2' => ['tracking_code' => 'EZ1000000003'],
         ]);
 
         // This endpoint returns nothing so we only assert a failure doesn't happen

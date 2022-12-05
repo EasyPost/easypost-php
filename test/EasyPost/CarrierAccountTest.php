@@ -3,6 +3,7 @@
 namespace EasyPost\Test;
 
 use EasyPost\CarrierAccount;
+use EasyPost\Error;
 
 class CarrierAccountTest extends \PHPUnit\Framework\TestCase
 {
@@ -56,10 +57,10 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
             $carrierAccount = CarrierAccount::create($data);
             // Delete the carrier account once it's done being tested (should not be reached).
             $carrierAccount->delete();
-        } catch (\EasyPost\Error $e) {
-            $this->assertEquals(422, $e->getHttpStatus());
+        } catch (Error $error) {
+            $this->assertEquals(422, $error->getHttpStatus());
             $errorFound = false;
-            $errors = $e->errors;
+            $errors = $error->errors;
             foreach ($errors as $error) {
                 if ($error['field'] == 'account_number' && $error['message'] == 'must be present and a string') {
                     $errorFound = true;
