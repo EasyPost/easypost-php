@@ -1,0 +1,231 @@
+
+-
+    request:
+        method: POST
+        url: 'https://api.easypost.com/v2/shipments'
+        headers:
+            Host: api.easypost.com
+            Expect: ''
+            Accept-Encoding: ''
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+        body: '{"shipment":{"to_address":{"name":"Jack Sparrow","street1":"388 Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","country":"US","email":"test@example.com","phone":"5555555555"},"from_address":{"name":"Elizabeth Swan","street1":"179 N Harbor Dr","city":"Redondo Beach","state":"CA","zip":"90277","country":"US","email":"test@example.com","phone":"5555555555"},"parcel":{"length":"10","width":"8","height":"4","weight":"15.4"},"service":"First","carrier_accounts":["ca_8dc116debcdb49b5a66a2ddee4612600"],"carrier":"USPS"},"carbon_offset":"false"}'
+    response:
+        status:
+            http_version: '1.1'
+            code: '201'
+            message: Created
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: e26b98306391145ae78b0a00001e3904
+            cache-control: 'private, no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            location: /api/v2/shipments/shp_0dbca1bae2964f1aa1a52a4a1a80d2ac
+            content-type: 'application/json; charset=utf-8'
+            content-length: '7077'
+            etag: 'W/"1a8d1a07a1c5ee06c47e0cb6040d706d"'
+            x-runtime: '1.203399'
+            x-node: bigweb4nuq
+            x-version-label: easypost-202212072114-cbd87d5dd7-master
+            x-backend: easypost
+            x-proxied: ['intlb1nuq 29913d444b', 'extlb2nuq 29913d444b']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"created_at":"2022-12-07T22:31:54Z","is_return":false,"messages":[],"mode":"test","options":{"currency":"USD","payment":{"type":"SENDER"},"date_advance":0},"reference":null,"status":"unknown","tracking_code":"9400100106068158604760","updated_at":"2022-12-07T22:31:55Z","batch_id":null,"batch_status":null,"batch_message":null,"customs_info":null,"from_address":{"id":"adr_f3ea80b7767e11edbe6aac1f6bc7bdc6","object":"Address","created_at":"2022-12-07T22:31:54+00:00","updated_at":"2022-12-07T22:31:54+00:00","name":"Elizabeth Swan","company":null,"street1":"179 N Harbor Dr","street2":null,"city":"Redondo Beach","state":"CA","zip":"90277","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":[]},"insurance":"50.00","order_id":null,"parcel":{"id":"prcl_52da3df31fe3487da95224761721242b","object":"Parcel","created_at":"2022-12-07T22:31:54Z","updated_at":"2022-12-07T22:31:54Z","length":10,"width":8,"height":4,"predefined_package":null,"weight":15.4,"mode":"test"},"postage_label":{"object":"PostageLabel","id":"pl_330bf84a3e3347d9b1d9a3ddc68b7d45","created_at":"2022-12-07T22:31:55Z","updated_at":"2022-12-07T22:31:55Z","date_advance":0,"integrated_form":"none","label_date":"2022-12-07T22:31:55Z","label_resolution":300,"label_size":"4x6","label_type":"default","label_file_type":"image\/png","label_url":"https:\/\/easypost-files.s3.us-west-2.amazonaws.com\/files\/postage_label\/20221207\/92847929657f48cb97ef3575fbd1c291.png","label_pdf_url":null,"label_zpl_url":null,"label_epl2_url":null,"label_file":null},"rates":[{"id":"rate_0493b8077cb24f4db8cd1cfab0fbb7d0","object":"Rate","created_at":"2022-12-07T22:31:54Z","updated_at":"2022-12-07T22:31:54Z","mode":"test","service":"Priority","carrier":"USPS","rate":"8.15","currency":"USD","retail_rate":"9.75","retail_currency":"USD","list_rate":"8.15","list_currency":"USD","billing_type":"easypost","delivery_days":2,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":2,"shipment_id":"shp_0dbca1bae2964f1aa1a52a4a1a80d2ac","carrier_account_id":"ca_8dc116debcdb49b5a66a2ddee4612600"},{"id":"rate_0a93f5837315464b8ce9f82aa9b214e2","object":"Rate","created_at":"2022-12-07T22:31:55Z","updated_at":"2022-12-07T22:31:55Z","mode":"test","service":"Express","carrier":"USPS","rate":"29.75","currency":"USD","retail_rate":"33.85","retail_currency":"USD","list_rate":"29.75","list_currency":"USD","billing_type":"easypost","delivery_days":null,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":null,"shipment_id":"shp_0dbca1bae2964f1aa1a52a4a1a80d2ac","carrier_account_id":"ca_8dc116debcdb49b5a66a2ddee4612600"},{"id":"rate_fc575c938fd74db2b0999158df586010","object":"Rate","created_at":"2022-12-07T22:31:55Z","updated_at":"2022-12-07T22:31:55Z","mode":"test","service":"ParcelSelect","carrier":"USPS","rate":"8.00","currency":"USD","retail_rate":"8.00","retail_currency":"USD","list_rate":"8.00","list_currency":"USD","billing_type":"easypost","delivery_days":5,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":5,"shipment_id":"shp_0dbca1bae2964f1aa1a52a4a1a80d2ac","carrier_account_id":"ca_8dc116debcdb49b5a66a2ddee4612600"},{"id":"rate_11be835683f4461e887028ab2a1eff7e","object":"Rate","created_at":"2022-12-07T22:31:55Z","updated_at":"2022-12-07T22:31:55Z","mode":"test","service":"First","carrier":"USPS","rate":"5.82","currency":"USD","retail_rate":"5.82","retail_currency":"USD","list_rate":"5.82","list_currency":"USD","billing_type":"easypost","delivery_days":3,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":3,"shipment_id":"shp_0dbca1bae2964f1aa1a52a4a1a80d2ac","carrier_account_id":"ca_8dc116debcdb49b5a66a2ddee4612600"}],"refund_status":null,"scan_form":null,"selected_rate":{"id":"rate_11be835683f4461e887028ab2a1eff7e","object":"Rate","created_at":"2022-12-07T22:31:55Z","updated_at":"2022-12-07T22:31:55Z","mode":"test","service":"First","carrier":"USPS","rate":"5.82","currency":"USD","retail_rate":"5.82","retail_currency":"USD","list_rate":"5.82","list_currency":"USD","billing_type":"easypost","delivery_days":3,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":3,"shipment_id":"shp_0dbca1bae2964f1aa1a52a4a1a80d2ac","carrier_account_id":"ca_8dc116debcdb49b5a66a2ddee4612600"},"tracker":{"id":"trk_728f195e595a4dcfa9af639b367a8cd9","object":"Tracker","mode":"test","tracking_code":"9400100106068158604760","status":"unknown","status_detail":"unknown","created_at":"2022-12-07T22:31:55Z","updated_at":"2022-12-07T22:31:55Z","signed_by":null,"weight":null,"est_delivery_date":null,"shipment_id":"shp_0dbca1bae2964f1aa1a52a4a1a80d2ac","carrier":"USPS","tracking_details":[],"fees":[],"carrier_detail":null,"public_url":"https:\/\/track.easypost.com\/djE6dHJrXzcyOGYxOTVlNTk1YTRkY2ZhOWFmNjM5YjM2N2E4Y2Q5"},"to_address":{"id":"adr_f3e7f364767e11edacc5ac1f6bc7b362","object":"Address","created_at":"2022-12-07T22:31:54+00:00","updated_at":"2022-12-07T22:31:55+00:00","name":"JACK SPARROW","company":null,"street1":"388 TOWNSEND ST APT 20","street2":null,"city":"SAN FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":true,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":37.77551,"longitude":-122.39697,"time_zone":"America\/Los_Angeles"}}}},"usps_zone":4,"return_address":{"id":"adr_f3ea80b7767e11edbe6aac1f6bc7bdc6","object":"Address","created_at":"2022-12-07T22:31:54+00:00","updated_at":"2022-12-07T22:31:54+00:00","name":"Elizabeth Swan","company":null,"street1":"179 N Harbor Dr","street2":null,"city":"Redondo Beach","state":"CA","zip":"90277","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":[]},"buyer_address":{"id":"adr_f3e7f364767e11edacc5ac1f6bc7b362","object":"Address","created_at":"2022-12-07T22:31:54+00:00","updated_at":"2022-12-07T22:31:55+00:00","name":"JACK SPARROW","company":null,"street1":"388 TOWNSEND ST APT 20","street2":null,"city":"SAN FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":true,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":37.77551,"longitude":-122.39697,"time_zone":"America\/Los_Angeles"}}}},"forms":[],"fees":[{"object":"Fee","type":"LabelFee","amount":"0.00000","charged":true,"refunded":false},{"object":"Fee","type":"PostageFee","amount":"5.82000","charged":true,"refunded":false},{"object":"Fee","type":"InsuranceFee","amount":"0.25000","charged":true,"refunded":false}],"id":"shp_0dbca1bae2964f1aa1a52a4a1a80d2ac","object":"Shipment"}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/shipments'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 201
+            header_size: 803
+            request_size: 885
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 1.434197
+            namelookup_time: 0.003702
+            connect_time: 0.071204
+            pretransfer_time: 0.161641
+            size_upload: 577.0
+            size_download: 7077.0
+            speed_download: 4934.0
+            speed_upload: 402.0
+            download_content_length: 7077.0
+            upload_content_length: 577.0
+            starttransfer_time: 1.434082
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.62.110.130
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 10.130.6.25
+            local_port: 58114
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 161553
+            connect_time_us: 71204
+            namelookup_time_us: 3702
+            pretransfer_time_us: 161641
+            redirect_time_us: 0
+            starttransfer_time_us: 1434082
+            total_time_us: 1434197
+-
+    request:
+        method: POST
+        url: 'https://api.easypost.com/v2/scan_forms'
+        headers:
+            Host: api.easypost.com
+            Expect: ''
+            Accept-Encoding: ''
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+        body: '{"shipments":[{"id":"shp_0dbca1bae2964f1aa1a52a4a1a80d2ac"}]}'
+    response:
+        status:
+            http_version: '1.1'
+            code: '200'
+            message: OK
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: e26b98316391145ce78b0a01001e3991
+            cache-control: 'private, no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '903'
+            etag: 'W/"5006644db7b63b3ed524d66c900d50a4"'
+            x-runtime: '0.404190'
+            x-node: bigweb5nuq
+            x-version-label: easypost-202212072114-cbd87d5dd7-master
+            x-backend: easypost
+            x-proxied: ['intlb1nuq 29913d444b', 'extlb2nuq 29913d444b']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"id":"sf_04677f0f51f54477b651a8c051070ea2","object":"ScanForm","created_at":"2022-12-07T22:31:56Z","updated_at":"2022-12-07T22:31:57Z","tracking_codes":["9400100106068158604760"],"address":{"id":"adr_f3ea80b7767e11edbe6aac1f6bc7bdc6","object":"Address","created_at":"2022-12-07T22:31:54+00:00","updated_at":"2022-12-07T22:31:54+00:00","name":"Elizabeth Swan","company":null,"street1":"179 N Harbor Dr","street2":null,"city":"Redondo Beach","state":"CA","zip":"90277","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":[]},"status":"created","message":null,"form_url":"https:\/\/easypost-files.s3.us-west-2.amazonaws.com\/files\/scan_form\/20221207\/132885eaa8ef42108528fc9ac72f3370.pdf","form_file_type":null,"batch_id":"batch_08e89e6d38d548c0b2f79e6a6777a9ac","confirmation":null}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/scan_forms'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 731
+            request_size: 369
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.61679
+            namelookup_time: 0.001604
+            connect_time: 0.06841
+            pretransfer_time: 0.142681
+            size_upload: 61.0
+            size_download: 903.0
+            speed_download: 1464.0
+            speed_upload: 98.0
+            download_content_length: 903.0
+            upload_content_length: 61.0
+            starttransfer_time: 0.616649
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.62.110.130
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 10.130.6.25
+            local_port: 58115
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 142655
+            connect_time_us: 68410
+            namelookup_time_us: 1604
+            pretransfer_time_us: 142681
+            redirect_time_us: 0
+            starttransfer_time_us: 616649
+            total_time_us: 616790
+-
+    request:
+        method: GET
+        url: 'https://api.easypost.com/v2/scan_forms/sf_04677f0f51f54477b651a8c051070ea2'
+        headers:
+            Host: api.easypost.com
+            Accept-Encoding: ''
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+    response:
+        status:
+            http_version: '1.1'
+            code: '200'
+            message: OK
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: e26b982d6391145de78b0a02001e39c6
+            cache-control: 'private, no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '903'
+            etag: 'W/"5006644db7b63b3ed524d66c900d50a4"'
+            x-runtime: '0.041233'
+            x-node: bigweb9nuq
+            x-version-label: easypost-202212072114-cbd87d5dd7-master
+            x-backend: easypost
+            x-proxied: ['intlb2nuq 29913d444b', 'extlb2nuq 29913d444b']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"id":"sf_04677f0f51f54477b651a8c051070ea2","object":"ScanForm","created_at":"2022-12-07T22:31:56Z","updated_at":"2022-12-07T22:31:57Z","tracking_codes":["9400100106068158604760"],"address":{"id":"adr_f3ea80b7767e11edbe6aac1f6bc7bdc6","object":"Address","created_at":"2022-12-07T22:31:54+00:00","updated_at":"2022-12-07T22:31:54+00:00","name":"Elizabeth Swan","company":null,"street1":"179 N Harbor Dr","street2":null,"city":"Redondo Beach","state":"CA","zip":"90277","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":[]},"status":"created","message":null,"form_url":"https:\/\/easypost-files.s3.us-west-2.amazonaws.com\/files\/scan_form\/20221207\/132885eaa8ef42108528fc9ac72f3370.pdf","form_file_type":null,"batch_id":"batch_08e89e6d38d548c0b2f79e6a6777a9ac","confirmation":null}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/scan_forms/sf_04677f0f51f54477b651a8c051070ea2'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 731
+            request_size: 323
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.274614
+            namelookup_time: 0.001986
+            connect_time: 0.070118
+            pretransfer_time: 0.162609
+            size_upload: 0.0
+            size_download: 903.0
+            speed_download: 3288.0
+            speed_upload: 0.0
+            download_content_length: 903.0
+            upload_content_length: 0.0
+            starttransfer_time: 0.27456
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.62.110.130
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 10.130.6.25
+            local_port: 58116
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 162518
+            connect_time_us: 70118
+            namelookup_time_us: 1986
+            pretransfer_time_us: 162609
+            redirect_time_us: 0
+            starttransfer_time_us: 274560
+            total_time_us: 274614

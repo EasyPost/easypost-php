@@ -2,17 +2,21 @@
 
 namespace EasyPost\Test;
 
-use EasyPost\Error;
-use EasyPost\Event;
+use EasyPost\EasyPostClient;
+use EasyPost\Exception\Error;
+use EasyPost\Util\Util;
 
 class EventTest extends \PHPUnit\Framework\TestCase
 {
+    private static $client;
+
     /**
      * Setup the testing environment for this file.
      */
     public static function setUpBeforeClass(): void
     {
-        TestUtil::setupVcrTests('EASYPOST_TEST_API_KEY');
+        TestUtil::setupVcrTests();
+        self::$client = new EasyPostClient(getenv('EASYPOST_TEST_API_KEY'));
     }
 
     /**
@@ -30,7 +34,7 @@ class EventTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('events/all.yml');
 
-        $events = Event::all([
+        $events = self::$client->event->all([
             'page_size' => Fixture::pageSize(),
         ]);
 
@@ -48,11 +52,11 @@ class EventTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('events/retrieve.yml');
 
-        $events = Event::all([
+        $events = self::$client->event->all([
             'page_size' => Fixture::pageSize(),
         ]);
 
-        $event = Event::retrieve($events['events'][0]);
+        $event = self::$client->event->retrieve($events['events'][0]['id']);
 
         $this->assertInstanceOf('\EasyPost\Event', $event);
         $this->assertStringMatchesFormat('evt_%s', $event->id);
@@ -63,7 +67,7 @@ class EventTest extends \PHPUnit\Framework\TestCase
      */
     public function testReceive()
     {
-        $event = Event::receive(Fixture::eventJson());
+        $event = Util::receive(Fixture::eventJson());
 
         $this->assertInstanceOf('\EasyPost\Event', $event);
         $this->assertStringMatchesFormat('evt_%s', $event->id);
@@ -76,7 +80,7 @@ class EventTest extends \PHPUnit\Framework\TestCase
     {
         $this->expectException(Error::class);
 
-        Event::receive('bad input');
+        Util::receive('bad input');
     }
 
     /**
@@ -86,6 +90,6 @@ class EventTest extends \PHPUnit\Framework\TestCase
     {
         $this->expectException(Error::class);
 
-        Event::receive();
+        Util::receive();
     }
 }

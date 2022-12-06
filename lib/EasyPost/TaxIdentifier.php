@@ -9,6 +9,6 @@ namespace EasyPost;
  * @property string $tax_id_type
  * @property string $issuing_country
  */
-class TaxIdentifier extends EasypostResource
+class TaxIdentifier extends EasyPostObject
 {
 }

@@ -3,24 +3,27 @@
 // `require` this file if you're not using composer's vendor/autoload
 
 // Required PHP extensions
-if (!function_exists('curl_init')) {
-    throw new Exception('EasyPost needs the CURL PHP extension.');
-}
 if (!function_exists('json_decode')) {
     throw new Exception('EasyPost needs the JSON PHP extension.');
 }
 
-// Config and Utilities
-require_once(dirname(__FILE__) . '/EasyPost/EasyPost.php');
-require_once(dirname(__FILE__) . '/EasyPost/Util.php');
-require_once(dirname(__FILE__) . '/EasyPost/Error.php');
+// Exceptions
+require_once(dirname(__FILE__) . '/EasyPost/Exception/Error.php');
 
-// Guts
+// Constants
+require_once(dirname(__FILE__) . '/EasyPost/Constant/Constant.php');
+
+// HTTP
+require_once(dirname(__FILE__) . '/EasyPost/Http/Requestor.php');
+
+// Utils
+require_once(dirname(__FILE__) . '/EasyPost/Util/Util.php');
+
+// EasyPost Lib
+require_once(dirname(__FILE__) . '/EasyPost/EasyPostClient.php');
 require_once(dirname(__FILE__) . '/EasyPost/EasyPostObject.php');
-require_once(dirname(__FILE__) . '/EasyPost/EasypostResource.php');
-require_once(dirname(__FILE__) . '/EasyPost/Requestor.php');
 
-// API Resources
+// Models
 require_once(dirname(__FILE__) . '/EasyPost/Address.php');
 require_once(dirname(__FILE__) . '/EasyPost/ApiKey.php');
 require_once(dirname(__FILE__) . '/EasyPost/Batch.php');
@@ -30,7 +33,6 @@ require_once(dirname(__FILE__) . '/EasyPost/CarrierAccount.php');
 require_once(dirname(__FILE__) . '/EasyPost/CarrierDetail.php');
 require_once(dirname(__FILE__) . '/EasyPost/CustomsInfo.php');
 require_once(dirname(__FILE__) . '/EasyPost/CustomsItem.php');
-require_once(dirname(__FILE__) . '/EasyPost/Beta/EndShipper.php');
 require_once(dirname(__FILE__) . '/EasyPost/EndShipper.php');
 require_once(dirname(__FILE__) . '/EasyPost/Event.php');
 require_once(dirname(__FILE__) . '/EasyPost/Fee.php');
@@ -43,7 +45,7 @@ require_once(dirname(__FILE__) . '/EasyPost/Pickup.php');
 require_once(dirname(__FILE__) . '/EasyPost/PickupRate.php');
 require_once(dirname(__FILE__) . '/EasyPost/PostageLabel.php');
 require_once(dirname(__FILE__) . '/EasyPost/Rate.php');
-require_once(dirname(__FILE__) . '/EasyPost/Referral.php');
+require_once(dirname(__FILE__) . '/EasyPost/ReferralCustomer.php');
 require_once(dirname(__FILE__) . '/EasyPost/Refund.php');
 require_once(dirname(__FILE__) . '/EasyPost/Report.php');
 require_once(dirname(__FILE__) . '/EasyPost/ScanForm.php');
@@ -57,3 +59,27 @@ require_once(dirname(__FILE__) . '/EasyPost/Verification.php');
 require_once(dirname(__FILE__) . '/EasyPost/VerificationDetails.php');
 require_once(dirname(__FILE__) . '/EasyPost/Verifications.php');
 require_once(dirname(__FILE__) . '/EasyPost/Webhook.php');
+
+// Services
+require_once(dirname(__FILE__) . '/EasyPost/Service/AddressService.php');
+require_once(dirname(__FILE__) . '/EasyPost/Service/BaseService.php');
+require_once(dirname(__FILE__) . '/EasyPost/Service/BatchService.php');
+require_once(dirname(__FILE__) . '/EasyPost/Service/BillingService.php');
+require_once(dirname(__FILE__) . '/EasyPost/Service/CarrierAccountService.php');
+require_once(dirname(__FILE__) . '/EasyPost/Service/CustomsInfoService.php');
+require_once(dirname(__FILE__) . '/EasyPost/Service/CustomsItemService.php');
+require_once(dirname(__FILE__) . '/EasyPost/Service/EndShipperService.php');
+require_once(dirname(__FILE__) . '/EasyPost/Service/EventService.php');
+require_once(dirname(__FILE__) . '/EasyPost/Service/InsuranceService.php');
+require_once(dirname(__FILE__) . '/EasyPost/Service/OrderService.php');
+require_once(dirname(__FILE__) . '/EasyPost/Service/ParcelService.php');
+require_once(dirname(__FILE__) . '/EasyPost/Service/PickupService.php');
+require_once(dirname(__FILE__) . '/EasyPost/Service/RateService.php');
+require_once(dirname(__FILE__) . '/EasyPost/Service/ReferralCustomerService.php');
+require_once(dirname(__FILE__) . '/EasyPost/Service/RefundService.php');
+require_once(dirname(__FILE__) . '/EasyPost/Service/ReportService.php');
+require_once(dirname(__FILE__) . '/EasyPost/Service/ScanFormService.php');
+require_once(dirname(__FILE__) . '/EasyPost/Service/ShipmentService.php');
+require_once(dirname(__FILE__) . '/EasyPost/Service/TrackerService.php');
+require_once(dirname(__FILE__) . '/EasyPost/Service/UserService.php');
+require_once(dirname(__FILE__) . '/EasyPost/Service/WebhookService.php');

@@ -2,7 +2,7 @@
 
 namespace EasyPost\Test;
 
-use EasyPost\EasyPost;
+use EasyPost\EasyPostClient;
 use VCR\VCR;
 
 class TestUtil
@@ -10,17 +10,10 @@ class TestUtil
     /**
      * Runs all the logic required to setup a VCR test.
      *
-     * @param string $apiKeyEnvVar
      * @return void
      */
-    public static function setupVcrTests($apiKeyEnvVar)
+    public static function setupVcrTests()
     {
-        if ($apiKeyEnvVar === 'PARTNER_USER_PROD_API_KEY') {
-            $apiKeyEnvVar = getenv('PARTNER_USER_PROD_API_KEY') !== false ? getenv('PARTNER_USER_PROD_API_KEY') : '123';
-            EasyPost::setApiKey($apiKeyEnvVar);
-        } else {
-            EasyPost::setApiKey(getenv($apiKeyEnvVar));
-        }
         VCR::turnOn();
     }
 

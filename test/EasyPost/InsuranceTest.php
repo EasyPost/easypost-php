@@ -2,17 +2,20 @@
 
 namespace EasyPost\Test;
 
-use EasyPost\Insurance;
+use EasyPost\EasyPostClient;
 use EasyPost\Shipment;
 
 class InsuranceTest extends \PHPUnit\Framework\TestCase
 {
+    private static $client;
+
     /**
      * Setup the testing environment for this file.
      */
     public static function setUpBeforeClass(): void
     {
-        TestUtil::setupVcrTests('EASYPOST_TEST_API_KEY');
+        TestUtil::setupVcrTests();
+        self::$client = new EasyPostClient(getenv('EASYPOST_TEST_API_KEY'));
     }
 
     /**
@@ -30,12 +33,12 @@ class InsuranceTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('insurance/create.yml');
 
-        $shipment = Shipment::create(Fixture::oneCallBuyShipment());
+        $shipment = self::$client->shipment->create(Fixture::oneCallBuyShipment());
 
         $insuranceData = Fixture::basicInsurance();
         $insuranceData['tracking_code'] = $shipment->tracking_code;
 
-        $insurance = Insurance::create($insuranceData);
+        $insurance = self::$client->insurance->create($insuranceData);
 
         $this->assertInstanceOf('\EasyPost\Insurance', $insurance);
         $this->assertStringMatchesFormat('ins_%s', $insurance->id);
@@ -49,14 +52,14 @@ class InsuranceTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('insurance/retrieve.yml');
 
-        $shipment = Shipment::create(Fixture::oneCallBuyShipment());
+        $shipment = self::$client->shipment->create(Fixture::oneCallBuyShipment());
 
         $insuranceData = Fixture::basicInsurance();
         $insuranceData['tracking_code'] = $shipment->tracking_code;
 
-        $insurance = Insurance::create($insuranceData);
+        $insurance = self::$client->insurance->create($insuranceData);
 
-        $retrievedInsurance = Insurance::retrieve($insurance->id);
+        $retrievedInsurance = self::$client->insurance->retrieve($insurance->id);
 
         $this->assertInstanceOf('\EasyPost\Insurance', $retrievedInsurance);
         $this->assertEquals($insurance, $retrievedInsurance);
@@ -69,7 +72,7 @@ class InsuranceTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('insurance/all.yml');
 
-        $insurance = Insurance::all([
+        $insurance = self::$client->insurance->all([
             'page_size' => Fixture::pageSize(),
         ]);
 

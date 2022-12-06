@@ -9,6 +9,6 @@ namespace EasyPost;
  * @property string $message
  * @property string $carrier_account_id
  */
-class Message extends EasypostResource
+class Message extends EasyPostObject
 {
 }

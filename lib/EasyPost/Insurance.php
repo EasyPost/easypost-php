@@ -22,47 +22,6 @@ namespace EasyPost;
  * @property string $created_at
  * @property string $updated_at
  */
-class Insurance extends EasypostResource
+class Insurance extends EasyPostObject
 {
-    /**
-     * Retrieve an insurance object.
-     *
-     * @param string $id
-     * @param string $apiKey
-     * @return mixed
-     */
-    public static function retrieve($id, $apiKey = null)
-    {
-        return self::retrieveResource(get_class(), $id, $apiKey);
-    }
-
-    /**
-     * Retrieve all insurance objects.
-     *
-     * @param mixed  $params
-     * @param string $apiKey
-     * @return mixed
-     */
-    public static function all($params = null, $apiKey = null)
-    {
-        return self::allResources(get_class(), $params, $apiKey);
-    }
-
-    /**
-     * Create an insurance object.
-     *
-     * @param mixed  $params
-     * @param string $apiKey
-     * @return mixed
-     */
-    public static function create($params = null, $apiKey = null)
-    {
-        if (!isset($params['insurance']) || !is_array($params['insurance'])) {
-            $clone = $params;
-            unset($params);
-            $params['insurance'] = $clone;
-        }
-
-        return self::createResource(get_class(), $params, $apiKey);
-    }
 }

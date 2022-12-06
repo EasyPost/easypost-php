@@ -8,6 +8,6 @@ namespace EasyPost;
  * @param int $longitude
  * @param string $time_zone
  */
-class VerificationDetails extends EasypostResource
+class VerificationDetails extends EasyPostObject
 {
 }

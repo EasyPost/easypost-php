@@ -2,27 +2,14 @@
 
 namespace EasyPost;
 
+use EasyPost\Util\Util;
+
 class EasyPostObject implements \ArrayAccess, \Iterator
 {
-    /**
-     * @var string
-     */
-    protected $_apiKey;
-
-    /**
-     * @var array
-     */
-    protected $_retrieveOptions;
-
     /**
      * @var array
      */
     protected $_values;
-
-    /**
-     * @var array
-     */
-    protected $_unsavedValues;
 
     /**
      * @var array
@@ -42,33 +29,17 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     /**
      * Constructor for EasyPost objects.
      *
-     * @param string $id
-     * @param string $apiKey
+     * @param EasyPostClient $client
      * @param string $parent
      * @param string $name
      */
-    public function __construct($id = null, $apiKey = null, $parent = null, $name = null)
+    public function __construct($client, $parent = null, $name = null)
     {
-        $this->_apiKey = $apiKey;
+        $this->_client = $client;
         $this->_values = [];
-        $this->_unsavedValues = [];
-        $this->_immutableValues = ['_apiKey', 'id'];
+        $this->_immutableValues = ['_client', 'id'];
         $this->_parent = $parent;
         $this->_name = $name;
-
-        $this->_retrieveOptions = [];
-        if (is_array($id)) {
-            foreach ($id as $key => $value) {
-                if ($key != 'id') {
-                    $this->_retrieveOptions[$key] = $value;
-                }
-            }
-            $id = $id['id'];
-        }
-
-        if ($id) {
-            $this->id = $id;
-        }
     }
 
     /**
@@ -89,11 +60,6 @@ class EasyPostObject implements \ArrayAccess, \Iterator
             if (!is_null($current->_parent)) {
                 $param = [$current->_name => $param];
                 $current = $current->_parent;
-            } else {
-                reset($param);
-                $firstKey = key($param);
-                $current->_unsavedValues[$firstKey] = $param[$firstKey];
-                break;
             }
             $i++;
         }
@@ -128,11 +94,6 @@ class EasyPostObject implements \ArrayAccess, \Iterator
                 if (!is_null($current->_parent)) {
                     $param = [$current->_name => $param];
                     $current = $current->_parent;
-                } else {
-                    reset($param);
-                    $firstKey = key($param);
-                    unset($current->_unsavedValues[$firstKey]);
-                    break;
                 }
                 $i++;
             }
@@ -158,63 +119,32 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     }
 
     /**
-     * Construct from.
+     * Construct EasyPost objects from a response.
      *
+     * @param EasyPostClient $client
      * @param array $values
      * @param string $class
-     * @param string $apiKey
-     * @param string $parent
-     * @param string $name
      * @return mixed
      */
-    public static function constructFrom($values, $class = null, $apiKey = null, $parent = null, $name = null)
+    public static function constructFrom($client, $values, $class)
     {
-        if ($class === null) {
-            $class = get_class();
-        }
+        $object = new $class($client);
+        $object->convertEach($client, $values);
 
-        $obj = new $class(isset($values['id']) ? $values['id'] : null, $apiKey, $parent, $name);
-        $obj->refreshFrom($values, $apiKey);
-
-        return $obj;
+        return $object;
     }
 
     /**
-     * Refresh from.
+     * Convert each piece of an EasyPost object.
      *
+     * @param EasyPostClient $client
      * @param array $values
-     * @param string $apiKey
-     * @param bool $partial
      */
-    public function refreshFrom($values, $apiKey, $partial = false)
+    public function convertEach($client, $values)
     {
-        $this->_apiKey = $apiKey;
-
-        if ($partial) {
-            $removed = [];
-        } else {
-            $removed = array_diff(array_keys($this->_values), array_keys($values));
-        }
-
-        foreach ($removed as $k) {
-            if (in_array($k, $this->_immutableValues) || in_array($k, $values)) {
-                continue;
-            }
-            unset($this->$k);
-        }
-
         foreach ($values as $k => $v) {
-            if ($k == 'id' && $this->id != $v) {
-                $this->id = $v;
-            }
-
-            if (in_array($k, $this->_immutableValues)) {
-                continue;
-            }
-
-            $this->_values[$k] = Util::convertToEasyPostObject($v, $apiKey, $this, $k);
+            $this->_values[$k] = Util::convertToEasyPostObject($client, $v, $this, $k);
         }
-        $this->_unsavedValues = [];
     }
 
     /**

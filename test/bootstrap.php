@@ -1,7 +1,7 @@
 <?php
 
 use allejo\VCR\VCRCleaner;
-use EasyPost\Util;
+use EasyPost\Util\Util;
 use VCR\VCR;
 
 if (!file_exists('test/cassettes')) {

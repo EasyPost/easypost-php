@@ -1,0 +1,76 @@
+
+-
+    request:
+        method: GET
+        url: 'https://api.easypost.com/v2/scan_forms?page_size=5'
+        headers:
+            Host: api.easypost.com
+            Accept-Encoding: ''
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+    response:
+        status:
+            http_version: '1.1'
+            code: '200'
+            message: OK
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: e26b982d63911458e78b09fd001e3856
+            cache-control: 'private, no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '4552'
+            etag: 'W/"b909d1315250ae70f1c0b1345fb47725"'
+            x-runtime: '0.053470'
+            x-node: bigweb3nuq
+            x-version-label: easypost-202212072114-cbd87d5dd7-master
+            x-backend: easypost
+            x-proxied: ['intlb1nuq 29913d444b', 'extlb2nuq 29913d444b']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"scan_forms":[{"id":"sf_1112a293f30b4360b5d418ec8d1182d6","object":"ScanForm","created_at":"2022-12-06T20:31:01Z","updated_at":"2022-12-06T20:31:01Z","tracking_codes":["9400100106068158063482"],"address":{"id":"adr_e2ad5f2f75a411eda451ac1f6bc7b362","object":"Address","created_at":"2022-12-06T20:30:55+00:00","updated_at":"2022-12-06T20:30:55+00:00","name":"Elizabeth Swan","company":null,"street1":"179 N Harbor Dr","street2":null,"city":"Redondo Beach","state":"CA","zip":"90277","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":[]},"status":"created","message":null,"form_url":"https:\/\/easypost-files.s3.us-west-2.amazonaws.com\/files\/scan_form\/20221206\/a97dea83c8694df585bfe867dfb5a4c7.pdf","form_file_type":null,"batch_id":"batch_53b74063cac44eb28570b75af5ae15a7","confirmation":null},{"id":"sf_f1b4437b175f4ecbb079124d795e1187","object":"ScanForm","created_at":"2022-12-02T18:03:59Z","updated_at":"2022-12-02T18:03:59Z","tracking_codes":["9400100106068156346617"],"address":{"id":"adr_b0fa7424726b11edaad9ac1f6bc72124","object":"Address","created_at":"2022-12-02T18:03:57+00:00","updated_at":"2022-12-02T18:03:57+00:00","name":"Elizabeth Swan","company":null,"street1":"179 N Harbor Dr","street2":null,"city":"Redondo Beach","state":"CA","zip":"90277","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":[]},"status":"created","message":null,"form_url":"https:\/\/easypost-files.s3.us-west-2.amazonaws.com\/files\/scan_form\/20221202\/cc27677ffa664f07a1c0bc1c48bf2bc7.pdf","form_file_type":null,"batch_id":"batch_e252315a3b944e509a22f2e6c3131f42","confirmation":null},{"id":"sf_d188736b5c834db4ace11e96c3653316","object":"ScanForm","created_at":"2022-12-02T18:03:56Z","updated_at":"2022-12-02T18:03:57Z","tracking_codes":["9400100106068156346600"],"address":{"id":"adr_afa9c9fc726b11ed8e02ac1f6b0a0d1e","object":"Address","created_at":"2022-12-02T18:03:55+00:00","updated_at":"2022-12-02T18:03:55+00:00","name":"Elizabeth Swan","company":null,"street1":"179 N Harbor Dr","street2":null,"city":"Redondo Beach","state":"CA","zip":"90277","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":[]},"status":"created","message":null,"form_url":"https:\/\/easypost-files.s3.us-west-2.amazonaws.com\/files\/scan_form\/20221202\/78c9791c94e643a2ab97e643b6a68186.pdf","form_file_type":null,"batch_id":"batch_decfb1e33af849bd93ab31c5d178ee04","confirmation":null},{"id":"sf_a9182e3d6c644b39a7249b70fd28c95f","object":"ScanForm","created_at":"2022-12-02T18:02:39Z","updated_at":"2022-12-02T18:02:40Z","tracking_codes":["9400100106068156346037"],"address":{"id":"adr_7f841c41726b11edb5c1ac1f6b0a0d1e","object":"Address","created_at":"2022-12-02T18:02:34+00:00","updated_at":"2022-12-02T18:02:34+00:00","name":"Elizabeth Swan","company":null,"street1":"179 N Harbor Dr","street2":null,"city":"Redondo Beach","state":"CA","zip":"90277","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":[]},"status":"created","message":null,"form_url":"https:\/\/easypost-files.s3.us-west-2.amazonaws.com\/files\/scan_form\/20221202\/9fa670c240c049378896a8ec4defbe37.pdf","form_file_type":null,"batch_id":"batch_5b118fb36f564f9789b8e8b0d6602d54","confirmation":null},{"id":"sf_3d61db979b2a42e29c020bf490f62ee2","object":"ScanForm","created_at":"2022-12-02T16:33:40Z","updated_at":"2022-12-02T16:33:41Z","tracking_codes":["9400100106068156312360"],"address":{"id":"adr_135df65b725f11edb31dac1f6bc72124","object":"Address","created_at":"2022-12-02T16:33:39+00:00","updated_at":"2022-12-02T16:33:39+00:00","name":"Elizabeth Swan","company":null,"street1":"179 N Harbor Dr","street2":null,"city":"Redondo Beach","state":"CA","zip":"90277","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":[]},"status":"created","message":null,"form_url":"https:\/\/easypost-files.s3.us-west-2.amazonaws.com\/files\/scan_form\/20221202\/827dba4f62944a68af706a6c0a12e7a7.pdf","form_file_type":null,"batch_id":"batch_1eb85ff89b684ed68f28537155cc8ec2","confirmation":null}],"has_more":true}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/scan_forms?page_size=5'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 732
+            request_size: 299
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.264939
+            namelookup_time: 0.001573
+            connect_time: 0.06816
+            pretransfer_time: 0.142617
+            size_upload: 0.0
+            size_download: 4552.0
+            speed_download: 17181.0
+            speed_upload: 0.0
+            download_content_length: 4552.0
+            upload_content_length: 0.0
+            starttransfer_time: 0.264863
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.62.110.130
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 10.130.6.25
+            local_port: 58111
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 142588
+            connect_time_us: 68160
+            namelookup_time_us: 1573
+            pretransfer_time_us: 142617
+            redirect_time_us: 0
+            starttransfer_time_us: 264863
+            total_time_us: 264939

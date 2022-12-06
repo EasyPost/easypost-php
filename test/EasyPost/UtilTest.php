@@ -2,7 +2,7 @@
 
 namespace EasyPost\Test;
 
-use EasyPost\Util;
+use EasyPost\Util\Util;
 
 class UtilTest extends \PHPUnit\Framework\TestCase
 {

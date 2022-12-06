@@ -10,6 +10,6 @@ namespace EasyPost;
  * @property string $country
  * @property string $zip
  */
-class TrackingLocation extends EasypostResource
+class TrackingLocation extends EasyPostObject
 {
 }

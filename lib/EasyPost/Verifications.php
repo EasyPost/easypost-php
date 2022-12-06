@@ -7,6 +7,6 @@ namespace EasyPost;
  * @param Verification $zip4
  * @param Verification $delivery
  */
-class Verifications extends EasypostResource
+class Verifications extends EasyPostObject
 {
 }

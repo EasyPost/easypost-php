@@ -24,17 +24,6 @@ namespace EasyPost;
  * @property string $created_at
  * @property string $updated_at
  */
-class Rate extends EasypostResource
+class Rate extends EasyPostObject
 {
-    /**
-     * Retrieve a rate.
-     *
-     * @param string $id
-     * @param string $apiKey
-     * @return mixed
-     */
-    public static function retrieve($id, $apiKey = null)
-    {
-        return self::retrieveResource(get_class(), $id, $apiKey);
-    }
 }

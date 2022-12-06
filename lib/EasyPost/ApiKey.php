@@ -11,6 +11,6 @@ namespace EasyPost;
  * @property string $mode
  * @property string $created_at
  */
-class ApiKey extends EasypostResource
+class ApiKey extends EasyPostObject
 {
 }

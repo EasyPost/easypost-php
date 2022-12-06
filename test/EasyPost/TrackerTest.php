@@ -2,16 +2,19 @@
 
 namespace EasyPost\Test;
 
-use EasyPost\Tracker;
+use EasyPost\EasyPostClient;
 
 class TrackerTest extends \PHPUnit\Framework\TestCase
 {
+    private static $client;
+
     /**
      * Setup the testing environment for this file.
      */
     public static function setUpBeforeClass(): void
     {
-        TestUtil::setupVcrTests('EASYPOST_TEST_API_KEY');
+        TestUtil::setupVcrTests();
+        self::$client = new EasyPostClient(getenv('EASYPOST_TEST_API_KEY'));
     }
 
     /**
@@ -29,7 +32,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('trackers/create.yml');
 
-        $tracker = Tracker::create([
+        $tracker = self::$client->tracker->create([
             'tracking_code' => 'EZ1000000001',
         ]);
 
@@ -45,7 +48,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('trackers/createUnwrappedParam.yml');
 
-        $tracker = Tracker::create('EZ1000000001');
+        $tracker = self::$client->tracker->create('EZ1000000001');
 
         $this->assertInstanceOf('\EasyPost\Tracker', $tracker);
         $this->assertStringMatchesFormat('trk_%s', $tracker->id);
@@ -59,12 +62,12 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('trackers/retrieve.yml');
 
-        $tracker = Tracker::create([
+        $tracker = self::$client->tracker->create([
             'tracking_code' => 'EZ1000000001',
         ]);
 
         // Test trackers cycle through their "dummy" statuses automatically, the created and retrieved objects may differ
-        $retrievedTracker = Tracker::retrieve($tracker->id);
+        $retrievedTracker = self::$client->tracker->retrieve($tracker->id);
 
         $this->assertInstanceOf('\EasyPost\Tracker', $retrievedTracker);
         $this->assertEquals($tracker->id, $retrievedTracker->id);
@@ -77,7 +80,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('trackers/all.yml');
 
-        $trackers = Tracker::all([
+        $trackers = self::$client->tracker->all([
             'page_size' => Fixture::pageSize(),
         ]);
 
@@ -95,15 +98,17 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('trackers/createList.yml');
 
-        // PHP is dumb and tries to make indexed arrays into a list instead of an object.
-        // Naming the index for PHP is the workaround.
-        $response = Tracker::createList([
-            'tracker0' => ['tracking_code' => 'EZ1000000001'],
-            'tracker1' => ['tracking_code' => 'EZ1000000002'],
-            'tracker2' => ['tracking_code' => 'EZ1000000003'],
-        ]);
-
-        // This endpoint returns nothing so we only assert a failure doesn't happen
-        $this->expectNotToPerformAssertions();
+        try {
+            // PHP is dumb and tries to make indexed arrays into a list instead of an object.
+            // Naming the index for PHP is the workaround.
+            self::$client->tracker->createList([
+                'tracker0' => ['tracking_code' => 'EZ1000000001'],
+                'tracker1' => ['tracking_code' => 'EZ1000000002'],
+                'tracker2' => ['tracking_code' => 'EZ1000000003'],
+            ]);
+            $this->assertTrue(true);
+        } catch (\Exception $exception) {
+            $this->fail('Exception thrown when we expected no error');
+        }
     }
 }

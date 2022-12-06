@@ -2,17 +2,20 @@
 
 namespace EasyPost\Test;
 
-use EasyPost\Error;
-use EasyPost\Order;
+use EasyPost\EasyPostClient;
+use EasyPost\Exception\Error;
 
 class OrderTest extends \PHPUnit\Framework\TestCase
 {
+    private static $client;
+
     /**
      * Setup the testing environment for this file.
      */
     public static function setUpBeforeClass(): void
     {
-        TestUtil::setupVcrTests('EASYPOST_TEST_API_KEY');
+        TestUtil::setupVcrTests();
+        self::$client = new EasyPostClient(getenv('EASYPOST_TEST_API_KEY'));
     }
 
     /**
@@ -30,7 +33,7 @@ class OrderTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('orders/create.yml');
 
-        $order = Order::create(Fixture::basicOrder());
+        $order = self::$client->order->create(Fixture::basicOrder());
 
         $this->assertInstanceOf('\EasyPost\Order', $order);
         $this->assertStringMatchesFormat('order_%s', $order->id);
@@ -44,9 +47,9 @@ class OrderTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('orders/retrieve.yml');
 
-        $order = Order::create(Fixture::basicOrder());
+        $order = self::$client->order->create(Fixture::basicOrder());
 
-        $retrievedOrder = Order::retrieve($order->id);
+        $retrievedOrder = self::$client->order->retrieve($order->id);
 
         $this->assertInstanceOf('\EasyPost\Order', $retrievedOrder);
         $this->assertEquals($order->id, $retrievedOrder->id);
@@ -59,9 +62,9 @@ class OrderTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('orders/getRates.yml');
 
-        $order = Order::create(Fixture::basicOrder());
+        $order = self::$client->order->create(Fixture::basicOrder());
 
-        $rates = $order->getRates();
+        $rates = self::$client->order->getRates($order->id);
 
         $ratesArray = $rates['rates'];
 
@@ -76,14 +79,17 @@ class OrderTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('orders/buy.yml');
 
-        $order = Order::create(Fixture::basicOrder());
+        $order = self::$client->order->create(Fixture::basicOrder());
 
-        $order->buy([
-            'carrier' => Fixture::usps(),
-            'service' => Fixture::uspsService(),
-        ]);
+        $boughtOrder = self::$client->order->buy(
+            $order->id,
+            [
+                'carrier' => Fixture::usps(),
+                'service' => Fixture::uspsService(),
+            ]
+        );
 
-        $shipmentsArray = $order['shipments'];
+        $shipmentsArray = $boughtOrder['shipments'];
 
         foreach ($shipmentsArray as $shipment) {
             $this->assertNotNull($shipment->postage_label);
@@ -97,11 +103,11 @@ class OrderTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('orders/buyRateObject.yml');
 
-        $order = Order::create(Fixture::basicOrder());
+        $order = self::$client->order->create(Fixture::basicOrder());
 
-        $order->buy($order->rates[0]);
+        $boughtOrder = self::$client->order->buy($order->id, $order->rates[0]);
 
-        $shipmentsArray = $order['shipments'];
+        $shipmentsArray = $boughtOrder['shipments'];
 
         foreach ($shipmentsArray as $shipment) {
             $this->assertNotNull($shipment->postage_label);
@@ -115,7 +121,7 @@ class OrderTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('orders/lowestRate.yml');
 
-        $order = Order::create(Fixture::basicOrder());
+        $order = self::$client->order->create(Fixture::basicOrder());
 
         // Test lowest rate with no filters
         $lowestRate = $order->lowestRate();

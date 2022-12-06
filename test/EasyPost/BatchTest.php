@@ -2,17 +2,20 @@
 
 namespace EasyPost\Test;
 
-use EasyPost\Batch;
+use EasyPost\EasyPostClient;
 use EasyPost\Shipment;
 
 class BatchTest extends \PHPUnit\Framework\TestCase
 {
+    private static $client;
+
     /**
      * Setup the testing environment for this file.
      */
     public static function setUpBeforeClass(): void
     {
-        TestUtil::setupVcrTests('EASYPOST_TEST_API_KEY');
+        TestUtil::setupVcrTests();
+        self::$client = new EasyPostClient(getenv('EASYPOST_TEST_API_KEY'));
     }
 
     /**
@@ -30,7 +33,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('batches/create.yml');
 
-        $batch = Batch::create([
+        $batch = self::$client->batch->create([
             'shipments' => [Fixture::basicShipment()],
         ]);
 
@@ -46,11 +49,11 @@ class BatchTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('batches/retrieve.yml');
 
-        $batch = Batch::create([
+        $batch = self::$client->batch->create([
             'shipments' => [Fixture::basicShipment()],
         ]);
 
-        $retrievedBatch = Batch::retrieve($batch->id);
+        $retrievedBatch = self::$client->batch->retrieve($batch->id);
 
         $this->assertInstanceOf('\EasyPost\Batch', $retrievedBatch);
         $this->assertEquals($batch->id, $retrievedBatch->id);
@@ -63,7 +66,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('batches/all.yml');
 
-        $batches = Batch::all([
+        $batches = self::$client->batch->all([
             'page_size' => Fixture::pageSize(),
         ]);
 
@@ -81,7 +84,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('batches/createAndBuy.yml');
 
-        $batch = Batch::reateAndBuy([
+        $batch = self::$client->batch->createAndBuy([
             Fixture::oneCallBuyShipment(),
             Fixture::oneCallBuyShipment(),
         ]);
@@ -100,17 +103,14 @@ class BatchTest extends \PHPUnit\Framework\TestCase
 
         $shipmentData = Fixture::oneCallBuyShipment();
 
-        $batch = Batch::create([
+        $batch = self::$client->batch->create([
             'shipments' => [$shipmentData],
         ]);
 
-        $batch->buy();
+        $boughtBatch = self::$client->batch->buy($batch->id);
 
-        $this->assertInstanceOf('\EasyPost\Batch', $batch);
-        $this->assertEquals(1, $batch->num_shipments);
-
-        // Return so other tests can reuse this object
-        return $batch;
+        $this->assertInstanceOf('\EasyPost\Batch', $boughtBatch);
+        $this->assertEquals(1, $boughtBatch->num_shipments);
     }
 
     /**
@@ -123,19 +123,19 @@ class BatchTest extends \PHPUnit\Framework\TestCase
 
         TestUtil::setupCassette($cassetteName);
 
-        $batch = Batch::create([
+        $batch = self::$client->batch->create([
             'shipments' => [Fixture::oneCallBuyShipment()],
         ]);
-        $batch->buy();
+        $boughtBatch = self::$client->batch->buy($batch->id);
 
         if ($testRequiresWait === true) {
             sleep(5); // Wait enough time for the batch to process buying the shipment
         }
 
-        $batch->createScanForm();
+        $scanformBatch = self::$client->batch->createScanForm($boughtBatch->id);
 
         // We can't assert anything meaningful here because the scanform gets queued for generation and may not be immediately available
-        $this->assertInstanceOf('\EasyPost\Batch', $batch);
+        $this->assertInstanceOf('\EasyPost\Batch', $scanformBatch);
     }
 
     /**
@@ -145,19 +145,21 @@ class BatchTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('batches/addRemoveShipment.yml');
 
-        $shipment = Shipment::create(Fixture::oneCallBuyShipment());
+        $shipment = self::$client->shipment->create(Fixture::oneCallBuyShipment());
 
-        $batch = Batch::create();
+        $batch = self::$client->batch->create();
 
-        $batch->addShipments([
-            'shipments' => [$shipment]
-        ]);
-        $this->assertEquals(1, $batch->num_shipments);
+        $shipmentsBatch = self::$client->batch->addShipments(
+            $batch->id,
+            ['shipments' => [$shipment]]
+        );
+        $this->assertEquals(1, $shipmentsBatch->num_shipments);
 
-        $batch->removeShipments([
-            'shipments' => [$shipment]
-        ]);
-        $this->assertEquals(0, $batch->num_shipments);
+        $nonShipmentsBatch = self::$client->batch->removeShipments(
+            $batch->id,
+            ['shipments' => [$shipment]]
+        );
+        $this->assertEquals(0, $nonShipmentsBatch->num_shipments);
     }
 
     /**
@@ -170,20 +172,21 @@ class BatchTest extends \PHPUnit\Framework\TestCase
 
         TestUtil::setupCassette($cassetteName);
 
-        $batch = Batch::create([
+        $batch = self::$client->batch->create([
             'shipments' => [Fixture::oneCallBuyShipment()],
         ]);
-        $batch->buy();
+        self::$client->batch->buy($batch->id);
 
         if ($testRequiresWait === true) {
             sleep(5); // Wait enough time for the batch to process buying the shipment
         }
 
-        $batch->label([
-            'file_format' => 'ZPL',
-        ]);
+        $labelBatch = self::$client->batch->label(
+            $batch->id,
+            ['file_format' => 'ZPL']
+        );
 
         // We can't assert anything meaningful here because the label gets queued for generation and may not be immediately available
-        $this->assertInstanceOf('\EasyPost\Batch', $batch);
+        $this->assertInstanceOf('\EasyPost\Batch', $labelBatch);
     }
 }

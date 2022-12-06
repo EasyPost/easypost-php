@@ -24,21 +24,21 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 29a8d139638a3dcae2bbb07a0026fb37
+            x-ep-request-uuid: e26b982c6391140fe78b05dc001e1f67
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
-            location: /api/v2/trackers/trk_623e0038f2824062b9ad4b113cd24e52
+            location: /api/v2/trackers/trk_d1fc997126d6446db367cfffe38aedf3
             content-type: 'application/json; charset=utf-8'
             content-length: '1224'
-            etag: 'W/"d833d0e2efa3199f9a01d7200e607d8c"'
-            x-runtime: '0.126767'
-            x-node: bigweb9nuq
-            x-version-label: easypost-202212011955-aa9a4d99eb-master
+            etag: 'W/"9d8668dddf01c3632ebbf32043d44e35"'
+            x-runtime: '0.131737'
+            x-node: bigweb5nuq
+            x-version-label: easypost-202212072114-cbd87d5dd7-master
             x-backend: easypost
-            x-proxied: ['intlb1nuq 29913d444b', 'extlb1nuq 29913d444b']
+            x-proxied: ['intlb2nuq 29913d444b', 'extlb2nuq 29913d444b']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"trk_623e0038f2824062b9ad4b113cd24e52","object":"Tracker","mode":"test","tracking_code":"EZ1000000001","status":"pre_transit","status_detail":"unknown","created_at":"2022-12-02T18:02:50Z","updated_at":"2022-12-02T18:02:50Z","signed_by":null,"weight":17.6,"est_delivery_date":"2022-12-02T18:02:50Z","shipment_id":null,"carrier":"USPS","tracking_details":[{"object":"TrackingDetail","message":"Pre-Shipment information received","description":null,"status":"pre_transit","status_detail":null,"datetime":"2022-11-02T18:02:50Z","source":"EasyPost","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":null,"state":null,"country":null,"zip":null}},{"object":"TrackingDetail","message":"Shipping label created","description":null,"status":"pre_transit","status_detail":null,"datetime":"2022-11-03T12:51:50Z","source":"EasyPost","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":null,"state":null,"country":null,"zip":null}}],"carrier_detail":null,"finalized":true,"is_return":false,"public_url":"https:\/\/track.easypost.com\/djE6dHJrXzYyM2UwMDM4ZjI4MjQwNjJiOWFkNGIxMTNjZDI0ZTUy","fees":[{"object":"Fee","type":"TrackerFee","amount":"0.02000","charged":false,"refunded":false}]}'
+        body: '{"id":"trk_d1fc997126d6446db367cfffe38aedf3","object":"Tracker","mode":"test","tracking_code":"EZ1000000001","status":"pre_transit","status_detail":"unknown","created_at":"2022-12-07T22:30:39Z","updated_at":"2022-12-07T22:30:39Z","signed_by":null,"weight":17.6,"est_delivery_date":"2022-12-07T22:30:39Z","shipment_id":null,"carrier":"USPS","tracking_details":[{"object":"TrackingDetail","message":"Pre-Shipment information received","description":null,"status":"pre_transit","status_detail":null,"datetime":"2022-11-07T22:30:39Z","source":"EasyPost","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":null,"state":null,"country":null,"zip":null}},{"object":"TrackingDetail","message":"Shipping label created","description":null,"status":"pre_transit","status_detail":null,"datetime":"2022-11-08T17:19:39Z","source":"EasyPost","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":null,"state":null,"country":null,"zip":null}}],"carrier_detail":null,"finalized":true,"is_return":false,"public_url":"https:\/\/track.easypost.com\/djE6dHJrX2QxZmM5OTcxMjZkNjQ0NmRiMzY3Y2ZmZmUzOGFlZGYz","fees":[{"object":"Fee","type":"TrackerFee","amount":"0.02000","charged":false,"refunded":false}]}'
         curl_info:
             url: 'https://api.easypost.com/v2/trackers'
             content_type: 'application/json; charset=utf-8'
@@ -48,32 +48,32 @@
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.237681
-            namelookup_time: 0.001357
-            connect_time: 0.034925
-            pretransfer_time: 0.076872
+            total_time: 0.366875
+            namelookup_time: 0.009823
+            connect_time: 0.079326
+            pretransfer_time: 0.161527
             size_upload: 44.0
             size_download: 1224.0
-            speed_download: 5149.0
-            speed_upload: 185.0
+            speed_download: 3336.0
+            speed_upload: 119.0
             download_content_length: 1224.0
             upload_content_length: 44.0
-            starttransfer_time: 0.237657
+            starttransfer_time: 0.366847
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.131
+            primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
-            local_ip: 192.168.1.201
-            local_port: 57419
+            local_ip: 10.130.6.25
+            local_port: 58020
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 76837
-            connect_time_us: 34925
-            namelookup_time_us: 1357
-            pretransfer_time_us: 76872
+            appconnect_time_us: 161470
+            connect_time_us: 79326
+            namelookup_time_us: 9823
+            pretransfer_time_us: 161527
             redirect_time_us: 0
-            starttransfer_time_us: 237657
-            total_time_us: 237681
+            starttransfer_time_us: 366847
+            total_time_us: 366875

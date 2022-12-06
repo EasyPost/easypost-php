@@ -17,35 +17,6 @@ namespace EasyPost;
  * @property string $created_at
  * @property string $updated_at
  */
-class CustomsItem extends EasypostResource
+class CustomsItem extends EasyPostObject
 {
-    /**
-     * Retrieve a customs item.
-     *
-     * @param string $id
-     * @param string $apiKey
-     * @return mixed
-     */
-    public static function retrieve($id, $apiKey = null)
-    {
-        return self::retrieveResource(get_class(), $id, $apiKey);
-    }
-
-    /**
-     * Create a customs item.
-     *
-     * @param mixed $params
-     * @param string $apiKey
-     * @return mixed
-     */
-    public static function create($params = null, $apiKey = null)
-    {
-        if (!isset($params['customs_item']) || !is_array($params['customs_item'])) {
-            $clone = $params;
-            unset($params);
-            $params['customs_item'] = $clone;
-        }
-
-        return self::createResource(get_class(), $params, $apiKey);
-    }
 }

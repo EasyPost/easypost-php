@@ -2,9 +2,6 @@
 
 namespace EasyPost\Test;
 
-// Manually require the library to ensure there are no import errors (eg: when the autoloader is not used)
-require 'lib/easypost.php';
-
 class RequireTest extends \PHPUnit\Framework\TestCase
 {
     /**
@@ -14,6 +11,8 @@ class RequireTest extends \PHPUnit\Framework\TestCase
      */
     public function testRequireLibrary()
     {
+        // Manually require the library to ensure there are no import errors (eg: when the autoloader is not used)
+        require_once('lib/easypost.php');
         $this->expectNotToPerformAssertions();
     }
 }

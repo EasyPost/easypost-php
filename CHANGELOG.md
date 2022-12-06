@@ -3,6 +3,16 @@
 ## Next Release
 
 - Adopts `Guzzle` as the HTTP client for this library. This should provide a much more consistent experience, better encoding, faster request times in some cases
+- New `EasyPostClient` object which encapsulates the API key and all functions are called against this client allowing for thread-safety
+  - All instance methods and the ability to have objects update in-place has been removed due to this rearchitecture. When updating objects or performing actions on them (eg: creating a label/scanform), you will want to assign the return value to a variable and use that moving forward
+  - Functions no longer accept an API key as an optional param
+- `EasyPostResource` is now `BaseService`
+- Models and Services
+- `Requestor` has moved to `Http`, variables from `EasyPost` now moved to `Constant`, `Error` moved to `Exception`
+- `->save()` instance methods are now `update()` static methods
+- Occurances of `smartrate` are now `smartRate` and `Smartrate` are now `SmartRate` to match the documentation and API expectations
+- `Referral` is now `ReferralCustomer` to better match documentation and API expectation
+- `validateWebhook`, `getLowestSmartRate`, and `receiveEvent` are now under `EasyPost\Util\Util` as they do not make any API calls
 
 ## v5.8.0 (2022-12-01)
 

@@ -14,6 +14,6 @@ namespace EasyPost;
  * @property string $user_id
  * @property string $theme
  */
-class Brand extends EasypostResource
+class Brand extends EasyPostObject
 {
 }
