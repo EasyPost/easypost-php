@@ -37,13 +37,9 @@ class ReportService extends BaseService
             throw new Error('Undetermined Report Type');
         } else {
             $type = $params['type'];
-
             self::validate($params);
-            $requestor = new Requestor($this->client);
-
             $url = self::reportUrl($type);
-
-            $response = $requestor->request('get', $url, $params);
+            $response = Requestor::request($this->client, 'get', $url, $params);
 
             return InternalUtil::convertToEasyPostObject($this->client, $response);
         }
@@ -62,11 +58,8 @@ class ReportService extends BaseService
         }
 
         $url = self::reportUrl($params['type']);
-
         self::validate($params);
-        $requestor = new Requestor($this->client);
-
-        $response = $requestor->request('post', $url, $params);
+        $response = Requestor::request($this->client, 'post', $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }

@@ -8,6 +8,8 @@ use EasyPost\Util\InternalUtil;
 
 class BaseService
 {
+    protected $client;
+
     /**
      * Service constructor shared by all child services.
      *
@@ -99,10 +101,9 @@ class BaseService
      */
     protected function retrieveResource($class, $id, $beta = false)
     {
-        $requestor = new Requestor($this->client);
         $url = $this->instanceUrl($class, $id);
 
-        $response = $requestor->request('get', $url, null, $beta);
+        $response = Requestor::request($this->client, 'get', $url, null, $beta);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -118,9 +119,8 @@ class BaseService
     protected function allResources($class, $params = null, $beta = false)
     {
         self::validate($params);
-        $requestor = new Requestor($this->client);
         $url = self::classUrl($class);
-        $response = $requestor->request('get', $url, $params, $beta);
+        $response = Requestor::request($this->client, 'get', $url, $params, $beta);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -136,10 +136,8 @@ class BaseService
     protected function createResource($class, $params = null, $beta = false)
     {
         self::validate($params);
-        $requestor = new Requestor($this->client);
         $url = self::classUrl($class);
-
-        $response = $requestor->request('post', $url, $params, $beta);
+        $response = Requestor::request($this->client, 'post', $url, $params, $beta);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -156,9 +154,9 @@ class BaseService
     protected function deleteResource($class, $id, $params = null, $beta = false)
     {
         self::validate();
-        $requestor = new Requestor($this->client);
         $url = $this->instanceUrl($class, $id);
-        $requestor->request('delete', $url, $params, $beta);
+
+        Requestor::request($this->client, 'delete', $url, $params, $beta);
     }
 
     /**
@@ -174,9 +172,8 @@ class BaseService
     protected function updateResource($class, $id, $params = null, $method = 'patch', $beta = false)
     {
         self::validate();
-        $requestor = new Requestor($this->client);
         $url = $this->instanceUrl($class, $id);
-        $response = $requestor->request($method, $url, $params, $beta);
+        $response = Requestor::request($this->client, $method, $url, $params, $beta);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }

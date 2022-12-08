@@ -8,28 +8,30 @@ on:
 
 jobs:
   lint:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
       - name: set up php
         uses: shivammathur/setup-php@v2
         with:
-          php-version: "8.1"
+          php-version: "8.2"
       - name: install dependencies
         run: make install
       - name: lint
         run: make lint
   run-tests:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     strategy:
       matrix:
-        phpversion: ["7.3", "7.4", "8.0", "8.1"]
+        # TODO: We are getting segfaults on PHP 8.2 when running the test suite. This needs to be investigated before enabling
+        phpversion: ["7.4", "8.0", "8.1"]
     steps:
       - uses: actions/checkout@v3
       - name: set up php
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.phpversion }}
+          coverage: xdebug
       - name: get composer cache directory
         id: composer-cache
         run: echo "::set-output name=dir::$(composer config cache-files-dir)"

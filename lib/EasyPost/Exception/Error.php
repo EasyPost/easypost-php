@@ -10,6 +10,14 @@ namespace EasyPost\Exception;
  */
 class Error extends \Exception
 {
+    private $httpBody;
+    private $httpStatus;
+    private $jsonBody;
+    public $code;
+    public $ecode;
+    public $errors;
+    public $message;
+
     /**
      * Constructor.
      *

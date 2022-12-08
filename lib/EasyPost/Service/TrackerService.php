@@ -68,8 +68,8 @@ class TrackerService extends BaseService
             $params = ['trackers' => $clone];
         }
 
-        $requestor = new Requestor($this->client);
         $url = self::classUrl(self::$modelClass);
-        $requestor->request('post', $url . '/create_list', $params);
+
+        Requestor::request($this->client, 'post', $url . '/create_list', $params);
     }
 }

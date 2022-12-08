@@ -64,10 +64,9 @@ class ShipmentService extends BaseService
      */
     public function regenerateRates($id, $params = null, $withCarbonOffset = false)
     {
-        $requestor = new Requestor($this->client);
         $url = $this->instanceUrl(self::$modelClass, $id) . '/rerate';
         $params['carbon_offset'] = $withCarbonOffset;
-        $response = $requestor->request('post', $url, $params);
+        $response = Requestor::request($this->client, 'post', $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -80,9 +79,8 @@ class ShipmentService extends BaseService
      */
     public function getSmartRates($id)
     {
-        $requestor = new Requestor($this->client);
         $url = $this->instanceUrl(self::$modelClass, $id) . '/smartrate';
-        $response = $requestor->request('get', $url);
+        $response = Requestor::request($this->client, 'get', $url);
 
         $result = isset($response['result']) ? $response['result'] : [];
 
@@ -100,22 +98,20 @@ class ShipmentService extends BaseService
      */
     public function buy($id, $params = null, $withCarbonOffset = false, $endShipperId = false)
     {
-        $requestor = new Requestor($this->client);
-        $url = $this->instanceUrl(self::$modelClass, $id) . '/buy';
-
         if (isset($params['id']) && (!isset($params['rate']) || !is_array($params['rate']))) {
             $clone = $params;
             unset($params);
             $params['rate'] = $clone;
         }
 
+        $url = $this->instanceUrl(self::$modelClass, $id) . '/buy';
         $params['carbon_offset'] = $withCarbonOffset;
 
         if ($endShipperId !== false) {
             $params['end_shipper_id'] = $endShipperId;
         }
 
-        $response = $requestor->request('post', $url, $params);
+        $response = Requestor::request($this->client, 'post', $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -129,10 +125,8 @@ class ShipmentService extends BaseService
      */
     public function refund($id, $params = null)
     {
-        $requestor = new Requestor($this->client);
         $url = $this->instanceUrl(self::$modelClass, $id) . '/refund';
-
-        $response = $requestor->request('post', $url, $params);
+        $response = Requestor::request($this->client, 'post', $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -146,16 +140,14 @@ class ShipmentService extends BaseService
      */
     public function label($id, $params = null)
     {
-        $requestor = new Requestor($this->client);
-        $url = $this->instanceUrl(self::$modelClass, $id) . '/label';
-
         if (!isset($params['file_format'])) {
             $clone = $params;
             unset($params);
             $params['file_format'] = $clone;
         }
 
-        $response = $requestor->request('get', $url, $params);
+        $url = $this->instanceUrl(self::$modelClass, $id) . '/label';
+        $response = Requestor::request($this->client, 'get', $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -169,16 +161,14 @@ class ShipmentService extends BaseService
      */
     public function insure($id, $params = null)
     {
-        $requestor = new Requestor($this->client);
-        $url = $this->instanceUrl(self::$modelClass, $id) . '/insure';
-
         if (!isset($params['amount'])) {
             $clone = $params;
             unset($params);
             $params['amount'] = $clone;
         }
 
-        $response = $requestor->request('post', $url, $params);
+        $url = $this->instanceUrl(self::$modelClass, $id) . '/insure';
+        $response = Requestor::request($this->client, 'post', $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -193,13 +183,12 @@ class ShipmentService extends BaseService
      */
     public function generateForm($id, $formType, $formOptions = null)
     {
-        $requestor = new Requestor($this->client);
         $url = $this->instanceUrl(self::$modelClass, $id) . '/forms';
         $formOptions['type'] = $formType;
 
         $params['form'] = $formOptions;
 
-        $response = $requestor->request('post', $url, $params);
+        $response = Requestor::request($this->client, 'post', $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
