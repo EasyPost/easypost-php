@@ -92,12 +92,10 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
             'url' => Fixture::webhookUrl(),
         ]);
 
-        try {
-            self::$client->webhook->update($webhook->id);
-            $this->assertTrue(true);
-        } catch (\Exception $exception) {
-            $this->fail('Exception thrown when we expected no error');
-        }
+        $updatedWebhook = self::$client->webhook->update($webhook->id);
+
+        // The response here won't differ since we don't update any data, just check we get the object back
+        $this->assertInstanceOf('\EasyPost\Webhook', $updatedWebhook);
 
         self::$client->webhook->delete($webhook->id); // We are deleting the webhook here so we don't keep sending events to a dead webhook.
     }

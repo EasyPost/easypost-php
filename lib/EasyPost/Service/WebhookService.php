@@ -48,7 +48,7 @@ class WebhookService extends BaseService
      *
      * @param string $id
      * @param mixed $params
-     * @return void
+     * @return mixed
      */
     public function update($id, $params = null)
     {
@@ -58,7 +58,7 @@ class WebhookService extends BaseService
             $params['webhook'] = $clone;
         }
 
-        self::updateResource(self::$modelClass, $id, $params);
+        return self::updateResource(self::$modelClass, $id, $params);
     }
 
     /**
