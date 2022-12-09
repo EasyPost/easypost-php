@@ -150,14 +150,15 @@ class BaseService
      * @param string $class
      * @param string $id
      * @param mixed $params
+     * @param bool $beta
      * @return void
      */
-    protected function deleteResource($class, $id, $params = null)
+    protected function deleteResource($class, $id, $params = null, $beta = false)
     {
         self::validate();
         $requestor = new Requestor($this->client);
         $url = $this->instanceUrl($class, $id);
-        $requestor->request('delete', $url, $params);
+        $requestor->request('delete', $url, $params, $beta);
     }
 
     /**
@@ -175,7 +176,7 @@ class BaseService
         self::validate();
         $requestor = new Requestor($this->client);
         $url = $this->instanceUrl($class, $id);
-        $response = $requestor->request($method, $url, $params);
+        $response = $requestor->request($method, $url, $params, $beta);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }

@@ -28,9 +28,9 @@ class Requestor
     public function absoluteUrl($url = '', $beta = false)
     {
         if ($beta) {
-            $apiBase = Constant::BETA_API_BASE;
+            $apiBase = Constant::API_BASE . '/beta';
         } else {
-            $apiBase = $this->client->apiBase;
+            $apiBase = $this->client->apiBase . '/' . Constant::API_VERSION;
         }
 
         return "{$apiBase}{$url}";
