@@ -30,15 +30,13 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     /**
      * Constructor for EasyPost objects.
      *
-     * @param EasyPostClient $client
      * @param string $parent
      * @param string $name
      */
-    public function __construct($client, $parent = null, $name = null)
+    public function __construct($parent = null, $name = null)
     {
-        $this->_client = $client;
         $this->_values = [];
-        $this->_immutableValues = ['_client', 'id'];
+        $this->_immutableValues = ['id'];
         $this->_parent = $parent;
         $this->_name = $name;
     }
