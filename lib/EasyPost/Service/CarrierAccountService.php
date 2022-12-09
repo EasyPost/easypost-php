@@ -5,7 +5,7 @@ namespace EasyPost\Service;
 use EasyPost\Constant\Constant;
 use EasyPost\Exception\Error;
 use EasyPost\Http\Requestor;
-use EasyPost\Util\Util;
+use EasyPost\Util\InternalUtil;
 
 /**
  * CarrierAccount service containing all the logic to make API calls.
@@ -85,7 +85,7 @@ class CarrierAccountService extends BaseService
         $requestor = new Requestor($this->client);
         $response = $requestor->request('post', $url, $params);
 
-        return Util::convertToEasyPostObject($this->client, $response);
+        return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
 
     /**
@@ -99,7 +99,7 @@ class CarrierAccountService extends BaseService
         $requestor = new Requestor($this->client);
         $response = $requestor->request('get', '/carrier_types', $params);
 
-        return Util::convertToEasyPostObject($this->client, $response);
+        return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
 
     /**

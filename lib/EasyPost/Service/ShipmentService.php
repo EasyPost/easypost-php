@@ -3,6 +3,7 @@
 namespace EasyPost\Service;
 
 use EasyPost\Http\Requestor;
+use EasyPost\Util\InternalUtil;
 use EasyPost\Util\Util;
 
 /**
@@ -68,7 +69,7 @@ class ShipmentService extends BaseService
         $params['carbon_offset'] = $withCarbonOffset;
         $response = $requestor->request('post', $url, $params);
 
-        return Util::convertToEasyPostObject($this->client, $response);
+        return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
 
     /**
@@ -85,7 +86,7 @@ class ShipmentService extends BaseService
 
         $result = isset($response['result']) ? $response['result'] : [];
 
-        return Util::convertToEasyPostObject($this->client, $result);
+        return InternalUtil::convertToEasyPostObject($this->client, $result);
     }
 
     /**
@@ -116,7 +117,7 @@ class ShipmentService extends BaseService
 
         $response = $requestor->request('post', $url, $params);
 
-        return Util::convertToEasyPostObject($this->client, $response);
+        return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
 
     /**
@@ -133,7 +134,7 @@ class ShipmentService extends BaseService
 
         $response = $requestor->request('post', $url, $params);
 
-        return Util::convertToEasyPostObject($this->client, $response);
+        return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
 
     /**
@@ -156,7 +157,7 @@ class ShipmentService extends BaseService
 
         $response = $requestor->request('get', $url, $params);
 
-        return Util::convertToEasyPostObject($this->client, $response);
+        return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
 
     /**
@@ -179,7 +180,7 @@ class ShipmentService extends BaseService
 
         $response = $requestor->request('post', $url, $params);
 
-        return Util::convertToEasyPostObject($this->client, $response);
+        return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
 
     /**
@@ -200,7 +201,7 @@ class ShipmentService extends BaseService
 
         $response = $requestor->request('post', $url, $params);
 
-        return Util::convertToEasyPostObject($this->client, $response);
+        return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
 
     /**

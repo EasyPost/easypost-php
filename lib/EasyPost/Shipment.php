@@ -2,7 +2,7 @@
 
 namespace EasyPost;
 
-use EasyPost\Util\Util;
+use EasyPost\Util\InternalUtil;
 
 /**
  * @package EasyPost
@@ -51,7 +51,7 @@ class Shipment extends EasyPostObject
      */
     public function lowestRate($carriers = [], $services = [])
     {
-        $lowestRate = Util::getLowestObjectRate($this, $carriers, $services);
+        $lowestRate = InternalUtil::getLowestObjectRate($this, $carriers, $services);
 
         return $lowestRate;
     }

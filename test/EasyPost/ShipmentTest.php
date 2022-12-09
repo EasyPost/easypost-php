@@ -4,6 +4,7 @@ namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
 use EasyPost\Exception\Error;
+use EasyPost\Util\Util;
 
 class ShipmentTest extends \PHPUnit\Framework\TestCase
 {
@@ -362,8 +363,6 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
      */
     public function testLowestSmartRate()
     {
-        $this->markTestSkipped('VCR/Client is not passing API key properly on CI.');
-
         TestUtil::setupCassette('shipments/lowestSmartRate.yml');
 
         $shipment = self::$client->shipment->create(Fixture::fullShipment());
@@ -397,29 +396,27 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
      */
     public function testGetLowestSmartRate()
     {
-        $this->markTestSkipped('VCR/Client is not passing API key properly on CI.');
-
         TestUtil::setupCassette('shipments/getLowestSmartRate.yml');
 
         $shipment = self::$client->shipment->create(Fixture::fullShipment());
         $smartRates = self::$client->shipment->getSmartRates($shipment->id);
 
         // Test lowestSmartRate with valid filters
-        $lowestSmartRate = self::$client->shipment->getLowestSmartRate($smartRates, 3, 'percentile_85');
+        $lowestSmartRate = Util::getLowestSmartRate($smartRates, 3, 'percentile_85');
         $this->assertEquals('First', $lowestSmartRate['service']);
         $this->assertEquals(5.82, $lowestSmartRate['rate']);
         $this->assertEquals('USPS', $lowestSmartRate['carrier']);
 
         // Test lowestSmartRate with invalid filters (should error due to strict delivery_days)
         try {
-            $lowestSmartRate = self::$client->shipment->getLowestSmartRate($smartRates, 0, 'percentile_90');
+            $lowestSmartRate = Util::getLowestSmartRate($smartRates, 0, 'percentile_90');
         } catch (Error $error) {
             $this->assertEquals('No rates found.', $error->getMessage());
         }
 
         // Test lowestSmartRate with invalid filters (should error due to invalid delivery_accuracy)
         try {
-            $lowestSmartRate = self::$client->shipment->getLowestSmartRate($smartRates, 3, 'BAD_ACCURACY');
+            $lowestSmartRate = Util::getLowestSmartRate($smartRates, 3, 'BAD_ACCURACY');
         } catch (Error $error) {
             $this->assertEquals('Invalid delivery_accuracy value, must be one of: ["percentile_50","percentile_75","percentile_85","percentile_90","percentile_95","percentile_97","percentile_99"]', $error->getMessage());
         }

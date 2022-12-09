@@ -5,7 +5,7 @@ namespace EasyPost\Service;
 use EasyPost\EasyPostClient;
 use EasyPost\Exception\Error;
 use EasyPost\Http\Requestor;
-use EasyPost\Util\Util;
+use EasyPost\Util\InternalUtil;
 use GuzzleHttp\Client;
 
 /**
@@ -89,7 +89,7 @@ class ReferralCustomerService extends BaseService
 
         $response = self::createEasypostCreditCard($referralApiKey, $stripeToken, $primaryOrSecondary);
 
-        return Util::convertToEasyPostObject($this->client, $response);
+        return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
 
     /**
@@ -181,6 +181,6 @@ class ReferralCustomerService extends BaseService
         $requestor = new Requestor($client);
         $response = $requestor->request('post', '/credit_cards', $params);
 
-        return Util::convertToEasyPostObject($this->client, $response);
+        return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
 }

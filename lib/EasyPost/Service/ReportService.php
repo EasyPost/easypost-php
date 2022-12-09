@@ -4,7 +4,7 @@ namespace EasyPost\Service;
 
 use EasyPost\Exception\Error;
 use EasyPost\Http\Requestor;
-use EasyPost\Util\Util;
+use EasyPost\Util\InternalUtil;
 
 /**
  * Report service containing all the logic to make API calls.
@@ -45,7 +45,7 @@ class ReportService extends BaseService
 
             $response = $requestor->request('get', $url, $params);
 
-            return Util::convertToEasyPostObject($this->client, $response);
+            return InternalUtil::convertToEasyPostObject($this->client, $response);
         }
     }
 
@@ -68,7 +68,7 @@ class ReportService extends BaseService
 
         $response = $requestor->request('post', $url, $params);
 
-        return Util::convertToEasyPostObject($this->client, $response);
+        return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
 
     /**

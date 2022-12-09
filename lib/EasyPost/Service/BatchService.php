@@ -3,7 +3,7 @@
 namespace EasyPost\Service;
 
 use EasyPost\Http\Requestor;
-use EasyPost\Util\Util;
+use EasyPost\Util\InternalUtil;
 
 /**
  * Batch service containing all the logic to make API calls.
@@ -80,7 +80,7 @@ class BatchService extends BaseService
         $url = self::classUrl(self::$modelClass);
         $response = $requestor->request('post', $url . '/create_and_buy', $params);
 
-        return Util::convertToEasyPostObject($this->client, $response);
+        return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
 
     /**
@@ -97,7 +97,7 @@ class BatchService extends BaseService
 
         $response = $requestor->request('post', $url, $params);
 
-        return Util::convertToEasyPostObject($this->client, $response);
+        return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
 
     /**
@@ -114,7 +114,7 @@ class BatchService extends BaseService
 
         $response = $requestor->request('post', $url, $params);
 
-        return Util::convertToEasyPostObject($this->client, $response);
+        return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
 
     /**
@@ -131,7 +131,7 @@ class BatchService extends BaseService
 
         $response = $requestor->request('post', $url, $params);
 
-        return Util::convertToEasyPostObject($this->client, $response);
+        return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
 
     /**
@@ -148,7 +148,7 @@ class BatchService extends BaseService
 
         $response = $requestor->request('post', $url, $params);
 
-        return Util::convertToEasyPostObject($this->client, $response);
+        return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
 
     /**
@@ -165,6 +165,6 @@ class BatchService extends BaseService
 
         $response = $requestor->request('post', $url, $params);
 
-        return Util::convertToEasyPostObject($this->client, $response);
+        return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
 }

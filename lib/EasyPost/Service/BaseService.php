@@ -4,7 +4,7 @@ namespace EasyPost\Service;
 
 use EasyPost\Exception\Error;
 use EasyPost\Http\Requestor;
-use EasyPost\Util\Util;
+use EasyPost\Util\InternalUtil;
 
 class BaseService
 {
@@ -104,7 +104,7 @@ class BaseService
 
         $response = $requestor->request('get', $url, null, $beta);
 
-        return Util::convertToEasyPostObject($this->client, $response);
+        return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
 
     /**
@@ -122,7 +122,7 @@ class BaseService
         $url = self::classUrl($class);
         $response = $requestor->request('get', $url, $params, $beta);
 
-        return Util::convertToEasyPostObject($this->client, $response);
+        return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
 
     /**
@@ -141,7 +141,7 @@ class BaseService
 
         $response = $requestor->request('post', $url, $params, $beta);
 
-        return Util::convertToEasyPostObject($this->client, $response);
+        return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
 
     /**
@@ -177,6 +177,6 @@ class BaseService
         $url = $this->instanceUrl($class, $id);
         $response = $requestor->request($method, $url, $params);
 
-        return Util::convertToEasyPostObject($this->client, $response);
+        return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
 }

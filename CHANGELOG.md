@@ -13,6 +13,7 @@
 - Occurances of `smartrate` are now `smartRate` and `Smartrate` are now `SmartRate` to match the documentation and API expectations
 - `Referral` is now `ReferralCustomer` to better match documentation and API expectation
 - `validateWebhook`, `getLowestSmartRate`, and `receiveEvent` are now under `EasyPost\Util\Util` as they do not make any API calls
+  - Internal only utilities have been moved to `EasyPost\Util\InternalUtil`
 
 ## v5.8.0 (2022-12-01)
 

@@ -3,7 +3,7 @@
 namespace EasyPost\Service;
 
 use EasyPost\Http\Requestor;
-use EasyPost\Util\Util;
+use EasyPost\Util\InternalUtil;
 
 /**
  * Address service containing all the logic to make API calls.
@@ -79,7 +79,7 @@ class AddressService extends BaseService
         $url = self::classUrl(self::$modelClass);
         $response = $requestor->request('post', $url . '/create_and_verify', $params);
 
-        return Util::convertToEasyPostObject($this->client, $response['address']);
+        return InternalUtil::convertToEasyPostObject($this->client, $response['address']);
     }
 
     /**
@@ -94,6 +94,6 @@ class AddressService extends BaseService
         $url = $this->instanceUrl(self::$modelClass, $id) . '/verify';
         $response = $requestor->request('get', $url, null);
 
-        return Util::convertToEasyPostObject($this->client, $response['address'], self::$modelClass);
+        return InternalUtil::convertToEasyPostObject($this->client, $response['address'], self::$modelClass);
     }
 }

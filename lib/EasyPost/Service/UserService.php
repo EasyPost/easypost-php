@@ -3,7 +3,7 @@
 namespace EasyPost\Service;
 
 use EasyPost\Http\Requestor;
-use EasyPost\Util\Util;
+use EasyPost\Util\InternalUtil;
 
 /**
  * User service containing all the logic to make API calls.
@@ -88,7 +88,7 @@ class UserService extends BaseService
         $requestor = new Requestor($this->client);
         $response = $requestor->request('get', '/api_keys');
 
-        return Util::convertToEasyPostObject($this->client, $response);
+        return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
 
     /**
@@ -130,6 +130,6 @@ class UserService extends BaseService
         $requestor = new Requestor($this->client);
         $response = $requestor->request('patch', $this->instanceUrl(self::$modelClass, $id) . '/brand', $params);
 
-        return Util::convertToEasyPostObject($this->client, $response);
+        return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
 }

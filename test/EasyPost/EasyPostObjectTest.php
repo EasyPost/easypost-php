@@ -3,7 +3,7 @@
 namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
-use EasyPost\Util\Util;
+use EasyPost\Util\InternalUtil;
 
 class EasyPostObjectTest extends \PHPUnit\Framework\TestCase
 {
@@ -22,7 +22,7 @@ class EasyPostObjectTest extends \PHPUnit\Framework\TestCase
      */
     public function testIssetMagicMethod()
     {
-        $object = Util::convertToEasyPostObject(self::$client, Fixture::caAddress1());
+        $object = InternalUtil::convertToEasyPostObject(self::$client, Fixture::caAddress1());
 
         $isset = isset($object->name);
 
@@ -34,7 +34,7 @@ class EasyPostObjectTest extends \PHPUnit\Framework\TestCase
      */
     public function testGetMagicMethodInvalidProperty()
     {
-        $object = Util::convertToEasyPostObject(self::$client, Fixture::caAddress1());
+        $object = InternalUtil::convertToEasyPostObject(self::$client, Fixture::caAddress1());
 
         $invalidProperty = $object->invalidProperty;
 
@@ -47,7 +47,7 @@ class EasyPostObjectTest extends \PHPUnit\Framework\TestCase
      */
     public function testPrintObject()
     {
-        $object = Util::convertToEasyPostObject(self::$client, Fixture::caAddress1());
+        $object = InternalUtil::convertToEasyPostObject(self::$client, Fixture::caAddress1());
 
         echo $object;
         $this->expectOutputString('{

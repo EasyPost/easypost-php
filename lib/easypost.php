@@ -17,6 +17,7 @@ require_once(dirname(__FILE__) . '/EasyPost/Constant/Constant.php');
 require_once(dirname(__FILE__) . '/EasyPost/Http/Requestor.php');
 
 // Utils
+require_once(dirname(__FILE__) . '/EasyPost/Util/InternalUtil.php');
 require_once(dirname(__FILE__) . '/EasyPost/Util/Util.php');
 
 // EasyPost Lib

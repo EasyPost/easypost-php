@@ -4,7 +4,7 @@ namespace EasyPost\Service;
 
 use EasyPost\Exception\Error;
 use EasyPost\Http\Requestor;
-use EasyPost\Util\Util;
+use EasyPost\Util\InternalUtil;
 
 /**
  * Billing service containing all the logic to make API calls.
@@ -27,7 +27,7 @@ class BillingService extends BaseService
             throw new Error('Billing has not been setup for this user. Please add a payment method.');
         }
 
-        return Util::convertToEasyPostObject($this->client, $paymentMethods);
+        return InternalUtil::convertToEasyPostObject($this->client, $paymentMethods);
     }
 
     /**
