@@ -67,7 +67,7 @@ class EventTest extends \PHPUnit\Framework\TestCase
      */
     public function testReceive()
     {
-        $event = Util::receive(Fixture::eventJson());
+        $event = Util::receiveEvent(Fixture::eventJson());
 
         $this->assertInstanceOf('\EasyPost\Event', $event);
         $this->assertStringMatchesFormat('evt_%s', $event->id);
@@ -80,7 +80,7 @@ class EventTest extends \PHPUnit\Framework\TestCase
     {
         $this->expectException(Error::class);
 
-        Util::receive('bad input');
+        Util::receiveEvent('bad input');
     }
 
     /**
@@ -90,6 +90,6 @@ class EventTest extends \PHPUnit\Framework\TestCase
     {
         $this->expectException(Error::class);
 
-        Util::receive();
+        Util::receiveEvent();
     }
 }

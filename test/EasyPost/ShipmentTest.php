@@ -375,14 +375,14 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
         // Test lowestSmartRate with invalid filters (should error due to strict delivery_days)
         try {
-            $lowestRate = self::$client->shipment->lowestSmartRate($shipment->id, 0, 'percentile_85');
+            self::$client->shipment->lowestSmartRate($shipment->id, 0, 'percentile_85');
         } catch (Error $error) {
             $this->assertEquals('No rates found.', $error->getMessage());
         }
 
         // Test lowestSmartRate with invalid filters (should error due to invalid delivery_accuracy)
         try {
-            $lowestRate = self::$client->shipment->lowestSmartRate($shipment->id, 3, 'BAD_ACCURACY');
+            self::$client->shipment->lowestSmartRate($shipment->id, 3, 'BAD_ACCURACY');
         } catch (Error $error) {
             $this->assertEquals(
                 'Invalid delivery_accuracy value, must be one of: ["percentile_50","percentile_75","percentile_85","percentile_90","percentile_95","percentile_97","percentile_99"]',
@@ -409,14 +409,14 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
         // Test lowestSmartRate with invalid filters (should error due to strict delivery_days)
         try {
-            $lowestSmartRate = Util::getLowestSmartRate($smartRates, 0, 'percentile_90');
+            Util::getLowestSmartRate($smartRates, 0, 'percentile_90');
         } catch (Error $error) {
             $this->assertEquals('No rates found.', $error->getMessage());
         }
 
         // Test lowestSmartRate with invalid filters (should error due to invalid delivery_accuracy)
         try {
-            $lowestSmartRate = Util::getLowestSmartRate($smartRates, 3, 'BAD_ACCURACY');
+            Util::getLowestSmartRate($smartRates, 3, 'BAD_ACCURACY');
         } catch (Error $error) {
             $this->assertEquals('Invalid delivery_accuracy value, must be one of: ["percentile_50","percentile_75","percentile_85","percentile_90","percentile_95","percentile_97","percentile_99"]', $error->getMessage());
         }
