@@ -2,7 +2,7 @@
 
 namespace EasyPost\Service;
 
-use EasyPost\Constant\Constant;
+use EasyPost\Constant\Constants;
 use EasyPost\Exception\Error;
 use EasyPost\Http\Requestor;
 use EasyPost\Util\InternalUtil;
@@ -110,7 +110,7 @@ class CarrierAccountService extends BaseService
      */
     private function selectCarrierAccountCreationEndpoint($carrierAccountType): string
     {
-        if (in_array($carrierAccountType, Constant::CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_WORKFLOWS, true)) {
+        if (in_array($carrierAccountType, Constants::CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_WORKFLOWS, true)) {
             return '/carrier_accounts/register';
         }
 

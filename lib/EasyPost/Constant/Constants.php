@@ -2,7 +2,7 @@
 
 namespace EasyPost\Constant;
 
-abstract class Constant
+abstract class Constants
 {
     // EasyPostClient defaults
     const TIMEOUT = 60.0;

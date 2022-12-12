@@ -2,7 +2,7 @@
 
 namespace EasyPost\Http;
 
-use EasyPost\Constant\Constant;
+use EasyPost\Constant\Constants;
 use EasyPost\EasypostObject;
 use EasyPost\Exception\Error;
 use GuzzleHttp\Client;
@@ -26,12 +26,12 @@ class Requestor
      * @param bool $beta
      * @return string
      */
-    public function absoluteUrl($url = '', $beta = false)
+    private function absoluteUrl($url = '', $beta = false)
     {
         if ($beta) {
-            $apiBase = Constant::API_BASE . '/' . Constant::BETA_API_VERSION;
+            $apiBase = Constants::API_BASE . '/' . Constants::BETA_API_VERSION;
         } else {
-            $apiBase = $this->client->apiBase . '/' . Constant::API_VERSION;
+            $apiBase = $this->client->apiBase . '/' . Constants::API_VERSION;
         }
 
         return "{$apiBase}{$url}";
@@ -168,7 +168,7 @@ class Requestor
             'Accept' => 'application/json',
             'Authorization' => "Bearer {$this->client->apiKey}",
             'Content-Type' => 'application/json',
-            'User-Agent' => 'EasyPost/v2 PhpClient/' . Constant::LIBRARY_VERSION . " PHP/$phpVersion OS/$osType OSVersion/$osVersion OSArch/$osArch",
+            'User-Agent' => 'EasyPost/v2 PhpClient/' . Constants::LIBRARY_VERSION . " PHP/$phpVersion OS/$osType OSVersion/$osVersion OSArch/$osArch",
         ];
 
         $guzzleClient = new Client();

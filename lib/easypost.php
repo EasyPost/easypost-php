@@ -11,7 +11,7 @@ if (!function_exists('json_decode')) {
 require_once(dirname(__FILE__) . '/EasyPost/Exception/Error.php');
 
 // Constants
-require_once(dirname(__FILE__) . '/EasyPost/Constant/Constant.php');
+require_once(dirname(__FILE__) . '/EasyPost/Constant/Constants.php');
 
 // HTTP
 require_once(dirname(__FILE__) . '/EasyPost/Http/Requestor.php');

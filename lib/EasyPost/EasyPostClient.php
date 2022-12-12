@@ -2,7 +2,7 @@
 
 namespace EasyPost;
 
-use EasyPost\Constant\Constant;
+use EasyPost\Constant\Constants;
 use EasyPost\Exception\Error;
 use EasyPost\Service\AddressService;
 use EasyPost\Service\BatchService;
@@ -61,7 +61,7 @@ class EasyPostClient extends Service\BaseService
      * @param float $timeout
      * @param string $apiBase
      */
-    public function __construct($apiKey, $timeout = Constant::TIMEOUT, $apiBase = Constant::API_BASE)
+    public function __construct($apiKey, $timeout = Constants::TIMEOUT, $apiBase = Constants::API_BASE)
     {
         // TODO: Make these all read only when we support PHP >= 8.1
 
@@ -94,7 +94,7 @@ class EasyPostClient extends Service\BaseService
         $this->webhook = new WebhookService($this);
 
         if (!$this->apiKey) {
-            throw new Error('No API key provided. See https://www.easypost.com/docs for details, or contact ' . Constant::SUPPORT_EMAIL . ' for assistance.');
+            throw new Error('No API key provided. See https://www.easypost.com/docs for details, or contact ' . Constants::SUPPORT_EMAIL . ' for assistance.');
         }
     }
 }
