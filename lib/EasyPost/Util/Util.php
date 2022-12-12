@@ -39,6 +39,7 @@ abstract class Util
      * @param int $deliveryDays
      * @param string $deliveryAccuracy
      * @return Rate
+     * @throws Error
      */
     public static function getLowestSmartRate($smartRates, $deliveryDays, $deliveryAccuracy)
     {
@@ -82,6 +83,7 @@ abstract class Util
      * @param mixed $headers
      * @param string $webhookSecret
      * @return mixed
+     * @throws Error
      */
     public static function validateWebhook($eventBody, $headers, $webhookSecret)
     {

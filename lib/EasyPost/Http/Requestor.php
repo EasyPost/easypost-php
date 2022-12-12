@@ -23,6 +23,7 @@ class Requestor
      * Get the API URL.
      *
      * @param string $url
+     * @param bool $beta
      * @return string
      */
     public function absoluteUrl($url = '', $beta = false)
@@ -122,6 +123,7 @@ class Requestor
      * @param string $method
      * @param string $url
      * @param mixed $params
+     * @param bool $beta
      * @return array
      * @throws \EasyPost\Exception\Error
      */
@@ -139,6 +141,7 @@ class Requestor
      * @param string $method
      * @param string $url
      * @param mixed $params
+     * @param bool $beta
      * @return array
      * @throws \EasyPost\Exception\Error
      */
