@@ -24,56 +24,56 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 8c965b86638a3db3e2bbacf70022dd1d
+            x-ep-request-uuid: e26b9831639113f2e78aa06a001e12bf
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
-            location: /api/v2/addresses/adr_7bbc2b01726b11edb357ac1f6b0a0d1e
+            location: /api/v2/addresses/adr_b5d443ad767e11edabc2ac1f6bc7bdc6
             content-type: 'application/json; charset=utf-8'
             content-length: '646'
-            etag: 'W/"4b383f0b3b79a72aaa5a3be138f9f0de"'
-            x-runtime: '0.053976'
-            x-node: bigweb3nuq
-            x-version-label: easypost-202212011955-aa9a4d99eb-master
+            etag: 'W/"84d6b67ddf04c800c966ebebc806eea9"'
+            x-runtime: '0.043031'
+            x-node: bigweb9nuq
+            x-version-label: easypost-202212072114-cbd87d5dd7-master
             x-backend: easypost
-            x-proxied: ['intlb2nuq 29913d444b', 'intlb1wdc 29913d444b', 'extlb4wdc 29913d444b']
+            x-proxied: ['intlb2nuq 29913d444b', 'extlb2nuq 29913d444b']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"adr_7bbc2b01726b11edb357ac1f6b0a0d1e","object":"Address","created_at":"2022-12-02T18:02:28+00:00","updated_at":"2022-12-02T18:02:28+00:00","name":"JACK SPARROW","company":null,"street1":"388 TOWNSEND ST APT 20","street2":"","city":"SAN FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":true,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":37.77551,"longitude":-122.39697,"time_zone":"America\/Los_Angeles"}}}}'
+        body: '{"id":"adr_b5d443ad767e11edabc2ac1f6bc7bdc6","object":"Address","created_at":"2022-12-07T22:30:10+00:00","updated_at":"2022-12-07T22:30:10+00:00","name":"JACK SPARROW","company":null,"street1":"388 TOWNSEND ST APT 20","street2":"","city":"SAN FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":true,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":37.77551,"longitude":-122.39697,"time_zone":"America\/Los_Angeles"}}}}'
         curl_info:
             url: 'https://api.easypost.com/v2/addresses'
             content_type: 'application/json; charset=utf-8'
             http_code: 201
-            header_size: 835
+            header_size: 802
             request_size: 526
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.348561
-            namelookup_time: 0.002546
-            connect_time: 0.054495
-            pretransfer_time: 0.112866
+            total_time: 0.250336
+            namelookup_time: 0.001334
+            connect_time: 0.067928
+            pretransfer_time: 0.140651
             size_upload: 218.0
             size_download: 646.0
-            speed_download: 1853.0
-            speed_upload: 625.0
+            speed_download: 2580.0
+            speed_upload: 870.0
             download_content_length: 646.0
             upload_content_length: 218.0
-            starttransfer_time: 0.348533
+            starttransfer_time: 0.250298
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.47.33.19
+            primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
-            local_ip: 192.168.1.201
-            local_port: 57371
+            local_ip: 10.130.6.25
+            local_port: 57971
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 112831
-            connect_time_us: 54495
-            namelookup_time_us: 2546
-            pretransfer_time_us: 112866
+            appconnect_time_us: 140624
+            connect_time_us: 67928
+            namelookup_time_us: 1334
+            pretransfer_time_us: 140651
             redirect_time_us: 0
-            starttransfer_time_us: 348533
-            total_time_us: 348561
+            starttransfer_time_us: 250298
+            total_time_us: 250336

@@ -2,6 +2,8 @@
 
 namespace EasyPost;
 
+use EasyPost\Util\InternalUtil;
+
 /**
  * @package EasyPost
  * @property string $id
@@ -35,207 +37,8 @@ namespace EasyPost;
  * @property string $created_at
  * @property string $updated_at
  */
-class Shipment extends EasypostResource
+class Shipment extends EasyPostObject
 {
-    /**
-     * Retrieve a shipment.
-     *
-     * @param string $id
-     * @param string $apiKey
-     * @return mixed
-     */
-    public static function retrieve($id, $apiKey = null)
-    {
-        return self::retrieveResource(get_class(), $id, $apiKey);
-    }
-
-    /**
-     * Retrieve all shipments.
-     *
-     * @param mixed  $params
-     * @param string $apiKey
-     * @return mixed
-     */
-    public static function all($params = null, $apiKey = null)
-    {
-        return self::allResources(get_class(), $params, $apiKey);
-    }
-
-    /**
-     * Create a shipment.
-     *
-     * @param mixed $params
-     * @param string|null $apiKey
-     * @param boolean $withCarbonOffset
-     * @return mixed
-     */
-    public static function create($params = null, $apiKey = null, $withCarbonOffset = false)
-    {
-        if (!isset($params['shipment']) || !is_array($params['shipment'])) {
-            $clone = $params;
-            unset($params);
-            $params['shipment'] = $clone;
-        }
-
-        $params['carbon_offset'] = $withCarbonOffset;
-
-        return self::createResource(get_class(), $params, $apiKey);
-    }
-
-    /**
-     * Re-rate a shipment.
-     *
-     * @param mixed $params
-     * @param boolean $withCarbonOffset
-     * @return $this
-     * @throws \EasyPost\Error
-     */
-    public function regenerateRates($params = null, $withCarbonOffset = false)
-    {
-        $requestor = new Requestor($this->_apiKey);
-        $url = $this->instanceUrl() . '/rerate';
-        $params['carbon_offset'] = $withCarbonOffset;
-        list($response, $apiKey) = $requestor->request('post', $url, $params);
-        $this->refreshFrom($response, $apiKey, true);
-
-        return $this;
-    }
-
-    /**
-     * Get smartrates for a shipment.
-     *
-     * @return array
-     * @throws \EasyPost\Error
-     */
-    public function getSmartrates()
-    {
-        $requestor = new Requestor($this->_apiKey);
-        $url = $this->instanceUrl() . '/smartrate';
-        list($response, $apiKey) = $requestor->request('get', $url);
-
-        return isset($response['result']) ? $response['result'] : [];
-    }
-
-    /**
-     * Buy a shipment.
-     *
-     * @param mixed $params
-     * @param boolean $withCarbonOffset
-     * @return $this
-     * @throws \EasyPost\Error
-     */
-    public function buy($params = null, $withCarbonOffset = false, $endShipperId = false)
-    {
-        $requestor = new Requestor($this->_apiKey);
-        $url = $this->instanceUrl() . '/buy';
-
-        if (isset($params['id']) && (!isset($params['rate']) || !is_array($params['rate']))) {
-            $clone = $params;
-            unset($params);
-            $params['rate'] = $clone;
-        }
-
-        $params['carbon_offset'] = $withCarbonOffset;
-        // @codeCoverageIgnoreStart
-        if ($endShipperId !== false) {
-            $params['end_shipper_id'] = $endShipperId;
-        }
-        // @codeCoverageIgnoreEnd
-
-        list($response, $apiKey) = $requestor->request('post', $url, $params);
-        $this->refreshFrom($response, $apiKey, true);
-
-        return $this;
-    }
-
-    /**
-     * Refund a shipment.
-     *
-     * @param mixed $params
-     * @return $this
-     * @throws \EasyPost\Error
-     */
-    public function refund($params = null)
-    {
-        $requestor = new Requestor($this->_apiKey);
-        $url = $this->instanceUrl() . '/refund';
-
-        list($response, $apiKey) = $requestor->request('post', $url, $params);
-        $this->refreshFrom($response, $apiKey, true);
-
-        return $this;
-    }
-
-    /**
-     * Convert the label format of the shipment.
-     *
-     * @param mixed $params
-     * @return $this
-     * @throws \EasyPost\Error
-     */
-    public function label($params = null)
-    {
-        $requestor = new Requestor($this->_apiKey);
-        $url = $this->instanceUrl() . '/label';
-
-        if (!isset($params['file_format'])) {
-            $clone = $params;
-            unset($params);
-            $params['file_format'] = $clone;
-        }
-
-        list($response, $apiKey) = $requestor->request('get', $url, $params);
-        $this->refreshFrom($response, $apiKey);
-
-        return $this;
-    }
-
-    /**
-     * Insure the shipment.
-     *
-     * @param mixed $params
-     * @return $this
-     * @throws \EasyPost\Error
-     */
-    public function insure($params = null)
-    {
-        $requestor = new Requestor($this->_apiKey);
-        $url = $this->instanceUrl() . '/insure';
-
-        if (!isset($params['amount'])) {
-            $clone = $params;
-            unset($params);
-            $params['amount'] = $clone;
-        }
-
-        list($response, $apiKey) = $requestor->request('post', $url, $params);
-        $this->refreshFrom($response, $apiKey);
-
-        return $this;
-    }
-
-    /**
-     * Generate a form for the shipment.
-     *
-     * @param string $formType
-     * @param mixed $formOptions
-     * @return $this
-     * @throws \EasyPost\Error
-     */
-    public function generateForm(string $formType, $formOptions = null): Shipment
-    {
-        $requestor = new Requestor($this->_apiKey);
-        $url = $this->instanceUrl() . '/forms';
-        $formOptions['type'] = $formType;
-
-        $params['form'] = $formOptions;
-
-        list($response, $apiKey) = $requestor->request('post', $url, $params);
-        $this->refreshFrom($response, $apiKey);
-
-        return $this;
-    }
-
     /**
      * Get the lowest rate for the shipment.
      *
@@ -244,74 +47,12 @@ class Shipment extends EasypostResource
      * @param array $carriers
      * @param array $services
      * @return Rate
-     * @throws \EasyPost\Error
+     * @throws \EasyPost\Exception\Error
      */
     public function lowestRate($carriers = [], $services = [])
     {
-        $lowestRate = Util::getLowestObjectRate($this, $carriers, $services);
+        $lowestRate = InternalUtil::getLowestObjectRate($this, $carriers, $services);
 
         return $lowestRate;
-    }
-
-    /**
-     * Get the lowest smartrate of the shipment.
-     *
-     * To exclude a carrier or service, prepend the string with `!`.
-     *
-     * @param int $deliveryDays
-     * @param string $deliveryAccuracy
-     * @return Rate
-     * @throws \EasyPost\Error
-     */
-    public function lowestSmartrate($deliveryDays, $deliveryAccuracy)
-    {
-        $smartrates = $this->getSmartrates();
-        $lowestRate = $this->getLowestSmartrate($smartrates, $deliveryDays, strtolower($deliveryAccuracy));
-
-        return $lowestRate;
-    }
-
-    /**
-     * Get the lowest smartrate from a list of smartrates.
-     *
-     * To exclude a carrier or service, prepend the string with `!`.
-     *
-     * @param array $smartrates
-     * @param int $deliveryDays
-     * @param string $deliveryAccuracy
-     * @return Rate
-     * @throws \EasyPost\Error
-     */
-    public static function getLowestSmartrate($smartrates, $deliveryDays, $deliveryAccuracy)
-    {
-        $validDeliveryAccuracyValues = [
-            'percentile_50',
-            'percentile_75',
-            'percentile_85',
-            'percentile_90',
-            'percentile_95',
-            'percentile_97',
-            'percentile_99',
-        ];
-        $lowestSmartrate = false;
-
-        if (!in_array(strtolower($deliveryAccuracy), $validDeliveryAccuracyValues)) {
-            $jsonValidList = json_encode($validDeliveryAccuracyValues);
-            throw new Error("Invalid delivery_accuracy value, must be one of: $jsonValidList");
-        }
-
-        foreach ($smartrates as $rate) {
-            if ($rate['time_in_transit'][$deliveryAccuracy] > intval($deliveryDays)) {
-                continue;
-            } elseif (!$lowestSmartrate || floatval($rate['rate']) < floatval($lowestSmartrate['rate'])) {
-                $lowestSmartrate = $rate;
-            }
-        }
-
-        if ($lowestSmartrate == false) {
-            throw new Error('No rates found.');
-        }
-
-        return $lowestSmartrate;
     }
 }

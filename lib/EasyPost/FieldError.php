@@ -7,6 +7,6 @@ namespace EasyPost;
  * @property string $field
  * @property string $message
  */
-class FieldError extends EasypostResource
+class FieldError extends EasyPostObject
 {
 }

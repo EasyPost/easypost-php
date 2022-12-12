@@ -2,16 +2,19 @@
 
 namespace EasyPost\Test;
 
-use EasyPost\Parcel;
+use EasyPost\EasyPostClient;
 
 class ParcelTest extends \PHPUnit\Framework\TestCase
 {
+    private static $client;
+
     /**
      * Setup the testing environment for this file.
      */
     public static function setUpBeforeClass(): void
     {
-        TestUtil::setupVcrTests('EASYPOST_TEST_API_KEY');
+        TestUtil::setupVcrTests();
+        self::$client = new EasyPostClient(getenv('EASYPOST_TEST_API_KEY'));
     }
 
     /**
@@ -29,7 +32,7 @@ class ParcelTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('parcels/create.yml');
 
-        $parcel = Parcel::create(Fixture::basicParcel());
+        $parcel = self::$client->parcel->create(Fixture::basicParcel());
 
         $this->assertInstanceOf('\EasyPost\Parcel', $parcel);
         $this->assertStringMatchesFormat('prcl_%s', $parcel->id);
@@ -43,9 +46,9 @@ class ParcelTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('parcels/retrieve.yml');
 
-        $parcel = Parcel::create(Fixture::basicParcel());
+        $parcel = self::$client->parcel->create(Fixture::basicParcel());
 
-        $retrievedParcel = Parcel::retrieve($parcel->id);
+        $retrievedParcel = self::$client->parcel->retrieve($parcel->id);
 
         $this->assertInstanceOf('\EasyPost\Parcel', $retrievedParcel);
         $this->assertEquals($parcel, $retrievedParcel);

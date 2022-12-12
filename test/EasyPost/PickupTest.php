@@ -2,18 +2,20 @@
 
 namespace EasyPost\Test;
 
-use EasyPost\Error;
-use EasyPost\Pickup;
-use EasyPost\Shipment;
+use EasyPost\EasyPostClient;
+use EasyPost\Exception\Error;
 
 class PickupTest extends \PHPUnit\Framework\TestCase
 {
+    private static $client;
+
     /**
      * Setup the testing environment for this file.
      */
     public static function setUpBeforeClass(): void
     {
-        TestUtil::setupVcrTests('EASYPOST_TEST_API_KEY');
+        TestUtil::setupVcrTests();
+        self::$client = new EasyPostClient(getenv('EASYPOST_TEST_API_KEY'));
     }
 
     /**
@@ -31,12 +33,12 @@ class PickupTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('pickups/create.yml');
 
-        $shipment = Shipment::create(Fixture::oneCallBuyShipment());
+        $shipment = self::$client->shipment->create(Fixture::oneCallBuyShipment());
 
         $pickupData = Fixture::basicPickup();
         $pickupData['shipment'] = $shipment;
 
-        $pickup = Pickup::create($pickupData);
+        $pickup = self::$client->pickup->create($pickupData);
 
         $this->assertInstanceOf('\EasyPost\Pickup', $pickup);
         $this->assertStringMatchesFormat('pickup_%s', $pickup->id);
@@ -50,13 +52,13 @@ class PickupTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('pickups/retrieve.yml');
 
-        $shipment = Shipment::create(Fixture::oneCallBuyShipment());
+        $shipment = self::$client->shipment->create(Fixture::oneCallBuyShipment());
 
         $pickupData = Fixture::basicPickup();
         $pickupData['shipment'] = $shipment;
 
-        $pickup = Pickup::create($pickupData);
-        $retrievedPickup = Pickup::retrieve($pickup->id);
+        $pickup = self::$client->pickup->create($pickupData);
+        $retrievedPickup = self::$client->pickup->retrieve($pickup->id);
 
         $this->assertInstanceOf('\EasyPost\Pickup', $retrievedPickup);
         $this->assertEquals($pickup, $retrievedPickup);
@@ -69,17 +71,20 @@ class PickupTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('pickups/buy.yml');
 
-        $shipment = Shipment::create(Fixture::oneCallBuyShipment());
+        $shipment = self::$client->shipment->create(Fixture::oneCallBuyShipment());
 
         $pickupData = Fixture::basicPickup();
         $pickupData['shipment'] = $shipment;
 
-        $pickup = Pickup::create($pickupData);
+        $pickup = self::$client->pickup->create($pickupData);
 
-        $boughtPickup = $pickup->buy([
-            'carrier' => Fixture::usps(),
-            'service' => Fixture::pickupService(),
-        ]);
+        $boughtPickup = self::$client->pickup->buy(
+            $pickup->id,
+            [
+                'carrier' => Fixture::usps(),
+                'service' => Fixture::pickupService(),
+            ]
+        );
 
         $this->assertInstanceOf('\EasyPost\Pickup', $boughtPickup);
         $this->assertStringMatchesFormat('pickup_%s', $boughtPickup->id);
@@ -94,19 +99,22 @@ class PickupTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('pickups/cancel.yml');
 
-        $shipment = Shipment::create(Fixture::oneCallBuyShipment());
+        $shipment = self::$client->shipment->create(Fixture::oneCallBuyShipment());
 
         $pickupData = Fixture::basicPickup();
         $pickupData['shipment'] = $shipment;
 
-        $pickup = Pickup::create($pickupData);
+        $pickup = self::$client->pickup->create($pickupData);
 
-        $boughtPickup = $pickup->buy([
-            'carrier' => Fixture::usps(),
-            'service' => Fixture::pickupService(),
-        ]);
+        $boughtPickup = self::$client->pickup->buy(
+            $pickup->id,
+            [
+                'carrier' => Fixture::usps(),
+                'service' => Fixture::pickupService(),
+            ]
+        );
 
-        $cancelledPickup = $boughtPickup->cancel();
+        $cancelledPickup = self::$client->pickup->cancel($boughtPickup->id);
 
         $this->assertInstanceOf('\EasyPost\Pickup', $cancelledPickup);
         $this->assertStringMatchesFormat('pickup_%s', $cancelledPickup->id);
@@ -120,12 +128,12 @@ class PickupTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('pickups/lowestRate.yml');
 
-        $shipment = Shipment::create(Fixture::oneCallBuyShipment());
+        $shipment = self::$client->shipment->create(Fixture::oneCallBuyShipment());
 
         $pickupData = Fixture::basicPickup();
         $pickupData['shipment'] = $shipment;
 
-        $pickup = Pickup::create($pickupData);
+        $pickup = self::$client->pickup->create($pickupData);
 
         // Test lowest rate with no filters
         $lowestRate = $pickup->lowestRate();

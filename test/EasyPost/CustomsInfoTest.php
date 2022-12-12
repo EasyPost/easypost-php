@@ -2,16 +2,19 @@
 
 namespace EasyPost\Test;
 
-use EasyPost\CustomsInfo;
+use EasyPost\EasyPostClient;
 
 class CustomsInfoTest extends \PHPUnit\Framework\TestCase
 {
+    private static $client;
+
     /**
      * Setup the testing environment for this file.
      */
     public static function setUpBeforeClass(): void
     {
-        TestUtil::setupVcrTests('EASYPOST_TEST_API_KEY');
+        TestUtil::setupVcrTests();
+        self::$client = new EasyPostClient(getenv('EASYPOST_TEST_API_KEY'));
     }
 
     /**
@@ -29,7 +32,7 @@ class CustomsInfoTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('customs_info/create.yml');
 
-        $customsInfo = CustomsInfo::create(Fixture::basicCustomsInfo());
+        $customsInfo = self::$client->customsInfo->create(Fixture::basicCustomsInfo());
 
         $this->assertInstanceOf('\EasyPost\CustomsInfo', $customsInfo);
         $this->assertStringMatchesFormat('cstinfo_%s', $customsInfo->id);
@@ -43,9 +46,9 @@ class CustomsInfoTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('customs_info/retrieve.yml');
 
-        $customsInfo = CustomsInfo::create(Fixture::basicCustomsInfo());
+        $customsInfo = self::$client->customsInfo->create(Fixture::basicCustomsInfo());
 
-        $retrievedCustomsInfo = CustomsInfo::retrieve($customsInfo->id);
+        $retrievedCustomsInfo = self::$client->customsInfo->retrieve($customsInfo->id);
 
         $this->assertInstanceOf('\EasyPost\CustomsInfo', $retrievedCustomsInfo);
         $this->assertEquals($customsInfo, $retrievedCustomsInfo);

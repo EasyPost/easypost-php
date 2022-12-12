@@ -15,6 +15,6 @@ namespace EasyPost;
  * @property string $created_at
  * @property string $updated_at
  */
-class PickupRate extends EasypostResource
+class PickupRate extends EasyPostObject
 {
 }

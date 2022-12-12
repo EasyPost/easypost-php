@@ -30,9 +30,9 @@ A simple create & buy shipment example:
 ```php
 require_once("/path/to/vendor/easypost/autoload.php");
 
-\EasyPost\EasyPost::setApiKey(getenv('EASYPOST_API_KEY'));
+$client = new EasyPostClient(getenv('EASYPOST_API_KEY'));
 
-$shipment = \EasyPost\Shipment::create([
+$shipment = $client->shipmemt->create([
     "from_address" => [
         "company" => "EasyPost",
         "street1" => "118 2nd Street",
@@ -58,9 +58,9 @@ $shipment = \EasyPost\Shipment::create([
     ],
 ]);
 
-$shipment->buy($shipment->lowestRate());
+$boughtShipment = $client->shipment->buy($shipment->id, $shipment->lowestRate());
 
-echo $shipment;
+echo $boughtShipment;
 ```
 
 ## Documentation

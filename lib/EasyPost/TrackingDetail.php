@@ -11,6 +11,6 @@ namespace EasyPost;
  * @property string $source
  * @property TrackingLocation $tracking_location
  */
-class TrackingDetail extends EasypostResource
+class TrackingDetail extends EasyPostObject
 {
 }

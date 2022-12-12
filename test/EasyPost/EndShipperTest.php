@@ -2,16 +2,19 @@
 
 namespace EasyPost\Test;
 
-use EasyPost\EndShipper;
+use EasyPost\EasyPostClient;
 
 class EndShipperTest extends \PHPUnit\Framework\TestCase
 {
+    private static $client;
+
     /**
      * Setup the testing environment for this file.
      */
     public static function setUpBeforeClass(): void
     {
-        TestUtil::setupVcrTests('EASYPOST_TEST_API_KEY');
+        TestUtil::setupVcrTests();
+        self::$client = new EasyPostClient(getenv('EASYPOST_TEST_API_KEY'));
     }
 
     /**
@@ -29,7 +32,7 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('end_shipper/create.yml');
 
-        $endShipper = EndShipper::create(Fixture::caAddress1());
+        $endShipper = self::$client->endShipper->create(Fixture::caAddress1());
 
         $this->assertInstanceOf('\EasyPost\EndShipper', $endShipper);
         $this->assertStringMatchesFormat('es_%s', $endShipper->id);
@@ -43,9 +46,9 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('end_shipper/retrieve.yml');
 
-        $endShipper = EndShipper::create(Fixture::caAddress1());
+        $endShipper = self::$client->endShipper->create(Fixture::caAddress1());
 
-        $retrievedEndShipper = EndShipper::retrieve($endShipper->id);
+        $retrievedEndShipper = self::$client->endShipper->retrieve($endShipper->id);
 
         $this->assertInstanceOf('\EasyPost\EndShipper', $retrievedEndShipper);
         $this->assertEquals($endShipper->street1, $retrievedEndShipper->street1);
@@ -58,7 +61,7 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('end_shipper/all.yml');
 
-        $endShippers = EndShipper::all([
+        $endShippers = self::$client->endShipper->all([
             'page_size' => Fixture::pageSize(),
         ]);
 
@@ -76,25 +79,28 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('end_shipper/update.yml');
 
-        $endShipper = EndShipper::create(Fixture::caAddress1());
+        $endShipper = self::$client->endShipper->create(Fixture::caAddress1());
 
         // All caps because API will return all caps as part of verification.
         $newName = 'NEW NAME';
 
-        $endShipper->name = $newName;
-        $endShipper->company = 'EasyPost';
-        $endShipper->street1 = '388 Townsend St';
-        $endShipper->street2 = 'Apt 20';
-        $endShipper->city = 'San Francisco';
-        $endShipper->state = 'CA';
-        $endShipper->zip = '94107';
-        $endShipper->country = 'US';
-        $endShipper->phone = '9999999999';
-        $endShipper->email = 'test@example.com';
-        $endShipper->save();
+        $params = [
+            'name' => $newName,
+            'company' => 'EasyPost',
+            'street1' => '388 Townsend St',
+            'street2' => 'Apt 20',
+            'city' => 'San Francisco',
+            'state' => 'CA',
+            'zip' => '94107',
+            'country' => 'US',
+            'phone' => '9999999999',
+            'email' => 'test@example.com'
+        ];
 
-        $this->assertInstanceOf('\EasyPost\EndShipper', $endShipper);
-        $this->assertStringMatchesFormat('es_%s', $endShipper->id);
-        $this->assertEquals($newName, $endShipper->name);
+        $updatedEndShipper = self::$client->endShipper->update($endShipper->id, $params);
+
+        $this->assertInstanceOf('\EasyPost\EndShipper', $updatedEndShipper);
+        $this->assertStringMatchesFormat('es_%s', $updatedEndShipper->id);
+        $this->assertEquals($newName, $updatedEndShipper->name);
     }
 }

@@ -17,6 +17,6 @@ namespace EasyPost;
  * @property string $alternate_identifier
  * @property string $initial_delivery_attempt
  */
-class CarrierDetail extends EasypostResource
+class CarrierDetail extends EasyPostObject
 {
 }

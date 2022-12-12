@@ -2,17 +2,20 @@
 
 namespace EasyPost\Test;
 
-use EasyPost\Address;
-use EasyPost\Error;
+use EasyPost\EasyPostClient;
+use EasyPost\Exception\Error;
 
 class AddressTest extends \PHPUnit\Framework\TestCase
 {
+    private static $client;
+
     /**
      * Setup the testing environment for this file.
      */
     public static function setUpBeforeClass(): void
     {
-        TestUtil::setupVcrTests('EASYPOST_TEST_API_KEY');
+        TestUtil::setupVcrTests();
+        self::$client = new EasyPostClient(getenv('EASYPOST_TEST_API_KEY'));
     }
 
     /**
@@ -30,7 +33,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('addresses/create.yml');
 
-        $address = Address::create(Fixture::caAddress1());
+        $address = self::$client->address->create(Fixture::caAddress1());
 
         $this->assertInstanceOf('\EasyPost\Address', $address);
         $this->assertStringMatchesFormat('adr_%s', $address->id);
@@ -49,7 +52,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
         $addressData = Fixture::incorrectAddress();
         $addressData['verify'] = true;
 
-        $address = Address::create($addressData);
+        $address = self::$client->address->create($addressData);
 
         $this->assertInstanceOf('\EasyPost\Address', $address);
         $this->assertStringMatchesFormat('adr_%s', $address->id);
@@ -67,7 +70,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
         $addressData = Fixture::caAddress1();
         $addressData['verify_strict'] = true;
 
-        $address = Address::create($addressData);
+        $address = self::$client->address->create($addressData);
 
         $this->assertInstanceOf('\EasyPost\Address', $address);
         $this->assertStringMatchesFormat('adr_%s', $address->id);
@@ -86,7 +89,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
         $addressData = Fixture::incorrectAddress();
         $addressData['verify'] = [true];
 
-        $address = Address::create($addressData);
+        $address = self::$client->address->create($addressData);
 
         $this->assertInstanceOf('\EasyPost\Address', $address);
         $this->assertStringMatchesFormat('adr_%s', $address->id);
@@ -101,9 +104,9 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('addresses/retrieve.yml');
 
-        $address = Address::create(Fixture::caAddress1());
+        $address = self::$client->address->create(Fixture::caAddress1());
 
-        $retrievedAddress = Address::retrieve($address->id);
+        $retrievedAddress = self::$client->address->retrieve($address->id);
 
         $this->assertInstanceOf('\EasyPost\Address', $retrievedAddress);
         $this->assertEquals($address, $retrievedAddress);
@@ -116,7 +119,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('addresses/all.yml');
 
-        $addresses = Address::all([
+        $addresses = self::$client->address->all([
             'page_size' => Fixture::pageSize(),
         ]);
 
@@ -138,7 +141,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
 
         $addressData = Fixture::incorrectAddress();
 
-        $address = Address::createAndVerify($addressData);
+        $address = self::$client->address->createAndVerify($addressData);
 
         $this->assertInstanceOf('\EasyPost\Address', $address);
         $this->assertStringMatchesFormat('adr_%s', $address->id);
@@ -152,9 +155,9 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('addresses/verify.yml');
 
-        $address = Address::create(Fixture::caAddress1());
+        $address = self::$client->address->create(Fixture::caAddress1());
 
-        $address->verify();
+        self::$client->address->verify($address->id);
 
         $this->assertInstanceOf('\EasyPost\Address', $address);
         $this->assertStringMatchesFormat('adr_%s', $address->id);
@@ -169,8 +172,8 @@ class AddressTest extends \PHPUnit\Framework\TestCase
         TestUtil::setupCassette('addresses/verifyInvalid.yml');
 
         try {
-            $address = Address::create(['street1' => 'invalid']);
-            $address->verify();
+            $address = self::$client->address->create(['street1' => 'invalid']);
+            self::$client->address->verify($address->id);
         } catch (Error $error) {
             $this->assertEquals('Unable to verify address.', $error->getMessage());
         }

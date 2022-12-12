@@ -19,6 +19,6 @@ namespace EasyPost;
  * @property string $label_epl2_url
  * @property string $label_file
  */
-class PostageLabel extends EasypostResource
+class PostageLabel extends EasyPostObject
 {
 }

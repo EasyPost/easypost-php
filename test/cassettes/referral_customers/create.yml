@@ -1,0 +1,78 @@
+
+-
+    request:
+        method: POST
+        url: 'https://api.easypost.com/v2/referral_customers'
+        headers:
+            Host: api.easypost.com
+            Expect: ''
+            Accept-Encoding: ''
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+        body: '{"user":{"name":"Test Referral","email":"test@test.com","phone":"8888888888"}}'
+    response:
+        status:
+            http_version: '1.1'
+            code: '201'
+            message: Created
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: e26b982e63911469e78b0a82001e3db1
+            cache-control: 'private, no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '995'
+            etag: 'W/"8b7a89a32c5cd15f0d00201f93f5b03c"'
+            x-runtime: '0.985744'
+            x-node: bigweb12nuq
+            x-version-label: easypost-202212072114-cbd87d5dd7-master
+            x-backend: easypost
+            x-proxied: ['intlb1nuq 29913d444b', 'extlb2nuq 29913d444b']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"id":"user_05b528a9fbd54cf99967c7956e42065a","object":"User","parent_id":null,"name":"Test Referral","phone_number":"<REDACTED>","verified":true,"created_at":"2022-12-07T22:32:09Z","default_carbon_offset":false,"balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":null,"secondary_recharge_amount":null,"recharge_threshold":null,"has_billing_method":null,"cc_fee_rate":"0.0375","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"<REDACTED>","children":[],"api_keys":[{"object":"ApiKey","key":"<REDACTED>","mode":"test","created_at":"2022-12-07T22:32:09Z","active":true,"id":"ak_15808b16e7f84b4e81f71b6c891ae208"},{"object":"ApiKey","key":"<REDACTED>","mode":"production","created_at":"2022-12-07T22:32:09Z","active":true,"id":"ak_b3551e468c06456f9233adaecf1fcd09"}]}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/referral_customers'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 201
+            header_size: 737
+            request_size: 394
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 1.208624
+            namelookup_time: 0.003324
+            connect_time: 0.070163
+            pretransfer_time: 0.154284
+            size_upload: 78.0
+            size_download: 995.0
+            speed_download: 823.0
+            speed_upload: 64.0
+            download_content_length: 995.0
+            upload_content_length: 78.0
+            starttransfer_time: 1.208525
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.62.110.130
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 10.130.6.25
+            local_port: 58152
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 154172
+            connect_time_us: 70163
+            namelookup_time_us: 3324
+            pretransfer_time_us: 154284
+            redirect_time_us: 0
+            starttransfer_time_us: 1208525
+            total_time_us: 1208624

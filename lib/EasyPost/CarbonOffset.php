@@ -9,6 +9,6 @@ namespace EasyPost;
  * @property string $price
  * @property string $object
  */
-class CarbonOffset extends EasypostResource
+class CarbonOffset extends EasyPostObject
 {
 }

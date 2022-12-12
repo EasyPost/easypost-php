@@ -24,63 +24,63 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: e2a8c346638a3db7e2bbacfc0007eee8
+            x-ep-request-uuid: e26b9830639113f4e78aa06d001e1394
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
-            location: /api/v2/addresses/adr_7d9976ca726b11ed90ceac1f6bc72124
+            location: /api/v2/addresses/adr_b6b60b4c767e11edac0cac1f6bc7bdc6
             content-type: 'application/json; charset=utf-8'
             content-length: '461'
-            etag: 'W/"6783ea8907eb87fdd10f90c605bdcaac"'
-            x-runtime: '0.039008'
-            x-node: bigweb6nuq
-            x-version-label: easypost-202212011955-aa9a4d99eb-master
+            etag: 'W/"1e91ffec3f2fb6038276e223cd2f83fd"'
+            x-runtime: '0.032901'
+            x-node: bigweb9nuq
+            x-version-label: easypost-202212072114-cbd87d5dd7-master
             x-backend: easypost
-            x-proxied: ['intlb2nuq 29913d444b', 'intlb2wdc 29913d444b', 'extlb3wdc 29913d444b']
+            x-proxied: ['intlb1nuq 29913d444b', 'extlb2nuq 29913d444b']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"adr_7d9976ca726b11ed90ceac1f6bc72124","object":"Address","created_at":"2022-12-02T18:02:31+00:00","updated_at":"2022-12-02T18:02:31+00:00","name":"Jack Sparrow","company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":[]}'
+        body: '{"id":"adr_b6b60b4c767e11edac0cac1f6bc7bdc6","object":"Address","created_at":"2022-12-07T22:30:12+00:00","updated_at":"2022-12-07T22:30:12+00:00","name":"Jack Sparrow","company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":[]}'
         curl_info:
             url: 'https://api.easypost.com/v2/addresses'
             content_type: 'application/json; charset=utf-8'
             http_code: 201
-            header_size: 835
+            header_size: 802
             request_size: 503
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.336642
-            namelookup_time: 0.001413
-            connect_time: 0.054159
-            pretransfer_time: 0.114611
+            total_time: 0.241129
+            namelookup_time: 0.00179
+            connect_time: 0.067608
+            pretransfer_time: 0.140869
             size_upload: 195.0
             size_download: 461.0
-            speed_download: 1369.0
-            speed_upload: 579.0
+            speed_download: 1911.0
+            speed_upload: 808.0
             download_content_length: 461.0
             upload_content_length: 195.0
-            starttransfer_time: 0.336622
+            starttransfer_time: 0.241107
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.47.33.18
+            primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
-            local_ip: 192.168.1.201
-            local_port: 57376
+            local_ip: 10.130.6.25
+            local_port: 57974
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 114553
-            connect_time_us: 54159
-            namelookup_time_us: 1413
-            pretransfer_time_us: 114611
+            appconnect_time_us: 140842
+            connect_time_us: 67608
+            namelookup_time_us: 1790
+            pretransfer_time_us: 140869
             redirect_time_us: 0
-            starttransfer_time_us: 336622
-            total_time_us: 336642
+            starttransfer_time_us: 241107
+            total_time_us: 241129
 -
     request:
         method: GET
-        url: 'https://api.easypost.com/v2/addresses/adr_7d9976ca726b11ed90ceac1f6bc72124'
+        url: 'https://api.easypost.com/v2/addresses/adr_b6b60b4c767e11edac0cac1f6bc7bdc6'
         headers:
             Host: api.easypost.com
             Accept-Encoding: ''
@@ -100,55 +100,55 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: e2a8c346638a3db7e2bbacfd0007ef2c
+            x-ep-request-uuid: e26b9832639113f4e78aa06e001e13ac
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '461'
-            etag: 'W/"6783ea8907eb87fdd10f90c605bdcaac"'
-            x-runtime: '0.043202'
-            x-node: bigweb12nuq
-            x-version-label: easypost-202212011955-aa9a4d99eb-master
+            etag: 'W/"1e91ffec3f2fb6038276e223cd2f83fd"'
+            x-runtime: '0.033314'
+            x-node: bigweb2nuq
+            x-version-label: easypost-202212072114-cbd87d5dd7-master
             x-backend: easypost
-            x-proxied: ['intlb2nuq 29913d444b', 'intlb2wdc 29913d444b', 'extlb3wdc 29913d444b']
+            x-proxied: ['intlb1nuq 29913d444b', 'extlb2nuq 29913d444b']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"adr_7d9976ca726b11ed90ceac1f6bc72124","object":"Address","created_at":"2022-12-02T18:02:31+00:00","updated_at":"2022-12-02T18:02:31+00:00","name":"Jack Sparrow","company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":[]}'
+        body: '{"id":"adr_b6b60b4c767e11edac0cac1f6bc7bdc6","object":"Address","created_at":"2022-12-07T22:30:12+00:00","updated_at":"2022-12-07T22:30:12+00:00","name":"Jack Sparrow","company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":[]}'
         curl_info:
-            url: 'https://api.easypost.com/v2/addresses/adr_7d9976ca726b11ed90ceac1f6bc72124'
+            url: 'https://api.easypost.com/v2/addresses/adr_b6b60b4c767e11edac0cac1f6bc7bdc6'
             content_type: 'application/json; charset=utf-8'
             http_code: 200
-            header_size: 765
+            header_size: 731
             request_size: 323
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.354043
-            namelookup_time: 0.001347
-            connect_time: 0.058807
-            pretransfer_time: 0.122645
+            total_time: 0.249881
+            namelookup_time: 0.002626
+            connect_time: 0.067695
+            pretransfer_time: 0.149962
             size_upload: 0.0
             size_download: 461.0
-            speed_download: 1302.0
+            speed_download: 1844.0
             speed_upload: 0.0
             download_content_length: 461.0
             upload_content_length: 0.0
-            starttransfer_time: 0.353998
+            starttransfer_time: 0.249822
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.47.33.18
+            primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
-            local_ip: 192.168.1.201
-            local_port: 57377
+            local_ip: 10.130.6.25
+            local_port: 57975
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 122621
-            connect_time_us: 58807
-            namelookup_time_us: 1347
-            pretransfer_time_us: 122645
+            appconnect_time_us: 149924
+            connect_time_us: 67695
+            namelookup_time_us: 2626
+            pretransfer_time_us: 149962
             redirect_time_us: 0
-            starttransfer_time_us: 353998
-            total_time_us: 354043
+            starttransfer_time_us: 249822
+            total_time_us: 249881

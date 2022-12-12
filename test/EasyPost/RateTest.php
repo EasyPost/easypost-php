@@ -2,17 +2,19 @@
 
 namespace EasyPost\Test;
 
-use EasyPost\Rate;
-use EasyPost\Shipment;
+use EasyPost\EasyPostClient;
 
 class RateTest extends \PHPUnit\Framework\TestCase
 {
+    private static $client;
+
     /**
      * Setup the testing environment for this file.
      */
     public static function setUpBeforeClass(): void
     {
-        TestUtil::setupVcrTests('EASYPOST_TEST_API_KEY');
+        TestUtil::setupVcrTests();
+        self::$client = new EasyPostClient(getenv('EASYPOST_TEST_API_KEY'));
     }
 
     /**
@@ -30,9 +32,9 @@ class RateTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('rates/retrieve.yml');
 
-        $shipment = Shipment::create(Fixture::basicShipment());
+        $shipment = self::$client->shipment->create(Fixture::basicShipment());
 
-        $rate = Rate::retrieve($shipment->rates[0]['id']);
+        $rate = self::$client->rate->retrieve($shipment->rates[0]['id']);
 
         $this->assertInstanceOf('\EasyPost\Rate', $rate);
         $this->assertStringMatchesFormat('rate_%s', $rate->id);

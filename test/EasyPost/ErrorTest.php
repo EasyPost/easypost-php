@@ -2,17 +2,20 @@
 
 namespace EasyPost\Test;
 
-use EasyPost\Error;
-use EasyPost\Shipment;
+use EasyPost\EasyPostClient;
+use EasyPost\Exception\Error;
 
 class ErrorTest extends \PHPUnit\Framework\TestCase
 {
+    private static $client;
+
     /**
      * Setup the testing environment for this file.
      */
     public static function setUpBeforeClass(): void
     {
-        TestUtil::setupVcrTests('EASYPOST_TEST_API_KEY');
+        TestUtil::setupVcrTests();
+        self::$client = new EasyPostClient(getenv('EASYPOST_TEST_API_KEY'));
     }
 
     /**
@@ -32,7 +35,7 @@ class ErrorTest extends \PHPUnit\Framework\TestCase
 
         // Create a bad shipment so we can work with errors
         try {
-            Shipment::create();
+            self::$client->shipment->create();
         } catch (Error $error) {
             $this->assertEquals(422, $error->getHttpStatus());
             $this->assertEquals('PARAMETER.REQUIRED', $error->ecode);

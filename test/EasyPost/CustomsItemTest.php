@@ -2,16 +2,19 @@
 
 namespace EasyPost\Test;
 
-use EasyPost\CustomsItem;
+use EasyPost\EasyPostClient;
 
 class CustomsItemTest extends \PHPUnit\Framework\TestCase
 {
+    private static $client;
+
     /**
      * Setup the testing environment for this file.
      */
     public static function setUpBeforeClass(): void
     {
-        TestUtil::setupVcrTests('EASYPOST_TEST_API_KEY');
+        TestUtil::setupVcrTests();
+        self::$client = new EasyPostClient(getenv('EASYPOST_TEST_API_KEY'));
     }
 
     /**
@@ -29,7 +32,7 @@ class CustomsItemTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('customs_items/create.yml');
 
-        $customsItem = CustomsItem::create(Fixture::basicCustomsItem());
+        $customsItem = self::$client->customsItem->create(Fixture::basicCustomsItem());
 
         $this->assertInstanceOf('\EasyPost\CustomsItem', $customsItem);
         $this->assertStringMatchesFormat('cstitem_%s', $customsItem->id);
@@ -43,9 +46,9 @@ class CustomsItemTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('customs_items/retrieve.yml');
 
-        $customsItem = CustomsItem::create(Fixture::basicCustomsItem());
+        $customsItem = self::$client->customsItem->create(Fixture::basicCustomsItem());
 
-        $retrievedCustomsItem = CustomsItem::retrieve($customsItem->id);
+        $retrievedCustomsItem = self::$client->customsItem->retrieve($customsItem->id);
 
         $this->assertInstanceOf('\EasyPost\CustomsItem', $retrievedCustomsItem);
         $this->assertEquals($customsItem, $retrievedCustomsItem);

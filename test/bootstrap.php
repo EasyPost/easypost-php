@@ -1,7 +1,7 @@
 <?php
 
 use allejo\VCR\VCRCleaner;
-use EasyPost\Util;
+use EasyPost\Util\InternalUtil;
 use VCR\VCR;
 
 if (!file_exists('test/cassettes')) {
@@ -64,7 +64,7 @@ function scrubCassette($data)
             $replacement = $scrubber[1];
 
             // Root-level list scrubbing
-            if (Util::isList($data)) {
+            if (InternalUtil::isList($data)) {
                 foreach ($data as $index => $item) {
                     if (is_array($index)) {
                         if (is_array($item)) {
@@ -83,11 +83,11 @@ function scrubCassette($data)
                         // Nested scrubbing
                         foreach ($data as $index => $item) {
                             if (is_array($item)) {
-                                if (Util::isList($item)) {
+                                if (InternalUtil::isList($item)) {
                                     foreach ($item as $nestedIndex => $nestedItem) {
                                         $data[$index][$nestedIndex] = scrubCassette($nestedItem);
                                     }
-                                } elseif (!Util::isList($item)) {
+                                } elseif (!InternalUtil::isList($item)) {
                                     $data[$index] = scrubCassette($item);
                                 }
                             }

@@ -8,6 +8,6 @@ namespace EasyPost;
  * @param FieldError[] errors
  * @param VerificationDetails details
  */
-class Verification extends EasypostResource
+class Verification extends EasyPostObject
 {
 }

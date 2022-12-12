@@ -2,16 +2,19 @@
 
 namespace EasyPost\Test;
 
-use EasyPost\Report;
+use EasyPost\EasyPostClient;
 
 class ReportTest extends \PHPUnit\Framework\TestCase
 {
+    private static $client;
+
     /**
      * Setup the testing environment for this file.
      */
     public static function setUpBeforeClass(): void
     {
-        TestUtil::setupVcrTests('EASYPOST_TEST_API_KEY');
+        TestUtil::setupVcrTests();
+        self::$client = new EasyPostClient(getenv('EASYPOST_TEST_API_KEY'));
     }
 
     /**
@@ -29,7 +32,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('reports/createReport.yml');
 
-        $report = Report::create([
+        $report = self::$client->report->create([
             'start_date' => Fixture::reportDate(),
             'end_date' => Fixture::reportDate(),
             'type' => Fixture::reportType(),
@@ -46,7 +49,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('reports/createCustomColumnReport.yml');
 
-        $report = Report::create([
+        $report = self::$client->report->create([
             'start_date' => Fixture::reportDate(),
             'end_date' => Fixture::reportDate(),
             'type' => Fixture::reportType(),
@@ -66,7 +69,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('reports/createCustomAdditionalColumnReport.yml');
 
-        $report = Report::create([
+        $report = self::$client->report->create([
             'start_date' => Fixture::reportDate(),
             'end_date' => Fixture::reportDate(),
             'type' => Fixture::reportType(),
@@ -86,13 +89,13 @@ class ReportTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('reports/retrieveReport.yml');
 
-        $report = Report::create([
+        $report = self::$client->report->create([
             'start_date' => Fixture::reportDate(),
             'end_date' => Fixture::reportDate(),
             'type' => Fixture::reportType(),
         ]);
 
-        $retrievedReport = Report::retrieve($report->id);
+        $retrievedReport = self::$client->report->retrieve($report->id);
 
         $this->assertInstanceOf('\EasyPost\Report', $retrievedReport);
         $this->assertEquals($report->start_date, $retrievedReport->start_date);
@@ -106,7 +109,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('reports/all.yml');
 
-        $reports = Report::all([
+        $reports = self::$client->report->all([
             'type' => 'shipment',
             'page_size' => Fixture::pageSize(),
         ]);
@@ -123,9 +126,9 @@ class ReportTest extends \PHPUnit\Framework\TestCase
      */
     public function testCreateNoType()
     {
-        $this->expectException(\EasyPost\Error::class);
+        $this->expectException(\EasyPost\Exception\Error::class);
 
-        Report::create();
+        self::$client->report->create();
     }
 
     /**
@@ -133,8 +136,8 @@ class ReportTest extends \PHPUnit\Framework\TestCase
      */
     public function testAllNoType()
     {
-        $this->expectException(\EasyPost\Error::class);
+        $this->expectException(\EasyPost\Exception\Error::class);
 
-        Report::all();
+        self::$client->report->all();
     }
 }

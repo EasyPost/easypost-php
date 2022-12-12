@@ -10,6 +10,6 @@ namespace EasyPost;
  * @property bool $charged
  * @property bool $refunded
  */
-class Fee extends EasypostResource
+class Fee extends EasyPostObject
 {
 }

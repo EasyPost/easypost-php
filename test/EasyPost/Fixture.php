@@ -120,7 +120,7 @@ class Fixture
     // USPS only does "next-day" pickups including Saturday but not Sunday or Holidays.
     public static function basicPickup()
     {
-        $pickupDate = '2022-12-03';
+        $pickupDate = '2022-12-09';
 
         $pickupData = self::readFixtureData()['pickups']['basic'];
         $pickupData['min_datetime'] = $pickupDate;
