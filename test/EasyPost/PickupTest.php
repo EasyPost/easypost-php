@@ -3,7 +3,7 @@
 namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
-use EasyPost\Exception\Error;
+use EasyPost\Exception\General\FilteringException;
 
 class PickupTest extends \PHPUnit\Framework\TestCase
 {
@@ -144,14 +144,14 @@ class PickupTest extends \PHPUnit\Framework\TestCase
         // Test lowest rate with service filter (should error due to bad service)
         try {
             $lowestRate = $pickup->lowestRate([], ['BAD SERVICE']);
-        } catch (Error $error) {
+        } catch (FilteringException $error) {
             $this->assertEquals('No rates found.', $error->getMessage());
         }
 
         // Test lowest rate with carrier filter (should error due to bad carrier)
         try {
             $lowestRate = $pickup->lowestRate(['BAD CARRIER'], []);
-        } catch (Error $error) {
+        } catch (FilteringException $error) {
             $this->assertEquals('No rates found.', $error->getMessage());
         }
     }

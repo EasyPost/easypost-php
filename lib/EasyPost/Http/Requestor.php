@@ -5,7 +5,20 @@ namespace EasyPost\Http;
 use EasyPost\Constant\Constants;
 use EasyPost\EasyPostClient;
 use EasyPost\EasypostObject;
-use EasyPost\Exception\Error;
+use EasyPost\Exception\Api\GatewayTimeoutException;
+use EasyPost\Exception\Api\HttpException;
+use EasyPost\Exception\Api\InternalServerException;
+use EasyPost\Exception\Api\InvalidRequestException;
+use EasyPost\Exception\Api\JsonException;
+use EasyPost\Exception\Api\MethodNotAllowedException;
+use EasyPost\Exception\Api\NotFoundException;
+use EasyPost\Exception\Api\PaymentException;
+use EasyPost\Exception\Api\RateLimitException;
+use EasyPost\Exception\Api\RedirectException;
+use EasyPost\Exception\Api\ServiceUnavailableException;
+use EasyPost\Exception\Api\TimeoutException;
+use EasyPost\Exception\Api\UnauthorizedException;
+use EasyPost\Exception\Api\UnknownApiException;
 use GuzzleHttp\Client;
 
 class Requestor
@@ -118,7 +131,6 @@ class Requestor
      * @param mixed $params
      * @param bool $beta
      * @return array
-     * @throws \EasyPost\Exception\Error
      */
     public static function request($client, $method, $url, $params = null, $beta = false)
     {
@@ -137,7 +149,8 @@ class Requestor
      * @param mixed $params
      * @param bool $beta
      * @return array
-     * @throws \EasyPost\Exception\Error
+     * @throws HttpException
+     * @throws TimeoutException
      */
     private static function requestRaw($client, $method, $url, $params, $beta = false)
     {
@@ -170,13 +183,12 @@ class Requestor
         try {
             $response = $guzzleClient->request($method, $absoluteUrl, $requestOptions);
         } catch (\GuzzleHttp\Exception\ConnectException $error) {
-            $message = 'Unexpected error communicating with EasyPost. If this problem persists please let us know at ' . Constants::SUPPORT_EMAIL . ".{$error->getMessage()}";
-            throw new Error($message, null, null);
+            throw new HttpException(sprintf(Constants::COMMUNICATION_ERROR, 'EasyPost', $error->getMessage()));
         }
 
         // Guzzle does not have a native way of catching timeout exceptions... If we don't have a response at this point, it's likely due to a timeout
         if (!isset($response)) {
-            throw new Error('Did not receive a response from the API.', null, null);
+            throw new TimeoutException(sprintf(Constants::NO_RESPONSE_ERROR, 'EasyPost'));
         }
 
         $responseBody = $response->getBody();
@@ -191,14 +203,14 @@ class Requestor
      * @param string $httpBody
      * @param int $httpStatus
      * @return mixed
-     * @throws \EasyPost\Exception\Error
+     * @throws JsonException
      */
     public static function interpretResponse($httpBody, $httpStatus)
     {
         try {
             $response = json_decode($httpBody, true);
         } catch (\Exception $e) {
-            throw new Error("Invalid response body from API: HTTP Status: ({$httpStatus}) {$httpBody}", $httpStatus, $httpBody);
+            throw new JsonException("Invalid response body from API: HTTP Status: ({$httpStatus}) {$httpBody}", $httpStatus, $httpBody);
         }
 
         if ($httpStatus < 200 || $httpStatus >= 300) {
@@ -214,12 +226,24 @@ class Requestor
      * @param string $httpBody
      * @param int $httpStatus
      * @param array $response
-     * @throws \EasyPost\Exception\Error
+     * @throws GatewayTimeoutException
+     * @throws InternalServerException
+     * @throws InvalidRequestException
+     * @throws JsonException
+     * @throws MethodNotAllowedException
+     * @throws NotFoundException
+     * @throws PaymentException
+     * @throws RateLimitException
+     * @throws RedirectException
+     * @throws ServiceUnavailableException
+     * @throws TimeoutException
+     * @throws UnauthorizedException
+     * @throws UnknownApiException
      */
     public static function handleApiError($httpBody, $httpStatus, $response)
     {
         if (!is_array($response) || !isset($response['error'])) {
-            throw new Error("Invalid response object from API: HTTP Status: ({$httpStatus}) {$httpBody})", $httpStatus, $httpBody);
+            throw new JsonException("Invalid response object from API: HTTP Status: ({$httpStatus}) {$httpBody})", $httpStatus, $httpBody);
         }
 
         // Errors may be an array improperly assigned to the `message` field instead of the `errors` field, concatenate those here
@@ -231,6 +255,84 @@ class Requestor
             $message = $response['error'];
         }
 
-        throw new Error($message, $httpStatus, $httpBody);
+        switch ($httpStatus) {
+            case 100:
+                $errorType = UnknownApiException::class;
+                break;
+            case 101:
+                $errorType = UnknownApiException::class;
+                break;
+            case 102:
+                $errorType = UnknownApiException::class;
+                break;
+            case 103:
+                $errorType = UnknownApiException::class;
+                break;
+            case 300:
+                $errorType = RedirectException::class;
+                break;
+            case 301:
+                $errorType = RedirectException::class;
+                break;
+            case 302:
+                $errorType = RedirectException::class;
+                break;
+            case 303:
+                $errorType = RedirectException::class;
+                break;
+            case 304:
+                $errorType = RedirectException::class;
+                break;
+            case 305:
+                $errorType = RedirectException::class;
+                break;
+            case 306:
+                $errorType = RedirectException::class;
+                break;
+            case 307:
+                $errorType = RedirectException::class;
+                break;
+            case 308:
+                $errorType = RedirectException::class;
+                break;
+            case 401:
+                $errorType = UnauthorizedException::class;
+                break;
+            case 402:
+                $errorType = PaymentException::class;
+                break;
+            case 403:
+                $errorType = UnauthorizedException::class;
+                break;
+            case 404:
+                $errorType = NotFoundException::class;
+                break;
+            case 405:
+                $errorType = MethodNotAllowedException::class;
+                break;
+            case 408:
+                $errorType = TimeoutException::class;
+                break;
+            case 422:
+                $errorType = InvalidRequestException::class;
+                break;
+            case 429:
+                $errorType = RateLimitException::class;
+                break;
+            case 500:
+                $errorType = InternalServerException::class;
+                break;
+            case 503:
+                $errorType = ServiceUnavailableException::class;
+                break;
+            case 504:
+                $errorType = GatewayTimeoutException::class;
+                break;
+            default:
+                $errorType = UnknownApiException::class;
+                break;
+        }
+
+        throw new $errorType($message, $httpStatus, $httpBody);
     }
 }

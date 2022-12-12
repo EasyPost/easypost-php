@@ -1,25 +1,25 @@
 <?php
 
-namespace EasyPost\Exception;
+namespace EasyPost\Exception\Api;
+
+use EasyPost\Exception\General\EasyPostException;
 
 /**
  * @package EasyPost
  * @property string $code
- * @property string $message
  * @property FieldError[] $errors
  */
-class Error extends \Exception
+class ApiException extends EasyPostException
 {
-    private $httpBody;
-    private $httpStatus;
-    private $jsonBody;
+    protected $httpBody;
+    protected $httpStatus;
+    protected $jsonBody;
+    protected $message;
     public $code;
-    public $ecode;
     public $errors;
-    public $message;
 
     /**
-     * Constructor.
+     * EasyPostException constructor.
      *
      * @param string $message
      * @param int $httpStatus
@@ -33,16 +33,19 @@ class Error extends \Exception
 
         try {
             $this->jsonBody = json_decode($httpBody, true);
+
+            // Setup `errors` property
             if (isset($this->jsonBody) && !empty($this->jsonBody['error']['errors'])) {
                 $this->errors = $this->jsonBody['error']['errors'];
             } else {
                 $this->errors = null;
             }
 
+            // Setup `code` property
             if (isset($this->jsonBody) && !empty($this->jsonBody['error']['code'])) {
-                $this->ecode = $this->jsonBody['error']['code'];
+                $this->code = $this->jsonBody['error']['code'];
             } else {
-                $this->ecode = null;
+                $this->code = null;
             }
         } catch (\Exception $e) {
             $this->jsonBody = null;
@@ -76,7 +79,7 @@ class Error extends \Exception
      */
     public function prettyPrint()
     {
-        print($this->ecode . ' (' . $this->getHttpStatus() . '): ' .
+        print($this->code . ' (' . $this->getHttpStatus() . '): ' .
             $this->getMessage() . "\n");
         if (!empty($this->errors)) {
             print("Field errors:\n");

@@ -3,6 +3,7 @@
 namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
+use EasyPost\Exception\General\MissingParameterException;
 
 class ReportTest extends \PHPUnit\Framework\TestCase
 {
@@ -126,7 +127,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
      */
     public function testCreateNoType()
     {
-        $this->expectException(\EasyPost\Exception\Error::class);
+        $this->expectException(MissingParameterException::class);
 
         self::$client->report->create();
     }
@@ -136,7 +137,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
      */
     public function testAllNoType()
     {
-        $this->expectException(\EasyPost\Exception\Error::class);
+        $this->expectException(MissingParameterException::class);
 
         self::$client->report->all();
     }

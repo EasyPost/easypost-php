@@ -9,7 +9,7 @@ clean:
 ## coverage - Runs the test suite and generates a coverage report
 coverage:
 	composer coverage
-	bin/coverage-check build/logs/clover.xml 82 --only-percentage
+	bin/coverage-check build/logs/clover.xml 78 --only-percentage
 
 ## docs - Generate documentation for the library
 docs:

@@ -4,7 +4,9 @@ namespace EasyPost\Service;
 
 use EasyPost\Constant\Constants;
 use EasyPost\EasyPostClient;
-use EasyPost\Exception\Error;
+use EasyPost\Exception\Api\ExternalApiException;
+use EasyPost\Exception\Api\HttpException;
+use EasyPost\Exception\Api\TimeoutException;
 use EasyPost\Http\Requestor;
 use EasyPost\Util\InternalUtil;
 use GuzzleHttp\Client;
@@ -74,6 +76,7 @@ class ReferralCustomerService extends BaseService
      * @param string $cvc
      * @param string $primaryOrSecondary
      * @return mixed
+     * @throws ExternalApiException
      */
     public function addCreditCard($referralApiKey, $number, $expirationMonth, $expirationYear, $cvc, $primaryOrSecondary = 'primary')
     {
@@ -82,7 +85,7 @@ class ReferralCustomerService extends BaseService
         try {
             $stripeToken = self::createStripeToken($number, $expirationMonth, $expirationYear, $cvc, $easypostStripeApiKey);
         } catch (\Exception $error) {
-            throw new Error('Could not send card details to Stripe, please try again later');
+            throw new ExternalApiException(Constants::SEND_STRIPE_DETAILS_ERROR);
         }
 
         $stripeToken = $stripeToken['id'] ?? '';
@@ -113,6 +116,8 @@ class ReferralCustomerService extends BaseService
      * @param string $cvc
      * @param string $easypostStripeKey
      * @return mixed
+     * @throws HttpException
+     * @throws TimeoutException
      */
     private function createStripeToken($number, $expirationMonth, $expirationYear, $cvc, $easypostStripeKey)
     {
@@ -141,13 +146,12 @@ class ReferralCustomerService extends BaseService
         try {
             $response = $guzzleClient->request('POST', $url, $requestOptions);
         } catch (\GuzzleHttp\Exception\ConnectException $error) {
-            $message = 'Unexpected error communicating with Stripe. If this problem persists please let us know at ' . Constants::SUPPORT_EMAIL . ".{$error->getMessage()}";
-            throw new Error($message, null, null);
+            throw new HttpException(sprintf(Constants::COMMUNICATION_ERROR, 'Stripe', $error->getMessage()));
         }
 
         // Guzzle does not have a native way of catching timeout exceptions... If we don't have a response at this point, it's likely due to a timeout
         if (!isset($response)) {
-            throw new Error('Did not receive a response from the API.', null, null);
+            throw new TimeoutException(sprintf(Constants::NO_RESPONSE_ERROR, 'Stripe'));
         }
 
         $responseBody = $response->getBody();

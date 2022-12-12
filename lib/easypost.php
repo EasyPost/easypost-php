@@ -7,8 +7,36 @@ if (!function_exists('json_decode')) {
     throw new Exception('EasyPost needs the JSON PHP extension.');
 }
 
-// Exceptions
-require_once(dirname(__FILE__) . '/EasyPost/Exception/Error.php');
+// Exception Base Classes
+require_once(dirname(__FILE__) . '/EasyPost/Exception/General/EasyPostException.php');
+require_once(dirname(__FILE__) . '/EasyPost/Exception/Api/ApiException.php');
+
+// API Exceptions
+require_once(dirname(__FILE__) . '/EasyPost/Exception/Api/ApiException.php');
+require_once(dirname(__FILE__) . '/EasyPost/Exception/Api/EncodingException.php');
+require_once(dirname(__FILE__) . '/EasyPost/Exception/Api/ExternalApiException.php');
+require_once(dirname(__FILE__) . '/EasyPost/Exception/Api/ForbiddenException.php');
+require_once(dirname(__FILE__) . '/EasyPost/Exception/Api/GatewayTimeoutException.php');
+require_once(dirname(__FILE__) . '/EasyPost/Exception/Api/HttpException.php');
+require_once(dirname(__FILE__) . '/EasyPost/Exception/Api/InternalServerException.php');
+require_once(dirname(__FILE__) . '/EasyPost/Exception/Api/InvalidRequestException.php');
+require_once(dirname(__FILE__) . '/EasyPost/Exception/Api/JsonException.php');
+require_once(dirname(__FILE__) . '/EasyPost/Exception/Api/MethodNotAllowedException.php');
+require_once(dirname(__FILE__) . '/EasyPost/Exception/Api/NotFoundException.php');
+require_once(dirname(__FILE__) . '/EasyPost/Exception/Api/PaymentException.php');
+require_once(dirname(__FILE__) . '/EasyPost/Exception/Api/RateLimitException.php');
+require_once(dirname(__FILE__) . '/EasyPost/Exception/Api/RedirectException.php');
+require_once(dirname(__FILE__) . '/EasyPost/Exception/Api/ServiceUnavailableException.php');
+require_once(dirname(__FILE__) . '/EasyPost/Exception/Api/TimeoutException.php');
+require_once(dirname(__FILE__) . '/EasyPost/Exception/Api/UnauthorizedException.php');
+require_once(dirname(__FILE__) . '/EasyPost/Exception/Api/UnknownApiException.php');
+
+// General Exceptions
+require_once(dirname(__FILE__) . '/EasyPost/Exception/General/FilteringException.php');
+require_once(dirname(__FILE__) . '/EasyPost/Exception/General/InvalidObjectException.php');
+require_once(dirname(__FILE__) . '/EasyPost/Exception/General/InvalidParameterException.php');
+require_once(dirname(__FILE__) . '/EasyPost/Exception/General/MissingParameterException.php');
+require_once(dirname(__FILE__) . '/EasyPost/Exception/General/SignatureVerificationException.php');
 
 // Constants
 require_once(dirname(__FILE__) . '/EasyPost/Constant/Constants.php');

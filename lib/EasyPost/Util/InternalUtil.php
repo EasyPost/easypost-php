@@ -2,8 +2,9 @@
 
 namespace EasyPost\Util;
 
+use EasyPost\Constant\Constants;
 use EasyPost\EasyPostObject;
-use EasyPost\Exception\Error;
+use EasyPost\Exception\General\FilteringException;
 
 abstract class InternalUtil
 {
@@ -148,7 +149,7 @@ abstract class InternalUtil
      * @param array $services
      * @param string $ratesKey
      * @return Rate
-     * @throws \EasyPost\Exception\Error
+     * @throws \EasyPost\Exception\EasyPostException
      */
     public static function getLowestObjectRate($easypostObject, $carriers = [], $services = [], $ratesKey = 'rates')
     {
@@ -205,7 +206,7 @@ abstract class InternalUtil
         }
 
         if ($lowestRate == false) {
-            throw new Error('No rates found.');
+            throw new FilteringException(Constants::NO_RATES_ERROR);
         }
 
         return $lowestRate;

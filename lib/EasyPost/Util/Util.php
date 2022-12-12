@@ -2,8 +2,13 @@
 
 namespace EasyPost\Util;
 
+use EasyPost\Constant\Constants;
 use EasyPost\EasyPostObject;
-use EasyPost\Exception\Error;
+use EasyPost\Exception\Api\EncodingException;
+use EasyPost\Exception\General\FilteringException;
+use EasyPost\Exception\General\InvalidParameterException;
+use EasyPost\Exception\General\MissingParameterException;
+use EasyPost\Exception\General\SignatureVerificationException;
 use Normalizer;
 
 abstract class Util
@@ -39,7 +44,7 @@ abstract class Util
      * @param int $deliveryDays
      * @param string $deliveryAccuracy
      * @return Rate
-     * @throws Error
+     * @throws EasyPostException
      */
     public static function getLowestSmartRate($smartRates, $deliveryDays, $deliveryAccuracy)
     {
@@ -56,7 +61,7 @@ abstract class Util
 
         if (!in_array(strtolower($deliveryAccuracy), $validDeliveryAccuracyValues)) {
             $jsonValidList = json_encode($validDeliveryAccuracyValues);
-            throw new Error("Invalid delivery_accuracy value, must be one of: $jsonValidList");
+            throw new InvalidParameterException(sprintf(Constants::INVALID_PARAMETER_ERROR_WITH_SUGGESTION, 'delivery_accuracy', $jsonValidList));
         }
 
         foreach ($smartRates as $rate) {
@@ -68,7 +73,7 @@ abstract class Util
         }
 
         if ($lowestSmartRate == false) {
-            throw new Error('No rates found.');
+            throw new FilteringException(Constants::NO_RATES_ERROR);
         }
 
         return $lowestSmartRate;
@@ -83,7 +88,7 @@ abstract class Util
      * @param mixed $headers
      * @param string $webhookSecret
      * @return mixed
-     * @throws Error
+     * @throws EasyPostException
      */
     public static function validateWebhook($eventBody, $headers, $webhookSecret)
     {
@@ -99,10 +104,10 @@ abstract class Util
             if (hash_equals($digest, $easypostHmacSignature)) {
                 $webhookBody = json_decode($eventBody);
             } else {
-                throw new Error('Webhook received did not originate from EasyPost or had a webhook secret mismatch.');
+                throw new SignatureVerificationException(Constants::INVALID_WEBHOOK_VALIDATION_ERROR);
             }
         } else {
-            throw new Error('Webhook received does not contain an HMAC signature.');
+            throw new SignatureVerificationException(Constants::INVALID_SIGNATURE_ERROR);
         }
 
         return $webhookBody;
@@ -113,18 +118,18 @@ abstract class Util
      *
      * @param string $rawInput
      * @return mixed
-     * @throws Error
+     * @throws EasyPostException
      */
     public static function receiveEvent($rawInput = null)
     {
         if ($rawInput == null) {
-            throw new Error('The raw input must be set');
+            throw new MissingParameterException(sprintf(Constants::MISSING_PARAMETER_ERROR, 'rawInput'));
         }
         $values = json_decode($rawInput, true);
         if ($values != null) {
             return EasyPostObject::constructFrom(null, $values, '\EasyPost\\' . 'Event');
         } else {
-            throw new Error('There was a problem decoding the webhook');
+            throw new EncodingException(Constants::DECODE_WEBHOOK_ERROR);
         }
     }
 }

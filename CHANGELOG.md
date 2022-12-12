@@ -15,6 +15,7 @@
 - `validateWebhook`, `getLowestSmartRate`, and `receiveEvent` are now under `EasyPost\Util\Util` as they do not make any API calls
   - Internal only utilities have been moved to `EasyPost\Util\InternalUtil`
 - The beta `EndShipper` class has been removed, please use the generally available `EndShipper` class
+- The `ecode` property of an `Error` is now just `code`
 
 ## v5.8.0 (2022-12-01)
 

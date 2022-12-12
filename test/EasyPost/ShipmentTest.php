@@ -3,7 +3,8 @@
 namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
-use EasyPost\Exception\Error;
+use EasyPost\Exception\General\FilteringException;
+use EasyPost\Exception\General\InvalidParameterException;
 use EasyPost\Util\Util;
 
 class ShipmentTest extends \PHPUnit\Framework\TestCase
@@ -331,7 +332,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         // Test lowestRate with carrier filter (should error due to bad carrier)
         try {
             $lowestRate = $shipment->lowestRate(['BAD CARRIER'], []);
-        } catch (Error $error) {
+        } catch (FilteringException $error) {
             $this->assertEquals('No rates found.', $error->getMessage());
         }
     }
@@ -378,14 +379,14 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         // Test lowestSmartRate with invalid filters (should error due to strict delivery_days)
         try {
             self::$client->shipment->lowestSmartRate($shipment->id, 0, 'percentile_85');
-        } catch (Error $error) {
+        } catch (FilteringException $error) {
             $this->assertEquals('No rates found.', $error->getMessage());
         }
 
         // Test lowestSmartRate with invalid filters (should error due to invalid delivery_accuracy)
         try {
             self::$client->shipment->lowestSmartRate($shipment->id, 3, 'BAD_ACCURACY');
-        } catch (Error $error) {
+        } catch (InvalidParameterException $error) {
             $this->assertEquals(
                 'Invalid delivery_accuracy value, must be one of: ["percentile_50","percentile_75","percentile_85","percentile_90","percentile_95","percentile_97","percentile_99"]',
                 $error->getMessage()
@@ -414,22 +415,20 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         // Test lowestSmartRate with invalid filters (should error due to strict delivery_days)
         try {
             Util::getLowestSmartRate($smartRates, 0, 'percentile_90');
-        } catch (Error $error) {
+        } catch (FilteringException $error) {
             $this->assertEquals('No rates found.', $error->getMessage());
         }
 
         // Test lowestSmartRate with invalid filters (should error due to invalid delivery_accuracy)
         try {
             Util::getLowestSmartRate($smartRates, 3, 'BAD_ACCURACY');
-        } catch (Error $error) {
+        } catch (InvalidParameterException $error) {
             $this->assertEquals('Invalid delivery_accuracy value, must be one of: ["percentile_50","percentile_75","percentile_85","percentile_90","percentile_95","percentile_97","percentile_99"]', $error->getMessage());
         }
     }
 
     /**
      * Tests generating a form for a shipment.
-     *
-     * @throws Error
      */
     public function testGenerateForm()
     {

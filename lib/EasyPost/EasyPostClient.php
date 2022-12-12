@@ -3,7 +3,7 @@
 namespace EasyPost;
 
 use EasyPost\Constant\Constants;
-use EasyPost\Exception\Error;
+use EasyPost\Exception\General\MissingParameterException;
 use EasyPost\Service\AddressService;
 use EasyPost\Service\BaseService;
 use EasyPost\Service\BatchService;
@@ -122,7 +122,7 @@ class EasyPostClient extends BaseService
         $this->webhook = new WebhookService($this);
 
         if (!$this->apiKey) {
-            throw new Error('No API key provided. See https://www.easypost.com/docs for details, or contact ' . Constants::SUPPORT_EMAIL . ' for assistance.');
+            throw new MissingParameterException('No API key provided. See https://www.easypost.com/docs for details, or contact ' . Constants::SUPPORT_EMAIL . ' for assistance.');
         }
     }
 

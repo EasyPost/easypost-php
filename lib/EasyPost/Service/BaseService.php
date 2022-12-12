@@ -2,7 +2,9 @@
 
 namespace EasyPost\Service;
 
-use EasyPost\Exception\Error;
+use EasyPost\Constant\Constants;
+use EasyPost\Exception\General\InvalidObjectException;
+use EasyPost\Exception\General\InvalidParameterException;
 use EasyPost\Http\Requestor;
 use EasyPost\Util\InternalUtil;
 
@@ -65,12 +67,12 @@ class BaseService
      * @param string $class
      * @param string $id
      * @return string
-     * @throws \EasyPost\Exception\Error
+     * @throws InvalidObjectException
      */
     protected function instanceUrl($class, $id)
     {
         if (!$id) {
-            throw new Error("Could not determine which URL to request: {$class} instance has invalid ID: {$id}");
+            throw new InvalidObjectException(sprintf(Constants::NO_ID_URL_ERROR), $class, $id);
         }
         $id = Requestor::utf8($id);
         $classUrl = self::classUrl($class);
@@ -82,12 +84,12 @@ class BaseService
      * Validate library usage.
      *
      * @param array $params
-     * @throws \EasyPost\Exception\Error
+     * @throws InvalidParameterException
      */
     protected static function validate($params = null)
     {
         if ($params && !is_array($params)) {
-            throw new Error('You must pass an array as the first argument to EasyPost API method calls.');
+            throw new InvalidParameterException(Constants::ARRAY_REQUIRED_ERROR);
         }
     }
 

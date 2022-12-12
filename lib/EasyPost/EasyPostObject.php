@@ -2,6 +2,7 @@
 
 namespace EasyPost;
 
+use EasyPost\Constant\Constants;
 use EasyPost\Util\InternalUtil;
 use EasyPost\Util\Util;
 
@@ -111,7 +112,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
             return $this->_values[$k];
         } else {
             $class = get_class($this);
-            error_log("EasyPost Notice: Undefined property of {$class} instance: {$k}");
+            error_log(sprintf(Constants::UNDEFINED_PROPERTY_ERROR, $class, $k));
 
             return null;
         }
