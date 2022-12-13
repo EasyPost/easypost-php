@@ -11,12 +11,12 @@ use EasyPost\Exception\General\EasyPostException;
  */
 class ApiException extends EasyPostException
 {
-    protected $httpBody;
-    protected $httpStatus;
-    protected $jsonBody;
-    protected $message;
     public $code;
     public $errors;
+    protected $message;
+    private $httpBody;
+    private $httpStatus;
+    private $jsonBody;
 
     /**
      * ApiException constructor.
