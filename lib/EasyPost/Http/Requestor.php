@@ -255,46 +255,11 @@ class Requestor
             $message = $response['error'];
         }
 
+        if ($httpStatus >= 300 && $httpStatus < 400) {
+            throw new RedirectException($message, $httpStatus, $httpBody);
+        }
+
         switch ($httpStatus) {
-            case 100:
-                $errorType = UnknownApiException::class;
-                break;
-            case 101:
-                $errorType = UnknownApiException::class;
-                break;
-            case 102:
-                $errorType = UnknownApiException::class;
-                break;
-            case 103:
-                $errorType = UnknownApiException::class;
-                break;
-            case 300:
-                $errorType = RedirectException::class;
-                break;
-            case 301:
-                $errorType = RedirectException::class;
-                break;
-            case 302:
-                $errorType = RedirectException::class;
-                break;
-            case 303:
-                $errorType = RedirectException::class;
-                break;
-            case 304:
-                $errorType = RedirectException::class;
-                break;
-            case 305:
-                $errorType = RedirectException::class;
-                break;
-            case 306:
-                $errorType = RedirectException::class;
-                break;
-            case 307:
-                $errorType = RedirectException::class;
-                break;
-            case 308:
-                $errorType = RedirectException::class;
-                break;
             case 401:
                 $errorType = UnauthorizedException::class;
                 break;

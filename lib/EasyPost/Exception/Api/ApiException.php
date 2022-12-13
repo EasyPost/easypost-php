@@ -19,7 +19,7 @@ class ApiException extends EasyPostException
     public $errors;
 
     /**
-     * EasyPostException constructor.
+     * ApiException constructor.
      *
      * @param string $message
      * @param int $httpStatus
