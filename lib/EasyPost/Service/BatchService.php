@@ -76,9 +76,8 @@ class BatchService extends BaseService
             ];
         }
 
-        $requestor = new Requestor($this->client);
         $url = self::classUrl(self::$modelClass);
-        $response = $requestor->request('post', $url . '/create_and_buy', $params);
+        $response = Requestor::request($this->client, 'post', $url . '/create_and_buy', $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -92,10 +91,8 @@ class BatchService extends BaseService
      */
     public function buy($id, $params = null)
     {
-        $requestor = new Requestor($this->client);
         $url = $this->instanceUrl(self::$modelClass, $id) . '/buy';
-
-        $response = $requestor->request('post', $url, $params);
+        $response = Requestor::request($this->client, 'post', $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -109,10 +106,8 @@ class BatchService extends BaseService
      */
     public function label($id, $params = null)
     {
-        $requestor = new Requestor($this->client);
         $url = $this->instanceUrl(self::$modelClass, $id) . '/label';
-
-        $response = $requestor->request('post', $url, $params);
+        $response = Requestor::request($this->client, 'post', $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -126,10 +121,8 @@ class BatchService extends BaseService
      */
     public function removeShipments($id, $params = null)
     {
-        $requestor = new Requestor($this->client);
         $url = $this->instanceUrl(self::$modelClass, $id) . '/remove_shipments';
-
-        $response = $requestor->request('post', $url, $params);
+        $response = Requestor::request($this->client, 'post', $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -143,10 +136,8 @@ class BatchService extends BaseService
      */
     public function addShipments($id, $params = null)
     {
-        $requestor = new Requestor($this->client);
         $url = $this->instanceUrl(self::$modelClass, $id) . '/add_shipments';
-
-        $response = $requestor->request('post', $url, $params);
+        $response = Requestor::request($this->client, 'post', $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -160,10 +151,8 @@ class BatchService extends BaseService
      */
     public function createScanForm($id, $params = null)
     {
-        $requestor = new Requestor($this->client);
         $url = $this->instanceUrl(self::$modelClass, $id) . '/scan_form';
-
-        $response = $requestor->request('post', $url, $params);
+        $response = Requestor::request($this->client, 'post', $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }

@@ -85,8 +85,7 @@ class UserService extends BaseService
      */
     public function allApiKeys()
     {
-        $requestor = new Requestor($this->client);
-        $response = $requestor->request('get', '/api_keys');
+        $response = Requestor::request($this->client, 'get', '/api_keys');
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -127,8 +126,7 @@ class UserService extends BaseService
      */
     public function updateBrand($id, $params = null)
     {
-        $requestor = new Requestor($this->client);
-        $response = $requestor->request('patch', $this->instanceUrl(self::$modelClass, $id) . '/brand', $params);
+        $response = Requestor::request($this->client, 'patch', $this->instanceUrl(self::$modelClass, $id) . '/brand', $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }

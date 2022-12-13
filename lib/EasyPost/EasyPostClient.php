@@ -5,6 +5,7 @@ namespace EasyPost;
 use EasyPost\Constant\Constants;
 use EasyPost\Exception\Error;
 use EasyPost\Service\AddressService;
+use EasyPost\Service\BaseService;
 use EasyPost\Service\BatchService;
 use EasyPost\Service\BillingService;
 use EasyPost\Service\CarrierAccountService;
@@ -52,8 +53,36 @@ use EasyPost\Service\WebhookService;
  * @property UserService $user;
  * @property WebhookService $webhook;
  */
-class EasyPostClient extends Service\BaseService
+class EasyPostClient extends BaseService
 {
+    // Client properties
+    private $apiKey;
+    private $timeout;
+    private $apiBase;
+
+    // Services
+    public $address;
+    public $batch;
+    public $billing;
+    public $carrierAccount;
+    public $customsInfo;
+    public $customsItem;
+    public $endShipper;
+    public $event;
+    public $insurance;
+    public $order;
+    public $parcel;
+    public $pickup;
+    public $rate;
+    public $referralCustomer;
+    public $refund;
+    public $report;
+    public $scanForm;
+    public $shipment;
+    public $tracker;
+    public $user;
+    public $webhook;
+
     /**
      * Constructor for an EasyPostClient.
      *
@@ -63,14 +92,13 @@ class EasyPostClient extends Service\BaseService
      */
     public function __construct($apiKey, $timeout = Constants::TIMEOUT, $apiBase = Constants::API_BASE)
     {
-        // TODO: Make these all read only when we support PHP >= 8.1
-
         // Client properties
         $this->apiKey = $apiKey;
         $this->timeout = $timeout;
         $this->apiBase = $apiBase;
 
-        // Service
+        // Services
+        // TODO: Make these all read only when we support PHP >= 8.1
         $this->address = new AddressService($this);
         $this->batch = new BatchService($this);
         $this->billing = new BillingService($this);
@@ -96,5 +124,35 @@ class EasyPostClient extends Service\BaseService
         if (!$this->apiKey) {
             throw new Error('No API key provided. See https://www.easypost.com/docs for details, or contact ' . Constants::SUPPORT_EMAIL . ' for assistance.');
         }
+    }
+
+    /**
+     * Get the API key of an EasyPostClient.
+     *
+     * @return string
+     */
+    public function getApiKey()
+    {
+        return $this->apiKey;
+    }
+
+    /**
+     * Get the timeout of an EasyPostClient.
+     *
+     * @return float
+     */
+    public function getTimeout()
+    {
+        return $this->timeout;
+    }
+
+    /**
+     * Get the API Base URL of an EasyPostClient.
+     *
+     * @return string
+     */
+    public function getApiBase()
+    {
+        return $this->apiBase;
     }
 }

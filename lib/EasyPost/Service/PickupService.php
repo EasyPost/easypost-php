@@ -49,10 +49,8 @@ class PickupService extends BaseService
      */
     public function buy($id, $params = null)
     {
-        $requestor = new Requestor($this->client);
         $url = $this->instanceUrl(self::$modelClass, $id) . '/buy';
-
-        $response = $requestor->request('post', $url, $params);
+        $response = Requestor::request($this->client, 'post', $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -66,10 +64,8 @@ class PickupService extends BaseService
      */
     public function cancel($id, $params = null)
     {
-        $requestor = new Requestor($this->client);
         $url = $this->instanceUrl(self::$modelClass, $id) . '/cancel';
-
-        $response = $requestor->request('post', $url, $params);
+        $response = Requestor::request($this->client, 'post', $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }

@@ -3,6 +3,7 @@
 namespace EasyPost\Http;
 
 use EasyPost\Constant\Constants;
+use EasyPost\EasyPostClient;
 use EasyPost\EasypostObject;
 use EasyPost\Exception\Error;
 use GuzzleHttp\Client;
@@ -10,28 +11,19 @@ use GuzzleHttp\Client;
 class Requestor
 {
     /**
-     * Constructor.
-     *
-     * @param EasyPostClient $client
-     */
-    public function __construct($client)
-    {
-        $this->client = $client;
-    }
-
-    /**
      * Get the API URL.
      *
+     * @param EasyPostClient $client
      * @param string $url
      * @param bool $beta
      * @return string
      */
-    private function absoluteUrl($url = '', $beta = false)
+    private static function absoluteUrl($client, $url = '', $beta = false)
     {
         if ($beta) {
             $apiBase = Constants::API_BASE . '/' . Constants::BETA_API_VERSION;
         } else {
-            $apiBase = $this->client->apiBase . '/' . Constants::API_VERSION;
+            $apiBase = $client->getApiBase() . '/' . Constants::API_VERSION;
         }
 
         return "{$apiBase}{$url}";
@@ -120,6 +112,7 @@ class Requestor
     /**
      * Make a request to the EasyPost API.
      *
+     * @param EasyPostClient $client
      * @param string $method
      * @param string $url
      * @param mixed $params
@@ -127,10 +120,10 @@ class Requestor
      * @return array
      * @throws \EasyPost\Exception\Error
      */
-    public function request($method, $url, $params = null, $beta = false)
+    public static function request($client, $method, $url, $params = null, $beta = false)
     {
-        list($responseBody, $httpStatus) = $this->requestRaw($method, $url, $params, $beta);
-        $httpBody = $this->interpretResponse($responseBody, $httpStatus);
+        list($responseBody, $httpStatus) = self::requestRaw($client, $method, $url, $params, $beta);
+        $httpBody = self::interpretResponse($responseBody, $httpStatus);
 
         return $httpBody;
     }
@@ -138,6 +131,7 @@ class Requestor
     /**
      * Internal logic required to make a request to the EasyPost API.
      *
+     * @param EasyPostClient $client
      * @param string $method
      * @param string $url
      * @param mixed $params
@@ -145,12 +139,12 @@ class Requestor
      * @return array
      * @throws \EasyPost\Exception\Error
      */
-    private function requestRaw($method, $url, $params, $beta = false)
+    private static function requestRaw($client, $method, $url, $params, $beta = false)
     {
-        $absoluteUrl = $this->absoluteUrl($url, $beta);
+        $absoluteUrl = self::absoluteUrl($client, $url, $beta);
         $requestOptions = [
             'http_errors' => false, // we set this false here so we can do our own error handling
-            'timeout' => $this->client->timeout,
+            'timeout' => $client->getTimeout(),
         ];
         $params = self::encodeObjects($params);
         if (in_array(strtolower($method), ['get', 'delete'])) {
@@ -166,7 +160,7 @@ class Requestor
 
         $headers = [
             'Accept' => 'application/json',
-            'Authorization' => "Bearer {$this->client->apiKey}",
+            'Authorization' => "Bearer {$client->getApiKey()}",
             'Content-Type' => 'application/json',
             'User-Agent' => 'EasyPost/v2 PhpClient/' . Constants::LIBRARY_VERSION . " PHP/$phpVersion OS/$osType OSVersion/$osVersion OSArch/$osArch",
         ];
@@ -176,7 +170,7 @@ class Requestor
         try {
             $response = $guzzleClient->request($method, $absoluteUrl, $requestOptions);
         } catch (\GuzzleHttp\Exception\ConnectException $error) {
-            $message = "Unexpected error communicating with EasyPost. If this problem persists please let us know at {$this->supportEmail}. {$error->getMessage()}";
+            $message = 'Unexpected error communicating with EasyPost. If this problem persists please let us know at ' . Constants::SUPPORT_EMAIL . ".{$error->getMessage()}";
             throw new Error($message, null, null);
         }
 
@@ -199,7 +193,7 @@ class Requestor
      * @return mixed
      * @throws \EasyPost\Exception\Error
      */
-    public function interpretResponse($httpBody, $httpStatus)
+    public static function interpretResponse($httpBody, $httpStatus)
     {
         try {
             $response = json_decode($httpBody, true);
@@ -208,7 +202,7 @@ class Requestor
         }
 
         if ($httpStatus < 200 || $httpStatus >= 300) {
-            $this->handleApiError($httpBody, $httpStatus, $response);
+            self::handleApiError($httpBody, $httpStatus, $response);
         }
 
         return $response;
@@ -222,7 +216,7 @@ class Requestor
      * @param array $response
      * @throws \EasyPost\Exception\Error
      */
-    public function handleApiError($httpBody, $httpStatus, $response)
+    public static function handleApiError($httpBody, $httpStatus, $response)
     {
         if (!is_array($response) || !isset($response['error'])) {
             throw new Error("Invalid response object from API: HTTP Status: ({$httpStatus}) {$httpBody})", $httpStatus, $httpBody);

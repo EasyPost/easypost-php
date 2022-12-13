@@ -2,6 +2,7 @@
 
 namespace EasyPost\Service;
 
+use EasyPost\Constant\Constants;
 use EasyPost\EasyPostClient;
 use EasyPost\Exception\Error;
 use EasyPost\Http\Requestor;
@@ -58,8 +59,7 @@ class ReferralCustomerService extends BaseService
             ]
         ];
 
-        $requestor = new Requestor($this->client);
-        $requestor->request('put', "/referral_customers/{$userId}", $wrappedParams);
+        Requestor::request($this->client, 'put', "/referral_customers/{$userId}", $wrappedParams);
     }
 
     /**
@@ -99,8 +99,7 @@ class ReferralCustomerService extends BaseService
      */
     private function retrieveEasypostStripeApiKey()
     {
-        $requestor = new Requestor($this->client);
-        $response = $requestor->request('get', '/partners/stripe_public_key');
+        $response = Requestor::request($this->client, 'get', '/partners/stripe_public_key');
 
         return $response['public_key'] ?? '';
     }
@@ -131,8 +130,7 @@ class ReferralCustomerService extends BaseService
             ]
         ];
 
-        $requestor = new Requestor($this->client);
-        $formEncodedParams = $requestor->urlEncode($creditCardDetails);
+        $formEncodedParams = Requestor::urlEncode($creditCardDetails);
         $url = "https://api.stripe.com/v1/tokens?$formEncodedParams";
 
         $guzzleClient = new Client();
@@ -143,7 +141,7 @@ class ReferralCustomerService extends BaseService
         try {
             $response = $guzzleClient->request('POST', $url, $requestOptions);
         } catch (\GuzzleHttp\Exception\ConnectException $error) {
-            $message = "Unexpected error communicating with Stripe. If this problem persists please let us know at {$requestor->supportEmail}. {$error->getMessage()}";
+            $message = 'Unexpected error communicating with Stripe. If this problem persists please let us know at ' . Constants::SUPPORT_EMAIL . ".{$error->getMessage()}";
             throw new Error($message, null, null);
         }
 
@@ -154,7 +152,7 @@ class ReferralCustomerService extends BaseService
 
         $responseBody = $response->getBody();
         $httpStatus = $response->getStatusCode();
-        $response = $requestor->interpretResponse($responseBody, $httpStatus);
+        $response = Requestor::interpretResponse($responseBody, $httpStatus);
 
         return $response;
     }
@@ -177,9 +175,7 @@ class ReferralCustomerService extends BaseService
         ];
 
         $client = new EasyPostClient($referralApiKey);
-
-        $requestor = new Requestor($client);
-        $response = $requestor->request('post', '/credit_cards', $params);
+        $response = Requestor::request($client, 'post', '/credit_cards', $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }

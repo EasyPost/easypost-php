@@ -43,8 +43,7 @@ class BillingService extends BaseService
 
         $url = $paymentMethodEndpoint . "/$paymentMethodId/charges";
         $wrappedParams = ['amount' => $amount];
-        $requestor = new Requestor($this->client);
-        $requestor->request('post', $url, $wrappedParams);
+        Requestor::request($this->client, 'post', $url, $wrappedParams);
     }
 
     /**
@@ -58,8 +57,7 @@ class BillingService extends BaseService
         [$paymentMethodEndpoint, $paymentMethodId] = self::getPaymentInfo(strtolower($primaryOrSecondary));
 
         $url = $paymentMethodEndpoint . "/$paymentMethodId";
-        $requestor = new Requestor($this->client);
-        $requestor->request('delete', $url);
+        Requestor::request($this->client, 'delete', $url);
     }
 
     /**

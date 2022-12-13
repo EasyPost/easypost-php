@@ -81,9 +81,7 @@ class CarrierAccountService extends BaseService
         }
 
         $url = self::selectCarrierAccountCreationEndpoint($type);
-
-        $requestor = new Requestor($this->client);
-        $response = $requestor->request('post', $url, $params);
+        $response = Requestor::request($this->client, 'post', $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -96,8 +94,7 @@ class CarrierAccountService extends BaseService
      */
     public function types($params = null)
     {
-        $requestor = new Requestor($this->client);
-        $response = $requestor->request('get', '/carrier_types', $params);
+        $response = Requestor::request($this->client, 'get', '/carrier_types', $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }

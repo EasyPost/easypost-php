@@ -71,7 +71,7 @@ Upgrading major versions of this project? Refer to the [Upgrade Guide](UPGRADE_G
 
 ## Development
 
-**NOTE:** Recording VCR cassettes only works with PHP 7.3 or 7.4. Once recorded, tests can be run on PHP 7 or 8.
+**NOTE:** Recording VCR cassettes only works with PHP 7.4. Once recorded, tests can be run on PHP 7.4 or 8.0+.
 
 ```bash
 # Install dependencies

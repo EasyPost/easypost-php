@@ -20,7 +20,8 @@ require_once(dirname(__FILE__) . '/EasyPost/Http/Requestor.php');
 require_once(dirname(__FILE__) . '/EasyPost/Util/InternalUtil.php');
 require_once(dirname(__FILE__) . '/EasyPost/Util/Util.php');
 
-// EasyPost Lib
+// EasyPost Lib (order is important for this section)
+require_once(dirname(__FILE__) . '/EasyPost/Service/BaseService.php');
 require_once(dirname(__FILE__) . '/EasyPost/EasyPostClient.php');
 require_once(dirname(__FILE__) . '/EasyPost/EasyPostObject.php');
 
@@ -63,7 +64,6 @@ require_once(dirname(__FILE__) . '/EasyPost/Webhook.php');
 
 // Services
 require_once(dirname(__FILE__) . '/EasyPost/Service/AddressService.php');
-require_once(dirname(__FILE__) . '/EasyPost/Service/BaseService.php');
 require_once(dirname(__FILE__) . '/EasyPost/Service/BatchService.php');
 require_once(dirname(__FILE__) . '/EasyPost/Service/BillingService.php');
 require_once(dirname(__FILE__) . '/EasyPost/Service/CarrierAccountService.php');

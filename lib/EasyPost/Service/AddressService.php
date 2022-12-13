@@ -75,9 +75,8 @@ class AddressService extends BaseService
             $params['address'] = $clone;
         }
 
-        $requestor = new Requestor($this->client);
         $url = self::classUrl(self::$modelClass);
-        $response = $requestor->request('post', $url . '/create_and_verify', $params);
+        $response = Requestor::request($this->client, 'post', $url . '/create_and_verify', $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response['address']);
     }
@@ -90,9 +89,8 @@ class AddressService extends BaseService
      */
     public function verify($id)
     {
-        $requestor = new Requestor($this->client);
         $url = $this->instanceUrl(self::$modelClass, $id) . '/verify';
-        $response = $requestor->request('get', $url, null);
+        $response = Requestor::request($this->client, 'get', $url, null);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response['address'], self::$modelClass);
     }
