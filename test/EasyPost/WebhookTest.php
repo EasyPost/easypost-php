@@ -3,7 +3,7 @@
 namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
-use EasyPost\Exception\Error;
+use EasyPost\Exception\General\SignatureVerificationException;
 use EasyPost\Util\Util;
 
 class WebhookTest extends \PHPUnit\Framework\TestCase
@@ -148,7 +148,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
 
         try {
             Util::validateWebhook(Fixture::eventBytes(), $headers, $webhookSecret);
-        } catch (Error $error) {
+        } catch (SignatureVerificationException $error) {
             $this->assertEquals('Webhook received did not originate from EasyPost or had a webhook secret mismatch.', $error->getMessage());
         }
     }
@@ -165,7 +165,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
 
         try {
             Util::validateWebhook(Fixture::eventBytes(), $headers, $webhookSecret);
-        } catch (Error $error) {
+        } catch (SignatureVerificationException $error) {
             $this->assertEquals('Webhook received does not contain an HMAC signature.', $error->getMessage());
         }
     }

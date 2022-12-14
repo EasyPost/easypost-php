@@ -3,7 +3,7 @@
 namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
-use EasyPost\Exception\Error;
+use EasyPost\Exception\General\EasyPostException;
 use EasyPost\Util\Util;
 
 class EventTest extends \PHPUnit\Framework\TestCase
@@ -78,7 +78,7 @@ class EventTest extends \PHPUnit\Framework\TestCase
      */
     public function testReceiveBadInput()
     {
-        $this->expectException(Error::class);
+        $this->expectException(EasyPostException::class);
 
         Util::receiveEvent('bad input');
     }
@@ -88,7 +88,7 @@ class EventTest extends \PHPUnit\Framework\TestCase
      */
     public function testReceiveNoInput()
     {
-        $this->expectException(Error::class);
+        $this->expectException(EasyPostException::class);
 
         Util::receiveEvent();
     }

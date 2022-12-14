@@ -3,7 +3,7 @@
 namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
-use EasyPost\Exception\Error;
+use EasyPost\Exception\General\FilteringException;
 
 class OrderTest extends \PHPUnit\Framework\TestCase
 {
@@ -138,7 +138,7 @@ class OrderTest extends \PHPUnit\Framework\TestCase
         // Test lowest rate with carrier filter (should error due to bad carrier)
         try {
             $lowestRate = $order->lowestRate(['BAD CARRIER'], []);
-        } catch (Error $error) {
+        } catch (FilteringException $error) {
             $this->assertEquals('No rates found.', $error->getMessage());
         }
     }

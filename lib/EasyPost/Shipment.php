@@ -47,7 +47,6 @@ class Shipment extends EasyPostObject
      * @param array $carriers
      * @param array $services
      * @return Rate
-     * @throws \EasyPost\Exception\Error
      */
     public function lowestRate($carriers = [], $services = [])
     {

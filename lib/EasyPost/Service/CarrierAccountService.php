@@ -3,7 +3,7 @@
 namespace EasyPost\Service;
 
 use EasyPost\Constant\Constants;
-use EasyPost\Exception\Error;
+use EasyPost\Exception\General\MissingParameterException;
 use EasyPost\Http\Requestor;
 use EasyPost\Util\InternalUtil;
 
@@ -65,7 +65,7 @@ class CarrierAccountService extends BaseService
      *
      * @param mixed $params
      * @return mixed
-     * @throws Error
+     * @throws MissingParameterException
      */
     public function create($params = null)
     {
@@ -75,12 +75,11 @@ class CarrierAccountService extends BaseService
             $params['carrier_account'] = $clone;
         }
 
-        $type = $params['carrier_account']['type'];
-        if (!isset($type)) {
-            throw new Error('type is required');
+        if (!isset($params['carrier_account']['type'])) {
+            throw new MissingParameterException(sprintf(Constants::MISSING_PARAMETER_ERROR, 'type'));
         }
 
-        $url = self::selectCarrierAccountCreationEndpoint($type);
+        $url = self::selectCarrierAccountCreationEndpoint($params['carrier_account']['type']);
         $response = Requestor::request($this->client, 'post', $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);

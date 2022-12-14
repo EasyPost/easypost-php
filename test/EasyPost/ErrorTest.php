@@ -3,7 +3,7 @@
 namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
-use EasyPost\Exception\Error;
+use EasyPost\Exception\Api\ApiException;
 
 class ErrorTest extends \PHPUnit\Framework\TestCase
 {
@@ -36,9 +36,9 @@ class ErrorTest extends \PHPUnit\Framework\TestCase
         // Create a bad shipment so we can work with errors
         try {
             self::$client->shipment->create();
-        } catch (Error $error) {
+        } catch (ApiException $error) {
             $this->assertEquals(422, $error->getHttpStatus());
-            $this->assertEquals('PARAMETER.REQUIRED', $error->ecode);
+            $this->assertEquals('PARAMETER.REQUIRED', $error->code);
             $this->assertEquals('Missing required parameter.', $error->getMessage());
             $this->assertEquals(['field' => 'shipment', 'message' => 'cannot be blank'], $error->errors[0]);
             $this->assertEquals('{"error":{"code":"PARAMETER.REQUIRED","message":"Missing required parameter.","errors":[{"field":"shipment","message":"cannot be blank"}]}}', $error->getHttpBody());

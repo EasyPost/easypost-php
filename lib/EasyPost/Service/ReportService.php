@@ -2,7 +2,8 @@
 
 namespace EasyPost\Service;
 
-use EasyPost\Exception\Error;
+use EasyPost\Constant\Constants;
+use EasyPost\Exception\General\MissingParameterException;
 use EasyPost\Http\Requestor;
 use EasyPost\Util\InternalUtil;
 
@@ -29,12 +30,12 @@ class ReportService extends BaseService
      *
      * @param mixed $params
      * @return mixed
-     * @throws Error
+     * @throws MissingParameterException
      */
     public function all($params = null)
     {
         if (!isset($params) || !isset($params['type'])) {
-            throw new Error('Undetermined Report Type');
+            throw new MissingParameterException(Constants::MISSING_PARAMETER_ERROR);
         } else {
             $type = $params['type'];
             self::validate($params);
@@ -50,11 +51,12 @@ class ReportService extends BaseService
      *
      * @param mixed $params
      * @return mixed
+     * @throws MissingParameterException
      */
     public function create($params = null)
     {
         if (!isset($params['type'])) {
-            throw new Error('Undetermined Report Type');
+            throw new MissingParameterException(Constants::MISSING_PARAMETER_ERROR);
         }
 
         $url = self::reportUrl($params['type']);

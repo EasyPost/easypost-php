@@ -3,7 +3,7 @@
 namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
-use EasyPost\Exception\Error;
+use EasyPost\Exception\General\MissingParameterException;
 
 class EasyPostClientTest extends \PHPUnit\Framework\TestCase
 {
@@ -57,7 +57,7 @@ class EasyPostClientTest extends \PHPUnit\Framework\TestCase
     {
         try {
             new EasyPostClient(null);
-        } catch (Error $error) {
+        } catch (MissingParameterException $error) {
             $this->assertEquals('No API key provided. See https://www.easypost.com/docs for details, or contact support@easypost.com for assistance.', $error->getMessage());
         }
     }

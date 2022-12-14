@@ -3,7 +3,6 @@
 namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
-use EasyPost\Shipment;
 
 class BatchTest extends \PHPUnit\Framework\TestCase
 {

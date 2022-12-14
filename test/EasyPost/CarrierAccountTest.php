@@ -3,7 +3,8 @@
 namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
-use EasyPost\Exception\Error;
+use EasyPost\Exception\Api\ApiException;
+use EasyPost\Exception\General\MissingParameterException;
 
 class CarrierAccountTest extends \PHPUnit\Framework\TestCase
 {
@@ -45,6 +46,26 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
+     * Test creating a carrier account.
+     */
+    public function testCreateWithoutType()
+    {
+        self::$client = new EasyPostClient(getenv('EASYPOST_PROD_API_KEY'));
+
+        $params = Fixture::basicCarrierAccount();
+        unset($params['type']);
+
+        try {
+            $carrierAccount = self::$client->carrierAccount->create($params);
+
+            // Delete the carrier account once it's done being tested (should not be reached).
+            self::$client->carrierAccount->delete($carrierAccount->id);
+        } catch (MissingParameterException $error) {
+            $this->assertEquals('type is required.', $error->getMessage());
+        }
+    }
+
+    /**
      * Test creating a carrier account with custom workflow such as FedEx or UPS.
      *
      * We purposefully don't pass data here because real data is required for this endpoint
@@ -65,7 +86,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
             $carrierAccount = self::$client->carrierAccount->create($data);
             // Delete the carrier account once it's done being tested (should not be reached).
             self::$client->carrierAccount->delete($carrierAccount->id);
-        } catch (Error $error) {
+        } catch (ApiException $error) {
             $this->assertEquals(422, $error->getHttpStatus());
             $errorFound = false;
             $errors = $error->errors;
@@ -75,8 +96,9 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
                     break;
                 }
             }
-            $this->assertTrue($errorFound);
         }
+
+        $this->assertTrue($errorFound);
     }
 
     /**

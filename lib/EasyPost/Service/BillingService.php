@@ -2,7 +2,8 @@
 
 namespace EasyPost\Service;
 
-use EasyPost\Exception\Error;
+use EasyPost\Constant\Constants;
+use EasyPost\Exception\Api\PaymentException;
 use EasyPost\Http\Requestor;
 use EasyPost\Util\InternalUtil;
 
@@ -18,13 +19,14 @@ class BillingService extends BaseService
      *
      * @param mixed $params
      * @return mixed
+     * @throws PaymentException
      */
     public function retrievePaymentMethods($params = null)
     {
         $paymentMethods = self::allResources(self::$modelClass, $params);
 
         if ($paymentMethods->id == null) {
-            throw new Error('Billing has not been setup for this user. Please add a payment method.');
+            throw new PaymentException(Constants::NO_BILLING_ERROR);
         }
 
         return InternalUtil::convertToEasyPostObject($this->client, $paymentMethods);
@@ -43,6 +45,7 @@ class BillingService extends BaseService
 
         $url = $paymentMethodEndpoint . "/$paymentMethodId/charges";
         $wrappedParams = ['amount' => $amount];
+
         Requestor::request($this->client, 'post', $url, $wrappedParams);
     }
 
@@ -55,8 +58,8 @@ class BillingService extends BaseService
     public function deletePaymentMethod($primaryOrSecondary)
     {
         [$paymentMethodEndpoint, $paymentMethodId] = self::getPaymentInfo(strtolower($primaryOrSecondary));
-
         $url = $paymentMethodEndpoint . "/$paymentMethodId";
+
         Requestor::request($this->client, 'delete', $url);
     }
 
@@ -65,6 +68,7 @@ class BillingService extends BaseService
      *
      * @param string $primaryOrSecondary
      * @return array
+     * @throws PaymentException
      */
     private function getPaymentInfo($primaryOrSecondary = 'primary')
     {
@@ -75,8 +79,6 @@ class BillingService extends BaseService
         ];
         $paymentMethodToUse = $paymentMethodMap[$primaryOrSecondary] ?? null;
 
-        $errorString = 'The chosen payment method is not valid. Please try again.';
-
         if ($paymentMethodToUse != null && $paymentMethods->$paymentMethodToUse->id != null) {
             $paymentMethodId = $paymentMethods->$paymentMethodToUse->id;
             if (strpos($paymentMethodId, 'card_') === 0) {
@@ -84,10 +86,10 @@ class BillingService extends BaseService
             } else if (strpos($paymentMethodId, 'bank_') === 0) {
                 $endpoint = '/bank_accounts';
             } else {
-                throw new Error($errorString);
+                throw new PaymentException(Constants::INVALID_PAYMENT_METHOD_ERROR);
             }
         } else {
-            throw new Error($errorString);
+            throw new PaymentException(Constants::INVALID_PAYMENT_METHOD_ERROR);
         }
 
         return [$endpoint, $paymentMethodId];

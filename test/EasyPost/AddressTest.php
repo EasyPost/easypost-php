@@ -3,7 +3,7 @@
 namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
-use EasyPost\Exception\Error;
+use EasyPost\Exception\Api\ApiException;
 
 class AddressTest extends \PHPUnit\Framework\TestCase
 {
@@ -174,7 +174,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
         try {
             $address = self::$client->address->create(['street1' => 'invalid']);
             self::$client->address->verify($address->id);
-        } catch (Error $error) {
+        } catch (ApiException $error) {
             $this->assertEquals('Unable to verify address.', $error->getMessage());
         }
     }
