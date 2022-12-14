@@ -2,8 +2,29 @@
 
 Use the following guide to assist in the upgrade process of the `easypost-php` library between major versions.
 
+* [Upgrading from 5.x to 6.0](#upgrading-from-5x-to-60)
 * [Upgrading from 4.x to 5.0](#upgrading-from-4x-to-50)
 * [Upgrading from 3.x to 4.0](#upgrading-from-3x-to-40)
+
+## Upgrading from 5.x to 6.0
+
+### 6.0 High Impact Changes
+
+* [Guzzle HTTP Client](#60-guzzle-http-client)
+
+### 6.0 Medium Impact Changes
+
+* [Default Timeouts for HTTP Requests](#50-default-timeouts-for-http-requests)
+* [Removal of `all` method from the `Order`, `CustomsInfo`, and `CustomsItem` Objects](#50-removal-of-all-method-from-the-order-customsinfo-and-customsitem-objects)
+* [Removal of `get_rates` Shipment Method](#50-removal-of-getrates-shipment-method)
+
+### 6.0 Low Impact Changes
+
+* [Removal of all Method from the Parcel Object](#50-removal-of-all-method-from-the-parcel-object)
+
+## 6.0 Guzzle HTTP Client
+
+TODO
 
 ## Upgrading from 4.x to 5.0
 
@@ -62,7 +83,6 @@ The HTTP method used for the `get_rates` endpoint at the API level has changed f
 Likelihood of Impact: Low
 
 There is no `/all` endpoint for the Parcel object. This function was removed as it was unusable.
-
 
 ## Upgrading from 3.x to 4.0
 
