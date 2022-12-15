@@ -1,21 +1,32 @@
 # CHANGELOG
 
-## Next Release
+## v6.0.0 (2022-12-15)
 
-- Adopts `Guzzle` as the HTTP client for this library. This should provide a much more consistent experience, better encoding, faster request times in some cases
-- New `EasyPostClient` object which encapsulates the API key and all functions are called against this client allowing for thread-safety
-  - All instance methods and the ability to have objects update in-place has been removed due to this rearchitecture. When updating objects or performing actions on them (eg: creating a label/scanform), you will want to assign the return value to a variable and use that moving forward
-  - Functions no longer accept an API key as an optional param
-- `EasyPostResource` is now `BaseService`
-- Models and Services
-- `Requestor` has moved to `Http`, variables from `EasyPost` now moved to `Constant`, `Error` moved to `Exception`
-- `->save()` instance methods are now `update()` static methods
+- PHP 7.3 is no longer supported
+- Added a new `EasyPostClient` object which encapsulates the API key. All functions are called against this client allowing for thread-safety (eg: `$client->shipment->create()`)
+  - All instance methods and the ability to have objects update in-place has been removed due to this rearchitecture. When updating objects or performing actions on them (eg: creating a label/scanform), you will need to assign the return value to a variable and use that moving forward instead of relying on the object getting updated without capturing the new return value
+  - `->save()` instance methods are now `update()` static methods
+  - Functions no longer accept an API key as an optional parameter
+  - EasyPost objects no longer contain the logic associated with them; instead, we have `Services` for each EasyPost object. All the services are properties of an `EasyPostClient`. You can then call functions on a Service.
+- All function and parameter names are now camelCase. Previously we used a mix of camel and snake cases
+- Improves error exception handling (closes #7)
+  - Introduced ~2 dozen new exception types that extend from either `ApiException` or `EasyPostException`
+  - ApiExceptions will behave like the previous EasyPostException class did. They will include a `message`, `errors`, `code`, `httpStatus` and `httpBody`. This class extends the more generic EasyPostException which only contains a message, used for exceptions thrown directly from this library
+  - The `ecode` property of an `ApiException` is now just `code`
+- Functions that previously returned `true` now return void as there is no response body from the API (eg: `fundWallet`, `deletePaymentMethod`, `updateEmail`, `createList`)
+- Adopts `Guzzle` as the HTTP client for this library. This should provide a much more consistent experience, better encoding, and faster request times in some cases
+- The results of calling `allApiKeys` is no longer double wrapped with the mode of the API key (these are still accessible inside of each object)
+- `Requestor` has moved to `Http`, constants from `EasyPost` now live in `Constants`, `Error` moved to `Exception`
 - Occurances of `smartrate` are now `smartRate` and `Smartrate` are now `SmartRate` to match the documentation and API expectations
 - `Referral` is now `ReferralCustomer` to better match documentation and API expectation
-- `validateWebhook`, `getLowestSmartRate`, and `receiveEvent` are now under `EasyPost\Util\Util` as they do not make any API calls
-  - Internal only utilities have been moved to `EasyPost\Util\InternalUtil`
+- `validateWebhook`, `getLowestSmartRate`, and `receiveEvent` are now under `EasyPost\Util\Util` as they do not make any API calls and do not need the associated client object
+  - The `receive` function previously in the namespace of `Event` is now called `receiveEvent` since it has been relocated to the generic Util namespace
+  - Internal, library only utilities have been moved to `EasyPost\Util\InternalUtil`
 - The beta `EndShipper` class has been removed, please use the generally available `EndShipper` class
-- The `ecode` property of an `Error` is now just `code`
+- Various properties and functions that were previously intended for private/protected use but were public have been corrected
+- All phpdoc type hints, descriptions, return values, and throws references were corrected or updated
+- All dependencies were bumped
+- Various other bug fixes and improvements were made along with addressing deprecation warnings
 
 ## v5.8.0 (2022-12-01)
 
