@@ -59,6 +59,7 @@ class EasyPostClient extends BaseService
     private $apiKey;
     private $timeout;
     private $apiBase;
+    private $mockingUtility;
 
     // Services
     public $address;
@@ -89,13 +90,15 @@ class EasyPostClient extends BaseService
      * @param string $apiKey
      * @param float $timeout
      * @param string $apiBase
+     * @param object $mockingUtility
      */
-    public function __construct($apiKey, $timeout = Constants::TIMEOUT, $apiBase = Constants::API_BASE)
+    public function __construct($apiKey, $timeout = Constants::TIMEOUT, $apiBase = Constants::API_BASE, $mockingUtility = null)
     {
         // Client properties
         $this->apiKey = $apiKey;
         $this->timeout = $timeout;
         $this->apiBase = $apiBase;
+        $this->mockingUtility = $mockingUtility;
 
         // Services
         // TODO: Make these all read only when we support PHP >= 8.1
@@ -154,5 +157,25 @@ class EasyPostClient extends BaseService
     public function getApiBase()
     {
         return $this->apiBase;
+    }
+
+    /**
+     * Get whether this client is configured to mock requests
+     *
+     * @return bool
+     */
+    public function mock()
+    {
+        return $this->mockingUtility !== null;
+    }
+
+    /**
+     * Get the mock requests of an EasyPostClient.
+     *
+     * @return object
+     */
+    public function getMockingUtility()
+    {
+        return $this->mockingUtility;
     }
 }
