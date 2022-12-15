@@ -124,7 +124,7 @@ Some tests may require an EasyPost user with a particular set of enabled feature
 
 - `USPS_CARRIER_ACCOUNT_ID` (eg: one-call buying a shipment for non-EasyPost employees)
 - `PARTNER_USER_PROD_API_KEY` (eg: creating a referral user)
-- `REFERRAL_USER_PROD_API_KEY` (eg: adding a credit card to a referral user)
+- `REFERRAL_CUSTOMER_PROD_API_KEY` (eg: adding a credit card to a referral user)
 
 #### Mocking
 

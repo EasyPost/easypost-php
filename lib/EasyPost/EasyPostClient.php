@@ -8,6 +8,7 @@ use EasyPost\Exception\General\MissingParameterException;
 use EasyPost\Service\AddressService;
 use EasyPost\Service\BaseService;
 use EasyPost\Service\BatchService;
+use EasyPost\Service\BetaReferralCustomerService;
 use EasyPost\Service\BillingService;
 use EasyPost\Service\CarrierAccountService;
 use EasyPost\Service\CustomsInfoService;
@@ -34,6 +35,7 @@ use EasyPost\Service\WebhookService;
  * @package EasyPost
  * @property AddressService $address
  * @property BatchService $batch
+ * @property BetaReferralCustomer $betaReferralCustomer
  * @property BillingService $billing
  * @property CarrierAccountService $carrierAccount
  * @property CustomsInfoService $customsInfo

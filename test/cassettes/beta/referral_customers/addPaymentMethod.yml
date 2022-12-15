@@ -1,0 +1,78 @@
+
+-
+    request:
+        method: POST
+        url: 'https://api.easypost.com/beta/referral_customers/payment_method'
+        headers:
+            Host: api.easypost.com
+            Expect: ''
+            Accept-Encoding: ''
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+        body: '{"payment_method":{"stripe_customer_id":"cus_123","payment_method_reference":"ba_123","priority":"primary"}}'
+    response:
+        status:
+            http_version: '1.1'
+            code: '422'
+            message: 'Unprocessable Entity'
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: 18102a57639b66e0e2b96dcd00013124
+            cache-control: 'private, no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '121'
+            x-runtime: '0.153176'
+            x-node: bigweb7nuq
+            x-version-label: easypost-202212141856-b2c38022ed-master
+            x-backend: easypost
+            x-canary: direct
+            x-proxied: ['intlb2nuq 29913d444b', 'intlb1wdc 29913d444b', 'extlb3wdc 29913d444b']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"error":{"code":"BILLING.INVALID_PAYMENT_GATEWAY_REFERENCE","message":"Invalid Payment Gateway Reference.","errors":[]}}'
+        curl_info:
+            url: 'https://api.easypost.com/beta/referral_customers/payment_method'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 422
+            header_size: 756
+            request_size: 442
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.460328
+            namelookup_time: 0.006149
+            connect_time: 0.060818
+            pretransfer_time: 0.122671
+            size_upload: 108.0
+            size_download: 121.0
+            speed_download: 262.0
+            speed_upload: 234.0
+            download_content_length: 121.0
+            upload_content_length: 108.0
+            starttransfer_time: 0.460243
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.47.33.18
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 192.168.1.201
+            local_port: 53005
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 122641
+            connect_time_us: 60818
+            namelookup_time_us: 6149
+            pretransfer_time_us: 122671
+            redirect_time_us: 0
+            starttransfer_time_us: 460243
+            total_time_us: 460328
