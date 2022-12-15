@@ -9,7 +9,7 @@
   - Functions no longer accept an API key as an optional parameter
   - EasyPost objects no longer contain the logic associated with them; instead, we have `Services` for each EasyPost object. All the services are properties of an `EasyPostClient`. You can then call functions on a Service.
 - All function and parameter names are now camelCase. Previously we used a mix of camel and snake cases
-- Improves error exception handling
+- Improves error exception handling (closes #7)
   - Introduced ~2 dozen new exception types that extend from either `ApiException` or `EasyPostException`
   - ApiExceptions will behave like the previous EasyPostException class did. They will include a `message`, `errors`, `code`, `httpStatus` and `httpBody`. This class extends the more generic EasyPostException which only contains a message, used for exceptions thrown directly from this library
   - The `ecode` property of an `ApiException` is now just `code`
@@ -20,6 +20,7 @@
 - Occurances of `smartrate` are now `smartRate` and `Smartrate` are now `SmartRate` to match the documentation and API expectations
 - `Referral` is now `ReferralCustomer` to better match documentation and API expectation
 - `validateWebhook`, `getLowestSmartRate`, and `receiveEvent` are now under `EasyPost\Util\Util` as they do not make any API calls and do not need the associated client object
+  - The `receive` function previously in the namespace of `Event` is now called `receiveEvent` since it has been relocated to the generic Util namespace
   - Internal, library only utilities have been moved to `EasyPost\Util\InternalUtil`
 - The beta `EndShipper` class has been removed, please use the generally available `EndShipper` class
 - Various properties and functions that were previously intended for private/protected use but were public have been corrected
