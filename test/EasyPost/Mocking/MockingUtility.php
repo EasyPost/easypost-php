@@ -1,6 +1,6 @@
 <?php
 
-namespace EasyPost\Test\mocking;
+namespace EasyPost\Test\Mocking;
 
 class MockingUtility
 {

@@ -183,7 +183,7 @@ class Requestor
             $mockingUtility = $client->getMockingUtility();
             $matchingRequest = $mockingUtility->findMatchingMockRequest($method, $absoluteUrl);
             if ($matchingRequest === null) {
-                throw new HttpException("No matching mock request found for {$method} {$absoluteUrl}");
+                throw new HttpException(sprintf(Constants::NO_MATCHING_MOCK_REQUEST, $method, $absoluteUrl));
             }
 
             $responseBody = $matchingRequest->responseInfo->body;

@@ -128,20 +128,15 @@ Some tests may require an EasyPost user with a particular set of enabled feature
 
 #### Mocking
 
-Some of our unit tests require HTTP calls that cannot be easily tested with live/recorded calls (e.g. HTTP calls that
-trigger payments or interact with external APIs).
+Some of our unit tests require HTTP calls that cannot be easily tested with live/recorded calls (e.g. HTTP calls that trigger payments or interact with external APIs).
 
-We have implemented a custom, lightweight HTTP mocking functionality in this library that allows us to mock HTTP calls
-and responses.
+We have implemented a custom, lightweight HTTP mocking functionality in this library that allows us to mock HTTP calls and responses.
 
 A mock client is the same as a normal client, with a set of mock request-response pairs stored as a property.
 
-At the time to make a real HTTP request, a mock client will instead check which mock request entry matches the queued
-request (matching by HTTP method and a regex pattern for the URL), and will return the corresponding mock response (HTTP
-status code and body).
+At the time of making a real HTTP request, a mock client will instead check which mock request entry matches the queued request (matching by HTTP method and a regex pattern for the URL), and will return the corresponding mock response (HTTP status code and body).
 
-**NOTE**: If a client is configured with a mocking utility, it will ONLY make mock requests. If it attempts to
-make a request that does not match any of the configured mock requests, the request will fail and trigger an exception.
+**NOTE**: If a client is configured with a mocking utility, it will ONLY make mock requests. If it attempts to make a request that does not match any of the configured mock requests, the request will fail and trigger an exception.
 
 To use the mocking utility:
 
