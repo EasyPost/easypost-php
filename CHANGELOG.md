@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## v6.0.0 (2022-12-15)
+## v6.0.0-rc1 (2022-12-15)
 
 - PHP 7.3 is no longer supported
 - Added a new `EasyPostClient` object which encapsulates the API key. All functions are called against this client allowing for thread-safety (eg: `$client->shipment->create()`)
