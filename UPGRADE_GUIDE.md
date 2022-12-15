@@ -26,16 +26,16 @@ With the introduction of PHP 8.2, support for PHP 7.3 has been dropped. This lib
 
 ## 6.0 New EasyPostClient Object
 
-This library is no thread-safe with the introduction of a new `EasyPostClient` object. Instead of defining a global API key that all requests use, you create an `EasyPostClient` object and pass your API key to it. You then call your desired functions against a "service" which coincide with EasyPost objects:
+This library is now thread-safe with the introduction of a new `EasyPostClient` object. Instead of defining a global API key that all requests use, you create an `EasyPostClient` object and pass your API key to it. You then call your desired functions against a "service" which coincide with EasyPost objects:
 
 ```php
 // Old method
 \EasyPost\EasyPost::setApiKey($_ENV['EASYPOST_API_KEY']);
-$shipment = $client->shipment->create(['data' => 'here']);
+$shipment = \EasyPost\Shipment::create(['data' => 'here']);
 
 // New method
 $client = new EasyPostClient(getenv('EASYPOST_API_KEY'));
-$shipment = \EasyPost\Shipment::create(['data' => 'here']);
+$shipment = $client->shipment->create(['data' => 'here']);
 ```
 
 All instance methods are now static with the exception of `lowestRate` as these make API calls and require the client object (EasyPost objects do not contain an API key to make API calls with).
