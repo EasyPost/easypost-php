@@ -164,10 +164,11 @@ $mockingUtility = new MockingUtility(
             200,
             '{}'
         )
-    )
+    ),
+    ... // more mock requests
 );
 
-// create a new client with the mock requests
+// create a new client with the mocking utility
 $client = new EasyPostClient("some_key", Constants::TIMEOUT, Constants::API_BASE, $mockUtility);
 
 // use the client as normal
