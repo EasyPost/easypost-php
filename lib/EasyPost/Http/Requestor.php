@@ -178,6 +178,20 @@ class Requestor
             'User-Agent' => 'EasyPost/v2 PhpClient/' . Constants::LIBRARY_VERSION . " PHP/$phpVersion OS/$osType OSVersion/$osVersion OSArch/$osArch",
         ];
 
+        if ($client->mock()) {
+            // If there are mock requests set, this client will ONLY make mock requests
+            $mockingUtility = $client->getMockingUtility();
+            $matchingRequest = $mockingUtility->findMatchingMockRequest($method, $absoluteUrl);
+            if ($matchingRequest === null) {
+                throw new HttpException(sprintf(Constants::NO_MATCHING_MOCK_REQUEST, $method, $absoluteUrl));
+            }
+
+            $responseBody = $matchingRequest->responseInfo->body;
+            $httpStatus = $matchingRequest->responseInfo->statusCode;
+
+            return [$responseBody, $httpStatus];
+        }
+
         $guzzleClient = new Client();
         $requestOptions['headers'] = $headers;
         try {
