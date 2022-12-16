@@ -125,3 +125,46 @@ Some tests may require an EasyPost user with a particular set of enabled feature
 - `USPS_CARRIER_ACCOUNT_ID` (eg: one-call buying a shipment for non-EasyPost employees)
 - `PARTNER_USER_PROD_API_KEY` (eg: creating a referral user)
 - `REFERRAL_USER_PROD_API_KEY` (eg: adding a credit card to a referral user)
+
+#### Mocking
+
+Some of our unit tests require HTTP calls that cannot be easily tested with live/recorded calls (e.g. HTTP calls that trigger payments or interact with external APIs).
+
+We have implemented a custom, lightweight HTTP mocking functionality in this library that allows us to mock HTTP calls and responses.
+
+A mock client is the same as a normal client, with a set of mock request-response pairs stored as a property.
+
+At the time of making a real HTTP request, a mock client will instead check which mock request entry matches the queued request (matching by HTTP method and a regex pattern for the URL), and will return the corresponding mock response (HTTP status code and body).
+
+**NOTE**: If a client is configured with a mocking utility, it will ONLY make mock requests. If it attempts to make a request that does not match any of the configured mock requests, the request will fail and trigger an exception.
+
+To use the mocking utility:
+
+```php
+use EasyPost\Test\mocking\MockingUtility;
+use EasyPost\Test\mocking\MockRequest;
+use EasyPost\Test\mocking\MockRequestMatchRule;
+use EasyPost\Test\mocking\MockRequestResponseInfo;
+
+// create a mocking utility with a list of mock request-response pairs
+$mockingUtility = new MockingUtility(
+    new MockRequest(
+        new MockRequestMatchRule(
+            // HTTP method and regex pattern for the URL must both pass for the request to match
+            'post',
+            '/v2\\/bank_accounts\\/\\S*\\/charges$/'
+        ),
+        new MockRequestResponseInfo(
+            // HTTP status code and body to return when this request is matched
+            200,
+            '{}'
+        )
+    ),
+    ... // more mock requests
+);
+
+// create a new client with the mocking utility
+$client = new EasyPostClient("some_key", Constants::TIMEOUT, Constants::API_BASE, $mockUtility);
+
+// use the client as normal
+```
