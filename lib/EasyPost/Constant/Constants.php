@@ -36,5 +36,5 @@ abstract class Constants
     const SEND_STRIPE_DETAILS_ERROR = 'Could not send card details to Stripe, please try again later.';
     const UNDEFINED_PROPERTY_ERROR = 'EasyPost Notice: Undefined property of %s instance: %s';
 
-    const NO_MATCHING_MOCK_REQUEST = "No matching mock request found for %s %s";
+    const NO_MATCHING_MOCK_REQUEST = 'No matching mock request found for %s %s';
 }
