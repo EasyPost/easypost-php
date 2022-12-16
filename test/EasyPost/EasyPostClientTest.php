@@ -3,6 +3,7 @@
 namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
+use EasyPost\Exception\General\EasyPostException;
 use EasyPost\Exception\General\MissingParameterException;
 
 class EasyPostClientTest extends \PHPUnit\Framework\TestCase
@@ -59,6 +60,19 @@ class EasyPostClientTest extends \PHPUnit\Framework\TestCase
             new EasyPostClient(null);
         } catch (MissingParameterException $error) {
             $this->assertEquals('No API key provided. See https://www.easypost.com/docs for details, or contact support@easypost.com for assistance.', $error->getMessage());
+        }
+    }
+
+    /**
+     * Test invalid property (service) called on an EasyPostClient.
+     */
+    public function testInvalidServiceProperty()
+    {
+        try {
+            $client = new EasyPostClient('123');
+            $client->invalidProperty;
+        } catch (EasyPostException $error) {
+            $this->assertEquals('EasyPost Notice: Undefined property of EasyPostClient instance: invalidProperty', $error->getMessage());
         }
     }
 }

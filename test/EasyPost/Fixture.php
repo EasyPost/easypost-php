@@ -159,7 +159,7 @@ class Fixture
         $eventBytesFilepath = file("$currentDir/examples/official/fixtures/event-body.json");
         $data = $eventBytesFilepath[0];
 
-        return utf8_encode(json_encode(json_decode($data, true)));
+        return mb_convert_encoding(json_encode(json_decode($data, true)), 'UTF-8', mb_list_encodings());
     }
 
     // The credit card details below are for a valid proxy card usable
