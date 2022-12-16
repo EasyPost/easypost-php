@@ -364,8 +364,6 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
      */
     public function testLowestSmartRate()
     {
-        $this->markTestSkipped('Tests passes locally but VCR is broken on CI');
-
         TestUtil::setupCassette('shipments/lowestSmartRate.yml');
 
         $shipment = self::$client->shipment->create(Fixture::fullShipment());
@@ -399,8 +397,6 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
      */
     public function testGetLowestSmartRate()
     {
-        $this->markTestSkipped('Tests passes locally but VCR is broken on CI');
-
         TestUtil::setupCassette('shipments/getLowestSmartRate.yml');
 
         $shipment = self::$client->shipment->create(Fixture::fullShipment());
