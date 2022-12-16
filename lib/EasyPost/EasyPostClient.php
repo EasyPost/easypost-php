@@ -3,6 +3,7 @@
 namespace EasyPost;
 
 use EasyPost\Constant\Constants;
+use EasyPost\Exception\General\EasyPostException;
 use EasyPost\Exception\General\MissingParameterException;
 use EasyPost\Service\AddressService;
 use EasyPost\Service\BaseService;
@@ -32,26 +33,26 @@ use EasyPost\Service\WebhookService;
  *
  * @package EasyPost
  * @property AddressService $address
- * @property BatchService $batch;
- * @property BillingService $billing;
- * @property CarrierAccountService $carrierAccount;
- * @property CustomsInfoService $customsInfo;
- * @property CustomsItemService $customsItem;
- * @property EndShipperService $endShipper;
- * @property EventService $event;
- * @property InsuranceService $insurance;
- * @property OrderService $order;
- * @property ParcelService $parcel;
- * @property PickupService $pickup;
- * @property RateService $rate;
- * @property ReferralCustomerService $referralCustomer;
- * @property RefundService $refund;
- * @property ReportService $report;
- * @property ScanFormService $scanForm;
- * @property ShipmentService $shipment;
- * @property TrackerService $tracker;
- * @property UserService $user;
- * @property WebhookService $webhook;
+ * @property BatchService $batch
+ * @property BillingService $billing
+ * @property CarrierAccountService $carrierAccount
+ * @property CustomsInfoService $customsInfo
+ * @property CustomsItemService $customsItem
+ * @property EndShipperService $endShipper
+ * @property EventService $event
+ * @property InsuranceService $insurance
+ * @property OrderService $order
+ * @property ParcelService $parcel
+ * @property PickupService $pickup
+ * @property RateService $rate
+ * @property ReferralCustomerService $referralCustomer
+ * @property RefundService $refund
+ * @property ReportService $report
+ * @property ScanFormService $scanForm
+ * @property ShipmentService $shipment
+ * @property TrackerService $tracker
+ * @property UserService $user
+ * @property WebhookService $webhook
  */
 class EasyPostClient extends BaseService
 {
@@ -60,29 +61,6 @@ class EasyPostClient extends BaseService
     private $timeout;
     private $apiBase;
     private $mockingUtility;
-
-    // Services
-    public $address;
-    public $batch;
-    public $billing;
-    public $carrierAccount;
-    public $customsInfo;
-    public $customsItem;
-    public $endShipper;
-    public $event;
-    public $insurance;
-    public $order;
-    public $parcel;
-    public $pickup;
-    public $rate;
-    public $referralCustomer;
-    public $refund;
-    public $report;
-    public $scanForm;
-    public $shipment;
-    public $tracker;
-    public $user;
-    public $webhook;
 
     /**
      * Constructor for an EasyPostClient.
@@ -100,32 +78,48 @@ class EasyPostClient extends BaseService
         $this->apiBase = $apiBase;
         $this->mockingUtility = $mockingUtility;
 
-        // Services
-        // TODO: Make these all read only when we support PHP >= 8.1
-        $this->address = new AddressService($this);
-        $this->batch = new BatchService($this);
-        $this->billing = new BillingService($this);
-        $this->carrierAccount = new CarrierAccountService($this);
-        $this->customsInfo = new CustomsInfoService($this);
-        $this->customsItem = new CustomsItemService($this);
-        $this->endShipper = new EndShipperService($this);
-        $this->event = new EventService($this);
-        $this->insurance = new InsuranceService($this);
-        $this->order = new OrderService($this);
-        $this->parcel = new ParcelService($this);
-        $this->pickup = new PickupService($this);
-        $this->rate = new RateService($this);
-        $this->referralCustomer = new ReferralCustomerService($this);
-        $this->refund = new RefundService($this);
-        $this->report = new ReportService($this);
-        $this->scanForm = new ScanFormService($this);
-        $this->shipment = new ShipmentService($this);
-        $this->tracker = new TrackerService($this);
-        $this->user = new UserService($this);
-        $this->webhook = new WebhookService($this);
-
         if (!$this->apiKey) {
             throw new MissingParameterException('No API key provided. See https://www.easypost.com/docs for details, or contact ' . Constants::SUPPORT_EMAIL . ' for assistance.');
+        }
+    }
+
+    /**
+     * Get a Service when calling a property of an EasyPostClient.
+     *
+     * @param string $serviceName
+     * @return BaseService
+     * @throws EasyPostException
+     */
+    public function __get($serviceName)
+    {
+        $serviceClassMap = [
+            'address' => AddressService::class,
+            'batch' => BatchService::class,
+            'billing' => BillingService::class,
+            'carrierAccount' => CarrierAccountService::class,
+            'customsInfo' => CustomsInfoService::class,
+            'customsItem' => CustomsItemService::class,
+            'endShipper' => EndShipperService::class,
+            'event' => EventService::class,
+            'insurance' => InsuranceService::class,
+            'order' => OrderService::class,
+            'parcel' => ParcelService::class,
+            'pickup' => PickupService::class,
+            'rate' => RateService::class,
+            'referralCustomer' => ReferralCustomerService::class,
+            'refund' => RefundService::class,
+            'report' => ReportService::class,
+            'scanForm' => ScanFormService::class,
+            'shipment' => ShipmentService::class,
+            'tracker' => TrackerService::class,
+            'user' => UserService::class,
+            'webhook' => WebhookService::class,
+        ];
+
+        if (array_key_exists($serviceName, $serviceClassMap)) {
+            return new $serviceClassMap[$serviceName]($this);
+        } else {
+            throw new EasyPostException(sprintf(Constants::UNDEFINED_PROPERTY_ERROR, 'EasyPostClient', $serviceName));
         }
     }
 

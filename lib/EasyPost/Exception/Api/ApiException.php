@@ -25,7 +25,7 @@ class ApiException extends EasyPostException
      * @param int $httpStatus
      * @param string $httpBody
      */
-    public function __construct($message = null, $httpStatus = null, $httpBody = null)
+    public function __construct($message = null, $httpStatus = null, $httpBody = '')
     {
         parent::__construct($message);
         $this->httpStatus = $httpStatus;

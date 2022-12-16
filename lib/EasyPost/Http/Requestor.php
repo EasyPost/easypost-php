@@ -51,7 +51,7 @@ class Requestor
     public static function utf8($value)
     {
         if (is_string($value) && mb_detect_encoding($value, 'UTF-8', true) != 'UTF-8') {
-            return utf8_encode($value);
+            return mb_convert_encoding($value, 'UTF-8', 'ISO-8859-1');
         }
 
         return $value;
