@@ -399,7 +399,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('shipments/getLowestSmartRate.yml');
 
-        $shipment = self::$client->shipment->create(Fixture::fullShipment());
+        $shipment = self::$client->shipment->create(Fixture::basicShipment());
         $smartRates = self::$client->shipment->getSmartRates($shipment->id);
 
         // Test lowestSmartRate with valid filters
