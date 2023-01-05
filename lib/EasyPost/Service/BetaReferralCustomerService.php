@@ -43,7 +43,7 @@ class BetaReferralCustomerService extends BaseService
     /**
      * Refund a ReferralCustomer wallet by specifying an amount.
      *
-     * @param string $refundAmount
+     * @param int $refundAmount
      * @return mixed
      */
     public function refundByAmount($refundAmount)

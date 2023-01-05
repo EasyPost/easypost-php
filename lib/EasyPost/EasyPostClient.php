@@ -97,6 +97,7 @@ class EasyPostClient extends BaseService
         $serviceClassMap = [
             'address' => AddressService::class,
             'batch' => BatchService::class,
+            'betaReferralCustomer' => BetaReferralCustomerService::class,
             'billing' => BillingService::class,
             'carrierAccount' => CarrierAccountService::class,
             'customsInfo' => CustomsInfoService::class,

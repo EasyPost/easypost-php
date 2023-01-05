@@ -57,9 +57,9 @@ class BetaReferralCustomerTest extends \PHPUnit\Framework\TestCase
         TestUtil::setupCassette('beta/referral_customers/refundByAmount.yml');
 
         try {
-            self::$client->betaReferralCustomer->refundByAmount('2000');
+            self::$client->betaReferralCustomer->refundByAmount(2000);
         } catch (ApiException $error) {
-            $this->assertEquals('Refund amount doesn\'t match. Please escalate this to finance, this is unexpected.', $error->getMessage());
+            $this->assertEquals('Refund amount is invalid. Please use a valid amount or escalate to finance.', $error->getMessage());
         }
     }
 
