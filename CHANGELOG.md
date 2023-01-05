@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v6.0.0 (2023-01-05)
+
+- Release final version of v6 that contains all the changes in the `v6.0.0-rc1` below
+
 ## v6.0.0-rc1 (2022-12-15)
 
 - PHP 7.3 is no longer supported
