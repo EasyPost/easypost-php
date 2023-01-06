@@ -10,8 +10,6 @@ use EasyPost\Util\InternalUtil;
  */
 class BetaReferralCustomerService extends BaseService
 {
-    private static $modelClass = 'ReferralCustomer';
-
     /**
      * Add a Stripe payment method to your EasyPost account.
      *
@@ -22,16 +20,16 @@ class BetaReferralCustomerService extends BaseService
      *
      * @param string $stripeCustomerId
      * @param string $paymentMethodReference
-     * @param string $priority
+     * @param string $primaryOrSecondary
      * @return mixed
      */
-    public function addPaymentMethod($stripeCustomerId, $paymentMethodReference, $priority = 'primary')
+    public function addPaymentMethod($stripeCustomerId, $paymentMethodReference, $primaryOrSecondary = 'primary')
     {
         $params = [
             'payment_method' => [
                 'stripe_customer_id' => $stripeCustomerId,
                 'payment_method_reference' => $paymentMethodReference,
-                'priority' => $priority
+                'priority' => $primaryOrSecondary
             ]
         ];
 
