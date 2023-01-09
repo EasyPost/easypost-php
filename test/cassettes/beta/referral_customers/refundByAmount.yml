@@ -1,0 +1,77 @@
+
+-
+    request:
+        method: POST
+        url: 'https://api.easypost.com/beta/referral_customers/refunds'
+        headers:
+            Host: api.easypost.com
+            Expect: ''
+            Accept-Encoding: ''
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+        body: '{"refund_amount":"2000"}'
+    response:
+        status:
+            http_version: '1.1'
+            code: '422'
+            message: 'Unprocessable Entity'
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: 2244afed63b74118e78b0f270032bc41
+            cache-control: 'private, no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '147'
+            x-runtime: '0.685341'
+            x-node: bigweb6nuq
+            x-version-label: easypost-202301051929-8ead4baefd-master
+            x-backend: easypost
+            x-proxied: ['intlb2nuq 29913d444b', 'extlb1nuq 29913d444b']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"error":{"code":"TRANSACTION.AMOUNT_INVALID","message":"Refund amount is invalid. Please use a valid amount or escalate to finance.","errors":[]}}'
+        curl_info:
+            url: 'https://api.easypost.com/beta/referral_customers/refunds'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 422
+            header_size: 705
+            request_size: 350
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.929654
+            namelookup_time: 0.027241
+            connect_time: 0.095379
+            pretransfer_time: 0.173737
+            size_upload: 24.0
+            size_download: 147.0
+            speed_download: 158.0
+            speed_upload: 25.0
+            download_content_length: 147.0
+            upload_content_length: 24.0
+            starttransfer_time: 0.929515
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.62.110.131
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 10.130.6.12
+            local_port: 58283
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 173711
+            connect_time_us: 95379
+            namelookup_time_us: 27241
+            pretransfer_time_us: 173737
+            redirect_time_us: 0
+            starttransfer_time_us: 929515
+            total_time_us: 929654
