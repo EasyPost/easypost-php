@@ -55,6 +55,8 @@ class ReferralCustomerService extends BaseService
      */
     public function updateEmail($email, $userId)
     {
+        // TODO: Swap the order of these params so ID comes first to match all other functions
+        // this will be a breaking change and must be done when the next major release happens
         $wrappedParams = [
             'user' => [
                 'email' => $email

@@ -30,7 +30,7 @@ A simple create & buy shipment example:
 ```php
 require_once("/path/to/vendor/easypost/autoload.php");
 
-$client = new EasyPostClient(getenv('EASYPOST_API_KEY'));
+$client = new \EasyPost\EasyPostClient(getenv('EASYPOST_API_KEY'));
 
 $shipment = $client->shipmemt->create([
     "from_address" => [
