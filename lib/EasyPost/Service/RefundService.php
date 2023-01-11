@@ -7,8 +7,6 @@ namespace EasyPost\Service;
  */
 class RefundService extends BaseService
 {
-    private static $modelClass = 'Refund';
-
     /**
      * Retrieve a refund.
      *
@@ -17,7 +15,7 @@ class RefundService extends BaseService
      */
     public function retrieve($id)
     {
-        return self::retrieveResource(self::$modelClass, $id);
+        return self::retrieveResource(self::serviceModelClassName(self::class), $id);
     }
 
     /**
@@ -28,7 +26,7 @@ class RefundService extends BaseService
      */
     public function all($params = null)
     {
-        return self::allResources(self::$modelClass, $params);
+        return self::allResources(self::serviceModelClassName(self::class), $params);
     }
 
     /**
@@ -45,6 +43,6 @@ class RefundService extends BaseService
             $params['refund'] = $clone;
         }
 
-        return self::createResource(self::$modelClass, $params);
+        return self::createResource(self::serviceModelClassName(self::class), $params);
     }
 }

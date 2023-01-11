@@ -12,6 +12,7 @@ use EasyPost\Util\InternalUtil;
  */
 class BillingService extends BaseService
 {
+    // Overridden here because the logic we need is tied to PaymentMethod
     private static $modelClass = 'PaymentMethod';
 
     /**

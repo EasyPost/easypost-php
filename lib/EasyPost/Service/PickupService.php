@@ -10,8 +10,6 @@ use EasyPost\Util\InternalUtil;
  */
 class PickupService extends BaseService
 {
-    private static $modelClass = 'Pickup';
-
     /**
      * Retrieve a pickup.
      *
@@ -20,7 +18,7 @@ class PickupService extends BaseService
      */
     public function retrieve($id)
     {
-        return self::retrieveResource(self::$modelClass, $id);
+        return self::retrieveResource(self::serviceModelClassName(self::class), $id);
     }
 
     /**
@@ -37,7 +35,7 @@ class PickupService extends BaseService
             $params['pickup'] = $clone;
         }
 
-        return self::createResource(self::$modelClass, $params);
+        return self::createResource(self::serviceModelClassName(self::class), $params);
     }
 
     /**
@@ -49,7 +47,7 @@ class PickupService extends BaseService
      */
     public function buy($id, $params = null)
     {
-        $url = $this->instanceUrl(self::$modelClass, $id) . '/buy';
+        $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/buy';
         $response = Requestor::request($this->client, 'post', $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
@@ -64,7 +62,7 @@ class PickupService extends BaseService
      */
     public function cancel($id, $params = null)
     {
-        $url = $this->instanceUrl(self::$modelClass, $id) . '/cancel';
+        $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/cancel';
         $response = Requestor::request($this->client, 'post', $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);

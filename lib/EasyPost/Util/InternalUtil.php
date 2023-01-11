@@ -2,9 +2,37 @@
 
 namespace EasyPost\Util;
 
+use EasyPost\Address;
+use EasyPost\ApiKey;
+use EasyPost\Batch;
+use EasyPost\Brand;
+use EasyPost\CarrierAccount;
+use EasyPost\CarrierDetail;
 use EasyPost\Constant\Constants;
+use EasyPost\CustomsInfo;
+use EasyPost\CustomsItem;
 use EasyPost\EasyPostObject;
+use EasyPost\EndShipper;
+use EasyPost\Event;
 use EasyPost\Exception\General\FilteringException;
+use EasyPost\Fee;
+use EasyPost\Insurance;
+use EasyPost\Message;
+use EasyPost\Order;
+use EasyPost\Parcel;
+use EasyPost\Pickup;
+use EasyPost\PickupRate;
+use EasyPost\PostageLabel;
+use EasyPost\Rate;
+use EasyPost\Refund;
+use EasyPost\Report;
+use EasyPost\ScanForm;
+use EasyPost\Shipment;
+use EasyPost\Tracker;
+use EasyPost\TrackingDetail;
+use EasyPost\TrackingLocation;
+use EasyPost\User;
+use EasyPost\Webhook;
 
 abstract class InternalUtil
 {
@@ -44,73 +72,73 @@ abstract class InternalUtil
     public static function convertToEasyPostObject($client, $response, $parent = null, $name = null)
     {
         $objectMapping = [
-            'Address'               => '\EasyPost\Address',
-            'ApiKey'                => '\EasyPost\ApiKey',
-            'Batch'                 => '\EasyPost\Batch',
-            'CarrierAccount'        => '\EasyPost\CarrierAccount',
-            'CarrierDetail'         => '\EasyPost\CarrierDetail',
-            'CustomsInfo'           => '\EasyPost\CustomsInfo',
-            'CustomsItem'           => '\EasyPost\CustomsItem',
-            'EndShipper'            => '\EasyPost\EndShipper',
-            'Event'                 => '\EasyPost\Event',
-            'Fee'                   => '\EasyPost\Fee',
-            'Insurance'             => '\EasyPost\Insurance',
-            'Message'               => '\EasyPost\Message',
-            'Order'                 => '\EasyPost\Order',
-            'Parcel'                => '\EasyPost\Parcel',
-            'PaymentLogReport'      => '\EasyPost\Report',
-            'PaymentMethod'         => '\EasyPost\PaymentMethod',
-            'Pickup'                => '\EasyPost\Pickup',
-            'PickupRate'            => '\EasyPost\PickupRate',
-            'PostageLabel'          => '\EasyPost\PostageLabel',
-            'Rate'                  => '\EasyPost\Rate',
-            'Refund'                => '\EasyPost\Refund',
-            'RefundReport'          => '\EasyPost\Report',
-            'Report'                => '\EasyPost\Report',
-            'ScanForm'              => '\EasyPost\ScanForm',
-            'Shipment'              => '\EasyPost\Shipment',
-            'ShipmentInvoiceReport' => '\EasyPost\Report',
-            'ShipmentReport'        => '\EasyPost\Report',
-            'TaxIdentifier'         => '\EasyPost\TaxIdentifier',
-            'Tracker'               => '\EasyPost\Tracker',
-            'TrackerReport'         => '\EasyPost\Report',
-            'TrackingDetail'        => '\EasyPost\TrackingDetail',
-            'TrackingLocation'      => '\EasyPost\TrackingLocation',
-            'User'                  => '\EasyPost\User',
-            'Verification'          => '\EasyPost\Verification',
-            'VerificationDetails'   => '\EasyPost\VerificationDetails',
-            'Verifictions'          => '\EasyPost\Verifications',
-            'Webhook'               => '\EasyPost\Webhook',
+            'Address'               => Address::class,
+            'ApiKey'                => ApiKey::class,
+            'Batch'                 => Batch::class,
+            'CarrierAccount'        => CarrierAccount::class,
+            'CarrierDetail'         => CarrierDetail::class,
+            'CustomsInfo'           => CustomsInfo::class,
+            'CustomsItem'           => CustomsItem::class,
+            'EndShipper'            => EndShipper::class,
+            'Event'                 => Event::class,
+            'Fee'                   => Fee::class,
+            'Insurance'             => Insurance::class,
+            'Message'               => Message::class,
+            'Order'                 => Order::class,
+            'Parcel'                => Parcel::class,
+            'PaymentLogReport'      => Report::class,
+            'PaymentMethod'         => PaymentMethod::class,
+            'Pickup'                => Pickup::class,
+            'PickupRate'            => PickupRate::class,
+            'PostageLabel'          => PostageLabel::class,
+            'Rate'                  => Rate::class,
+            'Refund'                => Refund::class,
+            'RefundReport'          => Report::class,
+            'Report'                => Report::class,
+            'ScanForm'              => ScanForm::class,
+            'Shipment'              => Shipment::class,
+            'ShipmentInvoiceReport' => Report::class,
+            'ShipmentReport'        => Report::class,
+            'TaxIdentifier'         => TaxIdentifier::class,
+            'Tracker'               => Tracker::class,
+            'TrackerReport'         => Report::class,
+            'TrackingDetail'        => TrackingDetail::class,
+            'TrackingLocation'      => TrackingLocation::class,
+            'User'                  => User::class,
+            'Verification'          => Verification::class,
+            'VerificationDetails'   => VerificationDetails::class,
+            'Verifictions'          => Verifications::class,
+            'Webhook'               => Webhook::class,
         ];
 
         $objectIdPrefixes = [
-            'adr'       => '\EasyPost\Address',
-            'ak'        => '\EasyPost\ApiKey',
-            'batch'     => '\EasyPost\Batch',
-            'brd'       => '\EasyPost\Brand',
-            'ca'        => '\EasyPost\CarrierAccount',
-            'cstinfo'   => '\EasyPost\CustomsInfo',
-            'cstitem'   => '\EasyPost\CustomsItem',
-            'es'        => '\EasyPost\EndShipper',
-            'evt'       => '\EasyPost\Event',
-            'fee'       => '\EasyPost\Fee',
-            'hook'      => '\EasyPost\Webhook',
-            'ins'       => '\EasyPost\Insurance',
-            'order'     => '\EasyPost\Order',
-            'pickup'    => '\EasyPost\Pickup',
-            'pl'        => '\EasyPost\PostageLabel',
-            'plrep'     => '\EasyPost\Report',
-            'prcl'      => '\EasyPost\Parcel',
-            'rate'      => '\EasyPost\Rate',
-            'refrep'    => '\EasyPost\Report',
-            'rfnd'      => '\EasyPost\Refund',
-            'sf'        => '\EasyPost\ScanForm',
-            'shp'       => '\EasyPost\Shipment',
-            'shpinvrep' => '\EasyPost\Report',
-            'shprep'    => '\EasyPost\Report',
-            'trk'       => '\EasyPost\Tracker',
-            'trkrep'    => '\EasyPost\Report',
-            'user'      => '\EasyPost\User',
+            'adr'       => Address::class,
+            'ak'        => ApiKey::class,
+            'batch'     => Batch::class,
+            'brd'       => Brand::class,
+            'ca'        => CarrierAccount::class,
+            'cstinfo'   => CustomsInfo::class,
+            'cstitem'   => CustomsItem::class,
+            'es'        => EndShipper::class,
+            'evt'       => Event::class,
+            'fee'       => Fee::class,
+            'hook'      => Webhook::class,
+            'ins'       => Insurance::class,
+            'order'     => Order::class,
+            'pickup'    => Pickup::class,
+            'pl'        => PostageLabel::class,
+            'plrep'     => Report::class,
+            'prcl'      => Parcel::class,
+            'rate'      => Rate::class,
+            'refrep'    => Report::class,
+            'rfnd'      => Refund::class,
+            'sf'        => ScanForm::class,
+            'shp'       => Shipment::class,
+            'shpinvrep' => Report::class,
+            'shprep'    => Report::class,
+            'trk'       => Tracker::class,
+            'trkrep'    => Report::class,
+            'user'      => User::class,
         ];
 
         if (InternalUtil::isList($response)) {

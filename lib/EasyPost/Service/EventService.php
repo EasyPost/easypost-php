@@ -7,8 +7,6 @@ namespace EasyPost\Service;
  */
 class EventService extends BaseService
 {
-    private static $modelClass = 'Event';
-
     /**
      * Retrieve an event.
      *
@@ -17,7 +15,7 @@ class EventService extends BaseService
      */
     public function retrieve($id)
     {
-        return self::retrieveResource(self::$modelClass, $id);
+        return self::retrieveResource(self::serviceModelClassName(self::class), $id);
     }
 
     /**
@@ -28,6 +26,6 @@ class EventService extends BaseService
      */
     public function all($params = null)
     {
-        return self::allResources(self::$modelClass, $params);
+        return self::allResources(self::serviceModelClassName(self::class), $params);
     }
 }

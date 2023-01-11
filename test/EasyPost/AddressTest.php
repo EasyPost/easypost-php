@@ -2,6 +2,7 @@
 
 namespace EasyPost\Test;
 
+use EasyPost\Address;
 use EasyPost\EasyPostClient;
 use EasyPost\Exception\Api\ApiException;
 
@@ -35,7 +36,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
 
         $address = self::$client->address->create(Fixture::caAddress1());
 
-        $this->assertInstanceOf('\EasyPost\Address', $address);
+        $this->assertInstanceOf(Address::class, $address);
         $this->assertStringMatchesFormat('adr_%s', $address->id);
         $this->assertEquals('388 Townsend St', $address->street1);
     }
@@ -54,7 +55,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
 
         $address = self::$client->address->create($addressData);
 
-        $this->assertInstanceOf('\EasyPost\Address', $address);
+        $this->assertInstanceOf(Address::class, $address);
         $this->assertStringMatchesFormat('adr_%s', $address->id);
         $this->assertEquals('417 MONTGOMERY ST FL 5', $address->street1);
         $this->assertEquals('Invalid secondary information(Apt/Suite#)', $address->verifications->zip4->errors[0]->message);
@@ -72,7 +73,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
 
         $address = self::$client->address->create($addressData);
 
-        $this->assertInstanceOf('\EasyPost\Address', $address);
+        $this->assertInstanceOf(Address::class, $address);
         $this->assertStringMatchesFormat('adr_%s', $address->id);
         $this->assertEquals('388 TOWNSEND ST APT 20', $address->street1);
     }
@@ -91,7 +92,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
 
         $address = self::$client->address->create($addressData);
 
-        $this->assertInstanceOf('\EasyPost\Address', $address);
+        $this->assertInstanceOf(Address::class, $address);
         $this->assertStringMatchesFormat('adr_%s', $address->id);
         $this->assertEquals('417 MONTGOMERY ST FL 5', $address->street1);
         $this->assertEquals('Invalid secondary information(Apt/Suite#)', $address->verifications->zip4->errors[0]->message);
@@ -108,7 +109,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
 
         $retrievedAddress = self::$client->address->retrieve($address->id);
 
-        $this->assertInstanceOf('\EasyPost\Address', $retrievedAddress);
+        $this->assertInstanceOf(Address::class, $retrievedAddress);
         $this->assertEquals($address, $retrievedAddress);
     }
 
@@ -127,7 +128,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
 
         $this->assertLessThanOrEqual($addressesArray, Fixture::pageSize());
         $this->assertNotNull($addresses['has_more']);
-        $this->assertContainsOnlyInstancesOf('\EasyPost\Address', $addressesArray);
+        $this->assertContainsOnlyInstancesOf(Address::class, $addressesArray);
     }
 
     /**
@@ -143,7 +144,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
 
         $address = self::$client->address->createAndVerify($addressData);
 
-        $this->assertInstanceOf('\EasyPost\Address', $address);
+        $this->assertInstanceOf(Address::class, $address);
         $this->assertStringMatchesFormat('adr_%s', $address->id);
         $this->assertEquals('417 MONTGOMERY ST FL 5', $address->street1);
     }
@@ -159,7 +160,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
 
         self::$client->address->verify($address->id);
 
-        $this->assertInstanceOf('\EasyPost\Address', $address);
+        $this->assertInstanceOf(Address::class, $address);
         $this->assertStringMatchesFormat('adr_%s', $address->id);
         $this->assertEquals('388 Townsend St', $address->street1);
     }

@@ -3,6 +3,7 @@
 namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
+use EasyPost\User;
 
 class ReferralCustomerTest extends \PHPUnit\Framework\TestCase
 {
@@ -41,7 +42,7 @@ class ReferralCustomerTest extends \PHPUnit\Framework\TestCase
             'phone' => '8888888888'
         ]);
 
-        $this->assertInstanceOf('\EasyPost\User', $referral);
+        $this->assertInstanceOf(User::class, $referral);
         $this->assertStringMatchesFormat('user_%s', $referral->id);
         $this->assertEquals('Test Referral', $referral->name);
     }
@@ -61,7 +62,7 @@ class ReferralCustomerTest extends \PHPUnit\Framework\TestCase
 
         $this->assertLessThanOrEqual($referralUsersArray, Fixture::pageSize());
         $this->assertNotNull($referralUsers['has_more']);
-        $this->assertContainsOnlyInstancesOf('\EasyPost\User', $referralUsersArray);
+        $this->assertContainsOnlyInstancesOf(User::class, $referralUsersArray);
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
+use EasyPost\Event;
 use EasyPost\Exception\General\EasyPostException;
 use EasyPost\Util\Util;
 
@@ -42,7 +43,7 @@ class EventTest extends \PHPUnit\Framework\TestCase
 
         $this->assertLessThanOrEqual($eventsArray, Fixture::pageSize());
         $this->assertNotNull($events['has_more']);
-        $this->assertContainsOnlyInstancesOf('\EasyPost\Event', $eventsArray);
+        $this->assertContainsOnlyInstancesOf(Event::class, $eventsArray);
     }
 
     /**
@@ -58,7 +59,7 @@ class EventTest extends \PHPUnit\Framework\TestCase
 
         $event = self::$client->event->retrieve($events['events'][0]['id']);
 
-        $this->assertInstanceOf('\EasyPost\Event', $event);
+        $this->assertInstanceOf(Event::class, $event);
         $this->assertStringMatchesFormat('evt_%s', $event->id);
     }
 
@@ -69,7 +70,7 @@ class EventTest extends \PHPUnit\Framework\TestCase
     {
         $event = Util::receiveEvent(Fixture::eventJson());
 
-        $this->assertInstanceOf('\EasyPost\Event', $event);
+        $this->assertInstanceOf(Event::class, $event);
         $this->assertStringMatchesFormat('evt_%s', $event->id);
     }
 

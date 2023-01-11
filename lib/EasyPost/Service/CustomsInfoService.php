@@ -7,8 +7,6 @@ namespace EasyPost\Service;
  */
 class CustomsInfoService extends BaseService
 {
-    private static $modelClass = 'CustomsInfo';
-
     /**
      * Retrieve a customs info.
      *
@@ -17,7 +15,7 @@ class CustomsInfoService extends BaseService
      */
     public function retrieve($id)
     {
-        return self::retrieveResource(self::$modelClass, $id);
+        return self::retrieveResource(self::serviceModelClassName(self::class), $id);
     }
 
     /**
@@ -34,6 +32,6 @@ class CustomsInfoService extends BaseService
             $params['customs_info'] = $clone;
         }
 
-        return self::createResource(self::$modelClass, $params);
+        return self::createResource(self::serviceModelClassName(self::class), $params);
     }
 }

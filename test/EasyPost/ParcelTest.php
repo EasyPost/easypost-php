@@ -3,6 +3,7 @@
 namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
+use EasyPost\Parcel;
 
 class ParcelTest extends \PHPUnit\Framework\TestCase
 {
@@ -34,7 +35,7 @@ class ParcelTest extends \PHPUnit\Framework\TestCase
 
         $parcel = self::$client->parcel->create(Fixture::basicParcel());
 
-        $this->assertInstanceOf('\EasyPost\Parcel', $parcel);
+        $this->assertInstanceOf(Parcel::class, $parcel);
         $this->assertStringMatchesFormat('prcl_%s', $parcel->id);
         $this->assertEquals(15.4, $parcel->weight);
     }
@@ -50,7 +51,7 @@ class ParcelTest extends \PHPUnit\Framework\TestCase
 
         $retrievedParcel = self::$client->parcel->retrieve($parcel->id);
 
-        $this->assertInstanceOf('\EasyPost\Parcel', $retrievedParcel);
+        $this->assertInstanceOf(Parcel::class, $retrievedParcel);
         $this->assertEquals($parcel, $retrievedParcel);
     }
 }

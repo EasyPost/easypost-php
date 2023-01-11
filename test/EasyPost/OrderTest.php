@@ -4,6 +4,8 @@ namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
 use EasyPost\Exception\General\FilteringException;
+use EasyPost\Order;
+use EasyPost\Rate;
 
 class OrderTest extends \PHPUnit\Framework\TestCase
 {
@@ -35,7 +37,7 @@ class OrderTest extends \PHPUnit\Framework\TestCase
 
         $order = self::$client->order->create(Fixture::basicOrder());
 
-        $this->assertInstanceOf('\EasyPost\Order', $order);
+        $this->assertInstanceOf(Order::class, $order);
         $this->assertStringMatchesFormat('order_%s', $order->id);
         $this->assertNotNull($order->rates);
     }
@@ -51,7 +53,7 @@ class OrderTest extends \PHPUnit\Framework\TestCase
 
         $retrievedOrder = self::$client->order->retrieve($order->id);
 
-        $this->assertInstanceOf('\EasyPost\Order', $retrievedOrder);
+        $this->assertInstanceOf(Order::class, $retrievedOrder);
         $this->assertEquals($order->id, $retrievedOrder->id);
     }
 
@@ -69,7 +71,7 @@ class OrderTest extends \PHPUnit\Framework\TestCase
         $ratesArray = $rates['rates'];
 
         $this->assertIsArray($ratesArray);
-        $this->assertContainsOnlyInstancesOf('\EasyPost\Rate', $ratesArray);
+        $this->assertContainsOnlyInstancesOf(Rate::class, $ratesArray);
     }
 
     /**

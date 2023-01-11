@@ -3,6 +3,7 @@
 namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
+use EasyPost\Refund;
 
 class RefundTest extends \PHPUnit\Framework\TestCase
 {
@@ -59,7 +60,7 @@ class RefundTest extends \PHPUnit\Framework\TestCase
 
         $this->assertLessThanOrEqual($refundsArray, Fixture::pageSize());
         $this->assertNotNull($refunds['has_more']);
-        $this->assertContainsOnlyInstancesOf('\EasyPost\Refund', $refundsArray);
+        $this->assertContainsOnlyInstancesOf(Refund::class, $refundsArray);
 
         // Return so other tests can reuse these objects
         return $refunds;
@@ -78,7 +79,7 @@ class RefundTest extends \PHPUnit\Framework\TestCase
 
         $retrievedRefund = self::$client->refund->retrieve($refunds['refunds'][0]->id);
 
-        $this->assertInstanceOf('\EasyPost\Refund', $retrievedRefund);
+        $this->assertInstanceOf(Refund::class, $retrievedRefund);
         $this->assertEquals($refunds['refunds'][0]->id, $retrievedRefund->id);
     }
 }

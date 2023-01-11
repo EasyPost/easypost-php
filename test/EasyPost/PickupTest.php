@@ -4,6 +4,7 @@ namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
 use EasyPost\Exception\General\FilteringException;
+use EasyPost\Pickup;
 
 class PickupTest extends \PHPUnit\Framework\TestCase
 {
@@ -40,7 +41,7 @@ class PickupTest extends \PHPUnit\Framework\TestCase
 
         $pickup = self::$client->pickup->create($pickupData);
 
-        $this->assertInstanceOf('\EasyPost\Pickup', $pickup);
+        $this->assertInstanceOf(Pickup::class, $pickup);
         $this->assertStringMatchesFormat('pickup_%s', $pickup->id);
         $this->assertNotNull($pickup->pickup_rates);
     }
@@ -60,7 +61,7 @@ class PickupTest extends \PHPUnit\Framework\TestCase
         $pickup = self::$client->pickup->create($pickupData);
         $retrievedPickup = self::$client->pickup->retrieve($pickup->id);
 
-        $this->assertInstanceOf('\EasyPost\Pickup', $retrievedPickup);
+        $this->assertInstanceOf(Pickup::class, $retrievedPickup);
         $this->assertEquals($pickup, $retrievedPickup);
     }
 
@@ -86,7 +87,7 @@ class PickupTest extends \PHPUnit\Framework\TestCase
             ]
         );
 
-        $this->assertInstanceOf('\EasyPost\Pickup', $boughtPickup);
+        $this->assertInstanceOf(Pickup::class, $boughtPickup);
         $this->assertStringMatchesFormat('pickup_%s', $boughtPickup->id);
         $this->assertNotNull($boughtPickup->confirmation);
         $this->assertEquals('scheduled', $boughtPickup->status);
@@ -116,7 +117,7 @@ class PickupTest extends \PHPUnit\Framework\TestCase
 
         $cancelledPickup = self::$client->pickup->cancel($boughtPickup->id);
 
-        $this->assertInstanceOf('\EasyPost\Pickup', $cancelledPickup);
+        $this->assertInstanceOf(Pickup::class, $cancelledPickup);
         $this->assertStringMatchesFormat('pickup_%s', $cancelledPickup->id);
         $this->assertEquals('canceled', $cancelledPickup->status);
     }

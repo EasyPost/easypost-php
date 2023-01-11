@@ -2,6 +2,7 @@
 
 namespace EasyPost\Test;
 
+use EasyPost\Batch;
 use EasyPost\EasyPostClient;
 
 class BatchTest extends \PHPUnit\Framework\TestCase
@@ -36,7 +37,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
             'shipments' => [Fixture::basicShipment()],
         ]);
 
-        $this->assertInstanceOf('\EasyPost\Batch', $batch);
+        $this->assertInstanceOf(Batch::class, $batch);
         $this->assertStringMatchesFormat('batch_%s', $batch->id);
         $this->assertNotNull($batch->shipments);
     }
@@ -54,7 +55,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
 
         $retrievedBatch = self::$client->batch->retrieve($batch->id);
 
-        $this->assertInstanceOf('\EasyPost\Batch', $retrievedBatch);
+        $this->assertInstanceOf(Batch::class, $retrievedBatch);
         $this->assertEquals($batch->id, $retrievedBatch->id);
     }
 
@@ -73,7 +74,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
 
         $this->assertLessThanOrEqual($batchesArray, Fixture::pageSize());
         $this->assertNotNull($batches['has_more']);
-        $this->assertContainsOnlyInstancesOf('\EasyPost\Batch', $batchesArray);
+        $this->assertContainsOnlyInstancesOf(Batch::class, $batchesArray);
     }
 
     /**
@@ -88,7 +89,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
             Fixture::oneCallBuyShipment(),
         ]);
 
-        $this->assertInstanceOf('\EasyPost\Batch', $batch);
+        $this->assertInstanceOf(Batch::class, $batch);
         $this->assertStringMatchesFormat('batch_%s', $batch->id);
         $this->assertEquals(2, $batch->num_shipments);
     }
@@ -108,7 +109,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
 
         $boughtBatch = self::$client->batch->buy($batch->id);
 
-        $this->assertInstanceOf('\EasyPost\Batch', $boughtBatch);
+        $this->assertInstanceOf(Batch::class, $boughtBatch);
         $this->assertEquals(1, $boughtBatch->num_shipments);
     }
 
@@ -134,7 +135,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
         $scanformBatch = self::$client->batch->createScanForm($boughtBatch->id);
 
         // We can't assert anything meaningful here because the scanform gets queued for generation and may not be immediately available
-        $this->assertInstanceOf('\EasyPost\Batch', $scanformBatch);
+        $this->assertInstanceOf(Batch::class, $scanformBatch);
     }
 
     /**
@@ -186,6 +187,6 @@ class BatchTest extends \PHPUnit\Framework\TestCase
         );
 
         // We can't assert anything meaningful here because the label gets queued for generation and may not be immediately available
-        $this->assertInstanceOf('\EasyPost\Batch', $labelBatch);
+        $this->assertInstanceOf(Batch::class, $labelBatch);
     }
 }

@@ -11,7 +11,6 @@ use EasyPost\Util\Util;
  */
 class ShipmentService extends BaseService
 {
-    private static $modelClass = 'Shipment';
     /**
      * Retrieve a shipment.
      *
@@ -20,7 +19,7 @@ class ShipmentService extends BaseService
      */
     public function retrieve($id)
     {
-        return self::retrieveResource(self::$modelClass, $id);
+        return self::retrieveResource(self::serviceModelClassName(self::class), $id);
     }
 
     /**
@@ -31,7 +30,7 @@ class ShipmentService extends BaseService
      */
     public function all($params = null)
     {
-        return self::allResources(self::$modelClass, $params);
+        return self::allResources(self::serviceModelClassName(self::class), $params);
     }
 
     /**
@@ -51,7 +50,7 @@ class ShipmentService extends BaseService
 
         $params['carbon_offset'] = $withCarbonOffset;
 
-        return self::createResource(self::$modelClass, $params);
+        return self::createResource(self::serviceModelClassName(self::class), $params);
     }
 
     /**
@@ -64,7 +63,7 @@ class ShipmentService extends BaseService
      */
     public function regenerateRates($id, $params = null, $withCarbonOffset = false)
     {
-        $url = $this->instanceUrl(self::$modelClass, $id) . '/rerate';
+        $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/rerate';
         $params['carbon_offset'] = $withCarbonOffset;
         $response = Requestor::request($this->client, 'post', $url, $params);
 
@@ -79,7 +78,7 @@ class ShipmentService extends BaseService
      */
     public function getSmartRates($id)
     {
-        $url = $this->instanceUrl(self::$modelClass, $id) . '/smartrate';
+        $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/smartrate';
         $response = Requestor::request($this->client, 'get', $url);
 
         $result = isset($response['result']) ? $response['result'] : [];
@@ -104,7 +103,7 @@ class ShipmentService extends BaseService
             $params['rate'] = $clone;
         }
 
-        $url = $this->instanceUrl(self::$modelClass, $id) . '/buy';
+        $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/buy';
         $params['carbon_offset'] = $withCarbonOffset;
 
         if ($endShipperId !== false) {
@@ -125,7 +124,7 @@ class ShipmentService extends BaseService
      */
     public function refund($id, $params = null)
     {
-        $url = $this->instanceUrl(self::$modelClass, $id) . '/refund';
+        $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/refund';
         $response = Requestor::request($this->client, 'post', $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
@@ -146,7 +145,7 @@ class ShipmentService extends BaseService
             $params['file_format'] = $clone;
         }
 
-        $url = $this->instanceUrl(self::$modelClass, $id) . '/label';
+        $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/label';
         $response = Requestor::request($this->client, 'get', $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
@@ -167,7 +166,7 @@ class ShipmentService extends BaseService
             $params['amount'] = $clone;
         }
 
-        $url = $this->instanceUrl(self::$modelClass, $id) . '/insure';
+        $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/insure';
         $response = Requestor::request($this->client, 'post', $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
@@ -183,7 +182,7 @@ class ShipmentService extends BaseService
      */
     public function generateForm($id, $formType, $formOptions = null)
     {
-        $url = $this->instanceUrl(self::$modelClass, $id) . '/forms';
+        $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/forms';
         $formOptions['type'] = $formType;
 
         $params['form'] = $formOptions;

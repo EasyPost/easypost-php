@@ -2,6 +2,7 @@
 
 namespace EasyPost\Test;
 
+use EasyPost\CustomsInfo;
 use EasyPost\EasyPostClient;
 
 class CustomsInfoTest extends \PHPUnit\Framework\TestCase
@@ -34,7 +35,7 @@ class CustomsInfoTest extends \PHPUnit\Framework\TestCase
 
         $customsInfo = self::$client->customsInfo->create(Fixture::basicCustomsInfo());
 
-        $this->assertInstanceOf('\EasyPost\CustomsInfo', $customsInfo);
+        $this->assertInstanceOf(CustomsInfo::class, $customsInfo);
         $this->assertStringMatchesFormat('cstinfo_%s', $customsInfo->id);
         $this->assertEquals('NOEEI 30.37(a)', $customsInfo->eel_pfc);
     }
@@ -50,7 +51,7 @@ class CustomsInfoTest extends \PHPUnit\Framework\TestCase
 
         $retrievedCustomsInfo = self::$client->customsInfo->retrieve($customsInfo->id);
 
-        $this->assertInstanceOf('\EasyPost\CustomsInfo', $retrievedCustomsInfo);
+        $this->assertInstanceOf(CustomsInfo::class, $retrievedCustomsInfo);
         $this->assertEquals($customsInfo, $retrievedCustomsInfo);
     }
 }

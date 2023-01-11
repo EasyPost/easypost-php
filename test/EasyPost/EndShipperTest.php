@@ -3,6 +3,7 @@
 namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
+use EasyPost\EndShipper;
 
 class EndShipperTest extends \PHPUnit\Framework\TestCase
 {
@@ -34,7 +35,7 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
 
         $endShipper = self::$client->endShipper->create(Fixture::caAddress1());
 
-        $this->assertInstanceOf('\EasyPost\EndShipper', $endShipper);
+        $this->assertInstanceOf(EndShipper::class, $endShipper);
         $this->assertStringMatchesFormat('es_%s', $endShipper->id);
         $this->assertEquals('388 TOWNSEND ST APT 20', $endShipper->street1);
     }
@@ -50,7 +51,7 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
 
         $retrievedEndShipper = self::$client->endShipper->retrieve($endShipper->id);
 
-        $this->assertInstanceOf('\EasyPost\EndShipper', $retrievedEndShipper);
+        $this->assertInstanceOf(EndShipper::class, $retrievedEndShipper);
         $this->assertEquals($endShipper->street1, $retrievedEndShipper->street1);
     }
 
@@ -69,7 +70,7 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
 
         $this->assertLessThanOrEqual($endShipperArray, Fixture::pageSize());
         $this->assertNotNull($endShippers['has_more']);
-        $this->assertContainsOnlyInstancesOf('\EasyPost\EndShipper', $endShipperArray);
+        $this->assertContainsOnlyInstancesOf(EndShipper::class, $endShipperArray);
     }
 
     /**
@@ -99,7 +100,7 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
 
         $updatedEndShipper = self::$client->endShipper->update($endShipper->id, $params);
 
-        $this->assertInstanceOf('\EasyPost\EndShipper', $updatedEndShipper);
+        $this->assertInstanceOf(EndShipper::class, $updatedEndShipper);
         $this->assertStringMatchesFormat('es_%s', $updatedEndShipper->id);
         $this->assertEquals($newName, $updatedEndShipper->name);
     }

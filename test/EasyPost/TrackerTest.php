@@ -3,6 +3,7 @@
 namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
+use EasyPost\Tracker;
 
 class TrackerTest extends \PHPUnit\Framework\TestCase
 {
@@ -36,7 +37,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
             'tracking_code' => 'EZ1000000001',
         ]);
 
-        $this->assertInstanceOf('\EasyPost\Tracker', $tracker);
+        $this->assertInstanceOf(Tracker::class, $tracker);
         $this->assertStringMatchesFormat('trk_%s', $tracker->id);
         $this->assertEquals('pre_transit', $tracker->status);
     }
@@ -50,7 +51,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
 
         $tracker = self::$client->tracker->create('EZ1000000001');
 
-        $this->assertInstanceOf('\EasyPost\Tracker', $tracker);
+        $this->assertInstanceOf(Tracker::class, $tracker);
         $this->assertStringMatchesFormat('trk_%s', $tracker->id);
         $this->assertEquals('pre_transit', $tracker->status);
     }
@@ -69,7 +70,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
         // Test trackers cycle through their "dummy" statuses automatically, the created and retrieved objects may differ
         $retrievedTracker = self::$client->tracker->retrieve($tracker->id);
 
-        $this->assertInstanceOf('\EasyPost\Tracker', $retrievedTracker);
+        $this->assertInstanceOf(Tracker::class, $retrievedTracker);
         $this->assertEquals($tracker->id, $retrievedTracker->id);
     }
 
@@ -88,7 +89,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
 
         $this->assertLessThanOrEqual($trackersArray, Fixture::pageSize());
         $this->assertNotNull($trackers['has_more']);
-        $this->assertContainsOnlyInstancesOf('\EasyPost\Tracker', $trackersArray);
+        $this->assertContainsOnlyInstancesOf(Tracker::class, $trackersArray);
     }
 
     /**

@@ -7,8 +7,6 @@ namespace EasyPost\Service;
  */
 class ScanFormService extends BaseService
 {
-    private static $modelClass = 'ScanForm';
-
     /**
      * Retrieve a scanform.
      *
@@ -17,7 +15,7 @@ class ScanFormService extends BaseService
      */
     public function retrieve($id)
     {
-        return self::retrieveResource(self::$modelClass, $id);
+        return self::retrieveResource(self::serviceModelClassName(self::class), $id);
     }
 
     /**
@@ -28,7 +26,7 @@ class ScanFormService extends BaseService
      */
     public function all($params = null)
     {
-        return self::allResources(self::$modelClass, $params);
+        return self::allResources(self::serviceModelClassName(self::class), $params);
     }
 
     /**
@@ -39,6 +37,6 @@ class ScanFormService extends BaseService
      */
     public function create($params = null)
     {
-        return self::createResource(self::$modelClass, $params);
+        return self::createResource(self::serviceModelClassName(self::class), $params);
     }
 }

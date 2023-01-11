@@ -9,8 +9,6 @@ use EasyPost\Http\Requestor;
  */
 class TrackerService extends BaseService
 {
-    private static $modelClass = 'Tracker';
-
     /**
      * Retrieve a tracker.
      *
@@ -19,7 +17,7 @@ class TrackerService extends BaseService
      */
     public function retrieve($id)
     {
-        return self::retrieveResource(self::$modelClass, $id);
+        return self::retrieveResource(self::serviceModelClassName(self::class), $id);
     }
 
     /**
@@ -30,7 +28,7 @@ class TrackerService extends BaseService
      */
     public function all($params = null)
     {
-        return self::allResources(self::$modelClass, $params);
+        return self::allResources(self::serviceModelClassName(self::class), $params);
     }
 
     /**
@@ -51,7 +49,7 @@ class TrackerService extends BaseService
             $params['tracker'] = $clone;
         }
 
-        return self::createResource(self::$modelClass, $params);
+        return self::createResource(self::serviceModelClassName(self::class), $params);
     }
 
     /**
@@ -68,7 +66,7 @@ class TrackerService extends BaseService
             $params = ['trackers' => $clone];
         }
 
-        $url = self::classUrl(self::$modelClass);
+        $url = self::classUrl(self::serviceModelClassName(self::class));
 
         Requestor::request($this->client, 'post', $url . '/create_list', $params);
     }

@@ -46,6 +46,17 @@ class BaseService
     }
 
     /**
+     * Gets the class name of a Service's model.
+     *
+     * @param string $serviceClassName
+     * @return string
+     */
+    protected static function serviceModelClassName($serviceClassName)
+    {
+        return str_replace('Service', '', $serviceClassName);
+    }
+
+    /**
      * The class URL of an object.
      *
      * @param string $class
