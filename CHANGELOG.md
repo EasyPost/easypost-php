@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v6.1.0 (2023-01-11)
+
+- Adds new beta billing functionality for referral customer users, accessible via the `$client->betaReferralCustomer` service
+  - `addPaymentMethod` to add an existing Stripe bank account or credit card to your EasyPost account
+  - `refundByAmount` refunds you wallet balance by a specified amount
+  - `refundByPaymentLog` refunds you wallet balance by a specified payment log
+
 ## v6.0.0 (2023-01-05)
 
 - Release final version of v6 that contains all the changes in the `v6.0.0-rc1` below
@@ -34,9 +41,9 @@
 
 ## v5.8.0 (2022-12-01)
 
-- [ADDED] Carrier account creation routes requests correctly for carriers that require custom workflows
-- [FIXED] Instead of returning `null` when a list of child API keys cannot be returned (eg: when you call `api_keys` on a non-user object) it will return an empty list. The expected impact to end users is extremely low
-- [IMPROVED] Retrieving child user API keys for users with large numbers of child users should see much faster results as we now break on the match instead of iterating the entire list
+- Adds carrier account creation routes requests correctly for carriers that require custom workflows
+- Instead of returning `null` when a list of child API keys cannot be returned (eg: when you call `api_keys` on a non-user object) it will return an empty list. The expected impact to end users is extremely low
+- Retrieving child user API keys for users with large numbers of child users should see much faster results as we now break on the match instead of iterating the entire list
 
 ## v5.7.0 (2022-09-21)
 
