@@ -2,6 +2,7 @@
 
 namespace EasyPost\Test;
 
+use EasyPost\CustomsItem;
 use EasyPost\EasyPostClient;
 
 class CustomsItemTest extends \PHPUnit\Framework\TestCase
@@ -34,7 +35,7 @@ class CustomsItemTest extends \PHPUnit\Framework\TestCase
 
         $customsItem = self::$client->customsItem->create(Fixture::basicCustomsItem());
 
-        $this->assertInstanceOf('\EasyPost\CustomsItem', $customsItem);
+        $this->assertInstanceOf(CustomsItem::class, $customsItem);
         $this->assertStringMatchesFormat('cstitem_%s', $customsItem->id);
         $this->assertEquals('23.25', $customsItem->value);
     }
@@ -50,7 +51,7 @@ class CustomsItemTest extends \PHPUnit\Framework\TestCase
 
         $retrievedCustomsItem = self::$client->customsItem->retrieve($customsItem->id);
 
-        $this->assertInstanceOf('\EasyPost\CustomsItem', $retrievedCustomsItem);
+        $this->assertInstanceOf(CustomsItem::class, $retrievedCustomsItem);
         $this->assertEquals($customsItem, $retrievedCustomsItem);
     }
 }

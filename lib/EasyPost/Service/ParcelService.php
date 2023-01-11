@@ -7,8 +7,6 @@ namespace EasyPost\Service;
  */
 class ParcelService extends BaseService
 {
-    private static $modelClass = 'Parcel';
-
     /**
      * Retrieve a parcel.
      *
@@ -17,7 +15,7 @@ class ParcelService extends BaseService
      */
     public function retrieve($id)
     {
-        return self::retrieveResource(self::$modelClass, $id);
+        return self::retrieveResource(self::serviceModelClassName(self::class), $id);
     }
 
     /**
@@ -34,6 +32,6 @@ class ParcelService extends BaseService
             $params['parcel'] = $clone;
         }
 
-        return self::createResource(self::$modelClass, $params);
+        return self::createResource(self::serviceModelClassName(self::class), $params);
     }
 }

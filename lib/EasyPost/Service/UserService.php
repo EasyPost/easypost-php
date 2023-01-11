@@ -10,8 +10,6 @@ use EasyPost\Util\InternalUtil;
  */
 class UserService extends BaseService
 {
-    private static $modelClass = 'User';
-
     /**
      * Retrieve a user.
      *
@@ -20,7 +18,7 @@ class UserService extends BaseService
      */
     public function retrieve($id)
     {
-        return self::retrieveResource(self::$modelClass, $id);
+        return self::retrieveResource(self::serviceModelClassName(self::class), $id);
     }
 
     /**
@@ -36,7 +34,7 @@ class UserService extends BaseService
             $params['user'] = $clone;
         }
 
-        return $this->updateResource(self::$modelClass, $id, $params);
+        return $this->updateResource(self::serviceModelClassName(self::class), $id, $params);
     }
 
     /**
@@ -53,7 +51,7 @@ class UserService extends BaseService
             $params['user'] = $clone;
         }
 
-        return self::createResource(self::$modelClass, $params);
+        return self::createResource(self::serviceModelClassName(self::class), $params);
     }
 
     /**
@@ -63,7 +61,7 @@ class UserService extends BaseService
      */
     public function retrieveMe()
     {
-        return self::allResources(self::$modelClass);
+        return self::allResources(self::serviceModelClassName(self::class));
     }
 
     /**
@@ -75,7 +73,7 @@ class UserService extends BaseService
      */
     public function delete($id, $params = null)
     {
-        return $this->deleteResource(self::$modelClass, $id, $params);
+        return $this->deleteResource(self::serviceModelClassName(self::class), $id, $params);
     }
 
     /**
@@ -126,7 +124,7 @@ class UserService extends BaseService
      */
     public function updateBrand($id, $params = null)
     {
-        $response = Requestor::request($this->client, 'patch', $this->instanceUrl(self::$modelClass, $id) . '/brand', $params);
+        $response = Requestor::request($this->client, 'patch', $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/brand', $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }

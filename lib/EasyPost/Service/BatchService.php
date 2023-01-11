@@ -10,8 +10,6 @@ use EasyPost\Util\InternalUtil;
  */
 class BatchService extends BaseService
 {
-    private static $modelClass = 'Batch';
-
     /**
      * Retrieve a batch.
      *
@@ -20,7 +18,7 @@ class BatchService extends BaseService
      */
     public function retrieve($id)
     {
-        return self::retrieveResource(self::$modelClass, $id);
+        return self::retrieveResource(self::serviceModelClassName(self::class), $id);
     }
 
     /**
@@ -31,7 +29,7 @@ class BatchService extends BaseService
      */
     public function all($params = null)
     {
-        return self::allResources(self::$modelClass, $params);
+        return self::allResources(self::serviceModelClassName(self::class), $params);
     }
 
     /**
@@ -48,7 +46,7 @@ class BatchService extends BaseService
             $params['batch'] = $clone;
         }
 
-        return self::createResource(self::$modelClass, $params);
+        return self::createResource(self::serviceModelClassName(self::class), $params);
     }
 
     /**
@@ -76,7 +74,7 @@ class BatchService extends BaseService
             ];
         }
 
-        $url = self::classUrl(self::$modelClass);
+        $url = self::classUrl(self::serviceModelClassName(self::class));
         $response = Requestor::request($this->client, 'post', $url . '/create_and_buy', $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
@@ -91,7 +89,7 @@ class BatchService extends BaseService
      */
     public function buy($id, $params = null)
     {
-        $url = $this->instanceUrl(self::$modelClass, $id) . '/buy';
+        $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/buy';
         $response = Requestor::request($this->client, 'post', $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
@@ -106,7 +104,7 @@ class BatchService extends BaseService
      */
     public function label($id, $params = null)
     {
-        $url = $this->instanceUrl(self::$modelClass, $id) . '/label';
+        $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/label';
         $response = Requestor::request($this->client, 'post', $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
@@ -121,7 +119,7 @@ class BatchService extends BaseService
      */
     public function removeShipments($id, $params = null)
     {
-        $url = $this->instanceUrl(self::$modelClass, $id) . '/remove_shipments';
+        $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/remove_shipments';
         $response = Requestor::request($this->client, 'post', $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
@@ -136,7 +134,7 @@ class BatchService extends BaseService
      */
     public function addShipments($id, $params = null)
     {
-        $url = $this->instanceUrl(self::$modelClass, $id) . '/add_shipments';
+        $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/add_shipments';
         $response = Requestor::request($this->client, 'post', $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
@@ -151,7 +149,7 @@ class BatchService extends BaseService
      */
     public function createScanForm($id, $params = null)
     {
-        $url = $this->instanceUrl(self::$modelClass, $id) . '/scan_form';
+        $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/scan_form';
         $response = Requestor::request($this->client, 'post', $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);

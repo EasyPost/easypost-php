@@ -12,8 +12,6 @@ use EasyPost\Util\InternalUtil;
  */
 class CarrierAccountService extends BaseService
 {
-    private static $modelClass = 'CarrierAccount';
-
     /**
      * Retrieve a carrier account.
      *
@@ -22,7 +20,7 @@ class CarrierAccountService extends BaseService
      */
     public function retrieve($id)
     {
-        return self::retrieveResource(self::$modelClass, $id);
+        return self::retrieveResource(self::serviceModelClassName(self::class), $id);
     }
 
     /**
@@ -33,7 +31,7 @@ class CarrierAccountService extends BaseService
      */
     public function all($params = null)
     {
-        return self::allResources(self::$modelClass, $params);
+        return self::allResources(self::serviceModelClassName(self::class), $params);
     }
 
     /**
@@ -45,7 +43,7 @@ class CarrierAccountService extends BaseService
      */
     public function update($id, $params)
     {
-        return self::updateResource(self::$modelClass, $id, $params);
+        return self::updateResource(self::serviceModelClassName(self::class), $id, $params);
     }
 
     /**
@@ -57,7 +55,7 @@ class CarrierAccountService extends BaseService
      */
     public function delete($id, $params = null)
     {
-        self::deleteResource(self::$modelClass, $id, $params);
+        self::deleteResource(self::serviceModelClassName(self::class), $id, $params);
     }
 
     /**

@@ -5,6 +5,8 @@ namespace EasyPost\Test;
 use EasyPost\EasyPostClient;
 use EasyPost\Exception\General\FilteringException;
 use EasyPost\Exception\General\InvalidParameterException;
+use EasyPost\Rate;
+use EasyPost\Shipment;
 use EasyPost\Util\Util;
 
 class ShipmentTest extends \PHPUnit\Framework\TestCase
@@ -37,7 +39,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
         $shipment = self::$client->shipment->create(Fixture::fullShipment());
 
-        $this->assertInstanceOf('\EasyPost\Shipment', $shipment);
+        $this->assertInstanceOf(Shipment::class, $shipment);
         $this->assertStringMatchesFormat('shp_%s', $shipment->id);
         $this->assertNotNull($shipment->rates);
         $this->assertEquals('PNG', $shipment->options->label_format);
@@ -56,7 +58,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
         $retrievedShipment = self::$client->shipment->retrieve($shipment->id);
 
-        $this->assertInstanceOf('\EasyPost\Shipment', $retrievedShipment);
+        $this->assertInstanceOf(Shipment::class, $retrievedShipment);
         $this->assertEquals($shipment->id, $retrievedShipment->id);
     }
 
@@ -75,7 +77,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
         $this->assertLessThanOrEqual($shipmentsArray, Fixture::pageSize());
         $this->assertNotNull($shipments['has_more']);
-        $this->assertContainsOnlyInstancesOf('\EasyPost\Shipment', $shipmentsArray);
+        $this->assertContainsOnlyInstancesOf(Shipment::class, $shipmentsArray);
     }
 
     /**
@@ -124,7 +126,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
         $this->assertIsArray($ratesArray);
         foreach ($ratesArray as $rate) {
-            $this->assertInstanceOf('\EasyPost\Rate', $rate);
+            $this->assertInstanceOf(Rate::class, $rate);
         }
     }
 
@@ -259,7 +261,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
         $shipment = self::$client->shipment->create($shipmentData);
 
-        $this->assertInstanceOf('\EasyPost\Shipment', $shipment);
+        $this->assertInstanceOf(Shipment::class, $shipment);
         $this->assertStringMatchesFormat('shp_%s', $shipment->id);
         $this->assertNotEmpty($shipment->options); // The EasyPost API populates some default values here
         $this->assertEmpty($shipment->customs_info);
@@ -278,7 +280,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
         $shipment = self::$client->shipment->create($shipmentData);
 
-        $this->assertInstanceOf('\EasyPost\Shipment', $shipment);
+        $this->assertInstanceOf(Shipment::class, $shipment);
         $this->assertStringMatchesFormat('shp_%s', $shipment->id);
         $this->assertEquals('IOSS', $shipment->tax_identifiers[0]['tax_id_type']);
     }
@@ -300,7 +302,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
             'parcel' => ['id' => $parcel->id],
         ]);
 
-        $this->assertInstanceOf('\EasyPost\Shipment', $shipment);
+        $this->assertInstanceOf(Shipment::class, $shipment);
         $this->assertStringMatchesFormat('shp_%s', $shipment->id);
         $this->assertStringMatchesFormat('adr_%s', $shipment->from_address->id);
         $this->assertStringMatchesFormat('adr_%s', $shipment->to_address->id);
@@ -460,7 +462,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
         $shipment = self::$client->shipment->create(Fixture::basicShipment(), true);
 
-        $this->assertInstanceOf('\EasyPost\Shipment', $shipment);
+        $this->assertInstanceOf(Shipment::class, $shipment);
 
         foreach ($shipment->rates as $rate) {
             $this->assertNotNull($rate->carbon_offset);
@@ -482,7 +484,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
             true,
         );
 
-        $this->assertInstanceOf('\EasyPost\Shipment', $boughtShipment);
+        $this->assertInstanceOf(Shipment::class, $boughtShipment);
 
         $foundCarbonOffset = false;
 
@@ -504,7 +506,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
         $shipment = self::$client->shipment->create(Fixture::oneCallBuyShipment(), true);
 
-        $this->assertInstanceOf('\EasyPost\Shipment', $shipment);
+        $this->assertInstanceOf(Shipment::class, $shipment);
 
         foreach ($shipment->rates as $rate) {
             $this->assertNotNull($rate->carbon_offset);

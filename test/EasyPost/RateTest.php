@@ -3,6 +3,7 @@
 namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
+use EasyPost\Rate;
 
 class RateTest extends \PHPUnit\Framework\TestCase
 {
@@ -36,7 +37,7 @@ class RateTest extends \PHPUnit\Framework\TestCase
 
         $rate = self::$client->rate->retrieve($shipment->rates[0]['id']);
 
-        $this->assertInstanceOf('\EasyPost\Rate', $rate);
+        $this->assertInstanceOf(Rate::class, $rate);
         $this->assertStringMatchesFormat('rate_%s', $rate->id);
     }
 }

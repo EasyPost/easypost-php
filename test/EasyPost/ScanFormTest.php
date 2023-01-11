@@ -3,6 +3,7 @@
 namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
+use EasyPost\ScanForm;
 
 class ScanFormTest extends \PHPUnit\Framework\TestCase
 {
@@ -38,7 +39,7 @@ class ScanFormTest extends \PHPUnit\Framework\TestCase
             'shipments' => [$shipment],
         ]);
 
-        $this->assertInstanceOf('\EasyPost\ScanForm', $scanForm);
+        $this->assertInstanceOf(ScanForm::class, $scanForm);
         $this->assertStringMatchesFormat('sf_%s', $scanForm->id);
     }
 
@@ -57,7 +58,7 @@ class ScanFormTest extends \PHPUnit\Framework\TestCase
 
         $retrievedScanform = self::$client->scanForm->retrieve($scanForm->id);
 
-        $this->assertInstanceOf('\EasyPost\ScanForm', $retrievedScanform);
+        $this->assertInstanceOf(ScanForm::class, $retrievedScanform);
         $this->assertEquals($scanForm, $retrievedScanform);
     }
 
@@ -76,6 +77,6 @@ class ScanFormTest extends \PHPUnit\Framework\TestCase
 
         $this->assertLessThanOrEqual($scanformsArray, Fixture::pageSize());
         $this->assertNotNull($scanForms['has_more']);
-        $this->assertContainsOnlyInstancesOf('\EasyPost\ScanForm', $scanformsArray);
+        $this->assertContainsOnlyInstancesOf(ScanForm::class, $scanformsArray);
     }
 }

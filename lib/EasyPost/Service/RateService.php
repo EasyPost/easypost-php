@@ -7,8 +7,6 @@ namespace EasyPost\Service;
  */
 class RateService extends BaseService
 {
-    private static $modelClass = 'Rate';
-
     /**
      * Retrieve a rate.
      *
@@ -17,6 +15,6 @@ class RateService extends BaseService
      */
     public function retrieve($id)
     {
-        return self::retrieveResource(self::$modelClass, $id);
+        return self::retrieveResource(self::serviceModelClassName(self::class), $id);
     }
 }

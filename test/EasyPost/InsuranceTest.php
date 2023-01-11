@@ -3,6 +3,7 @@
 namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
+use EasyPost\Insurance;
 
 class InsuranceTest extends \PHPUnit\Framework\TestCase
 {
@@ -39,7 +40,7 @@ class InsuranceTest extends \PHPUnit\Framework\TestCase
 
         $insurance = self::$client->insurance->create($insuranceData);
 
-        $this->assertInstanceOf('\EasyPost\Insurance', $insurance);
+        $this->assertInstanceOf(Insurance::class, $insurance);
         $this->assertStringMatchesFormat('ins_%s', $insurance->id);
         $this->assertEquals('100.00000', $insurance->amount);
     }
@@ -60,7 +61,7 @@ class InsuranceTest extends \PHPUnit\Framework\TestCase
 
         $retrievedInsurance = self::$client->insurance->retrieve($insurance->id);
 
-        $this->assertInstanceOf('\EasyPost\Insurance', $retrievedInsurance);
+        $this->assertInstanceOf(Insurance::class, $retrievedInsurance);
         $this->assertEquals($insurance, $retrievedInsurance);
     }
 
@@ -79,6 +80,6 @@ class InsuranceTest extends \PHPUnit\Framework\TestCase
 
         $this->assertLessThanOrEqual($insuranceArray, Fixture::pageSize());
         $this->assertNotNull($insurance['has_more']);
-        $this->assertContainsOnlyInstancesOf('\EasyPost\Insurance', $insuranceArray);
+        $this->assertContainsOnlyInstancesOf(Insurance::class, $insuranceArray);
     }
 }

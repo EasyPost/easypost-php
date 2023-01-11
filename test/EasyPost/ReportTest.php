@@ -4,6 +4,7 @@ namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
 use EasyPost\Exception\General\MissingParameterException;
+use EasyPost\Report;
 
 class ReportTest extends \PHPUnit\Framework\TestCase
 {
@@ -39,7 +40,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
             'type' => Fixture::reportType(),
         ]);
 
-        $this->assertInstanceOf('\EasyPost\Report', $report);
+        $this->assertInstanceOf(Report::class, $report);
         $this->assertStringMatchesFormat('shprep_%s', $report->id);
     }
 
@@ -60,7 +61,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
         // Reports are queued, so we can't retrieve it immediately.
         // Verifying columns would require parsing the CSV.
         // Verify parameters sent correctly by checking the URL in the cassette.
-        $this->assertInstanceOf('\EasyPost\Report', $report);
+        $this->assertInstanceOf(Report::class, $report);
     }
 
     /**
@@ -80,7 +81,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
         // Reports are queued, so we can't retrieve it immediately.
         // Verifying columns would require parsing the CSV.
         // Verify parameters sent correctly by checking the URL in the cassette.
-        $this->assertInstanceOf('\EasyPost\Report', $report);
+        $this->assertInstanceOf(Report::class, $report);
     }
 
     /**
@@ -98,7 +99,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
 
         $retrievedReport = self::$client->report->retrieve($report->id);
 
-        $this->assertInstanceOf('\EasyPost\Report', $retrievedReport);
+        $this->assertInstanceOf(Report::class, $retrievedReport);
         $this->assertEquals($report->start_date, $retrievedReport->start_date);
         $this->assertEquals($report->end_date, $retrievedReport->end_date);
     }
@@ -119,7 +120,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
 
         $this->assertLessThanOrEqual($reportsArray, Fixture::pageSize());
         $this->assertNotNull($reports['has_more']);
-        $this->assertContainsOnlyInstancesOf('\EasyPost\Report', $reportsArray);
+        $this->assertContainsOnlyInstancesOf(Report::class, $reportsArray);
     }
 
     /**

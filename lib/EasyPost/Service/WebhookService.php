@@ -7,8 +7,6 @@ namespace EasyPost\Service;
  */
 class WebhookService extends BaseService
 {
-    private static $modelClass = 'Webhook';
-
     /**
      * Retrieve a webhook.
      *
@@ -17,7 +15,7 @@ class WebhookService extends BaseService
      */
     public function retrieve($id)
     {
-        return self::retrieveResource(self::$modelClass, $id);
+        return self::retrieveResource(self::serviceModelClassName(self::class), $id);
     }
 
     /**
@@ -28,7 +26,7 @@ class WebhookService extends BaseService
      */
     public function all($params = null)
     {
-        return self::allResources(self::$modelClass, $params);
+        return self::allResources(self::serviceModelClassName(self::class), $params);
     }
 
     /**
@@ -40,7 +38,7 @@ class WebhookService extends BaseService
      */
     public function delete($id, $params = null)
     {
-        self::deleteResource(self::$modelClass, $id, $params);
+        self::deleteResource(self::serviceModelClassName(self::class), $id, $params);
     }
 
     /**
@@ -58,7 +56,7 @@ class WebhookService extends BaseService
             $params['webhook'] = $clone;
         }
 
-        return self::updateResource(self::$modelClass, $id, $params);
+        return self::updateResource(self::serviceModelClassName(self::class), $id, $params);
     }
 
     /**
@@ -75,6 +73,6 @@ class WebhookService extends BaseService
             $params['webhook'] = $clone;
         }
 
-        return self::createResource(self::$modelClass, $params);
+        return self::createResource(self::serviceModelClassName(self::class), $params);
     }
 }

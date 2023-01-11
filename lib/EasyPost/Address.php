@@ -2,8 +2,6 @@
 
 namespace EasyPost;
 
-use EasyPost\EasyPostObject;
-
 /**
  * @package EasyPost
  * @property string $id

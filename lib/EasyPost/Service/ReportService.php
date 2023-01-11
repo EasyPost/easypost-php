@@ -12,8 +12,6 @@ use EasyPost\Util\InternalUtil;
  */
 class ReportService extends BaseService
 {
-    private static $modelClass = 'Report';
-
     /**
      * Retrieve a report.
      *
@@ -22,7 +20,7 @@ class ReportService extends BaseService
      */
     public function retrieve($id)
     {
-        return self::retrieveResource(self::$modelClass, $id);
+        return self::retrieveResource(self::serviceModelClassName(self::class), $id);
     }
 
     /**

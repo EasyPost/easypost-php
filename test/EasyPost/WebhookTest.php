@@ -5,6 +5,7 @@ namespace EasyPost\Test;
 use EasyPost\EasyPostClient;
 use EasyPost\Exception\General\SignatureVerificationException;
 use EasyPost\Util\Util;
+use EasyPost\Webhook;
 
 class WebhookTest extends \PHPUnit\Framework\TestCase
 {
@@ -38,7 +39,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
             'url' => Fixture::webhookUrl(),
         ]);
 
-        $this->assertInstanceOf('\EasyPost\Webhook', $webhook);
+        $this->assertInstanceOf(Webhook::class, $webhook);
         $this->assertStringMatchesFormat('hook_%s', $webhook->id);
         $this->assertEquals(Fixture::webhookUrl(), $webhook->url);
 
@@ -58,7 +59,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
 
         $retrievedWebhook = self::$client->webhook->retrieve($webhook->id);
 
-        $this->assertInstanceOf('\EasyPost\Webhook', $retrievedWebhook);
+        $this->assertInstanceOf(Webhook::class, $retrievedWebhook);
         $this->assertEquals($webhook, $retrievedWebhook);
 
         self::$client->webhook->delete($retrievedWebhook->id); // We are deleting the webhook here so we don't keep sending events to a dead webhook.
@@ -78,7 +79,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
         $webhookArray = $webhooks['webhooks'];
 
         $this->assertLessThanOrEqual($webhookArray, Fixture::pageSize());
-        $this->assertContainsOnlyInstancesOf('\EasyPost\Webhook', $webhookArray);
+        $this->assertContainsOnlyInstancesOf(Webhook::class, $webhookArray);
     }
 
     /**
@@ -95,7 +96,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
         $updatedWebhook = self::$client->webhook->update($webhook->id);
 
         // The response here won't differ since we don't update any data, just check we get the object back
-        $this->assertInstanceOf('\EasyPost\Webhook', $updatedWebhook);
+        $this->assertInstanceOf(Webhook::class, $updatedWebhook);
 
         self::$client->webhook->delete($webhook->id); // We are deleting the webhook here so we don't keep sending events to a dead webhook.
     }

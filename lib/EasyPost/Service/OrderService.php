@@ -11,8 +11,6 @@ use EasyPost\Util\InternalUtil;
  */
 class OrderService extends BaseService
 {
-    private static $modelClass = 'Order';
-
     /**
      * Retrieve an order.
      *
@@ -21,7 +19,7 @@ class OrderService extends BaseService
      */
     public function retrieve($id)
     {
-        return self::retrieveResource(self::$modelClass, $id);
+        return self::retrieveResource(self::serviceModelClassName(self::class), $id);
     }
 
     /**
@@ -38,7 +36,7 @@ class OrderService extends BaseService
             $params['order'] = $clone;
         }
 
-        return self::createResource(self::$modelClass, $params);
+        return self::createResource(self::serviceModelClassName(self::class), $params);
     }
 
     /**
@@ -50,7 +48,7 @@ class OrderService extends BaseService
      */
     public function getRates($id, $params = null)
     {
-        $url = $this->instanceUrl(self::$modelClass, $id) . '/rates';
+        $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/rates';
         $response = Requestor::request($this->client, 'get', $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
@@ -72,7 +70,7 @@ class OrderService extends BaseService
             $params['service'] = $clone->service;
         }
 
-        $url = $this->instanceUrl(self::$modelClass, $id) . '/buy';
+        $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/buy';
         $response = Requestor::request($this->client, 'post', $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);

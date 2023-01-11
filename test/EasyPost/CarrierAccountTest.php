@@ -2,6 +2,7 @@
 
 namespace EasyPost\Test;
 
+use EasyPost\CarrierAccount;
 use EasyPost\EasyPostClient;
 use EasyPost\Exception\Api\ApiException;
 use EasyPost\Exception\General\MissingParameterException;
@@ -39,7 +40,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
         $carrierAccount = self::$client->carrierAccount->create(Fixture::basicCarrierAccount());
 
         $this->assertEquals('DhlEcsAccount', $carrierAccount->type);
-        $this->assertInstanceOf('\EasyPost\CarrierAccount', $carrierAccount);
+        $this->assertInstanceOf(CarrierAccount::class, $carrierAccount);
         $this->assertStringMatchesFormat('ca_%s', $carrierAccount->id);
 
         self::$client->carrierAccount->delete($carrierAccount->id); // Delete the carrier account once it's done being tested.
@@ -114,7 +115,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
 
         $retrievedCarrierAccount = self::$client->carrierAccount->retrieve($carrierAccount->id);
 
-        $this->assertInstanceOf('\EasyPost\CarrierAccount', $retrievedCarrierAccount);
+        $this->assertInstanceOf(CarrierAccount::class, $retrievedCarrierAccount);
         $this->assertEquals($carrierAccount, $retrievedCarrierAccount);
 
         self::$client->carrierAccount->delete($retrievedCarrierAccount->id); // Delete the carrier account once it's done being tested.
@@ -131,7 +132,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
 
         $carrierAccounts = self::$client->carrierAccount->all();
 
-        $this->assertContainsOnlyInstancesOf('\EasyPost\CarrierAccount', $carrierAccounts);
+        $this->assertContainsOnlyInstancesOf(CarrierAccount::class, $carrierAccounts);
     }
 
     /**
@@ -150,7 +151,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
 
         $updatedCarrierAccount = self::$client->carrierAccount->update($carrierAccount->id, $params);
 
-        $this->assertInstanceOf('\EasyPost\CarrierAccount', $updatedCarrierAccount);
+        $this->assertInstanceOf(CarrierAccount::class, $updatedCarrierAccount);
         $this->assertStringMatchesFormat('ca_%s', $updatedCarrierAccount->id);
         $this->assertEquals($testDescription, $updatedCarrierAccount->description);
 

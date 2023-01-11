@@ -7,8 +7,6 @@ namespace EasyPost\Service;
  */
 class EndShipperService extends BaseService
 {
-    private static $modelClass = 'EndShipper';
-
     /**
      * Create an EndShipper object.
      *
@@ -23,7 +21,7 @@ class EndShipperService extends BaseService
             $params['address'] = $clone;
         }
 
-        return self::createResource(self::$modelClass, $params);
+        return self::createResource(self::serviceModelClassName(self::class), $params);
     }
 
     /**
@@ -34,7 +32,7 @@ class EndShipperService extends BaseService
      */
     public function retrieve($id)
     {
-        return self::retrieveResource(self::$modelClass, $id);
+        return self::retrieveResource(self::serviceModelClassName(self::class), $id);
     }
 
     /**
@@ -45,7 +43,7 @@ class EndShipperService extends BaseService
      */
     public function all($params = null)
     {
-        return self::allResources(self::$modelClass, $params);
+        return self::allResources(self::serviceModelClassName(self::class), $params);
     }
 
     /**
@@ -63,6 +61,6 @@ class EndShipperService extends BaseService
             $params['address'] = $clone;
         }
 
-        return self::updateResource(self::$modelClass, $id, $params, 'put');
+        return self::updateResource(self::serviceModelClassName(self::class), $id, $params, 'put');
     }
 }

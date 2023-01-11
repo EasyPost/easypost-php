@@ -2,7 +2,9 @@
 
 namespace EasyPost\Test;
 
+use EasyPost\ApiKey;
 use EasyPost\EasyPostClient;
+use EasyPost\User;
 
 class UserTest extends \PHPUnit\Framework\TestCase
 {
@@ -36,7 +38,7 @@ class UserTest extends \PHPUnit\Framework\TestCase
             'name' => 'Test User',
         ]);
 
-        $this->assertInstanceOf('\EasyPost\User', $user);
+        $this->assertInstanceOf(User::class, $user);
         $this->assertStringMatchesFormat('user_%s', $user->id);
         $this->assertEquals('Test User', $user->name);
 
@@ -54,7 +56,7 @@ class UserTest extends \PHPUnit\Framework\TestCase
 
         $user = self::$client->user->retrieve($authenticatedUser->id);
 
-        $this->assertInstanceOf('\EasyPost\User', $user);
+        $this->assertInstanceOf(User::class, $user);
         $this->assertStringMatchesFormat('user_%s', $user->id);
     }
 
@@ -67,7 +69,7 @@ class UserTest extends \PHPUnit\Framework\TestCase
 
         $user = self::$client->user->retrieveMe();
 
-        $this->assertInstanceOf('\EasyPost\User', $user);
+        $this->assertInstanceOf(User::class, $user);
         $this->assertStringMatchesFormat('user_%s', $user->id);
     }
 
@@ -86,7 +88,7 @@ class UserTest extends \PHPUnit\Framework\TestCase
 
         $updatedUser = self::$client->user->update($user->id, $params);
 
-        $this->assertInstanceOf('\EasyPost\User', $updatedUser);
+        $this->assertInstanceOf(User::class, $updatedUser);
         $this->assertStringMatchesFormat('user_%s', $updatedUser->id);
         $this->assertEquals($testName, $updatedUser->name);
     }
@@ -119,9 +121,9 @@ class UserTest extends \PHPUnit\Framework\TestCase
 
         $apiKeys = self::$client->user->allApiKeys();
 
-        $this->assertContainsOnlyInstancesOf('\EasyPost\ApiKey', $apiKeys['keys']);
+        $this->assertContainsOnlyInstancesOf(ApiKey::class, $apiKeys['keys']);
         foreach ($apiKeys['children'] as $child) {
-            $this->assertContainsOnlyInstancesOf('\EasyPost\ApiKey', $child['keys']);
+            $this->assertContainsOnlyInstancesOf(ApiKey::class, $child['keys']);
         }
     }
 
@@ -136,7 +138,7 @@ class UserTest extends \PHPUnit\Framework\TestCase
 
         $apiKeys = self::$client->user->apiKeys($user->id);
 
-        $this->assertContainsOnlyInstancesOf('\EasyPost\ApiKey', $apiKeys);
+        $this->assertContainsOnlyInstancesOf(ApiKey::class, $apiKeys);
     }
 
     /**
@@ -153,7 +155,7 @@ class UserTest extends \PHPUnit\Framework\TestCase
 
         $apiKeys = self::$client->user->apiKeys($childUser->id);
 
-        $this->assertContainsOnlyInstancesOf('\EasyPost\ApiKey', $apiKeys);
+        $this->assertContainsOnlyInstancesOf(ApiKey::class, $apiKeys);
 
         self::$client->user->delete($childUser->id); // Delete the user once done so we don't pollute with hundreds of child users
     }

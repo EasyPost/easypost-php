@@ -16,8 +16,6 @@ use GuzzleHttp\Client;
  */
 class ReferralCustomerService extends BaseService
 {
-    private static $modelClass = 'ReferralCustomer';
-
     /**
      * Retrieve all referrals.
      *
@@ -26,7 +24,7 @@ class ReferralCustomerService extends BaseService
      */
     public function all($params = null)
     {
-        return self::allResources(self::$modelClass, $params);
+        return self::allResources(self::serviceModelClassName(self::class), $params);
     }
 
     /**
@@ -43,7 +41,7 @@ class ReferralCustomerService extends BaseService
             $params['user'] = $clone;
         }
 
-        return self::createResource(self::$modelClass, $params);
+        return self::createResource(self::serviceModelClassName(self::class), $params);
     }
 
     /**

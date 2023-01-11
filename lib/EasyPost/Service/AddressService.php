@@ -10,8 +10,6 @@ use EasyPost\Util\InternalUtil;
  */
 class AddressService extends BaseService
 {
-    private static $modelClass = 'Address';
-
     /**
      * Retrieve an address.
      *
@@ -20,7 +18,7 @@ class AddressService extends BaseService
      */
     public function retrieve($id)
     {
-        return self::retrieveResource(self::$modelClass, $id);
+        return self::retrieveResource(self::serviceModelClassName(self::class), $id);
     }
 
     /**
@@ -31,7 +29,7 @@ class AddressService extends BaseService
      */
     public function all($params = null)
     {
-        return self::allResources(self::$modelClass, $params);
+        return self::allResources(self::serviceModelClassName(self::class), $params);
     }
 
     /**
@@ -58,7 +56,7 @@ class AddressService extends BaseService
 
         $wrappedParams['address'] = $params;
 
-        return self::createResource(self::$modelClass, $wrappedParams);
+        return self::createResource(self::serviceModelClassName(self::class), $wrappedParams);
     }
 
     /**
@@ -75,7 +73,7 @@ class AddressService extends BaseService
             $params['address'] = $clone;
         }
 
-        $url = self::classUrl(self::$modelClass);
+        $url = self::classUrl(self::serviceModelClassName(self::class));
         $response = Requestor::request($this->client, 'post', $url . '/create_and_verify', $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response['address']);
@@ -89,9 +87,9 @@ class AddressService extends BaseService
      */
     public function verify($id)
     {
-        $url = $this->instanceUrl(self::$modelClass, $id) . '/verify';
+        $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/verify';
         $response = Requestor::request($this->client, 'get', $url, null);
 
-        return InternalUtil::convertToEasyPostObject($this->client, $response['address'], self::$modelClass);
+        return InternalUtil::convertToEasyPostObject($this->client, $response['address'], self::serviceModelClassName(self::class));
     }
 }
