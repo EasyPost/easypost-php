@@ -531,7 +531,8 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     /**
      * Tests buying a shipment with an end shipper.
      */
-    public function testBuyShipmentWithEndShipper() {
+    public function testBuyShipmentWithEndShipper()
+    {
         TestUtil::setupCassette('shipments/buyShipmentWithEndShipper.yml');
 
         $endShipper = self::$client->endShipper->create(Fixture::caAddress1());
