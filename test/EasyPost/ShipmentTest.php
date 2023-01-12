@@ -527,4 +527,26 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
             $this->assertNotNull($rate->carbon_offset);
         }
     }
+
+    /**
+     * Tests buying a shipment with an end shipper.
+     */
+    public function testBuyShipmentWithEndShipper() {
+        TestUtil::setupCassette('shipments/buyShipmentWithEndShipper.yml');
+
+        $endShipper = self::$client->endShipper->create(Fixture::caAddress1());
+
+        $shipment = self::$client->shipment->create(Fixture::basicShipment());
+
+        $lowestRate = $shipment->lowestRate();
+
+        $boughtShipment = self::$client->shipment->buy(
+            $shipment->id,
+            ['rate' => $lowestRate],
+            false,
+            $endShipper->id
+        );
+
+        $this->assertNotNull($boughtShipment->postage_label);
+    }
 }
