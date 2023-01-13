@@ -66,6 +66,24 @@ class PickupTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
+     * Test retrieving all shipments.
+     */
+    public function testAll()
+    {
+        TestUtil::setupCassette('pickups/all.yml');
+
+        $pickups = self::$client->pickup->all([
+            'page_size' => Fixture::pageSize(),
+        ]);
+
+        $pickupsArray = $pickups['pickups'];
+
+        $this->assertLessThanOrEqual($pickupsArray, Fixture::pageSize());
+        $this->assertNotNull($pickups['has_more']);
+        $this->assertContainsOnlyInstancesOf(Pickup::class, $pickupsArray);
+    }
+
+    /**
      * Test buying a pickup.
      */
     public function testBuy()
