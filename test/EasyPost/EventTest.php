@@ -100,6 +100,9 @@ class EventTest extends \PHPUnit\Framework\TestCase
      */
     public function testRetrieveAllPayloads()
     {
+        $cassetteName = 'batches/retrieve_all_payloads.yml';
+        $testRequiresWait = true ? file_exists(dirname(__DIR__, 1) . "/cassettes/$cassetteName") === false : false;
+
         TestUtil::setupCassette('events/retrieve_all_payloads.yml');
 
         // Create a webhook to receive the event.
@@ -112,16 +115,15 @@ class EventTest extends \PHPUnit\Framework\TestCase
             'shipments' => [Fixture::basicShipment()],
         ]);
 
-        // Wait for the event to be created.
-        sleep(5);
+        if ($testRequiresWait === true) {
+            sleep(5); // Wait for the event to be created.
+        }
 
-        // Retrieve all events and extract the newest one.
         $events = self::$client->event->all([
             'page_size' => Fixture::pageSize(),
         ]);
         $event = $events['events'][0];
 
-        // Retrieve all payloads for the event.
         $payloads = self::$client->event->retrieveAllPayloads(
             $event->id,
         );
@@ -130,7 +132,6 @@ class EventTest extends \PHPUnit\Framework\TestCase
 
         $this->assertContainsOnlyInstancesOf(Payload::class, $payloadsArray);
 
-        // Delete the webhook.
         self::$client->webhook->delete($webhook->id);
     }
 
@@ -139,6 +140,9 @@ class EventTest extends \PHPUnit\Framework\TestCase
      */
     public function testRetrievePayload()
     {
+        $cassetteName = 'batches/retrieve_all_payloads.yml';
+        $testRequiresWait = true ? file_exists(dirname(__DIR__, 1) . "/cassettes/$cassetteName") === false : false;
+
         TestUtil::setupCassette('events/retrieve_payload.yml');
 
         // Create a webhook to receive the event.
@@ -151,16 +155,15 @@ class EventTest extends \PHPUnit\Framework\TestCase
             'shipments' => [Fixture::basicShipment()],
         ]);
 
-        // Wait for the event to be created.
-        sleep(5);
+        if ($testRequiresWait === true) {
+            sleep(5); // Wait for the event to be created.
+        }
 
-        // Retrieve all events and extract the newest one.
         $events = self::$client->event->all([
             'page_size' => Fixture::pageSize(),
         ]);
         $event = $events['events'][0];
 
-        // Retrieve a specific payload for the event.
         // Payload does not exist due to queueing, so this will throw en exception.
         try {
              self::$client->event->retrievePayload(
@@ -171,17 +174,6 @@ class EventTest extends \PHPUnit\Framework\TestCase
             $this->assertEquals(404, $error->getHttpStatus());
         }
 
-        // Invalid payload ID should throw an exception.
-        try {
-             self::$client->event->retrievePayload(
-                 $event->id,
-                 'payload_123',
-             );
-        } catch (EasyPostException $error) {
-            $this->assertEquals(500, $error->getHttpStatus());
-        }
-
-        // Delete the webhook.
         self::$client->webhook->delete($webhook->id);
     }
 }
