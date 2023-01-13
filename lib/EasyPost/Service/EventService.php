@@ -56,7 +56,7 @@ class EventService extends BaseService
      */
     public function retrievePayload($id, $payloadId)
     {
-        $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/payloads' . '/' . $payloadId;
+        $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/payloads/' . $payloadId;
 
         $response = Requestor::request($this->client, 'get', $url);
 
