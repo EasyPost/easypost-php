@@ -5,6 +5,7 @@ namespace EasyPost\Test;
 use EasyPost\EasyPostClient;
 use EasyPost\Event;
 use EasyPost\Exception\General\EasyPostException;
+use EasyPost\Payload;
 use EasyPost\Util\Util;
 
 class EventTest extends \PHPUnit\Framework\TestCase
@@ -92,5 +93,95 @@ class EventTest extends \PHPUnit\Framework\TestCase
         $this->expectException(EasyPostException::class);
 
         Util::receiveEvent();
+    }
+
+    /**
+     * Test retrieving all payloads for an event.
+     */
+    public function testRetrieveAllPayloads()
+    {
+        TestUtil::setupCassette('events/retrieve_all_payloads.yml');
+
+        // Create a webhook to receive the event.
+        $webhook = self::$client->webhook->create([
+            'url' => Fixture::webhookUrl(),
+        ]);
+
+        // Create a batch to trigger an event.
+        self::$client->batch->create([
+            'shipments' => [Fixture::basicShipment()],
+        ]);
+
+        // Wait for the event to be created.
+        sleep(5);
+
+        // Retrieve all events and extract the newest one.
+        $events = self::$client->event->all([
+            'page_size' => Fixture::pageSize(),
+        ]);
+        $event = $events['events'][0];
+
+        // Retrieve all payloads for the event.
+        $payloads = self::$client->event->retrieveAllPayloads(
+            $event->id,
+        );
+
+        $payloadsArray = $payloads['payloads'];
+
+        $this->assertContainsOnlyInstancesOf(Payload::class, $payloadsArray);
+
+        // Delete the webhook.
+        self::$client->webhook->delete($webhook->id);
+    }
+
+    /**
+     * Test retrieving a payload for an event.
+     */
+    public function testRetrievePayload()
+    {
+        TestUtil::setupCassette('events/retrieve_payload.yml');
+
+        // Create a webhook to receive the event.
+        $webhook = self::$client->webhook->create([
+            'url' => Fixture::webhookUrl(),
+        ]);
+
+        // Create a batch to trigger an event.
+        self::$client->batch->create([
+            'shipments' => [Fixture::basicShipment()],
+        ]);
+
+        // Wait for the event to be created.
+        sleep(5);
+
+        // Retrieve all events and extract the newest one.
+        $events = self::$client->event->all([
+            'page_size' => Fixture::pageSize(),
+        ]);
+        $event = $events['events'][0];
+
+        // Retrieve a specific payload for the event.
+        // Payload does not exist due to queueing, so this will throw en exception.
+        try {
+             self::$client->event->retrievePayload(
+                 $event->id,
+                 'payload_11111111111111111111111111111111',
+             );
+        } catch (EasyPostException $error) {
+            $this->assertEquals(404, $error->getHttpStatus());
+        }
+
+        // Invalid payload ID should throw an exception.
+        try {
+             self::$client->event->retrievePayload(
+                 $event->id,
+                 'payload_123',
+             );
+        } catch (EasyPostException $error) {
+            $this->assertEquals(500, $error->getHttpStatus());
+        }
+
+        // Delete the webhook.
+        self::$client->webhook->delete($webhook->id);
     }
 }

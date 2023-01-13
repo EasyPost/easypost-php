@@ -2,6 +2,9 @@
 
 namespace EasyPost\Service;
 
+use EasyPost\Http\Requestor;
+use EasyPost\Util\InternalUtil;
+
 /**
  * Event service containing all the logic to make API calls.
  */
@@ -27,5 +30,36 @@ class EventService extends BaseService
     public function all($params = null)
     {
         return self::allResources(self::serviceModelClassName(self::class), $params);
+    }
+
+    /**
+     * Retrieve all payloads for an event.
+     *
+     * @param string $id The event id
+     * @return mixed
+     */
+    public function retrieveAllPayloads($id)
+    {
+        $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/payloads';
+
+        $response = Requestor::request($this->client, 'get', $url);
+
+        return InternalUtil::convertToEasyPostObject($this->client, $response);
+    }
+
+    /**
+     * Retrieve a payload for an event.
+     *
+     * @param string $id The event id
+     * @param string $payloadId The payload id
+     * @return mixed
+     */
+    public function retrievePayload($id, $payloadId)
+    {
+        $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/payloads' . '/' . $payloadId;
+
+        $response = Requestor::request($this->client, 'get', $url);
+
+        return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
 }
