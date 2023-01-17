@@ -22,6 +22,17 @@ class PickupService extends BaseService
     }
 
     /**
+     * Retrieve all pickups.
+     *
+     * @param mixed $params
+     * @return mixed
+     */
+    public function all($params = null)
+    {
+        return self::allResources(self::serviceModelClassName(self::class), $params);
+    }
+
+    /**
      * Create a pickup.
      *
      * @param mixed $params
