@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [Unreleased]
+
+- Added payload functions `retrievePayload` and `retrieveAllPayloads` methods, accessible via `$client->event` service.
+
 ## v6.1.0 (2023-01-11)
 
 - Adds new beta billing functionality for referral customer users, accessible via the `$client->betaReferralCustomer` service

@@ -71,6 +71,7 @@ require_once(dirname(__FILE__) . '/EasyPost/Insurance.php');
 require_once(dirname(__FILE__) . '/EasyPost/Message.php');
 require_once(dirname(__FILE__) . '/EasyPost/Order.php');
 require_once(dirname(__FILE__) . '/EasyPost/Parcel.php');
+require_once(dirname(__FILE__) . '/EasyPost/Payload.php');
 require_once(dirname(__FILE__) . '/EasyPost/Pickup.php');
 require_once(dirname(__FILE__) . '/EasyPost/PickupRate.php');
 require_once(dirname(__FILE__) . '/EasyPost/PostageLabel.php');
