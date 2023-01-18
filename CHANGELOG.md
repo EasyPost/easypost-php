@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## [Unreleased]
+## v6.2.0 (2023-01-18)
 
 - Added function to retrieve all pickups via `$client->pickup->all()`
 - Added payload functions `retrievePayload` and `retrieveAllPayloads` methods, accessible via `$client->event` service.
