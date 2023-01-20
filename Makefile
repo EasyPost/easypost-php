@@ -13,6 +13,7 @@ coverage:
 
 ## docs - Generate documentation for the library
 docs:
+	curl -LJs https://github.com/phpDocumentor/phpDocumentor/releases/latest/download/phpDocumentor.phar -o phpDocumentor.phar
 	php phpDocumentor.phar -d lib -t docs
 
 ## fix - Fix linting errors
