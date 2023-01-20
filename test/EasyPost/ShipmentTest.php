@@ -362,21 +362,22 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test various usage alterations of the lowestSmartRate method.
+     * Test various usage alterations of the `lowestSmartRate` and getLowestSmartRate` methods.
+     *
+     * These tests are unfortunately combined because the VCR can't pull cassettes correctly
+     * when testing these two functions in different tests/cassettes.
      */
-    public function testLowestSmartRate()
+    public function testLowestSmartRateVariations()
     {
-        $this->markTestSkipped('Tests passes locally but VCR is broken on CI');
-
-        TestUtil::setupCassette('shipments/lowestSmartRate.yml');
+        TestUtil::setupCassette('shipments/lowestSmartRateVariations.yml');
 
         $shipment = self::$client->shipment->create(Fixture::fullShipment());
 
         // Test lowestSmartRate with no filters
-        $lowestRate = self::$client->shipment->lowestSmartRate($shipment->id, 3, 'percentile_85');
-        $this->assertEquals('First', $lowestRate['service']);
-        $this->assertEquals(5.82, $lowestRate['rate']);
-        $this->assertEquals('USPS', $lowestRate['carrier']);
+        $lowestSmartRate = self::$client->shipment->lowestSmartRate($shipment->id, 3, 'percentile_85');
+        $this->assertEquals('First', $lowestSmartRate['service']);
+        $this->assertEquals(5.82, $lowestSmartRate['rate']);
+        $this->assertEquals('USPS', $lowestSmartRate['carrier']);
 
         // Test lowestSmartRate with invalid filters (should error due to strict delivery_days)
         try {
@@ -394,18 +395,8 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
                 $error->getMessage()
             );
         }
-    }
 
-    /**
-     * Test various usage alterations of the getLowestSmartRate method.
-     */
-    public function testGetLowestSmartRate()
-    {
-        $this->markTestSkipped('Tests passes locally but VCR is broken on CI');
-
-        TestUtil::setupCassette('shipments/getLowestSmartRate.yml');
-
-        $shipment = self::$client->shipment->create(Fixture::fullShipment());
+        $shipment = self::$client->shipment->create(Fixture::basicShipment());
         $smartRates = self::$client->shipment->getSmartRates($shipment->id);
 
         // Test lowestSmartRate with valid filters
