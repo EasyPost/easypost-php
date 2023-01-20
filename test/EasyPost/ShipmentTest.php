@@ -360,7 +360,10 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test various usage alterations of the lowestSmartRate method.
+     * Test various usage alterations of the `lowestSmartRate` and getLowestSmartRate` methods.
+     *
+     * These tests are unfortunately combined because the VCR can't pull cassettes correctly
+     * when testing these two functions in different tests/cassettes.
      */
     public function testLowestSmartRate()
     {
@@ -368,21 +371,30 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
         $shipment = self::$client->shipment->create(Fixture::fullShipment());
 
+        // Test lowestSmartRate with no filters
         $lowestRate = self::$client->shipment->lowestSmartRate($shipment->id, 3, 'percentile_85');
 
         $this->assertEquals('First', $lowestRate['service']);
         $this->assertEquals(5.82, $lowestRate['rate']);
         $this->assertEquals('USPS', $lowestRate['carrier']);
-    }
 
-    /**
-     * Test various usage alterations of the getLowestSmartRate method.
-     */
-    public function testGetLowestSmartRate()
-    {
-        TestUtil::setupCassette('shipments/getLowestSmartRate.yml');
+        // Test lowestSmartRate with invalid filters (should error due to strict delivery_days)
+        try {
+            self::$client->shipment->lowestSmartRate($shipment->id, 0, 'percentile_85');
+        } catch (FilteringException $error) {
+            $this->assertEquals('No rates found.', $error->getMessage());
+        }
 
-        $shipment = self::$client->shipment->create(Fixture::basicShipment());
+        // Test lowestSmartRate with invalid filters (should error due to invalid delivery_accuracy)
+        try {
+            self::$client->shipment->lowestSmartRate($shipment->id, 3, 'BAD_ACCURACY');
+        } catch (InvalidParameterException $error) {
+            $this->assertEquals(
+                'Invalid delivery_accuracy value, must be one of: ["percentile_50","percentile_75","percentile_85","percentile_90","percentile_95","percentile_97","percentile_99"]',
+                $error->getMessage()
+            );
+        }
+
         $smartRates = self::$client->shipment->getSmartRates($shipment->id);
 
         // Test lowestSmartRate with valid filters
