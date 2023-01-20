@@ -367,16 +367,15 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
      */
     public function testLowestSmartRate()
     {
-        TestUtil::setupCassette('shipments/lowestSmartRate.yml');
+        TestUtil::setupCassette('shipments/lowestSmartRateVariations.yml');
 
         $shipment = self::$client->shipment->create(Fixture::fullShipment());
 
         // Test lowestSmartRate with no filters
-        $lowestRate = self::$client->shipment->lowestSmartRate($shipment->id, 3, 'percentile_85');
-
-        $this->assertEquals('First', $lowestRate['service']);
-        $this->assertEquals(5.82, $lowestRate['rate']);
-        $this->assertEquals('USPS', $lowestRate['carrier']);
+        $lowestSmartRate = self::$client->shipment->lowestSmartRate($shipment->id, 3, 'percentile_85');
+        $this->assertEquals('First', $lowestSmartRate['service']);
+        $this->assertEquals(5.82, $lowestSmartRate['rate']);
+        $this->assertEquals('USPS', $lowestSmartRate['carrier']);
 
         // Test lowestSmartRate with invalid filters (should error due to strict delivery_days)
         try {
@@ -395,6 +394,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
             );
         }
 
+        $shipment = self::$client->shipment->create(Fixture::basicShipment());
         $smartRates = self::$client->shipment->getSmartRates($shipment->id);
 
         // Test lowestSmartRate with valid filters
