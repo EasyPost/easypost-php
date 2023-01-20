@@ -365,7 +365,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
      * These tests are unfortunately combined because the VCR can't pull cassettes correctly
      * when testing these two functions in different tests/cassettes.
      */
-    public function testLowestSmartRate()
+    public function testLowestSmartRateVariations()
     {
         TestUtil::setupCassette('shipments/lowestSmartRateVariations.yml');
 
