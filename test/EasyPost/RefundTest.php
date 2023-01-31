@@ -38,7 +38,7 @@ class RefundTest extends \PHPUnit\Framework\TestCase
 
         $refund = self::$client->refund->create([
             'carrier' => Fixture::usps(),
-            'tracking_codes' => $retrievedShipment->tracking_code,
+            'tracking_codes' => [$retrievedShipment->tracking_code],
         ]);
 
         $this->assertStringMatchesFormat('rfnd_%s', $refund[0]->id);
