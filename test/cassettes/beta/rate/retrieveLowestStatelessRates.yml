@@ -1,0 +1,78 @@
+
+-
+    request:
+        method: POST
+        url: 'https://api.easypost.com/beta/rates'
+        headers:
+            Host: api.easypost.com
+            Expect: ''
+            Accept-Encoding: ''
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+        body: '{"shipment":{"from_address":{"name":"Jack Sparrow","street1":"388 Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","country":"US","email":"test@example.com","phone":"5555555555"},"to_address":{"name":"Elizabeth Swan","street1":"179 N Harbor Dr","city":"Redondo Beach","state":"CA","zip":"90277","country":"US","email":"test@example.com","phone":"5555555555"},"parcel":{"length":"10","width":"8","height":"4","weight":"15.4"}}}'
+    response:
+        status:
+            code: 200
+            message: OK
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: 0be3dd0963dab7a4e0ed9b4000039724
+            cache-control: 'private, no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '2731'
+            etag: 'W/"2a8ad4223c20919a2f02abbddd76dfb3"'
+            x-runtime: '0.701783'
+            x-node: bigweb12nuq
+            x-version-label: easypost-202302010126-2aac6196a7-master
+            x-backend: easypost
+            x-proxied: ['intlb1nuq 29913d444b', 'intlb2wdc 29913d444b', 'extlb3wdc 29913d444b']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"from_address":{"object":"Address","name":"Jack Sparrow","street1":"388 Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>"},"to_address":{"object":"Address","name":"Elizabeth Swan","street1":"179 N Harbor Dr","city":"Redondo Beach","state":"CA","zip":"90277","country":"US","phone":"<REDACTED>","email":"<REDACTED>"},"rates":[{"object":"Rate","mode":"test","service":"Priority","carrier":"USPS","rate":"8.24","currency":"USD","retail_rate":"10.20","retail_currency":"USD","list_rate":"8.24","list_currency":"USD","billing_type":"easypost","delivery_days":2,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":2,"carrier_account_id":"ca_8dc116debcdb49b5a66a2ddee4612600"},{"object":"Rate","mode":"test","service":"Express","carrier":"USPS","rate":"31.25","currency":"USD","retail_rate":"35.80","retail_currency":"USD","list_rate":"31.25","list_currency":"USD","billing_type":"easypost","delivery_days":null,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":null,"carrier_account_id":"ca_8dc116debcdb49b5a66a2ddee4612600"},{"object":"Rate","mode":"test","service":"First","carrier":"USPS","rate":"6.07","currency":"USD","retail_rate":"6.07","retail_currency":"USD","list_rate":"6.07","list_currency":"USD","billing_type":"easypost","delivery_days":3,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":3,"carrier_account_id":"ca_8dc116debcdb49b5a66a2ddee4612600"},{"object":"Rate","mode":"test","service":"ParcelSelect","carrier":"USPS","rate":"7.75","currency":"USD","retail_rate":"7.75","retail_currency":"USD","list_rate":"7.75","list_currency":"USD","billing_type":"easypost","delivery_days":5,"delivery_date":null,"delivery_date_guaranteed":false,"est_delivery_days":5,"carrier_account_id":"ca_8dc116debcdb49b5a66a2ddee4612600"}],"options":{"currency":"USD","payment":{"type":"SENDER"},"date_advance":0},"parcel":{"object":"Parcel","length":10,"width":8,"height":4,"weight":15.4},"messages":[{"carrier":"DhlEcs","carrier_account_id":"ca_23d193562e8e459bbd937c2aad3dd092","type":"rate_error","message":"Unauthorized. Please check credentials and try again"},{"carrier":"DhlEcs","carrier_account_id":"ca_cd846680a6f74c23891086de730769d6","type":"rate_error","message":"Unauthorized. Please check credentials and try again"},{"carrier":"DhlEcs","carrier_account_id":"ca_5e8c4f41363b432594441dbf98e4032e","type":"rate_error","message":"Unauthorized. Please check credentials and try again"},{"carrier":"DhlEcs","carrier_account_id":"ca_91e6857e8cb6455180f8ef8a3db8baaa","type":"rate_error","message":"Unauthorized. Please check credentials and try again"}]}'
+        curl_info:
+            url: 'https://api.easypost.com/beta/rates'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 766
+            request_size: 766
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.991051
+            namelookup_time: 0.031985
+            connect_time: 0.050274
+            pretransfer_time: 0.084804
+            size_upload: 459.0
+            size_download: 2731.0
+            speed_download: 2755.0
+            speed_upload: 463.0
+            download_content_length: 2731.0
+            upload_content_length: 459.0
+            starttransfer_time: 0.991003
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.47.33.18
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 192.168.1.29
+            local_port: 64604
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 84733
+            connect_time_us: 50274
+            namelookup_time_us: 31985
+            pretransfer_time_us: 84804
+            redirect_time_us: 0
+            starttransfer_time_us: 991003
+            total_time_us: 991051
+    index: 0

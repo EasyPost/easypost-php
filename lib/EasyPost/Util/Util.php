@@ -132,4 +132,75 @@ abstract class Util
             throw new EncodingException(Constants::DECODE_WEBHOOK_ERROR);
         }
     }
+
+    /**
+     * Get the lowest stateless rate.
+     * To exclude a carrier or service, prepend the string with `!`.
+     *
+     * @param array statelessRates
+     * @param array $carriers
+     * @param array $services
+     * @return Rate
+     * @throws \EasyPost\Exception\EasyPostException
+     */
+    public static function getLowestStatelessRate($statelessRates, $carriers = [], $services = [])
+    {
+        $lowestStatelessRate = false;
+        $carriersInclude = [];
+        $carriersExclude = [];
+        $servicesInclude = [];
+        $servicesExclude = [];
+
+        if (!is_array($carriers)) {
+            $carriers = explode(',', $carriers);
+        }
+        for ($i = 0; $i < count($carriers); $i++) {
+            $carriers[$i] = trim(strtolower($carriers[$i]));
+            if (substr($carriers[$i], 0, 1) == '!') {
+                $carriersExclude[] = substr($carriers[$i], 1);
+            } else {
+                $carriersInclude[] = $carriers[$i];
+            }
+        }
+
+        if (!is_array($services)) {
+            $services = explode(',', $services);
+        }
+        for ($i = 0; $i < count($services); $i++) {
+            $services[$i] = trim(strtolower($services[$i]));
+            if (substr($services[$i], 0, 1) == '!') {
+                $servicesExclude[] = substr($services[$i], 1);
+            } else {
+                $servicesInclude[] = $services[$i];
+            }
+        }
+
+        for ($i = 0; $i < count($statelessRates); $i++) {
+            $rateCarrier = strtolower($statelessRates[$i]->carrier);
+            if (!empty($carriersInclude[0]) && !in_array($rateCarrier, $carriersInclude)) {
+                continue;
+            }
+            if (!empty($carriersExclude[0]) && in_array($rateCarrier, $carriersExclude)) {
+                continue;
+            }
+
+            $rateService = strtolower($statelessRates[$i]->service);
+            if (!empty($servicesInclude[0]) && !in_array($rateService, $servicesInclude)) {
+                continue;
+            }
+            if (!empty($servicesExclude[0]) && in_array($rateService, $servicesExclude)) {
+                continue;
+            }
+
+            if (!$lowestStatelessRate || floatval($statelessRates[$i]->rate) < floatval($lowestStatelessRate->rate)) {
+                $lowestStatelessRate = clone ($statelessRates[$i]);
+            }
+        }
+
+        if ($lowestStatelessRate == false) {
+            throw new FilteringException(Constants::NO_RATES_ERROR);
+        }
+
+        return $lowestStatelessRate;
+    }
 }

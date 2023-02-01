@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Add `retrieveStatelessRates` function and helper function `getLowestStatelessRate`
+
 ## v6.2.0 (2023-01-18)
 
 - Added function to retrieve all pickups via `$client->pickup->all()`
