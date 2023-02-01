@@ -49,12 +49,12 @@ class BetaRateTest extends \PHPUnit\Framework\TestCase
 
         $statelessRates = self::$client->betaRate->retrieveStatelessRates(Fixture::basicShipment());
 
-        $lowestStatelessRate = Util::getLowestStatlessRate($statelessRates);
+        $lowestStatelessRate = Util::getLowestStatelessRate($statelessRates);
 
         $this->assertEquals('First', $lowestStatelessRate->service);
 
         try {
-            $lowestStatelessRate = Util::getLowestStatlessRate($statelessRates, ['invalidCarrier']);
+            $lowestStatelessRate = Util::getLowestStatelessRate($statelessRates, ['invalidCarrier']);
         } catch (EasyPostException $error) {
             $this->assertEquals('No rates found.', $error->getMessage());
         }

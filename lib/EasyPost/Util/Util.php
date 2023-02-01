@@ -134,7 +134,7 @@ abstract class Util
     }
 
     /**
-     * Get the lowest rate of stateless rates.
+     * Get the lowest stateless rate.
      * To exclude a carrier or service, prepend the string with `!`.
      *
      * @param array statelessRates
@@ -143,7 +143,7 @@ abstract class Util
      * @return Rate
      * @throws \EasyPost\Exception\EasyPostException
      */
-    public static function getLowestStatlessRate($statelessRates, $carriers = [], $services = [])
+    public static function getLowestStatelessRate($statelessRates, $carriers = [], $services = [])
     {
         $lowestStatelessRate = false;
         $carriersInclude = [];
