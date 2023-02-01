@@ -8,6 +8,7 @@ use EasyPost\Exception\General\MissingParameterException;
 use EasyPost\Service\AddressService;
 use EasyPost\Service\BaseService;
 use EasyPost\Service\BatchService;
+use EasyPost\Service\BetaRateService;
 use EasyPost\Service\BetaReferralCustomerService;
 use EasyPost\Service\BillingService;
 use EasyPost\Service\CarrierAccountService;
@@ -98,6 +99,7 @@ class EasyPostClient extends BaseService
             'address' => AddressService::class,
             'batch' => BatchService::class,
             'betaReferralCustomer' => BetaReferralCustomerService::class,
+            'betaRate' => BetaRateService::class,
             'billing' => BillingService::class,
             'carrierAccount' => CarrierAccountService::class,
             'customsInfo' => CustomsInfoService::class,
