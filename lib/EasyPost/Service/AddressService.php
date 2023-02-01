@@ -90,6 +90,6 @@ class AddressService extends BaseService
         $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/verify';
         $response = Requestor::request($this->client, 'get', $url, null);
 
-        return InternalUtil::convertToEasyPostObject($this->client, $response['address'], self::serviceModelClassName(self::class));
+        return InternalUtil::convertToEasyPostObject($this->client, $response['address']);
     }
 }
