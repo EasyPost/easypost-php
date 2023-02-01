@@ -4,7 +4,7 @@ namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
 use EasyPost\Exception\General\EasyPostException;
-use EasyPost\StatelessRate;
+use EasyPost\Rate;
 use EasyPost\Util\Util;
 
 class BetaRateTest extends \PHPUnit\Framework\TestCase
@@ -37,7 +37,7 @@ class BetaRateTest extends \PHPUnit\Framework\TestCase
 
         $statelessRates = self::$client->betaRate->retrieveStatelessRates(Fixture::basicShipment());
 
-        $this->assertContainsOnlyInstancesOf(StatelessRate::class, $statelessRates);
+        $this->assertContainsOnlyInstancesOf(Rate::class, $statelessRates);
     }
 
     /**

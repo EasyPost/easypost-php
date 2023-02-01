@@ -140,7 +140,7 @@ abstract class Util
      * @param array statelessRates
      * @param array $carriers
      * @param array $services
-     * @return StatelessRate
+     * @return Rate
      * @throws \EasyPost\Exception\EasyPostException
      */
     public static function getLowestStatlessRate($statelessRates, $carriers = [], $services = [])

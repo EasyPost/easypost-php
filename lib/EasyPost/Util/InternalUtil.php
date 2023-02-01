@@ -28,7 +28,6 @@ use EasyPost\Refund;
 use EasyPost\Report;
 use EasyPost\ScanForm;
 use EasyPost\Shipment;
-use EasyPost\StatelessRate;
 use EasyPost\Tracker;
 use EasyPost\TrackingDetail;
 use EasyPost\TrackingLocation;
@@ -100,7 +99,6 @@ abstract class InternalUtil
             'Shipment'              => Shipment::class,
             'ShipmentInvoiceReport' => Report::class,
             'ShipmentReport'        => Report::class,
-            'StatelessRate'         => StatelessRate::class,
             'TaxIdentifier'         => TaxIdentifier::class,
             'Tracker'               => Tracker::class,
             'TrackerReport'         => Report::class,

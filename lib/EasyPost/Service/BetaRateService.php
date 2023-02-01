@@ -22,13 +22,8 @@ class BetaRateService extends BaseService
             'shipment' => $params,
         ];
 
-        $response = Requestor::request($this->client, 'post', '/rates', $wrappedParams, true)['rates'];
+        $response = Requestor::request($this->client, 'post', '/rates', $wrappedParams, true);
 
-        foreach ($response as &$key) {
-            $key['object'] = 'StatelessRate';
-            // Convert object from `rate` to `stateless` in order to deserialize the response to Stateless Object
-        }
-
-        return InternalUtil::convertToEasyPostObject($this->client, $response);
+        return InternalUtil::convertToEasyPostObject($this->client, $response['rates']);
     }
 }
