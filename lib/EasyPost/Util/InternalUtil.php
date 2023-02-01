@@ -65,11 +65,9 @@ abstract class InternalUtil
      *
      * @param EasyPostClient $client
      * @param mixed $response
-     * @param string $parent
-     * @param string $name
      * @return mixed
      */
-    public static function convertToEasyPostObject($client, $response, $parent = null, $name = null)
+    public static function convertToEasyPostObject($client, $response)
     {
         $objectMapping = [
             'Address'               => Address::class,
@@ -147,7 +145,7 @@ abstract class InternalUtil
                 if (is_string($object) && isset($objectMapping[$object])) {
                     $value['object'] = $object;
                 }
-                array_push($mapped, self::convertToEasyPostObject($client, $value, $parent, $name));
+                array_push($mapped, self::convertToEasyPostObject($client, $value));
             }
 
             return $mapped;
