@@ -34,6 +34,76 @@ use EasyPost\TrackingLocation;
 use EasyPost\User;
 use EasyPost\Webhook;
 
+const OBJECT_MAPPING = [
+    'Address'               => Address::class,
+    'ApiKey'                => ApiKey::class,
+    'Batch'                 => Batch::class,
+    'CarrierAccount'        => CarrierAccount::class,
+    'CarrierDetail'         => CarrierDetail::class,
+    'CustomsInfo'           => CustomsInfo::class,
+    'CustomsItem'           => CustomsItem::class,
+    'EndShipper'            => EndShipper::class,
+    'Event'                 => Event::class,
+    'Fee'                   => Fee::class,
+    'Insurance'             => Insurance::class,
+    'Message'               => Message::class,
+    'Order'                 => Order::class,
+    'Parcel'                => Parcel::class,
+    'PaymentLogReport'      => Report::class,
+    'PaymentMethod'         => PaymentMethod::class,
+    'Pickup'                => Pickup::class,
+    'PickupRate'            => PickupRate::class,
+    'PostageLabel'          => PostageLabel::class,
+    'Rate'                  => Rate::class,
+    'Refund'                => Refund::class,
+    'RefundReport'          => Report::class,
+    'Report'                => Report::class,
+    'ScanForm'              => ScanForm::class,
+    'Shipment'              => Shipment::class,
+    'ShipmentInvoiceReport' => Report::class,
+    'ShipmentReport'        => Report::class,
+    'TaxIdentifier'         => TaxIdentifier::class,
+    'Tracker'               => Tracker::class,
+    'TrackerReport'         => Report::class,
+    'TrackingDetail'        => TrackingDetail::class,
+    'TrackingLocation'      => TrackingLocation::class,
+    'User'                  => User::class,
+    'Verification'          => Verification::class,
+    'VerificationDetails'   => VerificationDetails::class,
+    'Verifictions'          => Verifications::class,
+    'Webhook'               => Webhook::class,
+];
+
+const OBJECT_ID_PREFIXES = [
+    'adr'       => Address::class,
+    'ak'        => ApiKey::class,
+    'batch'     => Batch::class,
+    'brd'       => Brand::class,
+    'ca'        => CarrierAccount::class,
+    'cstinfo'   => CustomsInfo::class,
+    'cstitem'   => CustomsItem::class,
+    'es'        => EndShipper::class,
+    'evt'       => Event::class,
+    'fee'       => Fee::class,
+    'hook'      => Webhook::class,
+    'ins'       => Insurance::class,
+    'order'     => Order::class,
+    'pickup'    => Pickup::class,
+    'pl'        => PostageLabel::class,
+    'plrep'     => Report::class,
+    'prcl'      => Parcel::class,
+    'rate'      => Rate::class,
+    'refrep'    => Report::class,
+    'rfnd'      => Refund::class,
+    'sf'        => ScanForm::class,
+    'shp'       => Shipment::class,
+    'shpinvrep' => Report::class,
+    'shprep'    => Report::class,
+    'trk'       => Tracker::class,
+    'trkrep'    => Report::class,
+    'user'      => User::class,
+];
+
 abstract class InternalUtil
 {
     /**
@@ -69,80 +139,10 @@ abstract class InternalUtil
      */
     public static function convertToEasyPostObject($client, $response)
     {
-        $objectMapping = [
-            'Address'               => Address::class,
-            'ApiKey'                => ApiKey::class,
-            'Batch'                 => Batch::class,
-            'CarrierAccount'        => CarrierAccount::class,
-            'CarrierDetail'         => CarrierDetail::class,
-            'CustomsInfo'           => CustomsInfo::class,
-            'CustomsItem'           => CustomsItem::class,
-            'EndShipper'            => EndShipper::class,
-            'Event'                 => Event::class,
-            'Fee'                   => Fee::class,
-            'Insurance'             => Insurance::class,
-            'Message'               => Message::class,
-            'Order'                 => Order::class,
-            'Parcel'                => Parcel::class,
-            'PaymentLogReport'      => Report::class,
-            'PaymentMethod'         => PaymentMethod::class,
-            'Pickup'                => Pickup::class,
-            'PickupRate'            => PickupRate::class,
-            'PostageLabel'          => PostageLabel::class,
-            'Rate'                  => Rate::class,
-            'Refund'                => Refund::class,
-            'RefundReport'          => Report::class,
-            'Report'                => Report::class,
-            'ScanForm'              => ScanForm::class,
-            'Shipment'              => Shipment::class,
-            'ShipmentInvoiceReport' => Report::class,
-            'ShipmentReport'        => Report::class,
-            'TaxIdentifier'         => TaxIdentifier::class,
-            'Tracker'               => Tracker::class,
-            'TrackerReport'         => Report::class,
-            'TrackingDetail'        => TrackingDetail::class,
-            'TrackingLocation'      => TrackingLocation::class,
-            'User'                  => User::class,
-            'Verification'          => Verification::class,
-            'VerificationDetails'   => VerificationDetails::class,
-            'Verifictions'          => Verifications::class,
-            'Webhook'               => Webhook::class,
-        ];
-
-        $objectIdPrefixes = [
-            'adr'       => Address::class,
-            'ak'        => ApiKey::class,
-            'batch'     => Batch::class,
-            'brd'       => Brand::class,
-            'ca'        => CarrierAccount::class,
-            'cstinfo'   => CustomsInfo::class,
-            'cstitem'   => CustomsItem::class,
-            'es'        => EndShipper::class,
-            'evt'       => Event::class,
-            'fee'       => Fee::class,
-            'hook'      => Webhook::class,
-            'ins'       => Insurance::class,
-            'order'     => Order::class,
-            'pickup'    => Pickup::class,
-            'pl'        => PostageLabel::class,
-            'plrep'     => Report::class,
-            'prcl'      => Parcel::class,
-            'rate'      => Rate::class,
-            'refrep'    => Report::class,
-            'rfnd'      => Refund::class,
-            'sf'        => ScanForm::class,
-            'shp'       => Shipment::class,
-            'shpinvrep' => Report::class,
-            'shprep'    => Report::class,
-            'trk'       => Tracker::class,
-            'trkrep'    => Report::class,
-            'user'      => User::class,
-        ];
-
         if (InternalUtil::isList($response)) {
             $mapped = [];
             foreach ($response as $object => $value) {
-                if (is_string($object) && isset($objectMapping[$object])) {
+                if (is_string($object) && isset(OBJECT_MAPPING[$object])) {
                     $value['object'] = $object;
                 }
                 array_push($mapped, self::convertToEasyPostObject($client, $value));
@@ -150,10 +150,10 @@ abstract class InternalUtil
 
             return $mapped;
         } elseif (is_array($response)) {
-            if (isset($response['object']) && is_string($response['object']) && isset($objectMapping[$response['object']])) {
-                $class = $objectMapping[$response['object']];
-            } elseif (isset($response['id']) && isset($objectIdPrefixes[substr($response['id'], 0, strpos($response['id'], '_'))])) {
-                $class = $objectIdPrefixes[substr($response['id'], 0, strpos($response['id'], '_'))];
+            if (isset($response['object']) && is_string($response['object']) && isset(OBJECT_MAPPING[$response['object']])) {
+                $class = OBJECT_MAPPING[$response['object']];
+            } elseif (isset($response['id']) && isset(OBJECT_ID_PREFIXES[substr($response['id'], 0, strpos($response['id'], '_'))])) {
+                $class = OBJECT_ID_PREFIXES[substr($response['id'], 0, strpos($response['id'], '_'))];
             } else {
                 $class = '\EasyPost\EasyPostObject';
             }
