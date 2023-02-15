@@ -152,9 +152,9 @@ class EasyPostObject implements \ArrayAccess, \Iterator
      *
      * @param string $k
      * @param mixed $v
-     * @return void
      */
-    public function offsetSet($k, $v): void
+    #[\ReturnTypeWillChange]
+    public function offsetSet($k, $v)
     {
         $this->$k = $v;
     }
@@ -165,7 +165,8 @@ class EasyPostObject implements \ArrayAccess, \Iterator
      * @param string $k
      * @return bool
      */
-    public function offsetExists($k): bool
+    #[\ReturnTypeWillChange]
+    public function offsetExists($k)
     {
         return array_key_exists($k, $this->_values);
     }
@@ -174,9 +175,9 @@ class EasyPostObject implements \ArrayAccess, \Iterator
      * ArrayAccess methods.
      *
      * @param string $k
-     * @return void
      */
-    public function offsetUnset($k): void
+    #[\ReturnTypeWillChange]
+    public function offsetUnset($k)
     {
         unset($this->$k);
     }
@@ -187,7 +188,8 @@ class EasyPostObject implements \ArrayAccess, \Iterator
      * @param string $k
      * @return mixed
      */
-    public function offsetGet($k): mixed
+    #[\ReturnTypeWillChange]
+    public function offsetGet($k)
     {
         return array_key_exists($k, $this->_values) ? $this->_values[$k] : null;
     }
@@ -197,7 +199,8 @@ class EasyPostObject implements \ArrayAccess, \Iterator
      *
      * @return void
      */
-    public function rewind(): void
+    #[\ReturnTypeWillChange]
+    public function rewind()
     {
         reset($this->_values);
     }
@@ -207,7 +210,8 @@ class EasyPostObject implements \ArrayAccess, \Iterator
      *
      * @return mixed
      */
-    public function current(): mixed
+    #[\ReturnTypeWillChange]
+    public function current()
     {
         return current($this->_values);
     }
@@ -217,7 +221,8 @@ class EasyPostObject implements \ArrayAccess, \Iterator
      *
      * @return mixed
      */
-    public function key(): mixed
+    #[\ReturnTypeWillChange]
+    public function key()
     {
         return key($this->_values);
     }
@@ -225,9 +230,10 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     /**
      * Iterator methods.
      *
-     * @return void
+     * @return mixed
      */
-    public function next(): void
+    #[\ReturnTypeWillChange]
+    public function next()
     {
         return next($this->_values);
     }
@@ -237,7 +243,8 @@ class EasyPostObject implements \ArrayAccess, \Iterator
      *
      * @return bool
      */
-    public function valid(): bool
+    #[\ReturnTypeWillChange]
+    public function valid()
     {
         $key = key($this->_values);
         return ($key !== null && $key !== false);
