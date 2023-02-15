@@ -9,4 +9,6 @@ namespace EasyPost;
  */
 class Verifications extends EasyPostObject
 {
+    public $zip4;
+    public $delivery;
 }

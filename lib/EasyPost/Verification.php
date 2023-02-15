@@ -10,4 +10,7 @@ namespace EasyPost;
  */
 class Verification extends EasyPostObject
 {
+    public $success;
+    public $errors;
+    public $details;
 }

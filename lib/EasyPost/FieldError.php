@@ -9,4 +9,6 @@ namespace EasyPost;
  */
 class FieldError extends EasyPostObject
 {
+    public $field;
+    public $message;
 }

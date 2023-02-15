@@ -10,4 +10,7 @@ namespace EasyPost;
  */
 class VerificationDetails extends EasyPostObject
 {
+    public $latitude;
+    public $longitude;
+    public $time_zone;
 }

@@ -143,7 +143,15 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     public function convertEach($client, $values)
     {
         foreach ($values as $k => $v) {
-            $this->_values[$k] = InternalUtil::convertToEasyPostObject($client, $v);
+            if (property_exists($this, $k)) {
+                // TODO: Nested objects may not be working properly, need to rework the current
+                // $_values logic since that's already in use
+
+                // TODO: For items like `verifications`, we'd need a way to get the property type
+                // instead of relying on the object field in the response since some objects like
+                // `verifications` don't have an `object` field we can use to tell it how to deserialize
+                $this->{$k} = InternalUtil::convertToEasyPostObject($client, $v);
+            }
         }
     }
 

@@ -16,6 +16,7 @@ use EasyPost\EndShipper;
 use EasyPost\Event;
 use EasyPost\Exception\General\FilteringException;
 use EasyPost\Fee;
+use EasyPost\FieldError;
 use EasyPost\Insurance;
 use EasyPost\Message;
 use EasyPost\Order;
@@ -38,6 +39,7 @@ const OBJECT_MAPPING = [
     'Address'               => Address::class,
     'ApiKey'                => ApiKey::class,
     'Batch'                 => Batch::class,
+    'Brand'                 => Brand::class,
     'CarrierAccount'        => CarrierAccount::class,
     'CarrierDetail'         => CarrierDetail::class,
     'CustomsInfo'           => CustomsInfo::class,
@@ -45,6 +47,7 @@ const OBJECT_MAPPING = [
     'EndShipper'            => EndShipper::class,
     'Event'                 => Event::class,
     'Fee'                   => Fee::class,
+    'FieldError'            => FieldError::class,
     'Insurance'             => Insurance::class,
     'Message'               => Message::class,
     'Order'                 => Order::class,
