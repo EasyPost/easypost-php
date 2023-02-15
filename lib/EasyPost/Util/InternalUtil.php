@@ -17,7 +17,6 @@ use EasyPost\Event;
 use EasyPost\Exception\General\FilteringException;
 use EasyPost\Fee;
 use EasyPost\Insurance;
-use EasyPost\Message;
 use EasyPost\Order;
 use EasyPost\Parcel;
 use EasyPost\Pickup;
@@ -38,6 +37,7 @@ const OBJECT_MAPPING = [
     'Address'               => Address::class,
     'ApiKey'                => ApiKey::class,
     'Batch'                 => Batch::class,
+    'Brand'                 => Brand::class,
     'CarrierAccount'        => CarrierAccount::class,
     'CarrierDetail'         => CarrierDetail::class,
     'CustomsInfo'           => CustomsInfo::class,
@@ -46,11 +46,9 @@ const OBJECT_MAPPING = [
     'Event'                 => Event::class,
     'Fee'                   => Fee::class,
     'Insurance'             => Insurance::class,
-    'Message'               => Message::class,
     'Order'                 => Order::class,
     'Parcel'                => Parcel::class,
     'PaymentLogReport'      => Report::class,
-    'PaymentMethod'         => PaymentMethod::class,
     'Pickup'                => Pickup::class,
     'PickupRate'            => PickupRate::class,
     'PostageLabel'          => PostageLabel::class,
@@ -68,9 +66,6 @@ const OBJECT_MAPPING = [
     'TrackingDetail'        => TrackingDetail::class,
     'TrackingLocation'      => TrackingLocation::class,
     'User'                  => User::class,
-    'Verification'          => Verification::class,
-    'VerificationDetails'   => VerificationDetails::class,
-    'Verifictions'          => Verifications::class,
     'Webhook'               => Webhook::class,
 ];
 
