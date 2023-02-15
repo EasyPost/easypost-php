@@ -5,6 +5,7 @@ namespace EasyPost\Http;
 use EasyPost\Constant\Constants;
 use EasyPost\EasyPostClient;
 use EasyPost\EasypostObject;
+use EasyPost\Exception\Api\ForbiddenException;
 use EasyPost\Exception\Api\GatewayTimeoutException;
 use EasyPost\Exception\Api\HttpException;
 use EasyPost\Exception\Api\InternalServerException;
@@ -281,7 +282,7 @@ class Requestor
                 $errorType = PaymentException::class;
                 break;
             case 403:
-                $errorType = UnauthorizedException::class;
+                $errorType = ForbiddenException::class;
                 break;
             case 404:
                 $errorType = NotFoundException::class;
