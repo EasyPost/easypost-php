@@ -38,6 +38,7 @@ class ReportService extends BaseService
             $type = $params['type'];
             self::validate($params);
             $url = self::reportUrl($type);
+            unset($params['type']);
             $response = Requestor::request($this->client, 'get', $url, $params);
 
             return InternalUtil::convertToEasyPostObject($this->client, $response);
@@ -86,6 +87,6 @@ class ReportService extends BaseService
         $type = str_replace('_report', '', $type);
         $name = urlencode($type);
 
-        return "/reports/{$name}/";
+        return "/reports/{$name}";
     }
 }

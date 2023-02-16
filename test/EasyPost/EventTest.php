@@ -100,10 +100,10 @@ class EventTest extends \PHPUnit\Framework\TestCase
      */
     public function testRetrieveAllPayloads()
     {
-        $cassetteName = 'batches/retrieve_all_payloads.yml';
+        $cassetteName = 'events/retrieve_all_payloads.yml';
         $testRequiresWait = true ? file_exists(dirname(__DIR__, 1) . "/cassettes/$cassetteName") === false : false;
 
-        TestUtil::setupCassette('events/retrieve_all_payloads.yml');
+        TestUtil::setupCassette($cassetteName);
 
         // Create a webhook to receive the event.
         $webhook = self::$client->webhook->create([
@@ -140,10 +140,10 @@ class EventTest extends \PHPUnit\Framework\TestCase
      */
     public function testRetrievePayload()
     {
-        $cassetteName = 'batches/retrieve_all_payloads.yml';
+        $cassetteName = 'events/retrieve_payload.yml';
         $testRequiresWait = true ? file_exists(dirname(__DIR__, 1) . "/cassettes/$cassetteName") === false : false;
 
-        TestUtil::setupCassette('events/retrieve_payload.yml');
+        TestUtil::setupCassette($cassetteName);
 
         // Create a webhook to receive the event.
         $webhook = self::$client->webhook->create([
@@ -166,10 +166,10 @@ class EventTest extends \PHPUnit\Framework\TestCase
 
         // Payload does not exist due to queueing, so this will throw en exception.
         try {
-             self::$client->event->retrievePayload(
-                 $event->id,
-                 'payload_11111111111111111111111111111111',
-             );
+            self::$client->event->retrievePayload(
+                $event->id,
+                'payload_11111111111111111111111111111111',
+            );
         } catch (EasyPostException $error) {
             $this->assertEquals(404, $error->getHttpStatus());
         }
