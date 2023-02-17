@@ -1,9 +1,11 @@
 # CHANGELOG
 
-## Next Release
+## v6.3.0 (2023-02-17)
 
-- Add `retrieveStatelessRates` function and helper function `getLowestStatelessRate`
-- Correct HTTP 403 to `ForbiddenException`
+- Adds beta `retrieveStatelessRates` function
+- Adds `getLowestStatelessRate` utility
+- Correct HTTP 403 status responses to throw `ForbiddenException`
+- Various other small corrections and improvements
 
 ## v6.2.0 (2023-01-18)
 
