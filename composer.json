@@ -32,7 +32,7 @@
     "rregeer/phpunit-coverage-check": "^0.3.1"
   },
   "scripts": {
-    "coverage": "XDEBUG_MODE=coverage ./bin/phpunit --coverage-html clover.html --coverage-clover build/logs/clover.xml",
+    "coverage": "XDEBUG_MODE=coverage ./bin/phpunit --coverage-html clover.html --coverage-clover build/logs/clover.xml && ./bin/coverage-check build/logs/clover.xml 87 --only-percentage",
     "fix": "./bin/phpcbf",
     "lint": "./bin/phpcs",
     "scan": "composer update --dry-run roave/security-advisories",
