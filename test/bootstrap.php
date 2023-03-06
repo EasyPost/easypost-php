@@ -4,11 +4,13 @@ use allejo\VCR\VCRCleaner;
 use EasyPost\Util\InternalUtil;
 use VCR\VCR;
 
-if (!file_exists('test/cassettes')) {
-    mkdir('test/cassettes', 0755, true);
+const CASSETTE_DIR = 'test/cassettes';
+
+if (!file_exists(CASSETTE_DIR)) {
+    mkdir(CASSETTE_DIR, 0755, true);
 }
 
-VCR::configure()->setCassettePath('test/cassettes')
+VCR::configure()->setCassettePath(CASSETTE_DIR)
     ->setStorage('yaml')
     ->setMode('once')
     ->setWhiteList(['vendor/guzzle']);

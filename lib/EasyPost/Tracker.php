@@ -9,6 +9,7 @@ namespace EasyPost;
  * @property string $mode
  * @property string $tracking_code
  * @property string $status
+ * @property string $status_detail
  * @property string $signed_by
  * @property float $weight
  * @property string $est_delivery_date
