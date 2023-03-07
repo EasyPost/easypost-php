@@ -115,7 +115,7 @@
 
     <article class="phpdocumentor-element -class">
         <h2 class="phpdocumentor-content__title">
-    ReportService
+    BetaRateService
 
         <span class="phpdocumentor-element__extends">
         extends <a href="classes/EasyPost-Service-BaseService.html"><abbr title="\EasyPost\Service\BaseService">BaseService</abbr></a>
@@ -132,13 +132,13 @@
     </h2>
 
         <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Service/ReportService.php"><a href="files/lib-easypost-service-reportservice.html"><abbr title="lib/EasyPost/Service/ReportService.php">ReportService.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Service/BetaRateService.php"><a href="files/lib-easypost-service-betarateservice.html"><abbr title="lib/EasyPost/Service/BetaRateService.php">BetaRateService.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">13</span>
+    <span class="phpdocumentor-element-found-in__line">11</span>
 
     </aside>
 
-            <p class="phpdocumentor-summary">Report service containing all the logic to make API calls.</p>
+            <p class="phpdocumentor-summary">Rate service containing all the logic to make API calls.</p>
 
 
 
@@ -162,25 +162,11 @@
 <dd></dd>
 
                 <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/EasyPost-Service-ReportService.html#method_all">all()</a>
+    <a href="classes/EasyPost-Service-BetaRateService.html#method_retrieveStatelessRates">retrieveStatelessRates()</a>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
-<dd>Retrieve all reports.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/EasyPost-Service-ReportService.html#method_create">create()</a>
-    <span>
-                                &nbsp;: mixed    </span>
-</dt>
-<dd>Create a report.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/EasyPost-Service-ReportService.html#method_retrieve">retrieve()</a>
-    <span>
-                                &nbsp;: mixed    </span>
-</dt>
-<dd>Retrieve a report.</dd>
+<dd>Retreive stateless rates.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/EasyPost-Service-BaseService.html#method___construct">__construct()</a>
@@ -259,13 +245,6 @@
 </dt>
 <dd>Validate library usage.</dd>
 
-            <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/EasyPost-Service-ReportService.html#method_reportUrl">reportUrl()</a>
-    <span>
-                                &nbsp;: mixed    </span>
-</dt>
-<dd>Generate report url format.</dd>
-
         </dl>
 
 
@@ -276,7 +255,7 @@
     <section class="phpdocumentor-properties">
         <h3 class="phpdocumentor-elements__header" id="properties">
             Properties
-            <a href="classes/EasyPost-Service-ReportService.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/EasyPost-Service-BetaRateService.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
         </h3>
                     <article
         class="
@@ -317,7 +296,7 @@
             <section class="phpdocumentor-methods">
         <h3 class="phpdocumentor-elements__header" id="methods">
             Methods
-            <a href="classes/EasyPost-Service-ReportService.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/EasyPost-Service-BetaRateService.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
         </h3>
                     <article
         class="phpdocumentor-element
@@ -325,22 +304,22 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_all">
-        all()
-        <a href="classes/EasyPost-Service-ReportService.html#method_all" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_retrieveStatelessRates">
+        retrieveStatelessRates()
+        <a href="classes/EasyPost-Service-BetaRateService.html#method_retrieveStatelessRates" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Service/ReportService.php"><a href="files/lib-easypost-service-reportservice.html"><abbr title="lib/EasyPost/Service/ReportService.php">ReportService.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Service/BetaRateService.php"><a href="files/lib-easypost-service-betarateservice.html"><abbr title="lib/EasyPost/Service/BetaRateService.php">BetaRateService.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">33</span>
+    <span class="phpdocumentor-element-found-in__line">19</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Retrieve all reports.</p>
+        <p class="phpdocumentor-summary">Retreive stateless rates.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">all</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$params</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">retrieveStatelessRates</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$params</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -348,120 +327,6 @@
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$params</span>
                 : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">throws</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                <span class="phpdocumentor-tag-link"><a href="classes/EasyPost-Exception-General-MissingParameterException.html"><abbr title="\EasyPost\Exception\General\MissingParameterException">MissingParameterException</abbr></a></span>
-                                                            
-                                             
-                                    </dd>
-                        </dl>
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
-            &mdash;
-        
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_create">
-        create()
-        <a href="classes/EasyPost-Service-ReportService.html#method_create" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Service/ReportService.php"><a href="files/lib-easypost-service-reportservice.html"><abbr title="lib/EasyPost/Service/ReportService.php">ReportService.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">55</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Create a report.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">create</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$params</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
-
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$params</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">throws</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                <span class="phpdocumentor-tag-link"><a href="classes/EasyPost-Exception-General-MissingParameterException.html"><abbr title="\EasyPost\Exception\General\MissingParameterException">MissingParameterException</abbr></a></span>
-                                                            
-                                             
-                                    </dd>
-                        </dl>
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
-            &mdash;
-        
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_retrieve">
-        retrieve()
-        <a href="classes/EasyPost-Service-ReportService.html#method_retrieve" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Service/ReportService.php"><a href="files/lib-easypost-service-reportservice.html"><abbr title="lib/EasyPost/Service/ReportService.php">ReportService.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">21</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Retrieve a report.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">retrieve</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$id</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
-
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$id</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                 
@@ -1075,49 +940,6 @@
         
     
 </article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -private
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_reportUrl">
-        reportUrl()
-        <a href="classes/EasyPost-Service-ReportService.html#method_reportUrl" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Service/ReportService.php"><a href="files/lib-easypost-service-reportservice.html"><abbr title="lib/EasyPost/Service/ReportService.php">ReportService.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">74</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Generate report url format.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">reportUrl</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$type</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
-
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$type</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
-            &mdash;
-        
-    
-</article>
             </section>
 
         
@@ -1196,7 +1018,7 @@
 </section>
             </div>
         </div>
-        <a href="classes/EasyPost-Service-ReportService.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="classes/EasyPost-Service-BetaRateService.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

@@ -181,6 +181,8 @@
         <dd></dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/EasyPost-Service-BatchService.html"><abbr title="\EasyPost\Service\BatchService">BatchService</abbr></a></dt>
         <dd>Batch service containing all the logic to make API calls.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/EasyPost-Service-BetaRateService.html"><abbr title="\EasyPost\Service\BetaRateService">BetaRateService</abbr></a></dt>
+        <dd>Rate service containing all the logic to make API calls.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/EasyPost-Service-BetaReferralCustomerService.html"><abbr title="\EasyPost\Service\BetaReferralCustomerService">BetaReferralCustomerService</abbr></a></dt>
         <dd>ReferralCustomer service containing all the logic to make API calls.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/EasyPost-Service-BillingService.html"><abbr title="\EasyPost\Service\BillingService">BillingService</abbr></a></dt>
@@ -230,8 +232,93 @@
     </dl>
 
 
+<h3 id="toc">
+    Table of Contents
+    <a href="#toc" class="headerlink"><i class="fas fa-link"></i></a>
+</h3>
+
+<dl class="phpdocumentor-table-of-contents">
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="namespaces/easypost-util.html#constant_OBJECT_ID_PREFIXES">OBJECT_ID_PREFIXES</a>
+    <span>
+        &nbsp;= [&#039;adr&#039; =&gt; \EasyPost\Address::class, &#039;ak&#039; =&gt; \EasyPost\ApiKey::class, &#039;batch&#039; =&gt; \EasyPost\Batch::class, &#039;brd&#039; =&gt; \EasyPost\Brand::class, &#039;ca&#039; =&gt; \EasyPost\CarrierAccount::class, &#039;cstinfo&#039; =&gt; \EasyPost\CustomsInfo::class, &#039;cstitem&#039; =&gt; \EasyPost\CustomsItem::class, &#039;es&#039; =&gt; \EasyPost\EndShipper::class, &#039;evt&#039; =&gt; \EasyPost\Event::class, &#039;fee&#039; =&gt; \EasyPost\Fee::class, &#039;hook&#039; =&gt; \EasyPost\Webhook::class, &#039;ins&#039; =&gt; \EasyPost\Insurance::class, &#039;order&#039; =&gt; \EasyPost\Order::class, &#039;pickup&#039; =&gt; \EasyPost\Pickup::class, &#039;pl&#039; =&gt; \EasyPost\PostageLabel::class, &#039;plrep&#039; =&gt; \EasyPost\Report::class, &#039;prcl&#039; =&gt; \EasyPost\Parcel::class, &#039;rate&#039; =&gt; \EasyPost\Rate::class, &#039;refrep&#039; =&gt; \EasyPost\Report::class, &#039;rfnd&#039; =&gt; \EasyPost\Refund::class, &#039;sf&#039; =&gt; \EasyPost\ScanForm::class, &#039;shp&#039; =&gt; \EasyPost\Shipment::class, &#039;shpinvrep&#039; =&gt; \EasyPost\Report::class, &#039;shprep&#039; =&gt; \EasyPost\Report::class, &#039;trk&#039; =&gt; \EasyPost\Tracker::class, &#039;trkrep&#039; =&gt; \EasyPost\Report::class, &#039;user&#039; =&gt; \EasyPost\User::class]                            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="namespaces/easypost-util.html#constant_OBJECT_MAPPING">OBJECT_MAPPING</a>
+    <span>
+        &nbsp;= [&#039;Address&#039; =&gt; \EasyPost\Address::class, &#039;ApiKey&#039; =&gt; \EasyPost\ApiKey::class, &#039;Batch&#039; =&gt; \EasyPost\Batch::class, &#039;Brand&#039; =&gt; \EasyPost\Brand::class, &#039;CarrierAccount&#039; =&gt; \EasyPost\CarrierAccount::class, &#039;CarrierDetail&#039; =&gt; \EasyPost\CarrierDetail::class, &#039;CustomsInfo&#039; =&gt; \EasyPost\CustomsInfo::class, &#039;CustomsItem&#039; =&gt; \EasyPost\CustomsItem::class, &#039;EndShipper&#039; =&gt; \EasyPost\EndShipper::class, &#039;Event&#039; =&gt; \EasyPost\Event::class, &#039;Fee&#039; =&gt; \EasyPost\Fee::class, &#039;Insurance&#039; =&gt; \EasyPost\Insurance::class, &#039;Order&#039; =&gt; \EasyPost\Order::class, &#039;Parcel&#039; =&gt; \EasyPost\Parcel::class, &#039;PaymentLogReport&#039; =&gt; \EasyPost\Report::class, &#039;Pickup&#039; =&gt; \EasyPost\Pickup::class, &#039;PickupRate&#039; =&gt; \EasyPost\PickupRate::class, &#039;PostageLabel&#039; =&gt; \EasyPost\PostageLabel::class, &#039;Rate&#039; =&gt; \EasyPost\Rate::class, &#039;Refund&#039; =&gt; \EasyPost\Refund::class, &#039;RefundReport&#039; =&gt; \EasyPost\Report::class, &#039;Report&#039; =&gt; \EasyPost\Report::class, &#039;ScanForm&#039; =&gt; \EasyPost\ScanForm::class, &#039;Shipment&#039; =&gt; \EasyPost\Shipment::class, &#039;ShipmentInvoiceReport&#039; =&gt; \EasyPost\Report::class, &#039;ShipmentReport&#039; =&gt; \EasyPost\Report::class, &#039;TaxIdentifier&#039; =&gt; \EasyPost\Util\TaxIdentifier::class, &#039;Tracker&#039; =&gt; \EasyPost\Tracker::class, &#039;TrackerReport&#039; =&gt; \EasyPost\Report::class, &#039;TrackingDetail&#039; =&gt; \EasyPost\TrackingDetail::class, &#039;TrackingLocation&#039; =&gt; \EasyPost\TrackingLocation::class, &#039;User&#039; =&gt; \EasyPost\User::class, &#039;Webhook&#039; =&gt; \EasyPost\Webhook::class]                            </span>
+</dt>
+<dd></dd>
+
+                    </dl>
 
         
+    <section class="phpdocumentor-constants">
+        <h3 class="phpdocumentor-elements__header" id="constants">
+            Constants
+            <a href="packages/Application.html#constants" class="headerlink"><i class="fas fa-link"></i></a>
+        </h3>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_OBJECT_ID_PREFIXES">
+        OBJECT_ID_PREFIXES
+        <a href="namespaces/easypost-util.html#constant_OBJECT_ID_PREFIXES" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Util/InternalUtil.php"><a href="files/lib-easypost-util-internalutil.html"><abbr title="lib/EasyPost/Util/InternalUtil.php">InternalUtil.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">72</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">OBJECT_ID_PREFIXES</span>
+    = <span class="phpdocumentor-signature__default-value">[&#039;adr&#039; =&gt; \EasyPost\Address::class, &#039;ak&#039; =&gt; \EasyPost\ApiKey::class, &#039;batch&#039; =&gt; \EasyPost\Batch::class, &#039;brd&#039; =&gt; \EasyPost\Brand::class, &#039;ca&#039; =&gt; \EasyPost\CarrierAccount::class, &#039;cstinfo&#039; =&gt; \EasyPost\CustomsInfo::class, &#039;cstitem&#039; =&gt; \EasyPost\CustomsItem::class, &#039;es&#039; =&gt; \EasyPost\EndShipper::class, &#039;evt&#039; =&gt; \EasyPost\Event::class, &#039;fee&#039; =&gt; \EasyPost\Fee::class, &#039;hook&#039; =&gt; \EasyPost\Webhook::class, &#039;ins&#039; =&gt; \EasyPost\Insurance::class, &#039;order&#039; =&gt; \EasyPost\Order::class, &#039;pickup&#039; =&gt; \EasyPost\Pickup::class, &#039;pl&#039; =&gt; \EasyPost\PostageLabel::class, &#039;plrep&#039; =&gt; \EasyPost\Report::class, &#039;prcl&#039; =&gt; \EasyPost\Parcel::class, &#039;rate&#039; =&gt; \EasyPost\Rate::class, &#039;refrep&#039; =&gt; \EasyPost\Report::class, &#039;rfnd&#039; =&gt; \EasyPost\Refund::class, &#039;sf&#039; =&gt; \EasyPost\ScanForm::class, &#039;shp&#039; =&gt; \EasyPost\Shipment::class, &#039;shpinvrep&#039; =&gt; \EasyPost\Report::class, &#039;shprep&#039; =&gt; \EasyPost\Report::class, &#039;trk&#039; =&gt; \EasyPost\Tracker::class, &#039;trkrep&#039; =&gt; \EasyPost\Report::class, &#039;user&#039; =&gt; \EasyPost\User::class]</span>
+</code>
+
+
+        <section class="phpdocumentor-description"></section>
+
+        <section class="phpdocumentor-description"></section>
+
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_OBJECT_MAPPING">
+        OBJECT_MAPPING
+        <a href="namespaces/easypost-util.html#constant_OBJECT_MAPPING" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Util/InternalUtil.php"><a href="files/lib-easypost-util-internalutil.html"><abbr title="lib/EasyPost/Util/InternalUtil.php">InternalUtil.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">36</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">OBJECT_MAPPING</span>
+    = <span class="phpdocumentor-signature__default-value">[&#039;Address&#039; =&gt; \EasyPost\Address::class, &#039;ApiKey&#039; =&gt; \EasyPost\ApiKey::class, &#039;Batch&#039; =&gt; \EasyPost\Batch::class, &#039;Brand&#039; =&gt; \EasyPost\Brand::class, &#039;CarrierAccount&#039; =&gt; \EasyPost\CarrierAccount::class, &#039;CarrierDetail&#039; =&gt; \EasyPost\CarrierDetail::class, &#039;CustomsInfo&#039; =&gt; \EasyPost\CustomsInfo::class, &#039;CustomsItem&#039; =&gt; \EasyPost\CustomsItem::class, &#039;EndShipper&#039; =&gt; \EasyPost\EndShipper::class, &#039;Event&#039; =&gt; \EasyPost\Event::class, &#039;Fee&#039; =&gt; \EasyPost\Fee::class, &#039;Insurance&#039; =&gt; \EasyPost\Insurance::class, &#039;Order&#039; =&gt; \EasyPost\Order::class, &#039;Parcel&#039; =&gt; \EasyPost\Parcel::class, &#039;PaymentLogReport&#039; =&gt; \EasyPost\Report::class, &#039;Pickup&#039; =&gt; \EasyPost\Pickup::class, &#039;PickupRate&#039; =&gt; \EasyPost\PickupRate::class, &#039;PostageLabel&#039; =&gt; \EasyPost\PostageLabel::class, &#039;Rate&#039; =&gt; \EasyPost\Rate::class, &#039;Refund&#039; =&gt; \EasyPost\Refund::class, &#039;RefundReport&#039; =&gt; \EasyPost\Report::class, &#039;Report&#039; =&gt; \EasyPost\Report::class, &#039;ScanForm&#039; =&gt; \EasyPost\ScanForm::class, &#039;Shipment&#039; =&gt; \EasyPost\Shipment::class, &#039;ShipmentInvoiceReport&#039; =&gt; \EasyPost\Report::class, &#039;ShipmentReport&#039; =&gt; \EasyPost\Report::class, &#039;TaxIdentifier&#039; =&gt; \EasyPost\Util\TaxIdentifier::class, &#039;Tracker&#039; =&gt; \EasyPost\Tracker::class, &#039;TrackerReport&#039; =&gt; \EasyPost\Report::class, &#039;TrackingDetail&#039; =&gt; \EasyPost\TrackingDetail::class, &#039;TrackingLocation&#039; =&gt; \EasyPost\TrackingLocation::class, &#039;User&#039; =&gt; \EasyPost\User::class, &#039;Webhook&#039; =&gt; \EasyPost\Webhook::class]</span>
+</code>
+
+
+        <section class="phpdocumentor-description"></section>
+
+        <section class="phpdocumentor-description"></section>
+
+    
+
+</article>
+            </section>
 
         
     </article>
