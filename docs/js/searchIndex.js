@@ -806,6 +806,16 @@ Search.appendIndex(
             "summary": "Create\u0020a\u0020batch\u0020scanform.",
             "url": "classes/EasyPost-Service-BatchService.html#method_createScanForm"
         },                {
+            "fqsen": "\\EasyPost\\Service\\BetaRateService",
+            "name": "BetaRateService",
+            "summary": "Rate\u0020service\u0020containing\u0020all\u0020the\u0020logic\u0020to\u0020make\u0020API\u0020calls.",
+            "url": "classes/EasyPost-Service-BetaRateService.html"
+        },                {
+            "fqsen": "\\EasyPost\\Service\\BetaRateService\u003A\u003AretrieveStatelessRates\u0028\u0029",
+            "name": "retrieveStatelessRates",
+            "summary": "Retreive\u0020stateless\u0020rates.",
+            "url": "classes/EasyPost-Service-BetaRateService.html#method_retrieveStatelessRates"
+        },                {
             "fqsen": "\\EasyPost\\Service\\BetaReferralCustomerService",
             "name": "BetaReferralCustomerService",
             "summary": "ReferralCustomer\u0020service\u0020containing\u0020all\u0020the\u0020logic\u0020to\u0020make\u0020API\u0020calls.",
@@ -1376,6 +1386,16 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/EasyPost-User.html"
         },                {
+            "fqsen": "\\EasyPost\\Util\\OBJECT_MAPPING",
+            "name": "OBJECT_MAPPING",
+            "summary": "",
+            "url": "namespaces/easypost-util.html#constant_OBJECT_MAPPING"
+        },                {
+            "fqsen": "\\EasyPost\\Util\\OBJECT_ID_PREFIXES",
+            "name": "OBJECT_ID_PREFIXES",
+            "summary": "",
+            "url": "namespaces/easypost-util.html#constant_OBJECT_ID_PREFIXES"
+        },                {
             "fqsen": "\\EasyPost\\Util\\InternalUtil",
             "name": "InternalUtil",
             "summary": "",
@@ -1420,6 +1440,11 @@ Search.appendIndex(
             "name": "receiveEvent",
             "summary": "Receive\u0020an\u0020event\u0020\u0028convert\u0020JSON\u0020string\u0020to\u0020object\u0029.",
             "url": "classes/EasyPost-Util-Util.html#method_receiveEvent"
+        },                {
+            "fqsen": "\\EasyPost\\Util\\Util\u003A\u003AgetLowestStatelessRate\u0028\u0029",
+            "name": "getLowestStatelessRate",
+            "summary": "Get\u0020the\u0020lowest\u0020stateless\u0020rate.",
+            "url": "classes/EasyPost-Util-Util.html#method_getLowestStatelessRate"
         },                {
             "fqsen": "\\EasyPost\\Verification",
             "name": "Verification",
