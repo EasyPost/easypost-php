@@ -32,7 +32,7 @@ require_once("/path/to/vendor/easypost/autoload.php");
 
 $client = new \EasyPost\EasyPostClient(getenv('EASYPOST_API_KEY'));
 
-$shipment = $client->shipmemt->create([
+$shipment = $client->shipment->create([
     "from_address" => [
         "company" => "EasyPost",
         "street1" => "118 2nd Street",
