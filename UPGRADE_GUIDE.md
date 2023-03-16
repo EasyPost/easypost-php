@@ -103,6 +103,10 @@ The `receive` function previously in the namespace of `Event` is now called `rec
 
 ## Upgrading from 4.x to 5.0
 
+**NOTICE:** v5 is deprecated.
+
+[v5 Docs](https://github.com/EasyPost/examples/tree/master/official/docs/php/v5)
+
 ### 5.0 High Impact Changes
 
 - [Updating Dependencies](#50-updating-dependencies)
@@ -160,6 +164,8 @@ Likelihood of Impact: Low
 There is no `/all` endpoint for the Parcel object. This function was removed as it was unusable.
 
 ## Upgrading from 3.x to 4.0
+
+**NOTICE:** v4 is deprecated.
 
 ### 4.0 High Impact Changes
 
