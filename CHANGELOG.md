@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v6.3.1 (2023-03-22)
+
+- Adds missing `status_detail` property to Tracker
+- Fixes spelling of `weight` property on Parcel
+
 ## v6.3.0 (2023-02-17)
 
 - Adds beta `retrieveStatelessRates` function
