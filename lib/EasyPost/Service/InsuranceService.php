@@ -30,6 +30,18 @@ class InsuranceService extends BaseService
     }
 
     /**
+     * Retrieve the next page of Insurance collection
+     *
+     * @param mixed $insurances
+     * @param string $pageSize
+     * @return mixed
+     */
+    public function getNextPage($insurances, $pageSize)
+    {
+        return $this->getNextPageResources(self::serviceModelClassName(self::class), $insurances, $pageSize);
+    }
+
+    /**
      * Create an insurance object.
      *
      * @param mixed $params

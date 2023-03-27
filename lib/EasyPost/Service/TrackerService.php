@@ -32,6 +32,18 @@ class TrackerService extends BaseService
     }
 
     /**
+     * Retrieve the next page of Tracker collection
+     *
+     * @param mixed $trackers
+     * @param string $pageSize
+     * @return mixed
+     */
+    public function getNextPage($trackers, $pageSize)
+    {
+        return $this->getNextPageResources(self::serviceModelClassName(self::class), $trackers, $pageSize);
+    }
+
+    /**
      * Create a tracker.
      *
      * @param mixed $params

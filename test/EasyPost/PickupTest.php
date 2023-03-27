@@ -4,6 +4,8 @@ namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
 use EasyPost\Exception\General\FilteringException;
+use EasyPost\Exception\General\EndOfPaginationException;
+use Exception;
 use EasyPost\Pickup;
 
 class PickupTest extends \PHPUnit\Framework\TestCase
@@ -81,6 +83,31 @@ class PickupTest extends \PHPUnit\Framework\TestCase
         $this->assertLessThanOrEqual($pickupsArray, Fixture::pageSize());
         $this->assertNotNull($pickups['has_more']);
         $this->assertContainsOnlyInstancesOf(Pickup::class, $pickupsArray);
+    }
+
+    /**
+     * Test retrieving next page.
+     */
+    public function testGetNextPage()
+    {
+        TestUtil::setupCassette('pickups/getNextPage.yml');
+
+        try {
+            $pickups = self::$client->pickup->all([
+                'page_size' => Fixture::pageSize(),
+            ]);
+            $nextPage = self::$client->pickup->getNextPage($pickups, Fixture::pageSize());
+
+            $firstIdOfFirstPage = $pickups['pickups'][0]->id;
+            $secondIdOfSecondPage = $nextPage['pickups'][0]->id;
+
+            $this->assertNotEquals($firstIdOfFirstPage, $secondIdOfSecondPage);
+        } catch (Exception $error) {
+            if (!($error instanceof EndOfPaginationException)) {
+                throw new Exception('Test failed intentionally');
+            }
+            $this->assertTrue(true);
+        }
     }
 
     /**

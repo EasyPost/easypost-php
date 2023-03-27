@@ -1,0 +1,76 @@
+
+-
+    request:
+        method: GET
+        url: 'https://api.easypost.com/v2/refunds?page_size=5'
+        headers:
+            Host: api.easypost.com
+            Accept-Encoding: ''
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+    response:
+        status:
+            code: 200
+            message: OK
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: 0b623cbb642212bbe7886a680013edc7
+            cache-control: 'private, no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '31'
+            etag: 'W/"b7f27d1ea29478c50d2e1a7ab8bcb58a"'
+            x-runtime: '0.018038'
+            x-node: bigweb5nuq
+            x-version-label: easypost-202303271939-29966fef42-master
+            x-backend: easypost
+            x-proxied: ['intlb2nuq a40ea751fd', 'extlb1nuq a29e4ad05c']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"refunds":[],"has_more":false}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/refunds?page_size=5'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 730
+            request_size: 297
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.420267
+            namelookup_time: 0.01031
+            connect_time: 0.143139
+            pretransfer_time: 0.277639
+            size_upload: 0.0
+            size_download: 31.0
+            speed_download: 73.0
+            speed_upload: 0.0
+            download_content_length: 31.0
+            upload_content_length: 0.0
+            starttransfer_time: 0.420234
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.62.110.131
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 10.130.6.31
+            local_port: 53856
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 277598
+            connect_time_us: 143139
+            namelookup_time_us: 10310
+            pretransfer_time_us: 277639
+            redirect_time_us: 0
+            starttransfer_time_us: 420234
+            total_time_us: 420267
+    index: 0

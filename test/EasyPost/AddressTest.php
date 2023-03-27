@@ -5,6 +5,8 @@ namespace EasyPost\Test;
 use EasyPost\Address;
 use EasyPost\EasyPostClient;
 use EasyPost\Exception\Api\ApiException;
+use EasyPost\Exception\General\EndOfPaginationException;
+use Exception;
 
 class AddressTest extends \PHPUnit\Framework\TestCase
 {
@@ -129,6 +131,31 @@ class AddressTest extends \PHPUnit\Framework\TestCase
         $this->assertLessThanOrEqual($addressesArray, Fixture::pageSize());
         $this->assertNotNull($addresses['has_more']);
         $this->assertContainsOnlyInstancesOf(Address::class, $addressesArray);
+    }
+
+    /**
+     * Test retrieving next page.
+     */
+    public function testGetNextPage()
+    {
+        TestUtil::setupCassette('addresses/getNextPage.yml');
+
+        try {
+            $addresses = self::$client->address->all([
+                'page_size' => Fixture::pageSize(),
+            ]);
+            $nextPage = self::$client->address->getNextPage($addresses, Fixture::pageSize());
+
+            $firstIdOfFirstPage = $addresses['addresses'][0]->id;
+            $secondIdOfSecondPage = $nextPage['addresses'][0]->id;
+
+            $this->assertNotEquals($firstIdOfFirstPage, $secondIdOfSecondPage);
+        } catch (Exception $error) {
+            if (!($error instanceof EndOfPaginationException)) {
+                throw new Exception('Test failed intentionally');
+            }
+            $this->assertTrue(true);
+        }
     }
 
     /**

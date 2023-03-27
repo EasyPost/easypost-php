@@ -4,6 +4,8 @@ namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
 use EasyPost\Exception\General\MissingParameterException;
+use EasyPost\Exception\General\EndOfPaginationException;
+use Exception;
 use EasyPost\Report;
 
 class ReportTest extends \PHPUnit\Framework\TestCase
@@ -121,6 +123,32 @@ class ReportTest extends \PHPUnit\Framework\TestCase
         $this->assertLessThanOrEqual($reportsArray, Fixture::pageSize());
         $this->assertNotNull($reports['has_more']);
         $this->assertContainsOnlyInstancesOf(Report::class, $reportsArray);
+    }
+
+    /**
+     * Test retrieving next page.
+     */
+    public function testGetNextPage()
+    {
+        TestUtil::setupCassette('reports/getNextPage.yml');
+
+        try {
+            $reports = self::$client->report->all([
+                'type' => 'shipment',
+                'page_size' => Fixture::pageSize(),
+            ]);
+            $nextPage = self::$client->report->getNextPage($reports, Fixture::pageSize());
+
+            $firstIdOfFirstPage = $reports['reports'][0]->id;
+            $secondIdOfSecondPage = $nextPage['reports'][0]->id;
+
+            $this->assertNotEquals($firstIdOfFirstPage, $secondIdOfSecondPage);
+        } catch (Exception $error) {
+            if (!($error instanceof EndOfPaginationException)) {
+                throw new Exception('Test failed intentionally');
+            }
+            $this->assertTrue(true);
+        }
     }
 
     /**

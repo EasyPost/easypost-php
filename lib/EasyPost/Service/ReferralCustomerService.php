@@ -28,6 +28,18 @@ class ReferralCustomerService extends BaseService
     }
 
     /**
+     * Retrieve the next page of Referral collection
+     *
+     * @param mixed $referrals
+     * @param string $pageSize
+     * @return mixed
+     */
+    public function getNextPage($referrals, $pageSize)
+    {
+        return $this->getNextPageResources(self::serviceModelClassName(self::class), $referrals, $pageSize);
+    }
+
+    /**
      * Create an referral.
      *
      * @param mixed $params

@@ -1,0 +1,151 @@
+
+-
+    request:
+        method: GET
+        url: 'https://api.easypost.com/v2/insurances?page_size=5'
+        headers:
+            Host: api.easypost.com
+            Accept-Encoding: ''
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+    response:
+        status:
+            code: 200
+            message: OK
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: 4fc889e0642210ade78866230012e23d
+            cache-control: 'private, no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '3192'
+            etag: 'W/"85d4c36eb2536a20c3745da19f4bb044"'
+            x-runtime: '0.080501'
+            x-node: bigweb11nuq
+            x-version-label: easypost-202303271939-29966fef42-master
+            x-backend: easypost
+            x-proxied: ['intlb2nuq a40ea751fd', 'extlb2nuq a29e4ad05c']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"insurances":[{"id":"ins_3c21477902ab4ad8a40af02276409b7c","object":"Insurance","mode":"test","reference":"1","status":"pending","amount":"100.00000","provider":"easypost","provider_id":null,"to_address":{"id":"adr_82258a32c8d511ed87afac1f6bc72124","object":"Address","created_at":"2023-03-22T17:18:05+00:00","updated_at":"2023-03-22T17:18:05+00:00","name":null,"company":"EASYPOST","street1":"417 MONTGOMERY ST FL 5","street2":null,"city":"SAN FRANCISCO","state":"CA","zip":"94104-1129","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[{"code":"E.SECONDARY_INFORMATION.INVALID","field":"street2","message":"Invalid secondary information(Apt\/Suite#)","suggestion":null}],"details":null},"delivery":{"success":true,"errors":[{"code":"E.SECONDARY_INFORMATION.INVALID","field":"street2","message":"Invalid secondary information(Apt\/Suite#)","suggestion":null}],"details":{"latitude":37.79342,"longitude":-122.40288,"time_zone":"America\/Los_Angeles"}}}},"from_address":{"id":"adr_822ac797c8d511ed87b2ac1f6bc72124","object":"Address","created_at":"2023-03-22T17:18:05+00:00","updated_at":"2023-03-22T17:18:05+00:00","name":null,"company":"EASYPOST","street1":"417 MONTGOMERY ST FL 2","street2":null,"city":"SAN FRANCISCO","state":"CA","zip":"94104-1129","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[{"code":"E.SECONDARY_INFORMATION.INVALID","field":"street2","message":"Invalid secondary information(Apt\/Suite#)","suggestion":null}],"details":null},"delivery":{"success":true,"errors":[{"code":"E.SECONDARY_INFORMATION.INVALID","field":"street2","message":"Invalid secondary information(Apt\/Suite#)","suggestion":null}],"details":{"latitude":37.79342,"longitude":-122.40288,"time_zone":"America\/Los_Angeles"}}}},"shipment_id":null,"tracker":{"id":"trk_e1e33a61f02846cb80905b1a50ea5ba0","object":"Tracker","mode":"test","tracking_code":"9400110898825022579493","status":"error","status_detail":null,"created_at":"2023-03-22T17:18:05Z","updated_at":"2023-03-22T17:18:05Z","signed_by":null,"weight":null,"est_delivery_date":null,"shipment_id":null,"carrier":"USPS","tracking_details":[{"object":"TrackingDetail","message":"In test mode, only test tracking numbers are valid. Test tracking numbers are EZ1000000001, EZ2000000002, ... , EZ7000000007","description":null,"status":"error","status_detail":null,"datetime":"2023-03-22T17:18:05Z","source":"ProcessingError","carrier_code":null,"tracking_location":{"object":"TrackingLocation","city":null,"state":null,"country":null,"zip":null}}],"carrier_detail":null,"finalized":true,"is_return":false,"public_url":"https:\/\/track.easypost.com\/djE6dHJrX2UxZTMzYTYxZjAyODQ2Y2I4MDkwNWIxYTUwZWE1YmEw","fees":[]},"tracking_code":"9400110898825022579493","fee":{"object":"Fee","type":"InsuranceFee","amount":"0.50000","charged":true,"refunded":false},"messages":[],"created_at":"2023-03-22T17:18:05Z","updated_at":"2023-03-22T17:18:05Z"}],"has_more":false}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/insurances?page_size=5'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 733
+            request_size: 300
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.46276
+            namelookup_time: 0.0011
+            connect_time: 0.121517
+            pretransfer_time: 0.255862
+            size_upload: 0.0
+            size_download: 3192.0
+            speed_download: 6897.0
+            speed_upload: 0.0
+            download_content_length: 3192.0
+            upload_content_length: 0.0
+            starttransfer_time: 0.462732
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.62.110.130
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 10.130.6.31
+            local_port: 53752
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 255823
+            connect_time_us: 121517
+            namelookup_time_us: 1100
+            pretransfer_time_us: 255862
+            redirect_time_us: 0
+            starttransfer_time_us: 462732
+            total_time_us: 462760
+    index: 0
+-
+    request:
+        method: GET
+        url: 'https://api.easypost.com/v2/insurances?page_size=5&before_id=ins_3c21477902ab4ad8a40af02276409b7c'
+        headers:
+            Host: api.easypost.com
+            Accept-Encoding: ''
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+    response:
+        status:
+            code: 200
+            message: OK
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: 4fc889de642210aee78866240012e278
+            cache-control: 'private, no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '34'
+            etag: 'W/"5f1a59bebcbbd5ae61942f9e2d9fb8d8"'
+            x-runtime: '0.024499'
+            x-node: bigweb6nuq
+            x-version-label: easypost-202303271939-29966fef42-master
+            x-backend: easypost
+            x-proxied: ['intlb2nuq a40ea751fd', 'extlb2nuq a29e4ad05c']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"insurances":[],"has_more":false}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/insurances?page_size=5&before_id=ins_3c21477902ab4ad8a40af02276409b7c'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 730
+            request_size: 347
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.410832
+            namelookup_time: 0.001178
+            connect_time: 0.128121
+            pretransfer_time: 0.262151
+            size_upload: 0.0
+            size_download: 34.0
+            speed_download: 82.0
+            speed_upload: 0.0
+            download_content_length: 34.0
+            upload_content_length: 0.0
+            starttransfer_time: 0.4108
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.62.110.130
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 10.130.6.31
+            local_port: 53753
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 262075
+            connect_time_us: 128121
+            namelookup_time_us: 1178
+            pretransfer_time_us: 262151
+            redirect_time_us: 0
+            starttransfer_time_us: 410800
+            total_time_us: 410832
+    index: 0

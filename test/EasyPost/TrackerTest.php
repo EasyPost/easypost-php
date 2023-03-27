@@ -4,6 +4,8 @@ namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
 use EasyPost\Tracker;
+use EasyPost\Exception\General\EndOfPaginationException;
+use Exception;
 
 class TrackerTest extends \PHPUnit\Framework\TestCase
 {
@@ -90,6 +92,31 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
         $this->assertLessThanOrEqual($trackersArray, Fixture::pageSize());
         $this->assertNotNull($trackers['has_more']);
         $this->assertContainsOnlyInstancesOf(Tracker::class, $trackersArray);
+    }
+
+    /**
+     * Test retrieving next page.
+     */
+    public function testGetNextPage()
+    {
+        TestUtil::setupCassette('trackers/getNextPage.yml');
+
+        try {
+            $trackers = self::$client->tracker->all([
+                'page_size' => Fixture::pageSize(),
+            ]);
+            $nextPage = self::$client->tracker->getNextPage($trackers, Fixture::pageSize());
+
+            $firstIdOfFirstPage = $trackers['trackers'][0]->id;
+            $secondIdOfSecondPage = $nextPage['trackers'][0]->id;
+
+            $this->assertNotEquals($firstIdOfFirstPage, $secondIdOfSecondPage);
+        } catch (Exception $error) {
+            if (!($error instanceof EndOfPaginationException)) {
+                throw new Exception('Test failed intentionally');
+            }
+            $this->assertTrue(true);
+        }
     }
 
     /**

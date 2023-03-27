@@ -34,6 +34,18 @@ class ShipmentService extends BaseService
     }
 
     /**
+     * Retrieve the next page of Shipment collection
+     *
+     * @param mixed $shipments
+     * @param string $pageSize
+     * @return mixed
+     */
+    public function getNextPage($shipments, $pageSize)
+    {
+        return $this->getNextPageResources(self::serviceModelClassName(self::class), $shipments, $pageSize);
+    }
+
+    /**
      * Create a shipment.
      *
      * @param mixed $params

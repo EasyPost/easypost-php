@@ -5,8 +5,11 @@ namespace EasyPost\Service;
 use EasyPost\Constant\Constants;
 use EasyPost\Exception\General\InvalidObjectException;
 use EasyPost\Exception\General\InvalidParameterException;
+use EasyPost\Exception\General\EndOfPaginationException;
 use EasyPost\Http\Requestor;
 use EasyPost\Util\InternalUtil;
+
+use function PHPUnit\Framework\assertTrue;
 
 class BaseService
 {
@@ -134,6 +137,29 @@ class BaseService
         self::validate($params);
         $url = self::classUrl($class);
         $response = Requestor::request($this->client, 'get', $url, $params, $beta);
+
+        return InternalUtil::convertToEasyPostObject($this->client, $response);
+    }
+
+    protected function getNextPageResources($class, $collection, $pageSize)
+    {
+        $objectName = substr(self::classUrl($class), 1);
+        $collectionArray = $collection[$objectName];
+
+        if (empty($collectionArray) || !$collection['has_more']) {
+            throw new EndOfPaginationException();
+        }
+
+        $params = [
+            'page_size' => $pageSize,
+            'before_id' => $collectionArray[count($collectionArray) - 1]['id']
+        ];
+
+        $response = $this->allResources($class, $params);
+
+        if (empty($response[$objectName]) || !$response['has_more']) {
+            throw new EndOfPaginationException();
+        }
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }

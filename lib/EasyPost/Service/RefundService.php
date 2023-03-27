@@ -30,6 +30,18 @@ class RefundService extends BaseService
     }
 
     /**
+     * Retrieve the next page of Refund collection
+     *
+     * @param mixed $refunds
+     * @param string $pageSize
+     * @return mixed
+     */
+    public function getNextPage($refunds, $pageSize)
+    {
+        return $this->getNextPageResources(self::serviceModelClassName(self::class), $refunds, $pageSize);
+    }
+
+    /**
      * Create a refund.
      *
      * @param mixed $params
