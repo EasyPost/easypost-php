@@ -144,7 +144,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
             $addresses = self::$client->address->all([
                 'page_size' => Fixture::pageSize(),
             ]);
-            $nextPage = self::$client->address->getNextPage($addresses);
+            $nextPage = self::$client->address->getNextPage($addresses, Fixture::pageSize());
 
             $firstIdOfFirstPage = $addresses['addresses'][0]->id;
             $secondIdOfSecondPage = $nextPage['addresses'][0]->id;
