@@ -4,6 +4,8 @@ namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
 use EasyPost\Insurance;
+use EasyPost\Exception\General\EndOfPaginationException;
+use Exception;
 
 class InsuranceTest extends \PHPUnit\Framework\TestCase
 {
@@ -81,5 +83,30 @@ class InsuranceTest extends \PHPUnit\Framework\TestCase
         $this->assertLessThanOrEqual($insuranceArray, Fixture::pageSize());
         $this->assertNotNull($insurance['has_more']);
         $this->assertContainsOnlyInstancesOf(Insurance::class, $insuranceArray);
+    }
+
+    /**
+     * Test retrieving next page.
+     */
+    public function testGetNextPage()
+    {
+        TestUtil::setupCassette('insurance/getNextPage.yml');
+
+        try {
+            $insurances = self::$client->insurance->all([
+                'page_size' => Fixture::pageSize(),
+            ]);
+            $nextPage = self::$client->insurance->getNextPage($insurances, Fixture::pageSize());
+
+            $firstIdOfFirstPage = $insurances['insurances'][0]->id;
+            $secondIdOfSecondPage = $nextPage['insurances'][0]->id;
+
+            $this->assertNotEquals($firstIdOfFirstPage, $secondIdOfSecondPage);
+        } catch (Exception $error) {
+            if (!($error instanceof EndOfPaginationException)) {
+                throw new Exception('Test failed intentionally');
+            }
+            $this->assertTrue(true);
+        }
     }
 }

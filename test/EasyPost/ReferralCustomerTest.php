@@ -4,6 +4,8 @@ namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
 use EasyPost\User;
+use EasyPost\Exception\General\EndOfPaginationException;
+use Exception;
 
 class ReferralCustomerTest extends \PHPUnit\Framework\TestCase
 {
@@ -63,6 +65,31 @@ class ReferralCustomerTest extends \PHPUnit\Framework\TestCase
         $this->assertLessThanOrEqual($referralUsersArray, Fixture::pageSize());
         $this->assertNotNull($referralUsers['has_more']);
         $this->assertContainsOnlyInstancesOf(User::class, $referralUsersArray);
+    }
+
+        /**
+     * Test retrieving next page.
+     */
+    public function testGetNextPage()
+    {
+        TestUtil::setupCassette('referral_customers/getNextPage.yml');
+
+        try {
+            $referralCustomers = self::$client->referralCustomer->all([
+                'page_size' => Fixture::pageSize(),
+            ]);
+            $nextPage = self::$client->referralCustomer->getNextPage($referralCustomers, Fixture::pageSize());
+
+            $firstIdOfFirstPage = $referralCustomers['referral_customers'][0]->id;
+            $secondIdOfSecondPage = $nextPage['referral_customers'][0]->id;
+
+            $this->assertNotEquals($firstIdOfFirstPage, $secondIdOfSecondPage);
+        } catch (Exception $error) {
+            if (!($error instanceof EndOfPaginationException)) {
+                throw new Exception('Test failed intentionally');
+            }
+            $this->assertTrue(true);
+        }
     }
 
     /**

@@ -33,6 +33,18 @@ class AddressService extends BaseService
     }
 
     /**
+     * Retrieve the next page of Address collection
+     *
+     * @param mixed $addresses
+     * @param string $pageSize
+     * @return mixed
+     */
+    public function getNextPage($addresses, $pageSize = null)
+    {
+        return $this->getNextPageResources(self::serviceModelClassName(self::class), $addresses, $pageSize);
+    }
+
+    /**
      * Create an address.
      *
      * @param mixed $params

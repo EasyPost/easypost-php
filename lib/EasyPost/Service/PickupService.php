@@ -33,6 +33,18 @@ class PickupService extends BaseService
     }
 
     /**
+     * Retrieve the next page of Pickup collection
+     *
+     * @param mixed $pickups
+     * @param string $pageSize
+     * @return mixed
+     */
+    public function getNextPage($pickups, $pageSize)
+    {
+        return $this->getNextPageResources(self::serviceModelClassName(self::class), $pickups, $pageSize);
+    }
+
+    /**
      * Create a pickup.
      *
      * @param mixed $params

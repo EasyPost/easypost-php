@@ -4,6 +4,8 @@ namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
 use EasyPost\Refund;
+use EasyPost\Exception\General\EndOfPaginationException;
+use Exception;
 
 class RefundTest extends \PHPUnit\Framework\TestCase
 {
@@ -64,6 +66,31 @@ class RefundTest extends \PHPUnit\Framework\TestCase
 
         // Return so other tests can reuse these objects
         return $refunds;
+    }
+
+    /**
+     * Test retrieving next page.
+     */
+    public function testGetNextPage()
+    {
+        TestUtil::setupCassette('refunds/getNextPage.yml');
+
+        try {
+            $refunds = self::$client->refund->all([
+                'page_size' => Fixture::pageSize(),
+            ]);
+            $nextPage = self::$client->refund->getNextPage($refunds, Fixture::pageSize());
+
+            $firstIdOfFirstPage = $refunds['refunds'][0]->id;
+            $secondIdOfSecondPage = $nextPage['refunds'][0]->id;
+
+            $this->assertNotEquals($firstIdOfFirstPage, $secondIdOfSecondPage);
+        } catch (Exception $error) {
+            if (!($error instanceof EndOfPaginationException)) {
+                throw new Exception('Test failed intentionally');
+            }
+            $this->assertTrue(true);
+        }
     }
 
     /**

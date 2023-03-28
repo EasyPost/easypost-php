@@ -4,6 +4,8 @@ namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
 use EasyPost\ScanForm;
+use EasyPost\Exception\General\EndOfPaginationException;
+use Exception;
 
 class ScanFormTest extends \PHPUnit\Framework\TestCase
 {
@@ -78,5 +80,30 @@ class ScanFormTest extends \PHPUnit\Framework\TestCase
         $this->assertLessThanOrEqual($scanformsArray, Fixture::pageSize());
         $this->assertNotNull($scanForms['has_more']);
         $this->assertContainsOnlyInstancesOf(ScanForm::class, $scanformsArray);
+    }
+
+    /**
+     * Test retrieving next page.
+     */
+    public function testGetNextPage()
+    {
+        TestUtil::setupCassette('scanForms/getNextPage.yml');
+
+        try {
+            $scanforms = self::$client->scanForm->all([
+                'page_size' => Fixture::pageSize(),
+            ]);
+            $nextPage = self::$client->scanForm->getNextPage($scanforms, Fixture::pageSize());
+
+            $firstIdOfFirstPage = $scanforms['scan_forms'][0]->id;
+            $secondIdOfSecondPage = $nextPage['scan_forms'][0]->id;
+
+            $this->assertNotEquals($firstIdOfFirstPage, $secondIdOfSecondPage);
+        } catch (Exception $error) {
+            if (!($error instanceof EndOfPaginationException)) {
+                throw new Exception('Test failed intentionally');
+            }
+            $this->assertTrue(true);
+        }
     }
 }

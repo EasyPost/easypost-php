@@ -5,6 +5,8 @@ namespace EasyPost\Test;
 use EasyPost\EasyPostClient;
 use EasyPost\Exception\General\FilteringException;
 use EasyPost\Exception\General\InvalidParameterException;
+use EasyPost\Exception\General\EndOfPaginationException;
+use Exception;
 use EasyPost\Rate;
 use EasyPost\Shipment;
 use EasyPost\Util\Util;
@@ -78,6 +80,31 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         $this->assertLessThanOrEqual($shipmentsArray, Fixture::pageSize());
         $this->assertNotNull($shipments['has_more']);
         $this->assertContainsOnlyInstancesOf(Shipment::class, $shipmentsArray);
+    }
+
+    /**
+     * Test retrieving next page.
+     */
+    public function testGetNextPage()
+    {
+        TestUtil::setupCassette('shipments/getNextPage.yml');
+
+        try {
+            $shipments = self::$client->shipment->all([
+                'page_size' => Fixture::pageSize(),
+            ]);
+            $nextPage = self::$client->shipment->getNextPage($shipments, Fixture::pageSize());
+
+            $firstIdOfFirstPage = $shipments['shipments'][0]->id;
+            $secondIdOfSecondPage = $nextPage['shipments'][0]->id;
+
+            $this->assertNotEquals($firstIdOfFirstPage, $secondIdOfSecondPage);
+        } catch (Exception $error) {
+            if (!($error instanceof EndOfPaginationException)) {
+                throw new Exception('Test failed intentionally');
+            }
+            $this->assertTrue(true);
+        }
     }
 
     /**

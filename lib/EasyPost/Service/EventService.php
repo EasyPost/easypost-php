@@ -33,6 +33,18 @@ class EventService extends BaseService
     }
 
     /**
+     * Retrieve the next page of Event collection
+     *
+     * @param mixed $events
+     * @param string $pageSize
+     * @return mixed
+     */
+    public function getNextPage($events, $pageSize)
+    {
+        return $this->getNextPageResources(self::serviceModelClassName(self::class), $events, $pageSize);
+    }
+
+    /**
      * Retrieve all payloads for an event.
      *
      * @param string $id The event id
