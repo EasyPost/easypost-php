@@ -39,7 +39,7 @@ class AddressService extends BaseService
      * @param string $pageSize
      * @return mixed
      */
-    public function getNextPage($addresses, $pageSize)
+    public function getNextPage($addresses, $pageSize = null)
     {
         return $this->getNextPageResources(self::serviceModelClassName(self::class), $addresses, $pageSize);
     }

@@ -141,7 +141,16 @@ class BaseService
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
 
-    protected function getNextPageResources($class, $collection, $pageSize)
+    /**
+     * Internal retrieve next page method.
+     * TODO: Use this method in EndShipper and Batch once the API fully support it.
+     *
+     * @param string $class
+     * @param mixed $collection
+     * @param int $pageSize
+     * @return mixed
+     */
+    protected function getNextPageResources($class, $collection, $pageSize = null)
     {
         $objectName = substr(self::classUrl($class), 1);
         $collectionArray = $collection[$objectName];
