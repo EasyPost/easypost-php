@@ -3,6 +3,7 @@
 namespace EasyPost\Service;
 
 use EasyPost\Http\Requestor;
+use EasyPost\Util\InternalUtil;
 
 /**
  * Tracker service containing all the logic to make API calls.
@@ -28,7 +29,12 @@ class TrackerService extends BaseService
      */
     public function all($params = null)
     {
-        return self::allResources(self::serviceModelClassName(self::class), $params);
+        self::validate($params);
+        $response = Requestor::request($this->client, 'get', '/trackers', $params);
+        $response['tracking_code'] = $params['tracking_code'] ?? null;
+        $response['carrier'] = $params['carrier'] ?? null;
+
+        return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
 
     /**
@@ -38,9 +44,13 @@ class TrackerService extends BaseService
      * @param string $pageSize
      * @return mixed
      */
-    public function getNextPage($trackers, $pageSize)
+    public function getNextPage($trackers, $pageSize = null)
     {
-        return $this->getNextPageResources(self::serviceModelClassName(self::class), $trackers, $pageSize);
+        $params = [
+            'tracking_code' => $trackers->tracking_code,
+            'carrier' => $trackers->carrier,
+        ];
+        return $this->getNextPageResources(self::serviceModelClassName(self::class), $trackers, $pageSize, $params);
     }
 
     /**

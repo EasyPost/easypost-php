@@ -41,6 +41,7 @@ class ReportService extends BaseService
             $url = self::reportUrl($type);
             unset($params['type']);
             $response = Requestor::request($this->client, 'get', $url, $params);
+            $response['type'] = $type;
 
             return InternalUtil::convertToEasyPostObject($this->client, $response);
         }
@@ -53,7 +54,7 @@ class ReportService extends BaseService
      * @param string $pageSize
      * @return mixed
      */
-    public function getNextPage($reports, $pageSize)
+    public function getNextPage($reports, $pageSize = null)
     {
         $reportArray = $reports['reports'];
 
@@ -65,7 +66,7 @@ class ReportService extends BaseService
             'page_size' => $pageSize,
             'before_id' => $reportArray[count($reportArray) - 1]['id']
         ];
-        $url = self::reportUrl($reportArray[0]['object']);
+        $url = self::reportUrl($reports->type);
         $response = Requestor::request($this->client, 'get', $url, $params);
 
         if (empty($response['reports']) || !$response['has_more']) {

@@ -148,9 +148,10 @@ class BaseService
      * @param string $class
      * @param mixed $collection
      * @param int $pageSize
+     * @param mixed $optionalParams
      * @return mixed
      */
-    protected function getNextPageResources($class, $collection, $pageSize = null)
+    protected function getNextPageResources($class, $collection, $pageSize = null, $optionalParams = null)
     {
         $objectName = substr(self::classUrl($class), 1);
         $collectionArray = $collection[$objectName];
@@ -163,6 +164,10 @@ class BaseService
             'page_size' => $pageSize,
             'before_id' => $collectionArray[count($collectionArray) - 1]['id']
         ];
+
+        if ($optionalParams != null) {
+            $params = array_merge($params, $optionalParams);
+        }
 
         $response = $this->allResources($class, $params);
 

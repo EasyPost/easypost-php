@@ -36,7 +36,7 @@ class RefundService extends BaseService
      * @param string $pageSize
      * @return mixed
      */
-    public function getNextPage($refunds, $pageSize)
+    public function getNextPage($refunds, $pageSize = null)
     {
         return $this->getNextPageResources(self::serviceModelClassName(self::class), $refunds, $pageSize);
     }
