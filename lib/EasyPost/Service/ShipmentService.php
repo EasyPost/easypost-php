@@ -32,8 +32,8 @@ class ShipmentService extends BaseService
     {
         self::validate($params);
         $response = Requestor::request($this->client, 'get', '/shipments', $params);
-        $response['purchased'] = $params['purchased'] ?? true;
-        $response['include_children'] = $params['include_children'] ?? false;
+        $response['purchased'] = $params['purchased'] ?? null;
+        $response['include_children'] = $params['include_children'] ?? null;
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -47,10 +47,15 @@ class ShipmentService extends BaseService
      */
     public function getNextPage($shipments, $pageSize = null)
     {
-        $params = [
-            'purchased' => $shipments->purchased,
-            'include_children' => $shipments->include_children,
-        ];
+        $params = [];
+
+        if (isset($shipments->purchased)) {
+            $params['purchased'] = $shipments->purchased;
+        }
+
+        if (isset($shipments->include_children)) {
+            $params['include_children'] = $shipments->include_children;
+        }
         return $this->getNextPageResources(self::serviceModelClassName(self::class), $shipments, $pageSize, $params);
     }
 

@@ -46,10 +46,15 @@ class TrackerService extends BaseService
      */
     public function getNextPage($trackers, $pageSize = null)
     {
-        $params = [
-            'tracking_code' => $trackers->tracking_code,
-            'carrier' => $trackers->carrier,
-        ];
+        $params = [];
+
+        if (isset($trackers->tracking_code)) {
+            $params['tracking_code'] = $trackers->tracking_code;
+        }
+
+        if (isset($trackers->carrier)) {
+            $params['carrier'] = $trackers->carrier;
+        }
         return $this->getNextPageResources(self::serviceModelClassName(self::class), $trackers, $pageSize, $params);
     }
 
