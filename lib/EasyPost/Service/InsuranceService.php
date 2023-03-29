@@ -36,7 +36,7 @@ class InsuranceService extends BaseService
      * @param string $pageSize
      * @return mixed
      */
-    public function getNextPage($insurances, $pageSize)
+    public function getNextPage($insurances, $pageSize = null)
     {
         return $this->getNextPageResources(self::serviceModelClassName(self::class), $insurances, $pageSize);
     }

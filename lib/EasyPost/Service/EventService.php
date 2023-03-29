@@ -39,7 +39,7 @@ class EventService extends BaseService
      * @param string $pageSize
      * @return mixed
      */
-    public function getNextPage($events, $pageSize)
+    public function getNextPage($events, $pageSize = null)
     {
         return $this->getNextPageResources(self::serviceModelClassName(self::class), $events, $pageSize);
     }

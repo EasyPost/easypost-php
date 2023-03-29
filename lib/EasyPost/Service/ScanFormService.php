@@ -36,7 +36,7 @@ class ScanFormService extends BaseService
      * @param string $pageSize
      * @return mixed
      */
-    public function getNextPage($scanforms, $pageSize)
+    public function getNextPage($scanforms, $pageSize = null)
     {
         return $this->getNextPageResources(self::serviceModelClassName(self::class), $scanforms, $pageSize);
     }

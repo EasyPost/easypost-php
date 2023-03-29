@@ -39,7 +39,7 @@ class PickupService extends BaseService
      * @param string $pageSize
      * @return mixed
      */
-    public function getNextPage($pickups, $pageSize)
+    public function getNextPage($pickups, $pageSize = null)
     {
         return $this->getNextPageResources(self::serviceModelClassName(self::class), $pickups, $pageSize);
     }
