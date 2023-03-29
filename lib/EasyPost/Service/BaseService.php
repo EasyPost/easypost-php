@@ -165,7 +165,7 @@ class BaseService
             'before_id' => $collectionArray[count($collectionArray) - 1]['id']
         ];
 
-        if ($optionalParams != null) {
+        if (isset($optionalParams)) {
             $params = array_merge($params, $optionalParams);
         }
 
