@@ -176,7 +176,7 @@ class Requestor
             'Accept' => 'application/json',
             'Authorization' => "Bearer {$client->getApiKey()}",
             'Content-Type' => 'application/json',
-            'User-Agent' => 'EasyPost/v2 PhpClient/' . Constants::LIBRARY_VERSION . " PHP/$phpVersion OS/$osType OSVersion/$osVersion OSArch/$osArch",
+            'User-Agent' => 'EasyPost/v2 PhpClient/' . Constants::LIBRARY_VERSION . " PHP/$phpVersion OS/$osType OSVersion/$osVersion OSArch/$osArch", // phpcs:ignore
         ];
 
         if ($client->mock()) {
@@ -201,7 +201,8 @@ class Requestor
             throw new HttpException(sprintf(Constants::COMMUNICATION_ERROR, 'EasyPost', $error->getMessage()));
         }
 
-        // Guzzle does not have a native way of catching timeout exceptions... If we don't have a response at this point, it's likely due to a timeout
+        // Guzzle does not have a native way of catching timeout exceptions...
+        // If we don't have a response at this point, it's likely due to a timeout.
         if (!isset($response)) {
             throw new TimeoutException(sprintf(Constants::NO_RESPONSE_ERROR, 'EasyPost'));
         }
@@ -225,7 +226,11 @@ class Requestor
         try {
             $response = json_decode($httpBody, true);
         } catch (\Exception $e) {
-            throw new JsonException("Invalid response body from API: HTTP Status: ({$httpStatus}) {$httpBody}", $httpStatus, $httpBody);
+            throw new JsonException(
+                "Invalid response body from API: HTTP Status: ({$httpStatus}) {$httpBody}",
+                $httpStatus,
+                $httpBody
+            );
         }
 
         if ($httpStatus < 200 || $httpStatus >= 300) {
@@ -258,10 +263,15 @@ class Requestor
     public static function handleApiError($httpBody, $httpStatus, $response)
     {
         if (!is_array($response) || !isset($response['error'])) {
-            throw new JsonException("Invalid response object from API: HTTP Status: ({$httpStatus}) {$httpBody})", $httpStatus, $httpBody);
+            throw new JsonException(
+                "Invalid response object from API: HTTP Status: ({$httpStatus}) {$httpBody})",
+                $httpStatus,
+                $httpBody
+            );
         }
 
-        // Errors may be an array improperly assigned to the `message` field instead of the `errors` field, concatenate those here
+        // Errors may be an array improperly assigned to the `message` field instead
+        // of the `errors` field, concatenate those here.
         if (is_array($response['error'])) {
             $message = is_array($response['error']['message'])
                 ? json_encode($response['error']['message'])

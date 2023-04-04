@@ -42,7 +42,8 @@ class UserTest extends \PHPUnit\Framework\TestCase
         $this->assertStringMatchesFormat('user_%s', $user->id);
         $this->assertEquals('Test User', $user->name);
 
-        self::$client->user->delete($user->id); // Delete the user once done so we don't pollute with hundreds of child users
+        // Delete the user once done so we don't pollute with hundreds of child users
+        self::$client->user->delete($user->id);
     }
 
     /**
@@ -157,7 +158,8 @@ class UserTest extends \PHPUnit\Framework\TestCase
 
         $this->assertContainsOnlyInstancesOf(ApiKey::class, $apiKeys);
 
-        self::$client->user->delete($childUser->id); // Delete the user once done so we don't pollute with hundreds of child users
+        // Delete the user once done so we don't pollute with hundreds of child users
+        self::$client->user->delete($childUser->id);
     }
 
     /**

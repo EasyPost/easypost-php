@@ -145,9 +145,16 @@ abstract class InternalUtil
 
             return $mapped;
         } elseif (is_array($response)) {
-            if (isset($response['object']) && is_string($response['object']) && isset(OBJECT_MAPPING[$response['object']])) {
+            if (
+                isset($response['object'])
+                && is_string($response['object'])
+                && isset(OBJECT_MAPPING[$response['object']])
+            ) {
                 $class = OBJECT_MAPPING[$response['object']];
-            } elseif (isset($response['id']) && isset(OBJECT_ID_PREFIXES[substr($response['id'], 0, strpos($response['id'], '_'))])) {
+            } elseif (
+                isset($response['id'])
+                && isset(OBJECT_ID_PREFIXES[substr($response['id'], 0, strpos($response['id'], '_'))])
+            ) {
                 $class = OBJECT_ID_PREFIXES[substr($response['id'], 0, strpos($response['id'], '_'))];
             } else {
                 $class = '\EasyPost\EasyPostObject';

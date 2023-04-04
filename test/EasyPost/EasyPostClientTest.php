@@ -59,7 +59,10 @@ class EasyPostClientTest extends \PHPUnit\Framework\TestCase
         try {
             new EasyPostClient(null);
         } catch (MissingParameterException $error) {
-            $this->assertEquals('No API key provided. See https://www.easypost.com/docs for details, or contact support@easypost.com for assistance.', $error->getMessage());
+            $this->assertEquals(
+                'No API key provided. See https://www.easypost.com/docs for details, or contact support@easypost.com for assistance.', // phpcs:ignore
+                $error->getMessage()
+            );
         }
     }
 
@@ -72,7 +75,10 @@ class EasyPostClientTest extends \PHPUnit\Framework\TestCase
             $client = new EasyPostClient('123');
             $client->invalidProperty;
         } catch (EasyPostException $error) {
-            $this->assertEquals('EasyPost Notice: Undefined property of EasyPostClient instance: invalidProperty', $error->getMessage());
+            $this->assertEquals(
+                'EasyPost Notice: Undefined property of EasyPostClient instance: invalidProperty',
+                $error->getMessage()
+            );
         }
     }
 }

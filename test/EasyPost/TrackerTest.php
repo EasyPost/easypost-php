@@ -3,8 +3,8 @@
 namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
-use EasyPost\Tracker;
 use EasyPost\Exception\General\EndOfPaginationException;
+use EasyPost\Tracker;
 use Exception;
 
 class TrackerTest extends \PHPUnit\Framework\TestCase
@@ -69,7 +69,8 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
             'tracking_code' => 'EZ1000000001',
         ]);
 
-        // Test trackers cycle through their "dummy" statuses automatically, the created and retrieved objects may differ
+        // Test trackers cycle through their "dummy" statuses automatically,
+        // the created and retrieved objects may differ.
         $retrievedTracker = self::$client->tracker->retrieve($tracker->id);
 
         $this->assertInstanceOf(Tracker::class, $retrievedTracker);

@@ -65,7 +65,7 @@ class BillingTest extends \PHPUnit\Framework\TestCase
                 ),
                 new MockRequestResponseInfo(
                     200,
-                    '{"id": "summary_123", "primary_payment_method": {"id": "card_123", "last4": "1234"}, "secondary_payment_method": {"id": "bank_123", "bank_name": "Mock Bank"}}'
+                    '{"id": "summary_123", "primary_payment_method": {"id": "card_123", "last4": "1234"}, "secondary_payment_method": {"id": "bank_123", "bank_name": "Mock Bank"}}' // phpcs:ignore
                 )
             ),
         );
@@ -82,7 +82,12 @@ class BillingTest extends \PHPUnit\Framework\TestCase
      */
     public static function getClient($mockUtility = null)
     {
-        return new EasyPostClient(getenv('EASYPOST_TEST_API_KEY'), Constants::TIMEOUT, Constants::API_BASE, $mockUtility);
+        return new EasyPostClient(
+            getenv('EASYPOST_TEST_API_KEY'),
+            Constants::TIMEOUT,
+            Constants::API_BASE,
+            $mockUtility
+        );
     }
 
     /**
@@ -171,7 +176,8 @@ class BillingTest extends \PHPUnit\Framework\TestCase
      * Test getting a payment method by priority level
      *
      * Deleting a payment method gets the payment method internally, which should test the switch case.
-     * The payment method is not exposed by this method, so we can't assert against it. If the function doesn't throw an exception, it worked.
+     * The payment method is not exposed by this method, so we can't assert against it.
+     * If the function doesn't throw an exception, it worked.
      */
     public function testGetPaymentMethodPrioritySwitchCase()
     {
@@ -216,14 +222,16 @@ class BillingTest extends \PHPUnit\Framework\TestCase
                 ),
                 new MockRequestResponseInfo(
                     200,
-                    '{"id": "summary_123", "primary_payment_method": null, "secondary_payment_method": null}' // null, will throw an error when we try to grab this payment method from the summary
+                    // null, will throw an error when we try to grab this payment method from the summary
+                    '{"id": "summary_123", "primary_payment_method": null, "secondary_payment_method": null}'
                 )
             )
         );
 
         $client = self::getClient($mockingUtility);
 
-        // Deleting a payment method gets the payment method internally, which should execute the code that will trigger an exception.
+        // Deleting a payment method gets the payment method internally, which should execute the
+        // code that will trigger an exception.
         try {
             $client->billing->deletePaymentMethod('primary');
 
@@ -246,14 +254,16 @@ class BillingTest extends \PHPUnit\Framework\TestCase
                 ),
                 new MockRequestResponseInfo(
                     200,
-                    '{"id": "summary_123", "primary_payment_method": {"id": ""}, "secondary_payment_method": {"id": ""}}' // No ID, will throw an error when we try to grab this payment method from the summary
+                    // No ID, will throw an error when we try to grab this payment method from the summary
+                    '{"id": "summary_123", "primary_payment_method": {"id": ""}, "secondary_payment_method": {"id": ""}}' // phpcs:ignore
                 )
             )
         );
 
         $client = self::getClient($mockingUtility);
 
-        // Deleting a payment method gets the payment method internally, which should execute the code that will trigger an exception.
+        // Deleting a payment method gets the payment method internally, which should execute the
+        // code that will trigger an exception.
         try {
             $client->billing->deletePaymentMethod('primary');
 

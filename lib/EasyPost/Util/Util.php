@@ -61,7 +61,9 @@ abstract class Util
 
         if (!in_array(strtolower($deliveryAccuracy), $validDeliveryAccuracyValues)) {
             $jsonValidList = json_encode($validDeliveryAccuracyValues);
-            throw new InvalidParameterException(sprintf(Constants::INVALID_PARAMETER_ERROR_WITH_SUGGESTION, 'delivery_accuracy', $jsonValidList));
+            throw new InvalidParameterException(
+                sprintf(Constants::INVALID_PARAMETER_ERROR_WITH_SUGGESTION, 'delivery_accuracy', $jsonValidList)
+            );
         }
 
         foreach ($smartRates as $rate) {
@@ -82,7 +84,7 @@ abstract class Util
     /**
      * Validate a webhook originated from EasyPost by comparing the HMAC header to a shared secret.
      * If the signatures do not match, an error will be raised signifying the webhook either did not originate
-     * from EasyPost or the secrets do not match. If the signatures do match, the `event_body` will be returned as JSON.
+     * from EasyPost or the secrets do not match. If the signatures do match, the `event_body` will be returned as JSON
      *
      * @param mixed $eventBody
      * @param mixed $headers

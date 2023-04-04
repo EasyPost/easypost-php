@@ -43,7 +43,8 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
         $this->assertStringMatchesFormat('hook_%s', $webhook->id);
         $this->assertEquals(Fixture::webhookUrl(), $webhook->url);
 
-        self::$client->webhook->delete($webhook->id); // We are deleting the webhook here so we don't keep sending events to a dead webhook.
+        // We are deleting the webhook here so we don't keep sending events to a dead webhook.
+        self::$client->webhook->delete($webhook->id);
     }
 
     /**
@@ -62,7 +63,8 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf(Webhook::class, $retrievedWebhook);
         $this->assertEquals($webhook, $retrievedWebhook);
 
-        self::$client->webhook->delete($retrievedWebhook->id); // We are deleting the webhook here so we don't keep sending events to a dead webhook.
+        // We are deleting the webhook here so we don't keep sending events to a dead webhook.
+        self::$client->webhook->delete($retrievedWebhook->id);
     }
 
     /**
@@ -98,7 +100,8 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
         // The response here won't differ since we don't update any data, just check we get the object back
         $this->assertInstanceOf(Webhook::class, $updatedWebhook);
 
-        self::$client->webhook->delete($webhook->id); // We are deleting the webhook here so we don't keep sending events to a dead webhook.
+        // We are deleting the webhook here so we don't keep sending events to a dead webhook.
+        self::$client->webhook->delete($webhook->id);
     }
 
     /**
@@ -150,7 +153,10 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
         try {
             Util::validateWebhook(Fixture::eventBytes(), $headers, $webhookSecret);
         } catch (SignatureVerificationException $error) {
-            $this->assertEquals('Webhook received did not originate from EasyPost or had a webhook secret mismatch.', $error->getMessage());
+            $this->assertEquals(
+                'Webhook received did not originate from EasyPost or had a webhook secret mismatch.',
+                $error->getMessage()
+            );
         }
     }
 

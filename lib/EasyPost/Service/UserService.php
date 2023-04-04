@@ -102,7 +102,7 @@ class UserService extends BaseService
             // This function was called on the authenticated user
             $myApiKeys = $apiKeys->keys;
         } else {
-            // This function was called on a child user (authenticated as parent, only return this child user's details).
+            // This function was called on a child user, authenticated as parent, only return this child user's details
             $myApiKeys = [];
             foreach ($apiKeys->children as $childrenKeys) {
                 if ($childrenKeys->id == $id) {
@@ -124,7 +124,12 @@ class UserService extends BaseService
      */
     public function updateBrand($id, $params = null)
     {
-        $response = Requestor::request($this->client, 'patch', $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/brand', $params);
+        $response = Requestor::request(
+            $this->client,
+            'patch',
+            $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/brand',
+            $params
+        );
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }

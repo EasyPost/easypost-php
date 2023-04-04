@@ -43,7 +43,8 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf(CarrierAccount::class, $carrierAccount);
         $this->assertStringMatchesFormat('ca_%s', $carrierAccount->id);
 
-        self::$client->carrierAccount->delete($carrierAccount->id); // Delete the carrier account once it's done being tested.
+        // Delete the carrier account once it's done being tested.
+        self::$client->carrierAccount->delete($carrierAccount->id);
     }
 
     /**
@@ -118,7 +119,8 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf(CarrierAccount::class, $retrievedCarrierAccount);
         $this->assertEquals($carrierAccount, $retrievedCarrierAccount);
 
-        self::$client->carrierAccount->delete($retrievedCarrierAccount->id); // Delete the carrier account once it's done being tested.
+        // Delete the carrier account once it's done being tested.
+        self::$client->carrierAccount->delete($retrievedCarrierAccount->id);
     }
 
     /**
@@ -155,7 +157,8 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
         $this->assertStringMatchesFormat('ca_%s', $updatedCarrierAccount->id);
         $this->assertEquals($testDescription, $updatedCarrierAccount->description);
 
-        self::$client->carrierAccount->delete($updatedCarrierAccount->id); // Delete the carrier account once it's done being tested.
+        // Delete the carrier account once it's done being tested.
+        self::$client->carrierAccount->delete($updatedCarrierAccount->id);
     }
 
     /**
