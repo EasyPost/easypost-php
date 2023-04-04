@@ -60,7 +60,10 @@ class AddressTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf(Address::class, $address);
         $this->assertStringMatchesFormat('adr_%s', $address->id);
         $this->assertEquals('417 MONTGOMERY ST FL 5', $address->street1);
-        $this->assertEquals('Invalid secondary information(Apt/Suite#)', $address->verifications->zip4->errors[0]->message);
+        $this->assertEquals(
+            'Invalid secondary information(Apt/Suite#)',
+            $address->verifications->zip4->errors[0]->message
+        );
     }
 
     /**
@@ -97,7 +100,10 @@ class AddressTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf(Address::class, $address);
         $this->assertStringMatchesFormat('adr_%s', $address->id);
         $this->assertEquals('417 MONTGOMERY ST FL 5', $address->street1);
-        $this->assertEquals('Invalid secondary information(Apt/Suite#)', $address->verifications->zip4->errors[0]->message);
+        $this->assertEquals(
+            'Invalid secondary information(Apt/Suite#)',
+            $address->verifications->zip4->errors[0]->message
+        );
     }
 
     /**

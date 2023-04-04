@@ -21,6 +21,12 @@
     <rule ref="PSR12" />
 
     <!-- Enforce custom rules -->
+    <rule ref= "Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="120"/>
+            <property name="absoluteLineLimit" value="120"/>
+        </properties>
+    </rule>
     <rule ref="Generic.Arrays.DisallowLongArraySyntax" />
     <rule ref="Squiz.NamingConventions.ValidVariableName.NotCamelCaps" />
     <rule ref="Squiz.Strings.DoubleQuoteUsage.NotRequired" />

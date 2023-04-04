@@ -3,13 +3,13 @@
 namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
+use EasyPost\Exception\General\EndOfPaginationException;
 use EasyPost\Exception\General\FilteringException;
 use EasyPost\Exception\General\InvalidParameterException;
-use EasyPost\Exception\General\EndOfPaginationException;
-use Exception;
 use EasyPost\Rate;
 use EasyPost\Shipment;
 use EasyPost\Util\Util;
+use Exception;
 
 class ShipmentTest extends \PHPUnit\Framework\TestCase
 {
@@ -375,7 +375,8 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
         $shipment = self::$client->shipment->create(Fixture::fullShipment());
 
-        // Test lowest rate by excluding a carrier (this is a weak test but we cannot assume existence of a non-USPS carrier)
+        // Test lowest rate by excluding a carrier (this is a weak test but we cannot assume existence
+        // of a non-USPS carrier).
         $lowestRate = $shipment->lowestRate(['!RandomCarrier']);
         $this->assertEquals('First', $lowestRate['service']);
         $this->assertEquals('5.82', $lowestRate['rate']);
@@ -418,7 +419,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
             self::$client->shipment->lowestSmartRate($shipment->id, 3, 'BAD_ACCURACY');
         } catch (InvalidParameterException $error) {
             $this->assertEquals(
-                'Invalid delivery_accuracy value, must be one of: ["percentile_50","percentile_75","percentile_85","percentile_90","percentile_95","percentile_97","percentile_99"]',
+                'Invalid delivery_accuracy value, must be one of: ["percentile_50","percentile_75","percentile_85","percentile_90","percentile_95","percentile_97","percentile_99"]', // phpcs:ignore
                 $error->getMessage()
             );
         }
@@ -443,7 +444,10 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         try {
             Util::getLowestSmartRate($smartRates, 3, 'BAD_ACCURACY');
         } catch (InvalidParameterException $error) {
-            $this->assertEquals('Invalid delivery_accuracy value, must be one of: ["percentile_50","percentile_75","percentile_85","percentile_90","percentile_95","percentile_97","percentile_99"]', $error->getMessage());
+            $this->assertEquals(
+                'Invalid delivery_accuracy value, must be one of: ["percentile_50","percentile_75","percentile_85","percentile_90","percentile_95","percentile_97","percentile_99"]', // phpcs:ignore
+                $error->getMessage()
+            );
         }
     }
 

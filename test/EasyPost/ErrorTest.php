@@ -41,9 +41,10 @@ class ErrorTest extends \PHPUnit\Framework\TestCase
             $this->assertEquals('PARAMETER.REQUIRED', $error->code);
             $this->assertEquals('Missing required parameter.', $error->getMessage());
             $this->assertEquals(['field' => 'shipment', 'message' => 'cannot be blank'], $error->errors[0]);
-            $this->assertEquals('{"error":{"code":"PARAMETER.REQUIRED","message":"Missing required parameter.","errors":[{"field":"shipment","message":"cannot be blank"}]}}', $error->getHttpBody());
+            $this->assertEquals('{"error":{"code":"PARAMETER.REQUIRED","message":"Missing required parameter.","errors":[{"field":"shipment","message":"cannot be blank"}]}}', $error->getHttpBody()); // phpcs:ignore
 
-            // We check that the pretty printed output is the same here, leave the odd formatting as it is here and do not auto-format the next few lines
+            // We check that the pretty printed output is the same here, leave the odd formatting as
+            // it is here and do not auto-format the next few lines.
             $error->prettyPrint();
             $this->expectOutputString('PARAMETER.REQUIRED (422): Missing required parameter.
 Field errors:

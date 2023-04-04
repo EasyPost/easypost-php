@@ -73,8 +73,12 @@ class EasyPostClient extends BaseService
      * @param string $apiBase
      * @param object $mockingUtility
      */
-    public function __construct($apiKey, $timeout = Constants::TIMEOUT, $apiBase = Constants::API_BASE, $mockingUtility = null)
-    {
+    public function __construct(
+        $apiKey,
+        $timeout = Constants::TIMEOUT,
+        $apiBase = Constants::API_BASE,
+        $mockingUtility = null
+    ) {
         // Client properties
         $this->apiKey = $apiKey;
         $this->timeout = $timeout;
@@ -82,7 +86,9 @@ class EasyPostClient extends BaseService
         $this->mockingUtility = $mockingUtility;
 
         if (!$this->apiKey) {
-            throw new MissingParameterException('No API key provided. See https://www.easypost.com/docs for details, or contact ' . Constants::SUPPORT_EMAIL . ' for assistance.');
+            throw new MissingParameterException(
+                'No API key provided. See https://www.easypost.com/docs for details, or contact ' . Constants::SUPPORT_EMAIL . ' for assistance.' // phpcs:ignore
+            );
         }
     }
 
@@ -124,7 +130,9 @@ class EasyPostClient extends BaseService
         if (array_key_exists($serviceName, $serviceClassMap)) {
             return new $serviceClassMap[$serviceName]($this);
         } else {
-            throw new EasyPostException(sprintf(Constants::UNDEFINED_PROPERTY_ERROR, 'EasyPostClient', $serviceName));
+            throw new EasyPostException(
+                sprintf(Constants::UNDEFINED_PROPERTY_ERROR, 'EasyPostClient', $serviceName)
+            );
         }
     }
 

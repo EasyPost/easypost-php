@@ -134,7 +134,8 @@ class BatchTest extends \PHPUnit\Framework\TestCase
 
         $scanformBatch = self::$client->batch->createScanForm($boughtBatch->id);
 
-        // We can't assert anything meaningful here because the scanform gets queued for generation and may not be immediately available
+        // We can't assert anything meaningful here because the scanform gets queued for generation
+        // and may not be immediately available.
         $this->assertInstanceOf(Batch::class, $scanformBatch);
     }
 
@@ -186,7 +187,8 @@ class BatchTest extends \PHPUnit\Framework\TestCase
             ['file_format' => 'ZPL']
         );
 
-        // We can't assert anything meaningful here because the label gets queued for generation and may not be immediately available
+        // We can't assert anything meaningful here because the label gets queued for generation
+        // and may not be immediately available.
         $this->assertInstanceOf(Batch::class, $labelBatch);
     }
 }

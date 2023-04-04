@@ -3,8 +3,8 @@
 namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
-use EasyPost\Refund;
 use EasyPost\Exception\General\EndOfPaginationException;
+use EasyPost\Refund;
 use Exception;
 
 class RefundTest extends \PHPUnit\Framework\TestCase
@@ -36,7 +36,8 @@ class RefundTest extends \PHPUnit\Framework\TestCase
         TestUtil::setupCassette('refunds/create.yml');
 
         $shipment = self::$client->shipment->create(Fixture::oneCallBuyShipment());
-        $retrievedShipment = self::$client->shipment->retrieve($shipment->id); // We need to retrieve the shipment so that the tracking_code has time to populate
+        // We need to retrieve the shipment so that the tracking_code has time to populate
+        $retrievedShipment = self::$client->shipment->retrieve($shipment->id);
 
         $refund = self::$client->refund->create([
             'carrier' => Fixture::usps(),

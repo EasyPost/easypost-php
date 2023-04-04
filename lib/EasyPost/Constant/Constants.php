@@ -22,12 +22,12 @@ abstract class Constants
 
     // Exception messages (many of these are intended to be used with `sprintf()`)
     const ARRAY_REQUIRED_ERROR = 'You must pass an array as the first argument to EasyPost API method calls.';
-    const COMMUNICATION_ERROR = 'Unexpected error communicating with %s. If this problem persists please let us know at ' . self::SUPPORT_EMAIL . '. %s';
+    const COMMUNICATION_ERROR = 'Unexpected error communicating with %s. If this problem persists please let us know at ' . self::SUPPORT_EMAIL . '. %s'; // phpcs:ignore
     const DECODE_WEBHOOK_ERROR = 'There was a problem decoding the webhook.';
     const INVALID_PARAMETER_ERROR_WITH_SUGGESTION = 'Invalid %s value, must be one of: %s';
     const INVALID_PAYMENT_METHOD_ERROR = 'The chosen payment method is not valid. Please try again.';
     const INVALID_SIGNATURE_ERROR = 'Webhook received does not contain an HMAC signature.';
-    const INVALID_WEBHOOK_VALIDATION_ERROR = 'Webhook received did not originate from EasyPost or had a webhook secret mismatch.';
+    const INVALID_WEBHOOK_VALIDATION_ERROR = 'Webhook received did not originate from EasyPost or had a webhook secret mismatch.'; // phpcs:ignore
     const MISSING_PARAMETER_ERROR = '%s is required.';
     const NO_BILLING_ERROR = 'Billing has not been setup for this user. Please add a payment method.';
     const NO_ID_URL_ERROR = 'Could not determine which URL to request: %s instance has invalid ID: %s';

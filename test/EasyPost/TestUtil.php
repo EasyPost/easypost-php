@@ -58,7 +58,7 @@ class TestUtil
             $currentTimestamp = time();
 
             if ($currentTimestamp > $expirationTimestamp) {
-                error_log("$fullCassettePath is older than $expirationDays days and has expired. Please re-record the cassette.");
+                error_log("$fullCassettePath is older than $expirationDays days and has expired. Please re-record the cassette."); // phpcs:ignore
             }
         }
     }

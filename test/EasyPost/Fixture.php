@@ -19,11 +19,13 @@ class Fixture
         return self::readFixtureData()['page_sizes']['five_results'];
     }
 
-    // This is the USPS carrier account ID that comes with your EasyPost account by default and should be used for all tests
+    // This is the USPS carrier account ID that comes with your EasyPost account by
+    // default and should be used for all tests.
     public static function uspsCarrierAccountId()
     {
         // Fallback to the EasyPost PHP Client Library Test User USPS carrier account ID due to strict matching
-        $uspsCarrierAccountId = getenv('USPS_CARRIER_ACCOUNT_ID') !== false ? getenv('USPS_CARRIER_ACCOUNT_ID') : 'ca_8dc116debcdb49b5a66a2ddee4612600';
+        $uspsCarrierAccountId = getenv('USPS_CARRIER_ACCOUNT_ID') !== false
+            ? getenv('USPS_CARRIER_ACCOUNT_ID') : 'ca_8dc116debcdb49b5a66a2ddee4612600';
 
         return $uspsCarrierAccountId;
     }

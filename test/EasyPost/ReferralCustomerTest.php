@@ -3,8 +3,8 @@
 namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
-use EasyPost\User;
 use EasyPost\Exception\General\EndOfPaginationException;
+use EasyPost\User;
 use Exception;
 
 class ReferralCustomerTest extends \PHPUnit\Framework\TestCase
@@ -18,9 +18,11 @@ class ReferralCustomerTest extends \PHPUnit\Framework\TestCase
     public static function setUpBeforeClass(): void
     {
         TestUtil::setupVcrTests();
-        $partnerUserProdApiKey = getenv('PARTNER_USER_PROD_API_KEY') !== false ? getenv('PARTNER_USER_PROD_API_KEY') : '123';
+        $partnerUserProdApiKey = getenv('PARTNER_USER_PROD_API_KEY') !== false
+            ? getenv('PARTNER_USER_PROD_API_KEY') : '123';
         self::$client = new EasyPostClient($partnerUserProdApiKey);
-        self::$referralUserProdApiKey = getenv('REFERRAL_USER_PROD_API_KEY') !== false ? getenv('REFERRAL_USER_PROD_API_KEY') : '123';
+        self::$referralUserProdApiKey = getenv('REFERRAL_USER_PROD_API_KEY') !== false
+            ? getenv('REFERRAL_USER_PROD_API_KEY') : '123';
     }
 
     /**
@@ -67,7 +69,7 @@ class ReferralCustomerTest extends \PHPUnit\Framework\TestCase
         $this->assertContainsOnlyInstancesOf(User::class, $referralUsersArray);
     }
 
-        /**
+    /**
      * Test retrieving next page.
      */
     public function testGetNextPage()
@@ -102,7 +104,10 @@ class ReferralCustomerTest extends \PHPUnit\Framework\TestCase
         $referralUsers = self::$client->referralCustomer->all();
 
         try {
-            self::$client->referralCustomer->updateEmail('email@example.com', $referralUsers['referral_customers'][0]['id']);
+            self::$client->referralCustomer->updateEmail(
+                'email@example.com',
+                $referralUsers['referral_customers'][0]['id']
+            );
             $this->assertTrue(true);
         } catch (\Exception $exception) {
             $this->fail('Exception thrown when we expected no error');

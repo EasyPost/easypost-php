@@ -90,12 +90,24 @@ class ReferralCustomerService extends BaseService
      * @return mixed
      * @throws ExternalApiException
      */
-    public function addCreditCard($referralApiKey, $number, $expirationMonth, $expirationYear, $cvc, $primaryOrSecondary = 'primary')
-    {
+    public function addCreditCard(
+        $referralApiKey,
+        $number,
+        $expirationMonth,
+        $expirationYear,
+        $cvc,
+        $primaryOrSecondary = 'primary'
+    ) {
         $easypostStripeApiKey = self::retrieveEasypostStripeApiKey();
 
         try {
-            $stripeToken = self::createStripeToken($number, $expirationMonth, $expirationYear, $cvc, $easypostStripeApiKey);
+            $stripeToken = self::createStripeToken(
+                $number,
+                $expirationMonth,
+                $expirationYear,
+                $cvc,
+                $easypostStripeApiKey
+            );
         } catch (\Exception $error) {
             throw new ExternalApiException(Constants::SEND_STRIPE_DETAILS_ERROR);
         }
@@ -161,7 +173,8 @@ class ReferralCustomerService extends BaseService
             throw new HttpException(sprintf(Constants::COMMUNICATION_ERROR, 'Stripe', $error->getMessage()));
         }
 
-        // Guzzle does not have a native way of catching timeout exceptions... If we don't have a response at this point, it's likely due to a timeout
+        // Guzzle does not have a native way of catching timeout exceptions...
+        // If we don't have a response at this point, it's likely due to a timeout.
         if (!isset($response)) {
             throw new TimeoutException(sprintf(Constants::NO_RESPONSE_ERROR, 'Stripe'));
         }
