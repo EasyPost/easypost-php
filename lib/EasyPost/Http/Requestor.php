@@ -270,15 +270,10 @@ class Requestor
             );
         }
 
-        // Errors may be an array improperly assigned to the `message` field instead
-        // of the `errors` field, concatenate those here.
-        if (is_array($response['error'])) {
-            $message = is_array($response['error']['message'])
-                ? json_encode($response['error']['message'])
-                : $response['error']['message'];
-        } elseif (!empty($response['error'])) {
-            $message = $response['error'];
-        }
+        $errorMessageList = [];
+        $errorMessage = $response['error']['message'];
+        $message = is_string($errorMessage) ? $errorMessage :
+                self::traverseJsonElement($errorMessage, $errorMessageList);
 
         if ($httpStatus >= 300 && $httpStatus < 400) {
             throw new RedirectException($message, $httpStatus, $httpBody);
@@ -324,5 +319,33 @@ class Requestor
         }
 
         throw new $errorType($message, $httpStatus, $httpBody);
+    }
+
+    /**
+     * Recursively traverses a JSON element to extract error messages and returns them as a comma-separated string.
+     *
+     * @param array $errorMessage
+     * @param array $messagesList
+     * @return string
+     */
+    private static function traverseJsonElement($errorMessage, &$messagesList)
+    {
+        switch (gettype($errorMessage)) {
+            case 'array':
+                foreach ($errorMessage as $value) {
+                    self::traverseJsonElement($value, $messagesList);
+                }
+                break;
+            case 'object':
+                foreach ($errorMessage as $value) {
+                    self::traverseJsonElement($value, $messagesList);
+                }
+                break;
+            default:
+                $messagesList[] = strval($errorMessage);
+                break;
+        }
+
+        return implode(', ', $messagesList);
     }
 }

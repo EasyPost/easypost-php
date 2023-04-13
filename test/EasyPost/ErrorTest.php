@@ -4,6 +4,8 @@ namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
 use EasyPost\Exception\Api\ApiException;
+use EasyPost\Exception\General\EasyPostException;
+use EasyPost\Http\Requestor;
 
 class ErrorTest extends \PHPUnit\Framework\TestCase
 {
@@ -52,6 +54,86 @@ Field errors:
   message: cannot be blank
 
 ');
+        }
+    }
+
+    /**
+     * Test error deserialization with an array of error.message
+     */
+    public function testErrorMessageArray()
+    {
+        $errorResponse = json_decode('{
+            "error": {
+                "code": "UNPROCESSABLE_ENTITY",
+                "message": ["Bad format", "Bad format 2"],
+                "errors": []
+            }
+        }', true);
+
+        try {
+            Requestor::handleApiError(null, 404, $errorResponse);
+        } catch (EasyPostException $error) {
+            $this->assertEquals('Bad format, Bad format 2', $error->getMessage());
+        }
+    }
+
+    /**
+     * Test error deserialization with an Array Map of error.message
+     */
+    public function testErrorMessageMap()
+    {
+        $errorResponse = json_decode('{
+            "error": {
+                "code": "UNPROCESSABLE_ENTITY",
+                "message": {
+                    "errors": [
+                        "Bad format", "Bad format 2"
+                    ]
+                },
+                "errors": []
+            }
+        }', true);
+
+        try {
+            Requestor::handleApiError(null, 404, $errorResponse);
+        } catch (EasyPostException $error) {
+            $this->assertEquals('Bad format, Bad format 2', $error->getMessage());
+        }
+    }
+
+    /**
+     * Test error deserialization with an really bad format of error.message
+     */
+    public function testErrorMessageBadFormat()
+    {
+        $errorResponse = json_decode('{
+            "error": {
+                "code": "UNPROCESSABLE_ENTITY",
+                "message": {
+                    "errors": [
+                        "Bad format",
+                        "Bad format 2"
+                    ],
+                    "bad_data": [
+                        {
+                            "first_message": "Bad format 3",
+                            "second_message": "Bad format 4",
+                            "thrid_message": "Bad format 5"
+                        }
+                    ]
+                },
+                "errors": []
+            }
+        }', true);
+
+
+        try {
+            Requestor::handleApiError(null, 404, $errorResponse);
+        } catch (EasyPostException $error) {
+            $this->assertEquals(
+                'Bad format, Bad format 2, Bad format 3, Bad format 4, Bad format 5',
+                $error->getMessage()
+            );
         }
     }
 }
