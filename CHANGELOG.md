@@ -1,7 +1,8 @@
 # CHANGELOG
 
-## v6.4.1 (2023-04-18)
+## v6.5.0 (2023-04-18)
 
+- Adds beta `retrieveCarrierMetadata` function
 - Improves Error Deserialization to dynamically handle edge cases that have a bad format
 
 ## v6.4.0 (2023-04-04)
