@@ -65,7 +65,7 @@ class BetaCarrierMetadataTest extends \PHPUnit\Framework\TestCase
             ['service_levels', 'predefined_packages'],
         );
 
-        // Assert we get multiple carriers
+        // Assert we get the single carrier we asked for and only the types we asked for
         $uspsFound = false;
         foreach ($carrierMetadata as $carrier) {
             if ($carrier->name == 'usps') {
