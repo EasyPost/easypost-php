@@ -1,0 +1,77 @@
+
+-
+    request:
+        method: GET
+        url: 'https://api.easypost.com/beta/metadata?carriers=usps&types=service_levels%2Cpredefined_packages'
+        headers:
+            Host: api.easypost.com
+            Accept-Encoding: ''
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+    response:
+        status:
+            code: 200
+            message: OK
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: 3f936ecf643ed06defb4718f00049118
+            cache-control: 'private, no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '4207'
+            etag: 'W/"a842c1378a5f4d5f9ad9956312671ebe"'
+            x-runtime: '0.025972'
+            vary: Origin
+            x-node: bigweb6nuq
+            x-version-label: easypost-202304181703-7c5e806613-master
+            x-backend: easypost
+            x-proxied: ['intlb1nuq a29e4ad05c', 'extlb2nuq a29e4ad05c']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"carriers":[{"human_readable":"USPS","name":"usps","predefined_packages":[{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"Card"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"Letter"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"Flat"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"FlatRateEnvelope"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"FlatRateLegalEnvelope"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"FlatRatePaddedEnvelope"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"FlatRateGiftCardEnvelope"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"FlatRateWindowEnvelope"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"FlatRateCardboardEnvelope"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"SmallFlatRateEnvelope"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"Parcel"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"SoftPack"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"SmallFlatRateBox"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"MediumFlatRateBox"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"LargeFlatRateBox"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"LargeFlatRateBoxAPOFPO"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"FlatTubTrayBox"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"EMMTrayBox"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"FullTrayBox"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"HalfTrayBox"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"PMODSack"}],"service_levels":[{"carrier":"usps","description":"1-3 days","dimensions":["22in x 18in x 15in"],"human_readable":null,"max_weight":15.99,"name":"First"},{"carrier":"usps","description":"2-3 days","dimensions":["Combined Length and Girth < 108in"],"human_readable":null,"max_weight":1120,"name":"Priority"},{"carrier":"usps","description":"1-2 days","dimensions":["Combined Length and Girth < 108in"],"human_readable":null,"max_weight":1120,"name":"Express"},{"carrier":"usps","description":"2-8 business days","dimensions":["Combined Length and Girth < 108in"],"human_readable":null,"max_weight":1120,"name":"ParcelSelect"},{"carrier":"usps","description":"2-8 business days","dimensions":["Combined Length and Girth < 108in"],"human_readable":null,"max_weight":1120,"name":"LibraryMail"},{"carrier":"usps","description":"2-8 business days","dimensions":["Combined Length and Girth < 108in"],"human_readable":null,"max_weight":1120,"name":"MediaMail"},{"carrier":"usps","description":null,"dimensions":[],"human_readable":null,"max_weight":null,"name":"FirstClassMailInternational"},{"carrier":"usps","description":"7-21 days","dimensions":["Combined Length and Girth < 108in"],"human_readable":null,"max_weight":64,"name":"FirstClassPackageInternationalService"},{"carrier":"usps","description":"6-10 business days","dimensions":["Combined Length and Girth < 108in"],"human_readable":null,"max_weight":1120,"name":"PriorityMailInternational"},{"carrier":"usps","description":"3-5 business days","dimensions":["Combined Length and Girth < 108in"],"human_readable":null,"max_weight":1120,"name":"ExpressMailInternational"}]}]}'
+        curl_info:
+            url: 'https://api.easypost.com/beta/metadata?carriers=usps&types=service_levels%2Cpredefined_packages'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 746
+            request_size: 342
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.524766
+            namelookup_time: 0.043709
+            connect_time: 0.079857
+            pretransfer_time: 0.122025
+            size_upload: 0.0
+            size_download: 4207.0
+            speed_download: 8016.0
+            speed_upload: 0.0
+            download_content_length: 4207.0
+            upload_content_length: 0.0
+            starttransfer_time: 0.524748
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.62.110.130
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 192.168.128.247
+            local_port: 51381
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 121959
+            connect_time_us: 79857
+            namelookup_time_us: 43709
+            pretransfer_time_us: 122025
+            redirect_time_us: 0
+            starttransfer_time_us: 524748
+            total_time_us: 524766
+    index: 0

@@ -160,10 +160,10 @@ class Requestor
             'http_errors' => false, // we set this false here so we can do our own error handling
             'timeout' => $client->getTimeout(),
         ];
-        $params = self::encodeObjects($params);
         if (in_array(strtolower($method), ['get', 'delete'])) {
             $requestOptions['query'] = $params;
         } else {
+            $params = self::encodeObjects($params);
             $requestOptions['json'] = $params;
         }
 
@@ -273,7 +273,7 @@ class Requestor
         $errorMessageList = [];
         $errorMessage = $response['error']['message'];
         $message = is_string($errorMessage) ? $errorMessage :
-                self::traverseJsonElement($errorMessage, $errorMessageList);
+            self::traverseJsonElement($errorMessage, $errorMessageList);
 
         if ($httpStatus >= 300 && $httpStatus < 400) {
             throw new RedirectException($message, $httpStatus, $httpBody);

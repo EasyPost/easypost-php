@@ -12,6 +12,7 @@ use EasyPost\Service\BetaRateService;
 use EasyPost\Service\BetaReferralCustomerService;
 use EasyPost\Service\BillingService;
 use EasyPost\Service\CarrierAccountService;
+use EasyPost\Service\CarrierMetadataService;
 use EasyPost\Service\CustomsInfoService;
 use EasyPost\Service\CustomsItemService;
 use EasyPost\Service\EndShipperService;
@@ -108,6 +109,7 @@ class EasyPostClient extends BaseService
             'betaRate' => BetaRateService::class,
             'billing' => BillingService::class,
             'carrierAccount' => CarrierAccountService::class,
+            'carrierMetadata' => CarrierMetadataService::class,
             'customsInfo' => CustomsInfoService::class,
             'customsItem' => CustomsItemService::class,
             'endShipper' => EndShipperService::class,
