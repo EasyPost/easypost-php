@@ -26,7 +26,7 @@ class CarrierMetadataService extends BaseService
         if (isset($carriers)) {
             $url = "{$url}carriers=" . join(',', $carriers);
         }
-        if (isset($carriers) || isset($types)) {
+        if (isset($carriers) && isset($types)) {
             $url = "{$url}&";
         }
         if (isset($types)) {
