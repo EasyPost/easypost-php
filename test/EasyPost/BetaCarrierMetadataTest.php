@@ -35,22 +35,22 @@ class BetaCarrierMetadataTest extends \PHPUnit\Framework\TestCase
         $carrierMetadata = self::$client->carrierMetadata->retrieveCarrierMetadata();
 
         // Assert we get multiple carriers
-        $usps_found = false;
-        $fedex_found = false;
+        $uspsFound = false;
+        $fedexFound = false;
         foreach ($carrierMetadata as $carrier) {
-            if ($carrier->name == "usps") {
-                $usps_found = true;
+            if ($carrier->name == 'usps') {
+                $uspsFound = true;
             }
-            if ($carrier->name == "fedex") {
-                $fedex_found = true;
+            if ($carrier->name == 'fedex') {
+                $fedexFound = true;
             }
-            if ($usps_found && $fedex_found) {
+            if ($uspsFound && $fedexFound) {
                 break;
             }
         }
 
-        $this->assertTrue($usps_found);
-        $this->assertTrue($fedex_found);
+        $this->assertTrue($uspsFound);
+        $this->assertTrue($fedexFound);
     }
 
     /**
@@ -66,15 +66,15 @@ class BetaCarrierMetadataTest extends \PHPUnit\Framework\TestCase
         );
 
         // Assert we get multiple carriers
-        $usps_found = false;
+        $uspsFound = false;
         foreach ($carrierMetadata as $carrier) {
-            if ($carrier->name == "usps") {
-                $usps_found = true;
+            if ($carrier->name == 'usps') {
+                $uspsFound = true;
                 break;
             }
         }
 
-        $this->assertTrue($usps_found);
+        $this->assertTrue($uspsFound);
         $this->assertEquals(1, count($carrierMetadata));
         $this->assertNotNull($carrierMetadata[0]['service_levels']);
         $this->assertNotNull($carrierMetadata[0]['predefined_packages']);
