@@ -572,4 +572,23 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
         $this->assertNotNull($boughtShipment->postage_label);
     }
+
+    /**
+     * Tests that we retrieve time-in-transit data for each of the Rates of a Shipment.
+     */
+    public function testRetrieveEstimatedDeliveryDate()
+    {
+        TestUtil::setupCassette('shipments/retrieveEstimatedDeliveryDate.yml');
+
+        $shipment = self::$client->shipment->create(Fixture::basicShipment());
+
+        $rates = self::$client->shipment->retrieveEstimatedDeliveryDate(
+            $shipment->id,
+            '2023-04-28',
+        );
+
+        foreach ($rates as $entry) {
+            $this->assertNotNull($entry->easypost_time_in_transit_data);
+        }
+    }
 }
