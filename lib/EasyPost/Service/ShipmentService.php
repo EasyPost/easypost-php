@@ -235,4 +235,23 @@ class ShipmentService extends BaseService
 
         return $lowestRate;
     }
+
+    /**
+     * Retrieves the estimated delivery date of each Rate via SmartRate.
+     *
+     * @param string $id
+     * @param string $plannedShipDate
+     * @return mixed
+     */
+    public function retrieveEstimatedDeliveryDate($id, $plannedShipDate)
+    {
+        $params = [
+            'planned_ship_date' => $plannedShipDate,
+        ];
+
+        $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/smartrate/delivery_date';
+        $response = Requestor::request($this->client, 'get', $url, $params);
+
+        return InternalUtil::convertToEasyPostObject($this->client, $response['rates'] ?? []);
+    }
 }
