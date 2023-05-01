@@ -584,7 +584,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
         $rates = self::$client->shipment->retrieveEstimatedDeliveryDate(
             $shipment->id,
-            '2023-04-28',
+            Fixture::plannedShipDate(),
         );
 
         foreach ($rates as $entry) {

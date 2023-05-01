@@ -176,4 +176,9 @@ class Fixture
     {
         return self::readFixtureData()['form_options']['rma'];
     }
+
+    public static function plannedShipDate()
+    {
+        return '2023-04-28';
+    }
 }
