@@ -1,4 +1,4 @@
-name: "CI"
+name: 'CI'
 
 on:
   push:
@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
-      - name: set up php
+      - name: set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: "8.2"
+          php-version: '8.2'
       - name: install dependencies
         run: make install
       - name: lint
@@ -24,10 +24,10 @@ jobs:
     strategy:
       matrix:
         # TODO: We are getting segfaults on PHP 8.2 when running the test suite. This needs to be investigated before enabling
-        phpversion: ["7.4", "8.0", "8.1"]
+        phpversion: ['7.4', '8.0', '8.1']
     steps:
       - uses: actions/checkout@v3
-      - name: set up php
+      - name: set up PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.phpversion }}
@@ -52,3 +52,22 @@ jobs:
         run: ./bin/php-coveralls --coverage_clover=build/logs/clover.xml -v
       - name: Security scan
         run: make scan
+  docs:
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+      - name: Install Dependencies
+        run: make install
+      - name: Generate Docs
+        run: make docs
+      - name: Deploy Docs
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: docs
