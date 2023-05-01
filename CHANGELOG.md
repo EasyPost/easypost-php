@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Next Release
+## v6.6.0 (2023-05-02)
 
 - Adds `retrieveEstimatedDeliveryDate` function to the Shipment class
 
