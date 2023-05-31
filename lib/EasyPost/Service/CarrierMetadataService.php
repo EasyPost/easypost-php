@@ -17,9 +17,9 @@ class CarrierMetadataService extends BaseService
      * @param array|null $types
      * @return mixed
      */
-    public function retrieveCarrierMetadata($carriers = null, $types = null)
+    public function retrieve($carriers = null, $types = null)
     {
-        $url = '/metadata';
+        $url = '/metadata/carriers';
         if (isset($carriers) || isset($types)) {
             $url = "{$url}?";
         }
@@ -33,7 +33,7 @@ class CarrierMetadataService extends BaseService
             $url = "{$url}types=" . join(',', $types);
         }
 
-        $response = Requestor::request($this->client, 'get', $url, null, true);
+        $response = Requestor::request($this->client, 'get', $url, null);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response['carriers'] ?? []);
     }
