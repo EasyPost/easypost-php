@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Migrates carrier metadata to GA
+
 ## v6.6.0 (2023-05-02)
 
 - Adds `retrieveEstimatedDeliveryDate` function to the Shipment class

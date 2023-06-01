@@ -4,7 +4,7 @@ namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
 
-class BetaCarrierMetadataTest extends \PHPUnit\Framework\TestCase
+class CarrierMetadataTest extends \PHPUnit\Framework\TestCase
 {
     private static $client;
 
@@ -32,7 +32,7 @@ class BetaCarrierMetadataTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('carrier_metadata/retrieveCarrierMetadata.yml');
 
-        $carrierMetadata = self::$client->carrierMetadata->retrieveCarrierMetadata();
+        $carrierMetadata = self::$client->carrierMetadata->retrieve();
 
         // Assert we get multiple carriers
         $uspsFound = false;
@@ -60,7 +60,7 @@ class BetaCarrierMetadataTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('carrier_metadata/retrieveCarrierMetadataWithFilters.yml');
 
-        $carrierMetadata = self::$client->carrierMetadata->retrieveCarrierMetadata(
+        $carrierMetadata = self::$client->carrierMetadata->retrieve(
             ['usps'],
             ['service_levels', 'predefined_packages'],
         );
