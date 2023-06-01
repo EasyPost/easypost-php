@@ -941,10 +941,10 @@ Search.appendIndex(
             "summary": "CarrierMetadata\u0020service\u0020containing\u0020all\u0020the\u0020logic\u0020to\u0020make\u0020API\u0020calls.",
             "url": "classes/EasyPost-Service-CarrierMetadataService.html"
         },                {
-            "fqsen": "\\EasyPost\\Service\\CarrierMetadataService\u003A\u003AretrieveCarrierMetadata\u0028\u0029",
-            "name": "retrieveCarrierMetadata",
+            "fqsen": "\\EasyPost\\Service\\CarrierMetadataService\u003A\u003Aretrieve\u0028\u0029",
+            "name": "retrieve",
             "summary": "Get\u0020carrier\u0020metadata\u0020for\u0020all\u0020carriers\u0020on\u0020the\u0020EasyPost\u0020platform.",
-            "url": "classes/EasyPost-Service-CarrierMetadataService.html#method_retrieveCarrierMetadata"
+            "url": "classes/EasyPost-Service-CarrierMetadataService.html#method_retrieve"
         },                {
             "fqsen": "\\EasyPost\\Service\\CustomsInfoService",
             "name": "CustomsInfoService",
