@@ -19,8 +19,14 @@ docs:
 fix:
 	composer fix
 
+# TODO: Change branch to master once example repo is updated
+## install-style - Download style guide
+install-style:
+	curl -LJs https://raw.githubusercontent.com/EasyPost/examples/style_guides/phpcs.xml -o phpcs.xml
+	sh adjust_php_style_guide.sh
+
 ## install - Install dependencies
-install:
+install: | install-style
 	git submodule init
 	git submodule update
 	composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
@@ -48,4 +54,4 @@ update:
 	git submodule update --remote
 	composer update
 
-.PHONY: help clean docs fix install lint release scan test update
+.PHONY: help clean docs fix install install-style lint release scan test update
