@@ -1,8 +1,8 @@
 # CHANGELOG
 
-## Next Release
+## v6.7.0 (2023-06-06)
 
-- Migrates carrier metadata to GA
+- Migrates carrier metadata to GA (now available via `client.carrierMetadata.retrieve`)
 
 ## v6.6.0 (2023-05-02)
 
