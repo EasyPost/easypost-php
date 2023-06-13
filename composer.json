@@ -33,8 +33,8 @@
   },
   "scripts": {
     "coverage": "XDEBUG_MODE=coverage ./bin/phpunit --coverage-html clover.html --coverage-clover build/logs/clover.xml && ./bin/coverage-check build/logs/clover.xml 86 --only-percentage",
-    "fix": "./bin/phpcbf",
-    "lint": "./bin/phpcs",
+    "fix": "./bin/phpcbf lib test",
+    "lint": "./bin/phpcs lib test",
     "scan": "composer update --dry-run roave/security-advisories",
     "test": "./bin/phpunit"
   },

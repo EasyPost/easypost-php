@@ -15,21 +15,18 @@ docs:
 	curl -LJs https://github.com/phpDocumentor/phpDocumentor/releases/latest/download/phpDocumentor.phar -o phpDocumentor.phar
 	php phpDocumentor.phar -d lib -t docs
 
-## fix - Fix linting errors
-fix:
+## format - Fix linting errors
+format:
 	composer fix
 
-# TODO: Change branch to master once example repo is updated
-## install-style - Download style guide
-install-style:
-	curl -LJs https://raw.githubusercontent.com/EasyPost/examples/style_guides/phpcs.xml -o phpcs.xml
-	sh adjust_php_style_guide.sh
-
 ## install - Install dependencies
-install: | install-style
-	git submodule init
-	git submodule update
+install: | update-examples-submodule
 	composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+
+## update-examples-submodule - Update the examples submodule
+update-examples-submodule:
+	git submodule init
+	git submodule update --remote
 
 ## lint - Lint the project
 lint:
@@ -49,9 +46,7 @@ test:
 	composer test
 
 ## update - Update dependencies
-update:
-	git submodule init
-	git submodule update --remote
+update: | update-examples-submodule
 	composer update
 
-.PHONY: help clean docs fix install install-style lint release scan test update
+.PHONY: help clean docs format install install-style lint release scan test update update-examples-submodule

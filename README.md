@@ -92,7 +92,7 @@ make update
 make lint
 
 # Fix linting errors
-make fix
+make format
 
 # Run tests
 EASYPOST_TEST_API_KEY=123... EASYPOST_PROD_API_KEY=123... make test
