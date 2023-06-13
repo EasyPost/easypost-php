@@ -49,4 +49,4 @@ test:
 update: | update-examples-submodule
 	composer update
 
-.PHONY: help clean docs format install install-style lint release scan test update update-examples-submodule
+.PHONY: help clean docs format install lint release scan test update update-examples-submodule
