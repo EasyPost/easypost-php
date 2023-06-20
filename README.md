@@ -90,9 +90,7 @@ make update
 
 # Lint project
 make lint
-
-# Fix linting errors
-make format
+make lint-fix
 
 # Run tests
 EASYPOST_TEST_API_KEY=123... EASYPOST_PROD_API_KEY=123... make test
@@ -107,8 +105,7 @@ make scan
 make docs
 
 # Update submodules
-git submodule init
-git submodule update --remote
+make update-examples-submodule
 ```
 
 ### Testing
