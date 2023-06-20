@@ -6,6 +6,14 @@ help:
 clean:
 	rm -rf vendor clover.xml clover.html bin .phpunit.cache
 
+## codesniffer - Run linting on the PHP files
+codesniffer:
+	composer lint
+
+## codesniffer-fix- Fix lint errors on PHP files
+codesniffer-fix:
+	composer fix
+
 ## coverage - Runs the test suite and generates a coverage report
 coverage:
 	composer coverage
@@ -15,22 +23,15 @@ docs:
 	curl -LJs https://github.com/phpDocumentor/phpDocumentor/releases/latest/download/phpDocumentor.phar -o phpDocumentor.phar
 	php phpDocumentor.phar -d lib -t docs
 
-## format - Fix linting errors
-format:
-	composer fix
-
 ## install - Install dependencies
 install: | update-examples-submodule
 	composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
-## update-examples-submodule - Update the examples submodule
-update-examples-submodule:
-	git submodule init
-	git submodule update --remote
-
 ## lint - Lint the project
-lint:
-	composer lint
+lint: codesniffer scan
+
+## lint-fix - Fix linting errors
+lint-fix: codesniffer-fix
 
 ## release - Cuts a release for the project on GitHub (requires GitHub CLI)
 # tag = The associated tag title of the release
@@ -49,4 +50,9 @@ test:
 update: | update-examples-submodule
 	composer update
 
-.PHONY: help clean docs format install lint release scan test update update-examples-submodule
+## update-examples-submodule - Update the examples submodule
+update-examples-submodule:
+	git submodule init
+	git submodule update --remote
+
+.PHONY: help clean codesniffer codesniffer-fix docs install lint lint-fix release scan test update update-examples-submodule
