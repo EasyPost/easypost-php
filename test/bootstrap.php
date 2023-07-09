@@ -4,6 +4,7 @@ use allejo\VCR\VCRCleaner;
 use EasyPost\Util\InternalUtil;
 use VCR\VCR;
 
+# Must be an absolute path, otherwise PHP VCR segfaults: https://github.com/php-vcr/php-vcr/issues/373
 $cassetteDir = dirname(__FILE__) . '/cassettes';
 
 if (!file_exists($cassetteDir)) {
