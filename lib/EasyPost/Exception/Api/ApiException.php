@@ -25,14 +25,14 @@ class ApiException extends EasyPostException
      * @param int $httpStatus
      * @param string $httpBody
      */
-    public function __construct($message = '', $httpStatus = null, $httpBody = '')
+    public function __construct($message = '', $httpStatus = null, $httpBody = null)
     {
         parent::__construct($message);
         $this->httpStatus = $httpStatus;
         $this->httpBody = $httpBody;
 
         try {
-            $this->jsonBody = json_decode($httpBody, true);
+            $this->jsonBody = isset($httpBody) ? json_decode($httpBody, true) : null;
 
             // Setup `errors` property
             if (isset($this->jsonBody) && !empty($this->jsonBody['error']['errors'])) {

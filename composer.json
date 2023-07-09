@@ -25,7 +25,7 @@
   "require-dev": {
     "allejo/php-vcr-sanitizer": "^1.0.9",
     "php-coveralls/php-coveralls": "^2.5",
-    "php-vcr/php-vcr": "1.5.5",
+    "php-vcr/php-vcr": "^1.5.5",
     "phpunit/phpunit": "^9",
     "squizlabs/php_codesniffer": "^3.7",
     "roave/security-advisories": "dev-latest",
@@ -33,6 +33,7 @@
   },
   "scripts": {
     "coverage": "XDEBUG_MODE=coverage ./bin/phpunit --coverage-html clover.html --coverage-clover build/logs/clover.xml && ./bin/coverage-check build/logs/clover.xml 86 --only-percentage",
+    "coverage-ci": "XDEBUG_MODE=coverage ./bin/phpunit --coverage-clover build/logs/clover.xml && ./bin/coverage-check build/logs/clover.xml 86 --only-percentage",
     "fix": "./bin/phpcbf --standard=examples/style_guides/php/phpcs.xml lib test",
     "lint": "./bin/phpcs --standard=examples/style_guides/php/phpcs.xml lib test",
     "scan": "composer update --dry-run roave/security-advisories",
