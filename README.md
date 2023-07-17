@@ -63,6 +63,26 @@ $boughtShipment = $client->shipment->buy($shipment->id, $shipment->lowestRate())
 echo $boughtShipment;
 ```
 
+### HTTP Hooks
+
+Users can subscribe to HTTP requests and responses via the `RequestHook` and `ResponseHook` objects. To do so, pass a function to the `subscribeToRequestHook` or `subscribeToResponseHook` methods of an `EasyPostClient` object:
+
+```php
+function customFunction($args)
+{
+    // Pass your code here, data about the request/response is contained within `$args`.
+    echo "Received a request with the status code of: " . $args['http_status'];
+}
+
+$client = new \EasyPost\EasyPostClient(getenv('EASYPOST_API_KEY'));
+
+$client->subscribeToResponseHook('customFunction');
+
+// Make your API calls here, your customFunction will trigger once a response is received
+```
+
+You can also unsubscribe your functions in a similar manner by using the `unsubscribeFromRequestHook` and `unsubscribeFromResponseHook` methods of a client object.
+
 ## Documentation
 
 API documentation can be found at: <https://easypost.com/docs/api>.

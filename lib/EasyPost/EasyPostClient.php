@@ -5,6 +5,8 @@ namespace EasyPost;
 use EasyPost\Constant\Constants;
 use EasyPost\Exception\General\EasyPostException;
 use EasyPost\Exception\General\MissingParameterException;
+use EasyPost\Hook\RequestHook;
+use EasyPost\Hook\ResponseHook;
 use EasyPost\Service\AddressService;
 use EasyPost\Service\BaseService;
 use EasyPost\Service\BatchService;
@@ -65,6 +67,8 @@ class EasyPostClient extends BaseService
     private $timeout;
     private $apiBase;
     private $mockingUtility;
+    public $requestEvent;
+    public $responseEvent;
 
     /**
      * Constructor for an EasyPostClient.
@@ -85,6 +89,8 @@ class EasyPostClient extends BaseService
         $this->timeout = $timeout;
         $this->apiBase = $apiBase;
         $this->mockingUtility = $mockingUtility;
+        $this->requestEvent = new RequestHook();
+        $this->responseEvent = new ResponseHook();
 
         if (!$this->apiKey) {
             throw new MissingParameterException(
@@ -186,5 +192,49 @@ class EasyPostClient extends BaseService
     public function getMockingUtility()
     {
         return $this->mockingUtility;
+    }
+
+    /**
+     * Subscribe functions to run when a request event occurs.
+     *
+     * @param callable $function
+     * @return void
+     */
+    public function subscribeToRequestHook($function)
+    {
+        $this->requestEvent->addHandler($function);
+    }
+
+    /**
+     * Unsubscribe functions from running when a request even occurs.
+     *
+     * @param callable $function
+     * @return void
+     */
+    public function unsubscribeFromRequestHook($function)
+    {
+        $this->requestEvent->removeHandler($function);
+    }
+
+    /**
+     * Subscribe functions to run when a response event occurs.
+     *
+     * @param callable $function
+     * @return void
+     */
+    public function subscribeToResponseHook($function)
+    {
+        $this->responseEvent->addHandler($function);
+    }
+
+    /**
+     * Unsubscribe functions from running when a response even occurs.
+     *
+     * @param callable $function
+     * @return void
+     */
+    public function unsubscribeFromResponseHook($function)
+    {
+        $this->responseEvent->removeHandler($function);
     }
 }
