@@ -211,6 +211,26 @@ Search.appendIndex(
             "summary": "Get\u0020the\u0020mock\u0020requests\u0020of\u0020an\u0020EasyPostClient.",
             "url": "classes/EasyPost-EasyPostClient.html#method_getMockingUtility"
         },                {
+            "fqsen": "\\EasyPost\\EasyPostClient\u003A\u003AsubscribeToRequestHook\u0028\u0029",
+            "name": "subscribeToRequestHook",
+            "summary": "Subscribe\u0020functions\u0020to\u0020run\u0020when\u0020a\u0020request\u0020event\u0020occurs.",
+            "url": "classes/EasyPost-EasyPostClient.html#method_subscribeToRequestHook"
+        },                {
+            "fqsen": "\\EasyPost\\EasyPostClient\u003A\u003AunsubscribeFromRequestHook\u0028\u0029",
+            "name": "unsubscribeFromRequestHook",
+            "summary": "Unsubscribe\u0020functions\u0020from\u0020running\u0020when\u0020a\u0020request\u0020even\u0020occurs.",
+            "url": "classes/EasyPost-EasyPostClient.html#method_unsubscribeFromRequestHook"
+        },                {
+            "fqsen": "\\EasyPost\\EasyPostClient\u003A\u003AsubscribeToResponseHook\u0028\u0029",
+            "name": "subscribeToResponseHook",
+            "summary": "Subscribe\u0020functions\u0020to\u0020run\u0020when\u0020a\u0020response\u0020event\u0020occurs.",
+            "url": "classes/EasyPost-EasyPostClient.html#method_subscribeToResponseHook"
+        },                {
+            "fqsen": "\\EasyPost\\EasyPostClient\u003A\u003AunsubscribeFromResponseHook\u0028\u0029",
+            "name": "unsubscribeFromResponseHook",
+            "summary": "Unsubscribe\u0020functions\u0020from\u0020running\u0020when\u0020a\u0020response\u0020even\u0020occurs.",
+            "url": "classes/EasyPost-EasyPostClient.html#method_unsubscribeFromResponseHook"
+        },                {
             "fqsen": "\\EasyPost\\EasyPostClient\u003A\u003A\u0024apiKey",
             "name": "apiKey",
             "summary": "",
@@ -230,6 +250,16 @@ Search.appendIndex(
             "name": "mockingUtility",
             "summary": "",
             "url": "classes/EasyPost-EasyPostClient.html#property_mockingUtility"
+        },                {
+            "fqsen": "\\EasyPost\\EasyPostClient\u003A\u003A\u0024requestEvent",
+            "name": "requestEvent",
+            "summary": "",
+            "url": "classes/EasyPost-EasyPostClient.html#property_requestEvent"
+        },                {
+            "fqsen": "\\EasyPost\\EasyPostClient\u003A\u003A\u0024responseEvent",
+            "name": "responseEvent",
+            "summary": "",
+            "url": "classes/EasyPost-EasyPostClient.html#property_responseEvent"
         },                {
             "fqsen": "\\EasyPost\\EasyPostObject",
             "name": "EasyPostObject",
@@ -555,6 +585,41 @@ Search.appendIndex(
             "name": "FieldError",
             "summary": "",
             "url": "classes/EasyPost-FieldError.html"
+        },                {
+            "fqsen": "\\EasyPost\\Hook\\EventHook",
+            "name": "EventHook",
+            "summary": "The\u0020parent\u0020event\u0020that\u0020occurs\u0020when\u0020a\u0020hook\u0020is\u0020triggered.",
+            "url": "classes/EasyPost-Hook-EventHook.html"
+        },                {
+            "fqsen": "\\EasyPost\\Hook\\EventHook\u003A\u003A__invoke\u0028\u0029",
+            "name": "__invoke",
+            "summary": "",
+            "url": "classes/EasyPost-Hook-EventHook.html#method___invoke"
+        },                {
+            "fqsen": "\\EasyPost\\Hook\\EventHook\u003A\u003AaddHandler\u0028\u0029",
+            "name": "addHandler",
+            "summary": "",
+            "url": "classes/EasyPost-Hook-EventHook.html#method_addHandler"
+        },                {
+            "fqsen": "\\EasyPost\\Hook\\EventHook\u003A\u003AremoveHandler\u0028\u0029",
+            "name": "removeHandler",
+            "summary": "",
+            "url": "classes/EasyPost-Hook-EventHook.html#method_removeHandler"
+        },                {
+            "fqsen": "\\EasyPost\\Hook\\EventHook\u003A\u003A\u0024eventHandlers",
+            "name": "eventHandlers",
+            "summary": "",
+            "url": "classes/EasyPost-Hook-EventHook.html#property_eventHandlers"
+        },                {
+            "fqsen": "\\EasyPost\\Hook\\RequestHook",
+            "name": "RequestHook",
+            "summary": "An\u0020event\u0020that\u0020gets\u0020triggered\u0020when\u0020an\u0020HTTP\u0020request\u0020begins.",
+            "url": "classes/EasyPost-Hook-RequestHook.html"
+        },                {
+            "fqsen": "\\EasyPost\\Hook\\ResponseHook",
+            "name": "ResponseHook",
+            "summary": "An\u0020event\u0020that\u0020gets\u0020triggered\u0020when\u0020an\u0020HTTP\u0020response\u0020is\u0020returned.",
+            "url": "classes/EasyPost-Hook-ResponseHook.html"
         },                {
             "fqsen": "\\EasyPost\\Http\\Requestor",
             "name": "Requestor",
@@ -1585,6 +1650,11 @@ Search.appendIndex(
             "name": "General",
             "summary": "",
             "url": "namespaces/easypost-exception-general.html"
+        },                {
+            "fqsen": "\\EasyPost\\Hook",
+            "name": "Hook",
+            "summary": "",
+            "url": "namespaces/easypost-hook.html"
         },                {
             "fqsen": "\\EasyPost\\Http",
             "name": "Http",
