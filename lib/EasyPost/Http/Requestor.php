@@ -2,6 +2,8 @@
 
 namespace EasyPost\Http;
 
+use DateTime;
+use DateTimeZone;
 use EasyPost\Constant\Constants;
 use EasyPost\EasyPostClient;
 use EasyPost\EasypostObject;
@@ -179,6 +181,18 @@ class Requestor
             'User-Agent' => 'EasyPost/v2 PhpClient/' . Constants::LIBRARY_VERSION . " PHP/$phpVersion OS/$osType OSVersion/$osVersion OSArch/$osArch", // phpcs:ignore
         ];
 
+        $requestUuid = uniqid();
+        date_default_timezone_set('UTC');
+        $requestTimestamp = microtime(true);
+        ($client->requestEvent)([
+            'method' => $method,
+            'path' => $absoluteUrl,
+            'headers' => $headers,
+            'request_body' => $params,
+            'request_timestamp' => $requestTimestamp,
+            'request_uuid' => $requestUuid,
+        ]);
+
         if ($client->mock()) {
             // If there are mock requests set, this client will ONLY make mock requests
             $mockingUtility = $client->getMockingUtility();
@@ -189,26 +203,38 @@ class Requestor
 
             $responseBody = $matchingRequest->responseInfo->body;
             $httpStatus = $matchingRequest->responseInfo->statusCode;
+            $responseHeaders = [];
+        } else {
+            $guzzleClient = new Client();
+            $requestOptions['headers'] = $headers;
+            try {
+                $response = $guzzleClient->request($method, $absoluteUrl, $requestOptions);
+            } catch (\GuzzleHttp\Exception\ConnectException $error) {
+                throw new HttpException(sprintf(Constants::COMMUNICATION_ERROR, 'EasyPost', $error->getMessage()));
+            }
 
-            return [$responseBody, $httpStatus];
+            // Guzzle does not have a native way of catching timeout exceptions...
+            // If we don't have a response at this point, it's likely due to a timeout.
+            if (!isset($response)) {
+                throw new TimeoutException(sprintf(Constants::NO_RESPONSE_ERROR, 'EasyPost'));
+            }
+
+            $responseBody = $response->getBody();
+            $httpStatus = $response->getStatusCode();
+            $responseHeaders = $response->getHeaders();
         }
 
-        $guzzleClient = new Client();
-        $requestOptions['headers'] = $headers;
-        try {
-            $response = $guzzleClient->request($method, $absoluteUrl, $requestOptions);
-        } catch (\GuzzleHttp\Exception\ConnectException $error) {
-            throw new HttpException(sprintf(Constants::COMMUNICATION_ERROR, 'EasyPost', $error->getMessage()));
-        }
-
-        // Guzzle does not have a native way of catching timeout exceptions...
-        // If we don't have a response at this point, it's likely due to a timeout.
-        if (!isset($response)) {
-            throw new TimeoutException(sprintf(Constants::NO_RESPONSE_ERROR, 'EasyPost'));
-        }
-
-        $responseBody = $response->getBody();
-        $httpStatus = $response->getStatusCode();
+        $responseTimestamp = microtime(true);
+        ($client->responseEvent)([
+            'http_status' => $httpStatus,
+            'method' => $method,
+            'path' => $absoluteUrl,
+            'headers' => $responseHeaders,
+            'response_body' => $responseBody,
+            'request_timestamp' => $requestTimestamp,
+            'response_timestamp' => $responseTimestamp,
+            'request_uuid' => $requestUuid,
+        ]);
 
         return [$responseBody, $httpStatus];
     }

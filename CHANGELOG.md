@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Adds new `RequestHook` and `ResponseHook` events. (un)subscribe to them with the new `subscribeToRequestHook`, `subscribeToResponseHook`, `unsubscribeFromRequestHook`, or `unsubscribeFromResponseHook` methods of an `EasyPostClient`
+
 ## v6.7.0 (2023-06-06)
 
 - Migrates carrier metadata to GA (now available via `client.carrierMetadata.retrieve`)
