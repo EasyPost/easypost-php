@@ -16,10 +16,11 @@ composer require easypost/easypost-php
 ```
 
 ```php
-# Require the autoloader:
+# Require the autoloader (when using composer - recommended):
 require_once("/path/to/vendor/easypost/autoload.php");
 
-# Alternatively, manually download and require:
+# Alternatively, manually download and require the library,
+# will require manually downloading and requiring other dependencies:
 require_once("/path/to/lib/easypost.php");
 ```
 
