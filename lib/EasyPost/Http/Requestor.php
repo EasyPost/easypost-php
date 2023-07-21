@@ -7,6 +7,7 @@ use DateTimeZone;
 use EasyPost\Constant\Constants;
 use EasyPost\EasyPostClient;
 use EasyPost\EasypostObject;
+use EasyPost\Exception\Api\BadRequestException;
 use EasyPost\Exception\Api\ForbiddenException;
 use EasyPost\Exception\Api\GatewayTimeoutException;
 use EasyPost\Exception\Api\HttpException;
@@ -272,6 +273,7 @@ class Requestor
      * @param string $httpBody
      * @param int $httpStatus
      * @param array $response
+     * @throws BadRequestException
      * @throws GatewayTimeoutException
      * @throws InternalServerException
      * @throws InvalidRequestException
@@ -306,6 +308,9 @@ class Requestor
         }
 
         switch ($httpStatus) {
+            case 400:
+                $errorType = BadRequestException::class;
+                break;
             case 401:
                 $errorType = UnauthorizedException::class;
                 break;

@@ -13,6 +13,7 @@ require_once(dirname(__FILE__) . '/EasyPost/Exception/Api/ApiException.php');
 
 // API Exceptions
 require_once(dirname(__FILE__) . '/EasyPost/Exception/Api/ApiException.php');
+require_once(dirname(__FILE__) . '/EasyPost/Exception/Api/BadRequestException.php');
 require_once(dirname(__FILE__) . '/EasyPost/Exception/Api/EncodingException.php');
 require_once(dirname(__FILE__) . '/EasyPost/Exception/Api/ExternalApiException.php');
 require_once(dirname(__FILE__) . '/EasyPost/Exception/Api/ForbiddenException.php');
