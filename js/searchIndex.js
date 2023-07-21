@@ -446,6 +446,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/EasyPost-Exception-Api-ApiException.html#property_jsonBody"
         },                {
+            "fqsen": "\\EasyPost\\Exception\\Api\\BadRequestException",
+            "name": "BadRequestException",
+            "summary": "",
+            "url": "classes/EasyPost-Exception-Api-BadRequestException.html"
+        },                {
             "fqsen": "\\EasyPost\\Exception\\Api\\EncodingException",
             "name": "EncodingException",
             "summary": "",
