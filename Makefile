@@ -18,10 +18,6 @@ codesniffer-fix:
 coverage:
 	composer coverage
 
-## coverage-ci - Runs the test suite and generates a coverage report (without the HTML report which leads to seg faults on PHP 8.2+)
-coverage-ci:
-	composer coverage-ci
-
 ## docs - Generate documentation for the library
 docs:
 	curl -LJs https://github.com/phpDocumentor/phpDocumentor/releases/latest/download/phpDocumentor.phar -o phpDocumentor.phar
@@ -59,4 +55,4 @@ update-examples-submodule:
 	git submodule init
 	git submodule update --remote
 
-.PHONY: help clean codesniffer codesniffer-fix coverage coverage-ci docs install lint lint-fix release scan test update update-examples-submodule
+.PHONY: help clean codesniffer codesniffer-fix coverage docs install lint lint-fix release scan test update update-examples-submodule

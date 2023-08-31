@@ -23,7 +23,8 @@ jobs:
     runs-on: ubuntu-20.04
     strategy:
       matrix:
-        phpversion: ['7.4', '8.0', '8.1', '8.2']
+        # 8.2.9+ is needed due to segfaults on 8.2-8.2.8 when generating coverage: https://github.com/php-vcr/php-vcr/issues/373
+        phpversion: ['7.4', '8.0', '8.1', '8.2.9']
     steps:
       - uses: actions/checkout@v3
       - name: set up PHP
@@ -43,7 +44,7 @@ jobs:
       - name: install dependencies
         run: make install
       - name: test with phpunit on ${{ matrix.phpversion }}
-        run: EASYPOST_TEST_API_KEY=123 EASYPOST_PROD_API_KEY=123 make coverage-ci
+        run: EASYPOST_TEST_API_KEY=123 EASYPOST_PROD_API_KEY=123 make coverage
       - name: Coveralls
         if: github.ref == 'refs/heads/master'
         env:

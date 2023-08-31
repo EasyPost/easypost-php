@@ -117,6 +117,7 @@ make lint-fix
 EASYPOST_TEST_API_KEY=123... EASYPOST_PROD_API_KEY=123... make test
 
 # Generate coverage reports (requires Xdebug for HTML report)
+# NOTE: When using PHP 8.2, you must use 8.2.9+ to avoid segfaults when generating coverage
 EASYPOST_TEST_API_KEY=123... EASYPOST_PROD_API_KEY=123... make coverage
 
 # Run security analysis
