@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/base.css">
             <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/template.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css" integrity="sha256-ybRkN9dBjhcS2qrW1z+hfCxq+1aBdwyQM5wlQoQVt/0=" crossorigin="anonymous" />
@@ -19,6 +19,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-highlight/prism-line-highlight.css">
                 <script src="https://cdn.jsdelivr.net/npm/fuse.js@3.4.6"></script>
         <script src="https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2"></script>
+        <script src="js/template.js"></script>
         <script src="js/search.js"></script>
         <script defer src="js/searchIndex.js"></script>
     </head>
@@ -52,7 +53,7 @@
 <label class="phpdocumentor-sidebar__menu-icon" for="sidebar-button">
     Menu
 </label>
-<aside class="phpdocumentor-column -four phpdocumentor-sidebar">
+<aside class="phpdocumentor-column -three phpdocumentor-sidebar">
                     <section class="phpdocumentor-sidebar__category">
             <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
                                     <h4 class="phpdocumentor-sidebar__root-namespace">
@@ -111,56 +112,62 @@
     </section>
 </aside>
 
-            <div class="phpdocumentor-column -eight phpdocumentor-content">
-                    <ul class="phpdocumentor-breadcrumbs">
+            <div class="phpdocumentor-column -nine phpdocumentor-content">
+                                <section>
+                                        <ul class="phpdocumentor-breadcrumbs">
     </ul>
 
     <article class="phpdocumentor-element -file">
         <h2 class="phpdocumentor-content__title">InternalUtil.php</h2>
 
         
-    <section class="phpdocumentor-description"></section>
 
 
 
-
-
-
-<h3 id="interfaces_class_traits">
-    Interfaces, Classes, Traits and Enums
-    <a href="#interfaces_class_traits" class="headerlink"><i class="fas fa-link"></i></a>
-</h3>
-
-<dl class="phpdocumentor-table-of-contents">
-    
-            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/EasyPost-Util-InternalUtil.html"><abbr title="\EasyPost\Util\InternalUtil">InternalUtil</abbr></a></dt>
-        <dd></dd>
-    
-    
-    </dl>
 
 
 <h3 id="toc">
     Table of Contents
-    <a href="#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="files/lib-easypost-util-internalutil.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+
 </h3>
 
+
+
+
+    <h4 id="toc-classes">
+        Classes
+        <a href="files/lib-easypost-util-internalutil.html#toc-classes" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <dl class="phpdocumentor-table-of-contents">
+                    <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/EasyPost-Util-InternalUtil.html"><abbr title="\EasyPost\Util\InternalUtil">InternalUtil</abbr></a></dt>    </dl>
+
+
+
+<h4 id="toc-constants">
+    Constants
+    <a href="files/lib-easypost-util-internalutil.html#toc-constants" class="headerlink"><i class="fas fa-link"></i></a>
+
+</h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="namespaces/easypost-util.html#constant_OBJECT_ID_PREFIXES">OBJECT_ID_PREFIXES</a>
     <span>
         &nbsp;= [&#039;adr&#039; =&gt; \EasyPost\Address::class, &#039;ak&#039; =&gt; \EasyPost\ApiKey::class, &#039;batch&#039; =&gt; \EasyPost\Batch::class, &#039;brd&#039; =&gt; \EasyPost\Brand::class, &#039;ca&#039; =&gt; \EasyPost\CarrierAccount::class, &#039;cstinfo&#039; =&gt; \EasyPost\CustomsInfo::class, &#039;cstitem&#039; =&gt; \EasyPost\CustomsItem::class, &#039;es&#039; =&gt; \EasyPost\EndShipper::class, &#039;evt&#039; =&gt; \EasyPost\Event::class, &#039;fee&#039; =&gt; \EasyPost\Fee::class, &#039;hook&#039; =&gt; \EasyPost\Webhook::class, &#039;ins&#039; =&gt; \EasyPost\Insurance::class, &#039;order&#039; =&gt; \EasyPost\Order::class, &#039;pickup&#039; =&gt; \EasyPost\Pickup::class, &#039;pl&#039; =&gt; \EasyPost\PostageLabel::class, &#039;plrep&#039; =&gt; \EasyPost\Report::class, &#039;prcl&#039; =&gt; \EasyPost\Parcel::class, &#039;rate&#039; =&gt; \EasyPost\Rate::class, &#039;refrep&#039; =&gt; \EasyPost\Report::class, &#039;rfnd&#039; =&gt; \EasyPost\Refund::class, &#039;sf&#039; =&gt; \EasyPost\ScanForm::class, &#039;shp&#039; =&gt; \EasyPost\Shipment::class, &#039;shpinvrep&#039; =&gt; \EasyPost\Report::class, &#039;shprep&#039; =&gt; \EasyPost\Report::class, &#039;trk&#039; =&gt; \EasyPost\Tracker::class, &#039;trkrep&#039; =&gt; \EasyPost\Report::class, &#039;user&#039; =&gt; \EasyPost\User::class]                            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="namespaces/easypost-util.html#constant_OBJECT_MAPPING">OBJECT_MAPPING</a>
     <span>
         &nbsp;= [&#039;Address&#039; =&gt; \EasyPost\Address::class, &#039;ApiKey&#039; =&gt; \EasyPost\ApiKey::class, &#039;Batch&#039; =&gt; \EasyPost\Batch::class, &#039;Brand&#039; =&gt; \EasyPost\Brand::class, &#039;CarrierAccount&#039; =&gt; \EasyPost\CarrierAccount::class, &#039;CarrierDetail&#039; =&gt; \EasyPost\CarrierDetail::class, &#039;CustomsInfo&#039; =&gt; \EasyPost\CustomsInfo::class, &#039;CustomsItem&#039; =&gt; \EasyPost\CustomsItem::class, &#039;EndShipper&#039; =&gt; \EasyPost\EndShipper::class, &#039;Event&#039; =&gt; \EasyPost\Event::class, &#039;Fee&#039; =&gt; \EasyPost\Fee::class, &#039;Insurance&#039; =&gt; \EasyPost\Insurance::class, &#039;Order&#039; =&gt; \EasyPost\Order::class, &#039;Parcel&#039; =&gt; \EasyPost\Parcel::class, &#039;PaymentLogReport&#039; =&gt; \EasyPost\Report::class, &#039;Pickup&#039; =&gt; \EasyPost\Pickup::class, &#039;PickupRate&#039; =&gt; \EasyPost\PickupRate::class, &#039;PostageLabel&#039; =&gt; \EasyPost\PostageLabel::class, &#039;Rate&#039; =&gt; \EasyPost\Rate::class, &#039;Refund&#039; =&gt; \EasyPost\Refund::class, &#039;RefundReport&#039; =&gt; \EasyPost\Report::class, &#039;Report&#039; =&gt; \EasyPost\Report::class, &#039;ScanForm&#039; =&gt; \EasyPost\ScanForm::class, &#039;Shipment&#039; =&gt; \EasyPost\Shipment::class, &#039;ShipmentInvoiceReport&#039; =&gt; \EasyPost\Report::class, &#039;ShipmentReport&#039; =&gt; \EasyPost\Report::class, &#039;TaxIdentifier&#039; =&gt; \EasyPost\Util\TaxIdentifier::class, &#039;Tracker&#039; =&gt; \EasyPost\Tracker::class, &#039;TrackerReport&#039; =&gt; \EasyPost\Report::class, &#039;TrackingDetail&#039; =&gt; \EasyPost\TrackingDetail::class, &#039;TrackingLocation&#039; =&gt; \EasyPost\TrackingLocation::class, &#039;User&#039; =&gt; \EasyPost\User::class, &#039;Webhook&#039; =&gt; \EasyPost\Webhook::class]                            </span>
 </dt>
-<dd></dd>
 
-                    </dl>
+    </dl>
+
+
+
+
 
 
 
@@ -169,11 +176,13 @@
         <h3 class="phpdocumentor-elements__header" id="constants">
             Constants
             <a href="files/lib-easypost-util-internalutil.html#constants" class="headerlink"><i class="fas fa-link"></i></a>
+
         </h3>
                     <article class="phpdocumentor-element -constant -public ">
     <h4 class="phpdocumentor-element__name" id="constant_OBJECT_ID_PREFIXES">
         OBJECT_ID_PREFIXES
         <a href="namespaces/easypost-util.html#constant_OBJECT_ID_PREFIXES" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -192,10 +201,8 @@
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
@@ -203,6 +210,7 @@
     <h4 class="phpdocumentor-element__name" id="constant_OBJECT_MAPPING">
         OBJECT_MAPPING
         <a href="namespaces/easypost-util.html#constant_OBJECT_MAPPING" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -221,18 +229,136 @@
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
             </section>
 
         
+        <div class="phpdocumentor-modal" id="source-view">
+    <div class="phpdocumentor-modal-bg" data-exit-button></div>
+    <div class="phpdocumentor-modal-container">
+        <div class="phpdocumentor-modal-content">
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/lib/EasyPost/Util/InternalUtil.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+        </div>
+        <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
+    </div>
+</div>
+
+    <script type="text/javascript">
+        (function () {
+            function loadExternalCodeSnippet(el, url, line) {
+                Array.prototype.slice.call(el.querySelectorAll('pre[data-src]')).forEach((pre) => {
+                    const src = url || pre.getAttribute('data-src').replace(/\\/g, '/');
+                    const language = 'php';
+
+                    const code = document.createElement('code');
+                    code.className = 'language-' + language;
+                    pre.textContent = '';
+                    pre.setAttribute('data-line', line)
+                    code.textContent = 'Loading…';
+                    pre.appendChild(code);
+
+                    var xhr = new XMLHttpRequest();
+
+                    xhr.open('GET', src, true);
+
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState !== 4) {
+                            return;
+                        }
+
+                        if (xhr.status < 400 && xhr.responseText) {
+                            code.textContent = xhr.responseText;
+                            Prism.highlightElement(code);
+                            return;
+                        }
+
+                        if (xhr.status === 404) {
+                            code.textContent = '✖ Error: File could not be found';
+                            return;
+                        }
+
+                        if (xhr.status >= 400) {
+                            code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                            return;
+                        }
+
+                        code.textContent = '✖ Error: An unknown error occurred';
+                    };
+
+                    xhr.send(null);
+                });
+            }
+
+            const modalButtons = document.querySelectorAll("[data-modal]");
+            const openedAsLocalFile = window.location.protocol === 'file:';
+            if (modalButtons.length > 0 && openedAsLocalFile) {
+                console.warn(
+                    'Viewing the source code is unavailable because you are opening this page from the file:// scheme; ' +
+                    'browsers block XHR requests when a page is opened this way'
+                );
+            }
+
+            modalButtons.forEach(function (trigger) {
+                if (openedAsLocalFile) {
+                    trigger.setAttribute("hidden", "hidden");
+                }
+
+                trigger.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    const modal = document.getElementById(trigger.dataset.modal);
+                    if (!modal) {
+                        console.error(`Modal with id "${trigger.dataset.modal}" could not be found`);
+                        return;
+                    }
+                    modal.classList.add("phpdocumentor-modal__open");
+
+                    loadExternalCodeSnippet(modal, trigger.dataset.src || null, trigger.dataset.line)
+                    const exits = modal.querySelectorAll("[data-exit-button]");
+                    exits.forEach(function (exit) {
+                        exit.addEventListener("click", function (event) {
+                            event.preventDefault();
+                            modal.classList.remove("phpdocumentor-modal__open");
+                        });
+                    });
+                });
+            });
+        })();
+    </script>
+
     </article>
-                <section data-search-results class="phpdocumentor-search-results phpdocumentor-search-results--hidden">
+                                </section>
+                <section class="phpdocumentor-on-this-page__sidebar">
+                            
+    <section class="phpdocumentor-on-this-page__content">
+        <strong class="phpdocumentor-on-this-page__title">On this page</strong>
+
+        <ul class="phpdocumentor-list -clean">
+            <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
+            <li>
+                <ul class="phpdocumentor-list -clean">
+                                                                                                        <li><a href="files/lib-easypost-util-internalutil.html#toc-classes">Classes</a></li>
+                                                                                                        <li><a href="files/lib-easypost-util-internalutil.html#toc-constants">Constants</a></li>
+                                                        </ul>
+            </li>
+
+                            <li class="phpdocumentor-on-this-page-section__title">Constants</li>
+                <li>
+                    <ul class="phpdocumentor-list -clean">
+                                                    <li><a href="namespaces/easypost-util.html#constant_OBJECT_ID_PREFIXES">OBJECT_ID_PREFIXES</a></li>
+                                                    <li><a href="namespaces/easypost-util.html#constant_OBJECT_MAPPING">OBJECT_MAPPING</a></li>
+                                            </ul>
+                </li>
+            
+                    </ul>
+    </section>
+
+                </section>
+                            </div>
+            <section data-search-results class="phpdocumentor-search-results phpdocumentor-search-results--hidden">
     <section class="phpdocumentor-search-results__dialog">
         <header class="phpdocumentor-search-results__header">
             <h2 class="phpdocumentor-search-results__title">Search results</h2>
@@ -243,7 +369,6 @@
         </section>
     </section>
 </section>
-            </div>
         </div>
         <a href="files/lib-easypost-util-internalutil.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
