@@ -17,7 +17,8 @@ abstract class Constants
     // Validation
     const CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_WORKFLOWS = [
         'FedexAccount',
-        'UpsAccount'
+        'UpsAccount',
+        'FedexSmartpostAccount'
     ];
 
     // Exception messages (many of these are intended to be used with `sprintf()`)

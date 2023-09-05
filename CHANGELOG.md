@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Fix endpoint for creating a FedEx Smartpost carrier account
+
 ## v6.8.0 (2023-07-28)
 
 - Adds new `RequestHook` and `ResponseHook` events. (un)subscribe to them with the new `subscribeToRequestHook`, `subscribeToResponseHook`, `unsubscribeFromRequestHook`, or `unsubscribeFromResponseHook` methods of an `EasyPostClient`
