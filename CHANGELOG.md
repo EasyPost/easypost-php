@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Migrate API Key-related functions from `user` service to `api_keys` service
+
 ## v6.8.1 (2023-09-05)
 
 - Fix endpoint for creating a FedEx Smartpost carrier account
