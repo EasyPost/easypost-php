@@ -136,6 +136,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/EasyPost-Constant-Constants.html#constant_NO_RATES_ERROR"
         },                {
+            "fqsen": "\\EasyPost\\Constant\\Constants\u003A\u003ANO_USER_FOUND_ERROR",
+            "name": "NO_USER_FOUND_ERROR",
+            "summary": "",
+            "url": "classes/EasyPost-Constant-Constants.html#constant_NO_USER_FOUND_ERROR"
+        },                {
             "fqsen": "\\EasyPost\\Constant\\Constants\u003A\u003ANO_RESPONSE_ERROR",
             "name": "NO_RESPONSE_ERROR",
             "summary": "",
@@ -785,6 +790,21 @@ Search.appendIndex(
             "name": "verify",
             "summary": "Verify\u0020an\u0020address.",
             "url": "classes/EasyPost-Service-AddressService.html#method_verify"
+        },                {
+            "fqsen": "\\EasyPost\\Service\\ApiKeyService",
+            "name": "ApiKeyService",
+            "summary": "API\u0020key\u0020service\u0020containing\u0020all\u0020the\u0020logic\u0020to\u0020make\u0020API\u0020calls.",
+            "url": "classes/EasyPost-Service-ApiKeyService.html"
+        },                {
+            "fqsen": "\\EasyPost\\Service\\ApiKeyService\u003A\u003Aall\u0028\u0029",
+            "name": "all",
+            "summary": "Retrieve\u0020a\u0020list\u0020of\u0020all\u0020API\u0020keys.",
+            "url": "classes/EasyPost-Service-ApiKeyService.html#method_all"
+        },                {
+            "fqsen": "\\EasyPost\\Service\\ApiKeyService\u003A\u003AretrieveApiKeysForUser\u0028\u0029",
+            "name": "retrieveApiKeysForUser",
+            "summary": "Retrieve\u0020a\u0020list\u0020of\u0020API\u0020keys\u0020\u0028works\u0020for\u0020the\u0020authenticated\u0020user\u0020or\u0020a\u0020child\u0020user\u0029.",
+            "url": "classes/EasyPost-Service-ApiKeyService.html#method_retrieveApiKeysForUser"
         },                {
             "fqsen": "\\EasyPost\\Service\\BaseService",
             "name": "BaseService",

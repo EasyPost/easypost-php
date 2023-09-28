@@ -121,7 +121,7 @@
 
     <article class="phpdocumentor-element -class">
         <h2 class="phpdocumentor-content__title">
-    UserService
+    ApiKeyService
 
         <span class="phpdocumentor-element__extends">
         extends <a href="classes/EasyPost-Service-BaseService.html"><abbr title="\EasyPost\Service\BaseService">BaseService</abbr></a>
@@ -143,13 +143,13 @@
 </div>
 
         <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Service/UserService.php"><a href="files/lib-easypost-service-userservice.html"><abbr title="lib/EasyPost/Service/UserService.php">UserService.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Service/ApiKeyService.php"><a href="files/lib-easypost-service-apikeyservice.html"><abbr title="lib/EasyPost/Service/ApiKeyService.php">ApiKeyService.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">11</span>
+    <span class="phpdocumentor-element-found-in__line">13</span>
 
     </aside>
 
-            <p class="phpdocumentor-summary">User service containing all the logic to make API calls.</p>
+            <p class="phpdocumentor-summary">API key service containing all the logic to make API calls.</p>
 
 
 
@@ -158,7 +158,7 @@
 
 <h3 id="toc">
     Table of Contents
-    <a href="classes/EasyPost-Service-UserService.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/EasyPost-Service-ApiKeyService.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
@@ -172,7 +172,7 @@
 
 <h4 id="toc-properties">
     Properties
-    <a href="classes/EasyPost-Service-UserService.html#toc-properties" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/EasyPost-Service-ApiKeyService.html#toc-properties" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
@@ -186,65 +186,23 @@
 
 <h4 id="toc-methods">
     Methods
-    <a href="classes/EasyPost-Service-UserService.html#toc-methods" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/EasyPost-Service-ApiKeyService.html#toc-methods" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/EasyPost-Service-UserService.html#method_allApiKeys">allApiKeys()</a>
+    <a href="classes/EasyPost-Service-ApiKeyService.html#method_all">all()</a>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
 <dd>Retrieve a list of all API keys.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/EasyPost-Service-UserService.html#method_apiKeys">apiKeys()</a>
+    <a href="classes/EasyPost-Service-ApiKeyService.html#method_retrieveApiKeysForUser">retrieveApiKeysForUser()</a>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
 <dd>Retrieve a list of API keys (works for the authenticated user or a child user).</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/EasyPost-Service-UserService.html#method_create">create()</a>
-    <span>
-                                &nbsp;: mixed    </span>
-</dt>
-<dd>Create a child user.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/EasyPost-Service-UserService.html#method_delete">delete()</a>
-    <span>
-                                &nbsp;: mixed    </span>
-</dt>
-<dd>Delete a user.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/EasyPost-Service-UserService.html#method_retrieve">retrieve()</a>
-    <span>
-                                &nbsp;: mixed    </span>
-</dt>
-<dd>Retrieve a user.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/EasyPost-Service-UserService.html#method_retrieveMe">retrieveMe()</a>
-    <span>
-                                &nbsp;: mixed    </span>
-</dt>
-<dd>Retrieve the authenticated user.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/EasyPost-Service-UserService.html#method_update">update()</a>
-    <span>
-                                &nbsp;: mixed    </span>
-</dt>
-<dd>Update a user.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/EasyPost-Service-UserService.html#method_updateBrand">updateBrand()</a>
-    <span>
-                                &nbsp;: mixed    </span>
-</dt>
-<dd>Update the User&#039;s Brand object.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/EasyPost-Service-BaseService.html#method___construct">__construct()</a>
@@ -341,7 +299,7 @@
     <section class="phpdocumentor-properties">
         <h3 class="phpdocumentor-elements__header" id="properties">
             Properties
-            <a href="classes/EasyPost-Service-UserService.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/EasyPost-Service-ApiKeyService.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article
@@ -382,54 +340,38 @@
             <section class="phpdocumentor-methods">
         <h3 class="phpdocumentor-elements__header" id="methods">
             Methods
-            <a href="classes/EasyPost-Service-UserService.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/EasyPost-Service-ApiKeyService.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article
         class="phpdocumentor-element
             -method
             -public
-            -deprecated                                            "
+                                                        "
 >
-    <h4 class="phpdocumentor-element__name" id="method_allApiKeys">
-        allApiKeys()
-        <a href="classes/EasyPost-Service-UserService.html#method_allApiKeys" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_all">
+        all()
+        <a href="classes/EasyPost-Service-ApiKeyService.html#method_all" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Service/UserService.php"><a href="files/lib-easypost-service-userservice.html"><abbr title="lib/EasyPost/Service/UserService.php">UserService.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Service/ApiKeyService.php"><a href="files/lib-easypost-service-apikeyservice.html"><abbr title="lib/EasyPost/Service/ApiKeyService.php">ApiKeyService.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">86</span>
+    <span class="phpdocumentor-element-found-in__line">20</span>
 
     </aside>
 
         <p class="phpdocumentor-summary">Retrieve a list of all API keys.</p>
 
-    <code class="phpdocumentor-code phpdocumentor-signature -deprecated">
+    <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">allApiKeys</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">all</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
     
     
     
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/EasyPost-Service-UserService.html#method_allApiKeys#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">deprecated</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>Use all() under the api_key service instead.</p>
-</section>
-
-                                    </dd>
-                                            </dl>
 
     
 </article>
@@ -437,25 +379,25 @@
         class="phpdocumentor-element
             -method
             -public
-            -deprecated                                            "
+                                                        "
 >
-    <h4 class="phpdocumentor-element__name" id="method_apiKeys">
-        apiKeys()
-        <a href="classes/EasyPost-Service-UserService.html#method_apiKeys" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_retrieveApiKeysForUser">
+        retrieveApiKeysForUser()
+        <a href="classes/EasyPost-Service-ApiKeyService.html#method_retrieveApiKeysForUser" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Service/UserService.php"><a href="files/lib-easypost-service-userservice.html"><abbr title="lib/EasyPost/Service/UserService.php">UserService.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Service/ApiKeyService.php"><a href="files/lib-easypost-service-apikeyservice.html"><abbr title="lib/EasyPost/Service/ApiKeyService.php">ApiKeyService.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">101</span>
+    <span class="phpdocumentor-element-found-in__line">34</span>
 
     </aside>
 
         <p class="phpdocumentor-summary">Retrieve a list of API keys (works for the authenticated user or a child user).</p>
 
-    <code class="phpdocumentor-code phpdocumentor-signature -deprecated">
+    <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">apiKeys</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$id</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">retrieveApiKeysForUser</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$id</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -467,290 +409,30 @@
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>The user ID to retrieve API keys for</p>
+</section>
+
             </dd>
             </dl>
 
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="classes/EasyPost-Service-UserService.html#method_apiKeys#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/EasyPost-Service-ApiKeyService.html#method_retrieveApiKeysForUser#tags" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">deprecated</span>
+                    <span class="phpdocumentor-tag__name">throws</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>Use retrieve_api_key_for_user() under the api_key service instead.</p>
+                                                                <span class="phpdocumentor-tag-link"><a href="classes/EasyPost-Exception-General-FilteringException.html"><abbr title="\EasyPost\Exception\General\FilteringException">FilteringException</abbr></a></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>If no user is found with the given ID</p>
 </section>
 
                                     </dd>
                                             </dl>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_create">
-        create()
-        <a href="classes/EasyPost-Service-UserService.html#method_create" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Service/UserService.php"><a href="files/lib-easypost-service-userservice.html"><abbr title="lib/EasyPost/Service/UserService.php">UserService.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">46</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Create a child user.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">create</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$params</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$params</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_delete">
-        delete()
-        <a href="classes/EasyPost-Service-UserService.html#method_delete" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Service/UserService.php"><a href="files/lib-easypost-service-userservice.html"><abbr title="lib/EasyPost/Service/UserService.php">UserService.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">74</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Delete a user.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">delete</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$id</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$params</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$id</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$params</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_retrieve">
-        retrieve()
-        <a href="classes/EasyPost-Service-UserService.html#method_retrieve" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Service/UserService.php"><a href="files/lib-easypost-service-userservice.html"><abbr title="lib/EasyPost/Service/UserService.php">UserService.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">19</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Retrieve a user.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">retrieve</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$id</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$id</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_retrieveMe">
-        retrieveMe()
-        <a href="classes/EasyPost-Service-UserService.html#method_retrieveMe" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Service/UserService.php"><a href="files/lib-easypost-service-userservice.html"><abbr title="lib/EasyPost/Service/UserService.php">UserService.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">62</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Retrieve the authenticated user.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">retrieveMe</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_update">
-        update()
-        <a href="classes/EasyPost-Service-UserService.html#method_update" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Service/UserService.php"><a href="files/lib-easypost-service-userservice.html"><abbr title="lib/EasyPost/Service/UserService.php">UserService.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">29</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Update a user.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">update</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$id</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$params</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$id</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$params</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_updateBrand">
-        updateBrand()
-        <a href="classes/EasyPost-Service-UserService.html#method_updateBrand" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Service/UserService.php"><a href="files/lib-easypost-service-userservice.html"><abbr title="lib/EasyPost/Service/UserService.php">UserService.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">129</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Update the User&#039;s Brand object.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">updateBrand</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$id</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$params</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$id</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$params</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
 
     
 </article>
@@ -1431,7 +1113,7 @@
     <div class="phpdocumentor-modal-bg" data-exit-button></div>
     <div class="phpdocumentor-modal-container">
         <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/lib/EasyPost/Service/UserService.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/lib/EasyPost/Service/ApiKeyService.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
         </div>
         <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
     </div>
@@ -1530,29 +1212,23 @@
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                            <li><a href="classes/EasyPost-Service-UserService.html#toc-properties">Properties</a></li>
-                                                            <li><a href="classes/EasyPost-Service-UserService.html#toc-methods">Methods</a></li>
+                                                            <li><a href="classes/EasyPost-Service-ApiKeyService.html#toc-properties">Properties</a></li>
+                                                            <li><a href="classes/EasyPost-Service-ApiKeyService.html#toc-methods">Methods</a></li>
                                     </ul>
             </li>
             
                             <li class="phpdocumentor-on-this-page-section__title">Properties</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li><a href="classes/EasyPost-Service-BaseService.html#property_client">$client<a href="classes/EasyPost-Service-UserService.html"></li>
+                                                    <li><a href="classes/EasyPost-Service-BaseService.html#property_client">$client<a href="classes/EasyPost-Service-ApiKeyService.html"></li>
                                             </ul>
                 </li>
             
                         <li class="phpdocumentor-on-this-page-section__title">Methods</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                            <li><a href="classes/EasyPost-Service-UserService.html#method_allApiKeys">allApiKeys()</a></li>
-                                            <li><a href="classes/EasyPost-Service-UserService.html#method_apiKeys">apiKeys()</a></li>
-                                            <li><a href="classes/EasyPost-Service-UserService.html#method_create">create()</a></li>
-                                            <li><a href="classes/EasyPost-Service-UserService.html#method_delete">delete()</a></li>
-                                            <li><a href="classes/EasyPost-Service-UserService.html#method_retrieve">retrieve()</a></li>
-                                            <li><a href="classes/EasyPost-Service-UserService.html#method_retrieveMe">retrieveMe()</a></li>
-                                            <li><a href="classes/EasyPost-Service-UserService.html#method_update">update()</a></li>
-                                            <li><a href="classes/EasyPost-Service-UserService.html#method_updateBrand">updateBrand()</a></li>
+                                            <li><a href="classes/EasyPost-Service-ApiKeyService.html#method_all">all()</a></li>
+                                            <li><a href="classes/EasyPost-Service-ApiKeyService.html#method_retrieveApiKeysForUser">retrieveApiKeysForUser()</a></li>
                                             <li><a href="classes/EasyPost-Service-BaseService.html#method___construct">__construct()</a></li>
                                             <li><a href="classes/EasyPost-Service-BaseService.html#method_allResources">allResources()</a></li>
                                             <li><a href="classes/EasyPost-Service-BaseService.html#method_className">className()</a></li>
@@ -1584,7 +1260,7 @@
     </section>
 </section>
         </div>
-        <a href="classes/EasyPost-Service-UserService.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="classes/EasyPost-Service-ApiKeyService.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 
