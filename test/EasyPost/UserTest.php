@@ -2,7 +2,6 @@
 
 namespace EasyPost\Test;
 
-use EasyPost\ApiKey;
 use EasyPost\EasyPostClient;
 use EasyPost\User;
 
@@ -111,55 +110,6 @@ class UserTest extends \PHPUnit\Framework\TestCase
         } catch (\Exception $exception) {
             $this->fail('Exception thrown when we expected no error');
         }
-    }
-
-    /**
-     * Test retrieving all API keys.
-     */
-    public function testAllApiKeys()
-    {
-        TestUtil::setupCassette('users/allApiKeys.yml');
-
-        $apiKeys = self::$client->user->allApiKeys();
-
-        $this->assertContainsOnlyInstancesOf(ApiKey::class, $apiKeys['keys']);
-        foreach ($apiKeys['children'] as $child) {
-            $this->assertContainsOnlyInstancesOf(ApiKey::class, $child['keys']);
-        }
-    }
-
-    /**
-     * Test retrieving the authenticated user's API keys.
-     */
-    public function testAuthenticatedUserApiKeys()
-    {
-        TestUtil::setupCassette('users/authenticatedUserApiKeys.yml');
-
-        $user = self::$client->user->retrieveMe();
-
-        $apiKeys = self::$client->user->apiKeys($user->id);
-
-        $this->assertContainsOnlyInstancesOf(ApiKey::class, $apiKeys);
-    }
-
-    /**
-     * Test retrieving the authenticated user's API keys.
-     */
-    public function testChildUserApiKeys()
-    {
-        TestUtil::setupCassette('users/childUserApiKeys.yml');
-
-        $user = self::$client->user->create([
-            'name' => 'Test User',
-        ]);
-        $childUser = self::$client->user->retrieve($user->id);
-
-        $apiKeys = self::$client->user->apiKeys($childUser->id);
-
-        $this->assertContainsOnlyInstancesOf(ApiKey::class, $apiKeys);
-
-        // Delete the user once done so we don't pollute with hundreds of child users
-        self::$client->user->delete($childUser->id);
     }
 
     /**

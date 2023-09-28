@@ -8,6 +8,7 @@ use EasyPost\Exception\General\MissingParameterException;
 use EasyPost\Hook\RequestHook;
 use EasyPost\Hook\ResponseHook;
 use EasyPost\Service\AddressService;
+use EasyPost\Service\ApiKeyService;
 use EasyPost\Service\BaseService;
 use EasyPost\Service\BatchService;
 use EasyPost\Service\BetaRateService;
@@ -38,6 +39,7 @@ use EasyPost\Service\WebhookService;
  *
  * @package EasyPost
  * @property AddressService $address
+ * @property ApiKeyService $apiKey
  * @property BatchService $batch
  * @property BetaReferralCustomer $betaReferralCustomer
  * @property BillingService $billing
@@ -110,6 +112,7 @@ class EasyPostClient extends BaseService
     {
         $serviceClassMap = [
             'address' => AddressService::class,
+            'apiKeys' => ApiKeyService::class,
             'batch' => BatchService::class,
             'betaReferralCustomer' => BetaReferralCustomerService::class,
             'betaRate' => BetaRateService::class,

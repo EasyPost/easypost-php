@@ -79,6 +79,8 @@ class UserService extends BaseService
     /**
      * Retrieve a list of all API keys.
      *
+     * @deprecated Use all() under the api_key service instead.
+     *
      * @return mixed
      */
     public function allApiKeys()
@@ -90,6 +92,8 @@ class UserService extends BaseService
 
     /**
      * Retrieve a list of API keys (works for the authenticated user or a child user).
+     *
+     * @deprecated Use retrieve_api_key_for_user() under the api_key service instead.
      *
      * @param string $id
      * @return mixed
