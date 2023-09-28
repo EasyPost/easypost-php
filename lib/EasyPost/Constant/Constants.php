@@ -33,6 +33,8 @@ abstract class Constants
     const NO_BILLING_ERROR = 'Billing has not been setup for this user. Please add a payment method.';
     const NO_ID_URL_ERROR = 'Could not determine which URL to request: %s instance has invalid ID: %s';
     const NO_RATES_ERROR = 'No rates found.';
+
+    const NO_USER_FOUND_ERROR = 'No user found with the given ID.';
     const NO_RESPONSE_ERROR = 'Did not receive a response from %s.';
     const SEND_STRIPE_DETAILS_ERROR = 'Could not send card details to Stripe, please try again later.';
     const UNDEFINED_PROPERTY_ERROR = 'EasyPost Notice: Undefined property of %s instance: %s';
