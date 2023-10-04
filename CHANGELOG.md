@@ -3,6 +3,7 @@
 ## Next Release
 
 - Migrate API Key-related functions from `user` service to `api_keys` service
+- Fixes a bug that changed the timezone to UTC on each request without resetting it to the original timezone in use (closes #310)
 
 ## v6.8.1 (2023-09-05)
 
