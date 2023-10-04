@@ -20,7 +20,7 @@ coverage:
 
 ## docs - Generate documentation for the library
 docs:
-	curl -LJs https://github.com/phpDocumentor/phpDocumentor/releases/latest/download/phpDocumentor.phar -o phpDocumentor.phar
+	curl -LJs https://github.com/phpDocumentor/phpDocumentor/releases/download/v3.3.1/phpDocumentor.phar -o phpDocumentor.phar
 	php phpDocumentor.phar -d lib -t docs
 
 ## install - Install dependencies
