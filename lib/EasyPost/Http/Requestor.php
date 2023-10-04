@@ -183,6 +183,7 @@ class Requestor
         ];
 
         $requestUuid = uniqid();
+        $originalTimezone = date_default_timezone_get();
         date_default_timezone_set('UTC');
         $requestTimestamp = microtime(true);
         ($client->requestEvent)([
@@ -236,6 +237,9 @@ class Requestor
             'response_timestamp' => $responseTimestamp,
             'request_uuid' => $requestUuid,
         ]);
+
+        // Reset the timezone after we've done our UTC calculations so we don't affect user code
+        date_default_timezone_set($originalTimezone);
 
         return [$responseBody, $httpStatus];
     }
