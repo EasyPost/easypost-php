@@ -183,9 +183,7 @@ class Requestor
         ];
 
         $requestUuid = uniqid();
-        $originalTimezone = date_default_timezone_get();
-        date_default_timezone_set('UTC');
-        $requestTimestamp = microtime(true);
+        $requestTimestamp = (float) (new DateTime('now', new DateTimeZone('UTC')))->format('U.u');
         ($client->requestEvent)([
             'method' => $method,
             'path' => $absoluteUrl,
@@ -226,7 +224,7 @@ class Requestor
             $responseHeaders = $response->getHeaders();
         }
 
-        $responseTimestamp = microtime(true);
+        $responseTimestamp = (float) (new DateTime('now', new DateTimeZone('UTC')))->format('U.u');
         ($client->responseEvent)([
             'http_status' => $httpStatus,
             'method' => $method,
@@ -237,9 +235,6 @@ class Requestor
             'response_timestamp' => $responseTimestamp,
             'request_uuid' => $requestUuid,
         ]);
-
-        // Reset the timezone after we've done our UTC calculations so we don't affect user code
-        date_default_timezone_set($originalTimezone);
 
         return [$responseBody, $httpStatus];
     }

@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v6.9.1 (2023-11-20)
+
+- Fixes a bug that globally reset the timezone to UTC instead of setting the timezone per-request (closes #310)
+
 ## v6.9.0 (2023-10-11)
 
 - Deprecates API key-related functions in the `user` service and introduces the replacement functions in the `api_keys` service
