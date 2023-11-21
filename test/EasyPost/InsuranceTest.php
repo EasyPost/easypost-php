@@ -5,7 +5,6 @@ namespace EasyPost\Test;
 use EasyPost\EasyPostClient;
 use EasyPost\Exception\General\EndOfPaginationException;
 use EasyPost\Insurance;
-use Exception;
 
 class InsuranceTest extends \PHPUnit\Framework\TestCase
 {

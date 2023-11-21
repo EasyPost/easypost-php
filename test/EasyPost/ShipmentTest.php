@@ -9,7 +9,6 @@ use EasyPost\Exception\General\InvalidParameterException;
 use EasyPost\Rate;
 use EasyPost\Shipment;
 use EasyPost\Util\Util;
-use Exception;
 
 class ShipmentTest extends \PHPUnit\Framework\TestCase
 {

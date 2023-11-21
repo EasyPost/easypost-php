@@ -5,7 +5,6 @@ namespace EasyPost\Test;
 use EasyPost\EasyPostClient;
 use EasyPost\Exception\General\EndOfPaginationException;
 use EasyPost\Tracker;
-use Exception;
 
 class TrackerTest extends \PHPUnit\Framework\TestCase
 {
