@@ -3,8 +3,8 @@
 namespace EasyPost\Service;
 
 use EasyPost\Constant\Constants;
-use EasyPost\Exception\General\MissingParameterException;
 use EasyPost\Exception\General\EndOfPaginationException;
+use EasyPost\Exception\General\MissingParameterException;
 use EasyPost\Http\Requestor;
 use EasyPost\Util\InternalUtil;
 
@@ -57,6 +57,7 @@ class ReportService extends BaseService
     public function getNextPage($reports, $pageSize = null)
     {
         $reportArray = $reports['reports'];
+        $userParams = $reports['_params'] ?? null;
 
         if (empty($reportArray) || !$reports['has_more']) {
             throw new EndOfPaginationException();
@@ -66,10 +67,19 @@ class ReportService extends BaseService
             'page_size' => $pageSize,
             'before_id' => $reportArray[count($reportArray) - 1]['id']
         ];
-        $url = self::reportUrl($reports->type);
+
+        if (isset($userParams)) {
+            $params = array_merge($params, $userParams);
+        }
+
+        $url = self::reportUrl($reportArray[0]->object);
         $response = Requestor::request($this->client, 'get', $url, $params);
 
-        if (empty($response['reports']) || !$response['has_more']) {
+        if (isset($userParams)) {
+            $response['_params'] = $userParams;
+        }
+
+        if (empty($response['reports'])) {
             throw new EndOfPaginationException();
         }
 

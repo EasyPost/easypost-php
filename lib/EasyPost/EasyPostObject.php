@@ -143,7 +143,11 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     public function convertEach($client, $values)
     {
         foreach ($values as $k => $v) {
-            $this->_values[$k] = InternalUtil::convertToEasyPostObject($client, $v);
+            if ($k == '_params') {
+                $this->_values[$k] = $v;
+            } else {
+                $this->_values[$k] = InternalUtil::convertToEasyPostObject($client, $v);
+            }
         }
     }
 

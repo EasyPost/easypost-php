@@ -3,13 +3,11 @@
 namespace EasyPost\Service;
 
 use EasyPost\Constant\Constants;
+use EasyPost\Exception\General\EndOfPaginationException;
 use EasyPost\Exception\General\InvalidObjectException;
 use EasyPost\Exception\General\InvalidParameterException;
-use EasyPost\Exception\General\EndOfPaginationException;
 use EasyPost\Http\Requestor;
 use EasyPost\Util\InternalUtil;
-
-use function PHPUnit\Framework\assertTrue;
 
 class BaseService
 {
@@ -137,6 +135,9 @@ class BaseService
         self::validate($params);
         $url = self::classUrl($class);
         $response = Requestor::request($this->client, 'get', $url, $params, $beta);
+        if (isset($params)) {
+            $response['_params'] = $params;
+        }
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -148,13 +149,13 @@ class BaseService
      * @param string $class
      * @param mixed $collection
      * @param int $pageSize
-     * @param mixed $optionalParams
      * @return mixed
      */
-    protected function getNextPageResources($class, $collection, $pageSize = null, $optionalParams = null)
+    protected function getNextPageResources($class, $collection, $pageSize = null)
     {
         $objectName = substr(self::classUrl($class), 1);
         $collectionArray = $collection[$objectName];
+        $userParams = $collection['_params'] ?? null;
 
         if (empty($collectionArray) || !$collection['has_more']) {
             throw new EndOfPaginationException();
@@ -165,13 +166,17 @@ class BaseService
             'before_id' => $collectionArray[count($collectionArray) - 1]['id']
         ];
 
-        if (isset($optionalParams)) {
-            $params = array_merge($params, $optionalParams);
+        if (isset($userParams)) {
+            $params = array_merge($params, $userParams);
         }
 
         $response = $this->allResources($class, $params);
 
-        if (empty($response[$objectName]) || !$response['has_more']) {
+        if (isset($userParams)) {
+            $response['_params'] = $userParams;
+        }
+
+        if (empty($response[$objectName])) {
             throw new EndOfPaginationException();
         }
 

@@ -3,9 +3,8 @@
 namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
-use EasyPost\Exception\General\FilteringException;
 use EasyPost\Exception\General\EndOfPaginationException;
-use Exception;
+use EasyPost\Exception\General\FilteringException;
 use EasyPost\Pickup;
 
 class PickupTest extends \PHPUnit\Framework\TestCase
@@ -102,10 +101,8 @@ class PickupTest extends \PHPUnit\Framework\TestCase
             $secondIdOfSecondPage = $nextPage['pickups'][0]->id;
 
             $this->assertNotEquals($firstIdOfFirstPage, $secondIdOfSecondPage);
-        } catch (Exception $error) {
-            if (!($error instanceof EndOfPaginationException)) {
-                throw new Exception('Test failed intentionally');
-            }
+        } catch (EndOfPaginationException $error) {
+            error_log('Test failed intentionally', 3, '/dev/stdout');
             $this->assertTrue(true);
         }
     }

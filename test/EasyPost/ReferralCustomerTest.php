@@ -5,7 +5,6 @@ namespace EasyPost\Test;
 use EasyPost\EasyPostClient;
 use EasyPost\Exception\General\EndOfPaginationException;
 use EasyPost\User;
-use Exception;
 
 class ReferralCustomerTest extends \PHPUnit\Framework\TestCase
 {
@@ -86,10 +85,8 @@ class ReferralCustomerTest extends \PHPUnit\Framework\TestCase
             $secondIdOfSecondPage = $nextPage['referral_customers'][0]->id;
 
             $this->assertNotEquals($firstIdOfFirstPage, $secondIdOfSecondPage);
-        } catch (Exception $error) {
-            if (!($error instanceof EndOfPaginationException)) {
-                throw new Exception('Test failed intentionally');
-            }
+        } catch (EndOfPaginationException $error) {
+            error_log('Test failed intentionally', 3, '/dev/stdout');
             $this->assertTrue(true);
         }
     }
