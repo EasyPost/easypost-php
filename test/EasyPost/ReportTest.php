@@ -6,6 +6,7 @@ use EasyPost\EasyPostClient;
 use EasyPost\Exception\General\EndOfPaginationException;
 use EasyPost\Exception\General\MissingParameterException;
 use EasyPost\Report;
+use Exception;
 
 class ReportTest extends \PHPUnit\Framework\TestCase
 {
@@ -143,8 +144,10 @@ class ReportTest extends \PHPUnit\Framework\TestCase
 
             $this->assertNotEquals($firstIdOfFirstPage, $secondIdOfSecondPage);
         } catch (EndOfPaginationException $error) {
-            error_log('Test failed intentionally', 3, '/dev/stdout');
+            // There's no second page, that's not a failure
             $this->assertTrue(true);
+        } catch (Exception $error) {
+            throw $error;
         }
     }
 

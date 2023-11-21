@@ -5,6 +5,7 @@ namespace EasyPost\Test;
 use EasyPost\EasyPostClient;
 use EasyPost\Exception\General\EndOfPaginationException;
 use EasyPost\Insurance;
+use Exception;
 
 class InsuranceTest extends \PHPUnit\Framework\TestCase
 {
@@ -101,8 +102,10 @@ class InsuranceTest extends \PHPUnit\Framework\TestCase
 
             $this->assertNotEquals($firstIdOfFirstPage, $secondIdOfSecondPage);
         } catch (EndOfPaginationException $error) {
-            error_log('Test failed intentionally', 3, '/dev/stdout');
+            // There's no second page, that's not a failure
             $this->assertTrue(true);
+        } catch (Exception $error) {
+            throw $error;
         }
     }
 }
