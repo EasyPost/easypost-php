@@ -24,63 +24,63 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: e26b982d6391149ee78b0e81001e4f26
+            x-ep-request-uuid: 6c53f872655e653be7885dc3001f3efc
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
-            location: /api/v2/customs_items/cstitem_f0bacf872a25446989b5e82687e1ee08
+            location: /api/v2/customs_items/cstitem_b9193e2f08654758acf3cbb165bbbd9c
             content-type: 'application/json; charset=utf-8'
             content-length: '376'
-            etag: 'W/"fc9844e226c5752dc43a0c2aacd0f87b"'
-            x-runtime: '0.032308'
-            x-node: bigweb2nuq
-            x-version-label: easypost-202212072114-cbd87d5dd7-master
+            x-runtime: '0.169176'
+            x-node: bigweb41nuq
+            x-version-label: easypost-202311212221-a0f06fbc2c-master
             x-backend: easypost
-            x-proxied: ['intlb2nuq 29913d444b', 'extlb2nuq 29913d444b']
+            x-proxied: ['intlb2nuq b3de2c47ef', 'extlb1nuq 003ad9bca0']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"cstitem_f0bacf872a25446989b5e82687e1ee08","object":"CustomsItem","created_at":"2022-12-07T22:33:02Z","updated_at":"2022-12-07T22:33:02Z","description":"Sweet shirts","hs_tariff_number":"654321","origin_country":"US","quantity":2,"value":"23.25","weight":11,"code":null,"mode":"test","manufacturer":null,"currency":null,"eccn":null,"printed_commodity_identifier":null}'
+        body: '{"id":"cstitem_b9193e2f08654758acf3cbb165bbbd9c","object":"CustomsItem","created_at":"2023-11-22T20:31:55Z","updated_at":"2023-11-22T20:31:55Z","description":"Sweet shirts","hs_tariff_number":"654321","origin_country":"US","quantity":2,"value":"23.25","weight":11,"code":null,"mode":"test","manufacturer":null,"currency":null,"eccn":null,"printed_commodity_identifier":null}'
         curl_info:
             url: 'https://api.easypost.com/v2/customs_items'
             content_type: 'application/json; charset=utf-8'
             http_code: 201
-            header_size: 810
+            header_size: 767
             request_size: 454
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.257376
-            namelookup_time: 0.002307
-            connect_time: 0.069514
-            pretransfer_time: 0.156364
+            total_time: 0.367006
+            namelookup_time: 0.00134
+            connect_time: 0.065004
+            pretransfer_time: 0.132357
             size_upload: 142.0
             size_download: 376.0
-            speed_download: 1460.0
-            speed_upload: 551.0
+            speed_download: 1024.0
+            speed_upload: 386.0
             download_content_length: 376.0
             upload_content_length: 142.0
-            starttransfer_time: 0.257299
+            starttransfer_time: 0.36699
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.130
+            primary_ip: 169.62.110.131
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.25
-            local_port: 58232
+            local_ip: 10.130.6.39
+            local_port: 53563
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 156299
-            connect_time_us: 69514
-            namelookup_time_us: 2307
-            pretransfer_time_us: 156364
+            appconnect_time_us: 132277
+            connect_time_us: 65004
+            namelookup_time_us: 1340
+            pretransfer_time_us: 132357
             redirect_time_us: 0
-            starttransfer_time_us: 257299
-            total_time_us: 257376
+            starttransfer_time_us: 366990
+            total_time_us: 367006
+    index: 0
 -
     request:
         method: GET
-        url: 'https://api.easypost.com/v2/customs_items/cstitem_f0bacf872a25446989b5e82687e1ee08'
+        url: 'https://api.easypost.com/v2/customs_items/cstitem_b9193e2f08654758acf3cbb165bbbd9c'
         headers:
             Host: api.easypost.com
             Accept-Encoding: ''
@@ -100,56 +100,55 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: e26b982d6391149fe78b0e82001e4f44
+            x-ep-request-uuid: 6c53f876655e653be7885dc4001f3f64
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '376'
-            etag: 'W/"fc9844e226c5752dc43a0c2aacd0f87b"'
-            x-runtime: '0.022072'
-            x-node: bigweb7nuq
-            x-version-label: easypost-202212072114-cbd87d5dd7-master
+            x-runtime: '0.023557'
+            x-node: bigweb40nuq
+            x-version-label: easypost-202311212221-a0f06fbc2c-master
             x-backend: easypost
-            x-canary: direct
-            x-proxied: ['intlb2nuq 29913d444b', 'extlb2nuq 29913d444b']
+            x-proxied: ['intlb1nuq b3de2c47ef', 'extlb1nuq 003ad9bca0']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"cstitem_f0bacf872a25446989b5e82687e1ee08","object":"CustomsItem","created_at":"2022-12-07T22:33:02Z","updated_at":"2022-12-07T22:33:02Z","description":"Sweet shirts","hs_tariff_number":"654321","origin_country":"US","quantity":2,"value":"23.25","weight":11,"code":null,"mode":"test","manufacturer":null,"currency":null,"eccn":null,"printed_commodity_identifier":null}'
+        body: '{"id":"cstitem_b9193e2f08654758acf3cbb165bbbd9c","object":"CustomsItem","created_at":"2023-11-22T20:31:55Z","updated_at":"2023-11-22T20:31:55Z","description":"Sweet shirts","hs_tariff_number":"654321","origin_country":"US","quantity":2,"value":"23.25","weight":11,"code":null,"mode":"test","manufacturer":null,"currency":null,"eccn":null,"printed_commodity_identifier":null}'
         curl_info:
-            url: 'https://api.easypost.com/v2/customs_items/cstitem_f0bacf872a25446989b5e82687e1ee08'
+            url: 'https://api.easypost.com/v2/customs_items/cstitem_b9193e2f08654758acf3cbb165bbbd9c'
             content_type: 'application/json; charset=utf-8'
             http_code: 200
-            header_size: 749
+            header_size: 688
             request_size: 331
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.238849
-            namelookup_time: 0.002095
-            connect_time: 0.069821
-            pretransfer_time: 0.148611
+            total_time: 0.213644
+            namelookup_time: 0.001237
+            connect_time: 0.063231
+            pretransfer_time: 0.126622
             size_upload: 0.0
             size_download: 376.0
-            speed_download: 1574.0
+            speed_download: 1759.0
             speed_upload: 0.0
             download_content_length: 376.0
             upload_content_length: 0.0
-            starttransfer_time: 0.238698
+            starttransfer_time: 0.213615
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.130
+            primary_ip: 169.62.110.131
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.25
-            local_port: 58233
+            local_ip: 10.130.6.39
+            local_port: 53564
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 148561
-            connect_time_us: 69821
-            namelookup_time_us: 2095
-            pretransfer_time_us: 148611
+            appconnect_time_us: 126596
+            connect_time_us: 63231
+            namelookup_time_us: 1237
+            pretransfer_time_us: 126622
             redirect_time_us: 0
-            starttransfer_time_us: 238698
-            total_time_us: 238849
+            starttransfer_time_us: 213615
+            total_time_us: 213644
+    index: 0

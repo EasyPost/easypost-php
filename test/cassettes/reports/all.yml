@@ -22,56 +22,55 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: d6e2ffca63ee99dae788f686000c8906
+            x-ep-request-uuid: 71ef911a655e64f3e7885983001fd604
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
-            content-length: '1455'
-            etag: 'W/"15dbb583f1f8a94afb48fc16f37dd135"'
-            x-runtime: '0.037367'
-            x-node: bigweb9nuq
-            x-version-label: easypost-202302161858-5b15c0a595-master
+            content-length: '1459'
+            x-runtime: '0.055426'
+            x-node: bigweb40nuq
+            x-version-label: easypost-202311212221-a0f06fbc2c-master
             x-backend: easypost
-            x-proxied: ['intlb1nuq a40ea751fd', 'extlb1nuq a40ea751fd']
+            x-proxied: ['intlb2nuq b3de2c47ef', 'extlb2nuq 003ad9bca0']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"reports":[{"id":"shprep_21ef6f782bbb4d66adbd14fd3e5f5789","object":"ShipmentReport","created_at":"2023-02-16T21:02:18Z","updated_at":"2023-02-16T21:02:18Z","start_date":"2022-04-09","end_date":"2022-04-09","mode":"test","status":"new","url":null,"url_expires_at":null,"include_children":false},{"id":"shprep_744fbf60b16044498b8c023c3b50c40b","object":"ShipmentReport","created_at":"2023-02-16T21:02:17Z","updated_at":"2023-02-16T21:02:17Z","start_date":"2022-04-09","end_date":"2022-04-09","mode":"test","status":"new","url":null,"url_expires_at":null,"include_children":false},{"id":"shprep_5cdc56cd4bb44bc8a41e50dd8d746f0c","object":"ShipmentReport","created_at":"2022-12-07T22:31:59Z","updated_at":"2022-12-07T22:32:05Z","start_date":"2022-04-09","end_date":"2022-04-09","mode":"test","status":"empty","url":null,"url_expires_at":null,"include_children":false},{"id":"shprep_9ba818aecc7b43c796eff121ad5f1c92","object":"ShipmentReport","created_at":"2022-12-07T22:31:58Z","updated_at":"2022-12-07T22:32:05Z","start_date":"2022-04-09","end_date":"2022-04-09","mode":"test","status":"empty","url":null,"url_expires_at":null,"include_children":false},{"id":"shprep_5848cfcfb43d4636bde8821d0c835038","object":"ShipmentReport","created_at":"2022-12-07T22:31:58Z","updated_at":"2022-12-07T22:32:05Z","start_date":"2022-04-09","end_date":"2022-04-09","mode":"test","status":"empty","url":null,"url_expires_at":null,"include_children":false}],"has_more":true}'
+        body: '{"reports":[{"id":"shprep_cf3ffeee1d844c4a97ad5cf890bddf18","object":"ShipmentReport","created_at":"2023-11-22T20:30:43Z","updated_at":"2023-11-22T20:30:43Z","start_date":"2022-04-09","end_date":"2022-04-09","mode":"test","status":"empty","url":null,"url_expires_at":null,"include_children":false},{"id":"shprep_c3a4bd71f12d4c158d251270c4e3dbd5","object":"ShipmentReport","created_at":"2023-11-22T19:56:12Z","updated_at":"2023-11-22T19:56:12Z","start_date":"2022-04-09","end_date":"2022-04-09","mode":"test","status":"empty","url":null,"url_expires_at":null,"include_children":false},{"id":"shprep_4f669a069d2a4d3eb52f568c733f1084","object":"ShipmentReport","created_at":"2023-11-22T19:56:11Z","updated_at":"2023-11-22T19:56:11Z","start_date":"2022-04-09","end_date":"2022-04-09","mode":"test","status":"empty","url":null,"url_expires_at":null,"include_children":false},{"id":"shprep_16abc0dfcf71434599844e8bb2b73b70","object":"ShipmentReport","created_at":"2023-11-22T19:56:11Z","updated_at":"2023-11-22T19:56:11Z","start_date":"2022-04-09","end_date":"2022-04-09","mode":"test","status":"empty","url":null,"url_expires_at":null,"include_children":false},{"id":"shprep_b2581172ed914b3592c5b7b5eb1ee63c","object":"ShipmentReport","created_at":"2023-11-22T19:56:10Z","updated_at":"2023-11-22T19:56:11Z","start_date":"2022-04-09","end_date":"2022-04-09","mode":"test","status":"empty","url":null,"url_expires_at":null,"include_children":false}],"has_more":true}'
         curl_info:
             url: 'https://api.easypost.com/v2/reports/shipment?page_size=5'
             content_type: 'application/json; charset=utf-8'
             http_code: 200
-            header_size: 732
+            header_size: 689
             request_size: 305
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.391535
-            namelookup_time: 0.001709
-            connect_time: 0.206922
-            pretransfer_time: 0.287313
+            total_time: 0.252487
+            namelookup_time: 0.002545
+            connect_time: 0.065411
+            pretransfer_time: 0.131408
             size_upload: 0.0
-            size_download: 1455.0
-            speed_download: 3716.0
+            size_download: 1459.0
+            speed_download: 5778.0
             speed_upload: 0.0
-            download_content_length: 1455.0
+            download_content_length: 1459.0
             upload_content_length: 0.0
-            starttransfer_time: 0.391507
+            starttransfer_time: 0.252448
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.131
+            primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.31
-            local_port: 54835
+            local_ip: 10.130.6.39
+            local_port: 53464
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 494137
-            connect_time_us: 206922
-            namelookup_time_us: 1709
-            pretransfer_time_us: 287313
+            appconnect_time_us: 131324
+            connect_time_us: 65411
+            namelookup_time_us: 2545
+            pretransfer_time_us: 131408
             redirect_time_us: 0
-            starttransfer_time_us: 391507
-            total_time_us: 391535
+            starttransfer_time_us: 252448
+            total_time_us: 252487
     index: 0
