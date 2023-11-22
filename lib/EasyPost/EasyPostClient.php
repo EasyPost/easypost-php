@@ -141,9 +141,11 @@ class EasyPostClient extends BaseService
         if (array_key_exists($serviceName, $serviceClassMap)) {
             return new $serviceClassMap[$serviceName]($this);
         } else {
-            throw new EasyPostException(
-                sprintf(Constants::UNDEFINED_PROPERTY_ERROR, 'EasyPostClient', $serviceName)
-            );
+            if ($serviceName != '_parent') {
+                throw new EasyPostException(
+                    sprintf(Constants::UNDEFINED_PROPERTY_ERROR, 'EasyPostClient', $serviceName)
+                );
+            }
         }
     }
 
