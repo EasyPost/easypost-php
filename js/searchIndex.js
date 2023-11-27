@@ -26,11 +26,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/EasyPost-Brand.html"
         },                {
-            "fqsen": "\\EasyPost\\CarbonOffset",
-            "name": "CarbonOffset",
-            "summary": "",
-            "url": "classes/EasyPost-CarbonOffset.html"
-        },                {
             "fqsen": "\\EasyPost\\CarrierAccount",
             "name": "CarrierAccount",
             "summary": "",
