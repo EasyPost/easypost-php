@@ -9,6 +9,7 @@ use EasyPost\Exception\General\InvalidParameterException;
 use EasyPost\Rate;
 use EasyPost\Shipment;
 use EasyPost\Util\Util;
+use Exception;
 
 class ShipmentTest extends \PHPUnit\Framework\TestCase
 {
@@ -98,7 +99,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
             $secondIdOfSecondPage = $nextPage['shipments'][0]->id;
 
             $this->assertNotEquals($firstIdOfFirstPage, $secondIdOfSecondPage);
-            $this->assertNotNull($nextPage['_paramsss']);
+            $this->assertNotNull($nextPage['_params']);
         } catch (EndOfPaginationException $error) {
             // There's no second page, that's not a failure
             $this->assertTrue(true);

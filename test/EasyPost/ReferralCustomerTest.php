@@ -5,6 +5,7 @@ namespace EasyPost\Test;
 use EasyPost\EasyPostClient;
 use EasyPost\Exception\General\EndOfPaginationException;
 use EasyPost\User;
+use Exception;
 
 class ReferralCustomerTest extends \PHPUnit\Framework\TestCase
 {

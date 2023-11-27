@@ -5,10 +5,7 @@ namespace EasyPost\Test;
 use EasyPost\EasyPostClient;
 use EasyPost\Exception\General\EndOfPaginationException;
 use EasyPost\ScanForm;
-<<<<<<< HEAD
 use Exception;
-=======
->>>>>>> e7b0267 (fix: pagination errors with user-supplied params)
 
 class ScanFormTest extends \PHPUnit\Framework\TestCase
 {

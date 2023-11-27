@@ -6,6 +6,7 @@ use EasyPost\Address;
 use EasyPost\EasyPostClient;
 use EasyPost\Exception\Api\ApiException;
 use EasyPost\Exception\General\EndOfPaginationException;
+use Exception;
 
 class AddressTest extends \PHPUnit\Framework\TestCase
 {
