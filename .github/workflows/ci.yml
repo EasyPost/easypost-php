@@ -14,7 +14,7 @@ jobs:
       - name: set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2'
+          php-version: '8.3'
       - name: install dependencies
         run: make install
       - name: lint
@@ -23,8 +23,7 @@ jobs:
     runs-on: ubuntu-20.04
     strategy:
       matrix:
-        # 8.2.9+ is needed due to segfaults on 8.2-8.2.8 when generating coverage: https://github.com/php-vcr/php-vcr/issues/373
-        phpversion: ['7.4', '8.0', '8.1', '8.2.9']
+        phpversion: ['7.4', '8.0', '8.1', '8.2', '8.3']
     steps:
       - uses: actions/checkout@v3
       - name: set up PHP
@@ -59,7 +58,7 @@ jobs:
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2'
+          php-version: '8.3'
       - name: Install Dependencies
         run: make install
       - name: Generate Docs
