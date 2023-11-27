@@ -348,14 +348,14 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
         // Test lowestRate with no filters
         $lowestRate = $shipment->lowestRate();
-        $this->assertEquals('First', $lowestRate['service']);
-        $this->assertEquals('5.82', $lowestRate['rate']);
+        $this->assertEquals('GroundAdvantage', $lowestRate['service']);
+        $this->assertEquals('5.93', $lowestRate['rate']);
         $this->assertEquals('USPS', $lowestRate['carrier']);
 
         // Test lowestRate with service filter (this rate is higher than the lowest but should filter)
         $lowestRate = $shipment->lowestRate([], ['Priority']);
         $this->assertEquals('Priority', $lowestRate['service']);
-        $this->assertEquals('8.15', $lowestRate['rate']);
+        $this->assertEquals('6.95', $lowestRate['rate']);
         $this->assertEquals('USPS', $lowestRate['carrier']);
 
         // Test lowestRate with carrier filter (should error due to bad carrier)
@@ -378,14 +378,14 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         // Test lowest rate by excluding a carrier (this is a weak test but we cannot assume existence
         // of a non-USPS carrier).
         $lowestRate = $shipment->lowestRate(['!RandomCarrier']);
-        $this->assertEquals('First', $lowestRate['service']);
-        $this->assertEquals('5.82', $lowestRate['rate']);
+        $this->assertEquals('GroundAdvantage', $lowestRate['service']);
+        $this->assertEquals('5.93', $lowestRate['rate']);
         $this->assertEquals('USPS', $lowestRate['carrier']);
 
         // Test lowest rate by excluding the `Priority` service
         $lowestRate = $shipment->lowestRate([], ['!Priority']);
-        $this->assertEquals('First', $lowestRate['service']);
-        $this->assertEquals('5.82', $lowestRate['rate']);
+        $this->assertEquals('GroundAdvantage', $lowestRate['service']);
+        $this->assertEquals('5.93', $lowestRate['rate']);
         $this->assertEquals('USPS', $lowestRate['carrier']);
     }
 
@@ -403,8 +403,8 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
         // Test lowestSmartRate with no filters
         $lowestSmartRate = self::$client->shipment->lowestSmartRate($shipment->id, 3, 'percentile_85');
-        $this->assertEquals('First', $lowestSmartRate['service']);
-        $this->assertEquals(5.82, $lowestSmartRate['rate']);
+        $this->assertEquals('GroundAdvantage', $lowestSmartRate['service']);
+        $this->assertEquals(5.93, $lowestSmartRate['rate']);
         $this->assertEquals('USPS', $lowestSmartRate['carrier']);
 
         // Test lowestSmartRate with invalid filters (should error due to strict delivery_days)
@@ -429,8 +429,8 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
         // Test lowestSmartRate with valid filters
         $lowestSmartRate = Util::getLowestSmartRate($smartRates, 3, 'percentile_85');
-        $this->assertEquals('First', $lowestSmartRate['service']);
-        $this->assertEquals(5.82, $lowestSmartRate['rate']);
+        $this->assertEquals('GroundAdvantage', $lowestSmartRate['service']);
+        $this->assertEquals(5.93, $lowestSmartRate['rate']);
         $this->assertEquals('USPS', $lowestSmartRate['carrier']);
 
         // Test lowestSmartRate with invalid filters (should error due to strict delivery_days)
@@ -473,81 +473,6 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals($formType, $form->form_type);
         $this->assertNotNull($form->form_url);
-    }
-
-    /**
-     * Tests creating a carbon offset shipment.
-     */
-    public function testCreateCarbonOffsetShipment()
-    {
-        TestUtil::setupCassette('shipments/createCarbonOffsetShipment.yml');
-
-        $shipment = self::$client->shipment->create(Fixture::basicShipment(), true);
-
-        $this->assertInstanceOf(Shipment::class, $shipment);
-
-        foreach ($shipment->rates as $rate) {
-            $this->assertNotNull($rate->carbon_offset);
-        }
-    }
-
-    /**
-     * Tests buying a carbon offset shipment.
-     */
-    public function testBuyCarbonOffsetShipment()
-    {
-        TestUtil::setupCassette('shipments/buyCarbonOffsetShipment.yml');
-
-        $shipment = self::$client->shipment->create(Fixture::basicShipment());
-
-        $boughtShipment = self::$client->shipment->buy(
-            $shipment->id,
-            ['rate' => $shipment->lowestRate()],
-            true,
-        );
-
-        $this->assertInstanceOf(Shipment::class, $boughtShipment);
-
-        $foundCarbonOffset = false;
-
-        foreach ($boughtShipment->fees as $fee) {
-            if ($fee->type == 'CarbonOffsetFee') {
-                $foundCarbonOffset = true;
-            }
-        }
-
-        $this->assertTrue($foundCarbonOffset);
-    }
-
-    /**
-     * Tests one call buy a carbon offset shipment.
-     */
-    public function testOneCallBuyCarbonOffsetShipment()
-    {
-        TestUtil::setupCassette('shipments/oneCallBuyCarbonOffsetShipment.yml');
-
-        $shipment = self::$client->shipment->create(Fixture::oneCallBuyShipment(), true);
-
-        $this->assertInstanceOf(Shipment::class, $shipment);
-
-        foreach ($shipment->rates as $rate) {
-            $this->assertNotNull($rate->carbon_offset);
-        }
-    }
-
-    /**
-     * Tests rerate a shipment with carbon offset.
-     */
-    public function testRerateShipmentWithCarbonOffset()
-    {
-        TestUtil::setupCassette('shipments/rerateCarbonOffsetShipment.yml');
-
-        $shipment = self::$client->shipment->create(Fixture::oneCallBuyShipment());
-
-        $newCarbonOffset = self::$client->shipment->regenerateRates($shipment->id, null, true);
-        foreach ($newCarbonOffset->rates as $rate) {
-            $this->assertNotNull($rate->carbon_offset);
-        }
     }
 
     /**

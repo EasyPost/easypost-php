@@ -51,7 +51,7 @@ class BetaRateTest extends \PHPUnit\Framework\TestCase
 
         $lowestStatelessRate = Util::getLowestStatelessRate($statelessRates);
 
-        $this->assertEquals('First', $lowestStatelessRate->service);
+        $this->assertEquals('GroundAdvantage', $lowestStatelessRate->service);
 
         try {
             $lowestStatelessRate = Util::getLowestStatelessRate($statelessRates, ['invalidCarrier']);

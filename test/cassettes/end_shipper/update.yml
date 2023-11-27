@@ -24,62 +24,63 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: e26b98306391149de78b0e67001e4ed7
+            x-ep-request-uuid: 6c53f874655e653ae7885da8001f3d8a
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '365'
-            etag: 'W/"f3de082ddd4a21b601cf1de9d6d701e9"'
-            x-runtime: '0.055936'
-            x-node: bigweb6nuq
-            x-version-label: easypost-202212072114-cbd87d5dd7-master
+            x-runtime: '0.056473'
+            x-node: bigweb32nuq
+            x-version-label: easypost-202311212221-a0f06fbc2c-master
             x-backend: easypost
-            x-proxied: ['intlb1nuq 29913d444b', 'extlb2nuq 29913d444b']
+            x-canary: direct
+            x-proxied: ['intlb2nuq b3de2c47ef', 'extlb1nuq 003ad9bca0']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"es_69cbc65bae5d41e8b20503a6dd1c305b","object":"EndShipper","mode":"test","created_at":"2022-12-07T22:33:01+00:00","updated_at":"2022-12-07T22:33:01+00:00","name":"JACK SPARROW","company":null,"street1":"388 TOWNSEND ST APT 20","street2":"","city":"SAN FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":"<REDACTED>"}'
+        body: '{"id":"es_6a76c5cd08fc40daa2f7b69b2befde28","object":"EndShipper","mode":"test","created_at":"2023-11-22T20:31:54+00:00","updated_at":"2023-11-22T20:31:54+00:00","name":"JACK SPARROW","company":null,"street1":"388 TOWNSEND ST APT 20","street2":"","city":"SAN FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":"<REDACTED>"}'
         curl_info:
             url: 'https://api.easypost.com/v2/end_shippers'
             content_type: 'application/json; charset=utf-8'
             http_code: 201
-            header_size: 736
+            header_size: 711
             request_size: 506
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.28096
-            namelookup_time: 0.002144
-            connect_time: 0.070825
-            pretransfer_time: 0.156306
+            total_time: 0.25718
+            namelookup_time: 0.001032
+            connect_time: 0.064122
+            pretransfer_time: 0.130799
             size_upload: 195.0
             size_download: 365.0
-            speed_download: 1299.0
-            speed_upload: 694.0
+            speed_download: 1419.0
+            speed_upload: 758.0
             download_content_length: 365.0
             upload_content_length: 195.0
-            starttransfer_time: 0.280875
+            starttransfer_time: 0.25715
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.130
+            primary_ip: 169.62.110.131
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.25
-            local_port: 58229
+            local_ip: 10.130.6.39
+            local_port: 53559
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 156244
-            connect_time_us: 70825
-            namelookup_time_us: 2144
-            pretransfer_time_us: 156306
+            appconnect_time_us: 130740
+            connect_time_us: 64122
+            namelookup_time_us: 1032
+            pretransfer_time_us: 130799
             redirect_time_us: 0
-            starttransfer_time_us: 280875
-            total_time_us: 280960
+            starttransfer_time_us: 257150
+            total_time_us: 257180
+    index: 0
 -
     request:
         method: PUT
-        url: 'https://api.easypost.com/v2/end_shippers/es_69cbc65bae5d41e8b20503a6dd1c305b'
+        url: 'https://api.easypost.com/v2/end_shippers/es_6a76c5cd08fc40daa2f7b69b2befde28'
         headers:
             Host: api.easypost.com
             Expect: ''
@@ -101,56 +102,56 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: e26b982f6391149ee78b0e7f001e4ef7
+            x-ep-request-uuid: 6c53f873655e653ae7885dc0001f3dd9
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '367'
-            etag: 'W/"7d335b60c77f6325815446ab88930189"'
-            x-runtime: '0.068953'
-            x-node: bigweb7nuq
-            x-version-label: easypost-202212072114-cbd87d5dd7-master
+            x-runtime: '0.054189'
+            x-node: bigweb32nuq
+            x-version-label: easypost-202311212221-a0f06fbc2c-master
             x-backend: easypost
             x-canary: direct
-            x-proxied: ['intlb1nuq 29913d444b', 'extlb2nuq 29913d444b']
+            x-proxied: ['intlb1nuq b3de2c47ef', 'extlb1nuq 003ad9bca0']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"es_69cbc65bae5d41e8b20503a6dd1c305b","object":"EndShipper","mode":"test","created_at":"2022-12-07T22:33:01+00:00","updated_at":"2022-12-07T22:33:02+00:00","name":"NEW NAME","company":"EASYPOST","street1":"388 TOWNSEND ST APT 20","street2":"","city":"SAN FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":"<REDACTED>"}'
+        body: '{"id":"es_6a76c5cd08fc40daa2f7b69b2befde28","object":"EndShipper","mode":"test","created_at":"2023-11-22T20:31:54+00:00","updated_at":"2023-11-22T20:31:54+00:00","name":"NEW NAME","company":"EASYPOST","street1":"388 TOWNSEND ST APT 20","street2":"","city":"SAN FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":"<REDACTED>"}'
         curl_info:
-            url: 'https://api.easypost.com/v2/end_shippers/es_69cbc65bae5d41e8b20503a6dd1c305b'
+            url: 'https://api.easypost.com/v2/end_shippers/es_6a76c5cd08fc40daa2f7b69b2befde28'
             content_type: 'application/json; charset=utf-8'
             http_code: 200
-            header_size: 749
+            header_size: 706
             request_size: 558
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.297588
-            namelookup_time: 0.002173
-            connect_time: 0.069316
-            pretransfer_time: 0.160146
+            total_time: 0.247146
+            namelookup_time: 0.001316
+            connect_time: 0.063574
+            pretransfer_time: 0.12894
             size_upload: 212.0
             size_download: 367.0
-            speed_download: 1233.0
-            speed_upload: 712.0
+            speed_download: 1484.0
+            speed_upload: 857.0
             download_content_length: 367.0
             upload_content_length: 212.0
-            starttransfer_time: 0.297529
+            starttransfer_time: 0.247091
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.130
+            primary_ip: 169.62.110.131
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.25
-            local_port: 58230
+            local_ip: 10.130.6.39
+            local_port: 53560
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 160056
-            connect_time_us: 69316
-            namelookup_time_us: 2173
-            pretransfer_time_us: 160146
+            appconnect_time_us: 128851
+            connect_time_us: 63574
+            namelookup_time_us: 1316
+            pretransfer_time_us: 128940
             redirect_time_us: 0
-            starttransfer_time_us: 297529
-            total_time_us: 297588
+            starttransfer_time_us: 247091
+            total_time_us: 247146
+    index: 0

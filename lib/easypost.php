@@ -59,7 +59,6 @@ require_once(dirname(__FILE__) . '/EasyPost/Address.php');
 require_once(dirname(__FILE__) . '/EasyPost/ApiKey.php');
 require_once(dirname(__FILE__) . '/EasyPost/Batch.php');
 require_once(dirname(__FILE__) . '/EasyPost/Brand.php');
-require_once(dirname(__FILE__) . '/EasyPost/CarbonOffset.php');
 require_once(dirname(__FILE__) . '/EasyPost/CarrierAccount.php');
 require_once(dirname(__FILE__) . '/EasyPost/CarrierDetail.php');
 require_once(dirname(__FILE__) . '/EasyPost/CustomsInfo.php');

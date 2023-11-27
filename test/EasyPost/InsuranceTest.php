@@ -3,8 +3,8 @@
 namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
-use EasyPost\Insurance;
 use EasyPost\Exception\General\EndOfPaginationException;
+use EasyPost\Insurance;
 use Exception;
 
 class InsuranceTest extends \PHPUnit\Framework\TestCase
@@ -54,17 +54,16 @@ class InsuranceTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('insurance/retrieve.yml');
 
-        $shipment = self::$client->shipment->create(Fixture::oneCallBuyShipment());
+        $insurances = self::$client->insurance->all([
+            'page_size' => Fixture::pageSize(),
+        ]);
 
-        $insuranceData = Fixture::basicInsurance();
-        $insuranceData['tracking_code'] = $shipment->tracking_code;
+        $insuranceArray = $insurances['insurances'];
 
-        $insurance = self::$client->insurance->create($insuranceData);
-
-        $retrievedInsurance = self::$client->insurance->retrieve($insurance->id);
+        $retrievedInsurance = self::$client->insurance->retrieve($insuranceArray[0]['id']);
 
         $this->assertInstanceOf(Insurance::class, $retrievedInsurance);
-        $this->assertEquals($insurance, $retrievedInsurance);
+        $this->assertEquals($insuranceArray[0], $retrievedInsurance);
     }
 
     /**

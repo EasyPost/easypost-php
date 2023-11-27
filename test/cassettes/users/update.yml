@@ -22,59 +22,59 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: e26b982f6391140de78b05c0001e1ec4
+            x-ep-request-uuid: 71ef9121655e64b5e78855a3001f8c9b
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
-            content-length: '1580'
-            etag: 'W/"6b83435cb43dd3a2dac5637a0ddbfd48"'
-            x-runtime: '0.073815'
-            x-node: bigweb7nuq
-            x-version-label: easypost-202212072114-cbd87d5dd7-master
+            content-length: '1715'
+            x-runtime: '0.079163'
+            x-node: bigweb32nuq
+            x-version-label: easypost-202311212221-a0f06fbc2c-master
             x-backend: easypost
             x-canary: direct
-            x-proxied: ['intlb2nuq 29913d444b', 'extlb2nuq 29913d444b']
+            x-proxied: ['intlb1nuq b3de2c47ef', 'extlb2nuq 003ad9bca0']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"user_465eab8bb86844108100be2d4d5288ab","object":"User","parent_id":null,"name":"New Name","phone_number":"<REDACTED>","verified":true,"created_at":"2022-02-02T20:16:00Z","default_carbon_offset":false,"balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":"100.00","secondary_recharge_amount":"100.00","recharge_threshold":"0.00","has_billing_method":false,"cc_fee_rate":"0.0325","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"<REDACTED>","children":[{"id":"user_3c44214dcf744d169c3f2db034fd965e","object":"User","parent_id":"user_465eab8bb86844108100be2d4d5288ab","name":"Test User","phone_number":"<REDACTED>","verified":true,"created_at":"2022-11-23T21:03:03Z","default_carbon_offset":false,"children":[]},{"id":"user_78019b89199646358298fd311435458f","object":"User","parent_id":"user_465eab8bb86844108100be2d4d5288ab","name":"Test User","phone_number":"<REDACTED>","verified":true,"created_at":"2022-12-02T22:41:09Z","default_carbon_offset":false,"children":[]},{"id":"user_1a2e9fb7903c4a08b2da7d7f57150370","object":"User","parent_id":"user_465eab8bb86844108100be2d4d5288ab","name":"Test User","phone_number":"<REDACTED>","verified":true,"created_at":"2022-12-02T22:43:07Z","default_carbon_offset":false,"children":[]},{"id":"user_f01890d357374ac3837ff556a957b9b4","object":"User","parent_id":"user_465eab8bb86844108100be2d4d5288ab","name":"Test User","phone_number":"<REDACTED>","verified":true,"created_at":"2022-12-05T17:00:14Z","default_carbon_offset":false,"children":[]}]}'
+        body: '{"id":"user_465eab8bb86844108100be2d4d5288ab","object":"User","parent_id":null,"name":"New Name","phone_number":"<REDACTED>","verified":true,"created_at":"2022-02-02T20:16:00Z","default_carbon_offset":false,"has_elevate_access":false,"balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":"100.00","secondary_recharge_amount":"100.00","recharge_threshold":"0.00","has_billing_method":false,"cc_fee_rate":"0.0325","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"<REDACTED>","children":[{"id":"user_3c44214dcf744d169c3f2db034fd965e","object":"User","parent_id":"user_465eab8bb86844108100be2d4d5288ab","name":"Test User","phone_number":"<REDACTED>","verified":true,"created_at":"2022-11-23T21:03:03Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_78019b89199646358298fd311435458f","object":"User","parent_id":"user_465eab8bb86844108100be2d4d5288ab","name":"Test User","phone_number":"<REDACTED>","verified":true,"created_at":"2022-12-02T22:41:09Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_1a2e9fb7903c4a08b2da7d7f57150370","object":"User","parent_id":"user_465eab8bb86844108100be2d4d5288ab","name":"Test User","phone_number":"<REDACTED>","verified":true,"created_at":"2022-12-02T22:43:07Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_f01890d357374ac3837ff556a957b9b4","object":"User","parent_id":"user_465eab8bb86844108100be2d4d5288ab","name":"Test User","phone_number":"<REDACTED>","verified":true,"created_at":"2022-12-05T17:00:14Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]}]}'
         curl_info:
             url: 'https://api.easypost.com/v2/users'
             content_type: 'application/json; charset=utf-8'
             http_code: 200
-            header_size: 750
+            header_size: 707
             request_size: 282
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.286043
-            namelookup_time: 0.001143
-            connect_time: 0.06831
-            pretransfer_time: 0.143008
+            total_time: 0.27448
+            namelookup_time: 0.001382
+            connect_time: 0.065677
+            pretransfer_time: 0.130181
             size_upload: 0.0
-            size_download: 1580.0
-            speed_download: 5523.0
+            size_download: 1715.0
+            speed_download: 6248.0
             speed_upload: 0.0
-            download_content_length: 1580.0
+            download_content_length: 1715.0
             upload_content_length: 0.0
-            starttransfer_time: 0.285866
+            starttransfer_time: 0.274454
             redirect_time: 0.0
             redirect_url: ''
             primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.25
-            local_port: 58015
+            local_ip: 10.130.6.39
+            local_port: 53392
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 142953
-            connect_time_us: 68310
-            namelookup_time_us: 1143
-            pretransfer_time_us: 143008
+            appconnect_time_us: 130153
+            connect_time_us: 65677
+            namelookup_time_us: 1382
+            pretransfer_time_us: 130181
             redirect_time_us: 0
-            starttransfer_time_us: 285866
-            total_time_us: 286043
+            starttransfer_time_us: 274454
+            total_time_us: 274480
+    index: 0
 -
     request:
         method: PATCH
@@ -100,55 +100,55 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: e26b982f6391140de78b05c1001e1ee2
+            x-ep-request-uuid: 71ef9121655e64b5e78855a4001f8cd7
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
-            content-length: '1580'
-            etag: 'W/"6b83435cb43dd3a2dac5637a0ddbfd48"'
-            x-runtime: '0.097578'
-            x-node: bigweb11nuq
-            x-version-label: easypost-202212072114-cbd87d5dd7-master
+            content-length: '1715'
+            x-runtime: '0.102167'
+            x-node: bigweb34nuq
+            x-version-label: easypost-202311212221-a0f06fbc2c-master
             x-backend: easypost
-            x-proxied: ['intlb1nuq 29913d444b', 'extlb2nuq 29913d444b']
+            x-proxied: ['intlb2nuq b3de2c47ef', 'extlb2nuq 003ad9bca0']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"user_465eab8bb86844108100be2d4d5288ab","object":"User","parent_id":null,"name":"New Name","phone_number":"<REDACTED>","verified":true,"created_at":"2022-02-02T20:16:00Z","default_carbon_offset":false,"balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":"100.00","secondary_recharge_amount":"100.00","recharge_threshold":"0.00","has_billing_method":false,"cc_fee_rate":"0.0325","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"<REDACTED>","children":[{"id":"user_3c44214dcf744d169c3f2db034fd965e","object":"User","parent_id":"user_465eab8bb86844108100be2d4d5288ab","name":"Test User","phone_number":"<REDACTED>","verified":true,"created_at":"2022-11-23T21:03:03Z","default_carbon_offset":false,"children":[]},{"id":"user_78019b89199646358298fd311435458f","object":"User","parent_id":"user_465eab8bb86844108100be2d4d5288ab","name":"Test User","phone_number":"<REDACTED>","verified":true,"created_at":"2022-12-02T22:41:09Z","default_carbon_offset":false,"children":[]},{"id":"user_1a2e9fb7903c4a08b2da7d7f57150370","object":"User","parent_id":"user_465eab8bb86844108100be2d4d5288ab","name":"Test User","phone_number":"<REDACTED>","verified":true,"created_at":"2022-12-02T22:43:07Z","default_carbon_offset":false,"children":[]},{"id":"user_f01890d357374ac3837ff556a957b9b4","object":"User","parent_id":"user_465eab8bb86844108100be2d4d5288ab","name":"Test User","phone_number":"<REDACTED>","verified":true,"created_at":"2022-12-05T17:00:14Z","default_carbon_offset":false,"children":[]}]}'
+        body: '{"id":"user_465eab8bb86844108100be2d4d5288ab","object":"User","parent_id":null,"name":"New Name","phone_number":"<REDACTED>","verified":true,"created_at":"2022-02-02T20:16:00Z","default_carbon_offset":false,"has_elevate_access":false,"balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":"100.00","secondary_recharge_amount":"100.00","recharge_threshold":"0.00","has_billing_method":false,"cc_fee_rate":"0.0325","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"<REDACTED>","children":[{"id":"user_3c44214dcf744d169c3f2db034fd965e","object":"User","parent_id":"user_465eab8bb86844108100be2d4d5288ab","name":"Test User","phone_number":"<REDACTED>","verified":true,"created_at":"2022-11-23T21:03:03Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_78019b89199646358298fd311435458f","object":"User","parent_id":"user_465eab8bb86844108100be2d4d5288ab","name":"Test User","phone_number":"<REDACTED>","verified":true,"created_at":"2022-12-02T22:41:09Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_1a2e9fb7903c4a08b2da7d7f57150370","object":"User","parent_id":"user_465eab8bb86844108100be2d4d5288ab","name":"Test User","phone_number":"<REDACTED>","verified":true,"created_at":"2022-12-02T22:43:07Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_f01890d357374ac3837ff556a957b9b4","object":"User","parent_id":"user_465eab8bb86844108100be2d4d5288ab","name":"Test User","phone_number":"<REDACTED>","verified":true,"created_at":"2022-12-05T17:00:14Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]}]}'
         curl_info:
             url: 'https://api.easypost.com/v2/users/user_465eab8bb86844108100be2d4d5288ab'
             content_type: 'application/json; charset=utf-8'
             http_code: 200
-            header_size: 733
+            header_size: 689
             request_size: 370
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.315586
-            namelookup_time: 0.001163
-            connect_time: 0.068332
-            pretransfer_time: 0.149435
+            total_time: 0.305366
+            namelookup_time: 0.001013
+            connect_time: 0.064076
+            pretransfer_time: 0.134458
             size_upload: 28.0
-            size_download: 1580.0
-            speed_download: 5006.0
-            speed_upload: 88.0
-            download_content_length: 1580.0
+            size_download: 1715.0
+            speed_download: 5616.0
+            speed_upload: 91.0
+            download_content_length: 1715.0
             upload_content_length: 28.0
-            starttransfer_time: 0.315554
+            starttransfer_time: 0.305338
             redirect_time: 0.0
             redirect_url: ''
             primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.25
-            local_port: 58016
+            local_ip: 10.130.6.39
+            local_port: 53393
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 149388
-            connect_time_us: 68332
-            namelookup_time_us: 1163
-            pretransfer_time_us: 149435
+            appconnect_time_us: 134360
+            connect_time_us: 64076
+            namelookup_time_us: 1013
+            pretransfer_time_us: 134458
             redirect_time_us: 0
-            starttransfer_time_us: 315554
-            total_time_us: 315586
+            starttransfer_time_us: 305338
+            total_time_us: 305366
+    index: 0

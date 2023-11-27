@@ -63,18 +63,15 @@ class ShipmentService extends BaseService
      * Create a shipment.
      *
      * @param mixed $params
-     * @param bool $withCarbonOffset
      * @return mixed
      */
-    public function create($params = null, $withCarbonOffset = false)
+    public function create($params = null)
     {
         if (!isset($params['shipment']) || !is_array($params['shipment'])) {
             $clone = $params;
             unset($params);
             $params['shipment'] = $clone;
         }
-
-        $params['carbon_offset'] = $withCarbonOffset;
 
         return self::createResource(self::serviceModelClassName(self::class), $params);
     }
@@ -84,13 +81,11 @@ class ShipmentService extends BaseService
      *
      * @param string $id
      * @param mixed $params
-     * @param bool $withCarbonOffset
      * @return mixed
      */
-    public function regenerateRates($id, $params = null, $withCarbonOffset = false)
+    public function regenerateRates($id, $params = null)
     {
         $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/rerate';
-        $params['carbon_offset'] = $withCarbonOffset;
         $response = Requestor::request($this->client, 'post', $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
@@ -117,11 +112,10 @@ class ShipmentService extends BaseService
      *
      * @param string $id
      * @param mixed $params
-     * @param boolean $withCarbonOffset
      * @param string $endShipperId
      * @return mixed
      */
-    public function buy($id, $params = null, $withCarbonOffset = false, $endShipperId = false)
+    public function buy($id, $params = null, $endShipperId = false)
     {
         if (isset($params['id']) && (!isset($params['rate']) || !is_array($params['rate']))) {
             $clone = $params;
@@ -130,7 +124,6 @@ class ShipmentService extends BaseService
         }
 
         $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/buy';
-        $params['carbon_offset'] = $withCarbonOffset;
 
         if ($endShipperId !== false) {
             $params['end_shipper_id'] = $endShipperId;

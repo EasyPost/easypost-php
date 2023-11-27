@@ -12,7 +12,8 @@
             User-Agent: ''
     response:
         status:
-            code: 200
+            http_version: '1.1'
+            code: '200'
             message: OK
         headers:
             x-frame-options: SAMEORIGIN
@@ -21,56 +22,55 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 0b623cbb642212bbe7886a680013edc7
+            x-ep-request-uuid: 71ef911d655e64f8e78859a7001fdde3
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
-            content-length: '31'
-            etag: 'W/"b7f27d1ea29478c50d2e1a7ab8bcb58a"'
-            x-runtime: '0.018038'
-            x-node: bigweb5nuq
-            x-version-label: easypost-202303271939-29966fef42-master
+            content-length: '1214'
+            x-runtime: '0.050540'
+            x-node: bigweb33nuq
+            x-version-label: easypost-202311212221-a0f06fbc2c-master
             x-backend: easypost
-            x-proxied: ['intlb2nuq a40ea751fd', 'extlb1nuq a29e4ad05c']
+            x-proxied: ['intlb1nuq b3de2c47ef', 'extlb2nuq 003ad9bca0']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"refunds":[],"has_more":false}'
+        body: '{"refunds":[{"id":"rfnd_f5322c13edb14488b609610e77129554","object":"Refund","created_at":"2023-11-22T20:30:48Z","updated_at":"2023-11-22T20:30:48Z","tracking_code":"9400100105440282036012","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_e85172474c1441a2a47b3ecf437fd4db"},{"id":"rfnd_f38519d28ae54116b38815c879f7643f","object":"Refund","created_at":"2023-11-22T20:30:08Z","updated_at":"2023-11-22T20:30:08Z","tracking_code":"9400100105440282035749","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_d129d08d265b450a93b2e37b4f46a6be"},{"id":"rfnd_be5fbd97c728496399ffc514a4606515","object":"Refund","created_at":"2023-11-22T19:56:15Z","updated_at":"2023-11-22T19:56:15Z","tracking_code":"9400100105440282027591","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_2ac7f7c28ca544179ad876570f95579b"},{"id":"rfnd_4498a9261a514221ab73d0fa2793901b","object":"Refund","created_at":"2023-11-22T19:55:47Z","updated_at":"2023-11-22T19:55:47Z","tracking_code":"9400100105440282027393","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_3de2e54264e545d698faffaa86695951"}],"has_more":false}'
         curl_info:
             url: 'https://api.easypost.com/v2/refunds?page_size=5'
             content_type: 'application/json; charset=utf-8'
             http_code: 200
-            header_size: 730
-            request_size: 297
+            header_size: 689
+            request_size: 296
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.420267
-            namelookup_time: 0.01031
-            connect_time: 0.143139
-            pretransfer_time: 0.277639
+            total_time: 0.245447
+            namelookup_time: 0.002594
+            connect_time: 0.065294
+            pretransfer_time: 0.130586
             size_upload: 0.0
-            size_download: 31.0
-            speed_download: 73.0
+            size_download: 1214.0
+            speed_download: 4946.0
             speed_upload: 0.0
-            download_content_length: 31.0
+            download_content_length: 1214.0
             upload_content_length: 0.0
-            starttransfer_time: 0.420234
+            starttransfer_time: 0.245432
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.131
+            primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.31
-            local_port: 53856
+            local_ip: 10.130.6.39
+            local_port: 53477
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 277598
-            connect_time_us: 143139
-            namelookup_time_us: 10310
-            pretransfer_time_us: 277639
+            appconnect_time_us: 130514
+            connect_time_us: 65294
+            namelookup_time_us: 2594
+            pretransfer_time_us: 130586
             redirect_time_us: 0
-            starttransfer_time_us: 420234
-            total_time_us: 420267
+            starttransfer_time_us: 245432
+            total_time_us: 245447
     index: 0

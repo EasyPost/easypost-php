@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Major Release
+
+- Removed `withCarbonOffset` parameter from `create`, `buy`, and `regenerateRates` functions of the Shipment service as EasyPost now offers Carbon Neutral shipments by default for free
+
 ## v6.9.1 (2023-11-20)
 
 - Fixes a bug that globally reset the timezone to UTC instead of setting the timezone per-request (closes #310)

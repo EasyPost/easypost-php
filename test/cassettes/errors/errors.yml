@@ -11,7 +11,7 @@
             Authorization: ''
             Content-Type: application/json
             User-Agent: ''
-        body: '{"carbon_offset":"false"}'
+        body: '[]'
     response:
         status:
             http_version: '1.1'
@@ -24,54 +24,55 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: e26b982c6391169ae78b178e001f20ab
+            x-ep-request-uuid: 6c53f874655e6539e7885da4001f3c60
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '139'
-            x-runtime: '0.039846'
-            x-node: bigweb5nuq
-            x-version-label: easypost-202212072114-cbd87d5dd7-master
+            x-runtime: '0.035100'
+            x-node: bigweb42nuq
+            x-version-label: easypost-202311212221-a0f06fbc2c-master
             x-backend: easypost
-            x-proxied: ['intlb2nuq 29913d444b', 'extlb2nuq 29913d444b']
+            x-proxied: ['intlb1nuq b3de2c47ef', 'extlb1nuq 003ad9bca0']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
         body: '{"error":{"code":"PARAMETER.REQUIRED","message":"Missing required parameter.","errors":[{"field":"shipment","message":"cannot be blank"}]}}'
         curl_info:
             url: 'https://api.easypost.com/v2/shipments'
             content_type: 'application/json; charset=utf-8'
             http_code: 422
-            header_size: 705
-            request_size: 332
+            header_size: 706
+            request_size: 308
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.269955
-            namelookup_time: 0.022899
-            connect_time: 0.088822
-            pretransfer_time: 0.162605
-            size_upload: 25.0
+            total_time: 0.237609
+            namelookup_time: 0.001313
+            connect_time: 0.064817
+            pretransfer_time: 0.136908
+            size_upload: 2.0
             size_download: 139.0
-            speed_download: 514.0
-            speed_upload: 92.0
+            speed_download: 584.0
+            speed_upload: 8.0
             download_content_length: 139.0
-            upload_content_length: 25.0
-            starttransfer_time: 0.269884
+            upload_content_length: 2.0
+            starttransfer_time: 0.237594
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.130
+            primary_ip: 169.62.110.131
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.25
-            local_port: 58479
+            local_ip: 10.130.6.39
+            local_port: 53555
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 162543
-            connect_time_us: 88822
-            namelookup_time_us: 22899
-            pretransfer_time_us: 162605
+            appconnect_time_us: 136852
+            connect_time_us: 64817
+            namelookup_time_us: 1313
+            pretransfer_time_us: 136908
             redirect_time_us: 0
-            starttransfer_time_us: 269884
-            total_time_us: 269955
+            starttransfer_time_us: 237594
+            total_time_us: 237609
+    index: 0

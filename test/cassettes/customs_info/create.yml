@@ -24,56 +24,56 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: e26b982b6391149fe78b0e83001e4f58
+            x-ep-request-uuid: 6c53f875655e653ce7885dc5001f3fa8
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
-            location: /api/v2/customs_infos/cstinfo_765c5270ff054f6088c433e0fa493e90
+            location: /api/v2/customs_infos/cstinfo_3a03995939e240929dd3c30b4ab4777c
             content-type: 'application/json; charset=utf-8'
             content-length: '796'
-            etag: 'W/"deb6c1dc2b8c11478c6d729fe5b7d481"'
-            x-runtime: '0.032824'
-            x-node: bigweb11nuq
-            x-version-label: easypost-202212072114-cbd87d5dd7-master
+            x-runtime: '0.042723'
+            x-node: bigweb40nuq
+            x-version-label: easypost-202311212221-a0f06fbc2c-master
             x-backend: easypost
-            x-proxied: ['intlb2nuq 29913d444b', 'extlb2nuq 29913d444b']
+            x-proxied: ['intlb1nuq b3de2c47ef', 'extlb1nuq 003ad9bca0']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"cstinfo_765c5270ff054f6088c433e0fa493e90","object":"CustomsInfo","created_at":"2022-12-07T22:33:03Z","updated_at":"2022-12-07T22:33:03Z","contents_explanation":null,"contents_type":"merchandise","customs_certify":true,"customs_signer":"Steve Brule","eel_pfc":"NOEEI 30.37(a)","non_delivery_option":"return","restriction_comments":null,"restriction_type":"none","mode":"test","declaration":null,"customs_items":[{"id":"cstitem_168063c019394d7eb3199a9a0acdb0ab","object":"CustomsItem","created_at":"2022-12-07T22:33:03Z","updated_at":"2022-12-07T22:33:03Z","description":"Sweet shirts","hs_tariff_number":"654321","origin_country":"US","quantity":2,"value":"23.25","weight":11,"code":null,"mode":"test","manufacturer":null,"currency":null,"eccn":null,"printed_commodity_identifier":null}]}'
+        body: '{"id":"cstinfo_3a03995939e240929dd3c30b4ab4777c","object":"CustomsInfo","created_at":"2023-11-22T20:31:56Z","updated_at":"2023-11-22T20:31:56Z","contents_explanation":null,"contents_type":"merchandise","customs_certify":true,"customs_signer":"Steve Brule","eel_pfc":"NOEEI 30.37(a)","non_delivery_option":"return","restriction_comments":null,"restriction_type":"none","mode":"test","declaration":null,"customs_items":[{"id":"cstitem_8137efa71e5749a1aef154fd35337bd2","object":"CustomsItem","created_at":"2023-11-22T20:31:56Z","updated_at":"2023-11-22T20:31:56Z","description":"Sweet shirts","hs_tariff_number":"654321","origin_country":"US","quantity":2,"value":"23.25","weight":11,"code":null,"mode":"test","manufacturer":null,"currency":null,"eccn":null,"printed_commodity_identifier":null}]}'
         curl_info:
             url: 'https://api.easypost.com/v2/customs_infos'
             content_type: 'application/json; charset=utf-8'
             http_code: 201
-            header_size: 811
+            header_size: 767
             request_size: 644
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.259643
-            namelookup_time: 0.002259
-            connect_time: 0.06964
-            pretransfer_time: 0.158652
+            total_time: 0.236213
+            namelookup_time: 0.001299
+            connect_time: 0.064449
+            pretransfer_time: 0.129138
             size_upload: 332.0
             size_download: 796.0
-            speed_download: 3065.0
-            speed_upload: 1278.0
+            speed_download: 3369.0
+            speed_upload: 1405.0
             download_content_length: 796.0
             upload_content_length: 332.0
-            starttransfer_time: 0.259576
+            starttransfer_time: 0.23618
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.130
+            primary_ip: 169.62.110.131
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.25
-            local_port: 58234
+            local_ip: 10.130.6.39
+            local_port: 53565
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 158532
-            connect_time_us: 69640
-            namelookup_time_us: 2259
-            pretransfer_time_us: 158652
+            appconnect_time_us: 129052
+            connect_time_us: 64449
+            namelookup_time_us: 1299
+            pretransfer_time_us: 129138
             redirect_time_us: 0
-            starttransfer_time_us: 259576
-            total_time_us: 259643
+            starttransfer_time_us: 236180
+            total_time_us: 236213
+    index: 0

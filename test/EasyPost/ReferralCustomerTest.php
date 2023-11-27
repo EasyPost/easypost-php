@@ -21,8 +21,8 @@ class ReferralCustomerTest extends \PHPUnit\Framework\TestCase
         $partnerUserProdApiKey = getenv('PARTNER_USER_PROD_API_KEY') !== false
             ? getenv('PARTNER_USER_PROD_API_KEY') : '123';
         self::$client = new EasyPostClient($partnerUserProdApiKey);
-        self::$referralUserProdApiKey = getenv('REFERRAL_USER_PROD_API_KEY') !== false
-            ? getenv('REFERRAL_USER_PROD_API_KEY') : '123';
+        self::$referralUserProdApiKey = getenv('REFERRAL_CUSTOMER_PROD_API_KEY') !== false
+            ? getenv('REFERRAL_CUSTOMER_PROD_API_KEY') : '123';
     }
 
     /**
