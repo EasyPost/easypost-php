@@ -8,7 +8,7 @@ on:
 
 jobs:
   lint:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: set up PHP
@@ -20,10 +20,10 @@ jobs:
       - name: lint
         run: make lint
   run-tests:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        phpversion: ['7.4', '8.0', '8.1', '8.2', '8.3']
+        phpversion: ['8.0', '8.1', '8.2', '8.3']
     steps:
       - uses: actions/checkout@v3
       - name: set up PHP
@@ -51,7 +51,7 @@ jobs:
         run: ./bin/php-coveralls --coverage_clover=build/logs/clover.xml -v
   docs:
     if: github.ref == 'refs/heads/master'
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
