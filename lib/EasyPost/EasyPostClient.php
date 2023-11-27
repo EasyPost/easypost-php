@@ -141,7 +141,8 @@ class EasyPostClient extends BaseService
         if (array_key_exists($serviceName, $serviceClassMap)) {
             return new $serviceClassMap[$serviceName]($this);
         } else {
-            // TODO: checking for `_parent` is a hack and should be fixed when we revisit the (de)serialization of objects in this lib
+            // TODO: checking for `_parent` is a hack and should be fixed when we revisit the
+            // (de)serialization of objects in this lib.
             if ($serviceName != '_parent') {
                 throw new EasyPostException(
                     sprintf(Constants::UNDEFINED_PROPERTY_ERROR, 'EasyPostClient', $serviceName)
