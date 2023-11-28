@@ -100,8 +100,6 @@ For additional support, see our [org-wide support policy](https://github.com/Eas
 
 ## Development
 
-**NOTE:** Recording VCR cassettes only works with PHP 7.4. Once recorded, tests can be run on PHP 7.4 or 8.0+.
-
 ```bash
 # Install dependencies
 make install
