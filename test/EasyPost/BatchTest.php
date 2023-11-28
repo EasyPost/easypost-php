@@ -78,23 +78,6 @@ class BatchTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test creating and buying a Batch in a single call.
-     */
-    public function testCreateAndBuy()
-    {
-        TestUtil::setupCassette('batches/createAndBuy.yml');
-
-        $batch = self::$client->batch->createAndBuy([
-            Fixture::oneCallBuyShipment(),
-            Fixture::oneCallBuyShipment(),
-        ]);
-
-        $this->assertInstanceOf(Batch::class, $batch);
-        $this->assertStringMatchesFormat('batch_%s', $batch->id);
-        $this->assertEquals(2, $batch->num_shipments);
-    }
-
-    /**
      * Test buying a batch.
      */
     public function testBuy()
