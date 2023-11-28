@@ -50,37 +50,6 @@ class BatchService extends BaseService
     }
 
     /**
-     * Create and buy a batch.
-     *
-     * @param mixed $params
-     * @return mixed
-     */
-    public function createAndBuy($params = null)
-    {
-        if (!isset($params['batch']) || !is_array($params['batch'])) {
-            $clone = $params;
-            unset($params);
-
-            $shipments = [];
-
-            foreach ($clone as $index => $shipment) {
-                $shipments[$index] = $shipment;
-            }
-
-            $params = [
-                'batch' => [
-                    'shipment' => $shipments,
-                ],
-            ];
-        }
-
-        $url = self::classUrl(self::serviceModelClassName(self::class));
-        $response = Requestor::request($this->client, 'post', $url . '/create_and_buy', $params);
-
-        return InternalUtil::convertToEasyPostObject($this->client, $response);
-    }
-
-    /**
      * Buy a batch.
      *
      * @param string $id
