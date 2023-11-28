@@ -891,11 +891,6 @@ Search.appendIndex(
             "summary": "Create\u0020a\u0020batch.",
             "url": "classes/EasyPost-Service-BatchService.html#method_create"
         },                {
-            "fqsen": "\\EasyPost\\Service\\BatchService\u003A\u003AcreateAndBuy\u0028\u0029",
-            "name": "createAndBuy",
-            "summary": "Create\u0020and\u0020buy\u0020a\u0020batch.",
-            "url": "classes/EasyPost-Service-BatchService.html#method_createAndBuy"
-        },                {
             "fqsen": "\\EasyPost\\Service\\BatchService\u003A\u003Abuy\u0028\u0029",
             "name": "buy",
             "summary": "Buy\u0020a\u0020batch.",
