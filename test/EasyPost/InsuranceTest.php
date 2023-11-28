@@ -101,11 +101,12 @@ class InsuranceTest extends \PHPUnit\Framework\TestCase
             $secondIdOfSecondPage = $nextPage['insurances'][0]->id;
 
             $this->assertNotEquals($firstIdOfFirstPage, $secondIdOfSecondPage);
-        } catch (Exception $error) {
-            if (!($error instanceof EndOfPaginationException)) {
-                throw new Exception('Test failed intentionally');
-            }
+            $this->assertNotNull($nextPage['_params']);
+        } catch (EndOfPaginationException $error) {
+            // There's no second page, that's not a failure
             $this->assertTrue(true);
+        } catch (Exception $error) {
+            throw $error;
         }
     }
 }

@@ -29,12 +29,7 @@ class TrackerService extends BaseService
      */
     public function all($params = null)
     {
-        self::validate($params);
-        $response = Requestor::request($this->client, 'get', '/trackers', $params);
-        $response['tracking_code'] = $params['tracking_code'] ?? null;
-        $response['carrier'] = $params['carrier'] ?? null;
-
-        return InternalUtil::convertToEasyPostObject($this->client, $response);
+        return self::allResources(self::serviceModelClassName(self::class), $params);
     }
 
     /**
@@ -46,16 +41,7 @@ class TrackerService extends BaseService
      */
     public function getNextPage($trackers, $pageSize = null)
     {
-        $params = [];
-
-        if (isset($trackers->tracking_code)) {
-            $params['tracking_code'] = $trackers->tracking_code;
-        }
-
-        if (isset($trackers->carrier)) {
-            $params['carrier'] = $trackers->carrier;
-        }
-        return $this->getNextPageResources(self::serviceModelClassName(self::class), $trackers, $pageSize, $params);
+        return $this->getNextPageResources(self::serviceModelClassName(self::class), $trackers, $pageSize);
     }
 
     /**

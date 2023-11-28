@@ -3,8 +3,8 @@
 namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
-use EasyPost\ScanForm;
 use EasyPost\Exception\General\EndOfPaginationException;
+use EasyPost\ScanForm;
 use Exception;
 
 class ScanFormTest extends \PHPUnit\Framework\TestCase
@@ -99,11 +99,11 @@ class ScanFormTest extends \PHPUnit\Framework\TestCase
             $secondIdOfSecondPage = $nextPage['scan_forms'][0]->id;
 
             $this->assertNotEquals($firstIdOfFirstPage, $secondIdOfSecondPage);
-        } catch (Exception $error) {
-            if (!($error instanceof EndOfPaginationException)) {
-                throw new Exception('Test failed intentionally');
-            }
+        } catch (EndOfPaginationException $error) {
+            // There's no second page, that's not a failure
             $this->assertTrue(true);
+        } catch (Exception $error) {
+            throw $error;
         }
     }
 }

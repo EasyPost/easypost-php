@@ -3,6 +3,7 @@
 ## Next Major Release
 
 - Removed `withCarbonOffset` parameter from `create`, `buy`, and `regenerateRates` functions of the Shipment service as EasyPost now offers Carbon Neutral shipments by default for free
+- Fixes a bug where the original filtering criteria of `all` calls wasn't passed along to `getNextPage` calls. Now, these are persisted via a `_params` key on response objects locally
 
 ## v6.9.1 (2023-11-20)
 

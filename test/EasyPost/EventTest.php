@@ -6,9 +6,9 @@ use EasyPost\EasyPostClient;
 use EasyPost\Event;
 use EasyPost\Exception\General\EasyPostException;
 use EasyPost\Exception\General\EndOfPaginationException;
-use Exception;
 use EasyPost\Payload;
 use EasyPost\Util\Util;
+use Exception;
 
 class EventTest extends \PHPUnit\Framework\TestCase
 {
@@ -66,11 +66,11 @@ class EventTest extends \PHPUnit\Framework\TestCase
             $secondIdOfSecondPage = $nextPage['events'][0]->id;
 
             $this->assertNotEquals($firstIdOfFirstPage, $secondIdOfSecondPage);
-        } catch (Exception $error) {
-            if (!($error instanceof EndOfPaginationException)) {
-                throw new Exception('Test failed intentionally');
-            }
+        } catch (EndOfPaginationException $error) {
+            // There's no second page, that's not a failure
             $this->assertTrue(true);
+        } catch (Exception $error) {
+            throw $error;
         }
     }
 
