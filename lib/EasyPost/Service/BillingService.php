@@ -22,7 +22,7 @@ class BillingService extends BaseService
      * @return mixed
      * @throws PaymentException
      */
-    public function retrievePaymentMethods($params = null)
+    public function retrievePaymentMethods(mixed $params = null): mixed
     {
         $paymentMethods = self::allResources(self::$modelClass, $params);
 
@@ -40,7 +40,7 @@ class BillingService extends BaseService
      * @param string $priority
      * @return void
      */
-    public function fundWallet($amount, $priority = 'primary')
+    public function fundWallet(string $amount, string $priority = 'primary'): void
     {
         [$paymentMethodEndpoint, $paymentMethodId] = self::getPaymentInfo(strtolower($priority));
 
@@ -56,7 +56,7 @@ class BillingService extends BaseService
      * @param string $priority
      * @return void
      */
-    public function deletePaymentMethod($priority)
+    public function deletePaymentMethod(string $priority): void
     {
         [$paymentMethodEndpoint, $paymentMethodId] = self::getPaymentInfo(strtolower($priority));
         $url = $paymentMethodEndpoint . "/$paymentMethodId";
@@ -71,7 +71,7 @@ class BillingService extends BaseService
      * @return array
      * @throws PaymentException
      */
-    private function getPaymentInfo($priority = 'primary')
+    private function getPaymentInfo(string $priority = 'primary'): array
     {
         $paymentMethods = self::retrievePaymentMethods();
         $paymentMethodMap = [

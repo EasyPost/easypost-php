@@ -18,7 +18,7 @@ class CarrierAccountService extends BaseService
      * @param string $id
      * @return mixed
      */
-    public function retrieve($id)
+    public function retrieve(string $id): mixed
     {
         return self::retrieveResource(self::serviceModelClassName(self::class), $id);
     }
@@ -29,7 +29,7 @@ class CarrierAccountService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function all($params = null)
+    public function all(mixed $params = null): mixed
     {
         return self::allResources(self::serviceModelClassName(self::class), $params);
     }
@@ -41,7 +41,7 @@ class CarrierAccountService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function update($id, $params)
+    public function update(string $id, mixed $params): mixed
     {
         return self::updateResource(self::serviceModelClassName(self::class), $id, $params);
     }
@@ -53,7 +53,7 @@ class CarrierAccountService extends BaseService
      * @param mixed $params
      * @return void
      */
-    public function delete($id, $params = null)
+    public function delete(string $id, mixed $params = null): void
     {
         self::deleteResource(self::serviceModelClassName(self::class), $id, $params);
     }
@@ -65,7 +65,7 @@ class CarrierAccountService extends BaseService
      * @return mixed
      * @throws MissingParameterException
      */
-    public function create($params = null)
+    public function create(mixed $params = null): mixed
     {
         if (!isset($params['carrier_account']) || !is_array($params['carrier_account'])) {
             $clone = $params;
@@ -89,7 +89,7 @@ class CarrierAccountService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function types($params = null)
+    public function types(mixed $params = null): mixed
     {
         $response = Requestor::request($this->client, 'get', '/carrier_types', $params);
 
@@ -102,7 +102,7 @@ class CarrierAccountService extends BaseService
      * @param string $carrierAccountType The type of carrier account to create.
      * @return string The endpoint for creating a carrier account.
      */
-    private function selectCarrierAccountCreationEndpoint($carrierAccountType): string
+    private function selectCarrierAccountCreationEndpoint(string $carrierAccountType): string
     {
         if (in_array($carrierAccountType, Constants::CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_WORKFLOWS, true)) {
             return '/carrier_accounts/register';

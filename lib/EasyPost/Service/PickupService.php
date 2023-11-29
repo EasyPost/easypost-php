@@ -16,7 +16,7 @@ class PickupService extends BaseService
      * @param string $id
      * @return mixed
      */
-    public function retrieve($id)
+    public function retrieve(string $id): mixed
     {
         return self::retrieveResource(self::serviceModelClassName(self::class), $id);
     }
@@ -27,7 +27,7 @@ class PickupService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function all($params = null)
+    public function all(mixed $params = null): mixed
     {
         return self::allResources(self::serviceModelClassName(self::class), $params);
     }
@@ -36,10 +36,10 @@ class PickupService extends BaseService
      * Retrieve the next page of Pickup collection
      *
      * @param mixed $pickups
-     * @param string $pageSize
+     * @param int|null $pageSize
      * @return mixed
      */
-    public function getNextPage($pickups, $pageSize = null)
+    public function getNextPage(mixed $pickups, ?int $pageSize = null): mixed
     {
         return $this->getNextPageResources(self::serviceModelClassName(self::class), $pickups, $pageSize);
     }
@@ -50,7 +50,7 @@ class PickupService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function create($params = null)
+    public function create(mixed $params = null): mixed
     {
         if (!isset($params['pickup']) || !is_array($params['pickup'])) {
             $clone = $params;
@@ -68,7 +68,7 @@ class PickupService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function buy($id, $params = null)
+    public function buy(string $id, mixed $params = null): mixed
     {
         $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/buy';
         $response = Requestor::request($this->client, 'post', $url, $params);
@@ -83,7 +83,7 @@ class PickupService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function cancel($id, $params = null)
+    public function cancel(string $id, mixed $params = null): mixed
     {
         $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/cancel';
         $response = Requestor::request($this->client, 'post', $url, $params);

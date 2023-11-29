@@ -16,7 +16,7 @@ class BatchService extends BaseService
      * @param string $id
      * @return mixed
      */
-    public function retrieve($id)
+    public function retrieve(string $id): mixed
     {
         return self::retrieveResource(self::serviceModelClassName(self::class), $id);
     }
@@ -27,7 +27,7 @@ class BatchService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function all($params = null)
+    public function all(mixed $params = null): mixed
     {
         return self::allResources(self::serviceModelClassName(self::class), $params);
     }
@@ -38,7 +38,7 @@ class BatchService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function create($params = null)
+    public function create(mixed $params = null): mixed
     {
         if (!isset($params['batch']) || !is_array($params['batch'])) {
             $clone = $params;
@@ -56,7 +56,7 @@ class BatchService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function buy($id, $params = null)
+    public function buy(string $id, mixed $params = null): mixed
     {
         $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/buy';
         $response = Requestor::request($this->client, 'post', $url, $params);
@@ -71,7 +71,7 @@ class BatchService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function label($id, $params = null)
+    public function label(string $id, mixed $params = null): mixed
     {
         $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/label';
         $response = Requestor::request($this->client, 'post', $url, $params);
@@ -86,7 +86,7 @@ class BatchService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function removeShipments($id, $params = null)
+    public function removeShipments(string $id, mixed $params = null): mixed
     {
         $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/remove_shipments';
         $response = Requestor::request($this->client, 'post', $url, $params);
@@ -101,7 +101,7 @@ class BatchService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function addShipments($id, $params = null)
+    public function addShipments(string $id, mixed $params = null): mixed
     {
         $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/add_shipments';
         $response = Requestor::request($this->client, 'post', $url, $params);
@@ -116,7 +116,7 @@ class BatchService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function createScanForm($id, $params = null)
+    public function createScanForm(string $id, mixed $params = null): mixed
     {
         $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/scan_form';
         $response = Requestor::request($this->client, 'post', $url, $params);

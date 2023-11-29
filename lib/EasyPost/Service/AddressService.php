@@ -16,7 +16,7 @@ class AddressService extends BaseService
      * @param string $id
      * @return mixed
      */
-    public function retrieve($id)
+    public function retrieve(string $id): mixed
     {
         return self::retrieveResource(self::serviceModelClassName(self::class), $id);
     }
@@ -27,7 +27,7 @@ class AddressService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function all($params = null)
+    public function all(mixed $params = null): mixed
     {
         return self::allResources(self::serviceModelClassName(self::class), $params);
     }
@@ -36,10 +36,10 @@ class AddressService extends BaseService
      * Retrieve the next page of Address collection
      *
      * @param mixed $addresses
-     * @param string $pageSize
+     * @param int|null $pageSize
      * @return mixed
      */
-    public function getNextPage($addresses, $pageSize = null)
+    public function getNextPage(mixed $addresses, ?int $pageSize = null)
     {
         return $this->getNextPageResources(self::serviceModelClassName(self::class), $addresses, $pageSize);
     }
@@ -50,7 +50,7 @@ class AddressService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function create($params = null)
+    public function create(mixed $params = null): mixed
     {
         $wrappedParams = [];
 
@@ -77,7 +77,7 @@ class AddressService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function createAndVerify($params = null)
+    public function createAndVerify(mixed $params = null): mixed
     {
         if (!isset($params['address']) || !is_array($params['address'])) {
             $clone = $params;
@@ -97,7 +97,7 @@ class AddressService extends BaseService
      * @param string $id
      * @return mixed
      */
-    public function verify($id)
+    public function verify(string $id): mixed
     {
         $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/verify';
         $response = Requestor::request($this->client, 'get', $url, null);

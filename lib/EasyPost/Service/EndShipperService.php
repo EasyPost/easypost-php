@@ -13,7 +13,7 @@ class EndShipperService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function create($params = null)
+    public function create(mixed $params = null): mixed
     {
         if (!isset($params['address']) || !is_array($params['address'])) {
             $clone = $params;
@@ -30,7 +30,7 @@ class EndShipperService extends BaseService
      * @param string $id
      * @return mixed
      */
-    public function retrieve($id)
+    public function retrieve(string $id): mixed
     {
         return self::retrieveResource(self::serviceModelClassName(self::class), $id);
     }
@@ -41,7 +41,7 @@ class EndShipperService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function all($params = null)
+    public function all(mixed $params = null): mixed
     {
         return self::allResources(self::serviceModelClassName(self::class), $params);
     }
@@ -53,7 +53,7 @@ class EndShipperService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function update($id, $params)
+    public function update(string $id, mixed $params): mixed
     {
         if (!isset($params['address']) || !is_array($params['address'])) {
             $clone = $params;

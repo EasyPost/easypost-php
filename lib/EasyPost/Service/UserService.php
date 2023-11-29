@@ -16,7 +16,7 @@ class UserService extends BaseService
      * @param string $id
      * @return mixed
      */
-    public function retrieve($id)
+    public function retrieve(string $id): mixed
     {
         return self::retrieveResource(self::serviceModelClassName(self::class), $id);
     }
@@ -24,9 +24,11 @@ class UserService extends BaseService
     /**
      * Update a user.
      *
+     * @param string $id
+     * @param mixed $params
      * @return mixed
      */
-    public function update($id, $params)
+    public function update(string $id, mixed $params): mixed
     {
         if (!isset($params['user']) || !is_array($params['user'])) {
             $clone = $params;
@@ -43,7 +45,7 @@ class UserService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function create($params = null)
+    public function create(mixed $params = null): mixed
     {
         if (!isset($params['user']) || !is_array($params['user'])) {
             $clone = $params;
@@ -59,7 +61,7 @@ class UserService extends BaseService
      *
      * @return mixed
      */
-    public function retrieveMe()
+    public function retrieveMe(): mixed
     {
         return self::allResources(self::serviceModelClassName(self::class));
     }
@@ -71,7 +73,7 @@ class UserService extends BaseService
      * @param mixed @params
      * @return mixed
      */
-    public function delete($id, $params = null)
+    public function delete(string $id, mixed $params = null): mixed
     {
         return $this->deleteResource(self::serviceModelClassName(self::class), $id, $params);
     }
@@ -83,7 +85,7 @@ class UserService extends BaseService
      *
      * @return mixed
      */
-    public function allApiKeys()
+    public function allApiKeys(): mixed
     {
         $response = Requestor::request($this->client, 'get', '/api_keys');
 
@@ -98,7 +100,7 @@ class UserService extends BaseService
      * @param string $id
      * @return mixed
      */
-    public function apiKeys($id)
+    public function apiKeys(string $id): mixed
     {
         $apiKeys = self::allApiKeys();
 
@@ -126,7 +128,7 @@ class UserService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function updateBrand($id, $params = null)
+    public function updateBrand(string $id, mixed $params = null): mixed
     {
         $response = Requestor::request(
             $this->client,

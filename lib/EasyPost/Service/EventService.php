@@ -16,7 +16,7 @@ class EventService extends BaseService
      * @param string $id
      * @return mixed
      */
-    public function retrieve($id)
+    public function retrieve(string $id): mixed
     {
         return self::retrieveResource(self::serviceModelClassName(self::class), $id);
     }
@@ -27,7 +27,7 @@ class EventService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function all($params = null)
+    public function all(mixed $params = null): mixed
     {
         return self::allResources(self::serviceModelClassName(self::class), $params);
     }
@@ -36,10 +36,10 @@ class EventService extends BaseService
      * Retrieve the next page of Event collection
      *
      * @param mixed $events
-     * @param string $pageSize
+     * @param int|null $pageSize
      * @return mixed
      */
-    public function getNextPage($events, $pageSize = null)
+    public function getNextPage(mixed $events, ?int $pageSize = null): mixed
     {
         return $this->getNextPageResources(self::serviceModelClassName(self::class), $events, $pageSize);
     }
@@ -50,7 +50,7 @@ class EventService extends BaseService
      * @param string $id The event id
      * @return mixed
      */
-    public function retrieveAllPayloads($id)
+    public function retrieveAllPayloads(string $id): mixed
     {
         $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/payloads';
 
@@ -66,7 +66,7 @@ class EventService extends BaseService
      * @param string $payloadId The payload id
      * @return mixed
      */
-    public function retrievePayload($id, $payloadId)
+    public function retrievePayload(string $id, string $payloadId): mixed
     {
         $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/payloads/' . $payloadId;
 

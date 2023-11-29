@@ -23,7 +23,7 @@ class BetaReferralCustomerService extends BaseService
      * @param string $priority
      * @return mixed
      */
-    public function addPaymentMethod($stripeCustomerId, $paymentMethodReference, $priority = 'primary')
+    public function addPaymentMethod(string $stripeCustomerId, string $paymentMethodReference, string $priority = 'primary'): mixed
     {
         $params = [
             'payment_method' => [
@@ -44,7 +44,7 @@ class BetaReferralCustomerService extends BaseService
      * @param int $refundAmount
      * @return mixed
      */
-    public function refundByAmount($refundAmount)
+    public function refundByAmount(int $refundAmount): mixed
     {
         $params = ['refund_amount' => $refundAmount];
 
@@ -59,7 +59,7 @@ class BetaReferralCustomerService extends BaseService
      * @param string $paymentLogId
      * @return mixed
      */
-    public function refundByPaymentLog($paymentLogId)
+    public function refundByPaymentLog(string $paymentLogId): mixed
     {
         $params = ['payment_log_id' => $paymentLogId];
 

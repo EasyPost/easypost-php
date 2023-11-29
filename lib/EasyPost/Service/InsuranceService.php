@@ -13,7 +13,7 @@ class InsuranceService extends BaseService
      * @param string $id
      * @return mixed
      */
-    public function retrieve($id)
+    public function retrieve(string $id): mixed
     {
         return self::retrieveResource(self::serviceModelClassName(self::class), $id);
     }
@@ -24,7 +24,7 @@ class InsuranceService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function all($params = null)
+    public function all(mixed $params = null): mixed
     {
         return self::allResources(self::serviceModelClassName(self::class), $params);
     }
@@ -33,10 +33,10 @@ class InsuranceService extends BaseService
      * Retrieve the next page of Insurance collection
      *
      * @param mixed $insurances
-     * @param string $pageSize
+     * @param int|null $pageSize
      * @return mixed
      */
-    public function getNextPage($insurances, $pageSize = null)
+    public function getNextPage(mixed $insurances, ?int $pageSize = null): mixed
     {
         return $this->getNextPageResources(self::serviceModelClassName(self::class), $insurances, $pageSize);
     }
@@ -47,7 +47,7 @@ class InsuranceService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function create($params = null)
+    public function create(mixed $params = null): mixed
     {
         if (!isset($params['insurance']) || !is_array($params['insurance'])) {
             $clone = $params;
