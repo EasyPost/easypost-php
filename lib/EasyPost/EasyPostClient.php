@@ -4,7 +4,6 @@ namespace EasyPost;
 
 use EasyPost\Constant\Constants;
 use EasyPost\Exception\General\EasyPostException;
-use EasyPost\Exception\General\MissingParameterException;
 use EasyPost\Hook\RequestHook;
 use EasyPost\Hook\ResponseHook;
 use EasyPost\Service\AddressService;
@@ -83,10 +82,10 @@ class EasyPostClient extends BaseService
      * @param object $mockingUtility
      */
     public function __construct(
-        $apiKey,
-        $timeout = Constants::TIMEOUT,
-        $apiBase = Constants::API_BASE,
-        $mockingUtility = null
+        string $apiKey,
+        float $timeout = Constants::TIMEOUT,
+        string $apiBase = Constants::API_BASE,
+        ?object $mockingUtility = null
     ) {
         // Client properties
         $this->apiKey = $apiKey;
@@ -96,22 +95,16 @@ class EasyPostClient extends BaseService
         $this->requestEvent = new RequestHook();
         $this->responseEvent = new ResponseHook();
         $this->httpClient = new Client();
-
-        if (!$this->apiKey) {
-            throw new MissingParameterException(
-                'No API key provided. See https://www.easypost.com/docs for details, or contact ' . Constants::SUPPORT_EMAIL . ' for assistance.' // phpcs:ignore
-            );
-        }
     }
 
     /**
      * Get a Service when calling a property of an EasyPostClient.
      *
      * @param string $serviceName
-     * @return BaseService
+     * @return mixed
      * @throws EasyPostException
      */
-    public function __get($serviceName)
+    public function __get(string $serviceName)
     {
         $serviceClassMap = [
             'address' => AddressService::class,
@@ -159,7 +152,7 @@ class EasyPostClient extends BaseService
      *
      * @return string
      */
-    public function getApiKey()
+    public function getApiKey(): string
     {
         return $this->apiKey;
     }
@@ -169,7 +162,7 @@ class EasyPostClient extends BaseService
      *
      * @return float
      */
-    public function getTimeout()
+    public function getTimeout(): float
     {
         return $this->timeout;
     }
@@ -179,7 +172,7 @@ class EasyPostClient extends BaseService
      *
      * @return string
      */
-    public function getApiBase()
+    public function getApiBase(): string
     {
         return $this->apiBase;
     }
@@ -189,7 +182,7 @@ class EasyPostClient extends BaseService
      *
      * @return bool
      */
-    public function mock()
+    public function mock(): bool
     {
         return $this->mockingUtility !== null;
     }
@@ -199,7 +192,7 @@ class EasyPostClient extends BaseService
      *
      * @return object
      */
-    public function getMockingUtility()
+    public function getMockingUtility(): object
     {
         return $this->mockingUtility;
     }
@@ -210,7 +203,7 @@ class EasyPostClient extends BaseService
      * @param callable $function
      * @return void
      */
-    public function subscribeToRequestHook($function)
+    public function subscribeToRequestHook(callable $function): void
     {
         $this->requestEvent->addHandler($function);
     }
@@ -221,7 +214,7 @@ class EasyPostClient extends BaseService
      * @param callable $function
      * @return void
      */
-    public function unsubscribeFromRequestHook($function)
+    public function unsubscribeFromRequestHook(callable $function): void
     {
         $this->requestEvent->removeHandler($function);
     }
@@ -232,7 +225,7 @@ class EasyPostClient extends BaseService
      * @param callable $function
      * @return void
      */
-    public function subscribeToResponseHook($function)
+    public function subscribeToResponseHook(callable $function): void
     {
         $this->responseEvent->addHandler($function);
     }
@@ -243,7 +236,7 @@ class EasyPostClient extends BaseService
      * @param callable $function
      * @return void
      */
-    public function unsubscribeFromResponseHook($function)
+    public function unsubscribeFromResponseHook(callable $function): void
     {
         $this->responseEvent->removeHandler($function);
     }

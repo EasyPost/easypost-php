@@ -22,10 +22,10 @@ class ApiException extends EasyPostException
      * ApiException constructor.
      *
      * @param string $message
-     * @param int $httpStatus
-     * @param string $httpBody
+     * @param int|null $httpStatus
+     * @param string|null $httpBody
      */
-    public function __construct($message = '', $httpStatus = null, $httpBody = null)
+    public function __construct(string $message = '', ?int $httpStatus = null, ?string $httpBody = null)
     {
         parent::__construct($message);
         $this->httpStatus = $httpStatus;
@@ -57,7 +57,7 @@ class ApiException extends EasyPostException
      *
      * @return int
      */
-    public function getHttpStatus()
+    public function getHttpStatus(): int
     {
         return $this->httpStatus;
     }
@@ -67,7 +67,7 @@ class ApiException extends EasyPostException
      *
      * @return string
      */
-    public function getHttpBody()
+    public function getHttpBody(): string
     {
         return $this->httpBody;
     }
@@ -77,7 +77,7 @@ class ApiException extends EasyPostException
      *
      * @return void
      */
-    public function prettyPrint()
+    public function prettyPrint(): void
     {
         print($this->code . ' (' . $this->getHttpStatus() . '): ' .
             $this->getMessage() . "\n");

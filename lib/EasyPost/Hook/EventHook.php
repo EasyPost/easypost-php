@@ -16,13 +16,25 @@ class EventHook
         }
     }
 
-    public function addHandler($handler)
+    /**
+     * Add an HTTP handler to the list of handlers.
+     *
+     * @param callable $handler
+     * @return EventHook
+     */
+    public function addHandler(callable $handler)
     {
         $this->eventHandlers[] = $handler;
         return $this;
     }
 
-    public function removeHandler($handler)
+    /**
+     * Remove an HTTP handler from the list of handlers.
+     *
+     * @param callable $handler
+     * @return EventHook
+     */
+    public function removeHandler(callable $handler)
     {
         $index = array_search($handler, $this->eventHandlers, true);
         if ($index !== false) {
