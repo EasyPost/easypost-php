@@ -3,6 +3,7 @@
 namespace EasyPost\Service;
 
 use EasyPost\Constant\Constants;
+use EasyPost\EasyPostClient;
 use EasyPost\Exception\General\EndOfPaginationException;
 use EasyPost\Exception\General\InvalidObjectException;
 use EasyPost\Exception\General\InvalidParameterException;
@@ -11,7 +12,7 @@ use EasyPost\Util\InternalUtil;
 
 class BaseService
 {
-    protected $client;
+    protected EasyPostClient $client;
 
     /**
      * Service constructor shared by all child services.

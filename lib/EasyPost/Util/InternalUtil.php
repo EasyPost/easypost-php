@@ -11,6 +11,7 @@ use EasyPost\CarrierDetail;
 use EasyPost\Constant\Constants;
 use EasyPost\CustomsInfo;
 use EasyPost\CustomsItem;
+use EasyPost\EasyPostClient;
 use EasyPost\EasyPostObject;
 use EasyPost\EndShipper;
 use EasyPost\Event;
@@ -107,10 +108,10 @@ abstract class InternalUtil
      * PHP treats JSON objects (associative arrays) and lists (sequential arrays) as the
      * same thing (array), so one can use this function to determine what kind of array something is.
      *
-     * @param $array
+     * @param mixed $array
      * @return bool
      */
-    public static function isList($array)
+    public static function isList(mixed $array): bool
     {
         if (!is_array($array)) {
             return false;
@@ -128,11 +129,11 @@ abstract class InternalUtil
     /**
      * Convert input to an EasyPost object.
      *
-     * @param EasyPostClient $client
+     * @param EasyPostClient|null $client
      * @param mixed $response
      * @return mixed
      */
-    public static function convertToEasyPostObject($client, $response)
+    public static function convertToEasyPostObject(EasyPostClient|null $client, mixed $response): mixed
     {
         if (InternalUtil::isList($response)) {
             $mapped = [];
@@ -172,15 +173,19 @@ abstract class InternalUtil
      *
      * This internal utility is intended to be used by other EasyPost `lowest_rate` functions.
      *
-     * @param object EasyPostObject
+     * @param object EasyPostObject|null
      * @param array $carriers
      * @param array $services
-     * @param string $ratesKey
+     * @param string|null $ratesKey
      * @return Rate|PickupRate
      * @throws \EasyPost\Exception\EasyPostException
      */
-    public static function getLowestObjectRate($easypostObject, $carriers = [], $services = [], $ratesKey = 'rates')
-    {
+    public static function getLowestObjectRate(
+        EasyPostObject|null $easypostObject,
+        array $carriers = [],
+        array $services = [],
+        ?string $ratesKey = 'rates'
+    ): Rate|PickupRate {
         $lowestRate = false;
         $carriersInclude = [];
         $carriersExclude = [];
