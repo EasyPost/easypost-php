@@ -23,7 +23,6 @@ use EasyPost\Exception\Api\ServiceUnavailableException;
 use EasyPost\Exception\Api\TimeoutException;
 use EasyPost\Exception\Api\UnauthorizedException;
 use EasyPost\Exception\Api\UnknownApiException;
-use GuzzleHttp\Client;
 
 class Requestor
 {
@@ -205,10 +204,9 @@ class Requestor
             $httpStatus = $matchingRequest->responseInfo->statusCode;
             $responseHeaders = [];
         } else {
-            $guzzleClient = new Client();
             $requestOptions['headers'] = $headers;
             try {
-                $response = $guzzleClient->request($method, $absoluteUrl, $requestOptions);
+                $response = $client->httpClient->request($method, $absoluteUrl, $requestOptions);
             } catch (\GuzzleHttp\Exception\ConnectException $error) {
                 throw new HttpException(sprintf(Constants::COMMUNICATION_ERROR, 'EasyPost', $error->getMessage()));
             }

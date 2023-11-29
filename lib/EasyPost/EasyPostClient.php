@@ -33,6 +33,7 @@ use EasyPost\Service\ShipmentService;
 use EasyPost\Service\TrackerService;
 use EasyPost\Service\UserService;
 use EasyPost\Service\WebhookService;
+use GuzzleHttp\Client;
 
 /**
  * Client used to send requests to the EasyPost API.
@@ -71,6 +72,7 @@ class EasyPostClient extends BaseService
     private $mockingUtility;
     public $requestEvent;
     public $responseEvent;
+    public $httpClient;
 
     /**
      * Constructor for an EasyPostClient.
@@ -93,6 +95,7 @@ class EasyPostClient extends BaseService
         $this->mockingUtility = $mockingUtility;
         $this->requestEvent = new RequestHook();
         $this->responseEvent = new ResponseHook();
+        $this->httpClient = new Client();
 
         if (!$this->apiKey) {
             throw new MissingParameterException(
