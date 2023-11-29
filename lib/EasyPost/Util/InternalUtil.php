@@ -176,7 +176,7 @@ abstract class InternalUtil
      * @param array $carriers
      * @param array $services
      * @param string $ratesKey
-     * @return Rate
+     * @return Rate|PickupRate
      * @throws \EasyPost\Exception\EasyPostException
      */
     public static function getLowestObjectRate($easypostObject, $carriers = [], $services = [], $ratesKey = 'rates')

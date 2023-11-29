@@ -8,33 +8,18 @@ use EasyPost\Util\Util;
 
 class EasyPostObject implements \ArrayAccess, \Iterator
 {
-    /**
-     * @var array
-     */
-    protected $_values;
-
-    /**
-     * @var array
-     */
-    protected $_immutableValues;
-
-    /**
-     * @var string
-     */
-    private $_parent;
-
-    /**
-     * @var string
-     */
-    private $_name;
+    protected array $_values;
+    protected array $_immutableValues;
+    private mixed $_parent;
+    private mixed $_name;
 
     /**
      * Constructor for EasyPost objects.
      *
-     * @param string $parent
-     * @param string $name
+     * @param mixed $parent
+     * @param mixed $name
      */
-    public function __construct($parent = null, $name = null)
+    public function __construct(mixed $parent = null, mixed $name = null)
     {
         $this->_values = [];
         $this->_immutableValues = ['id'];
@@ -48,7 +33,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
      * @param string $k
      * @param mixed $v
      */
-    public function __set($k, $v)
+    public function __set(string $k, mixed $v): void
     {
         $this->_values[$k] = $v;
 
@@ -71,7 +56,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
      * @param string $k
      * @return bool
      */
-    public function __isset($k)
+    public function __isset(string $k): bool
     {
         return isset($this->_values[$k]);
     }
@@ -81,7 +66,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
      *
      * @param string $k
      */
-    public function __unset($k)
+    public function __unset(string $k): void
     {
         if (!in_array($k, $this->_immutableValues)) {
             unset($this->_values[$k]);
@@ -106,7 +91,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
      * @param string $k
      * @return mixed
      */
-    public function __get($k)
+    public function __get(string $k): mixed
     {
         if (array_key_exists($k, $this->_values)) {
             return $this->_values[$k];
@@ -121,12 +106,12 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     /**
      * Construct EasyPost objects from a response.
      *
-     * @param EasyPostClient $client
+     * @param EasyPostClient|null $client
      * @param array $values
      * @param string $class
      * @return mixed
      */
-    public static function constructFrom($client, $values, $class)
+    public static function constructFrom(?EasyPostClient $client, array $values, string $class): mixed
     {
         $object = new $class($client);
         $object->convertEach($client, $values);
@@ -137,10 +122,10 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     /**
      * Convert each piece of an EasyPost object.
      *
-     * @param EasyPostClient $client
+     * @param EasyPostClient|null $client
      * @param array $values
      */
-    public function convertEach($client, $values)
+    public function convertEach(?EasyPostClient $client, array $values): void
     {
         foreach ($values as $k => $v) {
             // We don't want `_params` to become the default `EasyPostObject` since it needs to remain a normal array
@@ -155,11 +140,10 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     /**
      * ArrayAccess methods.
      *
-     * @param string $k
+     * @param mixed $k
      * @param mixed $v
      */
-    #[\ReturnTypeWillChange]
-    public function offsetSet($k, $v)
+    public function offsetSet(mixed $k, mixed $v): void
     {
         $this->$k = $v;
     }
@@ -167,11 +151,10 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     /**
      * ArrayAccess methods.
      *
-     * @param string $k
+     * @param mixed $k
      * @return bool
      */
-    #[\ReturnTypeWillChange]
-    public function offsetExists($k)
+    public function offsetExists(mixed $k): bool
     {
         return array_key_exists($k, $this->_values);
     }
@@ -179,10 +162,9 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     /**
      * ArrayAccess methods.
      *
-     * @param string $k
+     * @param mixed $k
      */
-    #[\ReturnTypeWillChange]
-    public function offsetUnset($k)
+    public function offsetUnset(mixed $k): void
     {
         unset($this->$k);
     }
@@ -190,11 +172,10 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     /**
      * ArrayAccess methods.
      *
-     * @param string $k
+     * @param mixed $k
      * @return mixed
      */
-    #[\ReturnTypeWillChange]
-    public function offsetGet($k)
+    public function offsetGet(mixed $k): mixed
     {
         return array_key_exists($k, $this->_values) ? $this->_values[$k] : null;
     }
@@ -204,8 +185,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
      *
      * @return void
      */
-    #[\ReturnTypeWillChange]
-    public function rewind()
+    public function rewind(): void
     {
         reset($this->_values);
     }
@@ -215,8 +195,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
      *
      * @return mixed
      */
-    #[\ReturnTypeWillChange]
-    public function current()
+    public function current(): mixed
     {
         return current($this->_values);
     }
@@ -226,8 +205,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
      *
      * @return mixed
      */
-    #[\ReturnTypeWillChange]
-    public function key()
+    public function key(): mixed
     {
         return key($this->_values);
     }
@@ -235,12 +213,11 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     /**
      * Iterator methods.
      *
-     * @return mixed
+     * @return void
      */
-    #[\ReturnTypeWillChange]
-    public function next()
+    public function next(): void
     {
-        return next($this->_values);
+        next($this->_values);
     }
 
     /**
@@ -248,8 +225,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
      *
      * @return bool
      */
-    #[\ReturnTypeWillChange]
-    public function valid()
+    public function valid(): bool
     {
         $key = key($this->_values);
         return ($key !== null && $key !== false);
@@ -258,9 +234,9 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     /**
      * Convert object to JSON.
      *
-     * @return string
+     * @return string|bool
      */
-    public function __toJSON()
+    public function __toJSON(): string|bool
     {
         if (defined('JSON_PRETTY_PRINT')) {
             return json_encode($this->__toArray(true), JSON_PRETTY_PRINT);
@@ -274,7 +250,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
      *
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->__toJSON();
     }
@@ -282,10 +258,10 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     /**
      * Convert object to an array.
      *
-     * @param bool $recursive
+     * @param bool|null $recursive
      * @return array
      */
-    public function __toArray($recursive = false)
+    public function __toArray(?bool $recursive = false): array
     {
         if ($recursive) {
             return Util::convertEasyPostObjectToArray($this->_values);
