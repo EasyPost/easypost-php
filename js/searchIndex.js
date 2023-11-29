@@ -261,6 +261,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/EasyPost-EasyPostClient.html#property_responseEvent"
         },                {
+            "fqsen": "\\EasyPost\\EasyPostClient\u003A\u003A\u0024httpClient",
+            "name": "httpClient",
+            "summary": "",
+            "url": "classes/EasyPost-EasyPostClient.html#property_httpClient"
+        },                {
             "fqsen": "\\EasyPost\\EasyPostObject",
             "name": "EasyPostObject",
             "summary": "",
