@@ -21,17 +21,17 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 76e1c9586567a128e787d140007fb80d
+            x-ep-request-uuid: ae35d0b6656641d7e7886e4700175c10
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '3082'
-            x-runtime: '0.041972'
-            x-node: bigweb31nuq
+            x-runtime: '0.040093'
+            x-node: bigweb42nuq
             x-version-label: easypost-202311250013-a0f06fbc2c-master
             x-backend: easypost
-            x-proxied: ['intlb1nuq b3de2c47ef', 'extlb1nuq 003ad9bca0']
+            x-proxied: ['intlb1nuq b3de2c47ef', 'extlb2nuq 003ad9bca0']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
         body: '{"addresses":[{"id":"adr_664b3834897e11ee97edac1f6bc539aa","object":"Address","created_at":"2023-11-22T21:30:47+00:00","updated_at":"2023-11-22T21:30:47+00:00","name":"JACK SPARROW","company":null,"street1":"388 TOWNSEND ST APT 20","street2":null,"city":"SAN FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":true,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":37.77551,"longitude":-122.39697,"time_zone":"America\/Los_Angeles"}}}},{"id":"adr_66464b3b897e11eea668ac1f6bc53342","object":"Address","created_at":"2023-11-22T21:30:46+00:00","updated_at":"2023-11-22T21:30:46+00:00","name":"ELIZABETH SWAN","company":null,"street1":"179 N HARBOR DR","street2":null,"city":"REDONDO BEACH","state":"CA","zip":"90277-2506","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":false,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":33.8436,"longitude":-118.39177,"time_zone":"America\/Los_Angeles"}}}},{"id":"adr_656e3fc6897e11eea5eaac1f6bc53342","object":"Address","created_at":"2023-11-22T21:30:45+00:00","updated_at":"2023-11-22T21:30:45+00:00","name":"Elizabeth Swan","company":null,"street1":"179 N Harbor Dr","street2":null,"city":"Redondo Beach","state":"CA","zip":"90277","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":[]},{"id":"adr_656a6a19897e11ee976dac1f6bc539aa","object":"Address","created_at":"2023-11-22T21:30:45+00:00","updated_at":"2023-11-22T21:30:45+00:00","name":"JACK SPARROW","company":null,"street1":"388 TOWNSEND ST APT 20","street2":null,"city":"SAN FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":true,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":37.77551,"longitude":-122.39697,"time_zone":"America\/Los_Angeles"}}}},{"id":"adr_0f6a4181897e11ee8a77ac1f6bc539ae","object":"Address","created_at":"2023-11-22T21:28:21+00:00","updated_at":"2023-11-22T21:28:21+00:00","name":"JACK SPARROW","company":null,"street1":"388 TOWNSEND ST APT 20","street2":null,"city":"SAN FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":true,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[],"details":null},"delivery":{"success":true,"errors":[],"details":{"latitude":37.77551,"longitude":-122.39697,"time_zone":"America\/Los_Angeles"}}}}],"has_more":true}'
         curl_info:
@@ -43,35 +43,35 @@
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.27971
-            namelookup_time: 0.0264
-            connect_time: 0.09159
-            pretransfer_time: 0.167325
+            total_time: 0.272734
+            namelookup_time: 0.026269
+            connect_time: 0.097831
+            pretransfer_time: 0.166536
             size_upload: 0.0
             size_download: 3082.0
-            speed_download: 11018.0
+            speed_download: 11300.0
             speed_upload: 0.0
             download_content_length: 3082.0
             upload_content_length: 0.0
-            starttransfer_time: 0.279669
+            starttransfer_time: 0.272649
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.131
+            primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.41
-            local_port: 52552
+            local_ip: 10.130.6.21
+            local_port: 53927
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
             scheme: HTTPS
-            appconnect_time_us: 167007
-            connect_time_us: 91590
-            namelookup_time_us: 26400
-            pretransfer_time_us: 167325
+            appconnect_time_us: 166507
+            connect_time_us: 97831
+            namelookup_time_us: 26269
+            pretransfer_time_us: 166536
             redirect_time_us: 0
-            starttransfer_time_us: 279669
-            total_time_us: 279710
+            starttransfer_time_us: 272649
+            total_time_us: 272734
             effective_method: GET
             capath: ''
             cainfo: ''
