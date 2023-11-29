@@ -37,12 +37,12 @@ class BillingService extends BaseService
      * Fund your EasyPost wallet by charging your primary or secondary payment method.
      *
      * @param string $amount
-     * @param string $primaryOrSecondary
+     * @param string $priority
      * @return void
      */
-    public function fundWallet($amount, $primaryOrSecondary = 'primary')
+    public function fundWallet($amount, $priority = 'primary')
     {
-        [$paymentMethodEndpoint, $paymentMethodId] = self::getPaymentInfo(strtolower($primaryOrSecondary));
+        [$paymentMethodEndpoint, $paymentMethodId] = self::getPaymentInfo(strtolower($priority));
 
         $url = $paymentMethodEndpoint . "/$paymentMethodId/charges";
         $wrappedParams = ['amount' => $amount];
@@ -53,12 +53,12 @@ class BillingService extends BaseService
     /**
      * Delete a payment method.
      *
-     * @param string $primaryOrSecondary
+     * @param string $priority
      * @return void
      */
-    public function deletePaymentMethod($primaryOrSecondary)
+    public function deletePaymentMethod($priority)
     {
-        [$paymentMethodEndpoint, $paymentMethodId] = self::getPaymentInfo(strtolower($primaryOrSecondary));
+        [$paymentMethodEndpoint, $paymentMethodId] = self::getPaymentInfo(strtolower($priority));
         $url = $paymentMethodEndpoint . "/$paymentMethodId";
 
         Requestor::request($this->client, 'delete', $url);
@@ -67,18 +67,18 @@ class BillingService extends BaseService
     /**
      * Get payment info (type of the payment method and ID of the payment method)
      *
-     * @param string $primaryOrSecondary
+     * @param string $priority
      * @return array
      * @throws PaymentException
      */
-    private function getPaymentInfo($primaryOrSecondary = 'primary')
+    private function getPaymentInfo($priority = 'primary')
     {
         $paymentMethods = self::retrievePaymentMethods();
         $paymentMethodMap = [
             'primary' => 'primary_payment_method',
             'secondary' => 'secondary_payment_method'
         ];
-        $paymentMethodToUse = $paymentMethodMap[$primaryOrSecondary] ?? null;
+        $paymentMethodToUse = $paymentMethodMap[$priority] ?? null;
 
         if ($paymentMethodToUse != null && $paymentMethods->$paymentMethodToUse->id != null) {
             $paymentMethodId = $paymentMethods->$paymentMethodToUse->id;

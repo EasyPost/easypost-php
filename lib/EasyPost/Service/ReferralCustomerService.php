@@ -86,7 +86,7 @@ class ReferralCustomerService extends BaseService
      * @param int $expirationMonth
      * @param int $expirationYear
      * @param string $cvc
-     * @param string $primaryOrSecondary
+     * @param string $priority
      * @return mixed
      * @throws ExternalApiException
      */
@@ -96,7 +96,7 @@ class ReferralCustomerService extends BaseService
         $expirationMonth,
         $expirationYear,
         $cvc,
-        $primaryOrSecondary = 'primary'
+        $priority = 'primary'
     ) {
         $easypostStripeApiKey = self::retrieveEasypostStripeApiKey();
 
@@ -114,7 +114,7 @@ class ReferralCustomerService extends BaseService
 
         $stripeToken = $stripeToken['id'] ?? '';
 
-        $response = self::createEasypostCreditCard($referralApiKey, $stripeToken, $primaryOrSecondary);
+        $response = self::createEasypostCreditCard($referralApiKey, $stripeToken, $priority);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
