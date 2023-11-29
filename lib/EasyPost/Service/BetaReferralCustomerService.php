@@ -20,16 +20,16 @@ class BetaReferralCustomerService extends BaseService
      *
      * @param string $stripeCustomerId
      * @param string $paymentMethodReference
-     * @param string $primaryOrSecondary
+     * @param string $priority
      * @return mixed
      */
-    public function addPaymentMethod($stripeCustomerId, $paymentMethodReference, $primaryOrSecondary = 'primary')
+    public function addPaymentMethod($stripeCustomerId, $paymentMethodReference, $priority = 'primary')
     {
         $params = [
             'payment_method' => [
                 'stripe_customer_id' => $stripeCustomerId,
                 'payment_method_reference' => $paymentMethodReference,
-                'priority' => $primaryOrSecondary
+                'priority' => $priority
             ]
         ];
 
