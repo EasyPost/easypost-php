@@ -28,11 +28,11 @@ class Order extends EasyPostObject
      *
      * To exclude a carrier or service, prepend the string with `!`.
      *
-     * @param array $carriers
-     * @param array $services
+     * @param array|null $carriers
+     * @param array|null $services
      * @return Rate
      */
-    public function lowestRate($carriers = [], $services = [])
+    public function lowestRate(?array $carriers = [], ?array $services = []): Rate
     {
         $lowestRate = InternalUtil::getLowestObjectRate($this, $carriers, $services);
 

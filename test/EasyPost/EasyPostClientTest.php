@@ -52,21 +52,6 @@ class EasyPostClientTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test setting and getting the API key for different EasyPostClients.
-     */
-    public function testNoApiKey()
-    {
-        try {
-            new EasyPostClient(null);
-        } catch (MissingParameterException $error) {
-            $this->assertEquals(
-                'No API key provided. See https://www.easypost.com/docs for details, or contact support@easypost.com for assistance.', // phpcs:ignore
-                $error->getMessage()
-            );
-        }
-    }
-
-    /**
      * Test invalid property (service) called on an EasyPostClient.
      */
     public function testInvalidServiceProperty()

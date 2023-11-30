@@ -16,7 +16,7 @@ class BetaRateService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function retrieveStatelessRates($params)
+    public function retrieveStatelessRates(mixed $params): mixed
     {
         $wrappedParams = [
             'shipment' => $params,

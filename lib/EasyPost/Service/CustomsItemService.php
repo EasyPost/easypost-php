@@ -13,7 +13,7 @@ class CustomsItemService extends BaseService
      * @param string $id
      * @return mixed
      */
-    public function retrieve($id)
+    public function retrieve(string $id): mixed
     {
         return self::retrieveResource(self::serviceModelClassName(self::class), $id);
     }
@@ -24,7 +24,7 @@ class CustomsItemService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function create($params = null)
+    public function create(mixed $params = null): mixed
     {
         if (!isset($params['customs_item']) || !is_array($params['customs_item'])) {
             $clone = $params;

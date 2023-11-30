@@ -22,7 +22,7 @@ class ReferralCustomerService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function all($params = null)
+    public function all(mixed $params = null): mixed
     {
         return self::allResources(self::serviceModelClassName(self::class), $params);
     }
@@ -31,10 +31,10 @@ class ReferralCustomerService extends BaseService
      * Retrieve the next page of Referral collection
      *
      * @param mixed $referrals
-     * @param string $pageSize
+     * @param int|null $pageSize
      * @return mixed
      */
-    public function getNextPage($referrals, $pageSize = null)
+    public function getNextPage(mixed $referrals, ?int $pageSize = null): mixed
     {
         return $this->getNextPageResources(self::serviceModelClassName(self::class), $referrals, $pageSize);
     }
@@ -45,7 +45,7 @@ class ReferralCustomerService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function create($params = null)
+    public function create(mixed $params = null): mixed
     {
         if (!isset($params['user']) || !is_array($params['user'])) {
             $clone = $params;
@@ -63,7 +63,7 @@ class ReferralCustomerService extends BaseService
      * @param string $userId
      * @return void
      */
-    public function updateEmail($email, $userId)
+    public function updateEmail(string $email, string $userId): void
     {
         // TODO: Swap the order of these params so ID comes first to match all other functions
         // this will be a breaking change and must be done when the next major release happens
@@ -91,13 +91,13 @@ class ReferralCustomerService extends BaseService
      * @throws ExternalApiException
      */
     public function addCreditCard(
-        $referralApiKey,
-        $number,
-        $expirationMonth,
-        $expirationYear,
-        $cvc,
-        $priority = 'primary'
-    ) {
+        string $referralApiKey,
+        string $number,
+        int $expirationMonth,
+        int $expirationYear,
+        string $cvc,
+        string $priority = 'primary'
+    ): mixed {
         $easypostStripeApiKey = self::retrieveEasypostStripeApiKey();
 
         try {
@@ -124,7 +124,7 @@ class ReferralCustomerService extends BaseService
      *
      * @return string
      */
-    private function retrieveEasypostStripeApiKey()
+    private function retrieveEasypostStripeApiKey(): string
     {
         $response = Requestor::request($this->client, 'get', '/partners/stripe_public_key');
 
@@ -143,8 +143,13 @@ class ReferralCustomerService extends BaseService
      * @throws HttpException
      * @throws TimeoutException
      */
-    private function createStripeToken($number, $expirationMonth, $expirationYear, $cvc, $easypostStripeKey)
-    {
+    private function createStripeToken(
+        string $number,
+        int $expirationMonth,
+        int $expirationYear,
+        string $cvc,
+        string $easypostStripeKey
+    ): mixed {
         $headers = [
             'Content-Type' => 'application/x-www-form-urlencoded',
             'Authorization' => "Bearer $easypostStripeKey",
@@ -194,8 +199,11 @@ class ReferralCustomerService extends BaseService
      * @param string @priority
      * @return mixed
      */
-    private function createEasypostCreditCard($referralApiKey, $stripeObjectId, $priority = 'primary')
-    {
+    private function createEasypostCreditCard(
+        string $referralApiKey,
+        string $stripeObjectId,
+        string $priority = 'primary'
+    ): mixed {
         $params = [
             'credit_card' => [
                 'stripe_object_id' => $stripeObjectId,

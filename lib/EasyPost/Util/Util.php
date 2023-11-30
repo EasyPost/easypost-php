@@ -9,6 +9,7 @@ use EasyPost\Exception\General\FilteringException;
 use EasyPost\Exception\General\InvalidParameterException;
 use EasyPost\Exception\General\MissingParameterException;
 use EasyPost\Exception\General\SignatureVerificationException;
+use EasyPost\Rate;
 use Normalizer;
 
 abstract class Util
@@ -19,7 +20,7 @@ abstract class Util
      * @param mixed $values
      * @return array
      */
-    public static function convertEasyPostObjectToArray($values)
+    public static function convertEasyPostObjectToArray(mixed $values): array
     {
         $results = [];
         foreach ($values as $k => $value) {
@@ -46,7 +47,7 @@ abstract class Util
      * @return Rate
      * @throws EasyPostException
      */
-    public static function getLowestSmartRate($smartRates, $deliveryDays, $deliveryAccuracy)
+    public static function getLowestSmartRate(array $smartRates, int $deliveryDays, string $deliveryAccuracy): Rate
     {
         $validDeliveryAccuracyValues = [
             'percentile_50',
@@ -92,7 +93,7 @@ abstract class Util
      * @return mixed
      * @throws EasyPostException
      */
-    public static function validateWebhook($eventBody, $headers, $webhookSecret)
+    public static function validateWebhook(mixed $eventBody, mixed $headers, string $webhookSecret): mixed
     {
         $easypostHmacSignature = $headers['X-Hmac-Signature'] ?? null;
 
@@ -118,11 +119,11 @@ abstract class Util
     /**
      * Receive an event (convert JSON string to object).
      *
-     * @param string $rawInput
+     * @param string|null $rawInput
      * @return mixed
      * @throws EasyPostException
      */
-    public static function receiveEvent($rawInput = null)
+    public static function receiveEvent(?string $rawInput = null): mixed
     {
         if ($rawInput == null) {
             throw new MissingParameterException(sprintf(Constants::MISSING_PARAMETER_ERROR, 'rawInput'));
@@ -145,7 +146,7 @@ abstract class Util
      * @return Rate
      * @throws \EasyPost\Exception\EasyPostException
      */
-    public static function getLowestStatelessRate($statelessRates, $carriers = [], $services = [])
+    public static function getLowestStatelessRate(array $statelessRates, array $carriers = [], array $services = [])
     {
         $lowestStatelessRate = false;
         $carriersInclude = [];

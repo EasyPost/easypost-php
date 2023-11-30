@@ -17,7 +17,7 @@ class OrderService extends BaseService
      * @param string $id
      * @return mixed
      */
-    public function retrieve($id)
+    public function retrieve(string $id): mixed
     {
         return self::retrieveResource(self::serviceModelClassName(self::class), $id);
     }
@@ -28,7 +28,7 @@ class OrderService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function create($params = null)
+    public function create(mixed $params = null): mixed
     {
         if (!isset($params['order']) || !is_array($params['order'])) {
             $clone = $params;
@@ -46,7 +46,7 @@ class OrderService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function getRates($id, $params = null)
+    public function getRates(string $id, mixed $params = null): mixed
     {
         $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/rates';
         $response = Requestor::request($this->client, 'get', $url, $params);
@@ -61,7 +61,7 @@ class OrderService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function buy($id, $params = null)
+    public function buy(string $id, mixed $params = null): mixed
     {
         if ($params instanceof Rate) {
             $clone = $params;

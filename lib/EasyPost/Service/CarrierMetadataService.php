@@ -17,7 +17,7 @@ class CarrierMetadataService extends BaseService
      * @param array|null $types
      * @return mixed
      */
-    public function retrieve($carriers = null, $types = null)
+    public function retrieve(?array $carriers = null, ?array $types = null): mixed
     {
         $url = '/metadata/carriers';
         if (isset($carriers) || isset($types)) {

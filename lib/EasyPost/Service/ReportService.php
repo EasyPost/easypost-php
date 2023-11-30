@@ -19,7 +19,7 @@ class ReportService extends BaseService
      * @param string $id
      * @return mixed
      */
-    public function retrieve($id)
+    public function retrieve(string $id): mixed
     {
         return self::retrieveResource(self::serviceModelClassName(self::class), $id);
     }
@@ -31,7 +31,7 @@ class ReportService extends BaseService
      * @return mixed
      * @throws MissingParameterException
      */
-    public function all($params = null)
+    public function all(mixed $params = null): mixed
     {
         if (!isset($params) || !isset($params['type'])) {
             throw new MissingParameterException(Constants::MISSING_PARAMETER_ERROR);
@@ -51,10 +51,10 @@ class ReportService extends BaseService
      * Retrieve the next page of Report collection
      *
      * @param mixed $reports
-     * @param string $pageSize
+     * @param int|null $pageSize
      * @return mixed
      */
-    public function getNextPage($reports, $pageSize = null)
+    public function getNextPage(mixed $reports, ?int $pageSize = null): mixed
     {
         $reportArray = $reports['reports'];
         $userParams = $reports['_params'] ?? null;
@@ -93,7 +93,7 @@ class ReportService extends BaseService
      * @return mixed
      * @throws MissingParameterException
      */
-    public function create($params = null)
+    public function create(mixed $params = null): mixed
     {
         if (!isset($params['type'])) {
             throw new MissingParameterException(Constants::MISSING_PARAMETER_ERROR);
@@ -112,7 +112,7 @@ class ReportService extends BaseService
      * @param string $type
      * @return mixed
      */
-    private function reportUrl($type)
+    private function reportUrl(string $type): mixed
     {
         // Strip namespace if present
         if ($postfix = strrchr($type, '\\')) {

@@ -34,7 +34,7 @@ class Requestor
      * @param bool $beta
      * @return string
      */
-    private static function absoluteUrl($client, $url = '', $beta = false)
+    private static function absoluteUrl(EasyPostClient $client, string $url = '', bool $beta = false): string
     {
         if ($beta) {
             $apiBase = Constants::API_BASE . '/' . Constants::BETA_API_VERSION;
@@ -51,7 +51,7 @@ class Requestor
      * @param mixed $value
      * @return string
      */
-    public static function utf8($value)
+    public static function utf8(mixed $value): string
     {
         if (is_string($value) && mb_detect_encoding($value, 'UTF-8', true) != 'UTF-8') {
             return mb_convert_encoding($value, 'UTF-8', 'ISO-8859-1');
@@ -66,7 +66,7 @@ class Requestor
      * @param mixed $data
      * @return array|string
      */
-    private static function encodeObjects($data)
+    private static function encodeObjects(mixed $data): array|string
     {
         if (is_null($data)) {
             return [];
@@ -94,10 +94,10 @@ class Requestor
      * URL Encodes data for GET requests.
      *
      * @param mixed $arr
-     * @param null $prefix
+     * @param string|null $prefix
      * @return string
      */
-    public static function urlEncode($arr, $prefix = null)
+    public static function urlEncode(mixed $arr, ?string $prefix = null): string
     {
         if (!is_array($arr)) {
             return $arr;
@@ -133,10 +133,15 @@ class Requestor
      * @param string $url
      * @param mixed $params
      * @param bool $beta
-     * @return array
+     * @return mixed
      */
-    public static function request($client, $method, $url, $params = null, $beta = false)
-    {
+    public static function request(
+        EasyPostClient $client,
+        string $method,
+        string $url,
+        mixed $params = null,
+        bool $beta = false
+    ): mixed {
         list($responseBody, $httpStatus) = self::requestRaw($client, $method, $url, $params, $beta);
         $httpBody = self::interpretResponse($responseBody, $httpStatus);
 
@@ -155,8 +160,13 @@ class Requestor
      * @throws HttpException
      * @throws TimeoutException
      */
-    private static function requestRaw($client, $method, $url, $params, $beta = false)
-    {
+    private static function requestRaw(
+        EasyPostClient $client,
+        string $method,
+        string $url,
+        mixed $params,
+        bool $beta = false
+    ): array {
         $absoluteUrl = self::absoluteUrl($client, $url, $beta);
         $requestOptions = [
             'http_errors' => false, // we set this false here so we can do our own error handling
@@ -245,7 +255,7 @@ class Requestor
      * @return mixed
      * @throws JsonException
      */
-    public static function interpretResponse($httpBody, $httpStatus)
+    public static function interpretResponse(string $httpBody, int $httpStatus): mixed
     {
         try {
             $response = json_decode($httpBody, true);
@@ -267,7 +277,7 @@ class Requestor
     /**
      * Handles API errors returned from EasyPost.
      *
-     * @param string $httpBody
+     * @param string|null $httpBody
      * @param int $httpStatus
      * @param array $response
      * @throws BadRequestException
@@ -285,7 +295,7 @@ class Requestor
      * @throws UnauthorizedException
      * @throws UnknownApiException
      */
-    public static function handleApiError($httpBody, $httpStatus, $response)
+    public static function handleApiError(?string $httpBody, int $httpStatus, array $response)
     {
         if (!is_array($response) || !isset($response['error'])) {
             throw new JsonException(
@@ -352,11 +362,11 @@ class Requestor
     /**
      * Recursively traverses a JSON element to extract error messages and returns them as a comma-separated string.
      *
-     * @param array $errorMessage
+     * @param mixed $errorMessage
      * @param array $messagesList
      * @return string
      */
-    private static function traverseJsonElement($errorMessage, &$messagesList)
+    private static function traverseJsonElement(mixed $errorMessage, array &$messagesList): string
     {
         switch (gettype($errorMessage)) {
             case 'array':

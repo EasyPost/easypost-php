@@ -3,6 +3,7 @@
 namespace EasyPost\Service;
 
 use EasyPost\Constant\Constants;
+use EasyPost\EasyPostClient;
 use EasyPost\Exception\General\EndOfPaginationException;
 use EasyPost\Exception\General\InvalidObjectException;
 use EasyPost\Exception\General\InvalidParameterException;
@@ -11,7 +12,7 @@ use EasyPost\Util\InternalUtil;
 
 class BaseService
 {
-    protected $client;
+    protected EasyPostClient $client;
 
     /**
      * Service constructor shared by all child services.
@@ -29,7 +30,7 @@ class BaseService
      * @param string $class
      * @return string
      */
-    protected static function className($class)
+    protected static function className(string $class): string
     {
         // Strip namespace if present
         if ($postfix = strrchr($class, '\\')) {
@@ -52,7 +53,7 @@ class BaseService
      * @param string $serviceClassName
      * @return string
      */
-    protected static function serviceModelClassName($serviceClassName)
+    protected static function serviceModelClassName(string $serviceClassName): string
     {
         return str_replace('Service', '', $serviceClassName);
     }
@@ -63,7 +64,7 @@ class BaseService
      * @param string $class
      * @return string
      */
-    protected static function classUrl($class)
+    protected static function classUrl(string $class): string
     {
         $className = self::className($class);
         if (substr($className, -1) !== 's' && substr($className, -1) !== 'h') {
@@ -81,7 +82,7 @@ class BaseService
      * @return string
      * @throws InvalidObjectException
      */
-    protected function instanceUrl($class, $id)
+    protected function instanceUrl(string $class, string $id): string
     {
         if (!$id) {
             throw new InvalidObjectException(sprintf(Constants::NO_ID_URL_ERROR), $class, $id);
@@ -95,10 +96,10 @@ class BaseService
     /**
      * Validate library usage.
      *
-     * @param array $params
+     * @param mixed $params
      * @throws InvalidParameterException
      */
-    protected static function validate($params = null)
+    protected static function validate(mixed $params = null): void
     {
         if ($params && !is_array($params)) {
             throw new InvalidParameterException(Constants::ARRAY_REQUIRED_ERROR);
@@ -113,7 +114,7 @@ class BaseService
      * @param bool $beta
      * @return mixed
      */
-    protected function retrieveResource($class, $id, $beta = false)
+    protected function retrieveResource(string $class, string $id, bool $beta = false): mixed
     {
         $url = $this->instanceUrl($class, $id);
 
@@ -130,7 +131,7 @@ class BaseService
      * @param bool $beta
      * @return mixed
      */
-    protected function allResources($class, $params = null, $beta = false)
+    protected function allResources(string $class, mixed $params = null, bool $beta = false): mixed
     {
         self::validate($params);
         $url = self::classUrl($class);
@@ -148,10 +149,10 @@ class BaseService
      *
      * @param string $class
      * @param mixed $collection
-     * @param int $pageSize
+     * @param int|null $pageSize
      * @return mixed
      */
-    protected function getNextPageResources($class, $collection, $pageSize = null)
+    protected function getNextPageResources(string $class, mixed $collection, ?int $pageSize = null): mixed
     {
         $objectName = substr(self::classUrl($class), 1);
         $collectionArray = $collection[$objectName];
@@ -191,7 +192,7 @@ class BaseService
      * @param bool $beta
      * @return mixed
      */
-    protected function createResource($class, $params = null, $beta = false)
+    protected function createResource(string $class, mixed $params = null, bool $beta = false): mixed
     {
         self::validate($params);
         $url = self::classUrl($class);
@@ -209,7 +210,7 @@ class BaseService
      * @param bool $beta
      * @return void
      */
-    protected function deleteResource($class, $id, $params = null, $beta = false)
+    protected function deleteResource(string $class, string $id, mixed $params = null, bool $beta = false): void
     {
         self::validate();
         $url = $this->instanceUrl($class, $id);
@@ -223,12 +224,17 @@ class BaseService
      * @param string $class
      * @param string $id
      * @param mixed $params
-     * @param string $method
+     * @param string|null $method
      * @param bool $beta
      * @return mixed
      */
-    protected function updateResource($class, $id, $params = null, $method = 'patch', $beta = false)
-    {
+    protected function updateResource(
+        string $class,
+        string $id,
+        mixed $params = null,
+        ?string $method = 'patch',
+        bool $beta = false
+    ): mixed {
         self::validate();
         $url = $this->instanceUrl($class, $id);
         $response = Requestor::request($this->client, $method, $url, $params, $beta);

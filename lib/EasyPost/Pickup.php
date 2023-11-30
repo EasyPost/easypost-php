@@ -2,6 +2,7 @@
 
 namespace EasyPost;
 
+use EasyPost\PickupRate;
 use EasyPost\Util\InternalUtil;
 
 /**
@@ -31,11 +32,11 @@ class Pickup extends EasyPostObject
      *
      * To exclude a carrier or service, prepend the string with `!`.
      *
-     * @param array $carriers
-     * @param array $services
-     * @return Rate
+     * @param array|null $carriers
+     * @param array|null $services
+     * @return PickupRate
      */
-    public function lowestRate($carriers = [], $services = [])
+    public function lowestRate(?array $carriers = [], ?array $services = []): PickupRate
     {
         $lowestRate = InternalUtil::getLowestObjectRate($this, $carriers, $services, 'pickup_rates');
 

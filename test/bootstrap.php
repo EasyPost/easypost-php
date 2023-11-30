@@ -59,7 +59,7 @@ VCRCleaner::enable([
  * @param mixed $data
  * @return mixed
  */
-function scrubCassette($data)
+function scrubCassette(mixed $data): mixed
 {
     if (isset($data)) {
         foreach (RESPONSE_BODY_SCRUBBERS as $scrubber) {

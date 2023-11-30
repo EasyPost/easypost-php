@@ -16,7 +16,7 @@ class TrackerService extends BaseService
      * @param string $id
      * @return mixed
      */
-    public function retrieve($id)
+    public function retrieve(string $id): mixed
     {
         return self::retrieveResource(self::serviceModelClassName(self::class), $id);
     }
@@ -27,7 +27,7 @@ class TrackerService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function all($params = null)
+    public function all(mixed $params = null): mixed
     {
         return self::allResources(self::serviceModelClassName(self::class), $params);
     }
@@ -36,10 +36,10 @@ class TrackerService extends BaseService
      * Retrieve the next page of Tracker collection
      *
      * @param mixed $trackers
-     * @param string $pageSize
+     * @param int|null $pageSize
      * @return mixed
      */
-    public function getNextPage($trackers, $pageSize = null)
+    public function getNextPage(mixed $trackers, ?int $pageSize = null): mixed
     {
         return $this->getNextPageResources(self::serviceModelClassName(self::class), $trackers, $pageSize);
     }
@@ -50,7 +50,7 @@ class TrackerService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function create($params = null)
+    public function create(mixed $params = null): mixed
     {
         if (!is_array($params)) {
             $clone = $params;
@@ -71,7 +71,7 @@ class TrackerService extends BaseService
      * @param mixed $params
      * @return void
      */
-    public function createList($params = null)
+    public function createList(mixed $params = null): void
     {
         if (!isset($params['trackers']) || !is_array($params['trackers'])) {
             $clone = $params;

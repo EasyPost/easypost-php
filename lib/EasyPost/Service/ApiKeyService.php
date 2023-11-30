@@ -17,7 +17,7 @@ class ApiKeyService extends BaseService
      *
      * @return mixed
      */
-    public function all()
+    public function all(): mixed
     {
         $response = Requestor::request($this->client, 'get', '/api_keys');
 
@@ -31,7 +31,7 @@ class ApiKeyService extends BaseService
      * @return mixed
      * @throws FilteringException If no user is found with the given ID
      */
-    public function retrieveApiKeysForUser($id)
+    public function retrieveApiKeysForUser(string $id): mixed
     {
         $apiKeys = self::all();
 

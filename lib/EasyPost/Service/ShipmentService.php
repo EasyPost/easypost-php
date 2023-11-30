@@ -3,6 +3,7 @@
 namespace EasyPost\Service;
 
 use EasyPost\Http\Requestor;
+use EasyPost\Rate;
 use EasyPost\Util\InternalUtil;
 use EasyPost\Util\Util;
 
@@ -17,7 +18,7 @@ class ShipmentService extends BaseService
      * @param string $id
      * @return mixed
      */
-    public function retrieve($id)
+    public function retrieve(string $id): mixed
     {
         return self::retrieveResource(self::serviceModelClassName(self::class), $id);
     }
@@ -28,7 +29,7 @@ class ShipmentService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function all($params = null)
+    public function all(mixed $params = null): mixed
     {
         return self::allResources(self::serviceModelClassName(self::class), $params);
     }
@@ -37,10 +38,10 @@ class ShipmentService extends BaseService
      * Retrieve the next page of Shipment collection
      *
      * @param mixed $shipments
-     * @param string $pageSize
+     * @param int|null $pageSize
      * @return mixed
      */
-    public function getNextPage($shipments, $pageSize = null)
+    public function getNextPage(mixed $shipments, ?int $pageSize = null): mixed
     {
         return $this->getNextPageResources(self::serviceModelClassName(self::class), $shipments, $pageSize);
     }
@@ -51,7 +52,7 @@ class ShipmentService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function create($params = null)
+    public function create(mixed $params = null): mixed
     {
         if (!isset($params['shipment']) || !is_array($params['shipment'])) {
             $clone = $params;
@@ -69,7 +70,7 @@ class ShipmentService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function regenerateRates($id, $params = null)
+    public function regenerateRates(string $id, mixed $params = null): mixed
     {
         $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/rerate';
         $response = Requestor::request($this->client, 'post', $url, $params);
@@ -83,7 +84,7 @@ class ShipmentService extends BaseService
      * @param string $id
      * @return array
      */
-    public function getSmartRates($id)
+    public function getSmartRates(string $id): array
     {
         $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/smartrate';
         $response = Requestor::request($this->client, 'get', $url);
@@ -98,10 +99,10 @@ class ShipmentService extends BaseService
      *
      * @param string $id
      * @param mixed $params
-     * @param string $endShipperId
+     * @param string|bool $endShipperId
      * @return mixed
      */
-    public function buy($id, $params = null, $endShipperId = false)
+    public function buy(string $id, mixed $params = null, string|bool $endShipperId = false)
     {
         if (isset($params['id']) && (!isset($params['rate']) || !is_array($params['rate']))) {
             $clone = $params;
@@ -127,7 +128,7 @@ class ShipmentService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function refund($id, $params = null)
+    public function refund(string $id, mixed $params = null): mixed
     {
         $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/refund';
         $response = Requestor::request($this->client, 'post', $url, $params);
@@ -142,7 +143,7 @@ class ShipmentService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function label($id, $params = null)
+    public function label(string $id, mixed $params = null): mixed
     {
         if (!isset($params['file_format'])) {
             $clone = $params;
@@ -163,7 +164,7 @@ class ShipmentService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function insure($id, $params = null)
+    public function insure(string $id, mixed $params = null): mixed
     {
         if (!isset($params['amount'])) {
             $clone = $params;
@@ -185,7 +186,7 @@ class ShipmentService extends BaseService
      * @param mixed $formOptions
      * @return mixed
      */
-    public function generateForm($id, $formType, $formOptions = null)
+    public function generateForm(string $id, string $formType, mixed $formOptions = null): mixed
     {
         $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/forms';
         $formOptions['type'] = $formType;
@@ -207,7 +208,7 @@ class ShipmentService extends BaseService
      * @param string $deliveryAccuracy
      * @return Rate
      */
-    public function lowestSmartRate($id, $deliveryDays, $deliveryAccuracy)
+    public function lowestSmartRate(string $id, int $deliveryDays, string $deliveryAccuracy): Rate
     {
         $smartRates = self::getSmartRates($id);
         $lowestRate = Util::getLowestSmartRate($smartRates, $deliveryDays, strtolower($deliveryAccuracy));
@@ -222,7 +223,7 @@ class ShipmentService extends BaseService
      * @param string $plannedShipDate
      * @return mixed
      */
-    public function retrieveEstimatedDeliveryDate($id, $plannedShipDate)
+    public function retrieveEstimatedDeliveryDate(string $id, string $plannedShipDate): mixed
     {
         $params = [
             'planned_ship_date' => $plannedShipDate,

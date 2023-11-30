@@ -13,7 +13,7 @@ class WebhookService extends BaseService
      * @param string $id
      * @return mixed
      */
-    public function retrieve($id)
+    public function retrieve(string $id): mixed
     {
         return self::retrieveResource(self::serviceModelClassName(self::class), $id);
     }
@@ -24,7 +24,7 @@ class WebhookService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function all($params = null)
+    public function all(mixed $params = null): mixed
     {
         return self::allResources(self::serviceModelClassName(self::class), $params);
     }
@@ -36,7 +36,7 @@ class WebhookService extends BaseService
      * @param mixed $params
      * @return void
      */
-    public function delete($id, $params = null)
+    public function delete(string $id, mixed $params = null): void
     {
         self::deleteResource(self::serviceModelClassName(self::class), $id, $params);
     }
@@ -48,7 +48,7 @@ class WebhookService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function update($id, $params = null)
+    public function update(string $id, mixed $params = null): mixed
     {
         if (!isset($params['webhook']) || !is_array($params['webhook'])) {
             $clone = $params;
@@ -65,7 +65,7 @@ class WebhookService extends BaseService
      * @param mixed $params
      * @return mixed
      */
-    public function create($params = null)
+    public function create(mixed $params = null): mixed
     {
         if (!isset($params['webhook']) || !is_array($params['webhook'])) {
             $clone = $params;
