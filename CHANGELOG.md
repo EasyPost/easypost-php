@@ -2,6 +2,8 @@
 
 ## v7.0.0 (2023-12-01)
 
+Upgrading major versions of this project? Refer to the [Upgrade Guide](UPGRADE_GUIDE.md).
+
 - Drops support for PHP 7.4
 - Adds support for PHP 8.3
 - Persists the HTTP client inside of the `EasyPostClient` via the `httpClient` property to reduce memory consumption on consecutive requests
@@ -74,6 +76,8 @@
   - `refundByPaymentLog` refunds you wallet balance by a specified payment log
 
 ## v6.0.0 (2023-01-05)
+
+Upgrading major versions of this project? Refer to the [Upgrade Guide](UPGRADE_GUIDE.md).
 
 - Release final version of v6 that contains all the changes in the `v6.0.0-rc1` below
 
