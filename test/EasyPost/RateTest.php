@@ -7,7 +7,7 @@ use EasyPost\Rate;
 
 class RateTest extends \PHPUnit\Framework\TestCase
 {
-    private static $client;
+    private static EasyPostClient $client;
 
     /**
      * Setup the testing environment for this file.
@@ -29,7 +29,7 @@ class RateTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving a rate.
      */
-    public function testRetrieve()
+    public function testRetrieve(): void
     {
         TestUtil::setupCassette('rates/retrieve.yml');
 

@@ -9,7 +9,7 @@ use EasyPost\Http\Requestor;
 
 class ErrorTest extends \PHPUnit\Framework\TestCase
 {
-    private static $client;
+    private static EasyPostClient $client;
 
     /**
      * Setup the testing environment for this file.
@@ -31,7 +31,7 @@ class ErrorTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating a bad shipment and retrieving errors.
      */
-    public function testError()
+    public function testError(): void
     {
         TestUtil::setupCassette('errors/errors.yml');
 
@@ -60,7 +60,7 @@ Field errors:
     /**
      * Test error deserialization with an array of error.message
      */
-    public function testErrorMessageArray()
+    public function testErrorMessageArray(): void
     {
         $errorResponse = json_decode('{
             "error": {
@@ -80,7 +80,7 @@ Field errors:
     /**
      * Test error deserialization with an Array Map of error.message
      */
-    public function testErrorMessageMap()
+    public function testErrorMessageMap(): void
     {
         $errorResponse = json_decode('{
             "error": {
@@ -104,7 +104,7 @@ Field errors:
     /**
      * Test error deserialization with an really bad format of error.message
      */
-    public function testErrorMessageBadFormat()
+    public function testErrorMessageBadFormat(): void
     {
         $errorResponse = json_decode('{
             "error": {

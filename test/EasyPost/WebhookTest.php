@@ -9,7 +9,7 @@ use EasyPost\Webhook;
 
 class WebhookTest extends \PHPUnit\Framework\TestCase
 {
-    private static $client;
+    private static EasyPostClient $client;
 
     /**
      * Setup the testing environment for this file.
@@ -31,7 +31,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating a Webhook.
      */
-    public function testCreate()
+    public function testCreate(): void
     {
         TestUtil::setupCassette('webhooks/create.yml');
 
@@ -50,7 +50,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving a Webhook.
      */
-    public function testRetrieve()
+    public function testRetrieve(): void
     {
         TestUtil::setupCassette('webhooks/retrieve.yml');
 
@@ -70,7 +70,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving all webhooks.
      */
-    public function testAll()
+    public function testAll(): void
     {
         TestUtil::setupCassette('webhooks/all.yml');
 
@@ -87,7 +87,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
     /**
      * Test updating a Webhook.
      */
-    public function testUpdate()
+    public function testUpdate(): void
     {
         TestUtil::setupCassette('webhooks/update.yml');
 
@@ -107,7 +107,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
     /**
      * Test deleting a Webhook.
      */
-    public function testDelete()
+    public function testDelete(): void
     {
         TestUtil::setupCassette('webhooks/delete.yml');
 
@@ -127,7 +127,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
      * Test a webhook signature that is originated from EasyPost by comparing the HMAC header
      * to a shared secret.
      */
-    public function testValidateWebhook()
+    public function testValidateWebhook(): void
     {
         $webhookSecret = 'sécret';
         $expectedHmacSignature = 'hmac-sha256-hex=e93977c8ccb20363d51a62b3fe1fc402b7829be1152da9e88cf9e8d07115a46b';
@@ -143,7 +143,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
     /**
      * Test a webhook signature that has invalid secret.
      */
-    public function testValidateWebhookInvalidSecret()
+    public function testValidateWebhookInvalidSecret(): void
     {
         $webhookSecret = 'invalid_secret';
         $headers = [
@@ -163,7 +163,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
     /**
      * Test a webhook signature does not have HMAC signature header.
      */
-    public function testValidateWebhookMissingSecret()
+    public function testValidateWebhookMissingSecret(): void
     {
         $webhookSecret = '123';
         $headers = [

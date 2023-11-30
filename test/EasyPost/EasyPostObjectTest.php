@@ -7,7 +7,7 @@ use EasyPost\Util\InternalUtil;
 
 class EasyPostObjectTest extends \PHPUnit\Framework\TestCase
 {
-    private static $client;
+    private static EasyPostClient $client;
 
     /**
      * Setup the testing environment for this file.
@@ -20,7 +20,7 @@ class EasyPostObjectTest extends \PHPUnit\Framework\TestCase
     /**
      * Test using `isset` magic method.
      */
-    public function testIssetMagicMethod()
+    public function testIssetMagicMethod(): void
     {
         $object = InternalUtil::convertToEasyPostObject(self::$client, Fixture::caAddress1());
 
@@ -32,7 +32,7 @@ class EasyPostObjectTest extends \PHPUnit\Framework\TestCase
     /**
      * Test using `get` magic method with an invalid property.
      */
-    public function testGetMagicMethodInvalidProperty()
+    public function testGetMagicMethodInvalidProperty(): void
     {
         $object = InternalUtil::convertToEasyPostObject(self::$client, Fixture::caAddress1());
 
@@ -45,7 +45,7 @@ class EasyPostObjectTest extends \PHPUnit\Framework\TestCase
     /**
      * Tests that we can print an object correctly.
      */
-    public function testPrintObject()
+    public function testPrintObject(): void
     {
         $object = InternalUtil::convertToEasyPostObject(self::$client, Fixture::caAddress1());
 

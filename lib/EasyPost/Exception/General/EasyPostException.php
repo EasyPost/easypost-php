@@ -2,6 +2,10 @@
 
 namespace EasyPost\Exception\General;
 
+/**
+ * @package EasyPost
+ * @param string $message
+ */
 class EasyPostException extends \Exception
 {
     /**

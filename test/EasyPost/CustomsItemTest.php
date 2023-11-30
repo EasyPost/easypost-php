@@ -7,7 +7,7 @@ use EasyPost\EasyPostClient;
 
 class CustomsItemTest extends \PHPUnit\Framework\TestCase
 {
-    private static $client;
+    private static EasyPostClient $client;
 
     /**
      * Setup the testing environment for this file.
@@ -29,7 +29,7 @@ class CustomsItemTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating a CustomsItem.
      */
-    public function testCreate()
+    public function testCreate(): void
     {
         TestUtil::setupCassette('customs_items/create.yml');
 
@@ -43,7 +43,7 @@ class CustomsItemTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving a CustomsItem.
      */
-    public function testRetrieve()
+    public function testRetrieve(): void
     {
         TestUtil::setupCassette('customs_items/retrieve.yml');
 

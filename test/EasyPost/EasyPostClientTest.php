@@ -4,14 +4,13 @@ namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
 use EasyPost\Exception\General\EasyPostException;
-use EasyPost\Exception\General\MissingParameterException;
 
 class EasyPostClientTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Test setting and getting the API key for different EasyPostClients.
      */
-    public function testApiKey()
+    public function testApiKey(): void
     {
         $apiKey1 = '123';
         $client1 = new EasyPostClient($apiKey1);
@@ -28,7 +27,7 @@ class EasyPostClientTest extends \PHPUnit\Framework\TestCase
     /**
      * Test setting and getting the API base.
      */
-    public function testApiBase()
+    public function testApiBase(): void
     {
         $apiBase = 'http://example.com';
 
@@ -41,7 +40,7 @@ class EasyPostClientTest extends \PHPUnit\Framework\TestCase
     /**
      * Test setting and getting the timeout.
      */
-    public function testTimeout()
+    public function testTimeout(): void
     {
         $timeout = 1.0;
 
@@ -54,7 +53,7 @@ class EasyPostClientTest extends \PHPUnit\Framework\TestCase
     /**
      * Test invalid property (service) called on an EasyPostClient.
      */
-    public function testInvalidServiceProperty()
+    public function testInvalidServiceProperty(): void
     {
         try {
             $client = new EasyPostClient('123');

@@ -9,7 +9,7 @@ use Exception;
 
 class TrackerTest extends \PHPUnit\Framework\TestCase
 {
-    private static $client;
+    private static EasyPostClient $client;
 
     /**
      * Setup the testing environment for this file.
@@ -31,7 +31,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating a Tracker.
      */
-    public function testCreate()
+    public function testCreate(): void
     {
         TestUtil::setupCassette('trackers/create.yml');
 
@@ -47,7 +47,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating a Tracker when we don't wrap the param.
      */
-    public function testCreateUnwrappedParam()
+    public function testCreateUnwrappedParam(): void
     {
         TestUtil::setupCassette('trackers/createUnwrappedParam.yml');
 
@@ -61,7 +61,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving a Tracker.
      */
-    public function testRetrieve()
+    public function testRetrieve(): void
     {
         TestUtil::setupCassette('trackers/retrieve.yml');
 
@@ -80,7 +80,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving all trackers.
      */
-    public function testAll()
+    public function testAll(): void
     {
         TestUtil::setupCassette('trackers/all.yml');
 
@@ -98,7 +98,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving next page.
      */
-    public function testGetNextPage()
+    public function testGetNextPage(): void
     {
         TestUtil::setupCassette('trackers/getNextPage.yml');
 
@@ -123,7 +123,7 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
     /**
      * Tests that we can create a list of bulk trackers with one request.
      */
-    public function testCreateList()
+    public function testCreateList(): void
     {
         TestUtil::setupCassette('trackers/createList.yml');
 

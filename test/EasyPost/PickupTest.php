@@ -10,7 +10,7 @@ use Exception;
 
 class PickupTest extends \PHPUnit\Framework\TestCase
 {
-    private static $client;
+    private static EasyPostClient $client;
 
     /**
      * Setup the testing environment for this file.
@@ -32,7 +32,7 @@ class PickupTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating a pickup.
      */
-    public function testCreate()
+    public function testCreate(): void
     {
         TestUtil::setupCassette('pickups/create.yml');
 
@@ -51,7 +51,7 @@ class PickupTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving a pickup.
      */
-    public function testRetrieve()
+    public function testRetrieve(): void
     {
         TestUtil::setupCassette('pickups/retrieve.yml');
 
@@ -70,7 +70,7 @@ class PickupTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving all shipments.
      */
-    public function testAll()
+    public function testAll(): void
     {
         TestUtil::setupCassette('pickups/all.yml');
 
@@ -88,7 +88,7 @@ class PickupTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving next page.
      */
-    public function testGetNextPage()
+    public function testGetNextPage(): void
     {
         TestUtil::setupCassette('pickups/getNextPage.yml');
 
@@ -113,7 +113,7 @@ class PickupTest extends \PHPUnit\Framework\TestCase
     /**
      * Test buying a pickup.
      */
-    public function testBuy()
+    public function testBuy(): void
     {
         TestUtil::setupCassette('pickups/buy.yml');
 
@@ -141,7 +141,7 @@ class PickupTest extends \PHPUnit\Framework\TestCase
     /**
      * Test cancelling a pickup.
      */
-    public function testCancel()
+    public function testCancel(): void
     {
         TestUtil::setupCassette('pickups/cancel.yml');
 
@@ -170,7 +170,7 @@ class PickupTest extends \PHPUnit\Framework\TestCase
     /**
      * Test various usage alterations of the lowest_rate method.
      */
-    public function testLowestRate()
+    public function testLowestRate(): void
     {
         TestUtil::setupCassette('pickups/lowestRate.yml');
 

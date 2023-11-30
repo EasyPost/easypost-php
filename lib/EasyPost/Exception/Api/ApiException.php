@@ -3,21 +3,26 @@
 namespace EasyPost\Exception\Api;
 
 use EasyPost\Exception\General\EasyPostException;
+use EasyPost\FieldError;
 use Exception;
 
 /**
  * @package EasyPost
  * @property string|null $code
  * @property FieldError[]|null $errors
+ * @property string $message
+ * @property string|null $httpBody
+ * @property int|null $httpStatus
+ * @property mixed $jsonBody
  */
 class ApiException extends EasyPostException
 {
-    public $code;
-    public $errors;
-    protected $message;
-    private $httpBody;
-    private $httpStatus;
-    private $jsonBody;
+    public $code; // @phpstan-ignore-line
+    public $errors; // @phpstan-ignore-line
+    protected $message; // @phpstan-ignore-line
+    private ?string $httpBody;
+    private int $httpStatus;
+    private mixed $jsonBody;
 
     /**
      * ApiException constructor.
@@ -83,7 +88,6 @@ class ApiException extends EasyPostException
         if (!empty($this->errors)) {
             print("Field errors:\n");
             foreach ($this->errors as $fieldError) {
-                // @phpstan-ignore-next-line
                 foreach ($fieldError as $k => $v) {
                     print('  ' . $k . ': ' . $v . "\n");
                 }

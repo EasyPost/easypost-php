@@ -13,7 +13,7 @@ use Exception;
 
 class ShipmentTest extends \PHPUnit\Framework\TestCase
 {
-    private static $client;
+    private static EasyPostClient $client;
 
     /**
      * Setup the testing environment for this file.
@@ -35,7 +35,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating a Shipment.
      */
-    public function testCreate()
+    public function testCreate(): void
     {
         TestUtil::setupCassette('shipments/create.yml');
 
@@ -52,7 +52,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving a Shipment.
      */
-    public function testRetrieve()
+    public function testRetrieve(): void
     {
         TestUtil::setupCassette('shipments/retrieve.yml');
 
@@ -67,7 +67,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving all shipments.
      */
-    public function testAll()
+    public function testAll(): void
     {
         TestUtil::setupCassette('shipments/all.yml');
 
@@ -85,7 +85,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving next page.
      */
-    public function testGetNextPage()
+    public function testGetNextPage(): void
     {
         TestUtil::setupCassette('shipments/getNextPage.yml');
 
@@ -111,7 +111,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     /**
      * Test buying a Shipment.
      */
-    public function testBuy()
+    public function testBuy(): void
     {
         TestUtil::setupCassette('shipments/buy.yml');
 
@@ -128,7 +128,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     /**
      * Test buying a Shipment with a Rate object.
      */
-    public function testBuyRateObject()
+    public function testBuyRateObject(): void
     {
         TestUtil::setupCassette('shipments/buyRateObject.yml');
 
@@ -142,7 +142,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     /**
      * Test regenerating rates for a shipment.
      */
-    public function testRegenerateRates()
+    public function testRegenerateRates(): void
     {
         TestUtil::setupCassette('shipments/regenerateRates.yml');
 
@@ -161,7 +161,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     /**
      * Test converting the label format of a Shipment.
      */
-    public function testConvertLabel()
+    public function testConvertLabel(): void
     {
         TestUtil::setupCassette('shipments/convertLabel.yml');
 
@@ -178,7 +178,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     /**
      * Test converting the label format of a Shipment when we don't wrap the format.
      */
-    public function testConvertLabelUnwrappedParam()
+    public function testConvertLabelUnwrappedParam(): void
     {
         TestUtil::setupCassette('shipments/convertLabelUnwrappedParam.yml');
 
@@ -195,7 +195,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
      * If the shipment was purchased with a USPS rate, it must have had its insurance set to `0` when bought
      * so that USPS doesn't automatically insure it so we could manually insure it here.
      */
-    public function testInsure()
+    public function testInsure(): void
     {
         TestUtil::setupCassette('shipments/insure.yml');
 
@@ -219,7 +219,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
      * If the shipment was purchased with a USPS rate, it must have had its insurance set to `0` when bought
      * so that USPS doesn't automatically insure it so we could manually insure it here.
      */
-    public function testInsureUnwrappedParam()
+    public function testInsureUnwrappedParam(): void
     {
         TestUtil::setupCassette('shipments/insureUnwrappedParam.yml');
 
@@ -241,7 +241,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
      * follow a flow of created -> delivered to cycle through tracking events in test mode - as such anything older
      * than a few seconds in test mode may not be refundable.
      */
-    public function testRefund()
+    public function testRefund(): void
     {
         TestUtil::setupCassette('shipments/refund.yml');
 
@@ -255,7 +255,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving SmartRates for a shipment.
      */
-    public function testSmartRate()
+    public function testSmartRate(): void
     {
         TestUtil::setupCassette('shipments/smartrates.yml');
 
@@ -277,7 +277,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating a Shipment with empty or null objects and arrays.
      */
-    public function testCreateEmptyObjects()
+    public function testCreateEmptyObjects(): void
     {
         TestUtil::setupCassette('shipments/createEmptyObjects.yml');
 
@@ -299,7 +299,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating a Shipment with `tax_identifiers`.
      */
-    public function testCreateTaxIdentifiers()
+    public function testCreateTaxIdentifiers(): void
     {
         TestUtil::setupCassette('shipments/createTaxIdentifiers.yml');
 
@@ -316,7 +316,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating a Shipment when only IDs are used.
      */
-    public function testCreateWithIds()
+    public function testCreateWithIds(): void
     {
         TestUtil::setupCassette('shipments/createWithIds.yml');
 
@@ -341,7 +341,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     /**
      * Test various usage alterations of the lowest_rate method.
      */
-    public function testLowestRate()
+    public function testLowestRate(): void
     {
         TestUtil::setupCassette('shipments/lowestRate.yml');
 
@@ -370,7 +370,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     /**
      * Test various usage alterations of the lowestRate method when excluding params by appending `!` to the string.
      */
-    public function testLowestRateExclusions()
+    public function testLowestRateExclusions(): void
     {
         TestUtil::setupCassette('shipments/lowestRateExclusions.yml');
 
@@ -396,7 +396,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
      * These tests are unfortunately combined because the VCR can't pull cassettes correctly
      * when testing these two functions in different tests/cassettes.
      */
-    public function testLowestSmartRateVariations()
+    public function testLowestSmartRateVariations(): void
     {
         TestUtil::setupCassette('shipments/lowestSmartRateVariations.yml');
 
@@ -455,7 +455,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     /**
      * Tests generating a form for a shipment.
      */
-    public function testGenerateForm()
+    public function testGenerateForm(): void
     {
         TestUtil::setupCassette('shipments/generateForm.yml');
 
@@ -479,7 +479,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     /**
      * Tests buying a shipment with an end shipper.
      */
-    public function testBuyShipmentWithEndShipper()
+    public function testBuyShipmentWithEndShipper(): void
     {
         TestUtil::setupCassette('shipments/buyShipmentWithEndShipper.yml');
 
@@ -492,7 +492,6 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         $boughtShipment = self::$client->shipment->buy(
             $shipment->id,
             ['rate' => $lowestRate],
-            false,
             $endShipper->id
         );
 
@@ -502,7 +501,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     /**
      * Tests that we retrieve time-in-transit data for each of the Rates of a Shipment.
      */
-    public function testRetrieveEstimatedDeliveryDate()
+    public function testRetrieveEstimatedDeliveryDate(): void
     {
         TestUtil::setupCassette('shipments/retrieveEstimatedDeliveryDate.yml');
 

@@ -8,8 +8,16 @@ use EasyPost\Util\Util;
 
 class EasyPostObject implements \ArrayAccess, \Iterator
 {
+    /**
+     * @var array<mixed>
+     */
     protected array $_values;
+
+    /**
+     * @var array<mixed>
+     */
     protected array $_immutableValues;
+
     private mixed $_parent;
     private mixed $_name;
 
@@ -111,7 +119,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
      * Construct EasyPost objects from a response.
      *
      * @param EasyPostClient|null $client
-     * @param array $values
+     * @param array<mixed> $values
      * @param string $class
      * @return mixed
      */
@@ -127,7 +135,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
      * Convert each piece of an EasyPost object.
      *
      * @param EasyPostClient|null $client
-     * @param array $values
+     * @param array<mixed> $values
      */
     public function convertEach(?EasyPostClient $client, array $values): void
     {
@@ -263,7 +271,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
      * Convert object to an array.
      *
      * @param bool|null $recursive
-     * @return array
+     * @return array<mixed>
      */
     public function __toArray(?bool $recursive = false): array
     {

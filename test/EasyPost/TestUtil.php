@@ -12,7 +12,7 @@ class TestUtil
      *
      * @return void
      */
-    public static function setupVcrTests()
+    public static function setupVcrTests(): void
     {
         VCR::turnOn();
     }
@@ -22,7 +22,7 @@ class TestUtil
      *
      * @return void
      */
-    public static function teardownVcrTests()
+    public static function teardownVcrTests(): void
     {
         VCR::eject();
         VCR::turnOff();
@@ -34,7 +34,7 @@ class TestUtil
      * @param string $cassettePath
      * @return void
      */
-    public static function setupCassette($cassettePath)
+    public static function setupCassette(string $cassettePath): void
     {
         self::checkExpiredCassette($cassettePath);
         VCR::insertCassette($cassettePath);
@@ -43,9 +43,10 @@ class TestUtil
     /**
      * Checks for an expired cassette and warns if it is too old and must be re-recorded.
      *
+     * @param string $cassettePath
      * @return void
      */
-    private static function checkExpiredCassette($cassettePath)
+    private static function checkExpiredCassette(string $cassettePath): void
     {
         $fullCassettePath = "test/cassettes/$cassettePath";
         $secondsInDay = 86400;

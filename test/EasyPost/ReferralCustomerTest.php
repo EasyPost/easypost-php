@@ -9,8 +9,8 @@ use Exception;
 
 class ReferralCustomerTest extends \PHPUnit\Framework\TestCase
 {
-    private static $client;
-    private static $referralUserProdApiKey;
+    private static EasyPostClient $client;
+    private static string $referralUserProdApiKey;
 
     /**
      * Setup the testing environment for this file.
@@ -36,7 +36,7 @@ class ReferralCustomerTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating a child user.
      */
-    public function testCreate()
+    public function testCreate(): void
     {
         TestUtil::setupCassette('referral_customers/create.yml');
 
@@ -54,7 +54,7 @@ class ReferralCustomerTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving a child user.
      */
-    public function testAll()
+    public function testAll(): void
     {
         TestUtil::setupCassette('referral_customers/all.yml');
 
@@ -72,7 +72,7 @@ class ReferralCustomerTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving next page.
      */
-    public function testGetNextPage()
+    public function testGetNextPage(): void
     {
         TestUtil::setupCassette('referral_customers/getNextPage.yml');
 
@@ -97,7 +97,7 @@ class ReferralCustomerTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving the authenticated user.
      */
-    public function testUpdateEmail()
+    public function testUpdateEmail(): void
     {
         TestUtil::setupCassette('referral_customers/updateEmail.yml');
 
@@ -120,7 +120,7 @@ class ReferralCustomerTest extends \PHPUnit\Framework\TestCase
      * This test requires a partner user's production API key via PARTNER_USER_PROD_API_KEY
      * as well as one of that user's referral's production API keys via REFERRAL_USER_PROD_API_KEY.
      */
-    public function testReferralAddCreditCard()
+    public function testReferralAddCreditCard(): void
     {
         TestUtil::setupCassette('referral_customers/addCreditCard.yml');
 

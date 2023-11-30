@@ -65,7 +65,7 @@ class Requestor
      * Encodes an EasyPost object and prepares the data for the request.
      *
      * @param mixed $data
-     * @return array|string
+     * @return array<mixed>|string
      */
     private static function encodeObjects(mixed $data): array|string
     {
@@ -157,7 +157,7 @@ class Requestor
      * @param string $url
      * @param mixed $params
      * @param bool $beta
-     * @return array
+     * @return array<mixed>
      * @throws HttpException
      * @throws TimeoutException
      */
@@ -224,6 +224,7 @@ class Requestor
 
             // Guzzle does not have a native way of catching timeout exceptions...
             // If we don't have a response at this point, it's likely due to a timeout.
+            // @phpstan-ignore-next-line
             if (!isset($response)) {
                 throw new TimeoutException(sprintf(Constants::NO_RESPONSE_ERROR, 'EasyPost'));
             }
@@ -280,7 +281,7 @@ class Requestor
      *
      * @param string|null $httpBody
      * @param int $httpStatus
-     * @param array $response
+     * @param array<mixed> $response
      * @throws BadRequestException
      * @throws GatewayTimeoutException
      * @throws InternalServerException
@@ -296,7 +297,7 @@ class Requestor
      * @throws UnauthorizedException
      * @throws UnknownApiException
      */
-    public static function handleApiError(?string $httpBody, int $httpStatus, array $response)
+    public static function handleApiError(?string $httpBody, int $httpStatus, array $response): void
     {
         if (!is_array($response) || !isset($response['error'])) {
             throw new JsonException(
@@ -364,7 +365,7 @@ class Requestor
      * Recursively traverses a JSON element to extract error messages and returns them as a comma-separated string.
      *
      * @param mixed $errorMessage
-     * @param array $messagesList
+     * @param array<string> $messagesList
      * @return string
      */
     private static function traverseJsonElement(mixed $errorMessage, array &$messagesList): string

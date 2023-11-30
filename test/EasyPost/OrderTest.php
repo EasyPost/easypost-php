@@ -9,7 +9,7 @@ use EasyPost\Rate;
 
 class OrderTest extends \PHPUnit\Framework\TestCase
 {
-    private static $client;
+    private static EasyPostClient $client;
 
     /**
      * Setup the testing environment for this file.
@@ -31,7 +31,7 @@ class OrderTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating an Order.
      */
-    public function testCreate()
+    public function testCreate(): void
     {
         TestUtil::setupCassette('orders/create.yml');
 
@@ -45,7 +45,7 @@ class OrderTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving an Order.
      */
-    public function testRetrieve()
+    public function testRetrieve(): void
     {
         TestUtil::setupCassette('orders/retrieve.yml');
 
@@ -60,7 +60,7 @@ class OrderTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving rates for a order.
      */
-    public function testGetRates()
+    public function testGetRates(): void
     {
         TestUtil::setupCassette('orders/getRates.yml');
 
@@ -77,7 +77,7 @@ class OrderTest extends \PHPUnit\Framework\TestCase
     /**
      * Test buying an Order.
      */
-    public function testBuy()
+    public function testBuy(): void
     {
         TestUtil::setupCassette('orders/buy.yml');
 
@@ -101,7 +101,7 @@ class OrderTest extends \PHPUnit\Framework\TestCase
     /**
      * Test buying an Order with a Rate object.
      */
-    public function testBuyRateObject()
+    public function testBuyRateObject(): void
     {
         TestUtil::setupCassette('orders/buyRateObject.yml');
 
@@ -119,7 +119,7 @@ class OrderTest extends \PHPUnit\Framework\TestCase
     /**
      * Test various usage alterations of the lowest_rate method.
      */
-    public function testLowestRate()
+    public function testLowestRate(): void
     {
         TestUtil::setupCassette('orders/lowestRate.yml');
 

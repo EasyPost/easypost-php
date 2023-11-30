@@ -19,7 +19,7 @@ abstract class Util
      * Convert EasyPost object to an array.
      *
      * @param mixed $values
-     * @return array
+     * @return array<mixed>
      */
     public static function convertEasyPostObjectToArray(mixed $values): array
     {
@@ -42,7 +42,7 @@ abstract class Util
      *
      * To exclude a carrier or service, prepend the string with `!`.
      *
-     * @param array $smartRates
+     * @param array<Rate> $smartRates
      * @param int $deliveryDays
      * @param string $deliveryAccuracy
      * @return Rate
@@ -141,9 +141,9 @@ abstract class Util
      * Get the lowest stateless rate.
      * To exclude a carrier or service, prepend the string with `!`.
      *
-     * @param array $statelessRates
-     * @param array $carriers
-     * @param array $services
+     * @param array<Rate> $statelessRates
+     * @param array<string> $carriers
+     * @param array<string> $services
      * @return Rate
      * @throws EasyPostException
      */

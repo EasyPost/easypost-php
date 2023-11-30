@@ -176,8 +176,8 @@ abstract class InternalUtil
      * This internal utility is intended to be used by other EasyPost `lowest_rate` functions.
      *
      * @param EasyPostObject|null $easypostObject
-     * @param array $carriers
-     * @param array $services
+     * @param array<string> $carriers
+     * @param array<string> $services
      * @param string|null $ratesKey
      * @return Rate|PickupRate
      * @throws EasyPostException

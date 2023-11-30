@@ -9,7 +9,7 @@ use Exception;
 
 class ScanFormTest extends \PHPUnit\Framework\TestCase
 {
-    private static $client;
+    private static EasyPostClient $client;
 
     /**
      * Setup the testing environment for this file.
@@ -31,7 +31,7 @@ class ScanFormTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating a scanForm.
      */
-    public function testCreate()
+    public function testCreate(): void
     {
         TestUtil::setupCassette('scanForms/create.yml');
 
@@ -48,7 +48,7 @@ class ScanFormTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving a scanForm.
      */
-    public function testRetrieve()
+    public function testRetrieve(): void
     {
         TestUtil::setupCassette('scanForms/retrieve.yml');
 
@@ -67,7 +67,7 @@ class ScanFormTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving all scanForms.
      */
-    public function testAll()
+    public function testAll(): void
     {
         TestUtil::setupCassette('scanForms/all.yml');
 
@@ -85,7 +85,7 @@ class ScanFormTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving next page.
      */
-    public function testGetNextPage()
+    public function testGetNextPage(): void
     {
         TestUtil::setupCassette('scanForms/getNextPage.yml');
 

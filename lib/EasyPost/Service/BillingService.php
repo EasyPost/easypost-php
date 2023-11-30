@@ -13,7 +13,7 @@ use EasyPost\Util\InternalUtil;
 class BillingService extends BaseService
 {
     // Overridden here because the logic we need is tied to PaymentMethod
-    private static $modelClass = 'PaymentMethod';
+    private static string $modelClass = 'PaymentMethod';
 
     /**
      * Retrieve all payment methods.
@@ -68,7 +68,7 @@ class BillingService extends BaseService
      * Get payment info (type of the payment method and ID of the payment method)
      *
      * @param string $priority
-     * @return array
+     * @return array<mixed>
      * @throws PaymentException
      */
     private function getPaymentInfo(string $priority = 'primary'): array

@@ -7,7 +7,7 @@ use EasyPost\EasyPostClient;
 
 class HookTest extends \PHPUnit\Framework\TestCase
 {
-    private static $client;
+    private static EasyPostClient $client;
 
     /**
      * Setup the testing environment for this file.
@@ -28,8 +28,10 @@ class HookTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Make assertions about a request once the RequestHook fires.
+     *
+     * @param array<string, mixed> $args
      */
-    public function requestTest($args)
+    public function requestTest(array $args): void
     {
         $this->assertEquals('post', $args['method']);
         $this->assertEquals('https://api.easypost.com/v2/parcels', $args['path']);
@@ -42,7 +44,7 @@ class HookTest extends \PHPUnit\Framework\TestCase
     /**
      * Test that we fire a RequestHook prior to making an HTTP request.
      */
-    public function testRequestHooks()
+    public function testRequestHooks(): void
     {
         TestUtil::setupCassette('hooks/request.yml');
 
@@ -52,8 +54,10 @@ class HookTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Make assertions about a response once the ResponseHook fires.
+     *
+     * @param array<string, mixed> $args
      */
-    public function responseTest($args)
+    public function responseTest(array $args): void
     {
         $this->assertEquals(201, $args['http_status']);
         $this->assertEquals('post', $args['method']);
@@ -67,7 +71,7 @@ class HookTest extends \PHPUnit\Framework\TestCase
     /**
      * Test that we fire a ResponseHook after receiving an HTTP response.
      */
-    public function testResponseHooks()
+    public function testResponseHooks(): void
     {
         TestUtil::setupCassette('hooks/response.yml');
 
@@ -78,7 +82,7 @@ class HookTest extends \PHPUnit\Framework\TestCase
     /**
      * This function should never run since we unsubscribe from HTTP hooks.
      */
-    public function failIfSubscribed()
+    public function failIfSubscribed(): void
     {
         throw new \Exception('Unsubscribing from HTTP hooks did not work as intended');
     }
@@ -86,7 +90,7 @@ class HookTest extends \PHPUnit\Framework\TestCase
     /**
      * Test that we do not fire a hook once unsubscribed.
      */
-    public function testUnsubscribeHooks()
+    public function testUnsubscribeHooks(): void
     {
         TestUtil::setupCassette('hooks/unsubscribe.yml');
 

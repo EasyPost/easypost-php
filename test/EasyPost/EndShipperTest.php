@@ -7,7 +7,7 @@ use EasyPost\EndShipper;
 
 class EndShipperTest extends \PHPUnit\Framework\TestCase
 {
-    private static $client;
+    private static EasyPostClient $client;
 
     /**
      * Setup the testing environment for this file.
@@ -29,7 +29,7 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating an EndShipper.
      */
-    public function testCreate()
+    public function testCreate(): void
     {
         TestUtil::setupCassette('end_shipper/create.yml');
 
@@ -43,7 +43,7 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving an EndShipper.
      */
-    public function testRetrieve()
+    public function testRetrieve(): void
     {
         TestUtil::setupCassette('end_shipper/retrieve.yml');
 
@@ -58,7 +58,7 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving all EndShippers.
      */
-    public function testAll()
+    public function testAll(): void
     {
         TestUtil::setupCassette('end_shipper/all.yml');
 
@@ -76,7 +76,7 @@ class EndShipperTest extends \PHPUnit\Framework\TestCase
     /**
      * Test updating an EndShipper.
      */
-    public function testUpdate()
+    public function testUpdate(): void
     {
         TestUtil::setupCassette('end_shipper/update.yml');
 
