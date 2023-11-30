@@ -4,6 +4,8 @@ namespace EasyPost;
 
 /**
  * @package EasyPost
+ * @property string $id
+ * @property string $object
  * @property string $background_color
  * @property string $color
  * @property string $logo

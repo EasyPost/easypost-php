@@ -310,7 +310,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
 
         $this->assertInstanceOf(Shipment::class, $shipment);
         $this->assertStringMatchesFormat('shp_%s', $shipment->id);
-        $this->assertEquals('IOSS', $shipment->tax_identifiers[0]['tax_id_type']);
+        $this->assertEquals('IOSS', $shipment['tax_identifiers'][0]['tax_id_type']);
     }
 
     /**

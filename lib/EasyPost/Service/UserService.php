@@ -70,7 +70,7 @@ class UserService extends BaseService
      * Delete a user.
      *
      * @param string $id
-     * @param mixed @params
+     * @param mixed $params
      * @return void
      */
     public function delete(string $id, mixed $params = null): void

@@ -71,7 +71,7 @@ class Requestor
         if (is_null($data)) {
             return [];
         } elseif ($data instanceof EasypostObject) {
-            return ['id' => self::utf8($data->id)];
+            return ['id' => self::utf8($data->id)]; // @phpstan-ignore-line
         } elseif ($data === true) {
             return 'true';
         } elseif ($data === false) {

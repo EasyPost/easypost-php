@@ -136,7 +136,7 @@ class ReferralCustomerService extends BaseService
      *
      * @param string $number
      * @param int $expirationMonth
-     * @param int @expirationYear
+     * @param int $expirationYear
      * @param string $cvc
      * @param string $easypostStripeKey
      * @return mixed
@@ -197,7 +197,7 @@ class ReferralCustomerService extends BaseService
      *
      * @param string $referralApiKey
      * @param string $stripeObjectId
-     * @param string @priority
+     * @param string $priority
      * @return mixed
      */
     private function createEasypostCreditCard(

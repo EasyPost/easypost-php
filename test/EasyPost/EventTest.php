@@ -4,6 +4,7 @@ namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
 use EasyPost\Event;
+use EasyPost\Exception\Api\ApiException;
 use EasyPost\Exception\General\EasyPostException;
 use EasyPost\Exception\General\EndOfPaginationException;
 use EasyPost\Payload;
@@ -197,7 +198,7 @@ class EventTest extends \PHPUnit\Framework\TestCase
                 $event->id,
                 'payload_11111111111111111111111111111111',
             );
-        } catch (EasyPostException $error) {
+        } catch (ApiException $error) {
             $this->assertEquals(404, $error->getHttpStatus());
         }
 

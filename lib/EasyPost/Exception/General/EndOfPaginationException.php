@@ -8,8 +8,6 @@ class EndOfPaginationException extends \Exception
 {
     /**
      * EndOfPaginationException constructor.
-     *
-     * @param string $message
      */
     public function __construct()
     {

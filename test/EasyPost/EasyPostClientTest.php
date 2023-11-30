@@ -58,7 +58,7 @@ class EasyPostClientTest extends \PHPUnit\Framework\TestCase
     {
         try {
             $client = new EasyPostClient('123');
-            $client->invalidProperty;
+            $client->invalidProperty; // @phpstan-ignore-line
         } catch (EasyPostException $error) {
             $this->assertEquals(
                 'EasyPost Notice: Undefined property of EasyPostClient instance: invalidProperty',

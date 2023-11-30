@@ -5,6 +5,7 @@ namespace EasyPost\Util;
 use EasyPost\Constant\Constants;
 use EasyPost\EasyPostObject;
 use EasyPost\Exception\Api\EncodingException;
+use EasyPost\Exception\General\EasyPostException;
 use EasyPost\Exception\General\FilteringException;
 use EasyPost\Exception\General\InvalidParameterException;
 use EasyPost\Exception\General\MissingParameterException;
@@ -140,11 +141,11 @@ abstract class Util
      * Get the lowest stateless rate.
      * To exclude a carrier or service, prepend the string with `!`.
      *
-     * @param array statelessRates
+     * @param array $statelessRates
      * @param array $carriers
      * @param array $services
      * @return Rate
-     * @throws \EasyPost\Exception\EasyPostException
+     * @throws EasyPostException
      */
     public static function getLowestStatelessRate(array $statelessRates, array $carriers = [], array $services = [])
     {

@@ -15,6 +15,7 @@ use EasyPost\EasyPostClient;
 use EasyPost\EasyPostObject;
 use EasyPost\EndShipper;
 use EasyPost\Event;
+use EasyPost\Exception\General\EasyPostException;
 use EasyPost\Exception\General\FilteringException;
 use EasyPost\Fee;
 use EasyPost\Insurance;
@@ -174,15 +175,15 @@ abstract class InternalUtil
      *
      * This internal utility is intended to be used by other EasyPost `lowest_rate` functions.
      *
-     * @param object EasyPostObject|null
+     * @param EasyPostObject|null $easypostObject
      * @param array $carriers
      * @param array $services
      * @param string|null $ratesKey
      * @return Rate|PickupRate
-     * @throws \EasyPost\Exception\EasyPostException
+     * @throws EasyPostException
      */
     public static function getLowestObjectRate(
-        EasyPostObject|null $easypostObject,
+        ?EasyPostObject $easypostObject,
         array $carriers = [],
         array $services = [],
         ?string $ratesKey = 'rates'

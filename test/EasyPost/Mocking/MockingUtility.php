@@ -2,6 +2,8 @@
 
 namespace EasyPost\Test\Mocking;
 
+use EasyPost\Test\Mocking\MockRequest;
+
 class MockingUtility
 {
     public array $mockRequests;
@@ -9,7 +11,7 @@ class MockingUtility
     /**
      * Construct a new MockingUtility.
      *
-     * @param array $mockRequests
+     * @param MockRequest $mockRequests
      */
     public function __construct(MockRequest ...$mockRequests)
     {
