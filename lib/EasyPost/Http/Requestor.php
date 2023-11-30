@@ -109,7 +109,7 @@ class Requestor
                 continue;
             }
 
-            if ($prefix && isset($k)) {
+            if ($prefix) {
                 $k = $prefix . '[' . $k . ']';
             } elseif ($prefix) {
                 $k = $prefix . '[]';

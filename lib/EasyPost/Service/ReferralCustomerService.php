@@ -180,6 +180,7 @@ class ReferralCustomerService extends BaseService
 
         // Guzzle does not have a native way of catching timeout exceptions...
         // If we don't have a response at this point, it's likely due to a timeout.
+        // @phpstan-ignore-next-line
         if (!isset($response)) {
             throw new TimeoutException(sprintf(Constants::NO_RESPONSE_ERROR, 'Stripe'));
         }

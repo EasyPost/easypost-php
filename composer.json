@@ -36,6 +36,7 @@
     "coverage": "XDEBUG_MODE=coverage ./bin/phpunit --coverage-html clover.html --coverage-clover build/logs/clover.xml && ./bin/coverage-check build/logs/clover.xml 85 --only-percentage",
     "fix": "./bin/phpcbf --standard=examples/style_guides/php/phpcs.xml lib test",
     "lint": "./bin/phpcs --standard=examples/style_guides/php/phpcs.xml lib test",
+    "phpstan": "./bin/phpstan analyse lib test --memory-limit 1G --level 1",
     "scan": "composer update --dry-run roave/security-advisories",
     "test": "./bin/phpunit"
   },

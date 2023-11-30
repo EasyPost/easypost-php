@@ -84,13 +84,14 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
         // We have to send some registration data, otherwise API will throw a 400 Bad Request
         $data['registration_data'] = ['some' => 'data'];
 
+        $errorFound = false;
+
         try {
             $carrierAccount = self::$client->carrierAccount->create($data);
             // Delete the carrier account once it's done being tested (should not be reached).
             self::$client->carrierAccount->delete($carrierAccount->id);
         } catch (ApiException $error) {
             $this->assertEquals(422, $error->getHttpStatus());
-            $errorFound = false;
             $errors = $error->errors;
             foreach ($errors as $error) {
                 if ($error['field'] == 'account_number' && $error['message'] == 'must be present and a string') {

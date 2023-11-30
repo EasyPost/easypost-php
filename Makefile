@@ -28,10 +28,14 @@ install: | update-examples-submodule
 	composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
 ## lint - Lint the project
-lint: codesniffer scan
+lint: codesniffer phpstan scan
 
 ## lint-fix - Fix linting errors
 lint-fix: codesniffer-fix
+
+## phpstan - Scan for static analysis errors
+phpstan:
+	composer phpstan
 
 ## release - Cuts a release for the project on GitHub (requires GitHub CLI)
 # tag = The associated tag title of the release
