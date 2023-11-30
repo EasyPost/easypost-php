@@ -21,7 +21,7 @@ class ApiException extends EasyPostException
     public $errors; // @phpstan-ignore-line
     protected $message; // @phpstan-ignore-line
     private ?string $httpBody;
-    private int $httpStatus;
+    private ?int $httpStatus;
     private mixed $jsonBody;
 
     /**

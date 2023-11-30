@@ -70,7 +70,7 @@ class EasyPostClient extends BaseService
     private string $apiKey;
     private float $timeout;
     private string $apiBase;
-    private object $mockingUtility;
+    private ?object $mockingUtility;
     public object $requestEvent;
     public object $responseEvent;
     public Client $httpClient;
@@ -81,7 +81,7 @@ class EasyPostClient extends BaseService
      * @param string $apiKey
      * @param float $timeout
      * @param string $apiBase
-     * @param object $mockingUtility
+     * @param object|null $mockingUtility
      */
     public function __construct(
         string $apiKey,
