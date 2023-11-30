@@ -39,7 +39,7 @@ use GuzzleHttp\Client;
  *
  * @package EasyPost
  * @property AddressService $address
- * @property ApiKeyService $apiKey
+ * @property ApiKeyService $apiKeys
  * @property BatchService $batch
  * @property BetaReferralCustomer $betaReferralCustomer
  * @property BillingService $billing

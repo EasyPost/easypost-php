@@ -94,6 +94,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
             $this->assertEquals(422, $error->getHttpStatus());
             $errors = $error->errors;
             foreach ($errors as $error) {
+                // @phpstan-ignore-next-line
                 if ($error['field'] == 'account_number' && $error['message'] == 'must be present and a string') {
                     $errorFound = true;
                     break;

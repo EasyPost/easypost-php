@@ -3,11 +3,12 @@
 namespace EasyPost\Exception\Api;
 
 use EasyPost\Exception\General\EasyPostException;
+use Exception;
 
 /**
  * @package EasyPost
- * @property string $code
- * @property FieldError[] $errors
+ * @property string|null $code
+ * @property FieldError[]|null $errors
  */
 class ApiException extends EasyPostException
 {
@@ -30,24 +31,22 @@ class ApiException extends EasyPostException
         parent::__construct($message);
         $this->httpStatus = $httpStatus;
         $this->httpBody = $httpBody;
+        $this->errors = null;
+        $this->code = null;
 
         try {
             $this->jsonBody = isset($httpBody) ? json_decode($httpBody, true) : null;
 
-            // Setup `errors` property
+            // Set `errors` property
             if (isset($this->jsonBody) && !empty($this->jsonBody['error']['errors'])) {
                 $this->errors = $this->jsonBody['error']['errors'];
-            } else {
-                $this->errors = null;
             }
 
-            // Setup `code` property
+            // Set `code` property
             if (isset($this->jsonBody) && !empty($this->jsonBody['error']['code'])) {
                 $this->code = $this->jsonBody['error']['code'];
-            } else {
-                $this->code = null;
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->jsonBody = null;
         }
     }
@@ -84,6 +83,7 @@ class ApiException extends EasyPostException
         if (!empty($this->errors)) {
             print("Field errors:\n");
             foreach ($this->errors as $fieldError) {
+                // @phpstan-ignore-next-line
                 foreach ($fieldError as $k => $v) {
                     print('  ' . $k . ': ' . $v . "\n");
                 }
