@@ -1,15 +1,16 @@
 # CHANGELOG
 
-## Next Major Release
+## v7.0.0 (2023-12-01)
 
 - Drops support for PHP 7.4
 - Adds support for PHP 8.3
 - Persists the HTTP client inside of the `EasyPostClient` via the `httpClient` property to reduce memory consumption on consecutive requests
-- Adds type hints for parameters and return values throughout the library, corrects docstring hints where necessary
+- Adds type declarations for parameters and return values throughout the library, corrects docstrings to match
 - Removed `withCarbonOffset` parameter from `create`, `buy`, and `regenerateRates` functions of the Shipment service as EasyPost now offers Carbon Neutral shipments by default for free
 - Fixes a bug where the original filtering criteria of `all` calls wasn't passed along to `getNextPage` calls. Now, these are persisted via a `_params` key on response objects locally
 - Removes the undocumented `createAndBuy` function from the `Batch` service. The proper usage is to create a batch first and buy it separately
 - Renames `primaryOrSecondary` to `priority` to match the API name for the parameter
+- Corrects the order of the `userId` and `email` parameters in the `updateEmail` function of the ReferralCustomer service to match the rest of the library where IDs are always the first parameter
 - Fix various bugs throughout the library
 
 ## v6.9.1 (2023-11-20)
