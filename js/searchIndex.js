@@ -603,7 +603,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\EasyPost\\Hook\\EventHook\u003A\u003A__invoke\u0028\u0029",
             "name": "__invoke",
-            "summary": "",
+            "summary": "Fires\u0020when\u0020the\u0020class\u0020is\u0020invoked.",
             "url": "classes/EasyPost-Hook-EventHook.html#method___invoke"
         },                {
             "fqsen": "\\EasyPost\\Hook\\EventHook\u003A\u003AaddHandler\u0028\u0029",

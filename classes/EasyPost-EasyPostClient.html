@@ -137,7 +137,7 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/EasyPostClient.php"><a href="files/lib-easypost-easypostclient.html"><abbr title="lib/EasyPost/EasyPostClient.php">EasyPostClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">65</span>
+    <span class="phpdocumentor-element-found-in__line">67</span>
 
     </aside>
 
@@ -165,7 +165,7 @@
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/EasyPost-EasyPostClient.html#property_apiKey">$apiKey</a>
+    <a href="classes/EasyPost-EasyPostClient.html#property_apiKeys">$apiKeys</a>
     <span>
                         &nbsp;: <a href="classes/EasyPost-Service-ApiKeyService.html"><abbr title="\EasyPost\Service\ApiKeyService">ApiKeyService</abbr></a>            </span>
 </dt>
@@ -179,9 +179,16 @@
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/EasyPost-EasyPostClient.html#property_betaRate">$betaRate</a>
+    <span>
+                        &nbsp;: <a href="classes/EasyPost-Service-BetaRateService.html"><abbr title="\EasyPost\Service\BetaRateService">BetaRateService</abbr></a>            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
     <a href="classes/EasyPost-EasyPostClient.html#property_betaReferralCustomer">$betaReferralCustomer</a>
     <span>
-                        &nbsp;: <abbr title="\EasyPost\BetaReferralCustomer">BetaReferralCustomer</abbr>            </span>
+                        &nbsp;: <a href="classes/EasyPost-Service-BetaReferralCustomerService.html"><abbr title="\EasyPost\Service\BetaReferralCustomerService">BetaReferralCustomerService</abbr></a>            </span>
 </dt>
 <dd></dd>
 
@@ -196,6 +203,13 @@
     <a href="classes/EasyPost-EasyPostClient.html#property_carrierAccount">$carrierAccount</a>
     <span>
                         &nbsp;: <a href="classes/EasyPost-Service-CarrierAccountService.html"><abbr title="\EasyPost\Service\CarrierAccountService">CarrierAccountService</abbr></a>            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/EasyPost-EasyPostClient.html#property_carrierMetadata">$carrierMetadata</a>
+    <span>
+                        &nbsp;: <a href="classes/EasyPost-Service-CarrierMetadataService.html"><abbr title="\EasyPost\Service\CarrierMetadataService">CarrierMetadataService</abbr></a>            </span>
 </dt>
 <dd></dd>
 
@@ -230,7 +244,7 @@
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
     <a href="classes/EasyPost-EasyPostClient.html#property_httpClient">$httpClient</a>
     <span>
-                        &nbsp;: mixed            </span>
+                        &nbsp;: <abbr title="\GuzzleHttp\Client">Client</abbr>            </span>
 </dt>
 <dd></dd>
 
@@ -293,14 +307,14 @@
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
     <a href="classes/EasyPost-EasyPostClient.html#property_requestEvent">$requestEvent</a>
     <span>
-                        &nbsp;: mixed            </span>
+                        &nbsp;: object            </span>
 </dt>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
     <a href="classes/EasyPost-EasyPostClient.html#property_responseEvent">$responseEvent</a>
     <span>
-                        &nbsp;: mixed            </span>
+                        &nbsp;: object            </span>
 </dt>
 <dd></dd>
 
@@ -349,28 +363,28 @@
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a href="classes/EasyPost-EasyPostClient.html#property_apiBase">$apiBase</a>
     <span>
-                        &nbsp;: mixed            </span>
+                        &nbsp;: string            </span>
 </dt>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a href="classes/EasyPost-EasyPostClient.html#property_apiKey">$apiKey</a>
     <span>
-                        &nbsp;: mixed            </span>
+                        &nbsp;: string            </span>
 </dt>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a href="classes/EasyPost-EasyPostClient.html#property_mockingUtility">$mockingUtility</a>
     <span>
-                        &nbsp;: mixed            </span>
+                        &nbsp;: object|null            </span>
 </dt>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a href="classes/EasyPost-EasyPostClient.html#property_timeout">$timeout</a>
     <span>
-                        &nbsp;: mixed            </span>
+                        &nbsp;: float            </span>
 </dt>
 <dd></dd>
 
@@ -580,9 +594,9 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="property_apiKey">
-        $apiKey
-        <a href="classes/EasyPost-EasyPostClient.html#property_apiKey" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_apiKeys">
+        $apiKeys
+        <a href="classes/EasyPost-EasyPostClient.html#property_apiKeys" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -597,7 +611,7 @@
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
         <span class="phpdocumentor-signature__type"><a href="classes/EasyPost-Service-ApiKeyService.html"><abbr title="\EasyPost\Service\ApiKeyService">ApiKeyService</abbr></a></span>
-    <span class="phpdocumentor-signature__name">$apiKey</span>
+    <span class="phpdocumentor-signature__name">$apiKeys</span>
     </code>
 
     
@@ -646,6 +660,39 @@
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="property_betaRate">
+        $betaRate
+        <a href="classes/EasyPost-EasyPostClient.html#property_betaRate" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/EasyPostClient.php"><a href="files/lib-easypost-easypostclient.html"><abbr title="lib/EasyPost/EasyPostClient.php">EasyPostClient.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">0</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type"><a href="classes/EasyPost-Service-BetaRateService.html"><abbr title="\EasyPost\Service\BetaRateService">BetaRateService</abbr></a></span>
+    <span class="phpdocumentor-signature__name">$betaRate</span>
+    </code>
+
+    
+        <section class="phpdocumentor-description"></section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="property_betaReferralCustomer">
         $betaReferralCustomer
         <a href="classes/EasyPost-EasyPostClient.html#property_betaReferralCustomer" class="headerlink"><i class="fas fa-link"></i></a>
@@ -662,7 +709,7 @@
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type"><abbr title="\EasyPost\BetaReferralCustomer">BetaReferralCustomer</abbr></span>
+        <span class="phpdocumentor-signature__type"><a href="classes/EasyPost-Service-BetaReferralCustomerService.html"><abbr title="\EasyPost\Service\BetaReferralCustomerService">BetaReferralCustomerService</abbr></a></span>
     <span class="phpdocumentor-signature__name">$betaReferralCustomer</span>
     </code>
 
@@ -730,6 +777,39 @@
     <span class="phpdocumentor-signature__visibility">public</span>
         <span class="phpdocumentor-signature__type"><a href="classes/EasyPost-Service-CarrierAccountService.html"><abbr title="\EasyPost\Service\CarrierAccountService">CarrierAccountService</abbr></a></span>
     <span class="phpdocumentor-signature__name">$carrierAccount</span>
+    </code>
+
+    
+        <section class="phpdocumentor-description"></section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_carrierMetadata">
+        $carrierMetadata
+        <a href="classes/EasyPost-EasyPostClient.html#property_carrierMetadata" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/EasyPostClient.php"><a href="files/lib-easypost-easypostclient.html"><abbr title="lib/EasyPost/EasyPostClient.php">EasyPostClient.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">0</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type"><a href="classes/EasyPost-Service-CarrierMetadataService.html"><abbr title="\EasyPost\Service\CarrierMetadataService">CarrierMetadataService</abbr></a></span>
+    <span class="phpdocumentor-signature__name">$carrierMetadata</span>
     </code>
 
     
@@ -886,14 +966,14 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/EasyPostClient.php"><a href="files/lib-easypost-easypostclient.html"><abbr title="lib/EasyPost/EasyPostClient.php">EasyPostClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">74</span>
+    <span class="phpdocumentor-element-found-in__line">76</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type"><abbr title="\GuzzleHttp\Client">Client</abbr></span>
     <span class="phpdocumentor-signature__name">$httpClient</span>
     </code>
 
@@ -1184,14 +1264,14 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/EasyPostClient.php"><a href="files/lib-easypost-easypostclient.html"><abbr title="lib/EasyPost/EasyPostClient.php">EasyPostClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">72</span>
+    <span class="phpdocumentor-element-found-in__line">74</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">object</span>
     <span class="phpdocumentor-signature__name">$requestEvent</span>
     </code>
 
@@ -1218,14 +1298,14 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/EasyPostClient.php"><a href="files/lib-easypost-easypostclient.html"><abbr title="lib/EasyPost/EasyPostClient.php">EasyPostClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">73</span>
+    <span class="phpdocumentor-element-found-in__line">75</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">object</span>
     <span class="phpdocumentor-signature__name">$responseEvent</span>
     </code>
 
@@ -1451,14 +1531,14 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/EasyPostClient.php"><a href="files/lib-easypost-easypostclient.html"><abbr title="lib/EasyPost/EasyPostClient.php">EasyPostClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">70</span>
+    <span class="phpdocumentor-element-found-in__line">72</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">string</span>
     <span class="phpdocumentor-signature__name">$apiBase</span>
     </code>
 
@@ -1485,14 +1565,14 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/EasyPostClient.php"><a href="files/lib-easypost-easypostclient.html"><abbr title="lib/EasyPost/EasyPostClient.php">EasyPostClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">68</span>
+    <span class="phpdocumentor-element-found-in__line">70</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">string</span>
     <span class="phpdocumentor-signature__name">$apiKey</span>
     </code>
 
@@ -1519,14 +1599,14 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/EasyPostClient.php"><a href="files/lib-easypost-easypostclient.html"><abbr title="lib/EasyPost/EasyPostClient.php">EasyPostClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">71</span>
+    <span class="phpdocumentor-element-found-in__line">73</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">object|null</span>
     <span class="phpdocumentor-signature__name">$mockingUtility</span>
     </code>
 
@@ -1553,14 +1633,14 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/EasyPostClient.php"><a href="files/lib-easypost-easypostclient.html"><abbr title="lib/EasyPost/EasyPostClient.php">EasyPostClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">69</span>
+    <span class="phpdocumentor-element-found-in__line">71</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">float</span>
     <span class="phpdocumentor-signature__name">$timeout</span>
     </code>
 
@@ -1591,7 +1671,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/EasyPostClient.php"><a href="files/lib-easypost-easypostclient.html"><abbr title="lib/EasyPost/EasyPostClient.php">EasyPostClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">84</span>
+    <span class="phpdocumentor-element-found-in__line">86</span>
 
     </aside>
 
@@ -1599,7 +1679,7 @@
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$apiKey</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">float&nbsp;</span><span class="phpdocumentor-signature__argument__name">$timeout</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">Constants::TIMEOUT</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$apiBase</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">Constants::API_BASE</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">object&nbsp;</span><span class="phpdocumentor-signature__argument__name">$mockingUtility</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$apiKey</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">float&nbsp;</span><span class="phpdocumentor-signature__argument__name">$timeout</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">Constants::TIMEOUT</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$apiBase</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">Constants::API_BASE</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">object|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$mockingUtility</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -1627,7 +1707,7 @@
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$mockingUtility</span>
-                : <span class="phpdocumentor-signature__argument__return-type">object</span>
+                : <span class="phpdocumentor-signature__argument__return-type">object|null</span>
                  = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
                 
@@ -1655,7 +1735,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/EasyPostClient.php"><a href="files/lib-easypost-easypostclient.html"><abbr title="lib/EasyPost/EasyPostClient.php">EasyPostClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">107</span>
+    <span class="phpdocumentor-element-found-in__line">109</span>
 
     </aside>
 
@@ -1712,7 +1792,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/EasyPostClient.php"><a href="files/lib-easypost-easypostclient.html"><abbr title="lib/EasyPost/EasyPostClient.php">EasyPostClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">175</span>
+    <span class="phpdocumentor-element-found-in__line">177</span>
 
     </aside>
 
@@ -1745,7 +1825,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/EasyPostClient.php"><a href="files/lib-easypost-easypostclient.html"><abbr title="lib/EasyPost/EasyPostClient.php">EasyPostClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">155</span>
+    <span class="phpdocumentor-element-found-in__line">157</span>
 
     </aside>
 
@@ -1778,7 +1858,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/EasyPostClient.php"><a href="files/lib-easypost-easypostclient.html"><abbr title="lib/EasyPost/EasyPostClient.php">EasyPostClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">195</span>
+    <span class="phpdocumentor-element-found-in__line">197</span>
 
     </aside>
 
@@ -1811,7 +1891,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/EasyPostClient.php"><a href="files/lib-easypost-easypostclient.html"><abbr title="lib/EasyPost/EasyPostClient.php">EasyPostClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">165</span>
+    <span class="phpdocumentor-element-found-in__line">167</span>
 
     </aside>
 
@@ -1844,7 +1924,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/EasyPostClient.php"><a href="files/lib-easypost-easypostclient.html"><abbr title="lib/EasyPost/EasyPostClient.php">EasyPostClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">185</span>
+    <span class="phpdocumentor-element-found-in__line">187</span>
 
     </aside>
 
@@ -1877,7 +1957,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/EasyPostClient.php"><a href="files/lib-easypost-easypostclient.html"><abbr title="lib/EasyPost/EasyPostClient.php">EasyPostClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">206</span>
+    <span class="phpdocumentor-element-found-in__line">208</span>
 
     </aside>
 
@@ -1920,7 +2000,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/EasyPostClient.php"><a href="files/lib-easypost-easypostclient.html"><abbr title="lib/EasyPost/EasyPostClient.php">EasyPostClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">228</span>
+    <span class="phpdocumentor-element-found-in__line">230</span>
 
     </aside>
 
@@ -1963,7 +2043,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/EasyPostClient.php"><a href="files/lib-easypost-easypostclient.html"><abbr title="lib/EasyPost/EasyPostClient.php">EasyPostClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">217</span>
+    <span class="phpdocumentor-element-found-in__line">219</span>
 
     </aside>
 
@@ -2006,7 +2086,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/EasyPostClient.php"><a href="files/lib-easypost-easypostclient.html"><abbr title="lib/EasyPost/EasyPostClient.php">EasyPostClient.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">239</span>
+    <span class="phpdocumentor-element-found-in__line">241</span>
 
     </aside>
 

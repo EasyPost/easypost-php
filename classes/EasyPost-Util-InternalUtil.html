@@ -135,7 +135,7 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Util/InternalUtil.php"><a href="files/lib-easypost-util-internalutil.html"><abbr title="lib/EasyPost/Util/InternalUtil.php">InternalUtil.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">103</span>
+    <span class="phpdocumentor-element-found-in__line">105</span>
 
     </aside>
 
@@ -202,7 +202,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Util/InternalUtil.php"><a href="files/lib-easypost-util-internalutil.html"><abbr title="lib/EasyPost/Util/InternalUtil.php">InternalUtil.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">136</span>
+    <span class="phpdocumentor-element-found-in__line">138</span>
 
     </aside>
 
@@ -252,7 +252,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Util/InternalUtil.php"><a href="files/lib-easypost-util-internalutil.html"><abbr title="lib/EasyPost/Util/InternalUtil.php">InternalUtil.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">183</span>
+    <span class="phpdocumentor-element-found-in__line">185</span>
 
     </aside>
 
@@ -260,7 +260,7 @@
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">getLowestObjectRate</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/EasyPost-EasyPostObject.html"><abbr title="\EasyPost\EasyPostObject">EasyPostObject</abbr></a>|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$easypostObject</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$carriers</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$services</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$ratesKey</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;rates&#039;</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/EasyPost-Rate.html"><abbr title="\EasyPost\Rate">Rate</abbr></a>|<a href="classes/EasyPost-PickupRate.html"><abbr title="\EasyPost\PickupRate">PickupRate</abbr></a></span></code>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">getLowestObjectRate</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/EasyPost-EasyPostObject.html"><abbr title="\EasyPost\EasyPostObject">EasyPostObject</abbr></a>|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$easypostObject</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, string&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$carriers</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, string&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$services</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$ratesKey</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;rates&#039;</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/EasyPost-Rate.html"><abbr title="\EasyPost\Rate">Rate</abbr></a>|<a href="classes/EasyPost-PickupRate.html"><abbr title="\EasyPost\PickupRate">PickupRate</abbr></a></span></code>
 
         <section class="phpdocumentor-description"><p>To exclude a carrier or service, prepend the string with <code class="prettyprint">!</code>.</p>
 <p>This internal utility is intended to be used by other EasyPost <code class="prettyprint">lowest_rate</code> functions.</p>
@@ -273,19 +273,18 @@
                 : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/EasyPost-EasyPostObject.html"><abbr title="\EasyPost\EasyPostObject">EasyPostObject</abbr></a>|null</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$carriers</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, string&gt;</span>
                  = <span class="phpdocumentor-signature__argument__default-value">[]</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
                 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$services</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, string&gt;</span>
                  = <span class="phpdocumentor-signature__argument__default-value">[]</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
                 
@@ -309,7 +308,7 @@
                     <span class="phpdocumentor-tag__name">throws</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                <span class="phpdocumentor-tag-link"><abbr title="\EasyPost\Exception\EasyPostException">EasyPostException</abbr></span>
+                                                                <span class="phpdocumentor-tag-link"><a href="classes/EasyPost-Exception-General-EasyPostException.html"><abbr title="\EasyPost\Exception\General\EasyPostException">EasyPostException</abbr></a></span>
                                                             
                                              
                                     </dd>
@@ -334,7 +333,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Util/InternalUtil.php"><a href="files/lib-easypost-util-internalutil.html"><abbr title="lib/EasyPost/Util/InternalUtil.php">InternalUtil.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">114</span>
+    <span class="phpdocumentor-element-found-in__line">116</span>
 
     </aside>
 
