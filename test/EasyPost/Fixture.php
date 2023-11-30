@@ -209,7 +209,7 @@ class Fixture
         return mb_convert_encoding(json_encode(json_decode($data, true)), 'UTF-8', mb_list_encodings());
     }
 
-    /** 
+    /**
      * The credit card details below are for a valid proxy card usable
      * for tests only and cannot be used for real transactions.
      * DO NOT alter these details with real credit card information.
