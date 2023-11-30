@@ -102,6 +102,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
     public function testCreateScanForm()
     {
         $cassetteName = 'batches/createScanForm.yml';
+        // @phpstan-ignore-next-line
         $testRequiresWait = true ? file_exists(dirname(__DIR__, 1) . "/cassettes/$cassetteName") === false : false;
 
         TestUtil::setupCassette($cassetteName);
@@ -152,6 +153,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
     public function testLabel()
     {
         $cassetteName = 'batches/label.yml';
+        // @phpstan-ignore-next-line
         $testRequiresWait = true ? file_exists(dirname(__DIR__, 1) . "/cassettes/$cassetteName") === false : false;
 
         TestUtil::setupCassette($cassetteName);

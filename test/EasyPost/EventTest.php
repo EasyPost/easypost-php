@@ -129,6 +129,7 @@ class EventTest extends \PHPUnit\Framework\TestCase
     public function testRetrieveAllPayloads()
     {
         $cassetteName = 'events/retrieve_all_payloads.yml';
+        // @phpstan-ignore-next-line
         $testRequiresWait = true ? file_exists(dirname(__DIR__, 1) . "/cassettes/$cassetteName") === false : false;
 
         TestUtil::setupCassette($cassetteName);
@@ -169,6 +170,7 @@ class EventTest extends \PHPUnit\Framework\TestCase
     public function testRetrievePayload()
     {
         $cassetteName = 'events/retrieve_payload.yml';
+        // @phpstan-ignore-next-line
         $testRequiresWait = true ? file_exists(dirname(__DIR__, 1) . "/cassettes/$cassetteName") === false : false;
 
         TestUtil::setupCassette($cassetteName);

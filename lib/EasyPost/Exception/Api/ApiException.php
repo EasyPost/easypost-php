@@ -46,7 +46,7 @@ class ApiException extends EasyPostException
             if (isset($this->jsonBody) && !empty($this->jsonBody['error']['code'])) {
                 $this->code = $this->jsonBody['error']['code'];
             }
-        } catch (Exception $e) {
+        } catch (Exception $e) { // @phpstan-ignore-line
             $this->jsonBody = null;
         }
     }

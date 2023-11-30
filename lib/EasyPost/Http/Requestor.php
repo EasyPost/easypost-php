@@ -23,6 +23,7 @@ use EasyPost\Exception\Api\ServiceUnavailableException;
 use EasyPost\Exception\Api\TimeoutException;
 use EasyPost\Exception\Api\UnauthorizedException;
 use EasyPost\Exception\Api\UnknownApiException;
+use Exception;
 
 class Requestor
 {
@@ -109,9 +110,9 @@ class Requestor
                 continue;
             }
 
-            if ($prefix) {
+            if (isset($prefix)) {
                 $k = $prefix . '[' . $k . ']';
-            } elseif ($prefix) {
+            } else {
                 $k = $prefix . '[]';
             }
 
@@ -259,7 +260,7 @@ class Requestor
     {
         try {
             $response = json_decode($httpBody, true);
-        } catch (\Exception $e) {
+        } catch (Exception $e) { // @phpstan-ignore-line
             throw new JsonException(
                 "Invalid response body from API: HTTP Status: ({$httpStatus}) {$httpBody}",
                 $httpStatus,
