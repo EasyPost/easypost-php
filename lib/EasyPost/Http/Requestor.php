@@ -6,7 +6,7 @@ use DateTime;
 use DateTimeZone;
 use EasyPost\Constant\Constants;
 use EasyPost\EasyPostClient;
-use EasyPost\EasypostObject;
+use EasyPost\EasyPostObject;
 use EasyPost\Exception\Api\BadRequestException;
 use EasyPost\Exception\Api\ForbiddenException;
 use EasyPost\Exception\Api\GatewayTimeoutException;

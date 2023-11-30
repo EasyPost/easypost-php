@@ -10,6 +10,7 @@
 - Fixes a bug where the original filtering criteria of `all` calls wasn't passed along to `getNextPage` calls. Now, these are persisted via a `_params` key on response objects locally
 - Removes the undocumented `createAndBuy` function from the `Batch` service. The proper usage is to create a batch first and buy it separately
 - Renames `primaryOrSecondary` to `priority` to match the API name for the parameter
+- Fix various bugs throughout the library
 
 ## v6.9.1 (2023-11-20)
 

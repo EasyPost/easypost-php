@@ -28,6 +28,7 @@ use EasyPost\Refund;
 use EasyPost\Report;
 use EasyPost\ScanForm;
 use EasyPost\Shipment;
+use EasyPost\TaxIdentifier;
 use EasyPost\Tracker;
 use EasyPost\TrackingDetail;
 use EasyPost\TrackingLocation;

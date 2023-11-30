@@ -71,11 +71,11 @@ class UserService extends BaseService
      *
      * @param string $id
      * @param mixed @params
-     * @return mixed
+     * @return void
      */
-    public function delete(string $id, mixed $params = null): mixed
+    public function delete(string $id, mixed $params = null): void
     {
-        return $this->deleteResource(self::serviceModelClassName(self::class), $id, $params);
+        $this->deleteResource(self::serviceModelClassName(self::class), $id, $params);
     }
 
     /**
