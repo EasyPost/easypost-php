@@ -608,12 +608,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\EasyPost\\Hook\\EventHook\u003A\u003AaddHandler\u0028\u0029",
             "name": "addHandler",
-            "summary": "",
+            "summary": "Add\u0020an\u0020HTTP\u0020handler\u0020to\u0020the\u0020list\u0020of\u0020handlers.",
             "url": "classes/EasyPost-Hook-EventHook.html#method_addHandler"
         },                {
             "fqsen": "\\EasyPost\\Hook\\EventHook\u003A\u003AremoveHandler\u0028\u0029",
             "name": "removeHandler",
-            "summary": "",
+            "summary": "Remove\u0020an\u0020HTTP\u0020handler\u0020from\u0020the\u0020list\u0020of\u0020handlers.",
             "url": "classes/EasyPost-Hook-EventHook.html#method_removeHandler"
         },                {
             "fqsen": "\\EasyPost\\Hook\\EventHook\u003A\u003A\u0024eventHandlers",
