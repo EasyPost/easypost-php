@@ -2,21 +2,33 @@
 
 namespace EasyPost\Test\Mocking;
 
+use EasyPost\Test\Mocking\MockRequest;
+
 class MockingUtility
 {
-    public array $mockRequests;
+    /**
+     * @var array<MockRequest>|MockRequest
+     */
+    public array|MockRequest $mockRequests;
 
     /**
      * Construct a new MockingUtility.
      *
-     * @param array $mockRequests
+     * @param array<MockRequest>|MockRequest $mockRequests
      */
-    public function __construct(MockRequest ...$mockRequests)
+    public function __construct(array|MockRequest ...$mockRequests)
     {
         $this->mockRequests = $mockRequests;
     }
 
-    public function findMatchingMockRequest($method, $url)
+    /**
+     * Finds a matching mocked request.
+     *
+     * @param string $method
+     * @param string $url
+     * @return mixed
+     */
+    public function findMatchingMockRequest($method, $url): mixed
     {
         foreach ($this->mockRequests as $mockRequest) {
             $methodMatches = $mockRequest->matchRule->method === ''

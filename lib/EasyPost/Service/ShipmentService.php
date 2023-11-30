@@ -82,7 +82,7 @@ class ShipmentService extends BaseService
      * Get SmartRates for a shipment.
      *
      * @param string $id
-     * @return array
+     * @return array<mixed>
      */
     public function getSmartRates(string $id): array
     {

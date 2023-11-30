@@ -7,7 +7,7 @@ use EasyPost\EasyPostClient;
 
 class BatchTest extends \PHPUnit\Framework\TestCase
 {
-    private static $client;
+    private static EasyPostClient $client;
 
     /**
      * Setup the testing environment for this file.
@@ -29,7 +29,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating a Batch.
      */
-    public function testCreate()
+    public function testCreate(): void
     {
         TestUtil::setupCassette('batches/create.yml');
 
@@ -45,7 +45,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving a Batch.
      */
-    public function testRetrieve()
+    public function testRetrieve(): void
     {
         TestUtil::setupCassette('batches/retrieve.yml');
 
@@ -62,7 +62,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving all batches.
      */
-    public function testAll()
+    public function testAll(): void
     {
         TestUtil::setupCassette('batches/all.yml');
 
@@ -80,7 +80,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
     /**
      * Test buying a batch.
      */
-    public function testBuy()
+    public function testBuy(): void
     {
         TestUtil::setupCassette('batches/buy.yml');
 
@@ -99,9 +99,10 @@ class BatchTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating a scanform for a batch.
      */
-    public function testCreateScanForm()
+    public function testCreateScanForm(): void
     {
         $cassetteName = 'batches/createScanForm.yml';
+        // @phpstan-ignore-next-line
         $testRequiresWait = true ? file_exists(dirname(__DIR__, 1) . "/cassettes/$cassetteName") === false : false;
 
         TestUtil::setupCassette($cassetteName);
@@ -125,7 +126,7 @@ class BatchTest extends \PHPUnit\Framework\TestCase
     /**
      * Test adding and removing a shipment from a batch.
      */
-    public function testAddRemoveShipment()
+    public function testAddRemoveShipment(): void
     {
         TestUtil::setupCassette('batches/addRemoveShipment.yml');
 
@@ -149,9 +150,10 @@ class BatchTest extends \PHPUnit\Framework\TestCase
     /**
      * Test generating a label for a Batch.
      */
-    public function testLabel()
+    public function testLabel(): void
     {
         $cassetteName = 'batches/label.yml';
+        // @phpstan-ignore-next-line
         $testRequiresWait = true ? file_exists(dirname(__DIR__, 1) . "/cassettes/$cassetteName") === false : false;
 
         TestUtil::setupCassette($cassetteName);

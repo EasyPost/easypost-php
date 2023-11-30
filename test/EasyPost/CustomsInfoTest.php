@@ -7,7 +7,7 @@ use EasyPost\EasyPostClient;
 
 class CustomsInfoTest extends \PHPUnit\Framework\TestCase
 {
-    private static $client;
+    private static EasyPostClient $client;
 
     /**
      * Setup the testing environment for this file.
@@ -29,7 +29,7 @@ class CustomsInfoTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating a CustomsInfo.
      */
-    public function testCreate()
+    public function testCreate(): void
     {
         TestUtil::setupCassette('customs_info/create.yml');
 
@@ -43,7 +43,7 @@ class CustomsInfoTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving a CustomsInfo.
      */
-    public function testRetrieve()
+    public function testRetrieve(): void
     {
         TestUtil::setupCassette('customs_info/retrieve.yml');
 

@@ -9,7 +9,7 @@ use Exception;
 
 class RefundTest extends \PHPUnit\Framework\TestCase
 {
-    private static $client;
+    private static EasyPostClient $client;
 
     /**
      * Setup the testing environment for this file.
@@ -31,7 +31,7 @@ class RefundTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating a refund.
      */
-    public function testCreate()
+    public function testCreate(): void
     {
         TestUtil::setupCassette('refunds/create.yml');
 
@@ -51,7 +51,7 @@ class RefundTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving all refunds.
      */
-    public function testAll()
+    public function testAll(): void
     {
         TestUtil::setupCassette('refunds/all.yml');
 
@@ -64,15 +64,12 @@ class RefundTest extends \PHPUnit\Framework\TestCase
         $this->assertLessThanOrEqual($refundsArray, Fixture::pageSize());
         $this->assertNotNull($refunds['has_more']);
         $this->assertContainsOnlyInstancesOf(Refund::class, $refundsArray);
-
-        // Return so other tests can reuse these objects
-        return $refunds;
     }
 
     /**
      * Test retrieving next page.
      */
-    public function testGetNextPage()
+    public function testGetNextPage(): void
     {
         TestUtil::setupCassette('refunds/getNextPage.yml');
 
@@ -97,7 +94,7 @@ class RefundTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving a refund.
      */
-    public function testRetrieve()
+    public function testRetrieve(): void
     {
         TestUtil::setupCassette('refunds/retrieve.yml');
 

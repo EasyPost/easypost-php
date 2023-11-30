@@ -136,7 +136,7 @@ class ReferralCustomerService extends BaseService
      *
      * @param string $number
      * @param int $expirationMonth
-     * @param int @expirationYear
+     * @param int $expirationYear
      * @param string $cvc
      * @param string $easypostStripeKey
      * @return mixed
@@ -180,6 +180,7 @@ class ReferralCustomerService extends BaseService
 
         // Guzzle does not have a native way of catching timeout exceptions...
         // If we don't have a response at this point, it's likely due to a timeout.
+        // @phpstan-ignore-next-line
         if (!isset($response)) {
             throw new TimeoutException(sprintf(Constants::NO_RESPONSE_ERROR, 'Stripe'));
         }
@@ -196,7 +197,7 @@ class ReferralCustomerService extends BaseService
      *
      * @param string $referralApiKey
      * @param string $stripeObjectId
-     * @param string @priority
+     * @param string $priority
      * @return mixed
      */
     private function createEasypostCreditCard(

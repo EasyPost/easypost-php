@@ -6,7 +6,7 @@ use DateTime;
 use DateTimeZone;
 use EasyPost\Constant\Constants;
 use EasyPost\EasyPostClient;
-use EasyPost\EasypostObject;
+use EasyPost\EasyPostObject;
 use EasyPost\Exception\Api\BadRequestException;
 use EasyPost\Exception\Api\ForbiddenException;
 use EasyPost\Exception\Api\GatewayTimeoutException;
@@ -23,6 +23,7 @@ use EasyPost\Exception\Api\ServiceUnavailableException;
 use EasyPost\Exception\Api\TimeoutException;
 use EasyPost\Exception\Api\UnauthorizedException;
 use EasyPost\Exception\Api\UnknownApiException;
+use Exception;
 
 class Requestor
 {
@@ -64,14 +65,14 @@ class Requestor
      * Encodes an EasyPost object and prepares the data for the request.
      *
      * @param mixed $data
-     * @return array|string
+     * @return array<mixed>|string
      */
     private static function encodeObjects(mixed $data): array|string
     {
         if (is_null($data)) {
             return [];
         } elseif ($data instanceof EasypostObject) {
-            return ['id' => self::utf8($data->id)];
+            return ['id' => self::utf8($data->id)]; // @phpstan-ignore-line
         } elseif ($data === true) {
             return 'true';
         } elseif ($data === false) {
@@ -109,9 +110,9 @@ class Requestor
                 continue;
             }
 
-            if ($prefix && isset($k)) {
+            if (isset($prefix)) {
                 $k = $prefix . '[' . $k . ']';
-            } elseif ($prefix) {
+            } else {
                 $k = $prefix . '[]';
             }
 
@@ -156,7 +157,7 @@ class Requestor
      * @param string $url
      * @param mixed $params
      * @param bool $beta
-     * @return array
+     * @return array<mixed>
      * @throws HttpException
      * @throws TimeoutException
      */
@@ -223,6 +224,7 @@ class Requestor
 
             // Guzzle does not have a native way of catching timeout exceptions...
             // If we don't have a response at this point, it's likely due to a timeout.
+            // @phpstan-ignore-next-line
             if (!isset($response)) {
                 throw new TimeoutException(sprintf(Constants::NO_RESPONSE_ERROR, 'EasyPost'));
             }
@@ -259,7 +261,7 @@ class Requestor
     {
         try {
             $response = json_decode($httpBody, true);
-        } catch (\Exception $e) {
+        } catch (Exception $e) { // @phpstan-ignore-line
             throw new JsonException(
                 "Invalid response body from API: HTTP Status: ({$httpStatus}) {$httpBody}",
                 $httpStatus,
@@ -279,7 +281,7 @@ class Requestor
      *
      * @param string|null $httpBody
      * @param int $httpStatus
-     * @param array $response
+     * @param array<mixed> $response
      * @throws BadRequestException
      * @throws GatewayTimeoutException
      * @throws InternalServerException
@@ -295,7 +297,7 @@ class Requestor
      * @throws UnauthorizedException
      * @throws UnknownApiException
      */
-    public static function handleApiError(?string $httpBody, int $httpStatus, array $response)
+    public static function handleApiError(?string $httpBody, int $httpStatus, array $response): void
     {
         if (!is_array($response) || !isset($response['error'])) {
             throw new JsonException(
@@ -363,7 +365,7 @@ class Requestor
      * Recursively traverses a JSON element to extract error messages and returns them as a comma-separated string.
      *
      * @param mixed $errorMessage
-     * @param array $messagesList
+     * @param array<string> $messagesList
      * @return string
      */
     private static function traverseJsonElement(mixed $errorMessage, array &$messagesList): string

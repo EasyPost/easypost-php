@@ -10,7 +10,7 @@ use Exception;
 
 class ReportTest extends \PHPUnit\Framework\TestCase
 {
-    private static $client;
+    private static EasyPostClient $client;
 
     /**
      * Setup the testing environment for this file.
@@ -32,7 +32,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating a report.
      */
-    public function testCreateReport()
+    public function testCreateReport(): void
     {
         TestUtil::setupCassette('reports/createReport.yml');
 
@@ -49,7 +49,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating a report with custom columns
      */
-    public function testCreateCustomColumnReport()
+    public function testCreateCustomColumnReport(): void
     {
         TestUtil::setupCassette('reports/createCustomColumnReport.yml');
 
@@ -69,7 +69,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating a report with custom additional columns
      */
-    public function testCreateCustomAdditionalColumnReport()
+    public function testCreateCustomAdditionalColumnReport(): void
     {
         TestUtil::setupCassette('reports/createCustomAdditionalColumnReport.yml');
 
@@ -89,7 +89,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving a report.
      */
-    public function testRetrieveReport()
+    public function testRetrieveReport(): void
     {
         TestUtil::setupCassette('reports/retrieveReport.yml');
 
@@ -109,7 +109,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving all reports.
      */
-    public function testAll()
+    public function testAll(): void
     {
         TestUtil::setupCassette('reports/all.yml');
 
@@ -128,7 +128,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving next page.
      */
-    public function testGetNextPage()
+    public function testGetNextPage(): void
     {
         TestUtil::setupCassette('reports/getNextPage.yml');
 
@@ -154,7 +154,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
     /**
      * Test throwing an error when creating a report with no report type set.
      */
-    public function testCreateNoType()
+    public function testCreateNoType(): void
     {
         $this->expectException(MissingParameterException::class);
 
@@ -164,7 +164,7 @@ class ReportTest extends \PHPUnit\Framework\TestCase
     /**
      * Test throwing an error when retrieving all reports with no report type set.
      */
-    public function testAllNoType()
+    public function testAllNoType(): void
     {
         $this->expectException(MissingParameterException::class);
 

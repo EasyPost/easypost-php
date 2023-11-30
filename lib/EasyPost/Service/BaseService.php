@@ -85,7 +85,7 @@ class BaseService
     protected function instanceUrl(string $class, string $id): string
     {
         if (!$id) {
-            throw new InvalidObjectException(sprintf(Constants::NO_ID_URL_ERROR), $class, $id);
+            throw new InvalidObjectException(sprintf(Constants::NO_ID_URL_ERROR, $class, $id));
         }
         $id = Requestor::utf8($id);
         $classUrl = self::classUrl($class);

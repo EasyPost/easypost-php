@@ -39,11 +39,13 @@ use GuzzleHttp\Client;
  *
  * @package EasyPost
  * @property AddressService $address
- * @property ApiKeyService $apiKey
+ * @property ApiKeyService $apiKeys
  * @property BatchService $batch
- * @property BetaReferralCustomer $betaReferralCustomer
+ * @property BetaRateService $betaRate
+ * @property BetaReferralCustomerService $betaReferralCustomer
  * @property BillingService $billing
  * @property CarrierAccountService $carrierAccount
+ * @property CarrierMetadataService $carrierMetadata
  * @property CustomsInfoService $customsInfo
  * @property CustomsItemService $customsItem
  * @property EndShipperService $endShipper
@@ -65,13 +67,13 @@ use GuzzleHttp\Client;
 class EasyPostClient extends BaseService
 {
     // Client properties
-    private $apiKey;
-    private $timeout;
-    private $apiBase;
-    private $mockingUtility;
-    public $requestEvent;
-    public $responseEvent;
-    public $httpClient;
+    private string $apiKey;
+    private float $timeout;
+    private string $apiBase;
+    private ?object $mockingUtility;
+    public object $requestEvent;
+    public object $responseEvent;
+    public Client $httpClient;
 
     /**
      * Constructor for an EasyPostClient.
@@ -79,7 +81,7 @@ class EasyPostClient extends BaseService
      * @param string $apiKey
      * @param float $timeout
      * @param string $apiBase
-     * @param object $mockingUtility
+     * @param object|null $mockingUtility
      */
     public function __construct(
         string $apiKey,
@@ -110,8 +112,8 @@ class EasyPostClient extends BaseService
             'address' => AddressService::class,
             'apiKeys' => ApiKeyService::class,
             'batch' => BatchService::class,
-            'betaReferralCustomer' => BetaReferralCustomerService::class,
             'betaRate' => BetaRateService::class,
+            'betaReferralCustomer' => BetaReferralCustomerService::class,
             'billing' => BillingService::class,
             'carrierAccount' => CarrierAccountService::class,
             'carrierMetadata' => CarrierMetadataService::class,

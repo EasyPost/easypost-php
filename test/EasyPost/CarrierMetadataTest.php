@@ -6,7 +6,7 @@ use EasyPost\EasyPostClient;
 
 class CarrierMetadataTest extends \PHPUnit\Framework\TestCase
 {
-    private static $client;
+    private static EasyPostClient $client;
 
     /**
      * Setup the testing environment for this file.
@@ -28,7 +28,7 @@ class CarrierMetadataTest extends \PHPUnit\Framework\TestCase
     /**
      * Tests that we can retrieve all carriers and all metadata from the API when no params are provided.
      */
-    public function testRetrieveCarrierMetadata()
+    public function testRetrieveCarrierMetadata(): void
     {
         TestUtil::setupCassette('carrier_metadata/retrieveCarrierMetadata.yml');
 
@@ -56,7 +56,7 @@ class CarrierMetadataTest extends \PHPUnit\Framework\TestCase
     /**
      * Tests that we can retrieve metadata based on the filters provided.
      */
-    public function testRetrieveCarrierMetadataWithFilters()
+    public function testRetrieveCarrierMetadataWithFilters(): void
     {
         TestUtil::setupCassette('carrier_metadata/retrieveCarrierMetadataWithFilters.yml');
 

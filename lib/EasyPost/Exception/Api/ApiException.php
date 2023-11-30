@@ -3,20 +3,26 @@
 namespace EasyPost\Exception\Api;
 
 use EasyPost\Exception\General\EasyPostException;
+use EasyPost\FieldError;
+use Exception;
 
 /**
  * @package EasyPost
- * @property string $code
- * @property FieldError[] $errors
+ * @property string|null $code
+ * @property FieldError[]|null $errors
+ * @property string $message
+ * @property string|null $httpBody
+ * @property int|null $httpStatus
+ * @property mixed $jsonBody
  */
 class ApiException extends EasyPostException
 {
-    public $code;
-    public $errors;
-    protected $message;
-    private $httpBody;
-    private $httpStatus;
-    private $jsonBody;
+    public $code; // @phpstan-ignore-line
+    public $errors; // @phpstan-ignore-line
+    protected $message; // @phpstan-ignore-line
+    private ?string $httpBody;
+    private ?int $httpStatus;
+    private mixed $jsonBody;
 
     /**
      * ApiException constructor.
@@ -30,24 +36,22 @@ class ApiException extends EasyPostException
         parent::__construct($message);
         $this->httpStatus = $httpStatus;
         $this->httpBody = $httpBody;
+        $this->errors = null;
+        $this->code = null;
 
         try {
             $this->jsonBody = isset($httpBody) ? json_decode($httpBody, true) : null;
 
-            // Setup `errors` property
+            // Set `errors` property
             if (isset($this->jsonBody) && !empty($this->jsonBody['error']['errors'])) {
                 $this->errors = $this->jsonBody['error']['errors'];
-            } else {
-                $this->errors = null;
             }
 
-            // Setup `code` property
+            // Set `code` property
             if (isset($this->jsonBody) && !empty($this->jsonBody['error']['code'])) {
                 $this->code = $this->jsonBody['error']['code'];
-            } else {
-                $this->code = null;
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) { // @phpstan-ignore-line
             $this->jsonBody = null;
         }
     }

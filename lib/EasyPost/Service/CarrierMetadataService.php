@@ -13,8 +13,8 @@ class CarrierMetadataService extends BaseService
     /**
      * Get carrier metadata for all carriers on the EasyPost platform.
      *
-     * @param array|null $carriers
-     * @param array|null $types
+     * @param array<string>|null $carriers
+     * @param array<string>|null $types
      * @return mixed
      */
     public function retrieve(?array $carriers = null, ?array $types = null): mixed

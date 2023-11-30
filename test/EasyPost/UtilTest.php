@@ -9,7 +9,7 @@ class UtilTest extends \PHPUnit\Framework\TestCase
     /**
      * Test converting an EasyPost object to an array.
      */
-    public function testConvertEasyPostObjectToArray()
+    public function testConvertEasyPostObjectToArray(): void
     {
         $object = Util::convertEasyPostObjectToArray(Fixture::caAddress1());
 

@@ -9,7 +9,7 @@ use EasyPost\Util\Util;
 
 class BetaRateTest extends \PHPUnit\Framework\TestCase
 {
-    private static $client;
+    private static EasyPostClient $client;
 
     /**
      * Setup the testing environment for this file.
@@ -31,7 +31,7 @@ class BetaRateTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving stateless rates.
      */
-    public function testRetrieveStatelessRate()
+    public function testRetrieveStatelessRate(): void
     {
         TestUtil::setupCassette('beta/rate/retrieveStatelessRates.yml');
 
@@ -43,7 +43,7 @@ class BetaRateTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving lowest stateless rate.
      */
-    public function testRetrieveLowestStatelessRate()
+    public function testRetrieveLowestStatelessRate(): void
     {
         TestUtil::setupCassette('beta/rate/retrieveLowestStatelessRates.yml');
 

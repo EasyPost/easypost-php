@@ -7,9 +7,18 @@ namespace EasyPost\Hook;
  */
 class EventHook
 {
-    private $eventHandlers = [];
+    /**
+     * @var array<callable>
+     */
+    private array $eventHandlers = [];
 
-    public function __invoke(...$args)
+    /**
+     * Fires when the class is invoked.
+     *
+     * @param array<callable> ...$args
+     * @return void
+     */
+    public function __invoke(array ...$args): void
     {
         foreach ($this->eventHandlers as $eventHandler) {
             $eventHandler(...$args);

@@ -10,7 +10,7 @@ use EasyPost\Test\Mocking\MockRequestResponseInfo;
 
 class BillingTest extends \PHPUnit\Framework\TestCase
 {
-    private static $client;
+    private static EasyPostClient $client;
 
     /**
      * Set up the testing environment for this file.
@@ -80,7 +80,7 @@ class BillingTest extends \PHPUnit\Framework\TestCase
      * @param MockingUtility|null $mockUtility
      * @return EasyPostClient
      */
-    public static function getClient($mockUtility = null)
+    public static function getClient(MockingUtility $mockUtility = null): EasyPostClient
     {
         return new EasyPostClient(
             getenv('EASYPOST_TEST_API_KEY'),
@@ -93,7 +93,7 @@ class BillingTest extends \PHPUnit\Framework\TestCase
     /**
      * Test funding a wallet
      */
-    public function testFundWallet()
+    public function testFundWallet(): void
     {
         try {
             self::$client->billing->fundWallet('2000', 'primary');
@@ -107,7 +107,7 @@ class BillingTest extends \PHPUnit\Framework\TestCase
     /**
      * Test funding a wallet without providing a priority level (default value)
      */
-    public function testFundWalletWithNoPriorityLevel()
+    public function testFundWalletWithNoPriorityLevel(): void
     {
         try {
             self::$client->billing->fundWallet('2000');
@@ -121,7 +121,7 @@ class BillingTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving a payment method summary
      */
-    public function testRetrievePaymentMethodSummary()
+    public function testRetrievePaymentMethodSummary(): void
     {
         $paymentMethodSummary = self::$client->billing->retrievePaymentMethods();
 
@@ -133,7 +133,7 @@ class BillingTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving a payment method summary that does not have an ID
      */
-    public function testRetrievePaymentMethodSummaryNoId()
+    public function testRetrievePaymentMethodSummaryNoId(): void
     {
         $mockingUtility = new MockingUtility(
             new MockRequest(
@@ -161,7 +161,7 @@ class BillingTest extends \PHPUnit\Framework\TestCase
     /**
      * Test deleting a payment method
      */
-    public function testDeletePaymentMethod()
+    public function testDeletePaymentMethod(): void
     {
         try {
             self::$client->billing->deletePaymentMethod('primary');
@@ -179,7 +179,7 @@ class BillingTest extends \PHPUnit\Framework\TestCase
      * The payment method is not exposed by this method, so we can't assert against it.
      * If the function doesn't throw an exception, it worked.
      */
-    public function testGetPaymentMethodPrioritySwitchCase()
+    public function testGetPaymentMethodPrioritySwitchCase(): void
     {
         // testing "primary"
         try {
@@ -212,7 +212,7 @@ class BillingTest extends \PHPUnit\Framework\TestCase
     /**
      * Test getting a payment method by priority level that has no payment method
      */
-    public function testGetPaymentMethodByPriorityNoPaymentMethod()
+    public function testGetPaymentMethodByPriorityNoPaymentMethod(): void
     {
         $mockingUtility = new MockingUtility(
             new MockRequest(
@@ -244,7 +244,7 @@ class BillingTest extends \PHPUnit\Framework\TestCase
     /**
      * Test getting a payment method by priority level that has no payment method ID
      */
-    public function testGetPaymentMethodByPriorityPaymentMethodNoId()
+    public function testGetPaymentMethodByPriorityPaymentMethodNoId(): void
     {
         $mockingUtility = new MockingUtility(
             new MockRequest(

@@ -7,7 +7,7 @@ use EasyPost\EasyPostClient;
 
 class ApiKeyTest extends \PHPUnit\Framework\TestCase
 {
-    private static $client;
+    private static EasyPostClient $client;
 
     /**
      * Setup the testing environment for this file.
@@ -29,7 +29,7 @@ class ApiKeyTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving all API keys.
      */
-    public function testAllApiKeys()
+    public function testAllApiKeys(): void
     {
         TestUtil::setupCassette('apiKeys/allApiKeys.yml');
 
@@ -44,7 +44,7 @@ class ApiKeyTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving the authenticated user's API keys.
      */
-    public function testAuthenticatedUserApiKeys()
+    public function testAuthenticatedUserApiKeys(): void
     {
         TestUtil::setupCassette('apiKeys/authenticatedUserApiKeys.yml');
 
@@ -58,7 +58,7 @@ class ApiKeyTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving the authenticated user's API keys.
      */
-    public function testChildUserApiKeys()
+    public function testChildUserApiKeys(): void
     {
         TestUtil::setupCassette('apiKeys/childUserApiKeys.yml');
 

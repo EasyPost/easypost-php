@@ -7,7 +7,7 @@ use EasyPost\User;
 
 class UserTest extends \PHPUnit\Framework\TestCase
 {
-    private static $client;
+    private static EasyPostClient $client;
 
     /**
      * Setup the testing environment for this file.
@@ -29,7 +29,7 @@ class UserTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating a child user.
      */
-    public function testCreate()
+    public function testCreate(): void
     {
         TestUtil::setupCassette('users/create.yml');
 
@@ -48,7 +48,7 @@ class UserTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving a user.
      */
-    public function testRetrieve()
+    public function testRetrieve(): void
     {
         TestUtil::setupCassette('users/retrieve.yml');
 
@@ -63,7 +63,7 @@ class UserTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving the authenticated user.
      */
-    public function testRetrieveMe()
+    public function testRetrieveMe(): void
     {
         TestUtil::setupCassette('users/retrieveMe.yml');
 
@@ -76,7 +76,7 @@ class UserTest extends \PHPUnit\Framework\TestCase
     /**
      * Test updating the authenticated user.
      */
-    public function testUpdate()
+    public function testUpdate(): void
     {
         TestUtil::setupCassette('users/update.yml');
 
@@ -96,7 +96,7 @@ class UserTest extends \PHPUnit\Framework\TestCase
     /**
      * Test deleting a child user.
      */
-    public function testDelete()
+    public function testDelete(): void
     {
         TestUtil::setupCassette('users/delete.yml');
 
@@ -115,7 +115,7 @@ class UserTest extends \PHPUnit\Framework\TestCase
     /**
      * Test updating the authenticated user's Brand.
      */
-    public function testUpdateBrand()
+    public function testUpdateBrand(): void
     {
         TestUtil::setupCassette('users/brand.yml');
 

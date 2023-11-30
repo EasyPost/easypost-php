@@ -9,7 +9,7 @@ use Exception;
 
 class InsuranceTest extends \PHPUnit\Framework\TestCase
 {
-    private static $client;
+    private static EasyPostClient $client;
 
     /**
      * Setup the testing environment for this file.
@@ -31,7 +31,7 @@ class InsuranceTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating an insurance object.
      */
-    public function testCreate()
+    public function testCreate(): void
     {
         TestUtil::setupCassette('insurance/create.yml');
 
@@ -50,7 +50,7 @@ class InsuranceTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving an insurance object.
      */
-    public function testRetrieve()
+    public function testRetrieve(): void
     {
         TestUtil::setupCassette('insurance/retrieve.yml');
 
@@ -69,7 +69,7 @@ class InsuranceTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving all insurance.
      */
-    public function testAll()
+    public function testAll(): void
     {
         TestUtil::setupCassette('insurance/all.yml');
 
@@ -87,7 +87,7 @@ class InsuranceTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving next page.
      */
-    public function testGetNextPage()
+    public function testGetNextPage(): void
     {
         TestUtil::setupCassette('insurance/getNextPage.yml');
 

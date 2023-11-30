@@ -7,7 +7,7 @@ use EasyPost\Parcel;
 
 class ParcelTest extends \PHPUnit\Framework\TestCase
 {
-    private static $client;
+    private static EasyPostClient $client;
 
     /**
      * Setup the testing environment for this file.
@@ -29,7 +29,7 @@ class ParcelTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating a Parcel.
      */
-    public function testCreate()
+    public function testCreate(): void
     {
         TestUtil::setupCassette('parcels/create.yml');
 
@@ -43,7 +43,7 @@ class ParcelTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving a Parcel.
      */
-    public function testRetrieve()
+    public function testRetrieve(): void
     {
         TestUtil::setupCassette('parcels/retrieve.yml');
 

@@ -4,6 +4,7 @@ namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
 use EasyPost\Event;
+use EasyPost\Exception\Api\ApiException;
 use EasyPost\Exception\General\EasyPostException;
 use EasyPost\Exception\General\EndOfPaginationException;
 use EasyPost\Payload;
@@ -12,7 +13,7 @@ use Exception;
 
 class EventTest extends \PHPUnit\Framework\TestCase
 {
-    private static $client;
+    private static EasyPostClient $client;
 
     /**
      * Setup the testing environment for this file.
@@ -34,7 +35,7 @@ class EventTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving all events.
      */
-    public function testAll()
+    public function testAll(): void
     {
         TestUtil::setupCassette('events/all.yml');
 
@@ -52,7 +53,7 @@ class EventTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving next page.
      */
-    public function testGetNextPage()
+    public function testGetNextPage(): void
     {
         TestUtil::setupCassette('events/getNextPage.yml');
 
@@ -77,7 +78,7 @@ class EventTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving an event.
      */
-    public function testRetrieve()
+    public function testRetrieve(): void
     {
         TestUtil::setupCassette('events/retrieve.yml');
 
@@ -94,7 +95,7 @@ class EventTest extends \PHPUnit\Framework\TestCase
     /**
      * Test receiving (converting) an event.
      */
-    public function testReceive()
+    public function testReceive(): void
     {
         $event = Util::receiveEvent(Fixture::eventJson());
 
@@ -105,7 +106,7 @@ class EventTest extends \PHPUnit\Framework\TestCase
     /**
      * Test that we throw an error when bad input is received.
      */
-    public function testReceiveBadInput()
+    public function testReceiveBadInput(): void
     {
         $this->expectException(EasyPostException::class);
 
@@ -115,7 +116,7 @@ class EventTest extends \PHPUnit\Framework\TestCase
     /**
      * Test that we throw an error when no input is received.
      */
-    public function testReceiveNoInput()
+    public function testReceiveNoInput(): void
     {
         $this->expectException(EasyPostException::class);
 
@@ -125,9 +126,10 @@ class EventTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving all payloads for an event.
      */
-    public function testRetrieveAllPayloads()
+    public function testRetrieveAllPayloads(): void
     {
         $cassetteName = 'events/retrieve_all_payloads.yml';
+        // @phpstan-ignore-next-line
         $testRequiresWait = true ? file_exists(dirname(__DIR__, 1) . "/cassettes/$cassetteName") === false : false;
 
         TestUtil::setupCassette($cassetteName);
@@ -165,9 +167,10 @@ class EventTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving a payload for an event.
      */
-    public function testRetrievePayload()
+    public function testRetrievePayload(): void
     {
         $cassetteName = 'events/retrieve_payload.yml';
+        // @phpstan-ignore-next-line
         $testRequiresWait = true ? file_exists(dirname(__DIR__, 1) . "/cassettes/$cassetteName") === false : false;
 
         TestUtil::setupCassette($cassetteName);
@@ -197,7 +200,7 @@ class EventTest extends \PHPUnit\Framework\TestCase
                 $event->id,
                 'payload_11111111111111111111111111111111',
             );
-        } catch (EasyPostException $error) {
+        } catch (ApiException $error) {
             $this->assertEquals(404, $error->getHttpStatus());
         }
 

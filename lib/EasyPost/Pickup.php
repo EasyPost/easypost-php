@@ -32,8 +32,8 @@ class Pickup extends EasyPostObject
      *
      * To exclude a carrier or service, prepend the string with `!`.
      *
-     * @param array|null $carriers
-     * @param array|null $services
+     * @param array<string>|null $carriers
+     * @param array<string>|null $services
      * @return PickupRate
      */
     public function lowestRate(?array $carriers = [], ?array $services = []): PickupRate

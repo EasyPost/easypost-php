@@ -10,7 +10,7 @@ use Exception;
 
 class AddressTest extends \PHPUnit\Framework\TestCase
 {
-    private static $client;
+    private static EasyPostClient $client;
 
     /**
      * Setup the testing environment for this file.
@@ -32,7 +32,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating an address.
      */
-    public function testCreate()
+    public function testCreate(): void
     {
         TestUtil::setupCassette('addresses/create.yml');
 
@@ -48,7 +48,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
      *
      * We purposefully pass in slightly incorrect data to get the corrected address back once verified.
      */
-    public function testCreateVerify()
+    public function testCreateVerify(): void
     {
         TestUtil::setupCassette('addresses/createVerify.yml');
 
@@ -65,7 +65,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating an address with verify_strict param.
      */
-    public function testCreateVerifyStrict()
+    public function testCreateVerifyStrict(): void
     {
         TestUtil::setupCassette('addresses/createVerifyStrict.yml');
 
@@ -84,7 +84,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
      *
      * We purposefully pass in slightly incorrect data to get the corrected address back once verified.
      */
-    public function testCreateVerifyArray()
+    public function testCreateVerifyArray(): void
     {
         TestUtil::setupCassette('addresses/createVerifyArray.yml');
 
@@ -101,7 +101,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving an address.
      */
-    public function testRetrieve()
+    public function testRetrieve(): void
     {
         TestUtil::setupCassette('addresses/retrieve.yml');
 
@@ -116,7 +116,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving all addresses.
      */
-    public function testAll()
+    public function testAll(): void
     {
         TestUtil::setupCassette('addresses/all.yml');
 
@@ -134,7 +134,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving next page.
      */
-    public function testGetNextPage()
+    public function testGetNextPage(): void
     {
         TestUtil::setupCassette('addresses/getNextPage.yml');
 
@@ -161,7 +161,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
      *
      * We purposefully pass in slightly incorrect data to get the corrected address back once verified.
      */
-    public function testCreateAndVerify()
+    public function testCreateAndVerify(): void
     {
         TestUtil::setupCassette('addresses/createAndVerify.yml');
 
@@ -177,7 +177,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     /**
      * Test we can verify an already created address.
      */
-    public function testVerify()
+    public function testVerify(): void
     {
         TestUtil::setupCassette('addresses/verify.yml');
 
@@ -193,7 +193,7 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     /**
      * Test we throw an error for an invalid address verification.
      */
-    public function testVerifyInvalid()
+    public function testVerifyInvalid(): void
     {
         TestUtil::setupCassette('addresses/verifyInvalid.yml');
 

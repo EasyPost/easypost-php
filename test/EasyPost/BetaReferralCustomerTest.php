@@ -7,7 +7,7 @@ use EasyPost\Exception\Api\ApiException;
 
 class BetaReferralCustomerTest extends \PHPUnit\Framework\TestCase
 {
-    private static $client;
+    private static EasyPostClient $client;
 
     /**
      * Setup the testing environment for this file.
@@ -33,7 +33,7 @@ class BetaReferralCustomerTest extends \PHPUnit\Framework\TestCase
      *
      * We expect this test to fail because we don't have valid Stripe details to use. Assert the correct error.
      */
-    public function testAddPaymentMethod()
+    public function testAddPaymentMethod(): void
     {
         TestUtil::setupCassette('beta/referral_customers/addPaymentMethod.yml');
 
@@ -53,7 +53,7 @@ class BetaReferralCustomerTest extends \PHPUnit\Framework\TestCase
      *
      * We expect this test to fail because we don't have valid billing details to use. Assert the correct error.
      */
-    public function testRefundByAmount()
+    public function testRefundByAmount(): void
     {
         TestUtil::setupCassette('beta/referral_customers/refundByAmount.yml');
 
@@ -72,7 +72,7 @@ class BetaReferralCustomerTest extends \PHPUnit\Framework\TestCase
      *
      * We expect this test to fail because we don't have valid billing details to use. Assert the correct error.
      */
-    public function testRefundByPaymentLog()
+    public function testRefundByPaymentLog(): void
     {
         TestUtil::setupCassette('beta/referral_customers/refundByPaymentLog.yml');
 

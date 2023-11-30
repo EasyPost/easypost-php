@@ -9,7 +9,7 @@ use EasyPost\Exception\General\MissingParameterException;
 
 class CarrierAccountTest extends \PHPUnit\Framework\TestCase
 {
-    private static $client;
+    private static EasyPostClient $client;
 
     /**
      * Setup the testing environment for this file.
@@ -31,7 +31,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating a carrier account.
      */
-    public function testCreate()
+    public function testCreate(): void
     {
         TestUtil::setupCassette('carrier_accounts/create.yml');
 
@@ -50,7 +50,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
     /**
      * Test creating a carrier account.
      */
-    public function testCreateWithoutType()
+    public function testCreateWithoutType(): void
     {
         self::$client = new EasyPostClient(getenv('EASYPOST_PROD_API_KEY'));
 
@@ -73,7 +73,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
      * We purposefully don't pass data here because real data is required for this endpoint
      * which we don't have in a test context, simply assert the error matches when no data is passed.
      */
-    public function testCreateWithCustomWorkflow()
+    public function testCreateWithCustomWorkflow(): void
     {
         TestUtil::setupCassette('carrier_accounts/createWithCustomWorkflow.yml');
 
@@ -84,13 +84,14 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
         // We have to send some registration data, otherwise API will throw a 400 Bad Request
         $data['registration_data'] = ['some' => 'data'];
 
+        $errorFound = false;
+
         try {
             $carrierAccount = self::$client->carrierAccount->create($data);
             // Delete the carrier account once it's done being tested (should not be reached).
             self::$client->carrierAccount->delete($carrierAccount->id);
         } catch (ApiException $error) {
             $this->assertEquals(422, $error->getHttpStatus());
-            $errorFound = false;
             $errors = $error->errors;
             foreach ($errors as $error) {
                 if ($error['field'] == 'account_number' && $error['message'] == 'must be present and a string') {
@@ -106,7 +107,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving a carrier account.
      */
-    public function testRetrieve()
+    public function testRetrieve(): void
     {
         TestUtil::setupCassette('carrier_accounts/retrieve.yml');
 
@@ -126,7 +127,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving all carrier accounts.
      */
-    public function testAll()
+    public function testAll(): void
     {
         TestUtil::setupCassette('carrier_accounts/all.yml');
 
@@ -140,7 +141,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
     /**
      * Test updating a carrier account.
      */
-    public function testUpdate()
+    public function testUpdate(): void
     {
         TestUtil::setupCassette('carrier_accounts/update.yml');
 
@@ -164,7 +165,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
     /**
      * Test deleting a carrier account.
      */
-    public function testDelete()
+    public function testDelete(): void
     {
         TestUtil::setupCassette('carrier_accounts/delete.yml');
 
@@ -183,7 +184,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving the carrier account types available.
      */
-    public function testTypes()
+    public function testTypes(): void
     {
         TestUtil::setupCassette('carrier_accounts/types.yml');
 
