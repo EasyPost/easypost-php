@@ -59,14 +59,12 @@ class ReferralCustomerService extends BaseService
     /**
      * Update an referral email.
      *
-     * @param string $email
      * @param string $userId
+     * @param string $email
      * @return void
      */
-    public function updateEmail(string $email, string $userId): void
+    public function updateEmail(string $userId, string $email): void
     {
-        // TODO: Swap the order of these params so ID comes first to match all other functions
-        // this will be a breaking change and must be done when the next major release happens
         $wrappedParams = [
             'user' => [
                 'email' => $email

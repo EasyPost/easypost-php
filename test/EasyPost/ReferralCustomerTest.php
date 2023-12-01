@@ -105,8 +105,8 @@ class ReferralCustomerTest extends \PHPUnit\Framework\TestCase
 
         try {
             self::$client->referralCustomer->updateEmail(
+                $referralUsers['referral_customers'][0]['id'],
                 'email@example.com',
-                $referralUsers['referral_customers'][0]['id']
             );
             $this->assertTrue(true);
         } catch (\Exception $exception) {
