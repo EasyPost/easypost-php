@@ -18,7 +18,6 @@ use EasyPost\Util\InternalUtil;
  * @property string $instructions
  * @property Message[] $messages
  * @property string $confirmation
- * @property Shipment $shipment
  * @property Address $address
  * @property CarrierAccount[] $carrier_accounts
  * @property PickupRate[] $pickup_rates
