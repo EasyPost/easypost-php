@@ -21,7 +21,7 @@ class BetaUserService extends BaseService
     {
         self::validate($params);
 
-        $url = "/users/children";
+        $url = '/users/children';
         $response = Requestor::request($this->client, 'get', $url, $params, true);
         if (isset($params)) {
             $response['_params'] = $params;
@@ -42,7 +42,7 @@ class BetaUserService extends BaseService
         $userArray = $children['children'];
         $userParams = $children['_params'] ?? null;
 
-        # Check to see if there is another page server-side before attempting to retrieve it
+        // Check to see if there is another page server-side before attempting to retrieve it
         if (empty($userArray) || !$children['has_more']) {
             throw new EndOfPaginationException();
         }
@@ -56,10 +56,10 @@ class BetaUserService extends BaseService
             $params = array_merge($params, $userParams);
         }
 
-        # Retrieve a page of users from the server
+        // Retrieve a page of users from the server
         $children = $this->allChildren($params);
 
-        # If the page we just retrieved is empty, then we have reached the end of the list
+        // If the page we just retrieved is empty, then we have reached the end of the list
         if (empty($children['children'])) {
             throw new EndOfPaginationException();
         }

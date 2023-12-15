@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Add `allChildren` and `getNextPageOfChildren` methods to `betaUser` service
+
 ## v7.0.0 (2023-12-01)
 
 Upgrading major versions of this project? Refer to the [Upgrade Guide](UPGRADE_GUIDE.md).

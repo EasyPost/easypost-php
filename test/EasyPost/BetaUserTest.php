@@ -5,6 +5,7 @@ namespace EasyPost;
 use EasyPost\Exception\General\EndOfPaginationException;
 use EasyPost\Test\Fixture;
 use EasyPost\Test\TestUtil;
+use Exception;
 
 class BetaUserTest extends \PHPUnit\Framework\TestCase
 {
@@ -47,6 +48,7 @@ class BetaUserTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test retrieving next page.
+     * @noinspection RedundantSuppression
      */
     public function testGetNextPageOfChildren(): void
     {
@@ -66,6 +68,7 @@ class BetaUserTest extends \PHPUnit\Framework\TestCase
             // There's no second page, that's not a failure
             $this->assertTrue(true);
         } catch (Exception $error) {
+            /** @noinspection PhpExceptionImmediatelyRethrownInspection */
             throw $error;
         }
     }
