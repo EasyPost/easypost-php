@@ -1496,6 +1496,16 @@ Search.appendIndex(
             "summary": "Update\u0020the\u0020User\u0027s\u0020Brand\u0020object.",
             "url": "classes/EasyPost-Service-UserService.html#method_updateBrand"
         },                {
+            "fqsen": "\\EasyPost\\Service\\UserService\u003A\u003AallChildren\u0028\u0029",
+            "name": "allChildren",
+            "summary": "Retrieve\u0020all\u0020child\u0020users.",
+            "url": "classes/EasyPost-Service-UserService.html#method_allChildren"
+        },                {
+            "fqsen": "\\EasyPost\\Service\\UserService\u003A\u003AgetNextPageOfChildren\u0028\u0029",
+            "name": "getNextPageOfChildren",
+            "summary": "Retrieve\u0020the\u0020next\u0020page\u0020of\u0020child\u0020User\u0020collection",
+            "url": "classes/EasyPost-Service-UserService.html#method_getNextPageOfChildren"
+        },                {
             "fqsen": "\\EasyPost\\Service\\WebhookService",
             "name": "WebhookService",
             "summary": "Webhook\u0020service\u0020containing\u0020all\u0020the\u0020logic\u0020to\u0020make\u0020API\u0020calls.",
