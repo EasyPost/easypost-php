@@ -2,7 +2,7 @@
 
 ## Next Release
 
-- Add `allChildren` and `getNextPageOfChildren` methods to `betaUser` service
+- Add `allChildren` and `getNextPageOfChildren` methods to `user` service
 
 ## v7.0.0 (2023-12-01)
 

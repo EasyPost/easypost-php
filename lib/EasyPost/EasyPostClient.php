@@ -12,7 +12,6 @@ use EasyPost\Service\BaseService;
 use EasyPost\Service\BatchService;
 use EasyPost\Service\BetaRateService;
 use EasyPost\Service\BetaReferralCustomerService;
-use EasyPost\Service\BetaUserService;
 use EasyPost\Service\BillingService;
 use EasyPost\Service\CarrierAccountService;
 use EasyPost\Service\CarrierMetadataService;
@@ -44,7 +43,6 @@ use GuzzleHttp\Client;
  * @property BatchService $batch
  * @property BetaRateService $betaRate
  * @property BetaReferralCustomerService $betaReferralCustomer
- * @property BetaUserService $betaUser
  * @property BillingService $billing
  * @property CarrierAccountService $carrierAccount
  * @property CarrierMetadataService $carrierMetadata
@@ -116,7 +114,6 @@ class EasyPostClient extends BaseService
             'batch' => BatchService::class,
             'betaRate' => BetaRateService::class,
             'betaReferralCustomer' => BetaReferralCustomerService::class,
-            'betaUser' => BetaUserService::class,
             'billing' => BillingService::class,
             'carrierAccount' => CarrierAccountService::class,
             'carrierMetadata' => CarrierMetadataService::class,

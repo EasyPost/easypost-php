@@ -3,7 +3,9 @@
 namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
+use EasyPost\Exception\General\EndOfPaginationException;
 use EasyPost\User;
+use Exception;
 
 class UserTest extends \PHPUnit\Framework\TestCase
 {
@@ -71,6 +73,52 @@ class UserTest extends \PHPUnit\Framework\TestCase
 
         $this->assertInstanceOf(User::class, $user);
         $this->assertStringMatchesFormat('user_%s', $user->id);
+    }
+
+    /**
+     * Test retrieving all child users.
+     */
+    public function testAllChildren(): void
+    {
+        TestUtil::setupCassette('users/allChildren.yml');
+
+        $children = self::$client->user->allChildren([
+            'page_size' => Fixture::pageSize(),
+        ]);
+
+        $userArray = $children['children'];
+
+        $this->assertLessThanOrEqual($userArray, Fixture::pageSize());
+        $this->assertNotNull($children['has_more']);
+        $this->assertContainsOnlyInstancesOf(User::class, $userArray);
+    }
+
+    /**
+     * Test retrieving next page.
+     * @noinspection RedundantSuppression
+     * @throws Exception
+     */
+    public function testGetNextPageOfChildren(): void
+    {
+        TestUtil::setupCassette('users/getNextPageOfChildren.yml');
+
+        try {
+            $children = self::$client->user->allChildren([
+                'page_size' => Fixture::pageSize(),
+            ]);
+            $nextPage = self::$client->user->getNextPageOfChildren($children, Fixture::pageSize());
+
+            $firstIdOfFirstPage = $children['children'][0]->id;
+            $secondIdOfSecondPage = $nextPage['children'][0]->id;
+
+            $this->assertNotEquals($firstIdOfFirstPage, $secondIdOfSecondPage);
+        } catch (EndOfPaginationException $error) {
+            // There's no second page, that's not a failure
+            $this->assertTrue(true);
+        } catch (Exception $error) {
+            /** @noinspection PhpExceptionImmediatelyRethrownInspection */
+            throw $error;
+        }
     }
 
     /**
