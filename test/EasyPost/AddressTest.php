@@ -53,13 +53,20 @@ class AddressTest extends \PHPUnit\Framework\TestCase
         TestUtil::setupCassette('addresses/createVerify.yml');
 
         $addressData = Fixture::incorrectAddress();
-        $addressData['verify'] = true;
 
+        // Creating normally (without specifying "verify") will make the address, perform no verifications
         $address = self::$client->address->create($addressData);
 
         $this->assertInstanceOf(Address::class, $address);
-        $this->assertStringMatchesFormat('adr_%s', $address->id);
-        $this->assertEquals('417 MONTGOMERY ST FL 5', $address->street1);
+        $this->assertEmpty($address->verifications);
+
+        // Creating with verify would make the address and perform verifications
+        $addressData['verify'] = true;
+        $address = self::$client->address->create($addressData);
+
+        $this->assertInstanceOf(Address::class, $address);
+        $this->assertNotNull($address->verifications->delivery); /* @phpstan-ignore-line */
+        $this->assertNotNull($address->verifications->zip4); /* @phpstan-ignore-line */
     }
 
     /**
@@ -89,13 +96,20 @@ class AddressTest extends \PHPUnit\Framework\TestCase
         TestUtil::setupCassette('addresses/createVerifyArray.yml');
 
         $addressData = Fixture::incorrectAddress();
-        $addressData['verify'] = [true];
 
+        // Creating normally (without specifying "verify") will make the address, perform no verifications
         $address = self::$client->address->create($addressData);
 
         $this->assertInstanceOf(Address::class, $address);
-        $this->assertStringMatchesFormat('adr_%s', $address->id);
-        $this->assertEquals('417 MONTGOMERY ST FL 5', $address->street1);
+        $this->assertEmpty($address->verifications);
+
+        // Creating with verify would make the address and perform verifications
+        $addressData['verify'] = [true];
+        $address = self::$client->address->create($addressData);
+
+        $this->assertInstanceOf(Address::class, $address);
+        $this->assertNotNull($address->verifications->delivery); /* @phpstan-ignore-line */
+        $this->assertNotNull($address->verifications->zip4); /* @phpstan-ignore-line */
     }
 
     /**
@@ -165,13 +179,13 @@ class AddressTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('addresses/createAndVerify.yml');
 
-        $addressData = Fixture::incorrectAddress();
+        $addressData = Fixture::caAddress1();
 
         $address = self::$client->address->createAndVerify($addressData);
 
         $this->assertInstanceOf(Address::class, $address);
         $this->assertStringMatchesFormat('adr_%s', $address->id);
-        $this->assertEquals('417 MONTGOMERY ST FL 5', $address->street1);
+        $this->assertEquals('388 TOWNSEND ST APT 20', $address->street1);
     }
 
     /**
