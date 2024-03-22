@@ -166,6 +166,49 @@ class UserTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
+     * Test retrieving the authenticated user's paginated API keys.
+     */
+    public function testAuthenticatedUserPaginatedApiKeys()
+    {
+        TestUtil::setupCassette('users/authenticated_user_paginated_api_keys.yml');
+
+        $user = User::retrieve_me();
+
+        $apiKeys = $user->paginated_api_keys();
+
+        # print_r($apiKeys);
+
+        $this->assertNotNull($apiKeys['production']);
+        $this->assertNotNull($apiKeys['test']);
+
+        // TODO: When the output of this function is fixed, swap the tests for the below
+        // $this->assertContainsOnlyInstancesOf('\EasyPost\ApiKey', $apiKeys);
+    }
+
+    /**
+     * Test retrieving the authenticated user's paginated API keys.
+     */
+    public function testChildUserPaginatedApiKeys()
+    {
+        TestUtil::setupCassette('users/child_user_paginated_api_keys.yml');
+
+        $user = User::create([
+            'name' => 'Test User',
+        ]);
+        $childUser = User::retrieve($user->id);
+
+        $apiKeys = $childUser->paginated_api_keys();
+
+        $this->assertNotNull($apiKeys['production']);
+        $this->assertNotNull($apiKeys['test']);
+
+        // TODO: When the output of this function is fixed, swap the tests for the below
+        // $this->assertContainsOnlyInstancesOf('\EasyPost\ApiKey', $apiKeys);
+
+        $user->delete(); // Delete the user once done so we don't pollute with hundreds of child users
+    }
+
+    /**
      * Test updating the authenticated user's Brand.
      */
     public function testUpdateBrand()
