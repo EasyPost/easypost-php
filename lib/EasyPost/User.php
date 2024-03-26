@@ -140,10 +140,10 @@ class User extends EasypostResource
      */
     public function paginated_api_keys($params = null, $apiKey = null)
     {
-        $user_id = $this->id;
+        $userId = $this->id;
 
         $requestor = new Requestor($apiKey);
-        $url = '/users/' . $user_id . '/api_keys';
+        $url = '/users/' . $userId . '/api_keys';
         list($response, $apiKey) = $requestor->request('get', $url, $params, true, true);
         return Util::convertToEasyPostObject($response, $apiKey);
     }

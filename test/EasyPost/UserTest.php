@@ -172,17 +172,17 @@ class UserTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('users/beta_user_paginated_api_keys.yml');
 
-        $page_size = 1;
+        $pageSize = 1;
 
         // Have to test with "me" user due to server-side user restrictions
         $user = User::retrieve_me();
 
         $apiKeys = $user->paginated_api_keys([
-            'page_size' => $page_size,
+            'page_size' => $pageSize,
         ]);
 
         $this->assertNotNull($apiKeys['api_keys']);
-        $this->assertCount($page_size, $apiKeys['api_keys']);
+        $this->assertCount($pageSize, $apiKeys['api_keys']);
         $this->assertNotNull($apiKeys['has_more']);
         $this->assertArrayHasKey('active', $apiKeys['api_keys'][0]);
         $this->assertArrayHasKey('key', $apiKeys['api_keys'][0]);
@@ -192,7 +192,7 @@ class UserTest extends \PHPUnit\Framework\TestCase
         if ($apiKeys['has_more']) {
             $firstId = $apiKeys['api_keys'][0]['id'];
             $apiKeys = $user->paginated_api_keys([
-                'page_size' => $page_size,
+                'page_size' => $pageSize,
                 'after_id' => $firstId,
             ]);
 
