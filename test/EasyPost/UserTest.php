@@ -188,24 +188,20 @@ class UserTest extends \PHPUnit\Framework\TestCase
     /**
      * Test retrieving the authenticated user's paginated API keys.
      */
-    public function testChildUserPaginatedApiKeys()
+    public function testBetaUserPaginatedApiKeys()
     {
-        TestUtil::setupCassette('users/child_user_paginated_api_keys.yml');
+        TestUtil::setupCassette('users/beta_user_paginated_api_keys.yml');
 
-        $user = User::create([
-            'name' => 'Test User',
-        ]);
-        $childUser = User::retrieve($user->id);
+        // Have to test with "me" user due to server-side user restrictions
+        $user = User::retrieve_me();
 
-        $apiKeys = $childUser->paginated_api_keys();
+        $apiKeys = $user->paginated_api_keys();
 
-        $this->assertNotNull($apiKeys['production']);
-        $this->assertNotNull($apiKeys['test']);
-
-        // TODO: When the output of this function is fixed, swap the tests for the below
-        // $this->assertContainsOnlyInstancesOf('\EasyPost\ApiKey', $apiKeys);
-
-        $user->delete(); // Delete the user once done so we don't pollute with hundreds of child users
+        $this->assertNotNull($apiKeys['api_keys']);
+        $this->assertNotNull($apiKeys['has_more']);
+        // each key in the "api_keys" array should have an "active" boolean and a "key" string
+        $this->assertArrayHasKey('active', $apiKeys['api_keys'][0]);
+        $this->assertArrayHasKey('key', $apiKeys['api_keys'][0]);
     }
 
     /**
