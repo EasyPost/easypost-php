@@ -166,42 +166,40 @@ class UserTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test retrieving the authenticated user's paginated API keys.
-     */
-    public function testAuthenticatedUserPaginatedApiKeys()
-    {
-        TestUtil::setupCassette('users/authenticated_user_paginated_api_keys.yml');
-
-        $user = User::retrieve_me();
-
-        $apiKeys = $user->paginated_api_keys();
-
-        # print_r($apiKeys);
-
-        $this->assertNotNull($apiKeys['production']);
-        $this->assertNotNull($apiKeys['test']);
-
-        // TODO: When the output of this function is fixed, swap the tests for the below
-        // $this->assertContainsOnlyInstancesOf('\EasyPost\ApiKey', $apiKeys);
-    }
-
-    /**
-     * Test retrieving the authenticated user's paginated API keys.
+     * Test retrieving a user's paginated API keys.
      */
     public function testBetaUserPaginatedApiKeys()
     {
         TestUtil::setupCassette('users/beta_user_paginated_api_keys.yml');
 
+        $page_size = 1;
+
         // Have to test with "me" user due to server-side user restrictions
         $user = User::retrieve_me();
 
-        $apiKeys = $user->paginated_api_keys();
+        $apiKeys = $user->paginated_api_keys([
+            'page_size' => $page_size,
+        ]);
 
         $this->assertNotNull($apiKeys['api_keys']);
+        $this->assertCount($page_size, $apiKeys['api_keys']);
         $this->assertNotNull($apiKeys['has_more']);
-        // each key in the "api_keys" array should have an "active" boolean and a "key" string
         $this->assertArrayHasKey('active', $apiKeys['api_keys'][0]);
         $this->assertArrayHasKey('key', $apiKeys['api_keys'][0]);
+        $this->assertArrayHasKey('id', $apiKeys['api_keys'][0]);
+
+        // Retrieve the next page of API keys if there are more
+        if ($apiKeys['has_more']) {
+            $firstId = $apiKeys['api_keys'][0]['id'];
+            $apiKeys = $user->paginated_api_keys([
+                'page_size' => $page_size,
+                'after_id' => $firstId,
+            ]);
+
+            $this->assertNotNull($apiKeys['api_keys']);
+            // Should have gotten a different page of API keys
+            $this->assertNotEquals($firstId, $apiKeys['api_keys'][0]['id']);
+        }
     }
 
     /**

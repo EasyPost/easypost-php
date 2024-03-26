@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Next Release
+
+- [ADDED] Beta `paginated_api_keys` functionality to the `User` class
+  - Retrieves a paginated list of API keys for the authenticated user, versus `api_keys`, which returns an unpaginated list
+
 ## v5.8.0 (2022-12-01)
 
 - [ADDED] Carrier account creation routes requests correctly for carriers that require custom workflows

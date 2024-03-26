@@ -138,13 +138,13 @@ class User extends EasypostResource
      *
      * @return mixed A paginated list of API keys for the specified user.
      */
-    public function paginated_api_keys()
+    public function paginated_api_keys($params = null, $apiKey = null)
     {
         $user_id = $this->id;
 
-        $requestor = new Requestor();
+        $requestor = new Requestor($apiKey);
         $url = '/users/' . $user_id . '/api_keys';
-        list($response, $apiKey) = $requestor->request('get', $url, null, true, true);
+        list($response, $apiKey) = $requestor->request('get', $url, $params, true, true);
         return Util::convertToEasyPostObject($response, $apiKey);
     }
 
