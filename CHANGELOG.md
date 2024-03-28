@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Next Release
+## v5.9.0 (2024-03-28)
 
 - [ADDED] Beta `paginated_api_keys` functionality to the `User` class
   - Retrieves a paginated list of API keys for the authenticated user, versus `api_keys`, which returns an unpaginated list
