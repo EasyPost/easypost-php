@@ -134,7 +134,7 @@ class User extends EasypostResource
     /**
      * Retrieve a paginated list of all API keys for the specified user.
      *
-     * NOTE: This endpoint is in beta and subject to change.
+     * NOTE: This endpoint is in beta, locked to only approved users, and subject to change.
      *
      * @return mixed A paginated list of API keys for the specified user.
      */
