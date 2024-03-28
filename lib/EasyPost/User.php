@@ -99,7 +99,9 @@ class User extends EasypostResource
     /**
      * Retrieve a list of API keys (works for the authenticated user or a child user).
      *
-     * @param string $apiKey
+     * NOTE: This function retrieves all API keys for the authenticated user and its children before filtering them locally.
+     * For users with a large number of children, this may time out. Use `paginated_api_keys` instead.
+     *
      * @return array
      */
     public function api_keys()
@@ -127,6 +129,23 @@ class User extends EasypostResource
         }
 
         return $result;
+    }
+
+    /**
+     * Retrieve a paginated list of all API keys for the specified user.
+     *
+     * NOTE: This endpoint is in beta and subject to change.
+     *
+     * @return mixed A paginated list of API keys for the specified user.
+     */
+    public function paginated_api_keys($params = null, $apiKey = null)
+    {
+        $userId = $this->id;
+
+        $requestor = new Requestor($apiKey);
+        $url = '/users/' . $userId . '/api_keys';
+        list($response, $apiKey) = $requestor->request('get', $url, $params, true, true);
+        return Util::convertToEasyPostObject($response, $apiKey);
     }
 
     /**

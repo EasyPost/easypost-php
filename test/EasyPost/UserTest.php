@@ -166,6 +166,43 @@ class UserTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
+     * Test retrieving a user's paginated API keys.
+     */
+    public function testBetaUserPaginatedApiKeys()
+    {
+        TestUtil::setupCassette('users/beta_user_paginated_api_keys.yml');
+
+        $pageSize = 1;
+
+        // Have to test with "me" user due to server-side user restrictions
+        $user = User::retrieve_me();
+
+        $apiKeys = $user->paginated_api_keys([
+            'page_size' => $pageSize,
+        ]);
+
+        $this->assertNotNull($apiKeys['api_keys']);
+        $this->assertCount($pageSize, $apiKeys['api_keys']);
+        $this->assertNotNull($apiKeys['has_more']);
+        $this->assertArrayHasKey('active', $apiKeys['api_keys'][0]);
+        $this->assertArrayHasKey('key', $apiKeys['api_keys'][0]);
+        $this->assertArrayHasKey('id', $apiKeys['api_keys'][0]);
+
+        // Retrieve the next page of API keys if there are more
+        if ($apiKeys['has_more']) {
+            $firstId = $apiKeys['api_keys'][0]['id'];
+            $apiKeys = $user->paginated_api_keys([
+                'page_size' => $pageSize,
+                'after_id' => $firstId,
+            ]);
+
+            $this->assertNotNull($apiKeys['api_keys']);
+            // Should have gotten a different page of API keys
+            $this->assertNotEquals($firstId, $apiKeys['api_keys'][0]['id']);
+        }
+    }
+
+    /**
      * Test updating the authenticated user's Brand.
      */
     public function testUpdateBrand()
