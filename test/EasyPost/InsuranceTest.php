@@ -109,4 +109,22 @@ class InsuranceTest extends \PHPUnit\Framework\TestCase
             throw $error;
         }
     }
+
+    /**
+     * Test refunding an standalone insurance.
+     */
+    public function testRefund(): void
+    {
+        TestUtil::setupCassette('insurance/refund.yml');
+
+        $insuranceData = Fixture::basicInsurance();
+        $insuranceData['tracking_code'] = 'EZ1000000001';
+
+        $insurance = self::$client->insurance->create($insuranceData);
+        $cancelledInsurance = self::$client->insurance->refund($insurance->id);
+
+        $this->assertInstanceOf(Insurance::class, $cancelledInsurance);
+        $this->assertStringMatchesFormat('ins_%s', $cancelledInsurance->id);
+        $this->assertEquals('cancelled', $cancelledInsurance->status);
+    }
 }
