@@ -69,8 +69,7 @@ class InsuranceService extends BaseService
      */
     public function refund(string $id): mixed
     {
-        // TODO: remove beta when endpiont is in GA.
-        $response = Requestor::request($this->client, 'post', "/insurances/{$id}/refund", null, true);
+        $response = Requestor::request($this->client, 'post', "/insurances/{$id}/refund");
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
