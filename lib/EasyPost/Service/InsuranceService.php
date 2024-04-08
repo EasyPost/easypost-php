@@ -2,6 +2,9 @@
 
 namespace EasyPost\Service;
 
+use EasyPost\Http\Requestor;
+use EasyPost\Util\InternalUtil;
+
 /**
  * Insurance service containing all the logic to make API calls.
  */
@@ -56,5 +59,18 @@ class InsuranceService extends BaseService
         }
 
         return self::createResource(self::serviceModelClassName(self::class), $params);
+    }
+
+    /**
+     * Refund an insurance object.
+     *
+     * @param string $id
+     * @return mixed
+     */
+    public function refund(string $id): mixed
+    {
+        $response = Requestor::request($this->client, 'post', "/insurances/{$id}/refund");
+
+        return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
 }

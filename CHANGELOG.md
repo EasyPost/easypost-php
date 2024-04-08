@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Adds `refund` function in Insurance service for requesting a refund for a standalone insurance
+
 ## v7.1.0 (2024-01-08)
 
 - Add `allChildren` and `getNextPageOfChildren` methods to `user` service
