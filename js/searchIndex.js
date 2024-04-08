@@ -1141,6 +1141,11 @@ Search.appendIndex(
             "summary": "Create\u0020an\u0020insurance\u0020object.",
             "url": "classes/EasyPost-Service-InsuranceService.html#method_create"
         },                {
+            "fqsen": "\\EasyPost\\Service\\InsuranceService\u003A\u003Arefund\u0028\u0029",
+            "name": "refund",
+            "summary": "Refund\u0020an\u0020insurance\u0020object.",
+            "url": "classes/EasyPost-Service-InsuranceService.html#method_refund"
+        },                {
             "fqsen": "\\EasyPost\\Service\\OrderService",
             "name": "OrderService",
             "summary": "Order\u0020service\u0020containing\u0020all\u0020the\u0020logic\u0020to\u0020make\u0020API\u0020calls.",
