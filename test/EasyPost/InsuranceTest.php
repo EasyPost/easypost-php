@@ -126,5 +126,6 @@ class InsuranceTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf(Insurance::class, $cancelledInsurance);
         $this->assertStringMatchesFormat('ins_%s', $cancelledInsurance->id);
         $this->assertEquals('cancelled', $cancelledInsurance->status);
+        $this->assertEquals('Insurance was cancelled by the user.', $cancelledInsurance->messages[0]);
     }
 }
