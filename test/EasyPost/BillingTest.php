@@ -65,7 +65,7 @@ class BillingTest extends \PHPUnit\Framework\TestCase
                 ),
                 new MockRequestResponseInfo(
                     200,
-                    '{"id": "summary_123", "primary_payment_method": {"id": "card_123", "last4": "1234"}, "secondary_payment_method": {"id": "bank_123", "bank_name": "Mock Bank"}}' // phpcs:ignore
+                    '{"id": "summary_123", "primary_payment_method": {"id": "pm_123", "object": "CreditCard", "last4": "1234"}, "secondary_payment_method": {"id": "pm_123", "object": "BankAccount", "bank_name": "Mock Bank"}}' // phpcs:ignore
                 )
             ),
         );
@@ -270,6 +270,88 @@ class BillingTest extends \PHPUnit\Framework\TestCase
             $this->fail('Exception not thrown when we expected one');
         } catch (\Exception $exception) {
             $this->assertTrue(true);
+        }
+    }
+
+    /**
+     * Test determining the payment method type by object type
+     */
+    public function testGetPaymentMethodInfoByObjectType(): void
+    {
+        $mockingUtility = new MockingUtility(
+            new MockRequest(
+                new MockRequestMatchRule(
+                    'get',
+                    '/v2\\/payment_methods$/'
+                ),
+                new MockRequestResponseInfo(
+                    200,
+                    '{"id": "summary_123", "primary_payment_method": {"id": "pm_123", "object": "CreditCard", "last4": "1234"}, "secondary_payment_method": {"id": "pm_123", "object": "BankAccount", "bank_name": "Mock Bank"}}' // phpcs:ignore
+                )
+            ),
+            new MockRequest(
+                new MockRequestMatchRule(
+                    'delete',
+                    '/v2\\/credit_cards\\/pm_123$/'
+                ),
+                new MockRequestResponseInfo(
+                    200,
+                    '{}'
+                )
+            ),
+        );
+        $client = self::getClient($mockingUtility);
+
+        // getPaymentInfo is private, but we can test it by attempting to delete a payment method
+        // only a delete request to /v2/credit_cards/pm_123 is mocked
+        // if the delete function works, it's because it found the correct payment method type
+        try {
+            $client->billing->deletePaymentMethod('primary');
+
+            $this->assertTrue(true);
+        } catch (\Exception $exception) {
+            $this->fail('Exception thrown when we expected no error');
+        }
+    }
+
+    /**
+     * Test determining the payment method type by legacy ID prefix
+     */
+    public function testGetPaymentMethodInfoByLegacyIdPrefix(): void
+    {
+        $mockingUtility = new MockingUtility(
+            new MockRequest(
+                new MockRequestMatchRule(
+                    'get',
+                    '/v2\\/payment_methods$/'
+                ),
+                new MockRequestResponseInfo(
+                    200,
+                    '{"id": "summary_123", "primary_payment_method": {"id": "card_123", "object": null, "last4": "1234"}, "secondary_payment_method": {"id": "bank_123", "object": null, "bank_name": "Mock Bank"}}' // phpcs:ignore
+                )
+            ),
+            new MockRequest(
+                new MockRequestMatchRule(
+                    'delete',
+                    '/v2\\/bank_accounts\\/bank_123$/'
+                ),
+                new MockRequestResponseInfo(
+                    200,
+                    '{}'
+                )
+            ),
+        );
+        $client = self::getClient($mockingUtility);
+
+        // getPaymentInfo is private, but we can test it by attempting to delete a payment method
+        // only a delete request to /v2/bank_accounts/bank_123 is mocked
+        // if the delete function works, it's because it found the correct payment method type
+        try {
+            $client->billing->deletePaymentMethod('secondary');
+
+            $this->assertTrue(true);
+        } catch (\Exception $exception) {
+            $this->fail('Exception thrown when we expected no error');
         }
     }
 }
