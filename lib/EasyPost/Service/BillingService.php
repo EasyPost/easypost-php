@@ -82,9 +82,10 @@ class BillingService extends BaseService
 
         if ($paymentMethodToUse != null && $paymentMethods->$paymentMethodToUse->id != null) {
             $paymentMethodId = $paymentMethods->$paymentMethodToUse->id;
-            if (strpos($paymentMethodId, 'card_') === 0) {
+            $paymentMethodObjectType = $paymentMethods->$paymentMethodToUse->object;
+            if ($paymentMethodObjectType == 'CreditCard') {
                 $endpoint = '/credit_cards';
-            } else if (strpos($paymentMethodId, 'bank_') === 0) {
+            } else if ($paymentMethodObjectType == 'BankAccount') {
                 $endpoint = '/bank_accounts';
             } else {
                 throw new PaymentException(Constants::INVALID_PAYMENT_METHOD_ERROR);
