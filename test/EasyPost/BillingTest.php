@@ -313,45 +313,4 @@ class BillingTest extends \PHPUnit\Framework\TestCase
             $this->fail('Exception thrown when we expected no error');
         }
     }
-
-    /**
-     * Test determining the payment method type by legacy ID prefix
-     */
-    public function testGetPaymentMethodInfoByLegacyIdPrefix(): void
-    {
-        $mockingUtility = new MockingUtility(
-            new MockRequest(
-                new MockRequestMatchRule(
-                    'get',
-                    '/v2\\/payment_methods$/'
-                ),
-                new MockRequestResponseInfo(
-                    200,
-                    '{"id": "summary_123", "primary_payment_method": {"id": "card_123", "object": null, "last4": "1234"}, "secondary_payment_method": {"id": "bank_123", "object": null, "bank_name": "Mock Bank"}}' // phpcs:ignore
-                )
-            ),
-            new MockRequest(
-                new MockRequestMatchRule(
-                    'delete',
-                    '/v2\\/bank_accounts\\/bank_123$/'
-                ),
-                new MockRequestResponseInfo(
-                    200,
-                    '{}'
-                )
-            ),
-        );
-        $client = self::getClient($mockingUtility);
-
-        // getPaymentInfo is private, but we can test it by attempting to delete a payment method
-        // only a delete request to /v2/bank_accounts/bank_123 is mocked
-        // if the delete function works, it's because it found the correct payment method type
-        try {
-            $client->billing->deletePaymentMethod('secondary');
-
-            $this->assertTrue(true);
-        } catch (\Exception $exception) {
-            $this->fail('Exception thrown when we expected no error');
-        }
-    }
 }
