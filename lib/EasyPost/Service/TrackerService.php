@@ -70,6 +70,7 @@ class TrackerService extends BaseService
      *
      * @param mixed $params
      * @return void
+     * @deprecated
      */
     public function createList(mixed $params = null): void
     {
