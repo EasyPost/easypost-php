@@ -86,7 +86,7 @@ You can also unsubscribe your functions in a similar manner by using the `unsubs
 
 ## Documentation
 
-API documentation can be found at: <https://easypost.com/docs/api>.
+API documentation can be found at: <https://docs.easypost.com>.
 
 Library documentation can be found on the web at: <https://easypost.github.io/easypost-php/> or by building them locally via the `make docs` command.
 
