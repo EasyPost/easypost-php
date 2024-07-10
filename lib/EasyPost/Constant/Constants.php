@@ -20,7 +20,7 @@ abstract class Constants
         'FedexSmartpostAccount'
     ];
 
-    const UPS_ACCOUNT_TYPES_WITH_CUSTOM_WORKFLOWS = [
+    const UPS_OAUTH_ACCOUNT_TYPES = [
         'UpsAccount',
         'UpsMailInnovationsAccount',
         'UpsSurepostAccount'

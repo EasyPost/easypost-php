@@ -45,14 +45,14 @@ class CarrierAccountService extends BaseService
     {
         $carrierAccount = self::retrieve($id);
         $carrierAccountType = $carrierAccount['type'];
-        if (in_array($carrierAccountType, Constants::UPS_ACCOUNT_TYPES_WITH_CUSTOM_WORKFLOWS, true)) {
-            $updateUrl = 'upsOauthRegistration';
+        if (in_array($carrierAccountType, Constants::UPS_OAUTH_ACCOUNT_TYPES, true)) {
+            $className = 'UpsOauthRegistration';
             $params = [self::selectTopLayerKey($carrierAccountType) => $params];
         } else {
-            $updateUrl = 'carrierAccount';
+            $className = 'CarrierAccount';
             $params = [self::selectTopLayerKey($carrierAccountType) => $params];
         }
-        return self::updateResource($updateUrl, $id, $params);
+        return self::updateResource($className, $id, $params);
     }
 
     /**
@@ -111,7 +111,7 @@ class CarrierAccountService extends BaseService
     {
         if (in_array($carrierAccountType, Constants::CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_WORKFLOWS, true)) {
             return '/carrier_accounts/register';
-        } else if (in_array($carrierAccountType, Constants::UPS_ACCOUNT_TYPES_WITH_CUSTOM_WORKFLOWS, true)) {
+        } else if (in_array($carrierAccountType, Constants::UPS_OAUTH_ACCOUNT_TYPES, true)) {
             return '/ups_oauth_registrations';
         }
 
@@ -126,7 +126,7 @@ class CarrierAccountService extends BaseService
      */
     private function selectTopLayerKey(string $carrierAccountType): string
     {
-        return in_array($carrierAccountType, Constants::UPS_ACCOUNT_TYPES_WITH_CUSTOM_WORKFLOWS, true)
+        return in_array($carrierAccountType, Constants::UPS_OAUTH_ACCOUNT_TYPES, true)
             ? 'ups_oauth_registrations'
             : 'carrier_account';
     }
