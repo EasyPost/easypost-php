@@ -76,6 +76,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/EasyPost-Constant-Constants.html#constant_CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_WORKFLOWS"
         },                {
+            "fqsen": "\\EasyPost\\Constant\\Constants\u003A\u003AUPS_OAUTH_ACCOUNT_TYPES",
+            "name": "UPS_OAUTH_ACCOUNT_TYPES",
+            "summary": "",
+            "url": "classes/EasyPost-Constant-Constants.html#constant_UPS_OAUTH_ACCOUNT_TYPES"
+        },                {
             "fqsen": "\\EasyPost\\Constant\\Constants\u003A\u003AARRAY_REQUIRED_ERROR",
             "name": "ARRAY_REQUIRED_ERROR",
             "summary": "",
@@ -1020,6 +1025,11 @@ Search.appendIndex(
             "name": "selectCarrierAccountCreationEndpoint",
             "summary": "Select\u0020the\u0020endpoint\u0020for\u0020creating\u0020a\u0020carrier\u0020account\u0020based\u0020on\u0020the\u0020type\u0020of\u0020carrier\u0020account.",
             "url": "classes/EasyPost-Service-CarrierAccountService.html#method_selectCarrierAccountCreationEndpoint"
+        },                {
+            "fqsen": "\\EasyPost\\Service\\CarrierAccountService\u003A\u003AselectTopLayerKey\u0028\u0029",
+            "name": "selectTopLayerKey",
+            "summary": "Select\u0020the\u0020top\u002Dkey\u0020layer\u0020for\u0020creating\/updating\u0020a\u0020carrier\u0020account\u0020based\u0020on\u0020the\u0020type\u0020of\u0020carrier\u0020account.",
+            "url": "classes/EasyPost-Service-CarrierAccountService.html#method_selectTopLayerKey"
         },                {
             "fqsen": "\\EasyPost\\Service\\CarrierMetadataService",
             "name": "CarrierMetadataService",
