@@ -23,8 +23,13 @@ docs:
 	curl -LJs https://github.com/phpDocumentor/phpDocumentor/releases/download/v3.3.1/phpDocumentor.phar -o phpDocumentor.phar
 	php phpDocumentor.phar -d lib -t docs
 
+## init-examples-submodule - Initialize the examples submodule
+init-examples-submodule:
+	git submodule init
+	git submodule update
+
 ## install - Install dependencies
-install: | update-examples-submodule
+install: | init-examples-submodule
 	composer install --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
 ## lint - Lint the project

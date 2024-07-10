@@ -43,7 +43,16 @@ class CarrierAccountService extends BaseService
      */
     public function update(string $id, mixed $params): mixed
     {
-        return self::updateResource(self::serviceModelClassName(self::class), $id, $params);
+        $carrierAccount = self::retrieve($id);
+        $carrierAccountType = $carrierAccount['type'];
+        if (in_array($carrierAccountType, Constants::UPS_OAUTH_ACCOUNT_TYPES, true)) {
+            $className = 'UpsOauthRegistration';
+            $params = [self::selectTopLayerKey($carrierAccountType) => $params];
+        } else {
+            $className = 'CarrierAccount';
+            $params = [self::selectTopLayerKey($carrierAccountType) => $params];
+        }
+        return self::updateResource($className, $id, $params);
     }
 
     /**
@@ -67,17 +76,13 @@ class CarrierAccountService extends BaseService
      */
     public function create(mixed $params = null): mixed
     {
-        if (!isset($params['carrier_account']) || !is_array($params['carrier_account'])) {
-            $clone = $params;
-            unset($params);
-            $params['carrier_account'] = $clone;
-        }
-
-        if (!isset($params['carrier_account']['type'])) {
+        if (!isset($params['type'])) {
             throw new MissingParameterException(sprintf(Constants::MISSING_PARAMETER_ERROR, 'type'));
         }
 
-        $url = self::selectCarrierAccountCreationEndpoint($params['carrier_account']['type']);
+        $carrierAccountType = $params['type'];
+        $params = [self::selectTopLayerKey($carrierAccountType) => $params];
+        $url = self::selectCarrierAccountCreationEndpoint($carrierAccountType);
         $response = Requestor::request($this->client, 'post', $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
@@ -106,8 +111,23 @@ class CarrierAccountService extends BaseService
     {
         if (in_array($carrierAccountType, Constants::CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_WORKFLOWS, true)) {
             return '/carrier_accounts/register';
+        } else if (in_array($carrierAccountType, Constants::UPS_OAUTH_ACCOUNT_TYPES, true)) {
+            return '/ups_oauth_registrations';
         }
 
         return '/carrier_accounts';
+    }
+
+    /**
+     * Select the top-key layer for creating/updating a carrier account based on the type of carrier account.
+     *
+     * @param string $carrierAccountType The type of carrier account to create.
+     * @return string The top-layer key for creating/updating a carrier account.
+     */
+    private function selectTopLayerKey(string $carrierAccountType): string
+    {
+        return in_array($carrierAccountType, Constants::UPS_OAUTH_ACCOUNT_TYPES, true)
+            ? 'ups_oauth_registrations'
+            : 'carrier_account';
     }
 }
