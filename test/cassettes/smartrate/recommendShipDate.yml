@@ -1,0 +1,81 @@
+
+-
+    request:
+        method: POST
+        url: 'https://api.easypost.com/v2/smartrate/deliver_on'
+        headers:
+            Host: api.easypost.com
+            Expect: ''
+            Accept-Encoding: ''
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+        body: '{"from_zip":"94107","to_zip":"90277","desired_delivery_date":"2024-07-16","carriers":["USPS"]}'
+    response:
+        status:
+            code: 200
+            message: OK
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: b8e53c21669051a4e7996dc6003bb7d5
+            cache-control: 'private, no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '1695'
+            x-runtime: '0.073877'
+            x-node: bigweb43nuq
+            x-version-label: easypost-202407111940-3cb16a3462-master
+            x-backend: easypost
+            x-canary: direct
+            x-proxied: ['intlb3nuq fa152d4755', 'extlb2nuq fa152d4755']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"carriers_without_tint_estimates":null,"desired_delivery_date":"2024-07-16","from_zip":"94107","results":[{"carrier":"USPS","easypost_time_in_transit_data":{"days_in_transit":{"percentile_50":2,"percentile_75":2,"percentile_85":2,"percentile_90":3,"percentile_95":3,"percentile_97":4,"percentile_99":7},"delivery_date_confidence":0.47,"estimated_transit_days":1,"ship_on_date":"2024-07-15"},"service":"express"},{"carrier":"USPS","easypost_time_in_transit_data":{"days_in_transit":{"percentile_50":2,"percentile_75":3,"percentile_85":4,"percentile_90":4,"percentile_95":5,"percentile_97":5,"percentile_99":9},"delivery_date_confidence":0.21,"estimated_transit_days":3,"ship_on_date":"2024-07-13"},"service":"groundadvantage"},{"carrier":"USPS","easypost_time_in_transit_data":{"days_in_transit":{"percentile_50":2,"percentile_75":3,"percentile_85":4,"percentile_90":4,"percentile_95":5,"percentile_97":6,"percentile_99":9},"delivery_date_confidence":0.25,"estimated_transit_days":3,"ship_on_date":"2024-07-13"},"service":"librarymail"},{"carrier":"USPS","easypost_time_in_transit_data":{"days_in_transit":{"percentile_50":2,"percentile_75":3,"percentile_85":3,"percentile_90":4,"percentile_95":5,"percentile_97":5,"percentile_99":7},"delivery_date_confidence":0.24,"estimated_transit_days":3,"ship_on_date":"2024-07-13"},"service":"mediamail"},{"carrier":"USPS","easypost_time_in_transit_data":{"days_in_transit":{"percentile_50":2,"percentile_75":3,"percentile_85":4,"percentile_90":4,"percentile_95":5,"percentile_97":5,"percentile_99":7},"delivery_date_confidence":0.19,"estimated_transit_days":3,"ship_on_date":"2024-07-13"},"service":"priority"}],"saturday_delivery":null,"to_zip":"90277"}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/smartrate/deliver_on'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 707
+            request_size: 412
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.515128
+            namelookup_time: 0.036003
+            connect_time: 0.170411
+            pretransfer_time: 0.309447
+            size_upload: 94.0
+            size_download: 1695.0
+            speed_download: 3290.0
+            speed_upload: 182.0
+            download_content_length: 1695.0
+            upload_content_length: 94.0
+            starttransfer_time: 0.515087
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.62.110.130
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 10.130.6.29
+            local_port: 61909
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: HTTPS
+            appconnect_time_us: 309372
+            connect_time_us: 170411
+            namelookup_time_us: 36003
+            pretransfer_time_us: 309447
+            redirect_time_us: 0
+            starttransfer_time_us: 515087
+            total_time_us: 515128
+            effective_method: POST
+            capath: ''
+            cainfo: ''
+    index: 0
