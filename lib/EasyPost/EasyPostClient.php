@@ -133,7 +133,7 @@ class EasyPostClient extends BaseService
             'report' => ReportService::class,
             'scanForm' => ScanFormService::class,
             'shipment' => ShipmentService::class,
-            'smartrate' => SmartRateService::class,
+            'smartRate' => SmartRateService::class,
             'tracker' => TrackerService::class,
             'user' => UserService::class,
             'webhook' => WebhookService::class,

@@ -41,7 +41,7 @@ class SmartRateTest extends \PHPUnit\Framework\TestCase
             'carriers' => [Fixture::usps()],
         ];
 
-        $rates = self::$client->smartrate->recommendShipDate($params);
+        $rates = self::$client->smartRate->recommendShipDate($params);
 
         foreach ($rates['results'] as $entry) {
             $this->assertTrue(
@@ -65,7 +65,7 @@ class SmartRateTest extends \PHPUnit\Framework\TestCase
             'carriers' => [Fixture::usps()],
         ];
 
-        $rates = self::$client->smartrate->estimateDeliveryDate($params);
+        $rates = self::$client->smartRate->estimateDeliveryDate($params);
 
         foreach ($rates['results'] as $entry) {
             $this->assertTrue(

@@ -240,7 +240,7 @@ class ShipmentService extends BaseService
      * based on a specific desired delivery date.
      *
      * @param string $id
-     * @param string $plannedShipDate
+     * @param string $desiredDeliveryDate
      * @return mixed
      */
     public function recommendShipDate(string $id, string $desiredDeliveryDate): mixed
