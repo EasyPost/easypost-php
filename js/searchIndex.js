@@ -1436,6 +1436,26 @@ Search.appendIndex(
             "summary": "Retrieves\u0020the\u0020estimated\u0020delivery\u0020date\u0020of\u0020each\u0020Rate\u0020via\u0020SmartRate.",
             "url": "classes/EasyPost-Service-ShipmentService.html#method_retrieveEstimatedDeliveryDate"
         },                {
+            "fqsen": "\\EasyPost\\Service\\ShipmentService\u003A\u003ArecommendShipDate\u0028\u0029",
+            "name": "recommendShipDate",
+            "summary": "Retrieve\u0020a\u0020recommended\u0020ship\u0020date\u0020for\u0020an\u0020existing\u0020Shipment\u0020via\u0020the\u0020Precision\u0020Shipping\u0020API,\nbased\u0020on\u0020a\u0020specific\u0020desired\u0020delivery\u0020date.",
+            "url": "classes/EasyPost-Service-ShipmentService.html#method_recommendShipDate"
+        },                {
+            "fqsen": "\\EasyPost\\Service\\SmartRateService",
+            "name": "SmartRateService",
+            "summary": "SmartRate\u0020service\u0020containing\u0020all\u0020the\u0020details\u0020of\u0020SmartRate\u0020requests.",
+            "url": "classes/EasyPost-Service-SmartRateService.html"
+        },                {
+            "fqsen": "\\EasyPost\\Service\\SmartRateService\u003A\u003ArecommendShipDate\u0028\u0029",
+            "name": "recommendShipDate",
+            "summary": "Retrieve\u0020a\u0020recommended\u0020ship\u0020date\u0020for\u0020each\u0020carrier\u002Dservice\u0020level\u0020combination\u0020via\u0020the\nSmart\u0020Deliver\u0020On\u0020API,\u0020based\u0020on\u0020a\u0020specific\u0020delivery\u0020date\u0020and\u0020origin\u002Ddestination\u0020postal\u0020code\u0020pair.",
+            "url": "classes/EasyPost-Service-SmartRateService.html#method_recommendShipDate"
+        },                {
+            "fqsen": "\\EasyPost\\Service\\SmartRateService\u003A\u003AestimateDeliveryDate\u0028\u0029",
+            "name": "estimateDeliveryDate",
+            "summary": "Retrieve\u0020the\u0020estimated\u0020delivery\u0020date\u0020of\u0020each\u0020carrier\u002Dservice\u0020level\u0020combination\u0020via\u0020the\nSmart\u0020Deliver\u0020By\u0020API,\u0020based\u0020on\u0020a\u0020specific\u0020ship\u0020date\u0020and\u0020origin\u002Ddestination\u0020postal\u0020code\u0020pair.",
+            "url": "classes/EasyPost-Service-SmartRateService.html#method_estimateDeliveryDate"
+        },                {
             "fqsen": "\\EasyPost\\Service\\TrackerService",
             "name": "TrackerService",
             "summary": "Tracker\u0020service\u0020containing\u0020all\u0020the\u0020logic\u0020to\u0020make\u0020API\u0020calls.",
