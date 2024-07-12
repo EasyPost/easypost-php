@@ -516,4 +516,23 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
             $this->assertNotNull($entry->easypost_time_in_transit_data);
         }
     }
+
+    /**
+     * Tests that we retrieve the recommend ship date of a Shipment.
+     */
+    public function testRetrieveRecommendDate(): void
+    {
+        TestUtil::setupCassette('shipments/recommendShipDate.yml');
+
+        $shipment = self::$client->shipment->create(Fixture::basicShipment());
+
+        $rates = self::$client->shipment->recommendShipDate(
+            $shipment->id,
+            Fixture::desiredDeliveryDate(),
+        );
+
+        foreach ($rates as $entry) {
+            $this->assertNotNull($entry->easypost_time_in_transit_data);
+        }
+    }
 }

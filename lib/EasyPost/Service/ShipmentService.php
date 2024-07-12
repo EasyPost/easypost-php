@@ -234,4 +234,24 @@ class ShipmentService extends BaseService
 
         return InternalUtil::convertToEasyPostObject($this->client, $response['rates'] ?? []);
     }
+
+    /**
+     * Retrieve a recommended ship date for an existing Shipment via the Precision Shipping API,
+     * based on a specific desired delivery date.
+     *
+     * @param string $id
+     * @param string $desiredDeliveryDate
+     * @return mixed
+     */
+    public function recommendShipDate(string $id, string $desiredDeliveryDate): mixed
+    {
+        $params = [
+            'desired_delivery_date' => $desiredDeliveryDate,
+        ];
+
+        $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/smartrate/precision_shipping';
+        $response = Requestor::request($this->client, 'get', $url, $params);
+
+        return InternalUtil::convertToEasyPostObject($this->client, $response['rates'] ?? []);
+    }
 }

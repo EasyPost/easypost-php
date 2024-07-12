@@ -231,6 +231,11 @@ class Fixture
 
     public static function plannedShipDate(): string
     {
-        return '2023-11-24';
+        return '2024-07-16';
+    }
+
+    public static function desiredDeliveryDate(): string
+    {
+        return '2024-07-16';
     }
 }

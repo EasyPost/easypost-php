@@ -110,6 +110,7 @@ require_once(dirname(__FILE__) . '/EasyPost/Service/RefundService.php');
 require_once(dirname(__FILE__) . '/EasyPost/Service/ReportService.php');
 require_once(dirname(__FILE__) . '/EasyPost/Service/ScanFormService.php');
 require_once(dirname(__FILE__) . '/EasyPost/Service/ShipmentService.php');
+require_once(dirname(__FILE__) . '/EasyPost/Service/SmartRateService.php');
 require_once(dirname(__FILE__) . '/EasyPost/Service/TrackerService.php');
 require_once(dirname(__FILE__) . '/EasyPost/Service/UserService.php');
 require_once(dirname(__FILE__) . '/EasyPost/Service/WebhookService.php');
