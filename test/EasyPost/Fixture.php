@@ -229,13 +229,27 @@ class Fixture
         return self::readFixtureData()['form_options']['rma'];
     }
 
+    /**
+     * @return string
+     */
     public static function plannedShipDate(): string
     {
         return '2024-07-16';
     }
 
+    /**
+     * @return string
+     */
     public static function desiredDeliveryDate(): string
     {
         return '2024-07-16';
+    }
+
+    /**
+     * @return array<mixed>
+     */
+    public static function basicClaimData(): array
+    {
+        return self::readFixtureData()['claims']['basic'];
     }
 }
