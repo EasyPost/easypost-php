@@ -46,7 +46,7 @@ class ClaimService extends BaseService
     /**
      * Retrieve the next page of claim collection.
      *
-     * @param mixed $claim
+     * @param mixed $claims
      * @param int|null $pageSize
      * @return mixed
      */

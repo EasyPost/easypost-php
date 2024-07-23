@@ -48,7 +48,7 @@ use GuzzleHttp\Client;
  * @property BillingService $billing
  * @property CarrierAccountService $carrierAccount
  * @property CarrierMetadataService $carrierMetadata
- * @property ClaimService $claimService
+ * @property ClaimService $claim
  * @property CustomsInfoService $customsInfo
  * @property CustomsItemService $customsItem
  * @property EndShipperService $endShipper

@@ -30,7 +30,7 @@
     "squizlabs/php_codesniffer": "^3.7",
     "roave/security-advisories": "dev-latest",
     "rregeer/phpunit-coverage-check": "^0.3.1",
-    "phpstan/phpstan": "^1.10"
+    "phpstan/phpstan": "^1.11"
   },
   "scripts": {
     "coverage": "XDEBUG_MODE=coverage ./bin/phpunit --coverage-html clover.html --coverage-clover build/logs/clover.xml && ./bin/coverage-check build/logs/clover.xml 85 --only-percentage",

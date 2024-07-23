@@ -4,6 +4,7 @@ namespace EasyPost;
 
 /**
  * @package EasyPost
+ * @property string $id
  * @property string $approved_amount
  * @property string[] $attachments
  * @property string $check_delivery_address
