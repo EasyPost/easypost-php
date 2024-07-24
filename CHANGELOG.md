@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Next Release
+## v7.4.0 (2024-07-24)
 
 - Adds new `Claim` service for filing claims on EasyPost shipments and insurances
 
