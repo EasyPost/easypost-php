@@ -36,6 +36,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/EasyPost-CarrierDetail.html"
         },                {
+            "fqsen": "\\EasyPost\\Claim",
+            "name": "Claim",
+            "summary": "",
+            "url": "classes/EasyPost-Claim.html"
+        },                {
             "fqsen": "\\EasyPost\\Constant\\Constants",
             "name": "Constants",
             "summary": "",
@@ -1040,6 +1045,36 @@ Search.appendIndex(
             "name": "retrieve",
             "summary": "Get\u0020carrier\u0020metadata\u0020for\u0020all\u0020carriers\u0020on\u0020the\u0020EasyPost\u0020platform.",
             "url": "classes/EasyPost-Service-CarrierMetadataService.html#method_retrieve"
+        },                {
+            "fqsen": "\\EasyPost\\Service\\ClaimService",
+            "name": "ClaimService",
+            "summary": "Claim\u0020service\u0020containing\u0020all\u0020the\u0020logic\u0020to\u0020make\u0020API\u0020calls.",
+            "url": "classes/EasyPost-Service-ClaimService.html"
+        },                {
+            "fqsen": "\\EasyPost\\Service\\ClaimService\u003A\u003Acreate\u0028\u0029",
+            "name": "create",
+            "summary": "Create\u0020an\u0020claim\u0020object.",
+            "url": "classes/EasyPost-Service-ClaimService.html#method_create"
+        },                {
+            "fqsen": "\\EasyPost\\Service\\ClaimService\u003A\u003Aretrieve\u0028\u0029",
+            "name": "retrieve",
+            "summary": "Retrieve\u0020an\u0020claim\u0020object.",
+            "url": "classes/EasyPost-Service-ClaimService.html#method_retrieve"
+        },                {
+            "fqsen": "\\EasyPost\\Service\\ClaimService\u003A\u003Aall\u0028\u0029",
+            "name": "all",
+            "summary": "Retrieve\u0020all\u0020claim\u0020objects.",
+            "url": "classes/EasyPost-Service-ClaimService.html#method_all"
+        },                {
+            "fqsen": "\\EasyPost\\Service\\ClaimService\u003A\u003AgetNextPage\u0028\u0029",
+            "name": "getNextPage",
+            "summary": "Retrieve\u0020the\u0020next\u0020page\u0020of\u0020claim\u0020collection.",
+            "url": "classes/EasyPost-Service-ClaimService.html#method_getNextPage"
+        },                {
+            "fqsen": "\\EasyPost\\Service\\ClaimService\u003A\u003Acancel\u0028\u0029",
+            "name": "cancel",
+            "summary": "Cancel\u0020a\u0020claim\u0020object.",
+            "url": "classes/EasyPost-Service-ClaimService.html#method_cancel"
         },                {
             "fqsen": "\\EasyPost\\Service\\CustomsInfoService",
             "name": "CustomsInfoService",
