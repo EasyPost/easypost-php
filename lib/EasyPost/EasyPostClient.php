@@ -15,6 +15,7 @@ use EasyPost\Service\BetaReferralCustomerService;
 use EasyPost\Service\BillingService;
 use EasyPost\Service\CarrierAccountService;
 use EasyPost\Service\CarrierMetadataService;
+use EasyPost\Service\ClaimService;
 use EasyPost\Service\CustomsInfoService;
 use EasyPost\Service\CustomsItemService;
 use EasyPost\Service\EndShipperService;
@@ -47,6 +48,7 @@ use GuzzleHttp\Client;
  * @property BillingService $billing
  * @property CarrierAccountService $carrierAccount
  * @property CarrierMetadataService $carrierMetadata
+ * @property ClaimService $claim
  * @property CustomsInfoService $customsInfo
  * @property CustomsItemService $customsItem
  * @property EndShipperService $endShipper
@@ -119,6 +121,7 @@ class EasyPostClient extends BaseService
             'billing' => BillingService::class,
             'carrierAccount' => CarrierAccountService::class,
             'carrierMetadata' => CarrierMetadataService::class,
+            'claim' => ClaimService::class,
             'customsInfo' => CustomsInfoService::class,
             'customsItem' => CustomsItemService::class,
             'endShipper' => EndShipperService::class,

@@ -8,6 +8,7 @@ use EasyPost\Batch;
 use EasyPost\Brand;
 use EasyPost\CarrierAccount;
 use EasyPost\CarrierDetail;
+use EasyPost\Claim;
 use EasyPost\Constant\Constants;
 use EasyPost\CustomsInfo;
 use EasyPost\CustomsItem;
@@ -43,6 +44,7 @@ const OBJECT_MAPPING = [
     'Brand'                 => Brand::class,
     'CarrierAccount'        => CarrierAccount::class,
     'CarrierDetail'         => CarrierDetail::class,
+    'Claim'                 => Claim::class,
     'CustomsInfo'           => CustomsInfo::class,
     'CustomsItem'           => CustomsItem::class,
     'EndShipper'            => EndShipper::class,

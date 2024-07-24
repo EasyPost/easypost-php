@@ -1,0 +1,78 @@
+
+-
+    request:
+        method: GET
+        url: 'https://api.easypost.com/v2/claims?page_size=5'
+        headers:
+            Host: api.easypost.com
+            Accept-Encoding: ''
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+    response:
+        status:
+            code: 200
+            message: OK
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: 483169fc66a00b8de79a82c4001a10fb
+            cache-control: 'private, no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '2252'
+            x-runtime: '0.040158'
+            x-node: bigweb53nuq
+            x-version-label: easypost-202407231832-14d334dc13-master
+            x-backend: easypost
+            x-proxied: ['intlb4nuq c0f5e722d1', 'extlb2nuq fa152d4755']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"claims":[{"approved_amount":null,"attachments":["https:\/\/easypost-files.s3-us-west-2.amazonaws.com\/insurance\/20240723\/379d4f0d76c847adabddde44f53f397d.png","https:\/\/easypost-files.s3-us-west-2.amazonaws.com\/insurance\/20240723\/d55632462ea34ac3a8419cd735e12708.png","https:\/\/easypost-files.s3-us-west-2.amazonaws.com\/insurance\/20240723\/0df078001f3849c982cc00fca02f738a.png"],"check_delivery_address":null,"contact_email":"test@example.com","created_at":"2024-07-23T19:56:49","description":"Test description","history":[{"status":"submitted","status_detail":"Claim was created.","timestamp":"2024-07-23T19:56:49"}],"id":"clm_097ed5afc86d45149655a63fd31bc810","insurance_amount":"100.00","insurance_id":"ins_6d1b3e02c4e041b08b00254e3c45ca79","mode":"test","object":"Claim","payment_method":"easypost_wallet","recipient_name":null,"requested_amount":"100.00","salvage_value":null,"shipment_id":"shp_f98d4ce802094693be6cc09f0776fea4","status":"submitted","status_detail":"Claim was created.","status_timestamp":"2024-07-23T19:56:49","tracking_code":"9400100110368066400960","type":"damage","updated_at":"2024-07-23T19:56:49"},{"approved_amount":null,"attachments":["https:\/\/easypost-files.s3-us-west-2.amazonaws.com\/insurance\/20240723\/aef24e0390f149a1b7e933c5cd384091.png","https:\/\/easypost-files.s3-us-west-2.amazonaws.com\/insurance\/20240723\/0451fbe7ec9c445288393e18add66a57.png","https:\/\/easypost-files.s3-us-west-2.amazonaws.com\/insurance\/20240723\/3c421000878e47d590d74fad69dc832b.png"],"check_delivery_address":null,"contact_email":"test@example.com","created_at":"2024-07-23T19:48:27","description":"Test description","history":[{"status":"submitted","status_detail":"Claim was created.","timestamp":"2024-07-23T19:48:27"}],"id":"clm_097efe4128e44a15986ebc4bf2467c14","insurance_amount":"100.00","insurance_id":"ins_9651e894aafb450ead9cc2e44b76a53b","mode":"test","object":"Claim","payment_method":"easypost_wallet","recipient_name":null,"requested_amount":"100.00","salvage_value":null,"shipment_id":"shp_086a0105d412457c99ee9de3c14cc2d2","status":"submitted","status_detail":"Claim was created.","status_timestamp":"2024-07-23T19:48:27","tracking_code":"9400100110368066399110","type":"damage","updated_at":"2024-07-23T19:48:27"}],"has_more":false}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/claims?page_size=5'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 689
+            request_size: 295
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.443722
+            namelookup_time: 0.003334
+            connect_time: 0.135586
+            pretransfer_time: 0.278517
+            size_upload: 0.0
+            size_download: 2252.0
+            speed_download: 5075.0
+            speed_upload: 0.0
+            download_content_length: 2252.0
+            upload_content_length: 0.0
+            starttransfer_time: 0.443692
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.62.110.130
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 10.130.6.14
+            local_port: 63842
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: https
+            appconnect_time_us: 278448
+            connect_time_us: 135586
+            namelookup_time_us: 3334
+            pretransfer_time_us: 278517
+            redirect_time_us: 0
+            starttransfer_time_us: 443692
+            total_time_us: 443722
+            effective_method: GET
+            capath: ''
+            cainfo: ''
+    index: 0
