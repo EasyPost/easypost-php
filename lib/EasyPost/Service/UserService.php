@@ -179,7 +179,7 @@ class UserService extends BaseService
 
         $params = [
             'page_size' => $pageSize,
-            'before_id' => $userArray[count($userArray) - 1]['id']
+            'after_id' => $userArray[count($userArray) - 1]['id']
         ];
 
         if (isset($userParams)) {
