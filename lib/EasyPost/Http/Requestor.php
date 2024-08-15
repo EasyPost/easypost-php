@@ -92,41 +92,6 @@ class Requestor
     }
 
     /**
-     * URL Encodes data for GET requests.
-     *
-     * @param mixed $arr
-     * @param string|null $prefix
-     * @return string
-     */
-    public static function urlEncode(mixed $arr, ?string $prefix = null): string
-    {
-        if (!is_array($arr)) {
-            return $arr;
-        }
-
-        $r = [];
-        foreach ($arr as $k => $v) {
-            if (is_null($v)) {
-                continue;
-            }
-
-            if (isset($prefix)) {
-                $k = $prefix . '[' . $k . ']';
-            } else {
-                $k = $prefix . '[]';
-            }
-
-            if (is_array($v)) {
-                $r[] = self::urlEncode($v, $k);
-            } else {
-                $r[] = urlencode($k) . '=' . urlencode($v);
-            }
-        }
-
-        return implode('&', $r);
-    }
-
-    /**
      * Make a request to the EasyPost API.
      *
      * @param EasyPostClient $client
