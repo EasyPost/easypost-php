@@ -162,7 +162,7 @@ class ReferralCustomerService extends BaseService
             ]
         ];
 
-        $url = "https://api.stripe.com/v1/tokens";
+        $url = 'https://api.stripe.com/v1/tokens';
 
         $guzzleClient = new Client();
 
