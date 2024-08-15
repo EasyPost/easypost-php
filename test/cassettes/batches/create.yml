@@ -14,8 +14,7 @@
         body: '{"batch":{"shipments":[{"from_address":{"name":"Jack Sparrow","street1":"388 Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","country":"US","email":"test@example.com","phone":"5555555555"},"to_address":{"name":"Elizabeth Swan","street1":"179 N Harbor Dr","city":"Redondo Beach","state":"CA","zip":"90277","country":"US","email":"test@example.com","phone":"5555555555"},"parcel":{"length":"10","width":"8","height":"4","weight":"15.4"}}]}}'
     response:
         status:
-            http_version: '1.1'
-            code: '200'
+            code: 200
             message: OK
         headers:
             x-frame-options: SAMEORIGIN
@@ -24,56 +23,58 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 6c53f877655e6545e7885e0a001f4856
+            x-ep-request-uuid: e181587b66bceb9fe2b8f7d700869fd6
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '384'
-            x-runtime: '0.052682'
-            x-node: bigweb32nuq
-            x-version-label: easypost-202311212221-a0f06fbc2c-master
+            x-runtime: '0.056694'
+            x-node: bigweb41nuq
+            x-version-label: easypost-202408141633-8ef9a7bcc9-master
             x-backend: easypost
-            x-canary: direct
-            x-proxied: ['intlb2nuq b3de2c47ef', 'extlb1nuq 003ad9bca0']
+            x-proxied: ['intlb4nuq c0f5e722d1', 'extlb2nuq b6e1b5034c']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"batch_826d84b0af6d4e82b7552fe595e69315","object":"Batch","mode":"test","state":"creating","num_shipments":1,"reference":null,"created_at":"2023-11-22T20:32:05Z","updated_at":"2023-11-22T20:32:05Z","scan_form":null,"shipments":[],"status":{"created":0,"queued_for_purchase":0,"creation_failed":0,"postage_purchased":0,"postage_purchase_failed":0},"pickup":null,"label_url":null}'
+        body: '{"id":"batch_fa7dc70d080d4dccb967ecb2c6472393","object":"Batch","mode":"test","state":"creating","num_shipments":1,"reference":null,"created_at":"2024-08-14T17:38:39Z","updated_at":"2024-08-14T17:38:39Z","scan_form":null,"shipments":[],"status":{"created":0,"queued_for_purchase":0,"creation_failed":0,"postage_purchased":0,"postage_purchase_failed":0},"pickup":null,"label_url":null}'
         curl_info:
             url: 'https://api.easypost.com/v2/batches'
             content_type: 'application/json; charset=utf-8'
             http_code: 200
-            header_size: 706
+            header_size: 688
             request_size: 778
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.254775
-            namelookup_time: 0.001198
-            connect_time: 0.064584
-            pretransfer_time: 0.132615
+            total_time: 0.156735
+            namelookup_time: 0.002651
+            connect_time: 0.032416
+            pretransfer_time: 0.065898
             size_upload: 472.0
             size_download: 384.0
-            speed_download: 1507.0
-            speed_upload: 1852.0
+            speed_download: 2449.0
+            speed_upload: 3011.0
             download_content_length: 384.0
             upload_content_length: 472.0
-            starttransfer_time: 0.254726
+            starttransfer_time: 0.156648
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.131
+            primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.39
-            local_port: 53588
+            local_ip: 192.168.1.75
+            local_port: 52592
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
-            scheme: HTTPS
-            appconnect_time_us: 132547
-            connect_time_us: 64584
-            namelookup_time_us: 1198
-            pretransfer_time_us: 132615
+            scheme: https
+            appconnect_time_us: 65827
+            connect_time_us: 32416
+            namelookup_time_us: 2651
+            pretransfer_time_us: 65898
             redirect_time_us: 0
-            starttransfer_time_us: 254726
-            total_time_us: 254775
+            starttransfer_time_us: 156648
+            total_time_us: 156735
+            effective_method: POST
+            capath: ''
+            cainfo: ''
     index: 0

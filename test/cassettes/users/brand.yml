@@ -12,8 +12,7 @@
             User-Agent: ''
     response:
         status:
-            http_version: '1.1'
-            code: '200'
+            code: 200
             message: OK
         headers:
             x-frame-options: SAMEORIGIN
@@ -22,19 +21,19 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 71ef9121655e64b5e78855a5001f8d11
+            x-ep-request-uuid: e181587b66bcec28e2b90479008727c0
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
-            content-length: '1715'
-            x-runtime: '0.080057'
-            x-node: bigweb31nuq
-            x-version-label: easypost-202311212221-a0f06fbc2c-master
+            content-length: '2285'
+            x-runtime: '0.115287'
+            x-node: bigweb53nuq
+            x-version-label: easypost-202408141633-8ef9a7bcc9-master
             x-backend: easypost
-            x-proxied: ['intlb1nuq b3de2c47ef', 'extlb2nuq 003ad9bca0']
+            x-proxied: ['intlb4nuq c0f5e722d1', 'extlb2nuq b6e1b5034c']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"user_465eab8bb86844108100be2d4d5288ab","object":"User","parent_id":null,"name":"New Name","phone_number":"<REDACTED>","verified":true,"created_at":"2022-02-02T20:16:00Z","default_carbon_offset":false,"has_elevate_access":false,"balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":"100.00","secondary_recharge_amount":"100.00","recharge_threshold":"0.00","has_billing_method":false,"cc_fee_rate":"0.0325","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.25","email":"<REDACTED>","children":[{"id":"user_3c44214dcf744d169c3f2db034fd965e","object":"User","parent_id":"user_465eab8bb86844108100be2d4d5288ab","name":"Test User","phone_number":"<REDACTED>","verified":true,"created_at":"2022-11-23T21:03:03Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_78019b89199646358298fd311435458f","object":"User","parent_id":"user_465eab8bb86844108100be2d4d5288ab","name":"Test User","phone_number":"<REDACTED>","verified":true,"created_at":"2022-12-02T22:41:09Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_1a2e9fb7903c4a08b2da7d7f57150370","object":"User","parent_id":"user_465eab8bb86844108100be2d4d5288ab","name":"Test User","phone_number":"<REDACTED>","verified":true,"created_at":"2022-12-02T22:43:07Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_f01890d357374ac3837ff556a957b9b4","object":"User","parent_id":"user_465eab8bb86844108100be2d4d5288ab","name":"Test User","phone_number":"<REDACTED>","verified":true,"created_at":"2022-12-05T17:00:14Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]}]}'
+        body: '{"id":"user_465eab8bb86844108100be2d4d5288ab","object":"User","parent_id":null,"name":"New Name","phone_number":"<REDACTED>","verified":true,"created_at":"2022-02-02T20:16:00Z","default_carbon_offset":false,"has_elevate_access":false,"balance":"0.00000","price_per_shipment":"0.00000","recharge_amount":"100.00","secondary_recharge_amount":"100.00","recharge_threshold":"0.00","has_billing_method":false,"cc_fee_rate":"0.0325","default_insurance_amount":"50.00","insurance_fee_rate":"0.005","insurance_fee_minimum":"0.50","email":"<REDACTED>","children":[{"id":"user_3c44214dcf744d169c3f2db034fd965e","object":"User","parent_id":"user_465eab8bb86844108100be2d4d5288ab","name":"Test User","phone_number":"<REDACTED>","verified":true,"created_at":"2022-11-23T21:03:03Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_78019b89199646358298fd311435458f","object":"User","parent_id":"user_465eab8bb86844108100be2d4d5288ab","name":"Test User","phone_number":"<REDACTED>","verified":true,"created_at":"2022-12-02T22:41:09Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_1a2e9fb7903c4a08b2da7d7f57150370","object":"User","parent_id":"user_465eab8bb86844108100be2d4d5288ab","name":"Test User","phone_number":"<REDACTED>","verified":true,"created_at":"2022-12-02T22:43:07Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_f01890d357374ac3837ff556a957b9b4","object":"User","parent_id":"user_465eab8bb86844108100be2d4d5288ab","name":"Test User","phone_number":"<REDACTED>","verified":true,"created_at":"2022-12-05T17:00:14Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_4f3642aa792a49d1bbf723956cccdb9f","object":"User","parent_id":"user_465eab8bb86844108100be2d4d5288ab","name":"Test User","phone_number":"<REDACTED>","verified":true,"created_at":"2024-03-22T19:40:51Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]},{"id":"user_38e8f37bca2d4b8aa932cb39af02ce58","object":"User","parent_id":"user_465eab8bb86844108100be2d4d5288ab","name":"Test User","phone_number":"<REDACTED>","verified":true,"created_at":"2024-03-26T23:01:59Z","default_carbon_offset":false,"has_elevate_access":false,"children":[]}]}'
         curl_info:
             url: 'https://api.easypost.com/v2/users'
             content_type: 'application/json; charset=utf-8'
@@ -44,35 +43,38 @@
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.277586
-            namelookup_time: 0.001034
-            connect_time: 0.064118
-            pretransfer_time: 0.13142
+            total_time: 0.212427
+            namelookup_time: 0.002249
+            connect_time: 0.031458
+            pretransfer_time: 0.064154
             size_upload: 0.0
-            size_download: 1715.0
-            speed_download: 6178.0
+            size_download: 2285.0
+            speed_download: 10756.0
             speed_upload: 0.0
-            download_content_length: 1715.0
+            download_content_length: 2285.0
             upload_content_length: 0.0
-            starttransfer_time: 0.27756
+            starttransfer_time: 0.212392
             redirect_time: 0.0
             redirect_url: ''
             primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.39
-            local_port: 53394
+            local_ip: 192.168.1.75
+            local_port: 52882
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
-            scheme: HTTPS
-            appconnect_time_us: 131312
-            connect_time_us: 64118
-            namelookup_time_us: 1034
-            pretransfer_time_us: 131420
+            scheme: https
+            appconnect_time_us: 64095
+            connect_time_us: 31458
+            namelookup_time_us: 2249
+            pretransfer_time_us: 64154
             redirect_time_us: 0
-            starttransfer_time_us: 277560
-            total_time_us: 277586
+            starttransfer_time_us: 212392
+            total_time_us: 212427
+            effective_method: GET
+            capath: ''
+            cainfo: ''
     index: 0
 -
     request:
@@ -89,8 +91,7 @@
         body: '{"color":"#123456"}'
     response:
         status:
-            http_version: '1.1'
-            code: '200'
+            code: 200
             message: OK
         headers:
             x-frame-options: SAMEORIGIN
@@ -99,19 +100,19 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 71ef911c655e64b6e78855a6001f8d50
+            x-ep-request-uuid: e181587a66bcec28e2b9047a008727fb
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
-            content-length: '372'
-            x-runtime: '0.025915'
-            x-node: bigweb35nuq
-            x-version-label: easypost-202311212221-a0f06fbc2c-master
+            content-length: '373'
+            x-runtime: '0.085134'
+            x-node: bigweb34nuq
+            x-version-label: easypost-202408141633-8ef9a7bcc9-master
             x-backend: easypost
-            x-proxied: ['intlb2nuq b3de2c47ef', 'extlb2nuq 003ad9bca0']
+            x-proxied: ['intlb4nuq c0f5e722d1', 'extlb2nuq b6e1b5034c']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"brd_35445a49e3ca451192d52f6bb4acf096","color":"#123456","logo":"https:\/\/assets.easypost.com\/assets\/images\/branding\/easypost-primary-logo.7324aa54b64b34d6cd70ca5ba4d1842d.svg","logo_href":"https:\/\/www.easypost.com","name":"EasyPost","ad":null,"ad_href":null,"object":"Brand","user_id":"user_465eab8bb86844108100be2d4d5288ab","background_color":null,"theme":"theme1"}'
+        body: '{"ad":null,"ad_href":null,"background_color":null,"color":"#123456","id":"brd_35445a49e3ca451192d52f6bb4acf096","logo":"https:\/\/assets.easypost.com\/assets\/images\/branding\/easypost-primary-logo.7324aa54b64b34d6cd70ca5ba4d1842d.svg","logo_href":"https:\/\/www.easypost.com","name":"EasyPost","object":"Brand","theme":"theme1","user_id":"user_465eab8bb86844108100be2d4d5288ab"}'
         curl_info:
             url: 'https://api.easypost.com/v2/users/user_465eab8bb86844108100be2d4d5288ab/brand'
             content_type: 'application/json; charset=utf-8'
@@ -121,33 +122,36 @@
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.223393
-            namelookup_time: 0.001012
-            connect_time: 0.063717
-            pretransfer_time: 0.133712
+            total_time: 0.196216
+            namelookup_time: 0.00189
+            connect_time: 0.035786
+            pretransfer_time: 0.074494
             size_upload: 19.0
-            size_download: 372.0
-            speed_download: 1665.0
-            speed_upload: 85.0
-            download_content_length: 372.0
+            size_download: 373.0
+            speed_download: 1900.0
+            speed_upload: 96.0
+            download_content_length: 373.0
             upload_content_length: 19.0
-            starttransfer_time: 0.223359
+            starttransfer_time: 0.196157
             redirect_time: 0.0
             redirect_url: ''
             primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.39
-            local_port: 53395
+            local_ip: 192.168.1.75
+            local_port: 52883
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
-            scheme: HTTPS
-            appconnect_time_us: 133663
-            connect_time_us: 63717
-            namelookup_time_us: 1012
-            pretransfer_time_us: 133712
+            scheme: https
+            appconnect_time_us: 74403
+            connect_time_us: 35786
+            namelookup_time_us: 1890
+            pretransfer_time_us: 74494
             redirect_time_us: 0
-            starttransfer_time_us: 223359
-            total_time_us: 223393
+            starttransfer_time_us: 196157
+            total_time_us: 196216
+            effective_method: PATCH
+            capath: ''
+            cainfo: ''
     index: 0

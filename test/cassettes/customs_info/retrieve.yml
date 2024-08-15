@@ -14,8 +14,7 @@
         body: '{"customs_info":{"eel_pfc":"NOEEI 30.37(a)","customs_certify":"true","customs_signer":"Steve Brule","contents_type":"merchandise","restriction_type":"none","non_delivery_option":"return","customs_items":[{"description":"Sweet shirts","quantity":"2","weight":"11","value":"23.25","hs_tariff_number":"654321","origin_country":"US"}]}}'
     response:
         status:
-            http_version: '1.1'
-            code: '201'
+            code: 201
             message: Created
         headers:
             x-frame-options: SAMEORIGIN
@@ -24,63 +23,67 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 6c53f871655e653ce7885dc6001f3fec
+            x-ep-request-uuid: e181587d66bcec0be2b9005800870b6c
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
-            location: /api/v2/customs_infos/cstinfo_7db1f10416354a3ea062ec0ec4b72023
+            location: /api/v2/customs_infos/cstinfo_d216629062774dd3a0fa05eaf878ad2b
             content-type: 'application/json; charset=utf-8'
             content-length: '796'
-            x-runtime: '0.044826'
-            x-node: bigweb38nuq
-            x-version-label: easypost-202311212221-a0f06fbc2c-master
+            x-runtime: '0.043876'
+            x-node: bigweb43nuq
+            x-version-label: easypost-202408141633-8ef9a7bcc9-master
             x-backend: easypost
-            x-proxied: ['intlb2nuq b3de2c47ef', 'extlb1nuq 003ad9bca0']
+            x-canary: direct
+            x-proxied: ['intlb4nuq c0f5e722d1', 'extlb2nuq b6e1b5034c']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"cstinfo_7db1f10416354a3ea062ec0ec4b72023","object":"CustomsInfo","created_at":"2023-11-22T20:31:56Z","updated_at":"2023-11-22T20:31:56Z","contents_explanation":null,"contents_type":"merchandise","customs_certify":true,"customs_signer":"Steve Brule","eel_pfc":"NOEEI 30.37(a)","non_delivery_option":"return","restriction_comments":null,"restriction_type":"none","mode":"test","declaration":null,"customs_items":[{"id":"cstitem_2b1dab8040d341a9baf6b516617619dc","object":"CustomsItem","created_at":"2023-11-22T20:31:56Z","updated_at":"2023-11-22T20:31:56Z","description":"Sweet shirts","hs_tariff_number":"654321","origin_country":"US","quantity":2,"value":"23.25","weight":11,"code":null,"mode":"test","manufacturer":null,"currency":null,"eccn":null,"printed_commodity_identifier":null}]}'
+        body: '{"id":"cstinfo_d216629062774dd3a0fa05eaf878ad2b","object":"CustomsInfo","created_at":"2024-08-14T17:40:27Z","updated_at":"2024-08-14T17:40:27Z","contents_explanation":null,"contents_type":"merchandise","customs_certify":true,"customs_signer":"Steve Brule","eel_pfc":"NOEEI 30.37(a)","non_delivery_option":"return","restriction_comments":null,"restriction_type":"none","mode":"test","declaration":null,"customs_items":[{"id":"cstitem_398a942c4c144e5c8530310f1e77f4f5","object":"CustomsItem","created_at":"2024-08-14T17:40:27Z","updated_at":"2024-08-14T17:40:27Z","description":"Sweet shirts","hs_tariff_number":"654321","origin_country":"US","quantity":2,"value":"23.25","weight":11,"code":null,"mode":"test","manufacturer":null,"currency":null,"eccn":null,"printed_commodity_identifier":null}]}'
         curl_info:
             url: 'https://api.easypost.com/v2/customs_infos'
             content_type: 'application/json; charset=utf-8'
             http_code: 201
-            header_size: 767
+            header_size: 785
             request_size: 644
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.248949
-            namelookup_time: 0.002057
-            connect_time: 0.064189
-            pretransfer_time: 0.131288
+            total_time: 0.150439
+            namelookup_time: 0.002063
+            connect_time: 0.035286
+            pretransfer_time: 0.070016
             size_upload: 332.0
             size_download: 796.0
-            speed_download: 3197.0
-            speed_upload: 1333.0
+            speed_download: 5291.0
+            speed_upload: 2206.0
             download_content_length: 796.0
             upload_content_length: 332.0
-            starttransfer_time: 0.248922
+            starttransfer_time: 0.150396
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.131
+            primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.39
-            local_port: 53566
+            local_ip: 192.168.1.75
+            local_port: 52791
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
-            scheme: HTTPS
-            appconnect_time_us: 131219
-            connect_time_us: 64189
-            namelookup_time_us: 2057
-            pretransfer_time_us: 131288
+            scheme: https
+            appconnect_time_us: 69966
+            connect_time_us: 35286
+            namelookup_time_us: 2063
+            pretransfer_time_us: 70016
             redirect_time_us: 0
-            starttransfer_time_us: 248922
-            total_time_us: 248949
+            starttransfer_time_us: 150396
+            total_time_us: 150439
+            effective_method: POST
+            capath: ''
+            cainfo: ''
     index: 0
 -
     request:
         method: GET
-        url: 'https://api.easypost.com/v2/customs_infos/cstinfo_7db1f10416354a3ea062ec0ec4b72023'
+        url: 'https://api.easypost.com/v2/customs_infos/cstinfo_d216629062774dd3a0fa05eaf878ad2b'
         headers:
             Host: api.easypost.com
             Accept-Encoding: ''
@@ -90,8 +93,7 @@
             User-Agent: ''
     response:
         status:
-            http_version: '1.1'
-            code: '200'
+            code: 200
             message: OK
         headers:
             x-frame-options: SAMEORIGIN
@@ -100,21 +102,21 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 6c53f873655e653ce7885dc7001f402a
+            x-ep-request-uuid: e181587b66bcec0be2b9005900870b91
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '796'
-            x-runtime: '0.027399'
-            x-node: bigweb38nuq
-            x-version-label: easypost-202311212221-a0f06fbc2c-master
+            x-runtime: '0.029576'
+            x-node: bigweb33nuq
+            x-version-label: easypost-202408141633-8ef9a7bcc9-master
             x-backend: easypost
-            x-proxied: ['intlb1nuq b3de2c47ef', 'extlb1nuq 003ad9bca0']
+            x-proxied: ['intlb4nuq c0f5e722d1', 'extlb2nuq b6e1b5034c']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"cstinfo_7db1f10416354a3ea062ec0ec4b72023","object":"CustomsInfo","created_at":"2023-11-22T20:31:56Z","updated_at":"2023-11-22T20:31:56Z","contents_explanation":null,"contents_type":"merchandise","customs_certify":true,"customs_signer":"Steve Brule","eel_pfc":"NOEEI 30.37(a)","non_delivery_option":"return","restriction_comments":null,"restriction_type":"none","mode":"test","declaration":null,"customs_items":[{"id":"cstitem_2b1dab8040d341a9baf6b516617619dc","object":"CustomsItem","created_at":"2023-11-22T20:31:56Z","updated_at":"2023-11-22T20:31:56Z","description":"Sweet shirts","hs_tariff_number":"654321","origin_country":"US","quantity":2,"value":"23.25","weight":11,"code":null,"mode":"test","manufacturer":null,"currency":null,"eccn":null,"printed_commodity_identifier":null}]}'
+        body: '{"id":"cstinfo_d216629062774dd3a0fa05eaf878ad2b","object":"CustomsInfo","created_at":"2024-08-14T17:40:27Z","updated_at":"2024-08-14T17:40:27Z","contents_explanation":null,"contents_type":"merchandise","customs_certify":true,"customs_signer":"Steve Brule","eel_pfc":"NOEEI 30.37(a)","non_delivery_option":"return","restriction_comments":null,"restriction_type":"none","mode":"test","declaration":null,"customs_items":[{"id":"cstitem_398a942c4c144e5c8530310f1e77f4f5","object":"CustomsItem","created_at":"2024-08-14T17:40:27Z","updated_at":"2024-08-14T17:40:27Z","description":"Sweet shirts","hs_tariff_number":"654321","origin_country":"US","quantity":2,"value":"23.25","weight":11,"code":null,"mode":"test","manufacturer":null,"currency":null,"eccn":null,"printed_commodity_identifier":null}]}'
         curl_info:
-            url: 'https://api.easypost.com/v2/customs_infos/cstinfo_7db1f10416354a3ea062ec0ec4b72023'
+            url: 'https://api.easypost.com/v2/customs_infos/cstinfo_d216629062774dd3a0fa05eaf878ad2b'
             content_type: 'application/json; charset=utf-8'
             http_code: 200
             header_size: 688
@@ -122,33 +124,36 @@
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.220518
-            namelookup_time: 0.001241
-            connect_time: 0.064377
-            pretransfer_time: 0.129407
+            total_time: 0.125085
+            namelookup_time: 0.002253
+            connect_time: 0.031781
+            pretransfer_time: 0.063448
             size_upload: 0.0
             size_download: 796.0
-            speed_download: 3609.0
+            speed_download: 6363.0
             speed_upload: 0.0
             download_content_length: 796.0
             upload_content_length: 0.0
-            starttransfer_time: 0.220482
+            starttransfer_time: 0.125055
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.131
+            primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.39
-            local_port: 53567
+            local_ip: 192.168.1.75
+            local_port: 52792
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
-            scheme: HTTPS
-            appconnect_time_us: 129380
-            connect_time_us: 64377
-            namelookup_time_us: 1241
-            pretransfer_time_us: 129407
+            scheme: https
+            appconnect_time_us: 63408
+            connect_time_us: 31781
+            namelookup_time_us: 2253
+            pretransfer_time_us: 63448
             redirect_time_us: 0
-            starttransfer_time_us: 220482
-            total_time_us: 220518
+            starttransfer_time_us: 125055
+            total_time_us: 125085
+            effective_method: GET
+            capath: ''
+            cainfo: ''
     index: 0

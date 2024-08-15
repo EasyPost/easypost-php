@@ -14,8 +14,7 @@
         body: '{"carrier_account":{"type":"FedexAccount","registration_data":{"some":"data"}}}'
     response:
         status:
-            http_version: '1.1'
-            code: '422'
+            code: 422
             message: 'Unprocessable Entity'
         headers:
             x-frame-options: SAMEORIGIN
@@ -24,17 +23,17 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 6c53f875655e653ee7885de1001f4223
+            x-ep-request-uuid: e181587a66bcebfee2b8ffd80086fc6e
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '1347'
-            x-runtime: '0.041178'
-            x-node: bigweb41nuq
-            x-version-label: easypost-202311212221-a0f06fbc2c-master
+            x-runtime: '0.020529'
+            x-node: bigweb36nuq
+            x-version-label: easypost-202408141633-8ef9a7bcc9-master
             x-backend: easypost
-            x-proxied: ['intlb2nuq b3de2c47ef', 'extlb1nuq 003ad9bca0']
+            x-proxied: ['intlb3nuq c0f5e722d1', 'extlb2nuq b6e1b5034c']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
         body: '{"error":{"code":"UNPROCESSABLE_ENTITY","message":"The request was understood, but cannot be processed.","errors":[{"field":"shipping_streets","message":"must be present and a string"},{"field":"shipping_city","message":"must be present and a string"},{"field":"shipping_state","message":"must be present and a string"},{"field":"shipping_postal_code","message":"must be present and a string"},{"field":"shipping_country_code","message":"must be present and a string"},{"field":"corporate_first_name","message":"must be present and a string"},{"field":"corporate_last_name","message":"must be present and a string"},{"field":"corporate_job_title","message":"must be present and a string"},{"field":"corporate_company_name","message":"must be present and a string"},{"field":"corporate_phone_number","message":"must be present and a string"},{"field":"corporate_email_address","message":"must be present and a string"},{"field":"corporate_streets","message":"must be present and a string"},{"field":"corporate_city","message":"must be present and a string"},{"field":"corporate_state","message":"must be present and a string"},{"field":"corporate_postal_code","message":"must be present and a string"},{"field":"corporate_country_code","message":"must be present and a string"},{"field":"account_number","message":"must be present and a string"}]}}'
         curl_info:
@@ -46,33 +45,36 @@
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.231793
-            namelookup_time: 0.001367
-            connect_time: 0.062926
-            pretransfer_time: 0.126994
+            total_time: 0.128119
+            namelookup_time: 0.00194
+            connect_time: 0.035203
+            pretransfer_time: 0.07155
             size_upload: 79.0
             size_download: 1347.0
-            speed_download: 5811.0
-            speed_upload: 340.0
+            speed_download: 10513.0
+            speed_upload: 616.0
             download_content_length: 1347.0
             upload_content_length: 79.0
-            starttransfer_time: 0.231773
+            starttransfer_time: 0.128088
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.131
+            primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.39
-            local_port: 53570
+            local_ip: 192.168.1.75
+            local_port: 52755
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
-            scheme: HTTPS
-            appconnect_time_us: 126966
-            connect_time_us: 62926
-            namelookup_time_us: 1367
-            pretransfer_time_us: 126994
+            scheme: https
+            appconnect_time_us: 71484
+            connect_time_us: 35203
+            namelookup_time_us: 1940
+            pretransfer_time_us: 71550
             redirect_time_us: 0
-            starttransfer_time_us: 231773
-            total_time_us: 231793
+            starttransfer_time_us: 128088
+            total_time_us: 128119
+            effective_method: POST
+            capath: ''
+            cainfo: ''
     index: 0

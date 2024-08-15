@@ -14,8 +14,7 @@
         body: '{"payment_log_id":"paylog_123"}'
     response:
         status:
-            http_version: '1.1'
-            code: '422'
+            code: 422
             message: 'Unprocessable Entity'
         headers:
             x-frame-options: SAMEORIGIN
@@ -24,56 +23,60 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 6c53f877655e6543e7885e05001f45e6
+            x-ep-request-uuid: e181587766bcebfde2b8ffd30086fb5b
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '117'
-            x-runtime: '0.041815'
+            x-runtime: '0.031455'
             vary: Origin
-            x-node: bigweb36nuq
-            x-version-label: easypost-202311212221-a0f06fbc2c-master
+            x-node: bigweb43nuq
+            x-version-label: easypost-202408141633-8ef9a7bcc9-master
             x-backend: easypost
-            x-proxied: ['intlb1nuq b3de2c47ef', 'extlb1nuq 003ad9bca0']
+            x-canary: direct
+            x-proxied: ['intlb3nuq c0f5e722d1', 'extlb2nuq b6e1b5034c']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
         body: '{"error":{"code":"TRANSACTION.DOES_NOT_EXIST","message":"We could not find a transaction with that id.","errors":[]}}'
         curl_info:
             url: 'https://api.easypost.com/beta/referral_customers/refunds'
             content_type: 'application/json; charset=utf-8'
             http_code: 422
-            header_size: 720
+            header_size: 738
             request_size: 357
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.237681
-            namelookup_time: 0.00101
-            connect_time: 0.063093
-            pretransfer_time: 0.131615
+            total_time: 0.131149
+            namelookup_time: 0.002073
+            connect_time: 0.032084
+            pretransfer_time: 0.065987
             size_upload: 31.0
             size_download: 117.0
-            speed_download: 492.0
-            speed_upload: 130.0
+            speed_download: 892.0
+            speed_upload: 236.0
             download_content_length: 117.0
             upload_content_length: 31.0
-            starttransfer_time: 0.237649
+            starttransfer_time: 0.131078
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.131
+            primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.39
-            local_port: 53583
+            local_ip: 192.168.1.75
+            local_port: 52750
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
-            scheme: HTTPS
-            appconnect_time_us: 131563
-            connect_time_us: 63093
-            namelookup_time_us: 1010
-            pretransfer_time_us: 131615
+            scheme: https
+            appconnect_time_us: 65917
+            connect_time_us: 32084
+            namelookup_time_us: 2073
+            pretransfer_time_us: 65987
             redirect_time_us: 0
-            starttransfer_time_us: 237649
-            total_time_us: 237681
+            starttransfer_time_us: 131078
+            total_time_us: 131149
+            effective_method: POST
+            capath: ''
+            cainfo: ''
     index: 0

@@ -128,13 +128,13 @@ class OrderTest extends \PHPUnit\Framework\TestCase
         // Test lowest rate with no filters
         $lowestRate = $order->lowestRate();
         $this->assertEquals('GroundAdvantage', $lowestRate['service']);
-        $this->assertEquals('11.33', $lowestRate['rate']);
+        $this->assertEquals('11.40', $lowestRate['rate']);
         $this->assertEquals('USPS', $lowestRate['carrier']);
 
         // Test lowest rate with service filter (this rate is higher than the lowest but should filter)
         $lowestRate = $order->lowestRate([], ['Priority']);
         $this->assertEquals('Priority', $lowestRate['service']);
-        $this->assertEquals('13.79', $lowestRate['rate']);
+        $this->assertEquals('14.48', $lowestRate['rate']);
         $this->assertEquals('USPS', $lowestRate['carrier']);
 
         // Test lowest rate with carrier filter (should error due to bad carrier)

@@ -12,8 +12,7 @@
             User-Agent: ''
     response:
         status:
-            http_version: '1.1'
-            code: '200'
+            code: 200
             message: OK
         headers:
             x-frame-options: SAMEORIGIN
@@ -22,17 +21,17 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 6c53f872655e653fe7885de2001f426b
+            x-ep-request-uuid: e181587a66bcebffe2b8ffdc0086fd48
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '9271'
-            x-runtime: '0.123051'
-            x-node: bigweb39nuq
-            x-version-label: easypost-202311212221-a0f06fbc2c-master
+            x-runtime: '0.120884'
+            x-node: bigweb42nuq
+            x-version-label: easypost-202408141633-8ef9a7bcc9-master
             x-backend: easypost
-            x-proxied: ['intlb2nuq b3de2c47ef', 'extlb1nuq 003ad9bca0']
+            x-proxied: ['intlb4nuq c0f5e722d1', 'extlb2nuq b6e1b5034c']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
         body: '[{"id":"ca_8dc116debcdb49b5a66a2ddee4612600","object":"CarrierAccount","type":"UspsAccount","clone":false,"created_at":"2022-02-02T20:16:00Z","updated_at":"2022-02-03T18:01:23Z","description":"USPS Account","reference":null,"billing_type":"easypost","readable":"USPS","logo":null,"fields":{"credentials":{"company_name":{"visibility":"visible","label":"Account Holder Name","value":"EasyPost PHP Tests"},"address_street":{"visibility":"visible","label":"Street Address","value":"2889 Ashton Blvd"},"address_city":{"visibility":"visible","label":"City","value":"Lehi"},"address_state":{"visibility":"visible","label":"State","value":"UT"},"address_zip":{"visibility":"visible","label":"ZIP Code","value":"84043"},"phone":{"visibility":"visible","label":"Phone Number","value":""},"email":{"visibility":"visible","label":"Email Address","value":"dev+easypost-php@easypost.com"},"shipper_id":{"visibility":"visible","label":"Shipper Identifier (Optional)","value":""}}},"credentials":{"company_name":"EasyPost PHP Tests","address_street":"2889 Ashton Blvd","address_city":"Lehi","address_state":"UT","address_zip":"84043","phone":"","email":"dev+easypost-php@easypost.com","shipper_id":""},"test_credentials":null},{"id":"ca_5c0e4a9f106846abbe3a8d803b3d9dc4","object":"CarrierAccount","type":"DhlExpressDefaultAccount","clone":false,"created_at":"2022-02-02T20:16:00Z","updated_at":"2022-02-02T20:16:00Z","description":"DHL Express Account","reference":null,"billing_type":"easypost","readable":"DHL Express","logo":null,"fields":{"credentials":[]},"credentials":[],"test_credentials":null},{"id":"ca_495d701f4f7c464f86dfd10e6515b4c9","object":"CarrierAccount","type":"LsoDefaultAccount","clone":false,"created_at":"2022-02-02T20:16:00Z","updated_at":"2022-02-02T20:16:00Z","description":"LSO Account","reference":null,"billing_type":"easypost","readable":"LSO","logo":null,"fields":{"credentials":[]},"credentials":[],"test_credentials":null},{"id":"ca_cd846680a6f74c23891086de730769d6","object":"CarrierAccount","type":"DhlEcsAccount","clone":false,"created_at":"2022-08-16T17:43:41Z","updated_at":"2022-08-16T17:43:41Z","description":"DHL eCommerce Solutions Account","reference":null,"billing_type":"carrier","readable":"DHL eCommerce Solutions","logo":null,"fields":{"credentials":{"client_id":{"visibility":"visible","label":"DHL eCommerce Solutions client ID","value":"123456"},"client_secret":{"visibility":"password","label":"DHL eCommerce Solutions client secret","value":"********"},"pickup_id":{"visibility":"visible","label":"DHL eCommerce Solutions pickup ID","value":"123456"},"distribution_center":{"visibility":"visible","label":"DHL eCommerce Solutions distribution center","value":"USLAX1"}},"test_credentials":{"client_id":{"visibility":"visible","label":"Test DHL eCommerce Solutions client ID","value":"123456"},"client_secret":{"visibility":"password","label":"Test DHL eCommerce Solutions client secret","value":"********"},"pickup_id":{"visibility":"visible","label":"Test DHL eCommerce Solutions pickup ID","value":"123456"},"distribution_center":{"visibility":"visible","label":"Test DHL eCommerce Solutions distribution center","value":"USLAX1"}}},"credentials":{"client_id":"123456","client_secret":"********","pickup_id":"123456","distribution_center":"USLAX1"},"test_credentials":{"client_id":"123456","client_secret":"********","pickup_id":"123456","distribution_center":"USLAX1"}},{"id":"ca_91e6857e8cb6455180f8ef8a3db8baaa","object":"CarrierAccount","type":"DhlEcsAccount","clone":false,"created_at":"2022-12-06T21:24:01Z","updated_at":"2022-12-06T21:24:02Z","description":"My custom description","reference":null,"billing_type":"carrier","readable":"DHL eCommerce Solutions","logo":null,"fields":{"credentials":{"client_id":{"visibility":"visible","label":"DHL eCommerce Solutions client ID","value":"123456"},"client_secret":{"visibility":"password","label":"DHL eCommerce Solutions client secret","value":"********"},"pickup_id":{"visibility":"visible","label":"DHL eCommerce Solutions pickup ID","value":"123456"},"distribution_center":{"visibility":"visible","label":"DHL eCommerce Solutions distribution center","value":"USLAX1"}},"test_credentials":{"client_id":{"visibility":"visible","label":"Test DHL eCommerce Solutions client ID","value":"123456"},"client_secret":{"visibility":"password","label":"Test DHL eCommerce Solutions client secret","value":"********"},"pickup_id":{"visibility":"visible","label":"Test DHL eCommerce Solutions pickup ID","value":"123456"},"distribution_center":{"visibility":"visible","label":"Test DHL eCommerce Solutions distribution center","value":"USLAX1"}}},"credentials":{"client_id":"123456","client_secret":"********","pickup_id":"123456","distribution_center":"USLAX1"},"test_credentials":{"client_id":"123456","client_secret":"********","pickup_id":"123456","distribution_center":"USLAX1"}},{"id":"ca_5e8c4f41363b432594441dbf98e4032e","object":"CarrierAccount","type":"DhlEcsAccount","clone":false,"created_at":"2022-12-12T23:00:25Z","updated_at":"2022-12-12T23:00:25Z","description":"DHL eCommerce Solutions Account","reference":null,"billing_type":"carrier","readable":"DHL eCommerce Solutions","logo":null,"fields":{"credentials":{"client_id":{"visibility":"visible","label":"DHL eCommerce Solutions client ID","value":"123456"},"client_secret":{"visibility":"password","label":"DHL eCommerce Solutions client secret","value":"********"},"pickup_id":{"visibility":"visible","label":"DHL eCommerce Solutions pickup ID","value":"123456"},"distribution_center":{"visibility":"visible","label":"DHL eCommerce Solutions distribution center","value":"USLAX1"}},"test_credentials":{"client_id":{"visibility":"visible","label":"Test DHL eCommerce Solutions client ID","value":"123456"},"client_secret":{"visibility":"password","label":"Test DHL eCommerce Solutions client secret","value":"********"},"pickup_id":{"visibility":"visible","label":"Test DHL eCommerce Solutions pickup ID","value":"123456"},"distribution_center":{"visibility":"visible","label":"Test DHL eCommerce Solutions distribution center","value":"USLAX1"}}},"credentials":{"client_id":"123456","client_secret":"********","pickup_id":"123456","distribution_center":"USLAX1"},"test_credentials":{"client_id":"123456","client_secret":"********","pickup_id":"123456","distribution_center":"USLAX1"}},{"id":"ca_23d193562e8e459bbd937c2aad3dd092","object":"CarrierAccount","type":"DhlEcsAccount","clone":false,"created_at":"2022-12-12T23:00:48Z","updated_at":"2022-12-12T23:00:48Z","description":"DHL eCommerce Solutions Account","reference":null,"billing_type":"carrier","readable":"DHL eCommerce Solutions","logo":null,"fields":{"credentials":{"client_id":{"visibility":"visible","label":"DHL eCommerce Solutions client ID","value":"123456"},"client_secret":{"visibility":"password","label":"DHL eCommerce Solutions client secret","value":"********"},"pickup_id":{"visibility":"visible","label":"DHL eCommerce Solutions pickup ID","value":"123456"},"distribution_center":{"visibility":"visible","label":"DHL eCommerce Solutions distribution center","value":"USLAX1"}},"test_credentials":{"client_id":{"visibility":"visible","label":"Test DHL eCommerce Solutions client ID","value":"123456"},"client_secret":{"visibility":"password","label":"Test DHL eCommerce Solutions client secret","value":"********"},"pickup_id":{"visibility":"visible","label":"Test DHL eCommerce Solutions pickup ID","value":"123456"},"distribution_center":{"visibility":"visible","label":"Test DHL eCommerce Solutions distribution center","value":"USLAX1"}}},"credentials":{"client_id":"123456","client_secret":"********","pickup_id":"123456","distribution_center":"USLAX1"},"test_credentials":{"client_id":"123456","client_secret":"********","pickup_id":"123456","distribution_center":"USLAX1"}},{"id":"ca_cb65fc8581184ea38a3108f9e9d1e81c","object":"CarrierAccount","type":"DhlEcsAccount","clone":false,"created_at":"2023-02-23T00:06:30Z","updated_at":"2023-02-23T00:06:31Z","description":"My custom description","reference":null,"billing_type":"carrier","readable":"DHL eCommerce Solutions","logo":null,"fields":{"credentials":{"client_id":{"visibility":"visible","label":"DHL eCommerce Solutions client ID","value":"123456"},"client_secret":{"visibility":"password","label":"DHL eCommerce Solutions client secret","value":"********"},"pickup_id":{"visibility":"visible","label":"DHL eCommerce Solutions pickup ID","value":"654321"},"distribution_center":{"visibility":"visible","label":"DHL eCommerce Solutions distribution center","value":"USLAX1"}},"test_credentials":{"client_id":{"visibility":"visible","label":"Test DHL eCommerce Solutions client ID","value":"123456"},"client_secret":{"visibility":"password","label":"Test DHL eCommerce Solutions client secret","value":"********"},"pickup_id":{"visibility":"visible","label":"Test DHL eCommerce Solutions pickup ID","value":"123456"},"distribution_center":{"visibility":"visible","label":"Test DHL eCommerce Solutions distribution center","value":"USLAX1"}}},"credentials":{"client_id":"123456","client_secret":"********","pickup_id":"654321","distribution_center":"USLAX1"},"test_credentials":{"client_id":"123456","client_secret":"********","pickup_id":"123456","distribution_center":"USLAX1"}}]'
         curl_info:
@@ -44,33 +43,36 @@
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.322931
-            namelookup_time: 0.003158
-            connect_time: 0.065635
-            pretransfer_time: 0.134306
+            total_time: 0.234334
+            namelookup_time: 0.002172
+            connect_time: 0.035558
+            pretransfer_time: 0.071081
             size_upload: 0.0
             size_download: 9271.0
-            speed_download: 28708.0
+            speed_download: 39563.0
             speed_upload: 0.0
             download_content_length: 9271.0
             upload_content_length: 0.0
-            starttransfer_time: 0.322568
+            starttransfer_time: 0.234235
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.131
+            primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.39
-            local_port: 53571
+            local_ip: 192.168.1.75
+            local_port: 52759
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
-            scheme: HTTPS
-            appconnect_time_us: 134230
-            connect_time_us: 65635
-            namelookup_time_us: 3158
-            pretransfer_time_us: 134306
+            scheme: https
+            appconnect_time_us: 71027
+            connect_time_us: 35558
+            namelookup_time_us: 2172
+            pretransfer_time_us: 71081
             redirect_time_us: 0
-            starttransfer_time_us: 322568
-            total_time_us: 322931
+            starttransfer_time_us: 234235
+            total_time_us: 234334
+            effective_method: GET
+            capath: ''
+            cainfo: ''
     index: 0

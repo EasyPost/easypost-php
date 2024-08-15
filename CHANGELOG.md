@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Fixes an issue with how query params were sent when using the `addCreditCard` function
+
 ## v7.4.1 (2024-08-09)
 
 - Fix parameters for retrieving next page of child users

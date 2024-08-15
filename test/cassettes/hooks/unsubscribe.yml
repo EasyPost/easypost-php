@@ -14,8 +14,7 @@
         body: '{"parcel":{"length":"10","width":"8","height":"4","weight":"15.4"}}'
     response:
         status:
-            http_version: '1.1'
-            code: '201'
+            code: 201
             message: Created
         headers:
             x-frame-options: SAMEORIGIN
@@ -24,20 +23,20 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 6c53f873655e6556e7886142001f584b
+            x-ep-request-uuid: e181587a66bcec1be2b903b400871b9b
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
-            location: /api/v2/parcels/prcl_a14d41f726b6466bbf868b55c0434a06
+            location: /api/v2/parcels/prcl_982ab0fcc68744d9bfb1125de796be86
             content-type: 'application/json; charset=utf-8'
             content-length: '229'
-            x-runtime: '0.036942'
-            x-node: bigweb33nuq
-            x-version-label: easypost-202311212221-a0f06fbc2c-master
+            x-runtime: '0.031405'
+            x-node: bigweb53nuq
+            x-version-label: easypost-202408141633-8ef9a7bcc9-master
             x-backend: easypost
-            x-proxied: ['intlb1nuq b3de2c47ef', 'extlb1nuq 003ad9bca0']
+            x-proxied: ['intlb4nuq c0f5e722d1', 'extlb2nuq b6e1b5034c']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"prcl_a14d41f726b6466bbf868b55c0434a06","object":"Parcel","created_at":"2023-11-22T20:32:22Z","updated_at":"2023-11-22T20:32:22Z","length":10,"width":8,"height":4,"predefined_package":null,"weight":15.4,"mode":"test"}'
+        body: '{"id":"prcl_982ab0fcc68744d9bfb1125de796be86","object":"Parcel","created_at":"2024-08-14T17:40:44Z","updated_at":"2024-08-14T17:40:44Z","length":10,"width":8,"height":4,"predefined_package":null,"weight":15.4,"mode":"test"}'
         curl_info:
             url: 'https://api.easypost.com/v2/parcels'
             content_type: 'application/json; charset=utf-8'
@@ -47,33 +46,36 @@
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.249403
-            namelookup_time: 0.003287
-            connect_time: 0.069408
-            pretransfer_time: 0.144517
+            total_time: 0.138536
+            namelookup_time: 0.002139
+            connect_time: 0.034989
+            pretransfer_time: 0.07068
             size_upload: 67.0
             size_download: 229.0
-            speed_download: 918.0
-            speed_upload: 268.0
+            speed_download: 1652.0
+            speed_upload: 483.0
             download_content_length: 229.0
             upload_content_length: 67.0
-            starttransfer_time: 0.249383
+            starttransfer_time: 0.138458
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.131
+            primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.39
-            local_port: 53607
+            local_ip: 192.168.1.75
+            local_port: 52823
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
-            scheme: HTTPS
-            appconnect_time_us: 144460
-            connect_time_us: 69408
-            namelookup_time_us: 3287
-            pretransfer_time_us: 144517
+            scheme: https
+            appconnect_time_us: 70613
+            connect_time_us: 34989
+            namelookup_time_us: 2139
+            pretransfer_time_us: 70680
             redirect_time_us: 0
-            starttransfer_time_us: 249383
-            total_time_us: 249403
+            starttransfer_time_us: 138458
+            total_time_us: 138536
+            effective_method: POST
+            capath: ''
+            cainfo: ''
     index: 0

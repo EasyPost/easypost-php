@@ -14,8 +14,7 @@
         body: '{"customs_item":{"description":"Sweet shirts","quantity":"2","weight":"11","value":"23.25","hs_tariff_number":"654321","origin_country":"US"}}'
     response:
         status:
-            http_version: '1.1'
-            code: '201'
+            code: 201
             message: Created
         headers:
             x-frame-options: SAMEORIGIN
@@ -24,20 +23,20 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 6c53f877655e653be7885dc2001f3eb5
+            x-ep-request-uuid: ce89011e66bcec0be2b9005b0084d4f0
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
-            location: /api/v2/customs_items/cstitem_7b32b1698b114d2f8973cfab0289e628
+            location: /api/v2/customs_items/cstitem_c3a2f7c1df2e46cdb14d0baf955bdb4b
             content-type: 'application/json; charset=utf-8'
             content-length: '376'
-            x-runtime: '0.048487'
-            x-node: bigweb38nuq
-            x-version-label: easypost-202311212221-a0f06fbc2c-master
+            x-runtime: '0.035869'
+            x-node: bigweb39nuq
+            x-version-label: easypost-202408141633-8ef9a7bcc9-master
             x-backend: easypost
-            x-proxied: ['intlb2nuq b3de2c47ef', 'extlb1nuq 003ad9bca0']
+            x-proxied: ['intlb3nuq c0f5e722d1', 'extlb1nuq b6e1b5034c']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"cstitem_7b32b1698b114d2f8973cfab0289e628","object":"CustomsItem","created_at":"2023-11-22T20:31:55Z","updated_at":"2023-11-22T20:31:55Z","description":"Sweet shirts","hs_tariff_number":"654321","origin_country":"US","quantity":2,"value":"23.25","weight":11,"code":null,"mode":"test","manufacturer":null,"currency":null,"eccn":null,"printed_commodity_identifier":null}'
+        body: '{"id":"cstitem_c3a2f7c1df2e46cdb14d0baf955bdb4b","object":"CustomsItem","created_at":"2024-08-14T17:40:27Z","updated_at":"2024-08-14T17:40:27Z","description":"Sweet shirts","hs_tariff_number":"654321","origin_country":"US","quantity":2,"value":"23.25","weight":11,"code":null,"mode":"test","manufacturer":null,"currency":null,"eccn":null,"printed_commodity_identifier":null}'
         curl_info:
             url: 'https://api.easypost.com/v2/customs_items'
             content_type: 'application/json; charset=utf-8'
@@ -47,33 +46,36 @@
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.242512
-            namelookup_time: 0.001482
-            connect_time: 0.066448
-            pretransfer_time: 0.130164
+            total_time: 0.148571
+            namelookup_time: 0.00199
+            connect_time: 0.037917
+            pretransfer_time: 0.074554
             size_upload: 142.0
             size_download: 376.0
-            speed_download: 1550.0
-            speed_upload: 585.0
+            speed_download: 2530.0
+            speed_upload: 955.0
             download_content_length: 376.0
             upload_content_length: 142.0
-            starttransfer_time: 0.242495
+            starttransfer_time: 0.148554
             redirect_time: 0.0
             redirect_url: ''
             primary_ip: 169.62.110.131
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.39
-            local_port: 53562
+            local_ip: 192.168.1.75
+            local_port: 52794
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
-            scheme: HTTPS
-            appconnect_time_us: 130130
-            connect_time_us: 66448
-            namelookup_time_us: 1482
-            pretransfer_time_us: 130164
+            scheme: https
+            appconnect_time_us: 74498
+            connect_time_us: 37917
+            namelookup_time_us: 1990
+            pretransfer_time_us: 74554
             redirect_time_us: 0
-            starttransfer_time_us: 242495
-            total_time_us: 242512
+            starttransfer_time_us: 148554
+            total_time_us: 148571
+            effective_method: POST
+            capath: ''
+            cainfo: ''
     index: 0

@@ -14,8 +14,7 @@
         body: '{"start_date":"2022-04-09","end_date":"2022-04-09","type":"shipment","columns":["usps_zone"]}'
     response:
         status:
-            http_version: '1.1'
-            code: '201'
+            code: 201
             message: Created
         headers:
             x-frame-options: SAMEORIGIN
@@ -24,19 +23,19 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 71ef911d655e64f4e7885984001fd672
+            x-ep-request-uuid: e181587866bcec20e2b903da00871fd2
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '283'
-            x-runtime: '0.100082'
-            x-node: bigweb39nuq
-            x-version-label: easypost-202311212221-a0f06fbc2c-master
+            x-runtime: '0.095889'
+            x-node: bigweb36nuq
+            x-version-label: easypost-202408141633-8ef9a7bcc9-master
             x-backend: easypost
-            x-proxied: ['intlb1nuq b3de2c47ef', 'extlb2nuq 003ad9bca0']
+            x-proxied: ['intlb3nuq c0f5e722d1', 'extlb2nuq b6e1b5034c']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"shprep_d885ad5696134ee6833cd3df402d6399","object":"ShipmentReport","created_at":"2023-11-22T20:30:44Z","updated_at":"2023-11-22T20:30:44Z","start_date":"2022-04-09","end_date":"2022-04-09","mode":"test","status":"new","url":null,"url_expires_at":null,"include_children":false}'
+        body: '{"id":"shprep_add46838e7454c42898f6663924ca060","object":"ShipmentReport","created_at":"2024-08-14T17:40:49Z","updated_at":"2024-08-14T17:40:49Z","start_date":"2022-04-09","end_date":"2022-04-09","mode":"test","status":"new","url":null,"url_expires_at":null,"include_children":false}'
         curl_info:
             url: 'https://api.easypost.com/v2/reports/shipment'
             content_type: 'application/json; charset=utf-8'
@@ -46,33 +45,36 @@
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.295574
-            namelookup_time: 0.001174
-            connect_time: 0.062555
-            pretransfer_time: 0.129328
+            total_time: 0.20506
+            namelookup_time: 0.001803
+            connect_time: 0.034841
+            pretransfer_time: 0.071281
             size_upload: 93.0
             size_download: 283.0
-            speed_download: 957.0
-            speed_upload: 314.0
+            speed_download: 1380.0
+            speed_upload: 453.0
             download_content_length: 283.0
             upload_content_length: 93.0
-            starttransfer_time: 0.295538
+            starttransfer_time: 0.205012
             redirect_time: 0.0
             redirect_url: ''
             primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.39
-            local_port: 53465
+            local_ip: 192.168.1.75
+            local_port: 52838
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
-            scheme: HTTPS
-            appconnect_time_us: 129302
-            connect_time_us: 62555
-            namelookup_time_us: 1174
-            pretransfer_time_us: 129328
+            scheme: https
+            appconnect_time_us: 71221
+            connect_time_us: 34841
+            namelookup_time_us: 1803
+            pretransfer_time_us: 71281
             redirect_time_us: 0
-            starttransfer_time_us: 295538
-            total_time_us: 295574
+            starttransfer_time_us: 205012
+            total_time_us: 205060
+            effective_method: POST
+            capath: ''
+            cainfo: ''
     index: 0

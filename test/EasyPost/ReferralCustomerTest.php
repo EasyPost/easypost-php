@@ -132,7 +132,7 @@ class ReferralCustomerTest extends \PHPUnit\Framework\TestCase
             Fixture::creditCardDetails()['cvc']
         );
 
-        $this->assertStringMatchesFormat('card_%s', $creditCard->id);
+        $this->assertStringMatchesFormat('pm_%s', $creditCard->id);
         $this->assertEquals('6170', $creditCard->last4);
     }
 }

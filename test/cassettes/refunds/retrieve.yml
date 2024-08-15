@@ -12,8 +12,7 @@
             User-Agent: ''
     response:
         status:
-            http_version: '1.1'
-            code: '200'
+            code: 200
             message: OK
         headers:
             x-frame-options: SAMEORIGIN
@@ -22,19 +21,19 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 71ef911f655e64f5e78859a1001fd930
+            x-ep-request-uuid: e181587966bcebcae2b8fb720086ca50
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
-            content-length: '918'
-            x-runtime: '0.042530'
-            x-node: bigweb31nuq
-            x-version-label: easypost-202311212221-a0f06fbc2c-master
+            content-length: '326'
+            x-runtime: '0.043634'
+            x-node: bigweb40nuq
+            x-version-label: easypost-202408141633-8ef9a7bcc9-master
             x-backend: easypost
-            x-proxied: ['intlb2nuq b3de2c47ef', 'extlb2nuq 003ad9bca0']
+            x-proxied: ['intlb4nuq c0f5e722d1', 'extlb2nuq b6e1b5034c']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"refunds":[{"id":"rfnd_f38519d28ae54116b38815c879f7643f","object":"Refund","created_at":"2023-11-22T20:30:08Z","updated_at":"2023-11-22T20:30:08Z","tracking_code":"9400100105440282035749","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_d129d08d265b450a93b2e37b4f46a6be"},{"id":"rfnd_be5fbd97c728496399ffc514a4606515","object":"Refund","created_at":"2023-11-22T19:56:15Z","updated_at":"2023-11-22T19:56:15Z","tracking_code":"9400100105440282027591","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_2ac7f7c28ca544179ad876570f95579b"},{"id":"rfnd_4498a9261a514221ab73d0fa2793901b","object":"Refund","created_at":"2023-11-22T19:55:47Z","updated_at":"2023-11-22T19:55:47Z","tracking_code":"9400100105440282027393","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_3de2e54264e545d698faffaa86695951"}],"has_more":false}'
+        body: '{"refunds":[{"id":"rfnd_1513d464240f447bae0485a6ac447379","object":"Refund","created_at":"2024-08-14T17:39:22Z","updated_at":"2024-08-14T17:39:22Z","tracking_code":"9400100105807075196603","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_c1bfabbf012845fca34e61aa50ad0d19"}],"has_more":false}'
         curl_info:
             url: 'https://api.easypost.com/v2/refunds?page_size=5'
             content_type: 'application/json; charset=utf-8'
@@ -44,40 +43,43 @@
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.243195
-            namelookup_time: 0.001008
-            connect_time: 0.065689
-            pretransfer_time: 0.135116
+            total_time: 0.150234
+            namelookup_time: 0.002188
+            connect_time: 0.035468
+            pretransfer_time: 0.070314
             size_upload: 0.0
-            size_download: 918.0
-            speed_download: 3774.0
+            size_download: 326.0
+            speed_download: 2169.0
             speed_upload: 0.0
-            download_content_length: 918.0
+            download_content_length: 326.0
             upload_content_length: 0.0
-            starttransfer_time: 0.243174
+            starttransfer_time: 0.150212
             redirect_time: 0.0
             redirect_url: ''
             primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.39
-            local_port: 53471
+            local_ip: 192.168.1.75
+            local_port: 52641
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
-            scheme: HTTPS
-            appconnect_time_us: 135059
-            connect_time_us: 65689
-            namelookup_time_us: 1008
-            pretransfer_time_us: 135116
+            scheme: https
+            appconnect_time_us: 70272
+            connect_time_us: 35468
+            namelookup_time_us: 2188
+            pretransfer_time_us: 70314
             redirect_time_us: 0
-            starttransfer_time_us: 243174
-            total_time_us: 243195
+            starttransfer_time_us: 150212
+            total_time_us: 150234
+            effective_method: GET
+            capath: ''
+            cainfo: ''
     index: 0
 -
     request:
         method: GET
-        url: 'https://api.easypost.com/v2/refunds/rfnd_f38519d28ae54116b38815c879f7643f'
+        url: 'https://api.easypost.com/v2/refunds/rfnd_1513d464240f447bae0485a6ac447379'
         headers:
             Host: api.easypost.com
             Accept-Encoding: ''
@@ -87,8 +89,7 @@
             User-Agent: ''
     response:
         status:
-            http_version: '1.1'
-            code: '200'
+            code: 200
             message: OK
         headers:
             x-frame-options: SAMEORIGIN
@@ -97,56 +98,58 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 71ef911c655e64f5e78859a2001fd9ab
+            x-ep-request-uuid: e181587966bcebcbe2b8fb730086ca7a
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '295'
-            x-runtime: '0.032828'
-            x-node: bigweb32nuq
-            x-version-label: easypost-202311212221-a0f06fbc2c-master
+            x-runtime: '0.044798'
+            x-node: bigweb36nuq
+            x-version-label: easypost-202408141633-8ef9a7bcc9-master
             x-backend: easypost
-            x-canary: direct
-            x-proxied: ['intlb2nuq b3de2c47ef', 'extlb2nuq 003ad9bca0']
+            x-proxied: ['intlb4nuq c0f5e722d1', 'extlb2nuq b6e1b5034c']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"rfnd_f38519d28ae54116b38815c879f7643f","object":"Refund","created_at":"2023-11-22T20:30:08Z","updated_at":"2023-11-22T20:30:08Z","tracking_code":"9400100105440282035749","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_d129d08d265b450a93b2e37b4f46a6be"}'
+        body: '{"id":"rfnd_1513d464240f447bae0485a6ac447379","object":"Refund","created_at":"2024-08-14T17:39:22Z","updated_at":"2024-08-14T17:39:22Z","tracking_code":"9400100105807075196603","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_c1bfabbf012845fca34e61aa50ad0d19"}'
         curl_info:
-            url: 'https://api.easypost.com/v2/refunds/rfnd_f38519d28ae54116b38815c879f7643f'
+            url: 'https://api.easypost.com/v2/refunds/rfnd_1513d464240f447bae0485a6ac447379'
             content_type: 'application/json; charset=utf-8'
             http_code: 200
-            header_size: 706
+            header_size: 688
             request_size: 322
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.243398
-            namelookup_time: 0.002951
-            connect_time: 0.074045
-            pretransfer_time: 0.143441
+            total_time: 0.141457
+            namelookup_time: 0.002173
+            connect_time: 0.031892
+            pretransfer_time: 0.063393
             size_upload: 0.0
             size_download: 295.0
-            speed_download: 1212.0
+            speed_download: 2085.0
             speed_upload: 0.0
             download_content_length: 295.0
             upload_content_length: 0.0
-            starttransfer_time: 0.243384
+            starttransfer_time: 0.141432
             redirect_time: 0.0
             redirect_url: ''
             primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.39
-            local_port: 53472
+            local_ip: 192.168.1.75
+            local_port: 52642
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
-            scheme: HTTPS
-            appconnect_time_us: 143385
-            connect_time_us: 74045
-            namelookup_time_us: 2951
-            pretransfer_time_us: 143441
+            scheme: https
+            appconnect_time_us: 63348
+            connect_time_us: 31892
+            namelookup_time_us: 2173
+            pretransfer_time_us: 63393
             redirect_time_us: 0
-            starttransfer_time_us: 243384
-            total_time_us: 243398
+            starttransfer_time_us: 141432
+            total_time_us: 141457
+            effective_method: GET
+            capath: ''
+            cainfo: ''
     index: 0

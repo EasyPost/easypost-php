@@ -14,8 +14,7 @@
         body: '{"payment_method":{"stripe_customer_id":"cus_123","payment_method_reference":"ba_123","priority":"primary"}}'
     response:
         status:
-            http_version: '1.1'
-            code: '422'
+            code: 422
             message: 'Unprocessable Entity'
         headers:
             x-frame-options: SAMEORIGIN
@@ -24,20 +23,20 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 6c53f877655e6543e7885e06001f4629
+            x-ep-request-uuid: e181587766bcebfce2b8ffba0086fa91
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
-            content-length: '121'
-            x-runtime: '0.059858'
+            content-length: '115'
+            x-runtime: '0.037942'
             vary: Origin
             x-node: bigweb36nuq
-            x-version-label: easypost-202311212221-a0f06fbc2c-master
+            x-version-label: easypost-202408141633-8ef9a7bcc9-master
             x-backend: easypost
-            x-proxied: ['intlb2nuq b3de2c47ef', 'extlb1nuq 003ad9bca0']
+            x-proxied: ['intlb4nuq c0f5e722d1', 'extlb2nuq b6e1b5034c']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"error":{"code":"BILLING.INVALID_PAYMENT_GATEWAY_REFERENCE","message":"Invalid Payment Gateway Reference.","errors":[]}}'
+        body: '{"error":{"code":"BILLING.INVALID_PAYMENT_GATEWAY_REFERENCE","message":"Invalid connect integration.","errors":[]}}'
         curl_info:
             url: 'https://api.easypost.com/beta/referral_customers/payment_method'
             content_type: 'application/json; charset=utf-8'
@@ -47,33 +46,36 @@
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.258133
-            namelookup_time: 0.001197
-            connect_time: 0.06504
-            pretransfer_time: 0.131881
+            total_time: 0.135016
+            namelookup_time: 0.002318
+            connect_time: 0.032022
+            pretransfer_time: 0.064096
             size_upload: 108.0
-            size_download: 121.0
-            speed_download: 468.0
-            speed_upload: 418.0
-            download_content_length: 121.0
+            size_download: 115.0
+            speed_download: 851.0
+            speed_upload: 799.0
+            download_content_length: 115.0
             upload_content_length: 108.0
-            starttransfer_time: 0.25811
+            starttransfer_time: 0.134988
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.131
+            primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.39
-            local_port: 53584
+            local_ip: 192.168.1.75
+            local_port: 52748
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
-            scheme: HTTPS
-            appconnect_time_us: 131816
-            connect_time_us: 65040
-            namelookup_time_us: 1197
-            pretransfer_time_us: 131881
+            scheme: https
+            appconnect_time_us: 64041
+            connect_time_us: 32022
+            namelookup_time_us: 2318
+            pretransfer_time_us: 64096
             redirect_time_us: 0
-            starttransfer_time_us: 258110
-            total_time_us: 258133
+            starttransfer_time_us: 134988
+            total_time_us: 135016
+            effective_method: POST
+            capath: ''
+            cainfo: ''
     index: 0

@@ -356,7 +356,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         // Test lowestRate with service filter (this rate is higher than the lowest but should filter)
         $lowestRate = $shipment->lowestRate([], ['Priority']);
         $this->assertEquals('Priority', $lowestRate['service']);
-        $this->assertEquals('6.95', $lowestRate['rate']);
+        $this->assertEquals('6.90', $lowestRate['rate']);
         $this->assertEquals('USPS', $lowestRate['carrier']);
 
         // Test lowestRate with carrier filter (should error due to bad carrier)

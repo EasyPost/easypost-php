@@ -55,11 +55,6 @@ class Fixture
         return '2022-04-09';
     }
 
-    public static function webhookUrl(): string
-    {
-        return self::readFixtureData()['webhook_url'];
-    }
-
     /**
      * @return array<mixed>
      */
@@ -156,7 +151,7 @@ class Fixture
      */
     public static function basicPickup(): array
     {
-        $pickupDate = '2023-11-24';
+        $pickupDate = '2024-08-18';
 
         $pickupData = self::readFixtureData()['pickups']['basic'];
         $pickupData['min_datetime'] = $pickupDate;
@@ -206,7 +201,25 @@ class Fixture
         $eventBytesFilepath = file("$currentDir/examples/official/fixtures/event-body.json");
         $data = $eventBytesFilepath[0];
 
-        return mb_convert_encoding(json_encode(json_decode($data, true)), 'UTF-8', mb_list_encodings());
+        return mb_convert_encoding(json_encode(
+            json_decode($data, true),
+            JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE
+        ), 'UTF-8');
+    }
+
+    public static function webhookHmacSignature(): string
+    {
+        return self::readFixtureData()['webhook_hmac_signature'];
+    }
+
+    public static function webhookSecret(): string
+    {
+        return self::readFixtureData()['webhook_secret'];
+    }
+
+    public static function webhookUrl(): string
+    {
+        return self::readFixtureData()['webhook_url'];
     }
 
     /**
@@ -234,7 +247,7 @@ class Fixture
      */
     public static function plannedShipDate(): string
     {
-        return '2024-07-16';
+        return '2024-08-16';
     }
 
     /**
@@ -242,7 +255,7 @@ class Fixture
      */
     public static function desiredDeliveryDate(): string
     {
-        return '2024-07-16';
+        return '2024-08-18';
     }
 
     /**

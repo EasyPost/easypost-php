@@ -11,7 +11,7 @@
             Authorization: ''
             Content-Type: application/json
             User-Agent: ''
-        body: '{"from_zip":"94107","to_zip":"90277","planned_ship_date":"2024-07-16","carriers":["USPS"]}'
+        body: '{"from_zip":"94107","to_zip":"90277","planned_ship_date":"2024-08-16","carriers":["USPS"]}'
     response:
         status:
             code: 200
@@ -23,58 +23,57 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 39ae9bff66905363e79a830d003fe457
+            x-ep-request-uuid: e181587d66bcec22e2b9043600872172
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '1496'
-            x-runtime: '0.088010'
-            x-node: bigweb32nuq
-            x-version-label: easypost-202407111940-3cb16a3462-master
+            x-runtime: '0.081910'
+            x-node: bigweb34nuq
+            x-version-label: easypost-202408141633-8ef9a7bcc9-master
             x-backend: easypost
-            x-canary: direct
-            x-proxied: ['intlb3nuq fa152d4755', 'extlb1nuq fa152d4755']
+            x-proxied: ['intlb4nuq c0f5e722d1', 'extlb2nuq b6e1b5034c']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"carriers_without_tint_estimates":null,"from_zip":"94107","planned_ship_date":"2024-07-16","results":[{"carrier":"USPS","easypost_time_in_transit_data":{"days_in_transit":{"percentile_50":1,"percentile_75":2,"percentile_85":2,"percentile_90":3,"percentile_95":3,"percentile_97":4,"percentile_99":6},"easypost_estimated_delivery_date":"2024-07-17"},"service":"express"},{"carrier":"USPS","easypost_time_in_transit_data":{"days_in_transit":{"percentile_50":2,"percentile_75":3,"percentile_85":3,"percentile_90":4,"percentile_95":6,"percentile_97":6,"percentile_99":9},"easypost_estimated_delivery_date":"2024-07-18"},"service":"groundadvantage"},{"carrier":"USPS","easypost_time_in_transit_data":{"days_in_transit":{"percentile_50":3,"percentile_75":3,"percentile_85":3,"percentile_90":6,"percentile_95":6,"percentile_97":6,"percentile_99":9},"easypost_estimated_delivery_date":"2024-07-18"},"service":"librarymail"},{"carrier":"USPS","easypost_time_in_transit_data":{"days_in_transit":{"percentile_50":3,"percentile_75":3,"percentile_85":3,"percentile_90":4,"percentile_95":6,"percentile_97":6,"percentile_99":9},"easypost_estimated_delivery_date":"2024-07-18"},"service":"mediamail"},{"carrier":"USPS","easypost_time_in_transit_data":{"days_in_transit":{"percentile_50":2,"percentile_75":3,"percentile_85":3,"percentile_90":3,"percentile_95":4,"percentile_97":6,"percentile_99":7},"easypost_estimated_delivery_date":"2024-07-18"},"service":"priority"}],"saturday_delivery":null,"to_zip":"90277"}'
+        body: '{"carriers_without_tint_estimates":null,"from_zip":"94107","planned_ship_date":"2024-08-16","results":[{"carrier":"USPS","easypost_time_in_transit_data":{"days_in_transit":{"percentile_50":1,"percentile_75":3,"percentile_85":3,"percentile_90":4,"percentile_95":4,"percentile_97":5,"percentile_99":7},"easypost_estimated_delivery_date":"2024-08-17"},"service":"express"},{"carrier":"USPS","easypost_time_in_transit_data":{"days_in_transit":{"percentile_50":3,"percentile_75":3,"percentile_85":3,"percentile_90":4,"percentile_95":5,"percentile_97":5,"percentile_99":7},"easypost_estimated_delivery_date":"2024-08-19"},"service":"groundadvantage"},{"carrier":"USPS","easypost_time_in_transit_data":{"days_in_transit":{"percentile_50":3,"percentile_75":3,"percentile_85":4,"percentile_90":4,"percentile_95":5,"percentile_97":6,"percentile_99":8},"easypost_estimated_delivery_date":"2024-08-19"},"service":"librarymail"},{"carrier":"USPS","easypost_time_in_transit_data":{"days_in_transit":{"percentile_50":3,"percentile_75":3,"percentile_85":3,"percentile_90":4,"percentile_95":4,"percentile_97":5,"percentile_99":7},"easypost_estimated_delivery_date":"2024-08-19"},"service":"mediamail"},{"carrier":"USPS","easypost_time_in_transit_data":{"days_in_transit":{"percentile_50":3,"percentile_75":3,"percentile_85":3,"percentile_90":4,"percentile_95":5,"percentile_97":5,"percentile_99":7},"easypost_estimated_delivery_date":"2024-08-19"},"service":"priority"}],"saturday_delivery":null,"to_zip":"90277"}'
         curl_info:
             url: 'https://api.easypost.com/v2/smartrate/deliver_by'
             content_type: 'application/json; charset=utf-8'
             http_code: 200
-            header_size: 707
+            header_size: 689
             request_size: 408
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.483989
-            namelookup_time: 0.003915
-            connect_time: 0.128845
-            pretransfer_time: 0.264145
+            total_time: 0.191294
+            namelookup_time: 0.004191
+            connect_time: 0.037315
+            pretransfer_time: 0.072812
             size_upload: 90.0
             size_download: 1496.0
-            speed_download: 3090.0
-            speed_upload: 185.0
+            speed_download: 7820.0
+            speed_upload: 470.0
             download_content_length: 1496.0
             upload_content_length: 90.0
-            starttransfer_time: 0.483954
+            starttransfer_time: 0.191201
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.131
+            primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.29
-            local_port: 63869
+            local_ip: 192.168.1.75
+            local_port: 52861
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
-            scheme: HTTPS
-            appconnect_time_us: 264070
-            connect_time_us: 128845
-            namelookup_time_us: 3915
-            pretransfer_time_us: 264145
+            scheme: https
+            appconnect_time_us: 72747
+            connect_time_us: 37315
+            namelookup_time_us: 4191
+            pretransfer_time_us: 72812
             redirect_time_us: 0
-            starttransfer_time_us: 483954
-            total_time_us: 483989
+            starttransfer_time_us: 191201
+            total_time_us: 191294
             effective_method: POST
             capath: ''
             cainfo: ''

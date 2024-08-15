@@ -14,8 +14,7 @@
         body: '{"start_date":"2022-04-09","end_date":"2022-04-09","type":"shipment","additional_columns":["from_name","from_company"]}'
     response:
         status:
-            http_version: '1.1'
-            code: '201'
+            code: 201
             message: Created
         headers:
             x-frame-options: SAMEORIGIN
@@ -24,19 +23,19 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 71ef911c655e64f3e7885982001fd595
+            x-ep-request-uuid: e181587866bcec21e2b903db0087200c
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '283'
-            x-runtime: '0.063657'
-            x-node: bigweb40nuq
-            x-version-label: easypost-202311212221-a0f06fbc2c-master
+            x-runtime: '0.072261'
+            x-node: bigweb42nuq
+            x-version-label: easypost-202408141633-8ef9a7bcc9-master
             x-backend: easypost
-            x-proxied: ['intlb2nuq b3de2c47ef', 'extlb2nuq 003ad9bca0']
+            x-proxied: ['intlb4nuq c0f5e722d1', 'extlb2nuq b6e1b5034c']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"shprep_cf3ffeee1d844c4a97ad5cf890bddf18","object":"ShipmentReport","created_at":"2023-11-22T20:30:43Z","updated_at":"2023-11-22T20:30:43Z","start_date":"2022-04-09","end_date":"2022-04-09","mode":"test","status":"new","url":null,"url_expires_at":null,"include_children":false}'
+        body: '{"id":"shprep_6e878f6b241740dfaa24a5846976b832","object":"ShipmentReport","created_at":"2024-08-14T17:40:49Z","updated_at":"2024-08-14T17:40:49Z","start_date":"2022-04-09","end_date":"2022-04-09","mode":"test","status":"new","url":null,"url_expires_at":null,"include_children":false}'
         curl_info:
             url: 'https://api.easypost.com/v2/reports/shipment'
             content_type: 'application/json; charset=utf-8'
@@ -46,33 +45,36 @@
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.27956
-            namelookup_time: 0.002594
-            connect_time: 0.073534
-            pretransfer_time: 0.145443
+            total_time: 0.179315
+            namelookup_time: 0.002126
+            connect_time: 0.034484
+            pretransfer_time: 0.07071
             size_upload: 119.0
             size_download: 283.0
-            speed_download: 1012.0
-            speed_upload: 425.0
+            speed_download: 1578.0
+            speed_upload: 663.0
             download_content_length: 283.0
             upload_content_length: 119.0
-            starttransfer_time: 0.279531
+            starttransfer_time: 0.17925
             redirect_time: 0.0
             redirect_url: ''
             primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.39
-            local_port: 53463
+            local_ip: 192.168.1.75
+            local_port: 52839
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
-            scheme: HTTPS
-            appconnect_time_us: 145387
-            connect_time_us: 73534
-            namelookup_time_us: 2594
-            pretransfer_time_us: 145443
+            scheme: https
+            appconnect_time_us: 70621
+            connect_time_us: 34484
+            namelookup_time_us: 2126
+            pretransfer_time_us: 70710
             redirect_time_us: 0
-            starttransfer_time_us: 279531
-            total_time_us: 279560
+            starttransfer_time_us: 179250
+            total_time_us: 179315
+            effective_method: POST
+            capath: ''
+            cainfo: ''
     index: 0
