@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Next Release
+## v7.4.2 (2024-08-16)
 
 - Fixes an issue with how query params were sent when using the `addCreditCard` function
 
