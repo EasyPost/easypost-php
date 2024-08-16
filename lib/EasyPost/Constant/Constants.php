@@ -11,7 +11,7 @@ abstract class Constants
     const BETA_API_VERSION = 'beta';
 
     // Library constants
-    const LIBRARY_VERSION = '7.4.1';
+    const LIBRARY_VERSION = '7.4.2';
     const SUPPORT_EMAIL = 'support@easypost.com';
 
     // Validation
