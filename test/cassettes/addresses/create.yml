@@ -14,8 +14,7 @@
         body: '{"address":{"name":"Jack Sparrow","street1":"388 Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","country":"US","email":"test@example.com","phone":"5555555555"}}'
     response:
         status:
-            http_version: '1.1'
-            code: '201'
+            code: 201
             message: Created
         headers:
             x-frame-options: SAMEORIGIN
@@ -24,20 +23,20 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 71ef9121655e64afe7885562001f86fc
+            x-ep-request-uuid: e181587766bcebf6e2b8ff730086f32e
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
-            location: /api/v2/addresses/adr_d9ceb38b897511eeba09ac1f6bc53342
+            location: /api/v2/addresses/adr_3eaaf0ca5a6411efba32ac1f6bc53342
             content-type: 'application/json; charset=utf-8'
             content-length: '461'
-            x-runtime: '0.034876'
-            x-node: bigweb42nuq
-            x-version-label: easypost-202311212221-a0f06fbc2c-master
+            x-runtime: '0.034509'
+            x-node: bigweb36nuq
+            x-version-label: easypost-202408141633-8ef9a7bcc9-master
             x-backend: easypost
-            x-proxied: ['intlb1nuq b3de2c47ef', 'extlb2nuq 003ad9bca0']
+            x-proxied: ['intlb3nuq c0f5e722d1', 'extlb2nuq b6e1b5034c']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"adr_d9ceb38b897511eeba09ac1f6bc53342","object":"Address","created_at":"2023-11-22T20:29:35+00:00","updated_at":"2023-11-22T20:29:35+00:00","name":"Jack Sparrow","company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":[]}'
+        body: '{"id":"adr_3eaaf0ca5a6411efba32ac1f6bc53342","object":"Address","created_at":"2024-08-14T17:40:06+00:00","updated_at":"2024-08-14T17:40:06+00:00","name":"Jack Sparrow","company":null,"street1":"388 Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":[]}'
         curl_info:
             url: 'https://api.easypost.com/v2/addresses'
             content_type: 'application/json; charset=utf-8'
@@ -47,33 +46,36 @@
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.228187
-            namelookup_time: 0.003457
-            connect_time: 0.065705
-            pretransfer_time: 0.129381
+            total_time: 0.132585
+            namelookup_time: 0.002263
+            connect_time: 0.031664
+            pretransfer_time: 0.065141
             size_upload: 195.0
             size_download: 461.0
-            speed_download: 2020.0
-            speed_upload: 854.0
+            speed_download: 3477.0
+            speed_upload: 1470.0
             download_content_length: 461.0
             upload_content_length: 195.0
-            starttransfer_time: 0.228171
+            starttransfer_time: 0.132502
             redirect_time: 0.0
             redirect_url: ''
             primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.39
-            local_port: 53373
+            local_ip: 192.168.1.75
+            local_port: 52723
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
-            scheme: HTTPS
-            appconnect_time_us: 129351
-            connect_time_us: 65705
-            namelookup_time_us: 3457
-            pretransfer_time_us: 129381
+            scheme: https
+            appconnect_time_us: 65070
+            connect_time_us: 31664
+            namelookup_time_us: 2263
+            pretransfer_time_us: 65141
             redirect_time_us: 0
-            starttransfer_time_us: 228171
-            total_time_us: 228187
+            starttransfer_time_us: 132502
+            total_time_us: 132585
+            effective_method: POST
+            capath: ''
+            cainfo: ''
     index: 0

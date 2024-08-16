@@ -129,15 +129,14 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
      */
     public function testValidateWebhook(): void
     {
-        $webhookSecret = 'sécret';
-        $expectedHmacSignature = 'hmac-sha256-hex=e93977c8ccb20363d51a62b3fe1fc402b7829be1152da9e88cf9e8d07115a46b';
         $headers = [
-            'X-Hmac-Signature' => $expectedHmacSignature
+            'X-Hmac-Signature' => Fixture::webhookHmacSignature()
         ];
 
-        $webhookBody = Util::validateWebhook(Fixture::eventBytes(), $headers, $webhookSecret);
+        $webhookBody = Util::validateWebhook(Fixture::eventBytes(), $headers, Fixture::webhookSecret());
 
-        $this->assertEquals('batch.created', $webhookBody->description);
+        $this->assertEquals('tracker.updated', $webhookBody->description);
+        $this->assertEquals(614.4, $webhookBody->result->weight); // Ensure we convert floats properly
     }
 
     /**

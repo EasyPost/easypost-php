@@ -44,7 +44,7 @@ class BetaReferralCustomerTest extends \PHPUnit\Framework\TestCase
                 'primary'
             );
         } catch (ApiException $error) {
-            $this->assertEquals('Invalid Payment Gateway Reference.', $error->getMessage());
+            $this->assertEquals('Invalid connect integration.', $error->getMessage());
         }
     }
 

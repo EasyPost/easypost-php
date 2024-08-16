@@ -12,8 +12,7 @@
             User-Agent: ''
     response:
         status:
-            http_version: '1.1'
-            code: '200'
+            code: 200
             message: OK
         headers:
             x-frame-options: SAMEORIGIN
@@ -22,56 +21,58 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 0610ca376564eab3e787e2090013f3dc
+            x-ep-request-uuid: e181587966bcebcae2b8fb710086ca22
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
-            content-length: '1210'
-            x-runtime: '0.044344'
-            x-node: bigweb32nuq
-            x-version-label: easypost-202311250013-a0f06fbc2c-master
+            content-length: '326'
+            x-runtime: '0.061351'
+            x-node: bigweb53nuq
+            x-version-label: easypost-202408141633-8ef9a7bcc9-master
             x-backend: easypost
-            x-canary: direct
-            x-proxied: ['intlb2nuq b3de2c47ef', 'extlb1nuq 003ad9bca0']
+            x-proxied: ['intlb3nuq c0f5e722d1', 'extlb2nuq b6e1b5034c']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"refunds":[{"id":"rfnd_f5322c13edb14488b609610e77129554","object":"Refund","created_at":"2023-11-22T20:30:48Z","updated_at":"2023-11-23T20:30:48Z","tracking_code":"9400100105440282036012","confirmation_number":null,"status":"rejected","carrier":"USPS","shipment_id":"shp_e85172474c1441a2a47b3ecf437fd4db"},{"id":"rfnd_f38519d28ae54116b38815c879f7643f","object":"Refund","created_at":"2023-11-22T20:30:08Z","updated_at":"2023-11-23T20:30:08Z","tracking_code":"9400100105440282035749","confirmation_number":null,"status":"rejected","carrier":"USPS","shipment_id":"shp_d129d08d265b450a93b2e37b4f46a6be"},{"id":"rfnd_be5fbd97c728496399ffc514a4606515","object":"Refund","created_at":"2023-11-22T19:56:15Z","updated_at":"2023-11-23T19:56:15Z","tracking_code":"9400100105440282027591","confirmation_number":null,"status":"rejected","carrier":"USPS","shipment_id":"shp_2ac7f7c28ca544179ad876570f95579b"},{"id":"rfnd_4498a9261a514221ab73d0fa2793901b","object":"Refund","created_at":"2023-11-22T19:55:47Z","updated_at":"2023-11-23T19:55:47Z","tracking_code":"9400100105440282027393","confirmation_number":null,"status":"rejected","carrier":"USPS","shipment_id":"shp_3de2e54264e545d698faffaa86695951"}],"has_more":false}'
+        body: '{"refunds":[{"id":"rfnd_1513d464240f447bae0485a6ac447379","object":"Refund","created_at":"2024-08-14T17:39:22Z","updated_at":"2024-08-14T17:39:22Z","tracking_code":"9400100105807075196603","confirmation_number":null,"status":"submitted","carrier":"USPS","shipment_id":"shp_c1bfabbf012845fca34e61aa50ad0d19"}],"has_more":false}'
         curl_info:
             url: 'https://api.easypost.com/v2/refunds?page_size=5'
             content_type: 'application/json; charset=utf-8'
             http_code: 200
-            header_size: 707
+            header_size: 688
             request_size: 296
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.247383
-            namelookup_time: 0.001891
-            connect_time: 0.066755
-            pretransfer_time: 0.132522
+            total_time: 0.159475
+            namelookup_time: 0.00435
+            connect_time: 0.033943
+            pretransfer_time: 0.065349
             size_upload: 0.0
-            size_download: 1210.0
-            speed_download: 4891.0
+            size_download: 326.0
+            speed_download: 2044.0
             speed_upload: 0.0
-            download_content_length: 1210.0
+            download_content_length: 326.0
             upload_content_length: 0.0
-            starttransfer_time: 0.247352
+            starttransfer_time: 0.159458
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.131
+            primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.31
-            local_port: 52939
+            local_ip: 192.168.1.75
+            local_port: 52640
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
-            scheme: HTTPS
-            appconnect_time_us: 132490
-            connect_time_us: 66755
-            namelookup_time_us: 1891
-            pretransfer_time_us: 132522
+            scheme: https
+            appconnect_time_us: 65315
+            connect_time_us: 33943
+            namelookup_time_us: 4350
+            pretransfer_time_us: 65349
             redirect_time_us: 0
-            starttransfer_time_us: 247352
-            total_time_us: 247383
+            starttransfer_time_us: 159458
+            total_time_us: 159475
+            effective_method: GET
+            capath: ''
+            cainfo: ''
     index: 0

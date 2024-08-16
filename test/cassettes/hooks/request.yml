@@ -14,8 +14,7 @@
         body: '{"parcel":{"length":"10","width":"8","height":"4","weight":"15.4"}}'
     response:
         status:
-            http_version: '1.1'
-            code: '201'
+            code: 201
             message: Created
         headers:
             x-frame-options: SAMEORIGIN
@@ -24,57 +23,59 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 6c53f870655e6555e7886140001f57d3
+            x-ep-request-uuid: e181587a66bcec1be2b903b200871b4e
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
-            location: /api/v2/parcels/prcl_b83ff40b3f9c467c90efeb9c256306c9
+            location: /api/v2/parcels/prcl_13c7e8870ac14b53929ae2dfb871e78d
             content-type: 'application/json; charset=utf-8'
             content-length: '229'
-            x-runtime: '0.034026'
-            x-node: bigweb32nuq
-            x-version-label: easypost-202311212221-a0f06fbc2c-master
+            x-runtime: '0.033386'
+            x-node: bigweb34nuq
+            x-version-label: easypost-202408141633-8ef9a7bcc9-master
             x-backend: easypost
-            x-canary: direct
-            x-proxied: ['intlb2nuq b3de2c47ef', 'extlb1nuq 003ad9bca0']
+            x-proxied: ['intlb3nuq c0f5e722d1', 'extlb2nuq b6e1b5034c']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"prcl_b83ff40b3f9c467c90efeb9c256306c9","object":"Parcel","created_at":"2023-11-22T20:32:21Z","updated_at":"2023-11-22T20:32:21Z","length":10,"width":8,"height":4,"predefined_package":null,"weight":15.4,"mode":"test"}'
+        body: '{"id":"prcl_13c7e8870ac14b53929ae2dfb871e78d","object":"Parcel","created_at":"2024-08-14T17:40:43Z","updated_at":"2024-08-14T17:40:43Z","length":10,"width":8,"height":4,"predefined_package":null,"weight":15.4,"mode":"test"}'
         curl_info:
             url: 'https://api.easypost.com/v2/parcels'
             content_type: 'application/json; charset=utf-8'
             http_code: 201
-            header_size: 776
+            header_size: 758
             request_size: 372
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.225612
-            namelookup_time: 0.00118
-            connect_time: 0.063765
-            pretransfer_time: 0.127733
+            total_time: 0.134087
+            namelookup_time: 0.004001
+            connect_time: 0.033944
+            pretransfer_time: 0.067329
             size_upload: 67.0
             size_download: 229.0
-            speed_download: 1015.0
-            speed_upload: 296.0
+            speed_download: 1707.0
+            speed_upload: 499.0
             download_content_length: 229.0
             upload_content_length: 67.0
-            starttransfer_time: 0.225596
+            starttransfer_time: 0.134058
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.131
+            primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.39
-            local_port: 53605
+            local_ip: 192.168.1.75
+            local_port: 52821
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
-            scheme: HTTPS
-            appconnect_time_us: 127707
-            connect_time_us: 63765
-            namelookup_time_us: 1180
-            pretransfer_time_us: 127733
+            scheme: https
+            appconnect_time_us: 67267
+            connect_time_us: 33944
+            namelookup_time_us: 4001
+            pretransfer_time_us: 67329
             redirect_time_us: 0
-            starttransfer_time_us: 225596
-            total_time_us: 225612
+            starttransfer_time_us: 134058
+            total_time_us: 134087
+            effective_method: POST
+            capath: ''
+            cainfo: ''
     index: 0

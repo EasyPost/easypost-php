@@ -14,8 +14,7 @@
         body: '{"parcel":{"length":"10","width":"8","height":"4","weight":"15.4"}}'
     response:
         status:
-            http_version: '1.1'
-            code: '201'
+            code: 201
             message: Created
         headers:
             x-frame-options: SAMEORIGIN
@@ -24,20 +23,20 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 6c53f874655e6556e7886141001f5806
+            x-ep-request-uuid: e181587766bcec1be2b903b300871b75
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
-            location: /api/v2/parcels/prcl_bed18dd72dfe46dfb711d4387fac85be
+            location: /api/v2/parcels/prcl_33736c67f22a43a4b56e514e8b434d3a
             content-type: 'application/json; charset=utf-8'
             content-length: '229'
-            x-runtime: '0.035377'
+            x-runtime: '0.036926'
             x-node: bigweb34nuq
-            x-version-label: easypost-202311212221-a0f06fbc2c-master
+            x-version-label: easypost-202408141633-8ef9a7bcc9-master
             x-backend: easypost
-            x-proxied: ['intlb2nuq b3de2c47ef', 'extlb1nuq 003ad9bca0']
+            x-proxied: ['intlb4nuq c0f5e722d1', 'extlb2nuq b6e1b5034c']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"prcl_bed18dd72dfe46dfb711d4387fac85be","object":"Parcel","created_at":"2023-11-22T20:32:22Z","updated_at":"2023-11-22T20:32:22Z","length":10,"width":8,"height":4,"predefined_package":null,"weight":15.4,"mode":"test"}'
+        body: '{"id":"prcl_33736c67f22a43a4b56e514e8b434d3a","object":"Parcel","created_at":"2024-08-14T17:40:43Z","updated_at":"2024-08-14T17:40:43Z","length":10,"width":8,"height":4,"predefined_package":null,"weight":15.4,"mode":"test"}'
         curl_info:
             url: 'https://api.easypost.com/v2/parcels'
             content_type: 'application/json; charset=utf-8'
@@ -47,33 +46,36 @@
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.254493
-            namelookup_time: 0.002576
-            connect_time: 0.067496
-            pretransfer_time: 0.148964
+            total_time: 0.136492
+            namelookup_time: 0.002763
+            connect_time: 0.032453
+            pretransfer_time: 0.065974
             size_upload: 67.0
             size_download: 229.0
-            speed_download: 899.0
-            speed_upload: 263.0
+            speed_download: 1677.0
+            speed_upload: 490.0
             download_content_length: 229.0
             upload_content_length: 67.0
-            starttransfer_time: 0.254434
+            starttransfer_time: 0.136359
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.131
+            primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.39
-            local_port: 53606
+            local_ip: 192.168.1.75
+            local_port: 52822
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
-            scheme: HTTPS
-            appconnect_time_us: 148892
-            connect_time_us: 67496
-            namelookup_time_us: 2576
-            pretransfer_time_us: 148964
+            scheme: https
+            appconnect_time_us: 65904
+            connect_time_us: 32453
+            namelookup_time_us: 2763
+            pretransfer_time_us: 65974
             redirect_time_us: 0
-            starttransfer_time_us: 254434
-            total_time_us: 254493
+            starttransfer_time_us: 136359
+            total_time_us: 136492
+            effective_method: POST
+            capath: ''
+            cainfo: ''
     index: 0

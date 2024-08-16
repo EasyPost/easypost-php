@@ -162,11 +162,11 @@ class ReferralCustomerService extends BaseService
             ]
         ];
 
-        $formEncodedParams = Requestor::urlEncode($creditCardDetails);
-        $url = "https://api.stripe.com/v1/tokens?$formEncodedParams";
+        $url = 'https://api.stripe.com/v1/tokens';
 
         $guzzleClient = new Client();
 
+        $requestOptions['query'] = $creditCardDetails;
         $requestOptions['headers'] = $headers;
         $requestOptions['http_errors'] = false;
 

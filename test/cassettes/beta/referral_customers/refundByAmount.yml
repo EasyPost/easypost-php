@@ -14,8 +14,7 @@
         body: '{"refund_amount":"2000"}'
     response:
         status:
-            http_version: '1.1'
-            code: '422'
+            code: 422
             message: 'Unprocessable Entity'
         headers:
             x-frame-options: SAMEORIGIN
@@ -24,18 +23,18 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 6c53f875655e6543e7885e07001f4659
+            x-ep-request-uuid: e181587666bcebfde2b8ffbb0086fac0
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '147'
-            x-runtime: '0.390839'
+            x-runtime: '0.410398'
             vary: Origin
-            x-node: bigweb40nuq
-            x-version-label: easypost-202311212221-a0f06fbc2c-master
+            x-node: bigweb42nuq
+            x-version-label: easypost-202408141633-8ef9a7bcc9-master
             x-backend: easypost
-            x-proxied: ['intlb1nuq b3de2c47ef', 'extlb1nuq 003ad9bca0']
+            x-proxied: ['intlb3nuq c0f5e722d1', 'extlb2nuq b6e1b5034c']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
         body: '{"error":{"code":"TRANSACTION.AMOUNT_INVALID","message":"Refund amount is invalid. Please use a valid amount or escalate to finance.","errors":[]}}'
         curl_info:
@@ -47,33 +46,36 @@
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.579537
-            namelookup_time: 0.001026
-            connect_time: 0.062385
-            pretransfer_time: 0.125052
+            total_time: 0.518428
+            namelookup_time: 0.002452
+            connect_time: 0.035385
+            pretransfer_time: 0.070951
             size_upload: 24.0
             size_download: 147.0
-            speed_download: 253.0
-            speed_upload: 41.0
+            speed_download: 283.0
+            speed_upload: 46.0
             download_content_length: 147.0
             upload_content_length: 24.0
-            starttransfer_time: 0.579492
+            starttransfer_time: 0.518348
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.131
+            primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.39
-            local_port: 53585
+            local_ip: 192.168.1.75
+            local_port: 52749
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
-            scheme: HTTPS
-            appconnect_time_us: 125017
-            connect_time_us: 62385
-            namelookup_time_us: 1026
-            pretransfer_time_us: 125052
+            scheme: https
+            appconnect_time_us: 70894
+            connect_time_us: 35385
+            namelookup_time_us: 2452
+            pretransfer_time_us: 70951
             redirect_time_us: 0
-            starttransfer_time_us: 579492
-            total_time_us: 579537
+            starttransfer_time_us: 518348
+            total_time_us: 518428
+            effective_method: POST
+            capath: ''
+            cainfo: ''
     index: 0

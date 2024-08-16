@@ -14,8 +14,7 @@
         body: '{"address":{"name":"Jack Sparrow","street1":"388 Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","country":"US","email":"test@example.com","phone":"5555555555"}}'
     response:
         status:
-            http_version: '1.1'
-            code: '201'
+            code: 201
             message: Created
         headers:
             x-frame-options: SAMEORIGIN
@@ -24,19 +23,19 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 6c53f874655e6539e7885da5001f3c9d
+            x-ep-request-uuid: e181587b66bcec0be2b9005f00870c17
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '365'
-            x-runtime: '0.071523'
-            x-node: bigweb40nuq
-            x-version-label: easypost-202311212221-a0f06fbc2c-master
+            x-runtime: '0.053124'
+            x-node: bigweb33nuq
+            x-version-label: easypost-202408141633-8ef9a7bcc9-master
             x-backend: easypost
-            x-proxied: ['intlb2nuq b3de2c47ef', 'extlb1nuq 003ad9bca0']
+            x-proxied: ['intlb3nuq c0f5e722d1', 'extlb2nuq b6e1b5034c']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"es_3b20b5e5c97642f58a2e68c07e91a66b","object":"EndShipper","mode":"test","created_at":"2023-11-22T20:31:53+00:00","updated_at":"2023-11-22T20:31:53+00:00","name":"JACK SPARROW","company":null,"street1":"388 TOWNSEND ST APT 20","street2":"","city":"SAN FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":"<REDACTED>"}'
+        body: '{"id":"es_6880eb4656df4ed5b81ba3674e415f87","object":"EndShipper","mode":"test","created_at":"2024-08-14T17:40:27+00:00","updated_at":"2024-08-14T17:40:27+00:00","name":"JACK SPARROW","company":null,"street1":"388 TOWNSEND ST APT 20","street2":"","city":"SAN FRANCISCO","state":"CA","zip":"94107-1670","country":"US","phone":"<REDACTED>","email":"<REDACTED>"}'
         curl_info:
             url: 'https://api.easypost.com/v2/end_shippers'
             content_type: 'application/json; charset=utf-8'
@@ -46,33 +45,36 @@
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.263121
-            namelookup_time: 0.001733
-            connect_time: 0.063928
-            pretransfer_time: 0.12766
+            total_time: 0.152128
+            namelookup_time: 0.003002
+            connect_time: 0.032264
+            pretransfer_time: 0.064569
             size_upload: 195.0
             size_download: 365.0
-            speed_download: 1387.0
-            speed_upload: 741.0
+            speed_download: 2399.0
+            speed_upload: 1281.0
             download_content_length: 365.0
             upload_content_length: 195.0
-            starttransfer_time: 0.263082
+            starttransfer_time: 0.152113
             redirect_time: 0.0
             redirect_url: ''
-            primary_ip: 169.62.110.131
+            primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.39
-            local_port: 53556
+            local_ip: 192.168.1.75
+            local_port: 52798
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
-            scheme: HTTPS
-            appconnect_time_us: 127636
-            connect_time_us: 63928
-            namelookup_time_us: 1733
-            pretransfer_time_us: 127660
+            scheme: https
+            appconnect_time_us: 64515
+            connect_time_us: 32264
+            namelookup_time_us: 3002
+            pretransfer_time_us: 64569
             redirect_time_us: 0
-            starttransfer_time_us: 263082
-            total_time_us: 263121
+            starttransfer_time_us: 152113
+            total_time_us: 152128
+            effective_method: POST
+            capath: ''
+            cainfo: ''
     index: 0

@@ -14,8 +14,7 @@
         body: '{"start_date":"2022-04-09","end_date":"2022-04-09","type":"shipment"}'
     response:
         status:
-            http_version: '1.1'
-            code: '201'
+            code: 201
             message: Created
         headers:
             x-frame-options: SAMEORIGIN
@@ -24,19 +23,19 @@
             x-download-options: noopen
             x-permitted-cross-domain-policies: none
             referrer-policy: strict-origin-when-cross-origin
-            x-ep-request-uuid: 71ef911d655e64f4e7885985001fd703
+            x-ep-request-uuid: e181587966bcec20e2b903d900871fa2
             cache-control: 'private, no-cache, no-store'
             pragma: no-cache
             expires: '0'
             content-type: 'application/json; charset=utf-8'
             content-length: '283'
-            x-runtime: '0.061045'
-            x-node: bigweb34nuq
-            x-version-label: easypost-202311212221-a0f06fbc2c-master
+            x-runtime: '0.068875'
+            x-node: bigweb39nuq
+            x-version-label: easypost-202408141633-8ef9a7bcc9-master
             x-backend: easypost
-            x-proxied: ['intlb2nuq b3de2c47ef', 'extlb2nuq 003ad9bca0']
+            x-proxied: ['intlb3nuq c0f5e722d1', 'extlb2nuq b6e1b5034c']
             strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
-        body: '{"id":"shprep_eb093af82ae5474f8790dc8eb0105f65","object":"ShipmentReport","created_at":"2023-11-22T20:30:44Z","updated_at":"2023-11-22T20:30:44Z","start_date":"2022-04-09","end_date":"2022-04-09","mode":"test","status":"new","url":null,"url_expires_at":null,"include_children":false}'
+        body: '{"id":"shprep_633d54f27c044588909ad9e7db168e2a","object":"ShipmentReport","created_at":"2024-08-14T17:40:48Z","updated_at":"2024-08-14T17:40:48Z","start_date":"2022-04-09","end_date":"2022-04-09","mode":"test","status":"new","url":null,"url_expires_at":null,"include_children":false}'
         curl_info:
             url: 'https://api.easypost.com/v2/reports/shipment'
             content_type: 'application/json; charset=utf-8'
@@ -46,33 +45,36 @@
             filetime: -1
             ssl_verify_result: 0
             redirect_count: 0
-            total_time: 0.277063
-            namelookup_time: 0.002426
-            connect_time: 0.065784
-            pretransfer_time: 0.148173
+            total_time: 0.180362
+            namelookup_time: 0.003756
+            connect_time: 0.037045
+            pretransfer_time: 0.073024
             size_upload: 69.0
             size_download: 283.0
-            speed_download: 1021.0
-            speed_upload: 249.0
+            speed_download: 1569.0
+            speed_upload: 382.0
             download_content_length: 283.0
             upload_content_length: 69.0
-            starttransfer_time: 0.27703
+            starttransfer_time: 0.180327
             redirect_time: 0.0
             redirect_url: ''
             primary_ip: 169.62.110.130
             certinfo: {  }
             primary_port: 443
-            local_ip: 10.130.6.39
-            local_port: 53466
+            local_ip: 192.168.1.75
+            local_port: 52837
             http_version: 2
             protocol: 2
             ssl_verifyresult: 0
-            scheme: HTTPS
-            appconnect_time_us: 147963
-            connect_time_us: 65784
-            namelookup_time_us: 2426
-            pretransfer_time_us: 148173
+            scheme: https
+            appconnect_time_us: 72961
+            connect_time_us: 37045
+            namelookup_time_us: 3756
+            pretransfer_time_us: 73024
             redirect_time_us: 0
-            starttransfer_time_us: 277030
-            total_time_us: 277063
+            starttransfer_time_us: 180327
+            total_time_us: 180362
+            effective_method: POST
+            capath: ''
+            cainfo: ''
     index: 0
