@@ -661,11 +661,6 @@ Search.appendIndex(
             "summary": "Encodes\u0020an\u0020EasyPost\u0020object\u0020and\u0020prepares\u0020the\u0020data\u0020for\u0020the\u0020request.",
             "url": "classes/EasyPost-Http-Requestor.html#method_encodeObjects"
         },                {
-            "fqsen": "\\EasyPost\\Http\\Requestor\u003A\u003AurlEncode\u0028\u0029",
-            "name": "urlEncode",
-            "summary": "URL\u0020Encodes\u0020data\u0020for\u0020GET\u0020requests.",
-            "url": "classes/EasyPost-Http-Requestor.html#method_urlEncode"
-        },                {
             "fqsen": "\\EasyPost\\Http\\Requestor\u003A\u003Arequest\u0028\u0029",
             "name": "request",
             "summary": "Make\u0020a\u0020request\u0020to\u0020the\u0020EasyPost\u0020API.",
