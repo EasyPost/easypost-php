@@ -72,6 +72,8 @@ function scrubCassette(mixed $data): mixed
                     if (is_array($item)) {
                         if (array_key_exists($key, $item)) {
                             $data[$index][$key] = $replacement;
+                        } else {
+                            $data[$index] = scrubCassette($item);
                         }
                     }
                 }
