@@ -69,11 +69,11 @@ function scrubCassette(mixed $data): mixed
             // Root-level list scrubbing
             if (InternalUtil::isList($data)) {
                 foreach ($data as $index => $item) {
-                    if (is_array($index)) {
-                        if (is_array($item)) {
-                            if (array_key_exists($key, $item)) {
-                                $data[$index][$key] = $replacement;
-                            }
+                    if (is_array($item)) {
+                        if (array_key_exists($key, $item)) {
+                            $data[$index][$key] = $replacement;
+                        } else {
+                            $data[$index] = scrubCassette($item);
                         }
                     }
                 }
