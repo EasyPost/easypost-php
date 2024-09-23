@@ -119,25 +119,4 @@ class TrackerTest extends \PHPUnit\Framework\TestCase
             throw $error;
         }
     }
-
-    /**
-     * Tests that we can create a list of bulk trackers with one request.
-     */
-    public function testCreateList(): void
-    {
-        TestUtil::setupCassette('trackers/createList.yml');
-
-        try {
-            // PHP is dumb and tries to make indexed arrays into a list instead of an object.
-            // Naming the index for PHP is the workaround.
-            self::$client->tracker->createList([
-                'tracker0' => ['tracking_code' => 'EZ1000000001'],
-                'tracker1' => ['tracking_code' => 'EZ1000000002'],
-                'tracker2' => ['tracking_code' => 'EZ1000000003'],
-            ]);
-            $this->assertTrue(true);
-        } catch (\Exception $exception) {
-            $this->fail('Exception thrown when we expected no error');
-        }
-    }
 }

@@ -64,24 +64,4 @@ class TrackerService extends BaseService
 
         return self::createResource(self::serviceModelClassName(self::class), $params);
     }
-
-    /**
-     * Create a list of trackers.
-     *
-     * @param mixed $params
-     * @return void
-     * @deprecated
-     */
-    public function createList(mixed $params = null): void
-    {
-        if (!isset($params['trackers']) || !is_array($params['trackers'])) {
-            $clone = $params;
-            unset($params);
-            $params = ['trackers' => $clone];
-        }
-
-        $url = self::classUrl(self::serviceModelClassName(self::class));
-
-        Requestor::request($this->client, 'post', $url . '/create_list', $params);
-    }
 }
