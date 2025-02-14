@@ -37,6 +37,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
 
         $webhook = self::$client->webhook->create([
             'url' => Fixture::webhookUrl(),
+            'webhook_secret' => Fixture::webhookSecret(),
         ]);
 
         $this->assertInstanceOf(Webhook::class, $webhook);
@@ -95,9 +96,11 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
             'url' => Fixture::webhookUrl(),
         ]);
 
-        $updatedWebhook = self::$client->webhook->update($webhook->id);
+        $updatedWebhook = self::$client->webhook->update(
+            $webhook->id,
+            ['webhook_secret' => Fixture::webhookSecret()]
+        );
 
-        // The response here won't differ since we don't update any data, just check we get the object back
         $this->assertInstanceOf(Webhook::class, $updatedWebhook);
 
         // We are deleting the webhook here so we don't keep sending events to a dead webhook.
