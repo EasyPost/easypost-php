@@ -38,7 +38,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
         $webhook = self::$client->webhook->create([
             'url' => Fixture::webhookUrl(),
             'webhook_secret' => Fixture::webhookSecret(),
-            'custom_headers' => [['name' => 'test', 'value' => 'header']],
+            'custom_headers' => Fixture::webhookCustomHeaders(),
         ]);
 
         $this->assertInstanceOf(Webhook::class, $webhook);
@@ -103,7 +103,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
             $webhook->id,
             [
                 'webhook_secret' => Fixture::webhookSecret(),
-                'custom_headers' => [['name' => 'test', 'value' => 'header']],
+                'custom_headers' => Fixture::webhookCustomHeaders(),
             ]
         );
 
