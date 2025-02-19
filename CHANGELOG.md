@@ -2,6 +2,7 @@
 
 ## Next Release
 
+- Corrects wrapping payload for update webhook endpoint
 - Removes the deprecated `create_list` tracker endpoint function as it is no longer available via API
 
 ## v7.4.2 (2024-08-16)
