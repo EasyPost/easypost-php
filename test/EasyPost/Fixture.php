@@ -222,6 +222,9 @@ class Fixture
         return self::readFixtureData()['webhooks']['url'];
     }
 
+    /**
+     * @return array<string, string>
+     */
     public static function webhookCustomHeaders(): array
     {
         return self::readFixtureData()['webhooks']['custom_headers'];

@@ -11,4 +11,6 @@ namespace EasyPost;
  * @property string $disabled_at
  * @property array $custom_headers
  */
-class Webhook extends EasyPostObject {}
+class Webhook extends EasyPostObject
+{
+}
