@@ -4,6 +4,7 @@
 
 - Adds `custom_headers` property to webhook model
 - Corrects wrapping payload for update webhook endpoint
+- Fixes a bug where you could not `prettyPrint` an error if it used the alternative format
 - Removes the deprecated `create_list` tracker endpoint function as it is no longer available via API
 
 ## v7.4.2 (2024-08-16)
