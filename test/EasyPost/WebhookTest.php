@@ -37,11 +37,15 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
 
         $webhook = self::$client->webhook->create([
             'url' => Fixture::webhookUrl(),
+            'webhook_secret' => Fixture::webhookSecret(),
+            'custom_headers' => Fixture::webhookCustomHeaders(),
         ]);
 
         $this->assertInstanceOf(Webhook::class, $webhook);
         $this->assertStringMatchesFormat('hook_%s', $webhook->id);
         $this->assertEquals(Fixture::webhookUrl(), $webhook->url);
+        $this->assertEquals('test', $webhook->custom_headers[0]->name);
+        $this->assertEquals('header', $webhook->custom_headers[0]->value);
 
         // We are deleting the webhook here so we don't keep sending events to a dead webhook.
         self::$client->webhook->delete($webhook->id);
@@ -95,10 +99,17 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
             'url' => Fixture::webhookUrl(),
         ]);
 
-        $updatedWebhook = self::$client->webhook->update($webhook->id);
+        $updatedWebhook = self::$client->webhook->update(
+            $webhook->id,
+            [
+                'webhook_secret' => Fixture::webhookSecret(),
+                'custom_headers' => Fixture::webhookCustomHeaders(),
+            ]
+        );
 
-        // The response here won't differ since we don't update any data, just check we get the object back
         $this->assertInstanceOf(Webhook::class, $updatedWebhook);
+        $this->assertEquals('test', $updatedWebhook->custom_headers[0]->name);
+        $this->assertEquals('header', $updatedWebhook->custom_headers[0]->value);
 
         // We are deleting the webhook here so we don't keep sending events to a dead webhook.
         self::$client->webhook->delete($webhook->id);

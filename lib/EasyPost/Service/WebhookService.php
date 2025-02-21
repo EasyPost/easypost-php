@@ -50,12 +50,6 @@ class WebhookService extends BaseService
      */
     public function update(string $id, mixed $params = null): mixed
     {
-        if (!isset($params['webhook']) || !is_array($params['webhook'])) {
-            $clone = $params;
-            unset($params);
-            $params['webhook'] = $clone;
-        }
-
         return self::updateResource(self::serviceModelClassName(self::class), $id, $params);
     }
 

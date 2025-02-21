@@ -50,7 +50,7 @@ class TestUtil
     {
         $fullCassettePath = "test/cassettes/$cassettePath";
         $secondsInDay = 86400;
-        $expirationDays = 180;
+        $expirationDays = 365;
         $expirationSeconds = $secondsInDay * $expirationDays;
 
         if (file_exists($fullCassettePath)) {

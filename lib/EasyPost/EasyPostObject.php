@@ -6,6 +6,7 @@ use EasyPost\Constant\Constants;
 use EasyPost\Util\InternalUtil;
 use EasyPost\Util\Util;
 
+// @phpstan-ignore-next-line
 class EasyPostObject implements \ArrayAccess, \Iterator
 {
     /**

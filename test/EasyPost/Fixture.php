@@ -209,17 +209,25 @@ class Fixture
 
     public static function webhookHmacSignature(): string
     {
-        return self::readFixtureData()['webhook_hmac_signature'];
+        return self::readFixtureData()['webhooks']['hmac_signature'];
     }
 
     public static function webhookSecret(): string
     {
-        return self::readFixtureData()['webhook_secret'];
+        return self::readFixtureData()['webhooks']['secret'];
     }
 
     public static function webhookUrl(): string
     {
-        return self::readFixtureData()['webhook_url'];
+        return self::readFixtureData()['webhooks']['url'];
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    public static function webhookCustomHeaders(): array
+    {
+        return self::readFixtureData()['webhooks']['custom_headers'];
     }
 
     /**
