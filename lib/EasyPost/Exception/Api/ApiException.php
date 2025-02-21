@@ -9,7 +9,7 @@ use Exception;
 /**
  * @package EasyPost
  * @property string|null $code
- * @property FieldError[]|null $errors
+ * @property array<int, FieldError|array>|null $errors
  * @property string $message
  * @property string|null $httpBody
  * @property int|null $httpStatus
@@ -85,7 +85,7 @@ class ApiException extends EasyPostException
     {
         print($this->code . ' (' . $this->getHttpStatus() . '): ' .
             $this->getMessage() . "\n");
-        if (!empty($this->errors)) {
+        if (!empty($this->errors) && is_array($this->errors[0])) {
             print("Field errors:\n");
             foreach ($this->errors as $fieldError) {
                 foreach ($fieldError as $k => $v) {

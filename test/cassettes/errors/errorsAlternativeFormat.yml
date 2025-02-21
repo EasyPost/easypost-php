@@ -1,0 +1,78 @@
+
+-
+    request:
+        method: POST
+        url: 'https://api.easypost.com/v2/claims'
+        headers:
+            Host: api.easypost.com
+            Expect: ''
+            Accept-Encoding: ''
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+        body: '{"type":"damage","email_evidence_attachments":["data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAeUlEQVR42mP8\/\/8\/AwAI\/AL+4Q7AIAAAAABJRU5ErkJggg=="],"invoice_attachments":["data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAeUlEQVR42mP8\/\/8\/AwAI\/AL+4Q7AIAAAAABJRU5ErkJggg=="],"supporting_documentation_attachments":["data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAeUlEQVR42mP8\/\/8\/AwAI\/AL+4Q7AIAAAAABJRU5ErkJggg=="],"description":"Test description","contact_email":"test@example.com","tracking_code":"123"}'
+    response:
+        status:
+            code: 404
+            message: 'Not Found'
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: 764a527867b8f50be2b9fad700359f02
+            cache-control: 'private, no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '156'
+            x-runtime: '0.028895'
+            x-node: bigweb58nuq
+            x-version-label: easypost-202502212131-cc7bde76a5-master
+            x-backend: easypost
+            x-proxied: ['intlb4nuq 51d74985a2', 'extlb1nuq 99aac35317']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"error":{"code":"NOT_FOUND","errors":["No eligible insurance found with provided tracking code."],"message":"The requested resource could not be found."}}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/claims'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 404
+            header_size: 695
+            request_size: 886
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.140263
+            namelookup_time: 0.002094
+            connect_time: 0.03625
+            pretransfer_time: 0.07411
+            size_upload: 581.0
+            size_download: 156.0
+            speed_download: 1112.0
+            speed_upload: 4142.0
+            download_content_length: 156.0
+            upload_content_length: 581.0
+            starttransfer_time: 0.140219
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.62.110.131
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 192.168.1.75
+            local_port: 54059
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: https
+            appconnect_time_us: 74056
+            connect_time_us: 36250
+            namelookup_time_us: 2094
+            pretransfer_time_us: 74110
+            redirect_time_us: 0
+            starttransfer_time_us: 140219
+            total_time_us: 140263
+            effective_method: POST
+    index: 0
