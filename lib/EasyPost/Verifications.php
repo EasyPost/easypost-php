@@ -4,8 +4,8 @@ namespace EasyPost;
 
 /**
  * @package EasyPost
- * @param Verification $zip4
- * @param Verification $delivery
+ * @property Verification $delivery
+ * @property Verification $zip4
  */
 class Verifications extends EasyPostObject
 {
