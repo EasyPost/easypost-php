@@ -4,9 +4,9 @@ namespace EasyPost;
 
 /**
  * @package EasyPost
- * @param bool $success
- * @param FieldError[] $errors
- * @param VerificationDetails $details
+ * @property bool $success
+ * @property AddressVerificationFieldError[] $errors
+ * @property VerificationDetails $details
  */
 class Verification extends EasyPostObject
 {
