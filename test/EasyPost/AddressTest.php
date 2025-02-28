@@ -65,8 +65,22 @@ class AddressTest extends \PHPUnit\Framework\TestCase
         $address = self::$client->address->create($addressData);
 
         $this->assertInstanceOf(Address::class, $address);
-        $this->assertNotNull($address->verifications->delivery); /* @phpstan-ignore-line */
-        $this->assertNotNull($address->verifications->zip4); /* @phpstan-ignore-line */
+
+        // Delivery verification assertions
+        $this->assertFalse($address->verifications->delivery->success);
+        $this->assertEmpty($address->verifications->delivery->details);
+        $this->assertEquals("E.ADDRESS.NOT_FOUND", $address->verifications->delivery->errors[0]->code);
+        $this->assertEquals("address", $address->verifications->delivery->errors[0]->field);
+        $this->assertNull($address->verifications->delivery->suggestion);
+        $this->assertEquals("Address not found", $address->verifications->delivery->errors[0]->message);
+
+        // Delivery verification assertions
+        $this->assertFalse($address->verifications->zip4->success);
+        $this->assertNull($address->verifications->zip4->details);
+        $this->assertEquals("E.ADDRESS.NOT_FOUND", $address->verifications->zip4->errors[0]->code);
+        $this->assertEquals("address", $address->verifications->zip4->errors[0]->field);
+        $this->assertNull($address->verifications->zip4->suggestion);
+        $this->assertEquals("Address not found", $address->verifications->zip4->errors[0]->message);
     }
 
     /**
