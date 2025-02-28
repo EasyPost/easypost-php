@@ -6,6 +6,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/EasyPost-Address.html"
         },                {
+            "fqsen": "\\EasyPost\\AddressVerificationFieldError",
+            "name": "AddressVerificationFieldError",
+            "summary": "",
+            "url": "classes/EasyPost-AddressVerificationFieldError.html"
+        },                {
             "fqsen": "\\EasyPost\\ApiKey",
             "name": "ApiKey",
             "summary": "",
