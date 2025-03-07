@@ -1546,16 +1546,6 @@ Search.appendIndex(
             "summary": "Delete\u0020a\u0020user.",
             "url": "classes/EasyPost-Service-UserService.html#method_delete"
         },                {
-            "fqsen": "\\EasyPost\\Service\\UserService\u003A\u003AallApiKeys\u0028\u0029",
-            "name": "allApiKeys",
-            "summary": "Retrieve\u0020a\u0020list\u0020of\u0020all\u0020API\u0020keys.",
-            "url": "classes/EasyPost-Service-UserService.html#method_allApiKeys"
-        },                {
-            "fqsen": "\\EasyPost\\Service\\UserService\u003A\u003AapiKeys\u0028\u0029",
-            "name": "apiKeys",
-            "summary": "Retrieve\u0020a\u0020list\u0020of\u0020API\u0020keys\u0020\u0028works\u0020for\u0020the\u0020authenticated\u0020user\u0020or\u0020a\u0020child\u0020user\u0029.",
-            "url": "classes/EasyPost-Service-UserService.html#method_apiKeys"
-        },                {
             "fqsen": "\\EasyPost\\Service\\UserService\u003A\u003AupdateBrand\u0028\u0029",
             "name": "updateBrand",
             "summary": "Update\u0020the\u0020User\u0027s\u0020Brand\u0020object.",
