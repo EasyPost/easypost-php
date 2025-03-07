@@ -221,7 +221,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
 
         try {
             self::$client->carrierAccount->delete($carrierAccount->id);
-            $this->assertTrue(true);
+            $this->expectNotToPerformAssertions();
         } catch (\Exception $exception) {
             $this->fail('Exception thrown when we expected no error');
         }

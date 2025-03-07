@@ -15,7 +15,7 @@ use EasyPost\Util\InternalUtil;
  * @property Address $return_address
  * @property Address $buyer_address
  * @property Shipment[] $shipments
- * @property Rates[] $rates
+ * @property Rate[] $rates
  * @property Message[] $messages
  * @property bool $is_return
  * @property string $created_at

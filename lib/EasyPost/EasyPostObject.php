@@ -241,7 +241,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     public function valid(): bool
     {
         $key = key($this->_values);
-        return ($key !== null && $key !== false);
+        return $key !== null;
     }
 
     /**

@@ -9,7 +9,7 @@ use Exception;
 /**
  * @package EasyPost
  * @property string|null $code
- * @property array<int, FieldError|array>|null $errors
+ * @property array<FieldError|array<string>>|null $errors
  * @property string $message
  * @property string|null $httpBody
  * @property int|null $httpStatus

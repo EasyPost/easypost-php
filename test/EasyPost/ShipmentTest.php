@@ -102,7 +102,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
             $this->assertNotNull($nextPage['_params']);
         } catch (EndOfPaginationException $error) {
             // There's no second page, that's not a failure
-            $this->assertTrue(true);
+            $this->expectNotToPerformAssertions();
         } catch (Exception $error) {
             throw $error;
         }

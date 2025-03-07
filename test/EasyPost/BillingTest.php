@@ -98,7 +98,7 @@ class BillingTest extends \PHPUnit\Framework\TestCase
         try {
             self::$client->billing->fundWallet('2000', 'primary');
 
-            $this->assertTrue(true);
+            $this->expectNotToPerformAssertions();
         } catch (\Exception $exception) {
             $this->fail('Exception thrown when we expected no error');
         }
@@ -112,7 +112,7 @@ class BillingTest extends \PHPUnit\Framework\TestCase
         try {
             self::$client->billing->fundWallet('2000');
 
-            $this->assertTrue(true);
+            $this->expectNotToPerformAssertions();
         } catch (\Exception $exception) {
             $this->fail('Exception thrown when we expected no error');
         }
@@ -154,7 +154,7 @@ class BillingTest extends \PHPUnit\Framework\TestCase
 
             $this->fail('Exception not thrown when we expected one');
         } catch (\Exception $exception) {
-            $this->assertTrue(true);
+            $this->expectNotToPerformAssertions();
         }
     }
 
@@ -166,7 +166,7 @@ class BillingTest extends \PHPUnit\Framework\TestCase
         try {
             self::$client->billing->deletePaymentMethod('primary');
 
-            $this->assertTrue(true);
+            $this->expectNotToPerformAssertions();
         } catch (\Exception $exception) {
             $this->fail('Exception thrown when we expected no error');
         }
@@ -185,7 +185,7 @@ class BillingTest extends \PHPUnit\Framework\TestCase
         try {
             self::$client->billing->deletePaymentMethod('primary');
 
-            $this->assertTrue(true);
+            $this->expectNotToPerformAssertions();
         } catch (\Exception $exception) {
             $this->fail('Exception thrown when we expected no error');
         }
@@ -194,7 +194,7 @@ class BillingTest extends \PHPUnit\Framework\TestCase
         try {
             self::$client->billing->deletePaymentMethod('secondary');
 
-            $this->assertTrue(true);
+            $this->expectNotToPerformAssertions();
         } catch (\Exception $exception) {
             $this->fail('Exception thrown when we expected no error');
         }
@@ -205,7 +205,7 @@ class BillingTest extends \PHPUnit\Framework\TestCase
 
             $this->fail('Exception not thrown when we expected one');
         } catch (\Exception $exception) {
-            $this->assertTrue(true);
+            $this->expectNotToPerformAssertions();
         }
     }
 
@@ -237,7 +237,7 @@ class BillingTest extends \PHPUnit\Framework\TestCase
 
             $this->fail('Exception not thrown when we expected one');
         } catch (\Exception $exception) {
-            $this->assertTrue(true);
+            $this->expectNotToPerformAssertions();
         }
     }
 
@@ -269,7 +269,7 @@ class BillingTest extends \PHPUnit\Framework\TestCase
 
             $this->fail('Exception not thrown when we expected one');
         } catch (\Exception $exception) {
-            $this->assertTrue(true);
+            $this->expectNotToPerformAssertions();
         }
     }
 
@@ -308,7 +308,7 @@ class BillingTest extends \PHPUnit\Framework\TestCase
         try {
             $client->billing->deletePaymentMethod('primary');
 
-            $this->assertTrue(true);
+            $this->expectNotToPerformAssertions();
         } catch (\Exception $exception) {
             $this->fail('Exception thrown when we expected no error');
         }

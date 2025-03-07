@@ -5,6 +5,7 @@
 - Drops support for PHP 8.0
 - Adds `custom_headers` property to webhook model
 - Corrects wrapping payload for update webhook endpoint
+- Corrects various type hints throughout project
 - Fixes error handling
   - Corrects the type of `errors` property on an `ApiException` to allow for the alternative format
   - Fixes a bug where you could not `prettyPrint` an error if it used the alternative format

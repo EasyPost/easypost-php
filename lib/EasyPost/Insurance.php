@@ -18,7 +18,7 @@ namespace EasyPost;
  * @property Address $to_address
  * @property Address $from_address
  * @property Fee $fee
- * @property array $messages
+ * @property array<string> $messages
  * @property string $created_at
  * @property string $updated_at
  */

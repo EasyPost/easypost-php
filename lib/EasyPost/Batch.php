@@ -10,7 +10,7 @@ namespace EasyPost;
  * @property string $mode
  * @property string $state
  * @property int $num_shipments
- * @property array $shipments
+ * @property Shipment[] $shipments
  * @property object $status
  * @property string $label_url
  * @property ScanForm $scan_form
