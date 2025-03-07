@@ -11,7 +11,8 @@
   - Corrects the `param` references to `property` references on all error models
   - Adds new `AddressVerificationFieldError` for the `errors` property on a `Verification` model
   - Adds missing `suggestion` property to `FieldError`
-- Removes the deprecated `create_list` tracker endpoint function as it is no longer available via API
+- Removes deprecated `createList` tracker endpoint function as it is no longer available via API
+- Removes deprecated `user.allApiKeys` and `user.apiKeys`, use `apiKey.all` and `apiKey.retrieveApiKeysForUser` respectively
 - Bump deps
 
 ## v7.4.2 (2024-08-16)
