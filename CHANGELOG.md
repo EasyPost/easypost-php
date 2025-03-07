@@ -2,6 +2,7 @@
 
 ## Next Release
 
+- Drops support for PHP 8.0
 - Adds `custom_headers` property to webhook model
 - Corrects wrapping payload for update webhook endpoint
 - Fixes error handling
@@ -11,6 +12,7 @@
   - Adds new `AddressVerificationFieldError` for the `errors` property on a `Verification` model
   - Adds missing `suggestion` property to `FieldError`
 - Removes the deprecated `create_list` tracker endpoint function as it is no longer available via API
+- Bump deps
 
 ## v7.4.2 (2024-08-16)
 
