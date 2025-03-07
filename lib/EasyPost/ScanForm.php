@@ -9,7 +9,7 @@ namespace EasyPost;
  * @property string $status
  * @property string $message
  * @property Address $address
- * @property array $tracking_codes
+ * @property array<string> $tracking_codes
  * @property string $form_url
  * @property string $form_file_type
  * @property string $batch_id

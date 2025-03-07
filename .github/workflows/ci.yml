@@ -11,8 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: set up PHP
-        uses: shivammathur/setup-php@v2
+      - uses: shivammathur/setup-php@v2
         with:
           php-version: '8.3'
       - name: install dependencies
@@ -23,11 +22,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        phpversion: ['8.0', '8.1', '8.2', '8.3']
+        # TODO: Add 8.4 when VCR releases a version compatible with it
+        phpversion: ['8.1', '8.2', '8.3']
     steps:
       - uses: actions/checkout@v4
-      - name: set up PHP
-        uses: shivammathur/setup-php@v2
+      - uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.phpversion }}
           coverage: xdebug
@@ -53,10 +52,8 @@ jobs:
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-      - name: Set up PHP
-        uses: shivammathur/setup-php@v2
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
         with:
           php-version: '8.3'
       - name: Install Dependencies

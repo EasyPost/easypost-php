@@ -155,9 +155,6 @@ abstract class Util
         $servicesInclude = [];
         $servicesExclude = [];
 
-        if (!is_array($carriers)) {
-            $carriers = explode(',', $carriers);
-        }
         for ($i = 0; $i < count($carriers); $i++) {
             $carriers[$i] = trim(strtolower($carriers[$i]));
             if (substr($carriers[$i], 0, 1) == '!') {
@@ -167,9 +164,6 @@ abstract class Util
             }
         }
 
-        if (!is_array($services)) {
-            $services = explode(',', $services);
-        }
         for ($i = 0; $i < count($services); $i++) {
             $services[$i] = trim(strtolower($services[$i]));
             if (substr($services[$i], 0, 1) == '!') {

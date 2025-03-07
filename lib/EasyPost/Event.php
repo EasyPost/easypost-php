@@ -11,8 +11,8 @@ namespace EasyPost;
  * @property object $previous_attributes
  * @property object $result
  * @property string $status
- * @property array $pending_urls
- * @property array $completed_urls
+ * @property array<string> $pending_urls
+ * @property array<string> $completed_urls
  * @property string $created_at
  * @property string $updated_at
  */

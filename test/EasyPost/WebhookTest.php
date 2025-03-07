@@ -128,7 +128,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
 
         try {
             self::$client->webhook->delete($webhook->id);
-            $this->assertTrue(true);
+            $this->expectNotToPerformAssertions();
         } catch (\Exception $exception) {
             $this->fail('Exception thrown when we expected no error');
         }

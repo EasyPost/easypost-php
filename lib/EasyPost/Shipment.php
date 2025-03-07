@@ -17,7 +17,7 @@ use EasyPost\Util\InternalUtil;
  * @property Parcel $parcel
  * @property CustomsInfo $customs_info
  * @property ScanForm $scan_form
- * @property array $forms
+ * @property array<object> $forms
  * @property Insurance $insurance
  * @property Rate[] $rates
  * @property Rate $selected_rate

@@ -28,20 +28,20 @@ class ClaimTest extends \PHPUnit\Framework\TestCase
         TestUtil::teardownVcrTests();
     }
 
-/**
- * Helper method to create and purchase an insured shipment.
- *
- * @param string $amount The amount of insurance for the shipment.
- * @return \EasyPost\Shipment The purchased shipment object.
- */
+    /**
+     * Helper method to create and purchase an insured shipment.
+     *
+     * @param string $amount The amount of insurance for the shipment.
+     * @return \EasyPost\Shipment The purchased shipment object.
+     */
     private static function createAndBuyShipment(string $amount): \EasyPost\Shipment
     {
         $shipment = self::$client->shipment->create(Fixture::fullShipment());
         return self::$client->shipment->buy(
             $shipment->id,
             [
-            'rate' => $shipment->lowestRate(),
-            'insurance' => $amount,
+                'rate' => $shipment->lowestRate(),
+                'insurance' => $amount,
             ]
         );
     }
@@ -125,7 +125,7 @@ class ClaimTest extends \PHPUnit\Framework\TestCase
             $this->assertNotNull($nextPage['_params']);
         } catch (EndOfPaginationException $error) {
             // There's no second page, that's not a failure
-            $this->assertTrue(true);
+            $this->expectNotToPerformAssertions();
         } catch (Exception $error) {
             throw $error;
         }

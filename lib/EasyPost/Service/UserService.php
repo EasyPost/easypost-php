@@ -80,49 +80,6 @@ class UserService extends BaseService
     }
 
     /**
-     * Retrieve a list of all API keys.
-     *
-     * @deprecated Use all() under the api_key service instead.
-     *
-     * @return mixed
-     */
-    public function allApiKeys(): mixed
-    {
-        $response = Requestor::request($this->client, 'get', '/api_keys');
-
-        return InternalUtil::convertToEasyPostObject($this->client, $response);
-    }
-
-    /**
-     * Retrieve a list of API keys (works for the authenticated user or a child user).
-     *
-     * @deprecated Use retrieve_api_key_for_user() under the api_key service instead.
-     *
-     * @param string $id
-     * @return mixed
-     */
-    public function apiKeys(string $id): mixed
-    {
-        $apiKeys = self::allApiKeys();
-
-        if ($apiKeys->id == $id) {
-            // This function was called on the authenticated user
-            $myApiKeys = $apiKeys->keys;
-        } else {
-            // This function was called on a child user, authenticated as parent, only return this child user's details
-            $myApiKeys = [];
-            foreach ($apiKeys->children as $childrenKeys) {
-                if ($childrenKeys->id == $id) {
-                    $myApiKeys = $childrenKeys->keys;
-                    break;
-                }
-            }
-        }
-
-        return $myApiKeys;
-    }
-
-    /**
      * Update the User's Brand object.
      *
      * @param string $id

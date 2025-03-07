@@ -101,5 +101,7 @@ class HookTest extends \PHPUnit\Framework\TestCase
         self::$client->unsubscribeFromResponseHook([$this, 'failIfSubscribed']);
 
         self::$client->parcel->create(Fixture::basicParcel());
+
+        $this->expectNotToPerformAssertions();
     }
 }

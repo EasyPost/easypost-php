@@ -9,7 +9,7 @@ namespace EasyPost;
  * @property string $modoe
  * @property string $url
  * @property string $disabled_at
- * @property array $custom_headers
+ * @property array<object> $custom_headers
  */
 class Webhook extends EasyPostObject
 {
