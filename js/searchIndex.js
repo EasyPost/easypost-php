@@ -961,6 +961,16 @@ Search.appendIndex(
             "summary": "Refund\u0020a\u0020ReferralCustomer\u0020wallet\u0020by\u0020specifying\u0020a\u0020payment\u0020log\u0020ID\u0020to\u0020completely\u0020refund.",
             "url": "classes/EasyPost-Service-BetaReferralCustomerService.html#method_refundByPaymentLog"
         },                {
+            "fqsen": "\\EasyPost\\Service\\BetaReferralCustomerService\u003A\u003AcreateCreditCardClientSecret\u0028\u0029",
+            "name": "createCreditCardClientSecret",
+            "summary": "Creates\u0020a\u0020client\u0020secret\u0020to\u0020use\u0020with\u0020Stripe\u0020when\u0020adding\u0020a\u0020credit\u0020card.",
+            "url": "classes/EasyPost-Service-BetaReferralCustomerService.html#method_createCreditCardClientSecret"
+        },                {
+            "fqsen": "\\EasyPost\\Service\\BetaReferralCustomerService\u003A\u003AcreateBankAccountClientSecret\u0028\u0029",
+            "name": "createBankAccountClientSecret",
+            "summary": "Creates\u0020a\u0020client\u0020secret\u0020to\u0020use\u0020with\u0020Stripe\u0020when\u0020adding\u0020a\u0020bank\u0020account.",
+            "url": "classes/EasyPost-Service-BetaReferralCustomerService.html#method_createBankAccountClientSecret"
+        },                {
             "fqsen": "\\EasyPost\\Service\\BillingService",
             "name": "BillingService",
             "summary": "Billing\u0020service\u0020containing\u0020all\u0020the\u0020logic\u0020to\u0020make\u0020API\u0020calls.",
@@ -1303,8 +1313,18 @@ Search.appendIndex(
         },                {
             "fqsen": "\\EasyPost\\Service\\ReferralCustomerService\u003A\u003AaddCreditCard\u0028\u0029",
             "name": "addCreditCard",
-            "summary": "Add\u0020a\u0020credit\u0020card\u0020to\u0020a\u0020referral\u0020user.",
+            "summary": "Add\u0020a\u0020credit\u0020card\u0020to\u0020EasyPost\u0020for\u0020a\u0020ReferralCustomer\u0020without\u0020needing\u0020a\u0020Stripe\u0020account.",
             "url": "classes/EasyPost-Service-ReferralCustomerService.html#method_addCreditCard"
+        },                {
+            "fqsen": "\\EasyPost\\Service\\ReferralCustomerService\u003A\u003AaddCreditCardFromStripe\u0028\u0029",
+            "name": "addCreditCardFromStripe",
+            "summary": "Add\u0020a\u0020credit\u0020card\u0020to\u0020EasyPost\u0020for\u0020a\u0020ReferralCustomer\u0020with\u0020a\u0020payment\u0020method\u0020ID\u0020from\u0020Stripe.",
+            "url": "classes/EasyPost-Service-ReferralCustomerService.html#method_addCreditCardFromStripe"
+        },                {
+            "fqsen": "\\EasyPost\\Service\\ReferralCustomerService\u003A\u003AaddBankAccountFromStripe\u0028\u0029",
+            "name": "addBankAccountFromStripe",
+            "summary": "Add\u0020a\u0020bank\u0020account\u0020to\u0020EasyPost\u0020for\u0020a\u0020ReferralCustomer.",
+            "url": "classes/EasyPost-Service-ReferralCustomerService.html#method_addBankAccountFromStripe"
         },                {
             "fqsen": "\\EasyPost\\Service\\ReferralCustomerService\u003A\u003AretrieveEasypostStripeApiKey\u0028\u0029",
             "name": "retrieveEasypostStripeApiKey",
