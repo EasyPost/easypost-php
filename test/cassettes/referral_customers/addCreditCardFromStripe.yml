@@ -1,0 +1,81 @@
+
+-
+    request:
+        method: POST
+        url: 'https://api.easypost.com/v2/credit_cards'
+        headers:
+            Host: api.easypost.com
+            Expect: ''
+            Accept-Encoding: ''
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+        body: '{"credit_card":{"payment_method_id":"pm_0Pn6bQDqT4huGUvd0CjpRerH","priority":"primary"}}'
+    response:
+        status:
+            code: 404
+            message: 'Not Found'
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: 2d7028ab67db169fe2b8fc1c0012c0a7
+            cache-control: 'private, no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '134'
+            x-runtime: '0.581913'
+            x-node: bigweb55nuq
+            x-version-label: easypost-202503182355-b9c2645d96-master
+            x-backend: easypost
+            x-proxied: ['intlb4nuq 284c5d344a', 'extlb1nuq 99aac35317']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"error":{"code":"CREDIT_CARD.NOT_FOUND","message":"Stripe::PaymentMethod does not exist for the specified reference_id","errors":[]}}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/credit_cards'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 404
+            header_size: 695
+            request_size: 397
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.719085
+            namelookup_time: 0.040472
+            connect_time: 0.070849
+            pretransfer_time: 0.103479
+            size_upload: 88.0
+            size_download: 134.0
+            speed_download: 186.0
+            speed_upload: 122.0
+            download_content_length: 134.0
+            upload_content_length: 88.0
+            starttransfer_time: 0.719037
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.62.110.131
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 192.168.1.75
+            local_port: 52696
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: https
+            appconnect_time_us: 103408
+            connect_time_us: 70849
+            namelookup_time_us: 40472
+            pretransfer_time_us: 103479
+            redirect_time_us: 0
+            starttransfer_time_us: 719037
+            posttransfer_time_us: 103478
+            total_time_us: 719085
+            effective_method: POST
+            capath: ''
+            cainfo: ''
+    index: 0

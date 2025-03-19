@@ -70,4 +70,30 @@ class BetaReferralCustomerService extends BaseService
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
+
+    /**
+     * Creates a client secret to use with Stripe when adding a credit card.
+     *
+     * @return mixed
+     */
+    public function createCreditCardClientSecret(): mixed
+    {
+        $response = Requestor::request($this->client, 'post', '/setup_intents', null, true);
+
+        return InternalUtil::convertToEasyPostObject($this->client, $response);
+    }
+
+    /**
+     * Creates a client secret to use with Stripe when adding a bank account.
+     *
+     * @param string|null $returnUrl
+     * @return mixed
+     */
+    public function createBankAccountClientSecret(?string $returnUrl = null): mixed
+    {
+        $params = $returnUrl ? ['return_url' => $returnUrl] : null;
+        $response = Requestor::request($this->client, 'post', '/financial_connections_sessions', $params, true);
+
+        return InternalUtil::convertToEasyPostObject($this->client, $response);
+    }
 }

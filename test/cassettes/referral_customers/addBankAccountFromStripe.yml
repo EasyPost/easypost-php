@@ -1,0 +1,81 @@
+
+-
+    request:
+        method: POST
+        url: 'https://api.easypost.com/v2/bank_accounts'
+        headers:
+            Host: api.easypost.com
+            Expect: ''
+            Accept-Encoding: ''
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+        body: '{"financial_connections_id":"fca_0QAc7sDqT4huGUvdf6BahYa9","mandate_data":{"ip_address":"127.0.0.1","user_agent":"Mozilla\/5.0","accepted_at":"1722510730"},"priority":"primary"}'
+    response:
+        status:
+            code: 422
+            message: 'Unprocessable Entity'
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: 2d7028a967db16a0e2b8fc1d0012c1a4
+            cache-control: 'private, no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '161'
+            x-runtime: '0.029711'
+            x-node: bigweb33nuq
+            x-version-label: easypost-202503182355-b9c2645d96-master
+            x-backend: easypost
+            x-proxied: ['intlb4nuq 284c5d344a', 'extlb1nuq 99aac35317']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"error":{"code":"BANK_ACCOUNT.INVALID_PARAMS","message":"account_holder_name must be present when creating a Financial Connections payment method","errors":[]}}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/bank_accounts'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 422
+            header_size: 706
+            request_size: 488
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.130543
+            namelookup_time: 0.002065
+            connect_time: 0.03258
+            pretransfer_time: 0.06639
+            size_upload: 177.0
+            size_download: 161.0
+            speed_download: 1233.0
+            speed_upload: 1355.0
+            download_content_length: 161.0
+            upload_content_length: 177.0
+            starttransfer_time: 0.130492
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.62.110.131
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 192.168.1.75
+            local_port: 52697
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: https
+            appconnect_time_us: 66311
+            connect_time_us: 32580
+            namelookup_time_us: 2065
+            pretransfer_time_us: 66390
+            redirect_time_us: 0
+            starttransfer_time_us: 130492
+            posttransfer_time_us: 66389
+            total_time_us: 130543
+            effective_method: POST
+            capath: ''
+            cainfo: ''
+    index: 0
