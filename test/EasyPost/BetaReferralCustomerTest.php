@@ -41,7 +41,7 @@ class BetaReferralCustomerTest extends \PHPUnit\Framework\TestCase
             self::$client->betaReferralCustomer->addPaymentMethod(
                 'cus_123',
                 'ba_123',
-                'primary'
+                Fixture::billing()['priority'],
             );
         } catch (ApiException $error) {
             $this->assertEquals('Invalid connect integration.', $error->getMessage());
@@ -81,5 +81,29 @@ class BetaReferralCustomerTest extends \PHPUnit\Framework\TestCase
         } catch (ApiException $error) {
             $this->assertEquals('We could not find a transaction with that id.', $error->getMessage());
         }
+    }
+
+    /**
+     * Test creating a client secret for credit cards.
+     */
+    public function testCreateCreditCardClientSecret(): void
+    {
+        TestUtil::setupCassette('beta/referral_customers/testCreateCreditCardClientSecret.yml');
+
+        $response = self::$client->betaReferralCustomer->createCreditCardClientSecret();
+
+        $this->assertStringMatchesFormat('seti_%s', $response->client_secret);
+    }
+
+    /**
+     * Test creating a client secret for bank accounts.
+     */
+    public function testCreateBankAccountClientSecret(): void
+    {
+        TestUtil::setupCassette('beta/referral_customers/testCreateBankAccountClientSecret.yml');
+
+        $response = self::$client->betaReferralCustomer->createBankAccountClientSecret();
+
+        $this->assertStringMatchesFormat('fcsess_client_secret_%s', $response->client_secret);
     }
 }

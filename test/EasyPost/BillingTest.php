@@ -3,6 +3,7 @@
 namespace EasyPost;
 
 use EasyPost\Constant\Constants;
+use EasyPost\Test\Fixture;
 use EasyPost\Test\Mocking\MockingUtility;
 use EasyPost\Test\Mocking\MockRequest;
 use EasyPost\Test\Mocking\MockRequestMatchRule;
@@ -80,7 +81,7 @@ class BillingTest extends \PHPUnit\Framework\TestCase
      * @param MockingUtility|null $mockUtility
      * @return EasyPostClient
      */
-    public static function getClient(MockingUtility $mockUtility = null): EasyPostClient
+    public static function getClient(?MockingUtility $mockUtility = null): EasyPostClient
     {
         return new EasyPostClient(
             getenv('EASYPOST_TEST_API_KEY'),
@@ -96,7 +97,7 @@ class BillingTest extends \PHPUnit\Framework\TestCase
     public function testFundWallet(): void
     {
         try {
-            self::$client->billing->fundWallet('2000', 'primary');
+            self::$client->billing->fundWallet('2000', Fixture::billing()['priority'],);
 
             $this->expectNotToPerformAssertions();
         } catch (\Exception $exception) {
@@ -164,7 +165,7 @@ class BillingTest extends \PHPUnit\Framework\TestCase
     public function testDeletePaymentMethod(): void
     {
         try {
-            self::$client->billing->deletePaymentMethod('primary');
+            self::$client->billing->deletePaymentMethod(Fixture::billing()['priority'],);
 
             $this->expectNotToPerformAssertions();
         } catch (\Exception $exception) {
@@ -183,7 +184,7 @@ class BillingTest extends \PHPUnit\Framework\TestCase
     {
         // testing "primary"
         try {
-            self::$client->billing->deletePaymentMethod('primary');
+            self::$client->billing->deletePaymentMethod(Fixture::billing()['priority'],);
 
             $this->expectNotToPerformAssertions();
         } catch (\Exception $exception) {
@@ -233,7 +234,7 @@ class BillingTest extends \PHPUnit\Framework\TestCase
         // Deleting a payment method gets the payment method internally, which should execute the
         // code that will trigger an exception.
         try {
-            $client->billing->deletePaymentMethod('primary');
+            $client->billing->deletePaymentMethod(Fixture::billing()['priority'],);
 
             $this->fail('Exception not thrown when we expected one');
         } catch (\Exception $exception) {
@@ -265,7 +266,7 @@ class BillingTest extends \PHPUnit\Framework\TestCase
         // Deleting a payment method gets the payment method internally, which should execute the
         // code that will trigger an exception.
         try {
-            $client->billing->deletePaymentMethod('primary');
+            $client->billing->deletePaymentMethod(Fixture::billing()['priority'],);
 
             $this->fail('Exception not thrown when we expected one');
         } catch (\Exception $exception) {
@@ -306,7 +307,7 @@ class BillingTest extends \PHPUnit\Framework\TestCase
         // only a delete request to /v2/credit_cards/pm_123 is mocked
         // if the delete function works, it's because it found the correct payment method type
         try {
-            $client->billing->deletePaymentMethod('primary');
+            $client->billing->deletePaymentMethod(Fixture::billing()['priority'],);
 
             $this->expectNotToPerformAssertions();
         } catch (\Exception $exception) {

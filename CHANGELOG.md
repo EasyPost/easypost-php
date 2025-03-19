@@ -4,6 +4,11 @@
 
 - Drops support for PHP 8.0
 - Adds `custom_headers` property to webhook model
+- Adds the following functions to assist ReferralCustomers add credit cards and bank accounts:
+  - `betaReferralCustomer.createCreditCardClientSecret`
+  - `betaReferralCustomer.createBankAccountClientSecret`
+  - `referralCustomer.addCreditCardFromStripe`
+  - `referralCustomer.addBankAccountFromStripe`
 - Corrects wrapping payload for update webhook endpoint
 - Corrects various type hints throughout project
 - Fixes error handling

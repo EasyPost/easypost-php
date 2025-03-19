@@ -75,7 +75,7 @@ class ReferralCustomerService extends BaseService
     }
 
     /**
-     * Add a credit card to a referral user.
+     * Add a credit card to EasyPost for a ReferralCustomer without needing a Stripe account.
      *
      * This function requires the Referral User's API key.
      *
@@ -113,6 +113,63 @@ class ReferralCustomerService extends BaseService
         $stripeToken = $stripeToken['id'] ?? '';
 
         $response = self::createEasypostCreditCard($referralApiKey, $stripeToken, $priority);
+
+        return InternalUtil::convertToEasyPostObject($this->client, $response);
+    }
+
+    /**
+     * Add a credit card to EasyPost for a ReferralCustomer with a payment method ID from Stripe.
+     *
+     * This function requires the ReferralCustomer User's API key.
+     *
+     * @param string $referralApiKey
+     * @param string $paymentMethodId
+     * @param string $priority
+     * @return mixed
+     */
+    public function addCreditCardFromStripe(
+        string $referralApiKey,
+        string $paymentMethodId,
+        string $priority = 'primary'
+    ): mixed {
+        $params = [
+            'credit_card' => [
+                'payment_method_id' => $paymentMethodId,
+                'priority' => $priority,
+            ]
+        ];
+
+        $client = new EasyPostClient($referralApiKey);
+        $response = Requestor::request($client, 'post', '/credit_cards', $params);
+
+        return InternalUtil::convertToEasyPostObject($this->client, $response);
+    }
+
+    /**
+     * Add a bank account to EasyPost for a ReferralCustomer.
+     *
+     * This function requires the ReferralCustomer User's API key.
+     *
+     * @param string $referralApiKey
+     * @param string $financialConnectionsId
+     * @param array<mixed> $mandateData
+     * @param string $priority
+     * @return mixed
+     */
+    public function addBankAccountFromStripe(
+        string $referralApiKey,
+        string $financialConnectionsId,
+        array $mandateData,
+        string $priority = 'primary'
+    ): mixed {
+        $params = [
+            'financial_connections_id' => $financialConnectionsId,
+            'mandate_data' => $mandateData,
+            'priority' => $priority,
+        ];
+
+        $client = new EasyPostClient($referralApiKey);
+        $response = Requestor::request($client, 'post', '/bank_accounts', $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }

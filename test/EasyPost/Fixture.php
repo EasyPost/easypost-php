@@ -273,4 +273,12 @@ class Fixture
     {
         return self::readFixtureData()['claims']['basic'];
     }
+
+    /**
+     * @return array<mixed>
+     */
+    public static function billing(): array
+    {
+        return self::readFixtureData()['billing'];
+    }
 }
