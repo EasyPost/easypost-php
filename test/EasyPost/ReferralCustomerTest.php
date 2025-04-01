@@ -19,11 +19,11 @@ class ReferralCustomerTest extends \PHPUnit\Framework\TestCase
     public static function setUpBeforeClass(): void
     {
         TestUtil::setupVcrTests();
-        $partnerUserProdApiKey = getenv('PARTNER_USER_PROD_API_KEY') !== false
-            ? getenv('PARTNER_USER_PROD_API_KEY') : '123';
+        $partnerUserProdApiKey = (string)getenv('PARTNER_USER_PROD_API_KEY') !== false
+            ? (string)getenv('PARTNER_USER_PROD_API_KEY') : '123';
         self::$client = new EasyPostClient($partnerUserProdApiKey);
-        self::$referralUserProdApiKey = getenv('REFERRAL_CUSTOMER_PROD_API_KEY') !== false
-            ? getenv('REFERRAL_CUSTOMER_PROD_API_KEY') : '123';
+        self::$referralUserProdApiKey = (string)getenv('REFERRAL_CUSTOMER_PROD_API_KEY') !== false
+            ? (string)getenv('REFERRAL_CUSTOMER_PROD_API_KEY') : '123';
     }
 
     /**
