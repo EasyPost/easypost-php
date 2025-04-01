@@ -171,7 +171,7 @@ class Requestor
         if ($client->mock()) {
             // If there are mock requests set, this client will ONLY make mock requests
             $mockingUtility = $client->getMockingUtility();
-            $matchingRequest = $mockingUtility->findMatchingMockRequest($method, $absoluteUrl);
+            $matchingRequest = $mockingUtility->findMatchingMockRequest($method, $absoluteUrl); // @phpstan-ignore-line
             if ($matchingRequest === null) {
                 throw new HttpException(sprintf(Constants::NO_MATCHING_MOCK_REQUEST, $method, $absoluteUrl));
             }
@@ -342,7 +342,7 @@ class Requestor
                 }
                 break;
             case 'object':
-                foreach ($errorMessage as $value) {
+                foreach ($errorMessage as $value) { // @phpstan-ignore-line
                     self::traverseJsonElement($value, $messagesList);
                 }
                 break;

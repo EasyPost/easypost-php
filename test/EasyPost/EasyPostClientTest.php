@@ -31,7 +31,7 @@ class EasyPostClientTest extends \PHPUnit\Framework\TestCase
     {
         $apiBase = 'http://example.com';
 
-        $client = new EasyPostClient(getenv('EASYPOST_TEST_API_KEY'), 60.0, $apiBase);
+        $client = new EasyPostClient((string)getenv('EASYPOST_TEST_API_KEY'), 60.0, $apiBase);
         $clientApiBase = $client->getApiBase();
 
         $this->assertEquals($apiBase, $clientApiBase);
@@ -44,7 +44,7 @@ class EasyPostClientTest extends \PHPUnit\Framework\TestCase
     {
         $timeout = 1.0;
 
-        $client = new EasyPostClient(getenv('EASYPOST_TEST_API_KEY'), $timeout);
+        $client = new EasyPostClient((string)getenv('EASYPOST_TEST_API_KEY'), $timeout);
         $clientTimeout = $client->getTimeout();
 
         $this->assertEquals($timeout, $clientTimeout);

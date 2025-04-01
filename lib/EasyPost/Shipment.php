@@ -50,6 +50,7 @@ class Shipment extends EasyPostObject
      */
     public function lowestRate(?array $carriers = [], ?array $services = []): Rate
     {
+        /** @var Rate $lowestRate */
         $lowestRate = InternalUtil::getLowestObjectRate($this, $carriers, $services);
 
         return $lowestRate;

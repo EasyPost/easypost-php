@@ -75,8 +75,8 @@ class EasyPostClient extends BaseService
     private float $timeout;
     private string $apiBase;
     private ?object $mockingUtility;
-    public object $requestEvent;
-    public object $responseEvent;
+    public RequestHook $requestEvent;
+    public ResponseHook $responseEvent;
     public Client $httpClient;
 
     /**

@@ -7,16 +7,16 @@ use EasyPost\Test\Mocking\MockRequest;
 class MockingUtility
 {
     /**
-     * @var array<MockRequest>|MockRequest
+     * @var array<MockRequest>
      */
-    public array|MockRequest $mockRequests;
+    public array $mockRequests;
 
     /**
      * Construct a new MockingUtility.
      *
-     * @param array<MockRequest>|MockRequest $mockRequests
+     * @param array<MockRequest> $mockRequests
      */
-    public function __construct(array|MockRequest ...$mockRequests)
+    public function __construct(array $mockRequests)
     {
         $this->mockRequests = $mockRequests;
     }

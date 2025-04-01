@@ -19,56 +19,58 @@ class BillingTest extends \PHPUnit\Framework\TestCase
     public static function setUpBeforeClass(): void
     {
         $mockingUtility = new MockingUtility(
-            new MockRequest(
-                new MockRequestMatchRule(
-                    'post',
-                    '/v2\\/bank_accounts\\/\\S*\\/charges$/'
+            [
+                new MockRequest(
+                    new MockRequestMatchRule(
+                        'post',
+                        '/v2\\/bank_accounts\\/\\S*\\/charges$/'
+                    ),
+                    new MockRequestResponseInfo(
+                        200,
+                        '{}'
+                    )
                 ),
-                new MockRequestResponseInfo(
-                    200,
-                    '{}'
-                )
-            ),
-            new MockRequest(
-                new MockRequestMatchRule(
-                    'post',
-                    '/v2\\/credit_cards\\/\\S*\\/charges$/'
+                new MockRequest(
+                    new MockRequestMatchRule(
+                        'post',
+                        '/v2\\/credit_cards\\/\\S*\\/charges$/'
+                    ),
+                    new MockRequestResponseInfo(
+                        200,
+                        '{}'
+                    )
                 ),
-                new MockRequestResponseInfo(
-                    200,
-                    '{}'
-                )
-            ),
-            new MockRequest(
-                new MockRequestMatchRule(
-                    'delete',
-                    '/v2\\/bank_accounts\\/\\S*$/'
+                new MockRequest(
+                    new MockRequestMatchRule(
+                        'delete',
+                        '/v2\\/bank_accounts\\/\\S*$/'
+                    ),
+                    new MockRequestResponseInfo(
+                        200,
+                        '{}'
+                    )
                 ),
-                new MockRequestResponseInfo(
-                    200,
-                    '{}'
-                )
-            ),
-            new MockRequest(
-                new MockRequestMatchRule(
-                    'delete',
-                    '/v2\\/credit_cards\\/\\S*$/'
+                new MockRequest(
+                    new MockRequestMatchRule(
+                        'delete',
+                        '/v2\\/credit_cards\\/\\S*$/'
+                    ),
+                    new MockRequestResponseInfo(
+                        200,
+                        '{}'
+                    )
                 ),
-                new MockRequestResponseInfo(
-                    200,
-                    '{}'
-                )
-            ),
-            new MockRequest(
-                new MockRequestMatchRule(
-                    'get',
-                    '/v2\\/payment_methods$/'
+                new MockRequest(
+                    new MockRequestMatchRule(
+                        'get',
+                        '/v2\\/payment_methods$/'
+                    ),
+                    new MockRequestResponseInfo(
+                        200,
+                        '{"id": "summary_123", "primary_payment_method": {"id": "pm_123", "object": "CreditCard", "last4": "1234"}, "secondary_payment_method": {"id": "pm_123", "object": "BankAccount", "bank_name": "Mock Bank"}}' // phpcs:ignore
+                    )
                 ),
-                new MockRequestResponseInfo(
-                    200,
-                    '{"id": "summary_123", "primary_payment_method": {"id": "pm_123", "object": "CreditCard", "last4": "1234"}, "secondary_payment_method": {"id": "pm_123", "object": "BankAccount", "bank_name": "Mock Bank"}}' // phpcs:ignore
-                )
-            ),
+            ]
         );
 
         // api key does not matter for mocking
@@ -84,7 +86,7 @@ class BillingTest extends \PHPUnit\Framework\TestCase
     public static function getClient(?MockingUtility $mockUtility = null): EasyPostClient
     {
         return new EasyPostClient(
-            getenv('EASYPOST_TEST_API_KEY'),
+            (string)getenv('EASYPOST_TEST_API_KEY'),
             Constants::TIMEOUT,
             Constants::API_BASE,
             $mockUtility
@@ -137,16 +139,18 @@ class BillingTest extends \PHPUnit\Framework\TestCase
     public function testRetrievePaymentMethodSummaryNoId(): void
     {
         $mockingUtility = new MockingUtility(
-            new MockRequest(
-                new MockRequestMatchRule(
-                    'get',
-                    '/v2\\/payment_methods$/'
-                ),
-                new MockRequestResponseInfo(
-                    200,
-                    '{"id": ""}' // no ID, will throw an error when we try to interact with this summary
+            [
+                new MockRequest(
+                    new MockRequestMatchRule(
+                        'get',
+                        '/v2\\/payment_methods$/'
+                    ),
+                    new MockRequestResponseInfo(
+                        200,
+                        '{"id": ""}' // no ID, will throw an error when we try to interact with this summary
+                    )
                 )
-            )
+            ]
         );
         $client = self::getClient($mockingUtility);
 
@@ -216,17 +220,19 @@ class BillingTest extends \PHPUnit\Framework\TestCase
     public function testGetPaymentMethodByPriorityNoPaymentMethod(): void
     {
         $mockingUtility = new MockingUtility(
-            new MockRequest(
-                new MockRequestMatchRule(
-                    'get',
-                    '/v2\\/payment_methods$/'
-                ),
-                new MockRequestResponseInfo(
-                    200,
-                    // null, will throw an error when we try to grab this payment method from the summary
-                    '{"id": "summary_123", "primary_payment_method": null, "secondary_payment_method": null}'
+            [
+                new MockRequest(
+                    new MockRequestMatchRule(
+                        'get',
+                        '/v2\\/payment_methods$/'
+                    ),
+                    new MockRequestResponseInfo(
+                        200,
+                        // null, will throw an error when we try to grab this payment method from the summary
+                        '{"id": "summary_123", "primary_payment_method": null, "secondary_payment_method": null}'
+                    )
                 )
-            )
+            ]
         );
 
         $client = self::getClient($mockingUtility);
@@ -248,17 +254,19 @@ class BillingTest extends \PHPUnit\Framework\TestCase
     public function testGetPaymentMethodByPriorityPaymentMethodNoId(): void
     {
         $mockingUtility = new MockingUtility(
-            new MockRequest(
-                new MockRequestMatchRule(
-                    'get',
-                    '/v2\\/payment_methods$/'
-                ),
-                new MockRequestResponseInfo(
-                    200,
-                    // No ID, will throw an error when we try to grab this payment method from the summary
-                    '{"id": "summary_123", "primary_payment_method": {"id": ""}, "secondary_payment_method": {"id": ""}}' // phpcs:ignore
+            [
+                new MockRequest(
+                    new MockRequestMatchRule(
+                        'get',
+                        '/v2\\/payment_methods$/'
+                    ),
+                    new MockRequestResponseInfo(
+                        200,
+                        // No ID, will throw an error when we try to grab this payment method from the summary
+                        '{"id": "summary_123", "primary_payment_method": {"id": ""}, "secondary_payment_method": {"id": ""}}' // phpcs:ignore
+                    )
                 )
-            )
+            ]
         );
 
         $client = self::getClient($mockingUtility);
@@ -280,26 +288,28 @@ class BillingTest extends \PHPUnit\Framework\TestCase
     public function testGetPaymentMethodInfoByObjectType(): void
     {
         $mockingUtility = new MockingUtility(
-            new MockRequest(
-                new MockRequestMatchRule(
-                    'get',
-                    '/v2\\/payment_methods$/'
+            [
+                new MockRequest(
+                    new MockRequestMatchRule(
+                        'get',
+                        '/v2\\/payment_methods$/'
+                    ),
+                    new MockRequestResponseInfo(
+                        200,
+                        '{"id": "summary_123", "primary_payment_method": {"id": "pm_123", "object": "CreditCard", "last4": "1234"}, "secondary_payment_method": {"id": "pm_123", "object": "BankAccount", "bank_name": "Mock Bank"}}' // phpcs:ignore
+                    )
                 ),
-                new MockRequestResponseInfo(
-                    200,
-                    '{"id": "summary_123", "primary_payment_method": {"id": "pm_123", "object": "CreditCard", "last4": "1234"}, "secondary_payment_method": {"id": "pm_123", "object": "BankAccount", "bank_name": "Mock Bank"}}' // phpcs:ignore
-                )
-            ),
-            new MockRequest(
-                new MockRequestMatchRule(
-                    'delete',
-                    '/v2\\/credit_cards\\/pm_123$/'
+                new MockRequest(
+                    new MockRequestMatchRule(
+                        'delete',
+                        '/v2\\/credit_cards\\/pm_123$/'
+                    ),
+                    new MockRequestResponseInfo(
+                        200,
+                        '{}'
+                    )
                 ),
-                new MockRequestResponseInfo(
-                    200,
-                    '{}'
-                )
-            ),
+            ]
         );
         $client = self::getClient($mockingUtility);
 
