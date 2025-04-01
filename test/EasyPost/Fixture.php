@@ -24,7 +24,7 @@ class Fixture
     public static function uspsCarrierAccountId(): string
     {
         // Fallback to the EasyPost PHP Client Library Test User USPS carrier account ID due to strict matching
-        $uspsCarrierAccountId = (string)getenv('USPS_CARRIER_ACCOUNT_ID') !== false
+        $uspsCarrierAccountId = getenv('USPS_CARRIER_ACCOUNT_ID') !== false
             ? (string)getenv('USPS_CARRIER_ACCOUNT_ID') : 'ca_8dc116debcdb49b5a66a2ddee4612600';
 
         return $uspsCarrierAccountId;
