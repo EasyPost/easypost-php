@@ -75,8 +75,8 @@ class EasyPostClient extends BaseService
     private float $timeout;
     private string $apiBase;
     private ?object $mockingUtility;
-    public object $requestEvent;
-    public object $responseEvent;
+    public RequestHook $requestEvent;
+    public ResponseHook $responseEvent;
     public Client $httpClient;
 
     /**
@@ -198,9 +198,9 @@ class EasyPostClient extends BaseService
     /**
      * Get the mock requests of an EasyPostClient.
      *
-     * @return object
+     * @return object|null
      */
-    public function getMockingUtility(): object
+    public function getMockingUtility(): ?object
     {
         return $this->mockingUtility;
     }

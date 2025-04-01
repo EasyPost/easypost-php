@@ -15,7 +15,7 @@ class ParcelTest extends \PHPUnit\Framework\TestCase
     public static function setUpBeforeClass(): void
     {
         TestUtil::setupVcrTests();
-        self::$client = new EasyPostClient(getenv('EASYPOST_TEST_API_KEY'));
+        self::$client = new EasyPostClient((string)getenv('EASYPOST_TEST_API_KEY'));
     }
 
     /**

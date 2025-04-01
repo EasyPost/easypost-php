@@ -100,7 +100,8 @@ abstract class Util
 
         if ($easypostHmacSignature != null) {
             $normalizedSecret = Normalizer::normalize($webhookSecret, Normalizer::FORM_KD);
-            $encodedSecret = mb_convert_encoding($normalizedSecret, 'UTF-8');
+            /** @var string $encodedSecret */
+            $encodedSecret = mb_convert_encoding($normalizedSecret, 'UTF-8') ?: '';
 
             $expectedSignature = hash_hmac('sha256', $eventBody, $encodedSecret);
             $digest = "hmac-sha256-hex=$expectedSignature";

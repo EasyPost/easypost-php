@@ -17,7 +17,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
     public static function setUpBeforeClass(): void
     {
         TestUtil::setupVcrTests();
-        self::$client = new EasyPostClient(getenv('EASYPOST_TEST_API_KEY'));
+        self::$client = new EasyPostClient((string)getenv('EASYPOST_TEST_API_KEY'));
     }
 
     /**
@@ -35,7 +35,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('carrier_accounts/create.yml');
 
-        self::$client = new EasyPostClient(getenv('EASYPOST_PROD_API_KEY'));
+        self::$client = new EasyPostClient((string)getenv('EASYPOST_PROD_API_KEY'));
 
         $carrierAccount = self::$client->carrierAccount->create(Fixture::basicCarrierAccount());
 
@@ -54,7 +54,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('carrier_accounts/create_ups.yml');
 
-        self::$client = new EasyPostClient(getenv('EASYPOST_PROD_API_KEY'));
+        self::$client = new EasyPostClient((string)getenv('EASYPOST_PROD_API_KEY'));
 
         $upsAccount = self::$client->carrierAccount->create([
             'type' => 'UpsAccount',
@@ -74,7 +74,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
      */
     public function testCreateWithoutType(): void
     {
-        self::$client = new EasyPostClient(getenv('EASYPOST_PROD_API_KEY'));
+        self::$client = new EasyPostClient((string)getenv('EASYPOST_PROD_API_KEY'));
 
         $params = Fixture::basicCarrierAccount();
         unset($params['type']);
@@ -99,7 +99,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('carrier_accounts/createWithCustomWorkflow.yml');
 
-        self::$client = new EasyPostClient(getenv('EASYPOST_PROD_API_KEY'));
+        self::$client = new EasyPostClient((string)getenv('EASYPOST_PROD_API_KEY'));
 
         $data = [];
         $data['type'] = 'FedexAccount';
@@ -133,7 +133,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('carrier_accounts/retrieve.yml');
 
-        self::$client = new EasyPostClient(getenv('EASYPOST_PROD_API_KEY'));
+        self::$client = new EasyPostClient((string)getenv('EASYPOST_PROD_API_KEY'));
 
         $carrierAccount = self::$client->carrierAccount->create(Fixture::basicCarrierAccount());
 
@@ -153,7 +153,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('carrier_accounts/all.yml');
 
-        self::$client = new EasyPostClient(getenv('EASYPOST_PROD_API_KEY'));
+        self::$client = new EasyPostClient((string)getenv('EASYPOST_PROD_API_KEY'));
 
         $carrierAccounts = self::$client->carrierAccount->all();
 
@@ -167,7 +167,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('carrier_accounts/update_ups.yml');
 
-        self::$client = new EasyPostClient(getenv('EASYPOST_PROD_API_KEY'));
+        self::$client = new EasyPostClient((string)getenv('EASYPOST_PROD_API_KEY'));
 
         $upsAccount = self::$client->carrierAccount->create([
             'type' => 'UpsAccount',
@@ -191,7 +191,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('carrier_accounts/update.yml');
 
-        self::$client = new EasyPostClient(getenv('EASYPOST_PROD_API_KEY'));
+        self::$client = new EasyPostClient((string)getenv('EASYPOST_PROD_API_KEY'));
 
         $carrierAccount = self::$client->carrierAccount->create(Fixture::basicCarrierAccount());
 
@@ -215,7 +215,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('carrier_accounts/delete.yml');
 
-        self::$client = new EasyPostClient(getenv('EASYPOST_PROD_API_KEY'));
+        self::$client = new EasyPostClient((string)getenv('EASYPOST_PROD_API_KEY'));
 
         $carrierAccount = self::$client->carrierAccount->create(Fixture::basicCarrierAccount());
 
@@ -234,7 +234,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupCassette('carrier_accounts/types.yml');
 
-        self::$client = new EasyPostClient(getenv('EASYPOST_PROD_API_KEY'));
+        self::$client = new EasyPostClient((string)getenv('EASYPOST_PROD_API_KEY'));
 
         $types = self::$client->carrierAccount->types();
 

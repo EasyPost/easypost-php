@@ -17,7 +17,7 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
     public static function setUpBeforeClass(): void
     {
         TestUtil::setupVcrTests();
-        self::$client = new EasyPostClient(getenv('EASYPOST_TEST_API_KEY'));
+        self::$client = new EasyPostClient((string)getenv('EASYPOST_TEST_API_KEY'));
     }
 
     /**
@@ -44,8 +44,8 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf(Webhook::class, $webhook);
         $this->assertStringMatchesFormat('hook_%s', $webhook->id);
         $this->assertEquals(Fixture::webhookUrl(), $webhook->url);
-        $this->assertEquals('test', $webhook->custom_headers[0]->name);
-        $this->assertEquals('header', $webhook->custom_headers[0]->value);
+        $this->assertEquals('test', $webhook->custom_headers[0]->name); // @phpstan-ignore-line
+        $this->assertEquals('header', $webhook->custom_headers[0]->value); // @phpstan-ignore-line
 
         // We are deleting the webhook here so we don't keep sending events to a dead webhook.
         self::$client->webhook->delete($webhook->id);
@@ -108,8 +108,8 @@ class WebhookTest extends \PHPUnit\Framework\TestCase
         );
 
         $this->assertInstanceOf(Webhook::class, $updatedWebhook);
-        $this->assertEquals('test', $updatedWebhook->custom_headers[0]->name);
-        $this->assertEquals('header', $updatedWebhook->custom_headers[0]->value);
+        $this->assertEquals('test', $updatedWebhook->custom_headers[0]->name); // @phpstan-ignore-line
+        $this->assertEquals('header', $updatedWebhook->custom_headers[0]->value); // @phpstan-ignore-line
 
         // We are deleting the webhook here so we don't keep sending events to a dead webhook.
         self::$client->webhook->delete($webhook->id);

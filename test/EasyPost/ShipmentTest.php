@@ -21,7 +21,7 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
     public static function setUpBeforeClass(): void
     {
         TestUtil::setupVcrTests();
-        self::$client = new EasyPostClient(getenv('EASYPOST_TEST_API_KEY'));
+        self::$client = new EasyPostClient((string)getenv('EASYPOST_TEST_API_KEY'));
     }
 
     /**
@@ -44,8 +44,8 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf(Shipment::class, $shipment);
         $this->assertStringMatchesFormat('shp_%s', $shipment->id);
         $this->assertNotNull($shipment->rates);
-        $this->assertEquals('PNG', $shipment->options['label_format']);
-        $this->assertEquals('123', $shipment->options['invoice_number']);
+        $this->assertEquals('PNG', $shipment->options->label_format); // @phpstan-ignore-line
+        $this->assertEquals('123', $shipment->options->invoice_number); // @phpstan-ignore-line
         $this->assertEquals('123', $shipment->reference);
     }
 

@@ -15,7 +15,7 @@ class EventHook
     /**
      * Fires when the class is invoked.
      *
-     * @param array<callable> ...$args
+     * @param array<mixed> ...$args
      * @return void
      */
     public function __invoke(array ...$args): void
@@ -47,7 +47,7 @@ class EventHook
     {
         $index = array_search($handler, $this->eventHandlers, true);
         if ($index !== false) {
-            array_splice($this->eventHandlers, $index, 1);
+            array_splice($this->eventHandlers, (int)$index, 1);
         }
         return $this;
     }

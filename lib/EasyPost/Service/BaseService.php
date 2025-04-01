@@ -224,7 +224,7 @@ class BaseService
      * @param string $class
      * @param string $id
      * @param mixed $params
-     * @param string|null $method
+     * @param string $method
      * @param bool $beta
      * @return mixed
      */
@@ -232,7 +232,7 @@ class BaseService
         string $class,
         string $id,
         mixed $params = null,
-        ?string $method = 'patch',
+        string $method = 'patch',
         bool $beta = false
     ): mixed {
         self::validate();

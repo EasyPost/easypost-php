@@ -8,7 +8,7 @@ class Fixture
     private static function readFixtureData(): mixed
     {
         $currentDir = getcwd();
-        $data = file_get_contents("$currentDir/examples/official/fixtures/client-library-fixtures.json");
+        $data = (string)file_get_contents("$currentDir/examples/official/fixtures/client-library-fixtures.json");
 
         return json_decode($data, true);
     }
@@ -25,7 +25,7 @@ class Fixture
     {
         // Fallback to the EasyPost PHP Client Library Test User USPS carrier account ID due to strict matching
         $uspsCarrierAccountId = getenv('USPS_CARRIER_ACCOUNT_ID') !== false
-            ? getenv('USPS_CARRIER_ACCOUNT_ID') : 'ca_8dc116debcdb49b5a66a2ddee4612600';
+            ? (string)getenv('USPS_CARRIER_ACCOUNT_ID') : 'ca_8dc116debcdb49b5a66a2ddee4612600';
 
         return $uspsCarrierAccountId;
     }
@@ -190,7 +190,7 @@ class Fixture
     public static function eventJson(): mixed
     {
         $currentDir = getcwd();
-        $data = file_get_contents("$currentDir/examples/official/fixtures/event-body.json");
+        $data = (string)file_get_contents("$currentDir/examples/official/fixtures/event-body.json");
 
         return json_encode(json_decode($data, true));
     }
@@ -198,10 +198,9 @@ class Fixture
     public static function eventBytes(): mixed
     {
         $currentDir = getcwd();
-        $eventBytesFilepath = file("$currentDir/examples/official/fixtures/event-body.json");
-        $data = $eventBytesFilepath[0];
+        $data = (string)file_get_contents("$currentDir/examples/official/fixtures/event-body.json");
 
-        return mb_convert_encoding(json_encode(
+        return mb_convert_encoding((string)json_encode(
             json_decode($data, true),
             JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE
         ), 'UTF-8');

@@ -16,7 +16,7 @@ class BetaReferralCustomerTest extends \PHPUnit\Framework\TestCase
     {
         TestUtil::setupVcrTests();
         $referralCustomerProdApiKey = getenv('REFERRAL_CUSTOMER_PROD_API_KEY') !== false
-            ? getenv('REFERRAL_CUSTOMER_PROD_API_KEY') : '123';
+            ? (string)getenv('REFERRAL_CUSTOMER_PROD_API_KEY') : '123';
         self::$client = new EasyPostClient($referralCustomerProdApiKey);
     }
 

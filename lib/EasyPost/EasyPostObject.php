@@ -126,10 +126,11 @@ class EasyPostObject implements \ArrayAccess, \Iterator
      */
     public static function constructFrom(?EasyPostClient $client, array $values, string $class): mixed
     {
-        $object = new $class($client);
-        $object->convertEach($client, $values);
+        /** @var EasyPostObject $easypostObject */
+        $easypostObject = new $class($client);
+        $easypostObject->convertEach($client, $values);
 
-        return $object;
+        return $easypostObject;
     }
 
     /**
@@ -265,7 +266,7 @@ class EasyPostObject implements \ArrayAccess, \Iterator
      */
     public function __toString(): string
     {
-        return $this->__toJSON();
+        return (string)$this->__toJSON();
     }
 
     /**

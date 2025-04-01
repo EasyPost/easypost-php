@@ -37,6 +37,7 @@ class Pickup extends EasyPostObject
      */
     public function lowestRate(?array $carriers = [], ?array $services = []): PickupRate
     {
+        /** @var PickupRate $lowestRate */
         $lowestRate = InternalUtil::getLowestObjectRate($this, $carriers, $services, 'pickup_rates');
 
         return $lowestRate;
