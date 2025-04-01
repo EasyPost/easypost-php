@@ -9,7 +9,7 @@ use Exception;
 /**
  * @package EasyPost
  * @property string|null $code
- * @property array<FieldError|array<string>>|null $errors
+ * @property array<FieldError|array<string>> $errors
  * @property string $message
  * @property string|null $httpBody
  * @property int|null $httpStatus
@@ -36,7 +36,7 @@ class ApiException extends EasyPostException
         parent::__construct($message);
         $this->httpStatus = $httpStatus;
         $this->httpBody = $httpBody;
-        $this->errors = null;
+        $this->errors = [];
         $this->code = null;
 
         try {
@@ -59,9 +59,9 @@ class ApiException extends EasyPostException
     /**
      * Get the HTTP status code.
      *
-     * @return int
+     * @return int|null
      */
-    public function getHttpStatus(): int
+    public function getHttpStatus(): ?int
     {
         return $this->httpStatus;
     }
@@ -69,9 +69,9 @@ class ApiException extends EasyPostException
     /**
      * Get the HTTP body.
      *
-     * @return string
+     * @return string|null
      */
-    public function getHttpBody(): string
+    public function getHttpBody(): ?string
     {
         return $this->httpBody;
     }

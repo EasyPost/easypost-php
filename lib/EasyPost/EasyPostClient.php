@@ -198,9 +198,9 @@ class EasyPostClient extends BaseService
     /**
      * Get the mock requests of an EasyPostClient.
      *
-     * @return object
+     * @return object|null
      */
-    public function getMockingUtility(): object
+    public function getMockingUtility(): ?object
     {
         return $this->mockingUtility;
     }

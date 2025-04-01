@@ -186,8 +186,8 @@ abstract class InternalUtil
      */
     public static function getLowestObjectRate(
         ?EasyPostObject $easypostObject,
-        array $carriers = [],
-        array $services = [],
+        ?array $carriers = [],
+        ?array $services = [],
         ?string $ratesKey = 'rates'
     ): Rate|PickupRate {
         $lowestRate = false;
@@ -196,21 +196,25 @@ abstract class InternalUtil
         $servicesInclude = [];
         $servicesExclude = [];
 
-        for ($i = 0; $i < count($carriers); $i++) {
-            $carriers[$i] = trim(strtolower($carriers[$i]));
-            if (substr($carriers[$i], 0, 1) == '!') {
-                $carriersExclude[] = substr($carriers[$i], 1);
-            } else {
-                $carriersInclude[] = $carriers[$i];
+        if ($carriers != null) {
+            for ($i = 0; $i < count($carriers); $i++) {
+                $carriers[$i] = trim(strtolower($carriers[$i]));
+                if (substr($carriers[$i], 0, 1) == '!') {
+                    $carriersExclude[] = substr($carriers[$i], 1);
+                } else {
+                    $carriersInclude[] = $carriers[$i];
+                }
             }
         }
 
-        for ($i = 0; $i < count($services); $i++) {
-            $services[$i] = trim(strtolower($services[$i]));
-            if (substr($services[$i], 0, 1) == '!') {
-                $servicesExclude[] = substr($services[$i], 1);
-            } else {
-                $servicesInclude[] = $services[$i];
+        if ($services != null) {
+            for ($i = 0; $i < count($services); $i++) {
+                $services[$i] = trim(strtolower($services[$i]));
+                if (substr($services[$i], 0, 1) == '!') {
+                    $servicesExclude[] = substr($services[$i], 1);
+                } else {
+                    $servicesInclude[] = $services[$i];
+                }
             }
         }
 
