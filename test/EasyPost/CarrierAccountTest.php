@@ -195,7 +195,10 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
             'account_number' => '123456789'
         ]);
 
-        $updatedCarrierAccount = self::$client->carrierAccount->update($carrierAccount->id, ['account_number' => '987654321']);
+        $updatedCarrierAccount = self::$client->carrierAccount->update(
+            $carrierAccount->id,
+            ['account_number' => '987654321']
+        );
 
         $this->assertInstanceOf(CarrierAccount::class, $updatedCarrierAccount);
         $this->assertStringMatchesFormat('ca_%s', $updatedCarrierAccount->id);
