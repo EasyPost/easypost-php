@@ -113,6 +113,8 @@ class CarrierAccountService extends BaseService
             return '/carrier_accounts/register';
         } else if (in_array($carrierAccountType, Constants::UPS_OAUTH_ACCOUNT_TYPES, true)) {
             return '/ups_oauth_registrations';
+        } else if (in_array($carrierAccountType, Constants::CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_OAUTH, true)) {
+            return '/carrier_accounts/register_oauth';
         }
 
         return '/carrier_accounts';
@@ -126,8 +128,12 @@ class CarrierAccountService extends BaseService
      */
     private function selectTopLayerKey(string $carrierAccountType): string
     {
-        return in_array($carrierAccountType, Constants::UPS_OAUTH_ACCOUNT_TYPES, true)
-            ? 'ups_oauth_registrations'
-            : 'carrier_account';
+        if (in_array($carrierAccountType, Constants::UPS_OAUTH_ACCOUNT_TYPES, true)) {
+            return 'ups_oauth_registrations';
+        } else if (in_array($carrierAccountType, Constants::CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_OAUTH, true)) {
+            return 'carrier_account_oauth_registrations';
+        } else {
+            return 'carrier_account';
+        }
     }
 }
