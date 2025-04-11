@@ -91,6 +91,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/EasyPost-Constant-Constants.html#constant_UPS_OAUTH_ACCOUNT_TYPES"
         },                {
+            "fqsen": "\\EasyPost\\Constant\\Constants\u003A\u003ACARRIER_ACCOUNT_TYPES_WITH_CUSTOM_OAUTH",
+            "name": "CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_OAUTH",
+            "summary": "",
+            "url": "classes/EasyPost-Constant-Constants.html#constant_CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_OAUTH"
+        },                {
             "fqsen": "\\EasyPost\\Constant\\Constants\u003A\u003AARRAY_REQUIRED_ERROR",
             "name": "ARRAY_REQUIRED_ERROR",
             "summary": "",
