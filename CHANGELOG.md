@@ -9,6 +9,7 @@
   - `betaReferralCustomer.createBankAccountClientSecret`
   - `referralCustomer.addCreditCardFromStripe`
   - `referralCustomer.addBankAccountFromStripe`
+- Routes `AmazonShippingAccount` to the correct endpoint
 - Corrects wrapping payload for update webhook endpoint
 - Corrects various type hints throughout project
 - Fixes error handling

@@ -26,6 +26,10 @@ abstract class Constants
         'UpsSurepostAccount'
     ];
 
+    const CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_OAUTH = [
+        'AmazonShippingAccount',
+    ];
+
     // Exception messages (many of these are intended to be used with `sprintf()`)
     const ARRAY_REQUIRED_ERROR = 'You must pass an array as the first argument to EasyPost API method calls.';
     const COMMUNICATION_ERROR = 'Unexpected error communicating with %s. If this problem persists please let us know at ' . self::SUPPORT_EMAIL . '. %s'; // phpcs:ignore

@@ -48,7 +48,7 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * Test creating an UPS account.
+     * Test creating a UPS account.
      */
     public function testCreateUps(): void
     {
@@ -56,17 +56,38 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
 
         self::$client = new EasyPostClient((string)getenv('EASYPOST_PROD_API_KEY'));
 
-        $upsAccount = self::$client->carrierAccount->create([
+        $carrierAccount = self::$client->carrierAccount->create([
             'type' => 'UpsAccount',
             'account_number' => '123456789'
         ]);
 
-        $this->assertEquals('UpsAccount', $upsAccount->type);
-        $this->assertInstanceOf(CarrierAccount::class, $upsAccount);
-        $this->assertStringMatchesFormat('ca_%s', $upsAccount->id);
+        $this->assertEquals('UpsAccount', $carrierAccount->type);
+        $this->assertInstanceOf(CarrierAccount::class, $carrierAccount);
+        $this->assertStringMatchesFormat('ca_%s', $carrierAccount->id);
 
         // Delete the carrier account once it's done being tested.
-        self::$client->carrierAccount->delete($upsAccount->id);
+        self::$client->carrierAccount->delete($carrierAccount->id);
+    }
+
+    /**
+     * Test creating an Amazon account.
+     */
+    public function testCreateAmazon(): void
+    {
+        TestUtil::setupCassette('carrier_accounts/create_amazon.yml');
+
+        self::$client = new EasyPostClient((string)getenv('EASYPOST_PROD_API_KEY'));
+
+        $carrierAccount = self::$client->carrierAccount->create([
+            'type' => 'AmazonShippingAccount',
+        ]);
+
+        $this->assertEquals('AmazonShippingAccount', $carrierAccount->type);
+        $this->assertInstanceOf(CarrierAccount::class, $carrierAccount);
+        $this->assertStringMatchesFormat('ca_%s', $carrierAccount->id);
+
+        // Delete the carrier account once it's done being tested.
+        self::$client->carrierAccount->delete($carrierAccount->id);
     }
 
     /**
@@ -169,19 +190,19 @@ class CarrierAccountTest extends \PHPUnit\Framework\TestCase
 
         self::$client = new EasyPostClient((string)getenv('EASYPOST_PROD_API_KEY'));
 
-        $upsAccount = self::$client->carrierAccount->create([
+        $carrierAccount = self::$client->carrierAccount->create([
             'type' => 'UpsAccount',
             'account_number' => '123456789'
         ]);
 
-        $updatedUpsAccount = self::$client->carrierAccount->update($upsAccount->id, ['account_number' => '987654321']);
+        $updatedCarrierAccount = self::$client->carrierAccount->update($carrierAccount->id, ['account_number' => '987654321']);
 
-        $this->assertInstanceOf(CarrierAccount::class, $updatedUpsAccount);
-        $this->assertStringMatchesFormat('ca_%s', $updatedUpsAccount->id);
-        $this->assertEquals('UpsAccount', $updatedUpsAccount->type);
+        $this->assertInstanceOf(CarrierAccount::class, $updatedCarrierAccount);
+        $this->assertStringMatchesFormat('ca_%s', $updatedCarrierAccount->id);
+        $this->assertEquals('UpsAccount', $updatedCarrierAccount->type);
 
         // Delete the carrier account once it's done being tested.
-        self::$client->carrierAccount->delete($updatedUpsAccount->id);
+        self::$client->carrierAccount->delete($updatedCarrierAccount->id);
     }
 
     /**
