@@ -19,6 +19,8 @@ namespace EasyPost;
  * @property CarrierDetail $carrier_detail
  * @property string $public_url
  * @property Fee[] $fees
+ * @property bool $is_return
+ * @property bool $finalized
  * @property string $created_at
  * @property string $updated_at
  */

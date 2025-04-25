@@ -9,6 +9,7 @@
   - `betaReferralCustomer.createBankAccountClientSecret`
   - `referralCustomer.addCreditCardFromStripe`
   - `referralCustomer.addBankAccountFromStripe`
+- Adds missing properties to `Tracker` and `TrackingDetail` models
 - Routes `AmazonShippingAccount` to the correct endpoint
 - Corrects wrapping payload for update webhook endpoint
 - Corrects various type hints throughout project
