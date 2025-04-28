@@ -2,12 +2,48 @@
 
 Use the following guide to assist in the upgrade process of the `easypost-php` library between major versions.
 
+- [Upgrading from 7.x to 8.0](#upgrading-from-7x-to-80)
 - [Upgrading from 6.x to 7.0](#upgrading-from-6x-to-70)
 - [Upgrading from 5.x to 6.0](#upgrading-from-5x-to-60)
 - [Upgrading from 4.x to 5.0](#upgrading-from-4x-to-50)
 - [Upgrading from 3.x to 4.0](#upgrading-from-3x-to-40)
 
+## Upgrading from 7.x to 8.0
+
+### 8.0 High Impact Changes
+
+- [Drop Support for PHP 8.0](#80-drop-support-for-php-80)
+- [Error Parsing](#80-error-parsing)
+
+### 8.0 Medium Impact Changes
+
+- [Deprecations](#80-deprecations)
+
+### 8.0 Drop Support for PHP 8.0
+
+*Likelihood of Impact: **High***
+
+This library now requires PHP 8.1 or greater.
+
+## 8.0 Error Parsing
+
+*Likelihood of Impact: **High***
+
+The `errors` key of an error response can return either a list of `FieldError` objects or a list of strings. The error parsing has been expanded to include both formats. As such, you will now need to check for the format of the `errors` field and handle the errors appropriately for the type that is returned.
+
+## 8.0 Deprecations
+
+*Likelihood of Impact: **Medium***
+
+The following deprecated functions have been removed:
+
+- `tracker.createList` (trackers must be created individually moving forward)
+- `user.allApiKeys` (use `apiKey.all`)
+- `user.apiKeys` (use `apiKey.retrieveApiKeysForUser`)
+
 ## Upgrading from 6.x to 7.0
+
+**NOTICE:** v7 is deprecated.
 
 ### 7.0 High Impact Changes
 

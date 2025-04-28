@@ -1,6 +1,8 @@
 # CHANGELOG
 
-## Next Release
+## v8.0.0 (2025-04-28)
+
+See our [Upgrade Guide](UPGRADE_GUIDE.md#upgrading-from-7x-to-80) for more details.
 
 - Drops support for PHP 8.0
 - Adds `custom_headers` property to webhook model
@@ -19,7 +21,7 @@
   - Corrects the `param` references to `property` references on all error models
   - Adds new `AddressVerificationFieldError` for the `errors` property on a `Verification` model
   - Adds missing `suggestion` property to `FieldError`
-- Removes deprecated `createList` tracker endpoint function as it is no longer available via API
+- Removes deprecated `tracker.createList` endpoint function as it is no longer available via API
 - Removes deprecated `user.allApiKeys` and `user.apiKeys`, use `apiKey.all` and `apiKey.retrieveApiKeysForUser` respectively
 - Bump deps
 
@@ -52,7 +54,7 @@
 
 ## v7.0.0 (2023-12-01)
 
-Upgrading major versions of this project? Refer to the [Upgrade Guide](UPGRADE_GUIDE.md).
+See our [Upgrade Guide](UPGRADE_GUIDE.md#upgrading-from-6x-to-70) for more details.
 
 - Drops support for PHP 7.4
 - Adds support for PHP 8.3
@@ -127,7 +129,7 @@ Upgrading major versions of this project? Refer to the [Upgrade Guide](UPGRADE_G
 
 ## v6.0.0 (2023-01-05)
 
-Upgrading major versions of this project? Refer to the [Upgrade Guide](UPGRADE_GUIDE.md).
+See our [Upgrade Guide](UPGRADE_GUIDE.md#upgrading-from-5x-to-60) for more details.
 
 - Release final version of v6 that contains all the changes in the `v6.0.0-rc1` below
 
@@ -224,7 +226,7 @@ Upgrading major versions of this project? Refer to the [Upgrade Guide](UPGRADE_G
 
 ## v5.0.0 (2022-02-09)
 
-Upgrading major versions of this project? Refer to the [Upgrade Guide](UPGRADE_GUIDE.md).
+See our [Upgrade Guide](UPGRADE_GUIDE.md#upgrading-from-4x-to-50) for more details.
 
 - Bumped minimum PHP version supported from `5.3` to `7.3`
 - Adds a full test suite, all functions are now tested for each object
@@ -252,7 +254,7 @@ Upgrading major versions of this project? Refer to the [Upgrade Guide](UPGRADE_G
 
 ## v4.0.0 (2021-10-06)
 
-Upgrading major versions of this project? Refer to the [Upgrade Guide](UPGRADE_GUIDE.md).
+See our [Upgrade Guide](UPGRADE_GUIDE.md#upgrading-from-3x-to-40) for more details.
 
 - JSON encodes POST bodies instead of form encoding them
 - Adds TaxIdentifier support
