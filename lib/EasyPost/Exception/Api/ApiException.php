@@ -39,20 +39,16 @@ class ApiException extends EasyPostException
         $this->errors = [];
         $this->code = null;
 
-        try {
-            $this->jsonBody = isset($httpBody) ? json_decode($httpBody, true) : null;
+        $this->jsonBody = isset($httpBody) ? json_decode($httpBody, true) : null;
 
-            // Set `errors` property
-            if (isset($this->jsonBody) && !empty($this->jsonBody['error']['errors'])) {
-                $this->errors = $this->jsonBody['error']['errors'];
-            }
+        // Set `errors` property
+        if (isset($this->jsonBody) && !empty($this->jsonBody['error']['errors'])) {
+            $this->errors = $this->jsonBody['error']['errors'];
+        }
 
-            // Set `code` property
-            if (isset($this->jsonBody) && !empty($this->jsonBody['error']['code'])) {
-                $this->code = $this->jsonBody['error']['code'];
-            }
-        } catch (Exception $e) {
-            $this->jsonBody = null;
+        // Set `code` property
+        if (isset($this->jsonBody) && !empty($this->jsonBody['error']['code'])) {
+            $this->code = $this->jsonBody['error']['code'];
         }
     }
 
