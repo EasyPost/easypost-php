@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v8.0.1 (2025-05-27)
+
+- Corrects the endpoint used for creating/updating UPS accounts
+
 ## v8.0.0 (2025-04-28)
 
 See our [Upgrade Guide](UPGRADE_GUIDE.md#upgrading-from-7x-to-80) for more details.

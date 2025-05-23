@@ -43,16 +43,13 @@ class CarrierAccountService extends BaseService
      */
     public function update(string $id, mixed $params): mixed
     {
-        $carrierAccount = self::retrieve($id);
-        $carrierAccountType = $carrierAccount['type'];
-        if (in_array($carrierAccountType, Constants::UPS_OAUTH_ACCOUNT_TYPES, true)) {
-            $className = 'UpsOauthRegistration';
-            $params = [self::selectTopLayerKey($carrierAccountType) => $params];
-        } else {
-            $className = 'CarrierAccount';
-            $params = [self::selectTopLayerKey($carrierAccountType) => $params];
+        if (!isset($params['carrier_account']) || !is_array($params['carrier_account'])) {
+            $clone = $params;
+            unset($params);
+            $params['carrier_account'] = $clone;
         }
-        return self::updateResource($className, $id, $params);
+
+        return self::updateResource(self::serviceModelClassName(self::class), $id, $params);
     }
 
     /**
@@ -111,8 +108,6 @@ class CarrierAccountService extends BaseService
     {
         if (in_array($carrierAccountType, Constants::CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_WORKFLOWS, true)) {
             return '/carrier_accounts/register';
-        } else if (in_array($carrierAccountType, Constants::UPS_OAUTH_ACCOUNT_TYPES, true)) {
-            return '/ups_oauth_registrations';
         } else if (in_array($carrierAccountType, Constants::CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_OAUTH, true)) {
             return '/carrier_accounts/register_oauth';
         }
@@ -128,9 +123,7 @@ class CarrierAccountService extends BaseService
      */
     private function selectTopLayerKey(string $carrierAccountType): string
     {
-        if (in_array($carrierAccountType, Constants::UPS_OAUTH_ACCOUNT_TYPES, true)) {
-            return 'ups_oauth_registrations';
-        } else if (in_array($carrierAccountType, Constants::CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_OAUTH, true)) {
+        if (in_array($carrierAccountType, Constants::CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_OAUTH, true)) {
             return 'carrier_account_oauth_registrations';
         } else {
             return 'carrier_account';
