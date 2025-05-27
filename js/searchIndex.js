@@ -86,11 +86,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/EasyPost-Constant-Constants.html#constant_CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_WORKFLOWS"
         },                {
-            "fqsen": "\\EasyPost\\Constant\\Constants\u003A\u003AUPS_OAUTH_ACCOUNT_TYPES",
-            "name": "UPS_OAUTH_ACCOUNT_TYPES",
-            "summary": "",
-            "url": "classes/EasyPost-Constant-Constants.html#constant_UPS_OAUTH_ACCOUNT_TYPES"
-        },                {
             "fqsen": "\\EasyPost\\Constant\\Constants\u003A\u003ACARRIER_ACCOUNT_TYPES_WITH_CUSTOM_OAUTH",
             "name": "CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_OAUTH",
             "summary": "",
