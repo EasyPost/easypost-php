@@ -15,6 +15,7 @@ namespace EasyPost;
  * @property string $insurance_id
  * @property string $payment_method
  * @property string $recipient_name
+ * @property string $reference
  * @property string $requested_amount
  * @property string $salvage_value
  * @property string $shipment_id
