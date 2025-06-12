@@ -4,8 +4,9 @@ namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
 use EasyPost\Exception\General\EasyPostException;
+use PHPUnit\Framework\TestCase;
 
-class EasyPostClientTest extends \PHPUnit\Framework\TestCase
+class EasyPostClientTest extends TestCase
 {
     /**
      * Test setting and getting the API key for different EasyPostClients.

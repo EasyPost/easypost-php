@@ -21,6 +21,7 @@ use EasyPost\Service\CustomsItemService;
 use EasyPost\Service\EndShipperService;
 use EasyPost\Service\EventService;
 use EasyPost\Service\InsuranceService;
+use EasyPost\Service\LumaService;
 use EasyPost\Service\OrderService;
 use EasyPost\Service\ParcelService;
 use EasyPost\Service\PickupService;
@@ -54,6 +55,7 @@ use GuzzleHttp\Client;
  * @property EndShipperService $endShipper
  * @property EventService $event
  * @property InsuranceService $insurance
+ * @property LumaService $luma
  * @property OrderService $order
  * @property ParcelService $parcel
  * @property PickupService $pickup
@@ -127,6 +129,7 @@ class EasyPostClient extends BaseService
             'endShipper' => EndShipperService::class,
             'event' => EventService::class,
             'insurance' => InsuranceService::class,
+            'luma' => LumaService::class,
             'order' => OrderService::class,
             'parcel' => ParcelService::class,
             'pickup' => PickupService::class,

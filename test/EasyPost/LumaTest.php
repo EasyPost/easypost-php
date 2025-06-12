@@ -3,10 +3,9 @@
 namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
-use EasyPost\Rate;
 use PHPUnit\Framework\TestCase;
 
-class RateTest extends TestCase
+class LumaTest extends TestCase
 {
     private static EasyPostClient $client;
 
@@ -28,17 +27,18 @@ class RateTest extends TestCase
     }
 
     /**
-     * Test retrieving a rate.
+     * Test that we get service recommendations from Luma based on your ruleset.
      */
-    public function testRetrieve(): void
+    public function testGetPromise(): void
     {
-        TestUtil::setupCassette('rates/retrieve.yml');
+        TestUtil::setupCassette('luma/getPromise.yml');
 
-        $shipment = self::$client->shipment->create(Fixture::basicShipment());
+        $basicShipment = Fixture::basicShipment();
+        $basicShipment['ruleset_name'] = Fixture::lumaRulesetName();
+        $basicShipment['planned_ship_date'] = Fixture::lumaPlannedShipDate();
 
-        $rate = self::$client->rate->retrieve($shipment->rates[0]['id']);
+        $response = self::$client->luma->getPromise($basicShipment);
 
-        $this->assertInstanceOf(Rate::class, $rate);
-        $this->assertStringMatchesFormat('rate_%s', $rate->id);
+        $this->assertNotNull($response->luma_info->luma_selected_rate);
     }
 }

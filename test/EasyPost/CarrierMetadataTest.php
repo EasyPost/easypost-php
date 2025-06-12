@@ -3,8 +3,9 @@
 namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
+use PHPUnit\Framework\TestCase;
 
-class CarrierMetadataTest extends \PHPUnit\Framework\TestCase
+class CarrierMetadataTest extends TestCase
 {
     private static EasyPostClient $client;
 

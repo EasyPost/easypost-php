@@ -3,8 +3,9 @@
 namespace EasyPost\Test;
 
 use EasyPost\Util\Util;
+use PHPUnit\Framework\TestCase;
 
-class UtilTest extends \PHPUnit\Framework\TestCase
+class UtilTest extends TestCase
 {
     /**
      * Test converting an EasyPost object to an array.

@@ -6,8 +6,9 @@ use EasyPost\EasyPostClient;
 use EasyPost\Exception\General\EasyPostException;
 use EasyPost\Rate;
 use EasyPost\Util\Util;
+use PHPUnit\Framework\TestCase;
 
-class BetaRateTest extends \PHPUnit\Framework\TestCase
+class BetaRateTest extends TestCase
 {
     private static EasyPostClient $client;
 
