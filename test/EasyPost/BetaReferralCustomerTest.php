@@ -4,8 +4,9 @@ namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
 use EasyPost\Exception\Api\ApiException;
+use PHPUnit\Framework\TestCase;
 
-class BetaReferralCustomerTest extends \PHPUnit\Framework\TestCase
+class BetaReferralCustomerTest extends TestCase
 {
     private static EasyPostClient $client;
 

@@ -7,8 +7,9 @@ use EasyPost\Exception\Api\ApiException;
 use EasyPost\Exception\General\EndOfPaginationException;
 use EasyPost\User;
 use Exception;
+use PHPUnit\Framework\TestCase;
 
-class ReferralCustomerTest extends \PHPUnit\Framework\TestCase
+class ReferralCustomerTest extends TestCase
 {
     private static EasyPostClient $client;
     private static string $referralUserProdApiKey;

@@ -4,8 +4,9 @@ namespace EasyPost\Test;
 
 use EasyPost\ApiKey;
 use EasyPost\EasyPostClient;
+use PHPUnit\Framework\TestCase;
 
-class ApiKeyTest extends \PHPUnit\Framework\TestCase
+class ApiKeyTest extends TestCase
 {
     private static EasyPostClient $client;
 

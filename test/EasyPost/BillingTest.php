@@ -8,8 +8,9 @@ use EasyPost\Test\Mocking\MockingUtility;
 use EasyPost\Test\Mocking\MockRequest;
 use EasyPost\Test\Mocking\MockRequestMatchRule;
 use EasyPost\Test\Mocking\MockRequestResponseInfo;
+use PHPUnit\Framework\TestCase;
 
-class BillingTest extends \PHPUnit\Framework\TestCase
+class BillingTest extends TestCase
 {
     private static EasyPostClient $client;
 

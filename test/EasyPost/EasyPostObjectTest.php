@@ -4,8 +4,9 @@ namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
 use EasyPost\Util\InternalUtil;
+use PHPUnit\Framework\TestCase;
 
-class EasyPostObjectTest extends \PHPUnit\Framework\TestCase
+class EasyPostObjectTest extends TestCase
 {
     private static EasyPostClient $client;
 

@@ -10,8 +10,9 @@ use EasyPost\Rate;
 use EasyPost\Shipment;
 use EasyPost\Util\Util;
 use Exception;
+use PHPUnit\Framework\TestCase;
 
-class ShipmentTest extends \PHPUnit\Framework\TestCase
+class ShipmentTest extends TestCase
 {
     private static EasyPostClient $client;
 
@@ -534,5 +535,42 @@ class ShipmentTest extends \PHPUnit\Framework\TestCase
         foreach ($rates as $entry) {
             $this->assertNotNull($entry->easypost_time_in_transit_data);
         }
+    }
+
+    /**
+     * Test that we create and buy a Shipment with Luma.
+     */
+    public function testCreateAndBuyLuma(): void
+    {
+        TestUtil::setupCassette('shipment/createAndBuyLuma.yml');
+
+        $oneCallBuyShipment = Fixture::oneCallBuyShipment();
+        unset($oneCallBuyShipment['service']);
+        $oneCallBuyShipment['ruleset_name'] = Fixture::lumaRulesetName();
+        $oneCallBuyShipment['planned_ship_date'] = Fixture::lumaPlannedShipDate();
+
+        $shipment = self::$client->shipment->createAndBuyLuma($oneCallBuyShipment);
+
+        $this->assertNotNull($shipment->postage_label);
+    }
+
+    /**
+     * Test that we buy a Shipment with Luma.
+     */
+    public function testBuyLuma(): void
+    {
+        TestUtil::setupCassette('shipment/buyLuma.yml');
+
+        $shipment = self::$client->shipment->create(Fixture::basicShipment());
+
+        $shipment = self::$client->shipment->buyLuma(
+            $shipment->id,
+            [
+                'ruleset_name' => Fixture::lumaRulesetName(),
+                'planned_ship_date' => Fixture::lumaPlannedShipDate(),
+            ]
+        );
+
+        $this->assertNotNull($shipment->postage_label);
     }
 }

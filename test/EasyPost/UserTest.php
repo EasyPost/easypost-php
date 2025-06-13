@@ -6,8 +6,9 @@ use EasyPost\EasyPostClient;
 use EasyPost\Exception\General\EndOfPaginationException;
 use EasyPost\User;
 use Exception;
+use PHPUnit\Framework\TestCase;
 
-class UserTest extends \PHPUnit\Framework\TestCase
+class UserTest extends TestCase
 {
     private static EasyPostClient $client;
 

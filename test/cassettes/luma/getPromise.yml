@@ -1,0 +1,80 @@
+
+-
+    request:
+        method: POST
+        url: 'https://api.easypost.com/v2/luma/promise'
+        headers:
+            Host: api.easypost.com
+            Expect: ''
+            Accept-Encoding: ''
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+        body: '{"shipment":{"from_address":{"name":"Jack Sparrow","street1":"388 Townsend St","street2":"Apt 20","city":"San Francisco","state":"CA","zip":"94107","country":"US","email":"test@example.com","phone":"5555555555"},"to_address":{"name":"Elizabeth Swan","street1":"179 N Harbor Dr","city":"Redondo Beach","state":"CA","zip":"90277","country":"US","email":"test@example.com","phone":"5555555555"},"parcel":{"length":"10","width":"8","height":"4","weight":"15.4"},"ruleset_name":"cheapest_delivery","planned_ship_date":"2025-06-12"}}'
+    response:
+        status:
+            code: 200
+            message: OK
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: 53394753684b4e15e2bbac1700a3e51f
+            cache-control: 'private, no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '2034'
+            x-runtime: '0.819185'
+            x-node: bigweb55nuq
+            x-version-label: easypost-202506122002-4fcd94d6be-master
+            x-backend: easypost
+            x-proxied: ['intlb3nuq e8fe6f4ec2', 'extlb2nuq 99aac35317']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"luma_info":{"ai_results":[{"carrier":"USPS","meets_ruleset_requirements":true,"predicted_deliver_by_date":"2025-06-13","predicted_deliver_days":1,"rate_usd":"34.15","service":"Express"},{"carrier":"USPS","meets_ruleset_requirements":true,"predicted_deliver_by_date":"2025-06-14","predicted_deliver_days":2,"rate_usd":"7.42","service":"Priority"},{"carrier":"USPS","meets_ruleset_requirements":true,"predicted_deliver_by_date":"2025-06-15","predicted_deliver_days":3,"rate_usd":"6.07","service":"GroundAdvantage"},{"carrier":"UPSDAP","meets_ruleset_requirements":true,"predicted_deliver_by_date":"2025-06-13","predicted_deliver_days":1,"rate_usd":"37.90","service":"NextDayAir"},{"carrier":"UPSDAP","meets_ruleset_requirements":true,"predicted_deliver_by_date":"2025-06-13","predicted_deliver_days":1,"rate_usd":"67.91","service":"NextDayAirEarlyAM"},{"carrier":"UPSDAP","meets_ruleset_requirements":true,"predicted_deliver_by_date":"2025-06-13","predicted_deliver_days":1,"rate_usd":"32.02","service":"NextDayAirSaver"},{"carrier":"UPSDAP","meets_ruleset_requirements":true,"predicted_deliver_by_date":"2025-06-14","predicted_deliver_days":2,"rate_usd":"11.50","service":"2ndDayAir"},{"carrier":"UPSDAP","meets_ruleset_requirements":true,"predicted_deliver_by_date":"2025-06-14","predicted_deliver_days":2,"rate_usd":"12.96","service":"2ndDayAirAM"},{"carrier":"UPSDAP","meets_ruleset_requirements":true,"predicted_deliver_by_date":"2025-06-15","predicted_deliver_days":3,"rate_usd":"9.94","service":"3DaySelect"},{"carrier":"UPSDAP","meets_ruleset_requirements":true,"predicted_deliver_by_date":"2025-06-14","predicted_deliver_days":2,"rate_usd":"7.12","service":"Ground"}],"matching_rule_idx":0,"ruleset_description":"Buy the cheapest rate that satisfies all of the following:\nRule 0\n    \nOtherwise buy the cheapest rate","luma_selected_rate":{"carrier":"USPS","carrier_account_id":"ca_8dc116debcdb49b5a66a2ddee4612600","currency":"USD","rate":"6.07","service":"GroundAdvantage","luma_predicted_deliver_by_date":"2025-06-15"}}}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/luma/promise'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 689
+            request_size: 838
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 1.150186
+            namelookup_time: 0.234933
+            connect_time: 0.264547
+            pretransfer_time: 0.298244
+            size_upload: 527.0
+            size_download: 2034.0
+            speed_download: 1768.0
+            speed_upload: 458.0
+            download_content_length: 2034.0
+            upload_content_length: 527.0
+            starttransfer_time: 1.15013
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.62.110.130
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 192.168.1.75
+            local_port: 57308
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: https
+            appconnect_time_us: 298190
+            connect_time_us: 264547
+            namelookup_time_us: 234933
+            pretransfer_time_us: 298244
+            redirect_time_us: 0
+            starttransfer_time_us: 1150130
+            total_time_us: 1150186
+            effective_method: POST
+            capath: ''
+            cainfo: ''
+    index: 0

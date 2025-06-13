@@ -4,8 +4,9 @@ namespace EasyPost\Test;
 
 use EasyPost\CustomsItem;
 use EasyPost\EasyPostClient;
+use PHPUnit\Framework\TestCase;
 
-class CustomsItemTest extends \PHPUnit\Framework\TestCase
+class CustomsItemTest extends TestCase
 {
     private static EasyPostClient $client;
 

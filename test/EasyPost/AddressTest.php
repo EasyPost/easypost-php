@@ -7,8 +7,9 @@ use EasyPost\EasyPostClient;
 use EasyPost\Exception\Api\ApiException;
 use EasyPost\Exception\General\EndOfPaginationException;
 use Exception;
+use PHPUnit\Framework\TestCase;
 
-class AddressTest extends \PHPUnit\Framework\TestCase
+class AddressTest extends TestCase
 {
     private static EasyPostClient $client;
 

@@ -254,4 +254,39 @@ class ShipmentService extends BaseService
 
         return InternalUtil::convertToEasyPostObject($this->client, $response['rates'] ?? []);
     }
+
+    /**
+     * Create and buy a Luma Shipment in one call.
+     *
+     * @param array<mixed> $params
+     * @return mixed
+     */
+    public function createAndBuyLuma(array $params): mixed
+    {
+        if (!isset($params['shipment']) || !is_array($params['shipment'])) {
+            $clone = $params;
+            unset($params);
+            $params['shipment'] = $clone;
+        }
+
+        $url = self::classUrl(self::serviceModelClassName(self::class)) . '/luma';
+        $response = Requestor::request($this->client, 'post', $url, $params);
+
+        return InternalUtil::convertToEasyPostObject($this->client, $response);
+    }
+
+    /**
+     * Buy a Shipment with Luma.
+     *
+     * @param string $id
+     * @param array<mixed> $params
+     * @return mixed
+     */
+    public function buyLuma(string $id, array $params): mixed
+    {
+        $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/luma';
+        $response = Requestor::request($this->client, 'post', $url, $params);
+
+        return InternalUtil::convertToEasyPostObject($this->client, $response);
+    }
 }

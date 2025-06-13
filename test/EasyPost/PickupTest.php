@@ -7,8 +7,9 @@ use EasyPost\Exception\General\EndOfPaginationException;
 use EasyPost\Exception\General\FilteringException;
 use EasyPost\Pickup;
 use Exception;
+use PHPUnit\Framework\TestCase;
 
-class PickupTest extends \PHPUnit\Framework\TestCase
+class PickupTest extends TestCase
 {
     private static EasyPostClient $client;
 

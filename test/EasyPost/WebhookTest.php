@@ -6,8 +6,9 @@ use EasyPost\EasyPostClient;
 use EasyPost\Exception\General\SignatureVerificationException;
 use EasyPost\Util\Util;
 use EasyPost\Webhook;
+use PHPUnit\Framework\TestCase;
 
-class WebhookTest extends \PHPUnit\Framework\TestCase
+class WebhookTest extends TestCase
 {
     private static EasyPostClient $client;
 

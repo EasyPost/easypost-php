@@ -4,8 +4,9 @@ namespace EasyPost\Test;
 
 use EasyPost\Batch;
 use EasyPost\EasyPostClient;
+use PHPUnit\Framework\TestCase;
 
-class BatchTest extends \PHPUnit\Framework\TestCase
+class BatchTest extends TestCase
 {
     private static EasyPostClient $client;
 

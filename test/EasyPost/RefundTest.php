@@ -6,8 +6,9 @@ use EasyPost\EasyPostClient;
 use EasyPost\Exception\General\EndOfPaginationException;
 use EasyPost\Refund;
 use Exception;
+use PHPUnit\Framework\TestCase;
 
-class RefundTest extends \PHPUnit\Framework\TestCase
+class RefundTest extends TestCase
 {
     private static EasyPostClient $client;
 

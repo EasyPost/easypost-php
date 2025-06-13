@@ -10,8 +10,9 @@ use EasyPost\Exception\General\EndOfPaginationException;
 use EasyPost\Payload;
 use EasyPost\Util\Util;
 use Exception;
+use PHPUnit\Framework\TestCase;
 
-class EventTest extends \PHPUnit\Framework\TestCase
+class EventTest extends TestCase
 {
     private static EasyPostClient $client;
 

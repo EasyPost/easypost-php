@@ -2,7 +2,9 @@
 
 namespace EasyPost\Test;
 
-class RequireTest extends \PHPUnit\Framework\TestCase
+use PHPUnit\Framework\TestCase;
+
+class RequireTest extends TestCase
 {
     /**
      * Tests that no errors are thrown when we import the library without using the autoloader.

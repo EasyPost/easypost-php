@@ -280,4 +280,20 @@ class Fixture
     {
         return self::readFixtureData()['billing'];
     }
+
+    /**
+     * @return string
+     */
+    public static function lumaRulesetName(): string
+    {
+        return self::readFixtureData()['luma']['ruleset_name'];
+    }
+
+    /**
+     * @return string
+     */
+    public static function lumaPlannedShipDate(): string
+    {
+        return '2025-06-12';
+    }
 }

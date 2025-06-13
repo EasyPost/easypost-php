@@ -6,8 +6,9 @@ use EasyPost\CarrierAccount;
 use EasyPost\EasyPostClient;
 use EasyPost\Exception\Api\ApiException;
 use EasyPost\Exception\General\MissingParameterException;
+use PHPUnit\Framework\TestCase;
 
-class CarrierAccountTest extends \PHPUnit\Framework\TestCase
+class CarrierAccountTest extends TestCase
 {
     private static EasyPostClient $client;
 
