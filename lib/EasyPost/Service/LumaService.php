@@ -27,6 +27,6 @@ class LumaService extends BaseService
         $url = '/luma/promise';
         $response = Requestor::request($this->client, 'post', $url, $params);
 
-        return InternalUtil::convertToEasyPostObject($this->client, $response);
+        return InternalUtil::convertToEasyPostObject($this->client, $response['luma_info']);
     }
 }

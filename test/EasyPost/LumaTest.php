@@ -39,6 +39,6 @@ class LumaTest extends TestCase
 
         $response = self::$client->luma->getPromise($basicShipment);
 
-        $this->assertNotNull($response->luma_info->luma_selected_rate);
+        $this->assertNotNull($response->luma_selected_rate);
     }
 }
