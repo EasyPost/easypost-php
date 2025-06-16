@@ -2,6 +2,8 @@
 
 namespace EasyPost\Service;
 
+use EasyPost\Util\InternalUtil;
+
 /**
  * EndShipper service containing all the logic to make API calls.
  */
@@ -15,11 +17,7 @@ class EndShipperService extends BaseService
      */
     public function create(mixed $params = null): mixed
     {
-        if (!isset($params['address']) || !is_array($params['address'])) {
-            $clone = $params;
-            unset($params);
-            $params['address'] = $clone;
-        }
+        $params = InternalUtil::wrapParams($params, 'address');
 
         return self::createResource(self::serviceModelClassName(self::class), $params);
     }
@@ -55,11 +53,7 @@ class EndShipperService extends BaseService
      */
     public function update(string $id, mixed $params): mixed
     {
-        if (!isset($params['address']) || !is_array($params['address'])) {
-            $clone = $params;
-            unset($params);
-            $params['address'] = $clone;
-        }
+        $params = InternalUtil::wrapParams($params, 'address');
 
         return self::updateResource(self::serviceModelClassName(self::class), $id, $params, 'put');
     }

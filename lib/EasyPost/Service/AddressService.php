@@ -79,11 +79,7 @@ class AddressService extends BaseService
      */
     public function createAndVerify(mixed $params = null): mixed
     {
-        if (!isset($params['address']) || !is_array($params['address'])) {
-            $clone = $params;
-            unset($params);
-            $params['address'] = $clone;
-        }
+        $params = InternalUtil::wrapParams($params, 'address');
 
         $url = self::classUrl(self::serviceModelClassName(self::class));
         $response = Requestor::request($this->client, 'post', $url . '/create_and_verify', $params);

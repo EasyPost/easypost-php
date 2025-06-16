@@ -2,6 +2,8 @@
 
 namespace EasyPost\Service;
 
+use EasyPost\Util\InternalUtil;
+
 /**
  * Parcel service containing all the logic to make API calls.
  */
@@ -26,11 +28,7 @@ class ParcelService extends BaseService
      */
     public function create(mixed $params = null): mixed
     {
-        if (!isset($params['parcel']) || !is_array($params['parcel'])) {
-            $clone = $params;
-            unset($params);
-            $params['parcel'] = $clone;
-        }
+        $params = InternalUtil::wrapParams($params, 'parcel');
 
         return self::createResource(self::serviceModelClassName(self::class), $params);
     }

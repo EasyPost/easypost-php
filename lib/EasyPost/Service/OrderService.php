@@ -30,11 +30,7 @@ class OrderService extends BaseService
      */
     public function create(mixed $params = null): mixed
     {
-        if (!isset($params['order']) || !is_array($params['order'])) {
-            $clone = $params;
-            unset($params);
-            $params['order'] = $clone;
-        }
+        $params = InternalUtil::wrapParams($params, 'order');
 
         return self::createResource(self::serviceModelClassName(self::class), $params);
     }
@@ -63,6 +59,7 @@ class OrderService extends BaseService
      */
     public function buy(string $id, mixed $params = null): mixed
     {
+        // Don't use InternalUtil::wrapParams here
         if ($params instanceof Rate) {
             $clone = $params;
             unset($params);

@@ -52,11 +52,7 @@ class PickupService extends BaseService
      */
     public function create(mixed $params = null): mixed
     {
-        if (!isset($params['pickup']) || !is_array($params['pickup'])) {
-            $clone = $params;
-            unset($params);
-            $params['pickup'] = $clone;
-        }
+        $params = InternalUtil::wrapParams($params, 'pickup');
 
         return self::createResource(self::serviceModelClassName(self::class), $params);
     }

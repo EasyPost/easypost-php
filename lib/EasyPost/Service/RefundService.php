@@ -2,6 +2,8 @@
 
 namespace EasyPost\Service;
 
+use EasyPost\Util\InternalUtil;
+
 /**
  * Refund service containing all the logic to make API calls.
  */
@@ -49,11 +51,7 @@ class RefundService extends BaseService
      */
     public function create(mixed $params = null): mixed
     {
-        if (!isset($params['refund']) || !is_array($params['refund'])) {
-            $clone = $params;
-            unset($params);
-            $params['refund'] = $clone;
-        }
+        $params = InternalUtil::wrapParams($params, 'refund');
 
         return self::createResource(self::serviceModelClassName(self::class), $params);
     }

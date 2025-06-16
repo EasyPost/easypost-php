@@ -52,15 +52,7 @@ class TrackerService extends BaseService
      */
     public function create(mixed $params = null): mixed
     {
-        if (!is_array($params)) {
-            $clone = $params;
-            unset($params);
-            $params['tracker']['tracking_code'] = $clone;
-        } elseif (!isset($params['tracker']) || !is_array($params['tracker'])) {
-            $clone = $params;
-            unset($params);
-            $params['tracker'] = $clone;
-        }
+        $params = InternalUtil::wrapParams($params, 'tracker');
 
         return self::createResource(self::serviceModelClassName(self::class), $params);
     }

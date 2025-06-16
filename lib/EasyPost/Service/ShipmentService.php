@@ -54,11 +54,7 @@ class ShipmentService extends BaseService
      */
     public function create(mixed $params = null): mixed
     {
-        if (!isset($params['shipment']) || !is_array($params['shipment'])) {
-            $clone = $params;
-            unset($params);
-            $params['shipment'] = $clone;
-        }
+        $params = InternalUtil::wrapParams($params, 'shipment');
 
         return self::createResource(self::serviceModelClassName(self::class), $params);
     }
@@ -104,6 +100,7 @@ class ShipmentService extends BaseService
      */
     public function buy(string $id, mixed $params = null, string|bool $endShipperId = false)
     {
+        // Don't use InternalUtil::wrapParams here
         if (isset($params['id']) && (!isset($params['rate']) || !is_array($params['rate']))) {
             $clone = $params;
             unset($params);
@@ -145,6 +142,7 @@ class ShipmentService extends BaseService
      */
     public function label(string $id, mixed $params = null): mixed
     {
+        // Don't use InternalUtil::wrapParams here
         if (!isset($params['file_format'])) {
             $clone = $params;
             unset($params);
@@ -166,6 +164,7 @@ class ShipmentService extends BaseService
      */
     public function insure(string $id, mixed $params = null): mixed
     {
+        // Don't use InternalUtil::wrapParams here
         if (!isset($params['amount'])) {
             $clone = $params;
             unset($params);
@@ -263,11 +262,7 @@ class ShipmentService extends BaseService
      */
     public function createAndBuyLuma(array $params): mixed
     {
-        if (!isset($params['shipment']) || !is_array($params['shipment'])) {
-            $clone = $params;
-            unset($params);
-            $params['shipment'] = $clone;
-        }
+        $params = InternalUtil::wrapParams($params, 'shipment');
 
         $url = self::classUrl(self::serviceModelClassName(self::class)) . '/luma';
         $response = Requestor::request($this->client, 'post', $url, $params);
