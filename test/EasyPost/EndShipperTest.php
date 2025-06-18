@@ -4,8 +4,9 @@ namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
 use EasyPost\EndShipper;
+use PHPUnit\Framework\TestCase;
 
-class EndShipperTest extends \PHPUnit\Framework\TestCase
+class EndShipperTest extends TestCase
 {
     private static EasyPostClient $client;
 

@@ -2,12 +2,13 @@
 
 namespace EasyPost\Test;
 
+use EasyPost\Claim;
 use EasyPost\EasyPostClient;
 use EasyPost\Exception\General\EndOfPaginationException;
-use EasyPost\Claim;
 use Exception;
+use PHPUnit\Framework\TestCase;
 
-class ClaimTest extends \PHPUnit\Framework\TestCase
+class ClaimTest extends TestCase
 {
     private static EasyPostClient $client;
 

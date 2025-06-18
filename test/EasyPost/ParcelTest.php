@@ -4,8 +4,9 @@ namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
 use EasyPost\Parcel;
+use PHPUnit\Framework\TestCase;
 
-class ParcelTest extends \PHPUnit\Framework\TestCase
+class ParcelTest extends TestCase
 {
     private static EasyPostClient $client;
 

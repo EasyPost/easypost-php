@@ -3,10 +3,9 @@
 namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
-use EasyPost\Exception\General\EndOfPaginationException;
-use Exception;
+use PHPUnit\Framework\TestCase;
 
-class SmartRateTest extends \PHPUnit\Framework\TestCase
+class SmartRateTest extends TestCase
 {
     private static EasyPostClient $client;
 

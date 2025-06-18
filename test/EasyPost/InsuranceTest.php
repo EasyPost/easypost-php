@@ -6,8 +6,9 @@ use EasyPost\EasyPostClient;
 use EasyPost\Exception\General\EndOfPaginationException;
 use EasyPost\Insurance;
 use Exception;
+use PHPUnit\Framework\TestCase;
 
-class InsuranceTest extends \PHPUnit\Framework\TestCase
+class InsuranceTest extends TestCase
 {
     private static EasyPostClient $client;
 

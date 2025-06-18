@@ -6,8 +6,9 @@ use EasyPost\EasyPostClient;
 use EasyPost\Exception\General\FilteringException;
 use EasyPost\Order;
 use EasyPost\Rate;
+use PHPUnit\Framework\TestCase;
 
-class OrderTest extends \PHPUnit\Framework\TestCase
+class OrderTest extends TestCase
 {
     private static EasyPostClient $client;
 

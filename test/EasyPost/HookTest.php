@@ -4,8 +4,9 @@ namespace EasyPost\Test;
 
 use DateTime;
 use EasyPost\EasyPostClient;
+use PHPUnit\Framework\TestCase;
 
-class HookTest extends \PHPUnit\Framework\TestCase
+class HookTest extends TestCase
 {
     private static EasyPostClient $client;
 

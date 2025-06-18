@@ -6,8 +6,9 @@ use EasyPost\EasyPostClient;
 use EasyPost\Exception\Api\ApiException;
 use EasyPost\Exception\General\EasyPostException;
 use EasyPost\Http\Requestor;
+use PHPUnit\Framework\TestCase;
 
-class ErrorTest extends \PHPUnit\Framework\TestCase
+class ErrorTest extends TestCase
 {
     private static EasyPostClient $client;
 

@@ -7,8 +7,9 @@ use EasyPost\Exception\General\EndOfPaginationException;
 use EasyPost\Exception\General\MissingParameterException;
 use EasyPost\Report;
 use Exception;
+use PHPUnit\Framework\TestCase;
 
-class ReportTest extends \PHPUnit\Framework\TestCase
+class ReportTest extends TestCase
 {
     private static EasyPostClient $client;
 
