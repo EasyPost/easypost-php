@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Next Release
+## v8.2.0 (2025-06-18)
 
 - Adds the following functions
   - `shipment.createAndBuyLuma`
