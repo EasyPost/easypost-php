@@ -40,11 +40,7 @@ class BatchService extends BaseService
      */
     public function create(mixed $params = null): mixed
     {
-        if (!isset($params['batch']) || !is_array($params['batch'])) {
-            $clone = $params;
-            unset($params);
-            $params['batch'] = $clone;
-        }
+        $params = InternalUtil::wrapParams($params, 'batch');
 
         return self::createResource(self::serviceModelClassName(self::class), $params);
     }

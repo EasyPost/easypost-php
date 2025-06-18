@@ -52,6 +52,7 @@ class TrackerService extends BaseService
      */
     public function create(mixed $params = null): mixed
     {
+        // TODO: only accept wrapped params
         if (!is_array($params)) {
             $clone = $params;
             unset($params);

@@ -2,6 +2,8 @@
 
 namespace EasyPost\Service;
 
+use EasyPost\Util\InternalUtil;
+
 /**
  * Webhook service containing all the logic to make API calls.
  */
@@ -61,11 +63,7 @@ class WebhookService extends BaseService
      */
     public function create(mixed $params = null): mixed
     {
-        if (!isset($params['webhook']) || !is_array($params['webhook'])) {
-            $clone = $params;
-            unset($params);
-            $params['webhook'] = $clone;
-        }
+        $params = InternalUtil::wrapParams($params, 'webhook');
 
         return self::createResource(self::serviceModelClassName(self::class), $params);
     }

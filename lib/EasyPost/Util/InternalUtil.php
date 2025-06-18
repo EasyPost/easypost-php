@@ -246,4 +246,22 @@ abstract class InternalUtil
 
         return $lowestRate;
     }
+
+    /**
+     * Wraps the params in a key.
+     *
+     * @param mixed $params
+     * @param string $keyName
+     * @return mixed
+     */
+    public static function wrapParams(mixed $params, string $keyName): mixed
+    {
+        if (!isset($params[$keyName]) || !is_array($params[$keyName])) {
+            $clone = $params;
+            unset($params);
+            $params[$keyName] = $clone;
+        }
+
+        return $params;
+    }
 }

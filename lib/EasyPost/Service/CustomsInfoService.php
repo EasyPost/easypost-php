@@ -2,6 +2,8 @@
 
 namespace EasyPost\Service;
 
+use EasyPost\Util\InternalUtil;
+
 /**
  * CustomsInfo service containing all the logic to make API calls.
  */
@@ -26,11 +28,7 @@ class CustomsInfoService extends BaseService
      */
     public function create(mixed $params = null): mixed
     {
-        if (!isset($params['customs_info']) || !is_array($params['customs_info'])) {
-            $clone = $params;
-            unset($params);
-            $params['customs_info'] = $clone;
-        }
+        $params = InternalUtil::wrapParams($params, 'customs_info');
 
         return self::createResource(self::serviceModelClassName(self::class), $params);
     }

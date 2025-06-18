@@ -43,11 +43,7 @@ class CarrierAccountService extends BaseService
      */
     public function update(string $id, mixed $params): mixed
     {
-        if (!isset($params['carrier_account']) || !is_array($params['carrier_account'])) {
-            $clone = $params;
-            unset($params);
-            $params['carrier_account'] = $clone;
-        }
+        $params = InternalUtil::wrapParams($params, 'carrier_account');
 
         return self::updateResource(self::serviceModelClassName(self::class), $id, $params);
     }

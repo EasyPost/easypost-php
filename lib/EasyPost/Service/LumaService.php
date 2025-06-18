@@ -18,11 +18,7 @@ class LumaService extends BaseService
      */
     public function getPromise(array $params): mixed
     {
-        if (!isset($params['shipment']) || !is_array($params['shipment'])) {
-            $clone = $params;
-            unset($params);
-            $params['shipment'] = $clone;
-        }
+        $params = InternalUtil::wrapParams($params, 'shipment');
 
         $url = '/luma/promise';
         $response = Requestor::request($this->client, 'post', $url, $params);

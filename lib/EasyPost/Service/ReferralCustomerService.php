@@ -47,11 +47,7 @@ class ReferralCustomerService extends BaseService
      */
     public function create(mixed $params = null): mixed
     {
-        if (!isset($params['user']) || !is_array($params['user'])) {
-            $clone = $params;
-            unset($params);
-            $params['user'] = $clone;
-        }
+        $params = InternalUtil::wrapParams($params, 'user');
 
         return self::createResource(self::serviceModelClassName(self::class), $params);
     }
