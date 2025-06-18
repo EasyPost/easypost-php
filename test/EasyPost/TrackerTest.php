@@ -46,6 +46,20 @@ class TrackerTest extends TestCase
     }
 
     /**
+     * Test creating a Tracker when we don't wrap the param.
+     */
+    public function testCreateUnwrappedParam(): void
+    {
+        TestUtil::setupCassette('trackers/createUnwrappedParam.yml');
+
+        $tracker = self::$client->tracker->create('EZ1000000001');
+
+        $this->assertInstanceOf(Tracker::class, $tracker);
+        $this->assertStringMatchesFormat('trk_%s', $tracker->id);
+        $this->assertEquals('pre_transit', $tracker->status);
+    }
+
+    /**
      * Test retrieving a Tracker.
      */
     public function testRetrieve(): void

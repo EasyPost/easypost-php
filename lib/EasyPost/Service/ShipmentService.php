@@ -142,7 +142,7 @@ class ShipmentService extends BaseService
      */
     public function label(string $id, mixed $params = null): mixed
     {
-        // Don't use InternalUtil::wrapParams here
+        // TODO: only accept wrapped params
         if (!isset($params['file_format'])) {
             $clone = $params;
             unset($params);
@@ -164,7 +164,7 @@ class ShipmentService extends BaseService
      */
     public function insure(string $id, mixed $params = null): mixed
     {
-        // Don't use InternalUtil::wrapParams here
+        // TODO: Only accept wrapped params
         if (!isset($params['amount'])) {
             $clone = $params;
             unset($params);
