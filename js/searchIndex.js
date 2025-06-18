@@ -1201,6 +1201,16 @@ Search.appendIndex(
             "summary": "Refund\u0020an\u0020insurance\u0020object.",
             "url": "classes/EasyPost-Service-InsuranceService.html#method_refund"
         },                {
+            "fqsen": "\\EasyPost\\Service\\LumaService",
+            "name": "LumaService",
+            "summary": "Luma\u0020service\u0020containing\u0020all\u0020the\u0020logic\u0020to\u0020make\u0020API\u0020calls.",
+            "url": "classes/EasyPost-Service-LumaService.html"
+        },                {
+            "fqsen": "\\EasyPost\\Service\\LumaService\u003A\u003AgetPromise\u0028\u0029",
+            "name": "getPromise",
+            "summary": "Get\u0020service\u0020recommendations\u0020from\u0020Luma\u0020that\u0020meet\u0020the\u0020criteria\u0020of\u0020your\u0020ruleset.",
+            "url": "classes/EasyPost-Service-LumaService.html#method_getPromise"
+        },                {
             "fqsen": "\\EasyPost\\Service\\OrderService",
             "name": "OrderService",
             "summary": "Order\u0020service\u0020containing\u0020all\u0020the\u0020logic\u0020to\u0020make\u0020API\u0020calls.",
@@ -1495,6 +1505,16 @@ Search.appendIndex(
             "name": "recommendShipDate",
             "summary": "Retrieve\u0020a\u0020recommended\u0020ship\u0020date\u0020for\u0020an\u0020existing\u0020Shipment\u0020via\u0020the\u0020Precision\u0020Shipping\u0020API,\nbased\u0020on\u0020a\u0020specific\u0020desired\u0020delivery\u0020date.",
             "url": "classes/EasyPost-Service-ShipmentService.html#method_recommendShipDate"
+        },                {
+            "fqsen": "\\EasyPost\\Service\\ShipmentService\u003A\u003AcreateAndBuyLuma\u0028\u0029",
+            "name": "createAndBuyLuma",
+            "summary": "Create\u0020and\u0020buy\u0020a\u0020Luma\u0020Shipment\u0020in\u0020one\u0020call.",
+            "url": "classes/EasyPost-Service-ShipmentService.html#method_createAndBuyLuma"
+        },                {
+            "fqsen": "\\EasyPost\\Service\\ShipmentService\u003A\u003AbuyLuma\u0028\u0029",
+            "name": "buyLuma",
+            "summary": "Buy\u0020a\u0020Shipment\u0020with\u0020Luma.",
+            "url": "classes/EasyPost-Service-ShipmentService.html#method_buyLuma"
         },                {
             "fqsen": "\\EasyPost\\Service\\SmartRateService",
             "name": "SmartRateService",
