@@ -1696,6 +1696,11 @@ Search.appendIndex(
             "summary": "Get\u0020the\u0020lowest\u0020rate\u0020of\u0020an\u0020EasyPost\u0020object\u0020\u0028eg\u003A\u0020Shipment,\u0020Order,\u0020Pickup\u0029.",
             "url": "classes/EasyPost-Util-InternalUtil.html#method_getLowestObjectRate"
         },                {
+            "fqsen": "\\EasyPost\\Util\\InternalUtil\u003A\u003AwrapParams\u0028\u0029",
+            "name": "wrapParams",
+            "summary": "Wraps\u0020the\u0020params\u0020in\u0020a\u0020key.",
+            "url": "classes/EasyPost-Util-InternalUtil.html#method_wrapParams"
+        },                {
             "fqsen": "\\EasyPost\\Util\\Util",
             "name": "Util",
             "summary": "",
