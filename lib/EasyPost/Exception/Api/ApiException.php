@@ -4,7 +4,6 @@ namespace EasyPost\Exception\Api;
 
 use EasyPost\Exception\General\EasyPostException;
 use EasyPost\FieldError;
-use Exception;
 
 /**
  * @package EasyPost
@@ -19,7 +18,7 @@ class ApiException extends EasyPostException
 {
     public $code; // @phpstan-ignore-line
     public $errors; // @phpstan-ignore-line
-    protected $message; // @phpstan-ignore-line
+    protected $message;
     private ?string $httpBody;
     private ?int $httpStatus;
     private mixed $jsonBody;
