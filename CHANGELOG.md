@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Adds support for `UspsShipAccount`
+
 ## v8.2.0 (2025-06-18)
 
 - Adds the following functions
