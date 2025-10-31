@@ -24,7 +24,8 @@ abstract class Constants
         'AmazonShippingAccount',
         'UpsAccount',
         'UpsMailInnovationsAccount',
-        'UpsSurepostAccount'
+        'UpsSurepostAccount',
+        'UspsShipAccount',
     ];
 
     // Exception messages (many of these are intended to be used with `sprintf()`)
