@@ -65,4 +65,17 @@ class TrackerService extends BaseService
 
         return self::createResource(self::serviceModelClassName(self::class), $params);
     }
+
+    /**
+     * Retrieve a batch of trackers.
+     *
+     * @param mixed $params
+     * @return mixed
+     */
+    public function retrieveBatch(mixed $params = null): mixed
+    {
+        $response = Requestor::request($this->client, 'post', "/trackers/batch", $params);
+
+        return InternalUtil::convertToEasyPostObject($this->client, $response);
+    }
 }
