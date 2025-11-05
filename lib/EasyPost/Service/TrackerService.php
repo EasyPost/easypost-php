@@ -74,7 +74,7 @@ class TrackerService extends BaseService
      */
     public function retrieveBatch(mixed $params = null): mixed
     {
-        $response = Requestor::request($this->client, 'post', "/trackers/batch", $params);
+        $response = Requestor::request($this->client, 'post', '/trackers/batch', $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
