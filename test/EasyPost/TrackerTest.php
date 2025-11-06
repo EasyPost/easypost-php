@@ -120,4 +120,22 @@ class TrackerTest extends TestCase
             throw $error;
         }
     }
+
+    /**
+     * Test creating a Tracker.
+     */
+    public function testRetrieveBatch(): void
+    {
+        TestUtil::setupCassette('trackers/retrieveBatch.yml');
+
+        $tracker = self::$client->tracker->create([
+            'tracking_code' => 'EZ1000000001',
+        ]);
+
+        $trackers = self::$client->tracker->retrieveBatch([
+            'tracking_codes' => [$tracker->tracking_code]
+        ]);
+
+        $this->assertContainsOnlyInstancesOf(Tracker::class, $trackers['trackers']);
+    }
 }

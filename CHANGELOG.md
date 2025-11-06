@@ -3,6 +3,7 @@
 ## Next Release
 
 - Adds support for `UspsShipAccount`
+- Adds `tracker.retrieveBatch` function
 
 ## v8.2.0 (2025-06-18)
 

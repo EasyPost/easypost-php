@@ -1,0 +1,162 @@
+
+-
+    request:
+        method: POST
+        url: 'https://api.easypost.com/v2/trackers'
+        headers:
+            Host: api.easypost.com
+            Expect: ''
+            Accept-Encoding: ''
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+        body: '{"tracker":{"tracking_code":"EZ1000000001"}}'
+    response:
+        status:
+            code: 200
+            message: OK
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: 38fab077690bd3c3e7996144025ac8bb
+            cache-control: 'private, no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            location: /api/v2/trackers/trk_bcdaf057b53541a3b0702a9115a04d0c
+            content-type: 'application/json; charset=utf-8'
+            content-length: '1691'
+            x-runtime: '0.063294'
+            x-node: bigweb42nuq
+            x-version-label: easypost-202511052124-83d556159a-master
+            x-backend: easypost
+            x-proxied: ['intlb4nuq c0061e0a2e', 'extlb2nuq cbbd141214']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"id":"trk_bcdaf057b53541a3b0702a9115a04d0c","object":"Tracker","mode":"test","tracking_code":"EZ1000000001","status":"pre_transit","status_detail":"status_update","created_at":"2025-11-05T22:45:06Z","updated_at":"2025-11-05T22:45:06Z","signed_by":null,"weight":null,"est_delivery_date":"2025-11-05T22:45:06Z","shipment_id":null,"carrier":"USPS","tracking_details":[{"object":"TrackingDetail","message":"Pre-Shipment Info Sent to USPS","description":"","status":"pre_transit","status_detail":"status_update","datetime":"2025-10-05T22:45:06Z","source":"USPS","carrier_code":"","tracking_location":{"object":"TrackingLocation","city":null,"state":null,"country":null,"zip":null},"est_delivery_date":null},{"object":"TrackingDetail","message":"Shipping Label Created","description":"","status":"pre_transit","status_detail":"status_update","datetime":"2025-10-06T11:22:06Z","source":"USPS","carrier_code":"","tracking_location":{"object":"TrackingLocation","city":"HOUSTON","state":"TX","country":null,"zip":"77063"},"est_delivery_date":null}],"carrier_detail":{"object":"CarrierDetail","service":"First-Class Package Service","container_type":null,"est_delivery_date_local":null,"est_delivery_time_local":null,"origin_location":"HOUSTON TX, 77001","origin_tracking_location":{"object":"TrackingLocation","city":"HOUSTON","state":"TX","country":null,"zip":"77063"},"destination_location":"CHARLESTON SC, 29401","destination_tracking_location":null,"guaranteed_delivery_date":null,"alternate_identifier":null,"initial_delivery_attempt":null},"delivery_evidence":[],"finalized":true,"is_return":false,"public_url":"https:\/\/track.easypost.com\/djE6dHJrX2JjZGFmMDU3YjUzNTQxYTNiMDcwMmE5MTE1YTA0ZDBj"}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/trackers'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 754
+            request_size: 350
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.250476
+            namelookup_time: 0.003725
+            connect_time: 0.05763
+            pretransfer_time: 0.11724
+            size_upload: 44.0
+            size_download: 1691.0
+            speed_download: 6751.0
+            speed_upload: 175.0
+            download_content_length: 1691.0
+            upload_content_length: 44.0
+            starttransfer_time: 0.250441
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.62.110.130
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 10.130.6.16
+            local_port: 61628
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: https
+            appconnect_time_us: 116772
+            connect_time_us: 57630
+            namelookup_time_us: 3725
+            pretransfer_time_us: 117240
+            redirect_time_us: 0
+            starttransfer_time_us: 250441
+            posttransfer_time_us: 117239
+            total_time_us: 250476
+            effective_method: POST
+            capath: ''
+            cainfo: ''
+    index: 0
+-
+    request:
+        method: POST
+        url: 'https://api.easypost.com/v2/trackers/batch'
+        headers:
+            Host: api.easypost.com
+            Expect: ''
+            Accept-Encoding: ''
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+        body: '{"tracking_codes":["EZ1000000001"]}'
+    response:
+        status:
+            code: 200
+            message: OK
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: 38fab076690bd3c4e7996145025ac8f2
+            cache-control: 'private, no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '1785'
+            x-runtime: '0.049964'
+            x-node: bigweb55nuq
+            x-version-label: easypost-202511052124-83d556159a-master
+            x-backend: easypost
+            x-proxied: ['intlb6nuq c0061e0a2e', 'extlb2nuq cbbd141214']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"trackers":[{"id":"trk_bcdaf057b53541a3b0702a9115a04d0c","object":"Tracker","mode":"test","tracking_code":"EZ1000000001","status":"pre_transit","status_detail":"status_update","created_at":"2025-11-05T22:45:06Z","updated_at":"2025-11-05T22:45:06Z","signed_by":null,"weight":null,"est_delivery_date":"2025-11-05T22:45:06Z","shipment_id":null,"carrier":"USPS","tracking_details":[{"object":"TrackingDetail","message":"Pre-Shipment Info Sent to USPS","description":"","status":"pre_transit","status_detail":"status_update","datetime":"2025-10-05T22:45:06Z","source":"USPS","carrier_code":"","tracking_location":{"object":"TrackingLocation","city":null,"state":null,"country":null,"zip":null},"est_delivery_date":null},{"object":"TrackingDetail","message":"Shipping Label Created","description":"","status":"pre_transit","status_detail":"status_update","datetime":"2025-10-06T11:22:06Z","source":"USPS","carrier_code":"","tracking_location":{"object":"TrackingLocation","city":"HOUSTON","state":"TX","country":null,"zip":"77063"},"est_delivery_date":null}],"fees":[{"object":"Fee","type":"TrackerFee","amount":"0.02000","charged":true,"refunded":false}],"carrier_detail":{"object":"CarrierDetail","service":"First-Class Package Service","container_type":null,"est_delivery_date_local":null,"est_delivery_time_local":null,"origin_location":"HOUSTON TX, 77001","origin_tracking_location":{"object":"TrackingLocation","city":"HOUSTON","state":"TX","country":null,"zip":"77063"},"destination_location":"CHARLESTON SC, 29401","destination_tracking_location":null,"guaranteed_delivery_date":null,"alternate_identifier":null,"initial_delivery_attempt":null},"delivery_evidence":[],"public_url":"https:\/\/track.easypost.com\/djE6dHJrX2JjZGFmMDU3YjUzNTQxYTNiMDcwMmE5MTE1YTA0ZDBj"}],"has_more":false}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/trackers/batch'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 689
+            request_size: 347
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.22328
+            namelookup_time: 0.002167
+            connect_time: 0.059006
+            pretransfer_time: 0.115438
+            size_upload: 35.0
+            size_download: 1785.0
+            speed_download: 7994.0
+            speed_upload: 156.0
+            download_content_length: 1785.0
+            upload_content_length: 35.0
+            starttransfer_time: 0.223261
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.62.110.130
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 10.130.6.16
+            local_port: 61629
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: https
+            appconnect_time_us: 115396
+            connect_time_us: 59006
+            namelookup_time_us: 2167
+            pretransfer_time_us: 115438
+            redirect_time_us: 0
+            starttransfer_time_us: 223261
+            posttransfer_time_us: 115437
+            total_time_us: 223280
+            effective_method: POST
+            capath: ''
+            cainfo: ''
+    index: 0
