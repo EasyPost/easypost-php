@@ -1556,6 +1556,11 @@ Search.appendIndex(
             "summary": "Create\u0020a\u0020tracker.",
             "url": "classes/EasyPost-Service-TrackerService.html#method_create"
         },                {
+            "fqsen": "\\EasyPost\\Service\\TrackerService\u003A\u003AretrieveBatch\u0028\u0029",
+            "name": "retrieveBatch",
+            "summary": "Retrieve\u0020a\u0020batch\u0020of\u0020trackers.",
+            "url": "classes/EasyPost-Service-TrackerService.html#method_retrieveBatch"
+        },                {
             "fqsen": "\\EasyPost\\Service\\UserService",
             "name": "UserService",
             "summary": "User\u0020service\u0020containing\u0020all\u0020the\u0020logic\u0020to\u0020make\u0020API\u0020calls.",
