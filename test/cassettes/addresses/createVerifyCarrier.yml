@@ -1,0 +1,82 @@
+
+-
+    request:
+        method: POST
+        url: 'https://api.easypost.com/v2/addresses'
+        headers:
+            Host: api.easypost.com
+            Expect: ''
+            Accept-Encoding: ''
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+        body: '{"verify":"true","verify_carrier":"UPS","address":{"company":"EasyPost","street1":"000 unknown street","city":"Not A City","state":"ZZ","zip":"00001","country":"US","email":"test@example.com","phone":"5555555555"}}'
+    response:
+        status:
+            code: 201
+            message: Created
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: bcd43722690e365ee786af9f02a5d437
+            cache-control: 'private, no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            location: /api/v2/addresses/adr_36b9f6f8bc0511f0a79aac1f6bc539aa
+            content-type: 'application/json; charset=utf-8'
+            content-length: '808'
+            x-runtime: '0.546585'
+            x-node: bigweb65nuq
+            x-version-label: easypost-202511071655-85836cab32-master
+            x-backend: easypost
+            x-proxied: ['intlb3nuq c0061e0a2e', 'extlb2nuq cbbd141214']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"id":"adr_36b9f6f8bc0511f0a79aac1f6bc539aa","object":"Address","created_at":"2025-11-07T18:11:42Z","updated_at":"2025-11-07T18:11:42Z","name":null,"company":"EASYPOST","street1":"000 UNKNOWN STREET","street2":"","city":"NOT A CITY","state":"ZZ","zip":"00001","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[{"code":"E.ADDRESS.NOT_FOUND","field":"address","message":"Address not found","suggestion":null}],"details":null},"delivery":{"success":true,"errors":[{"code":"E.ADDRESS.NOT_FOUND","field":"address","message":"Address not found","suggestion":null}],"details":{"latitude":null,"longitude":null,"time_zone":null}},"verify_carrier":"ups"}}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/addresses'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 201
+            header_size: 759
+            request_size: 522
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.76288
+            namelookup_time: 0.047738
+            connect_time: 0.10146
+            pretransfer_time: 0.158975
+            size_upload: 214.0
+            size_download: 808.0
+            speed_download: 1059.0
+            speed_upload: 280.0
+            download_content_length: 808.0
+            upload_content_length: 214.0
+            starttransfer_time: 0.762726
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.62.110.130
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 10.130.6.31
+            local_port: 50328
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: https
+            appconnect_time_us: 158032
+            connect_time_us: 101460
+            namelookup_time_us: 47738
+            pretransfer_time_us: 158975
+            redirect_time_us: 0
+            starttransfer_time_us: 762726
+            posttransfer_time_us: 158974
+            total_time_us: 762880
+            effective_method: POST
+            capath: ''
+            cainfo: ''
+    index: 0

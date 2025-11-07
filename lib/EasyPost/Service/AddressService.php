@@ -66,6 +66,12 @@ class AddressService extends BaseService
             $wrappedParams['verify_strict'] = $verifyStrict;
         }
 
+        if (isset($params['verify_carrier'])) {
+            $verifyCarrier = $params['verify_carrier'];
+            unset($params['verify_carrier']);
+            $wrappedParams['verify_carrier'] = $verifyCarrier;
+        }
+
         $wrappedParams['address'] = $params;
 
         return self::createResource(self::serviceModelClassName(self::class), $wrappedParams);
@@ -79,10 +85,18 @@ class AddressService extends BaseService
      */
     public function createAndVerify(mixed $params = null): mixed
     {
-        $params = InternalUtil::wrapParams($params, 'address');
+        $wrappedParams = [];
+
+        if (isset($params['verify_carrier'])) {
+            $verifyCarrier = $params['verify_carrier'];
+            unset($params['verify_carrier']);
+            $wrappedParams['verify_carrier'] = $verifyCarrier;
+        }
+
+        $wrappedParams['address'] = $params;
 
         $url = self::classUrl(self::serviceModelClassName(self::class));
-        $response = Requestor::request($this->client, 'post', $url . '/create_and_verify', $params);
+        $response = Requestor::request($this->client, 'post', $url . '/create_and_verify', $wrappedParams);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response['address']);
     }

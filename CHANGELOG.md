@@ -1,9 +1,10 @@
 # CHANGELOG
 
-## Next Release
+## v8.3.0 (2025-11-10)
 
 - Adds support for `UspsShipAccount`
 - Adds `tracker.retrieveBatch` function
+- Adds `verify_carrier` address param
 
 ## v8.2.0 (2025-06-18)
 
