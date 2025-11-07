@@ -233,4 +233,45 @@ class AddressTest extends TestCase
             $this->assertEquals('Unable to verify address.', $error->getMessage());
         }
     }
+
+    /**
+     * Test creating a verified address with verify_carrier.
+     *
+     * We purposefully pass in slightly incorrect data to get the corrected address back once verified.
+     */
+    public function testCreateVerifyCarrier(): void
+    {
+        TestUtil::setupCassette('addresses/createVerifyCarrier.yml');
+
+        $addressData = Fixture::incorrectAddress();
+
+        $addressData['verify'] = true;
+        $addressData['verify_carrier'] = 'UPS';
+        $address = self::$client->address->create($addressData);
+
+        $this->assertInstanceOf(Address::class, $address);
+
+        $this->assertEquals('Address not found', $address->verifications->delivery->errors[0]->message);
+        $this->assertEquals('Address not found', $address->verifications->zip4->errors[0]->message);
+    }
+
+    /**
+     * Test creating a verified address with verify_carrier.
+     *
+     * We purposefully pass in slightly incorrect data to get the corrected address back once verified.
+     */
+    public function testCreateAndVerifyCarrier(): void
+    {
+        TestUtil::setupCassette('addresses/createAndVerifyCarrier.yml');
+
+        $addressData = Fixture::incorrectAddress();
+
+        $addressData['verify_carrier'] = 'UPS';
+        $address = self::$client->address->createAndVerify($addressData);
+
+        $this->assertInstanceOf(Address::class, $address);
+
+        $this->assertEquals('Address not found', $address->verifications->delivery->errors[0]->message);
+        $this->assertEquals('Address not found', $address->verifications->zip4->errors[0]->message);
+    }
 }
