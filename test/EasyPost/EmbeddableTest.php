@@ -37,7 +37,7 @@ class EmbeddableTest extends TestCase
 
         $accountLink = self::$client->embeddable->createSession(
             [
-                'origin_host' => "https://example.com",
+                'origin_host' => 'https://example.com',
                 'user_id' => $user->id,
             ]
         );

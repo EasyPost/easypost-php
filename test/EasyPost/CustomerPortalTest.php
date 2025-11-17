@@ -37,10 +37,10 @@ class CustomerPortalTest extends TestCase
 
         $accountLink = self::$client->customerPortal->createAccountLink(
             [
-                'session_type' => "account_onboarding",
+                'session_type' => 'account_onboarding',
                 'user_id' => $user->id,
-                'refresh_url' => "https://example.com/refresh",
-                'return_url' => "https://example.com/return",
+                'refresh_url' => 'https://example.com/refresh',
+                'return_url' => 'https://example.com/return',
             ]
         );
 

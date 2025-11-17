@@ -18,7 +18,7 @@ class CustomerPortalService extends BaseService
      */
     public function createAccountLink(mixed $params = null): mixed
     {
-        $response = Requestor::request($this->client, 'post', "/customer_portal/account_link", $params);
+        $response = Requestor::request($this->client, 'post', '/customer_portal/account_link', $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
