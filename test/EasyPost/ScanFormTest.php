@@ -34,7 +34,7 @@ class ScanFormTest extends TestCase
      */
     public function testCreate(): void
     {
-        TestUtil::setupCassette('scanForms/create.yml');
+        TestUtil::setupCassette('scan_forms/create.yml');
 
         $shipment = self::$client->shipment->create(Fixture::oneCallBuyShipment());
 
@@ -51,7 +51,7 @@ class ScanFormTest extends TestCase
      */
     public function testRetrieve(): void
     {
-        TestUtil::setupCassette('scanForms/retrieve.yml');
+        TestUtil::setupCassette('scan_forms/retrieve.yml');
 
         $shipment = self::$client->shipment->create(Fixture::oneCallBuyShipment());
 
@@ -70,7 +70,7 @@ class ScanFormTest extends TestCase
      */
     public function testAll(): void
     {
-        TestUtil::setupCassette('scanForms/all.yml');
+        TestUtil::setupCassette('scan_forms/all.yml');
 
         $scanForms = self::$client->scanForm->all([
             'page_size' => Fixture::pageSize(),
@@ -88,7 +88,7 @@ class ScanFormTest extends TestCase
      */
     public function testGetNextPage(): void
     {
-        TestUtil::setupCassette('scanForms/getNextPage.yml');
+        TestUtil::setupCassette('scan_forms/getNextPage.yml');
 
         try {
             $scanforms = self::$client->scanForm->all([
