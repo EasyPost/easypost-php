@@ -1086,6 +1086,16 @@ Search.appendIndex(
             "summary": "Cancel\u0020a\u0020claim\u0020object.",
             "url": "classes/EasyPost-Service-ClaimService.html#method_cancel"
         },                {
+            "fqsen": "\\EasyPost\\Service\\CustomerPortalService",
+            "name": "CustomerPortalService",
+            "summary": "CustomerPortal\u0020service\u0020containing\u0020all\u0020the\u0020logic\u0020to\u0020make\u0020API\u0020calls.",
+            "url": "classes/EasyPost-Service-CustomerPortalService.html"
+        },                {
+            "fqsen": "\\EasyPost\\Service\\CustomerPortalService\u003A\u003AcreateAccountLink\u0028\u0029",
+            "name": "createAccountLink",
+            "summary": "Create\u0020a\u0020Portal\u0020Session.",
+            "url": "classes/EasyPost-Service-CustomerPortalService.html#method_createAccountLink"
+        },                {
             "fqsen": "\\EasyPost\\Service\\CustomsInfoService",
             "name": "CustomsInfoService",
             "summary": "CustomsInfo\u0020service\u0020containing\u0020all\u0020the\u0020logic\u0020to\u0020make\u0020API\u0020calls.",
@@ -1115,6 +1125,16 @@ Search.appendIndex(
             "name": "create",
             "summary": "Create\u0020a\u0020customs\u0020item.",
             "url": "classes/EasyPost-Service-CustomsItemService.html#method_create"
+        },                {
+            "fqsen": "\\EasyPost\\Service\\EmbeddableService",
+            "name": "EmbeddableService",
+            "summary": "Embeddable\u0020service\u0020containing\u0020all\u0020the\u0020logic\u0020to\u0020make\u0020API\u0020calls.",
+            "url": "classes/EasyPost-Service-EmbeddableService.html"
+        },                {
+            "fqsen": "\\EasyPost\\Service\\EmbeddableService\u003A\u003AcreateSession\u0028\u0029",
+            "name": "createSession",
+            "summary": "Create\u0020an\u0020Embeddable\u0020Session.",
+            "url": "classes/EasyPost-Service-EmbeddableService.html#method_createSession"
         },                {
             "fqsen": "\\EasyPost\\Service\\EndShipperService",
             "name": "EndShipperService",
