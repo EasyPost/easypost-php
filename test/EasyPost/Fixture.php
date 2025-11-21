@@ -296,4 +296,12 @@ class Fixture
     {
         return '2025-06-12';
     }
+
+    /**
+     * @return array<mixed>
+     */
+    public static function referralUser(): array
+    {
+        return self::readFixtureData()['users']['referral'];
+    }
 }

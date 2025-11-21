@@ -43,9 +43,9 @@ class ReferralCustomerTest extends TestCase
         TestUtil::setupCassette('referral_customers/create.yml');
 
         $referral = self::$client->referralCustomer->create([
-            'name' => 'Test Referral',
-            'email' => 'test@test.com',
-            'phone' => '8888888888'
+            'name' => Fixture::referralUser()['name'],
+            'email' => Fixture::referralUser()['email'],
+            'phone' => Fixture::referralUser()['phone'],
         ]);
 
         $this->assertInstanceOf(User::class, $referral);

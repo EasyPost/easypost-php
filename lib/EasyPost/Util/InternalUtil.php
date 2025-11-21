@@ -181,7 +181,7 @@ abstract class InternalUtil
      * @param array<string> $carriers
      * @param array<string> $services
      * @param string|null $ratesKey
-     * @return Rate|PickupRate
+     * @return object
      * @throws EasyPostException
      */
     public static function getLowestObjectRate(
@@ -189,7 +189,7 @@ abstract class InternalUtil
         ?array $carriers = [],
         ?array $services = [],
         ?string $ratesKey = 'rates'
-    ): Rate|PickupRate {
+    ): object {
         $lowestRate = false;
         $carriersInclude = [];
         $carriersExclude = [];
@@ -235,8 +235,11 @@ abstract class InternalUtil
                 continue;
             }
 
-            if (!$lowestRate || floatval($easypostObject->$ratesKey[$i]->rate) < floatval($lowestRate->rate)) {
-                $lowestRate = clone ($easypostObject->$ratesKey[$i]);
+            if (
+                !$lowestRate ||
+                floatval($easypostObject->$ratesKey[$i]->rate) < floatval($lowestRate->rate) // @phpstan-ignore-line
+            ) {
+                $lowestRate = clone($easypostObject->$ratesKey[$i]);
             }
         }
 

@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Next Release
+
+- Adds the following functions:
+  - `embeddable.createSession`
+  - `customerPortal.createAccountLink`
+
 ## v8.3.0 (2025-11-10)
 
 - Adds support for `UspsShipAccount`
