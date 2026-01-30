@@ -16,9 +16,9 @@ jobs:
         with:
           php-version: '8.5'
       - name: install dependencies
-        run: make install
+        run: just install
       - name: lint
-        run: make lint
+        run: just lint
   run-tests:
     runs-on: ubuntu-latest
     strategy:
@@ -41,9 +41,9 @@ jobs:
           key: ${{ runner.os }}-${{ matrix.phpversion }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: ${{ runner.os }}-${{ matrix.phpversion }}-composer-
       - name: install dependencies
-        run: make install
+        run: just install
       - name: test with phpunit on ${{ matrix.phpversion }}
-        run: EASYPOST_TEST_API_KEY=123 EASYPOST_PROD_API_KEY=123 make coverage
+        run: EASYPOST_TEST_API_KEY=123 EASYPOST_PROD_API_KEY=123 just coverage
       - name: Coveralls
         if: github.ref == 'refs/heads/master'
         env:
@@ -59,9 +59,9 @@ jobs:
         with:
           php-version: '8.5'
       - name: Install Dependencies
-        run: make install
+        run: just install
       - name: Generate Docs
-        run: make docs
+        run: just docs
       - name: Deploy Docs
         uses: peaceiris/actions-gh-pages@v4
         with:
