@@ -41,7 +41,7 @@ phpstan:
 # Cuts a release for the project on GitHub (requires GitHub CLI)
 # tag = The associated tag title of the release
 # target = Target branch or full commit SHA
-release:
+release tag target:
     gh release create {{tag}} --target {{target}}
 
 # Runs security analysis on the project
