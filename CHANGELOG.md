@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v8.5.0 (2026-02-03)
+
+- Adds the following functions usable by child and referral customer users (closes #375):
+  - `apiKey.create`
+  - `apiKey.delete`
+  - `apiKey.enable`
+  - `apiKey.disable`
+
 ## v8.4.0 (2025-11-24)
 
 - Adds the following functions:
