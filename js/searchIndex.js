@@ -806,15 +806,35 @@ Search.appendIndex(
             "summary": "API\u0020key\u0020service\u0020containing\u0020all\u0020the\u0020logic\u0020to\u0020make\u0020API\u0020calls.",
             "url": "classes/EasyPost-Service-ApiKeyService.html"
         },                {
+            "fqsen": "\\EasyPost\\Service\\ApiKeyService\u003A\u003AretrieveApiKeysForUser\u0028\u0029",
+            "name": "retrieveApiKeysForUser",
+            "summary": "Retrieve\u0020a\u0020list\u0020of\u0020API\u0020keys\u0020\u0028works\u0020for\u0020the\u0020authenticated\u0020user\u0020or\u0020a\u0020child\u0020user\u0029.",
+            "url": "classes/EasyPost-Service-ApiKeyService.html#method_retrieveApiKeysForUser"
+        },                {
             "fqsen": "\\EasyPost\\Service\\ApiKeyService\u003A\u003Aall\u0028\u0029",
             "name": "all",
             "summary": "Retrieve\u0020a\u0020list\u0020of\u0020all\u0020API\u0020keys.",
             "url": "classes/EasyPost-Service-ApiKeyService.html#method_all"
         },                {
-            "fqsen": "\\EasyPost\\Service\\ApiKeyService\u003A\u003AretrieveApiKeysForUser\u0028\u0029",
-            "name": "retrieveApiKeysForUser",
-            "summary": "Retrieve\u0020a\u0020list\u0020of\u0020API\u0020keys\u0020\u0028works\u0020for\u0020the\u0020authenticated\u0020user\u0020or\u0020a\u0020child\u0020user\u0029.",
-            "url": "classes/EasyPost-Service-ApiKeyService.html#method_retrieveApiKeysForUser"
+            "fqsen": "\\EasyPost\\Service\\ApiKeyService\u003A\u003Acreate\u0028\u0029",
+            "name": "create",
+            "summary": "Create\u0020an\u0020API\u0020key\u0020for\u0020a\u0020child\u0020or\u0020referral\u0020customer\u0020user.",
+            "url": "classes/EasyPost-Service-ApiKeyService.html#method_create"
+        },                {
+            "fqsen": "\\EasyPost\\Service\\ApiKeyService\u003A\u003Adelete\u0028\u0029",
+            "name": "delete",
+            "summary": "Delete\u0020an\u0020API\u0020key\u0020for\u0020a\u0020child\u0020or\u0020referral\u0020customer\u0020user.",
+            "url": "classes/EasyPost-Service-ApiKeyService.html#method_delete"
+        },                {
+            "fqsen": "\\EasyPost\\Service\\ApiKeyService\u003A\u003Aenable\u0028\u0029",
+            "name": "enable",
+            "summary": "Enable\u0020a\u0020child\u0020or\u0020referral\u0020customer\u0020API\u0020key.",
+            "url": "classes/EasyPost-Service-ApiKeyService.html#method_enable"
+        },                {
+            "fqsen": "\\EasyPost\\Service\\ApiKeyService\u003A\u003Adisable\u0028\u0029",
+            "name": "disable",
+            "summary": "Disable\u0020a\u0020child\u0020or\u0020referral\u0020customer\u0020API\u0020key.",
+            "url": "classes/EasyPost-Service-ApiKeyService.html#method_disable"
         },                {
             "fqsen": "\\EasyPost\\Service\\BaseService",
             "name": "BaseService",
