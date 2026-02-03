@@ -13,18 +13,6 @@ use EasyPost\Util\InternalUtil;
 class ApiKeyService extends BaseService
 {
     /**
-     * Retrieve a list of all API keys.
-     *
-     * @return mixed
-     */
-    public function all(): mixed
-    {
-        $response = Requestor::request($this->client, 'get', '/api_keys');
-
-        return InternalUtil::convertToEasyPostObject($this->client, $response);
-    }
-
-    /**
      * Retrieve a list of API keys (works for the authenticated user or a child user).
      *
      * @param string $id The user ID to retrieve API keys for
@@ -40,7 +28,6 @@ class ApiKeyService extends BaseService
             return $apiKeys->keys;
         }
 
-
         // This function was called on a child user, authenticated as parent, only return this child user's details
         foreach ($apiKeys->children as $childrenKeys) {
             if ($childrenKeys->id == $id) {
@@ -49,5 +36,67 @@ class ApiKeyService extends BaseService
         }
 
         throw new FilteringException(Constants::NO_USER_FOUND_ERROR);
+    }
+
+    /**
+     * Retrieve a list of all API keys.
+     *
+     * @return mixed
+     */
+    public function all(): mixed
+    {
+        $response = Requestor::request($this->client, 'get', '/api_keys');
+
+        return InternalUtil::convertToEasyPostObject($this->client, $response);
+    }
+
+    /**
+     * Create an API key for a child or referral customer user.
+     *
+     * @param string $mode
+     * @return mixed
+     */
+    public function create(string $mode): mixed
+    {
+        $params = ['mode' => $mode];
+
+        return self::createResource(self::serviceModelClassName(self::class), $params);
+    }
+
+    /**
+     * Delete an API key for a child or referral customer user.
+     *
+     * @param string $id
+     * @return void
+     */
+    public function delete(string $id): void
+    {
+        $this->deleteResource(self::serviceModelClassName(self::class), $id);
+    }
+
+    /**
+     * Enable a child or referral customer API key.
+     *
+     * @param string $id
+     * @return mixed
+     */
+    public function enable(string $id): mixed
+    {
+        $response = Requestor::request($this->client, 'post', "/api_keys/{$id}/enable");
+
+        return InternalUtil::convertToEasyPostObject($this->client, $response);
+    }
+
+    /**
+     * Disable a child or referral customer API key.
+     *
+     * @param string $id
+     * @return mixed
+     */
+    public function disable(string $id): mixed
+    {
+        $response = Requestor::request($this->client, 'post', "/api_keys/{$id}/disable");
+
+        return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
 }

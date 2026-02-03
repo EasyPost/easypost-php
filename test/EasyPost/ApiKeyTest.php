@@ -28,21 +28,6 @@ class ApiKeyTest extends TestCase
     }
 
     /**
-     * Test retrieving all API keys.
-     */
-    public function testAllApiKeys(): void
-    {
-        TestUtil::setupCassette('apiKeys/allApiKeys.yml');
-
-        $apiKeys = self::$client->apiKeys->all();
-
-        $this->assertContainsOnlyInstancesOf(ApiKey::class, $apiKeys['keys']);
-        foreach ($apiKeys['children'] as $child) {
-            $this->assertContainsOnlyInstancesOf(ApiKey::class, $child['keys']);
-        }
-    }
-
-    /**
      * Test retrieving the authenticated user's API keys.
      */
     public function testAuthenticatedUserApiKeys(): void
@@ -59,9 +44,9 @@ class ApiKeyTest extends TestCase
     /**
      * Test retrieving the authenticated user's API keys.
      */
-    public function testChildUserApiKeys(): void
+    public function testRetrieveChildUserApiKeys(): void
     {
-        TestUtil::setupCassette('apiKeys/childUserApiKeys.yml');
+        TestUtil::setupCassette('apiKeys/retrieveChildUserApiKeys.yml');
 
         $user = self::$client->user->create([
             'name' => 'Test User',
@@ -74,5 +59,46 @@ class ApiKeyTest extends TestCase
 
         // Delete the user once done so we don't pollute with hundreds of child users
         self::$client->user->delete($childUser->id);
+    }
+
+    /**
+     * Test retrieving all API keys.
+     */
+    public function testAllApiKeys(): void
+    {
+        TestUtil::setupCassette('apiKeys/allApiKeys.yml');
+
+        $apiKeys = self::$client->apiKeys->all();
+
+        $this->assertContainsOnlyInstancesOf(ApiKey::class, $apiKeys['keys']);
+        foreach ($apiKeys['children'] as $child) {
+            $this->assertContainsOnlyInstancesOf(ApiKey::class, $child['keys']);
+        }
+    }
+
+    /**
+     * Test creating an API key for a child user.
+     */
+    public function testApiKeyLifecycle(): void
+    {
+        TestUtil::setupCassette('apiKeys/lifecycle.yml');
+
+        // Create an API key
+        $referralClient = new EasyPostClient((string)getenv('REFERRAL_CUSTOMER_PROD_API_KEY'));
+        $apiKey = $referralClient->apiKeys->create('production');
+        $this->assertInstanceOf(ApiKey::class, $apiKey);
+        $this->assertStringMatchesFormat('ak_%s', $apiKey->id);
+        $this->assertEquals('production', $apiKey->mode);
+
+        // Disable the API key
+        $apiKey = $referralClient->apiKeys->disable($apiKey->id);
+        $this->assertFalse($apiKey->active);
+
+        // Enable the API key
+        $apiKey = $referralClient->apiKeys->enable($apiKey->id);
+        $this->assertTrue($apiKey->active);
+
+        // Delete the API key
+        $referralClient->apiKeys->delete($apiKey->id);
     }
 }
