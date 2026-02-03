@@ -7,6 +7,7 @@
   - `apiKey.delete`
   - `apiKey.enable`
   - `apiKey.disable`
+- Adds `tracker.delete` function
 
 ## v8.4.0 (2025-11-24)
 

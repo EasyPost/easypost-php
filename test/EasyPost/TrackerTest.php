@@ -138,4 +138,21 @@ class TrackerTest extends TestCase
 
         $this->assertContainsOnlyInstancesOf(Tracker::class, $trackers['trackers']);
     }
+
+    /**
+     * Test deleting a Tracker.
+     */
+    public function testDelete(): void
+    {
+        TestUtil::setupCassette('trackers/delete.yml');
+
+        $tracker = self::$client->tracker->create([
+            'tracking_code' => 'EZ1000000001',
+        ]);
+
+        // Nothing gets returned here, simply ensure no error gets raised
+        self::$client->tracker->delete($tracker->id);
+
+        $this->expectNotToPerformAssertions();
+    }
 }

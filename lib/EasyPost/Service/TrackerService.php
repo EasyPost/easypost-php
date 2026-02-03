@@ -78,4 +78,15 @@ class TrackerService extends BaseService
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
+
+    /**
+     * Delete a tracker.
+     *
+     * @param string $id
+     * @return void
+     */
+    public function delete(string $id): void
+    {
+        $this->deleteResource(self::serviceModelClassName(self::class), $id);
+    }
 }
