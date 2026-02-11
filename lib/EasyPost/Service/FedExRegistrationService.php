@@ -2,8 +2,6 @@
 
 namespace EasyPost\Service;
 
-use EasyPost\FedExAccountValidationResponse;
-use EasyPost\FedExRequestPinResponse;
 use EasyPost\Http\Requestor;
 use EasyPost\Util\InternalUtil;
 
@@ -159,7 +157,7 @@ class FedExRegistrationService extends BaseService
 
     /**
      * Ensures the "name" field exists in the provided array.
-     * If not present, generates a UUID (with hyphens removed) as the name.
+     * If not present, generates a unique ID as the name.
      * This follows the pattern used in the web UI implementation.
      *
      * @param array<string, mixed> &$array
@@ -168,18 +166,7 @@ class FedExRegistrationService extends BaseService
     private function ensureNameField(array &$array): void
     {
         if (!isset($array['name'])) {
-            $uuid = sprintf(
-                '%04x%04x%04x%04x%04x%04x%04x%04x',
-                mt_rand(0, 0xffff),
-                mt_rand(0, 0xffff),
-                mt_rand(0, 0xffff),
-                mt_rand(0, 0x0fff) | 0x4000,
-                mt_rand(0, 0x3fff) | 0x8000,
-                mt_rand(0, 0xffff),
-                mt_rand(0, 0xffff),
-                mt_rand(0, 0xffff)
-            );
-            $array['name'] = $uuid;
+            $array['name'] = uniqid();
         }
     }
 }
