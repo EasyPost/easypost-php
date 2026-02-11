@@ -2,9 +2,13 @@
 
 namespace EasyPost\Test;
 
+use EasyPost\Constant\Constants;
 use EasyPost\EasyPostClient;
-use EasyPost\FedExAccountValidationResponse;
-use EasyPost\FedExRequestPinResponse;
+use EasyPost\EasyPostObject;
+use EasyPost\Test\Mocking\MockingUtility;
+use EasyPost\Test\Mocking\MockRequest;
+use EasyPost\Test\Mocking\MockRequestMatchRule;
+use EasyPost\Test\Mocking\MockRequestResponseInfo;
 use PHPUnit\Framework\TestCase;
 
 class FedExRegistrationTest extends TestCase
@@ -16,16 +20,59 @@ class FedExRegistrationTest extends TestCase
      */
     public static function setUpBeforeClass(): void
     {
-        TestUtil::setupVcrTests();
-        self::$client = new EasyPostClient((string)getenv('EASYPOST_PROD_API_KEY'));
-    }
+        $mockingUtility = new MockingUtility(
+            [
+                new MockRequest(
+                    new MockRequestMatchRule(
+                        'post',
+                        '/v2\/fedex_registrations\/\S*\/address$/'
+                    ),
+                    new MockRequestResponseInfo(
+                        200,
+                        '{"email_address":null,"options":["SMS","CALL","INVOICE"],"phone_number":"***-***-9721"}'
+                    )
+                ),
+                new MockRequest(
+                    new MockRequestMatchRule(
+                        'post',
+                        '/v2\/fedex_registrations\/\S*\/pin$/'
+                    ),
+                    new MockRequestResponseInfo(
+                        200,
+                        '{"message":"sent secured Pin"}'
+                    )
+                ),
+                new MockRequest(
+                    new MockRequestMatchRule(
+                        'post',
+                        '/v2\/fedex_registrations\/\S*\/pin\/validate$/'
+                    ),
+                    new MockRequestResponseInfo(
+                        200,
+                        '{"id":"ca_123","type":"FedexAccount",' .
+                        '"credentials":{"account_number":"123456789","mfa_key":"123456789-XXXXX"}}'
+                    )
+                ),
+                new MockRequest(
+                    new MockRequestMatchRule(
+                        'post',
+                        '/v2\/fedex_registrations\/\S*\/invoice$/'
+                    ),
+                    new MockRequestResponseInfo(
+                        200,
+                        '{"id":"ca_123","type":"FedexAccount",' .
+                        '"credentials":{"account_number":"123456789","mfa_key":"123456789-XXXXX"}}'
+                    )
+                ),
+            ]
+        );
 
-    /**
-     * Cleanup the testing environment once finished.
-     */
-    public static function tearDownAfterClass(): void
-    {
-        TestUtil::teardownVcrTests();
+        self::$client = new EasyPostClient(
+            (string)getenv('EASYPOST_TEST_API_KEY'),
+            Constants::TIMEOUT,
+            Constants::API_BASE,
+            $mockingUtility
+        );
     }
 
     /**
@@ -33,8 +80,6 @@ class FedExRegistrationTest extends TestCase
      */
     public function testRegisterAddress(): void
     {
-        TestUtil::setupCassette('fedex_registration/registerAddress.yml');
-
         $fedexAccountNumber = '123456789';
         $params = [
             'address_validation' => [
@@ -52,13 +97,13 @@ class FedExRegistrationTest extends TestCase
 
         $response = self::$client->fedexRegistration->registerAddress($fedexAccountNumber, $params);
 
-        $this->assertInstanceOf(FedExAccountValidationResponse::class, $response);
-        $this->assertNull($response->email_address);
-        $this->assertNotNull($response->options);
+        $this->assertInstanceOf(EasyPostObject::class, $response);
+        $this->assertNull($response->email_address); // @phpstan-ignore-line
+        $this->assertNotNull($response->options); // @phpstan-ignore-line
         $this->assertContains('SMS', $response->options);
         $this->assertContains('CALL', $response->options);
         $this->assertContains('INVOICE', $response->options);
-        $this->assertEquals('***-***-9721', $response->phone_number);
+        $this->assertEquals('***-***-9721', $response->phone_number); // @phpstan-ignore-line
     }
 
     /**
@@ -66,14 +111,12 @@ class FedExRegistrationTest extends TestCase
      */
     public function testRequestPin(): void
     {
-        TestUtil::setupCassette('fedex_registration/requestPin.yml');
-
         $fedexAccountNumber = '123456789';
 
         $response = self::$client->fedexRegistration->requestPin($fedexAccountNumber, 'SMS');
 
-        $this->assertInstanceOf(FedExRequestPinResponse::class, $response);
-        $this->assertEquals('sent secured Pin', $response->message);
+        $this->assertInstanceOf(EasyPostObject::class, $response);
+        $this->assertEquals('sent secured Pin', $response->message); // @phpstan-ignore-line
     }
 
     /**
@@ -81,8 +124,6 @@ class FedExRegistrationTest extends TestCase
      */
     public function testValidatePin(): void
     {
-        TestUtil::setupCassette('fedex_registration/validatePin.yml');
-
         $fedexAccountNumber = '123456789';
         $params = [
             'pin_validation' => [
@@ -96,10 +137,10 @@ class FedExRegistrationTest extends TestCase
 
         $response = self::$client->fedexRegistration->validatePin($fedexAccountNumber, $params);
 
-        $this->assertInstanceOf(FedExAccountValidationResponse::class, $response);
-        $this->assertEquals('ca_123', $response->id);
-        $this->assertEquals('FedexAccount', $response->type);
-        $this->assertNotNull($response->credentials);
+        $this->assertInstanceOf(EasyPostObject::class, $response);
+        $this->assertEquals('ca_123', $response->id); // @phpstan-ignore-line
+        $this->assertEquals('FedexAccount', $response->type); // @phpstan-ignore-line
+        $this->assertNotNull($response->credentials); // @phpstan-ignore-line
         $this->assertEquals('123456789', $response->credentials['account_number']);
         $this->assertEquals('123456789-XXXXX', $response->credentials['mfa_key']);
     }
@@ -109,8 +150,6 @@ class FedExRegistrationTest extends TestCase
      */
     public function testSubmitInvoice(): void
     {
-        TestUtil::setupCassette('fedex_registration/submitInvoice.yml');
-
         $fedexAccountNumber = '123456789';
         $params = [
             'invoice_validation' => [
@@ -127,10 +166,10 @@ class FedExRegistrationTest extends TestCase
 
         $response = self::$client->fedexRegistration->submitInvoice($fedexAccountNumber, $params);
 
-        $this->assertInstanceOf(FedExAccountValidationResponse::class, $response);
-        $this->assertEquals('ca_123', $response->id);
-        $this->assertEquals('FedexAccount', $response->type);
-        $this->assertNotNull($response->credentials);
+        $this->assertInstanceOf(EasyPostObject::class, $response);
+        $this->assertEquals('ca_123', $response->id); // @phpstan-ignore-line
+        $this->assertEquals('FedexAccount', $response->type); // @phpstan-ignore-line
+        $this->assertNotNull($response->credentials); // @phpstan-ignore-line
         $this->assertEquals('123456789', $response->credentials['account_number']);
         $this->assertEquals('123456789-XXXXX', $response->credentials['mfa_key']);
     }
