@@ -1,0 +1,25 @@
+
+-
+    request:
+        method: POST
+        url: 'https://api.easypost.com/v2/fedex_registrations/123456789/pin/validate'
+        headers:
+            Host: api.easypost.com
+            Expect: ''
+            Accept-Encoding: ''
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+        body: '{"pin_validation":{"pin_code":"123456","name":"BILLING NAME"},"easypost_details":{"carrier_account_id":"ca_123"}}'
+    response:
+        status:
+            code: 200
+            message: OK
+        headers:
+            content-type: 'application/json; charset=utf-8'
+        body: '{"object":"FedExAccountValidationResponse","id":"ca_123","type":"FedexAccount","credentials":{"account_number":"123456789","mfa_key":"123456789-XXXXX"}}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/fedex_registrations/123456789/pin/validate'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200

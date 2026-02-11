@@ -18,6 +18,8 @@ use EasyPost\EndShipper;
 use EasyPost\Event;
 use EasyPost\Exception\General\EasyPostException;
 use EasyPost\Exception\General\FilteringException;
+use EasyPost\FedExAccountValidationResponse;
+use EasyPost\FedExRequestPinResponse;
 use EasyPost\Fee;
 use EasyPost\Insurance;
 use EasyPost\Order;
@@ -38,18 +40,20 @@ use EasyPost\User;
 use EasyPost\Webhook;
 
 const OBJECT_MAPPING = [
-    'Address'               => Address::class,
-    'ApiKey'                => ApiKey::class,
-    'Batch'                 => Batch::class,
-    'Brand'                 => Brand::class,
-    'CarrierAccount'        => CarrierAccount::class,
-    'CarrierDetail'         => CarrierDetail::class,
-    'Claim'                 => Claim::class,
-    'CustomsInfo'           => CustomsInfo::class,
-    'CustomsItem'           => CustomsItem::class,
-    'EndShipper'            => EndShipper::class,
-    'Event'                 => Event::class,
-    'Fee'                   => Fee::class,
+    'Address'                       => Address::class,
+    'ApiKey'                        => ApiKey::class,
+    'Batch'                         => Batch::class,
+    'Brand'                         => Brand::class,
+    'CarrierAccount'                => CarrierAccount::class,
+    'CarrierDetail'                 => CarrierDetail::class,
+    'Claim'                         => Claim::class,
+    'CustomsInfo'                   => CustomsInfo::class,
+    'CustomsItem'                   => CustomsItem::class,
+    'EndShipper'                    => EndShipper::class,
+    'Event'                         => Event::class,
+    'FedExAccountValidationResponse' => FedExAccountValidationResponse::class,
+    'FedExRequestPinResponse'       => FedExRequestPinResponse::class,
+    'Fee'                           => Fee::class,
     'Insurance'             => Insurance::class,
     'Order'                 => Order::class,
     'Parcel'                => Parcel::class,

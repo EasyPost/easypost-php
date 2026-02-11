@@ -22,6 +22,7 @@ use EasyPost\Service\CustomsItemService;
 use EasyPost\Service\EmbeddableService;
 use EasyPost\Service\EndShipperService;
 use EasyPost\Service\EventService;
+use EasyPost\Service\FedExRegistrationService;
 use EasyPost\Service\InsuranceService;
 use EasyPost\Service\LumaService;
 use EasyPost\Service\OrderService;
@@ -58,6 +59,7 @@ use GuzzleHttp\Client;
  * @property EmbeddableService $embeddable
  * @property EndShipperService $endShipper
  * @property EventService $event
+ * @property FedExRegistrationService $fedexRegistration
  * @property InsuranceService $insurance
  * @property LumaService $luma
  * @property OrderService $order
@@ -134,6 +136,7 @@ class EasyPostClient extends BaseService
             'embeddable' => EmbeddableService::class,
             'endShipper' => EndShipperService::class,
             'event' => EventService::class,
+            'fedexRegistration' => FedExRegistrationService::class,
             'insurance' => InsuranceService::class,
             'luma' => LumaService::class,
             'order' => OrderService::class,
