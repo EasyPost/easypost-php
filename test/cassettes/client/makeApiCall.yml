@@ -1,0 +1,84 @@
+
+-
+    request:
+        method: GET
+        url: 'https://api.easypost.com/v2/addresses?page_size=1'
+        headers:
+            Host: api.easypost.com
+            Accept-Encoding: ''
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+    response:
+        status:
+            code: 200
+            message: OK
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            x-ep-request-uuid: 16819987698e0e1fe787c81d011c5626
+            cache-control: 'private, no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '842'
+            x-runtime: '0.041143'
+            x-node: bigweb41nuq
+            x-version-label: easypost-202602121702-bfe72e7ac7-master
+            x-backend: easypost
+            x-proxied: ['intlb4nuq 0dcc3a6efb', 'extlb1nuq c01291cd8f']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"addresses":[{"id":"adr_374a9a5ebc0511f094003cecef1b359e","object":"Address","created_at":"2025-11-07T18:11:43Z","updated_at":"2025-11-07T18:11:43Z","name":null,"company":"EASYPOST","street1":"000 UNKNOWN STREET","street2":null,"city":"NOT A CITY","state":"ZZ","zip":"00001","country":"US","phone":"<REDACTED>","email":"<REDACTED>","mode":"test","carrier_facility":null,"residential":null,"federal_tax_id":null,"state_tax_id":null,"verifications":{"zip4":{"success":true,"errors":[{"code":"E.ADDRESS.NOT_FOUND","field":"address","message":"Address not found","suggestion":null}],"details":null},"delivery":{"success":true,"errors":[{"code":"E.ADDRESS.NOT_FOUND","field":"address","message":"Address not found","suggestion":null}],"details":{"latitude":null,"longitude":null,"time_zone":null}},"verify_carrier":"ups"}}],"has_more":true}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/addresses?page_size=1'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 688
+            request_size: 297
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.226324
+            namelookup_time: 0.005566
+            connect_time: 0.063584
+            pretransfer_time: 0.123707
+            size_upload: 0.0
+            size_download: 842.0
+            speed_download: 3720.0
+            speed_upload: 0.0
+            download_content_length: 842.0
+            upload_content_length: 0.0
+            starttransfer_time: 0.226309
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 169.62.110.131
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 10.130.6.22
+            local_port: 52306
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: https
+            appconnect_time_us: 123652
+            queue_time_us: 24
+            connect_time_us: 63584
+            namelookup_time_us: 5566
+            pretransfer_time_us: 123707
+            redirect_time_us: 0
+            starttransfer_time_us: 226309
+            posttransfer_time_us: 123706
+            total_time_us: 226324
+            effective_method: GET
+            capath: ''
+            cainfo: ''
+            used_proxy: 0
+            httpauth_used: 0
+            proxyauth_used: 0
+            conn_id: 0
+    index: 0
