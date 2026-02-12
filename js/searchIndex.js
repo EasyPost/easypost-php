@@ -1211,6 +1211,51 @@ Search.appendIndex(
             "summary": "Retrieve\u0020a\u0020payload\u0020for\u0020an\u0020event.",
             "url": "classes/EasyPost-Service-EventService.html#method_retrievePayload"
         },                {
+            "fqsen": "\\EasyPost\\Service\\FedExRegistrationService",
+            "name": "FedExRegistrationService",
+            "summary": "FedExRegistration\u0020service\u0020containing\u0020all\u0020the\u0020logic\u0020to\u0020make\u0020API\u0020calls.",
+            "url": "classes/EasyPost-Service-FedExRegistrationService.html"
+        },                {
+            "fqsen": "\\EasyPost\\Service\\FedExRegistrationService\u003A\u003AregisterAddress\u0028\u0029",
+            "name": "registerAddress",
+            "summary": "Register\u0020the\u0020billing\u0020address\u0020for\u0020a\u0020FedEx\u0020account.",
+            "url": "classes/EasyPost-Service-FedExRegistrationService.html#method_registerAddress"
+        },                {
+            "fqsen": "\\EasyPost\\Service\\FedExRegistrationService\u003A\u003ArequestPin\u0028\u0029",
+            "name": "requestPin",
+            "summary": "Request\u0020a\u0020PIN\u0020for\u0020FedEx\u0020account\u0020verification.",
+            "url": "classes/EasyPost-Service-FedExRegistrationService.html#method_requestPin"
+        },                {
+            "fqsen": "\\EasyPost\\Service\\FedExRegistrationService\u003A\u003AvalidatePin\u0028\u0029",
+            "name": "validatePin",
+            "summary": "Validate\u0020the\u0020PIN\u0020entered\u0020by\u0020the\u0020user\u0020for\u0020FedEx\u0020account\u0020verification.",
+            "url": "classes/EasyPost-Service-FedExRegistrationService.html#method_validatePin"
+        },                {
+            "fqsen": "\\EasyPost\\Service\\FedExRegistrationService\u003A\u003AsubmitInvoice\u0028\u0029",
+            "name": "submitInvoice",
+            "summary": "Submit\u0020invoice\u0020information\u0020to\u0020complete\u0020FedEx\u0020account\u0020registration.",
+            "url": "classes/EasyPost-Service-FedExRegistrationService.html#method_submitInvoice"
+        },                {
+            "fqsen": "\\EasyPost\\Service\\FedExRegistrationService\u003A\u003AwrapAddressValidation\u0028\u0029",
+            "name": "wrapAddressValidation",
+            "summary": "Wraps\u0020address\u0020validation\u0020parameters\u0020and\u0020ensures\u0020the\u0020\u0022name\u0022\u0020field\u0020exists.",
+            "url": "classes/EasyPost-Service-FedExRegistrationService.html#method_wrapAddressValidation"
+        },                {
+            "fqsen": "\\EasyPost\\Service\\FedExRegistrationService\u003A\u003AwrapPinValidation\u0028\u0029",
+            "name": "wrapPinValidation",
+            "summary": "Wraps\u0020PIN\u0020validation\u0020parameters\u0020and\u0020ensures\u0020the\u0020\u0022name\u0022\u0020field\u0020exists.",
+            "url": "classes/EasyPost-Service-FedExRegistrationService.html#method_wrapPinValidation"
+        },                {
+            "fqsen": "\\EasyPost\\Service\\FedExRegistrationService\u003A\u003AwrapInvoiceValidation\u0028\u0029",
+            "name": "wrapInvoiceValidation",
+            "summary": "Wraps\u0020invoice\u0020validation\u0020parameters\u0020and\u0020ensures\u0020the\u0020\u0022name\u0022\u0020field\u0020exists.",
+            "url": "classes/EasyPost-Service-FedExRegistrationService.html#method_wrapInvoiceValidation"
+        },                {
+            "fqsen": "\\EasyPost\\Service\\FedExRegistrationService\u003A\u003AensureNameField\u0028\u0029",
+            "name": "ensureNameField",
+            "summary": "Ensures\u0020the\u0020\u0022name\u0022\u0020field\u0020exists\u0020in\u0020the\u0020provided\u0020array.",
+            "url": "classes/EasyPost-Service-FedExRegistrationService.html#method_ensureNameField"
+        },                {
             "fqsen": "\\EasyPost\\Service\\InsuranceService",
             "name": "InsuranceService",
             "summary": "Insurance\u0020service\u0020containing\u0020all\u0020the\u0020logic\u0020to\u0020make\u0020API\u0020calls.",
