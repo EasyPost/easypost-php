@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v8.6.0 (2026-02-20)
+
+- Adds the following functions:
+  - `fedexRegistration.registerAddress`
+  - `fedexRegistration.requestPin`
+  - `fedexRegistration.validatePin`
+  - `fedexRegistration.submitInvoice`
+
 ## v8.5.0 (2026-02-03)
 
 - Adds the following functions usable by child and referral customer users (closes #375):

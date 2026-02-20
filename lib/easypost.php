@@ -4,7 +4,7 @@
 
 // Required PHP extensions
 if (!function_exists('json_decode')) {
-    throw new Exception('EasyPost needs the JSON PHP extension.');
+    throw new \Exception('EasyPost needs the JSON PHP extension.');
 }
 
 // Exception Base Classes
@@ -104,6 +104,7 @@ require_once(dirname(__FILE__) . '/EasyPost/Service/CustomsItemService.php');
 require_once(dirname(__FILE__) . '/EasyPost/Service/EmbeddableService.php');
 require_once(dirname(__FILE__) . '/EasyPost/Service/EndShipperService.php');
 require_once(dirname(__FILE__) . '/EasyPost/Service/EventService.php');
+require_once(dirname(__FILE__) . '/EasyPost/Service/FedExRegistrationService.php');
 require_once(dirname(__FILE__) . '/EasyPost/Service/InsuranceService.php');
 require_once(dirname(__FILE__) . '/EasyPost/Service/OrderService.php');
 require_once(dirname(__FILE__) . '/EasyPost/Service/ParcelService.php');
