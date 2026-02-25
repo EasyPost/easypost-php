@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v8.7.0 (2026-02-25)
+
+- Adds generic `makeApiCall` function
+
 ## v8.6.0 (2026-02-20)
 
 - Adds the following functions:
