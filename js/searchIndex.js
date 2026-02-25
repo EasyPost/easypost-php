@@ -246,6 +246,11 @@ Search.appendIndex(
             "summary": "Unsubscribe\u0020functions\u0020from\u0020running\u0020when\u0020a\u0020response\u0020even\u0020occurs.",
             "url": "classes/EasyPost-EasyPostClient.html#method_unsubscribeFromResponseHook"
         },                {
+            "fqsen": "\\EasyPost\\EasyPostClient\u003A\u003AmakeApiCall\u0028\u0029",
+            "name": "makeApiCall",
+            "summary": "Make\u0020an\u0020API\u0020call\u0020to\u0020the\u0020EasyPost\u0020API.",
+            "url": "classes/EasyPost-EasyPostClient.html#method_makeApiCall"
+        },                {
             "fqsen": "\\EasyPost\\EasyPostClient\u003A\u003A\u0024apiKey",
             "name": "apiKey",
             "summary": "",
