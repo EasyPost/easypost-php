@@ -9,6 +9,22 @@ use PHPUnit\Framework\TestCase;
 class EasyPostClientTest extends TestCase
 {
     /**
+     * Setup the testing environment for this file.
+     */
+    public static function setUpBeforeClass(): void
+    {
+        TestUtil::setupVcrTests();
+    }
+
+    /**
+     * Cleanup the testing environment once finished.
+     */
+    public static function tearDownAfterClass(): void
+    {
+        TestUtil::teardownVcrTests();
+    }
+
+    /**
      * Test setting and getting the API key for different EasyPostClients.
      */
     public function testApiKey(): void
@@ -65,5 +81,20 @@ class EasyPostClientTest extends TestCase
                 $error->getMessage()
             );
         }
+    }
+
+    /**
+     * Test making an API call using the generic makeApiCall method.
+     */
+    public function testMakeApiCall(): void
+    {
+        TestUtil::setupCassette('client/makeApiCall.yml');
+
+        $client = new EasyPostClient((string)getenv('EASYPOST_TEST_API_KEY'));
+
+        $response = $client->makeApiCall('get', '/addresses', ['page_size' => 1]);
+
+        $this->assertCount(1, $response['addresses']);
+        $this->assertEquals('Address', $response['addresses'][0]['object']);
     }
 }

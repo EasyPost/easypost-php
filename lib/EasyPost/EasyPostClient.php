@@ -6,7 +6,9 @@ use EasyPost\Constant\Constants;
 use EasyPost\Exception\General\EasyPostException;
 use EasyPost\Hook\RequestHook;
 use EasyPost\Hook\ResponseHook;
+use EasyPost\Http\Requestor;
 use EasyPost\Service\AddressService;
+use EasyPost\Util\InternalUtil;
 use EasyPost\Service\ApiKeyService;
 use EasyPost\Service\BaseService;
 use EasyPost\Service\BatchService;
@@ -259,5 +261,24 @@ class EasyPostClient extends BaseService
     public function unsubscribeFromResponseHook(callable $function): void
     {
         $this->responseEvent->removeHandler($function);
+    }
+
+    /**
+     * Make an API call to the EasyPost API.
+     *
+     * This public, generic interface is useful for making arbitrary API calls to the EasyPost API that
+     * are not yet supported by the client library's services. When possible, the service for your use case
+     * should be used instead as it provides a more convenient and higher-level interface depending on the endpoint.
+     *
+     * @param string $method
+     * @param string $endpoint
+     * @param mixed $params
+     * @return mixed
+     */
+    public function makeApiCall(string $method, string $endpoint, mixed $params = null): mixed
+    {
+        $response = Requestor::request($this, $method, $endpoint, $params);
+
+        return InternalUtil::convertToEasyPostObject($this, $response);
     }
 }
