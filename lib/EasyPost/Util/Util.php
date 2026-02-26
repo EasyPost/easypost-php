@@ -99,6 +99,7 @@ abstract class Util
         $easypostHmacSignature = $headers['X-Hmac-Signature'] ?? null;
 
         if ($easypostHmacSignature != null) {
+            /** @var string $normalizedSecret */
             $normalizedSecret = Normalizer::normalize($webhookSecret, Normalizer::FORM_KD);
             /** @var string $encodedSecret */
             $encodedSecret = mb_convert_encoding($normalizedSecret, 'UTF-8') ?: '';
@@ -192,7 +193,7 @@ abstract class Util
             }
 
             if (!$lowestStatelessRate || floatval($statelessRates[$i]->rate) < floatval($lowestStatelessRate->rate)) {
-                $lowestStatelessRate = clone ($statelessRates[$i]);
+                $lowestStatelessRate = clone($statelessRates[$i]);
             }
         }
 

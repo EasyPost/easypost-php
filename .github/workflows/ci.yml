@@ -44,11 +44,11 @@ jobs:
         run: just install
       - name: test with phpunit on ${{ matrix.phpversion }}
         run: EASYPOST_TEST_API_KEY=123 EASYPOST_PROD_API_KEY=123 just coverage
-      - name: Coveralls
+      - name: Coverage
         if: github.ref == 'refs/heads/master'
-        env:
-          COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./bin/php-coveralls --coverage_clover=build/logs/clover.xml -v
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
   docs:
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
