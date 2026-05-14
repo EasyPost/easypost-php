@@ -7,3 +7,15 @@ test/cassettes/**/* linguist-generated
 # Docs
 docs/**/* -diff
 docs/**/* linguist-generated
+
+# Exclude repository development files from `prefer-dist` installs
+/.gitattributes    export-ignore
+/.github           export-ignore
+/.gitignore        export-ignore
+/.gitmodules       export-ignore
+/UPGRADE_GUIDE.md  export-ignore
+/examples          export-ignore
+/justfile          export-ignore
+/phpstan.neon      export-ignore
+/phpunit.xml.dist  export-ignore
+/test              export-ignore
