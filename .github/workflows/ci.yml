@@ -11,7 +11,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: extractions/setup-just@v3
+      - name: Install just
+        shell: bash
+        run: |
+          set -euo pipefail
+          install_dir="${RUNNER_TEMP:-/tmp}/just-bin"
+          mkdir -p "$install_dir"
+          # Resolve the latest release tag via the github.com redirect to avoid
+          # api.github.com rate limits on shared runner egress IPs.
+          latest_url=$(curl -fsSLI -o /dev/null -w '%{url_effective}' https://github.com/casey/just/releases/latest)
+          just_version="${latest_url##*/tag/}"
+          case "$RUNNER_OS" in
+            Windows) asset="just-${just_version}-x86_64-pc-windows-msvc.zip" ;;
+            macOS)   asset="just-${just_version}-x86_64-apple-darwin.tar.gz" ;;
+            *)       asset="just-${just_version}-x86_64-unknown-linux-musl.tar.gz" ;;
+          esac
+          curl -fL "https://github.com/casey/just/releases/download/${just_version}/${asset}" -o "$install_dir/$asset"
+          case "$asset" in
+            *.zip) unzip -o "$install_dir/$asset" -d "$install_dir" ;;
+            *)     tar -xzf "$install_dir/$asset" -C "$install_dir" ;;
+          esac
+          echo "$install_dir" >> "$GITHUB_PATH"
       - uses: shivammathur/setup-php@v2
         with:
           php-version: '8.5'
@@ -26,7 +46,27 @@ jobs:
         phpversion: ['8.1', '8.2', '8.3', '8.4', '8.5']
     steps:
       - uses: actions/checkout@v6
-      - uses: extractions/setup-just@v3
+      - name: Install just
+        shell: bash
+        run: |
+          set -euo pipefail
+          install_dir="${RUNNER_TEMP:-/tmp}/just-bin"
+          mkdir -p "$install_dir"
+          # Resolve the latest release tag via the github.com redirect to avoid
+          # api.github.com rate limits on shared runner egress IPs.
+          latest_url=$(curl -fsSLI -o /dev/null -w '%{url_effective}' https://github.com/casey/just/releases/latest)
+          just_version="${latest_url##*/tag/}"
+          case "$RUNNER_OS" in
+            Windows) asset="just-${just_version}-x86_64-pc-windows-msvc.zip" ;;
+            macOS)   asset="just-${just_version}-x86_64-apple-darwin.tar.gz" ;;
+            *)       asset="just-${just_version}-x86_64-unknown-linux-musl.tar.gz" ;;
+          esac
+          curl -fL "https://github.com/casey/just/releases/download/${just_version}/${asset}" -o "$install_dir/$asset"
+          case "$asset" in
+            *.zip) unzip -o "$install_dir/$asset" -d "$install_dir" ;;
+            *)     tar -xzf "$install_dir/$asset" -C "$install_dir" ;;
+          esac
+          echo "$install_dir" >> "$GITHUB_PATH"
       - uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.phpversion }}
@@ -54,7 +94,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: extractions/setup-just@v3
+      - name: Install just
+        shell: bash
+        run: |
+          set -euo pipefail
+          install_dir="${RUNNER_TEMP:-/tmp}/just-bin"
+          mkdir -p "$install_dir"
+          # Resolve the latest release tag via the github.com redirect to avoid
+          # api.github.com rate limits on shared runner egress IPs.
+          latest_url=$(curl -fsSLI -o /dev/null -w '%{url_effective}' https://github.com/casey/just/releases/latest)
+          just_version="${latest_url##*/tag/}"
+          case "$RUNNER_OS" in
+            Windows) asset="just-${just_version}-x86_64-pc-windows-msvc.zip" ;;
+            macOS)   asset="just-${just_version}-x86_64-apple-darwin.tar.gz" ;;
+            *)       asset="just-${just_version}-x86_64-unknown-linux-musl.tar.gz" ;;
+          esac
+          curl -fL "https://github.com/casey/just/releases/download/${just_version}/${asset}" -o "$install_dir/$asset"
+          case "$asset" in
+            *.zip) unzip -o "$install_dir/$asset" -d "$install_dir" ;;
+            *)     tar -xzf "$install_dir/$asset" -C "$install_dir" ;;
+          esac
+          echo "$install_dir" >> "$GITHUB_PATH"
       - uses: shivammathur/setup-php@v2
         with:
           php-version: '8.5'
