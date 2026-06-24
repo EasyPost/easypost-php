@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v8.8.0 (2026-06-25)
+
+- Adds `params` to `requestPin` ensuring users can pass `easypost_details` to the call.
+
 ## v8.7.0 (2026-02-25)
 
 - Adds generic `makeApiCall` function
