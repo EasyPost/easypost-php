@@ -113,9 +113,6 @@ class FedExRegistrationTest extends TestCase
     {
         $fedexAccountNumber = '123456789';
         $params = [
-            'pin_method' => [
-                'option' => 'SMS',
-            ],
             'easypost_details' => [
                 'carrier_account_id' => 'ca_123',
             ],
