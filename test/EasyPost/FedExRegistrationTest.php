@@ -112,8 +112,13 @@ class FedExRegistrationTest extends TestCase
     public function testRequestPin(): void
     {
         $fedexAccountNumber = '123456789';
+        $params = [
+            'easypost_details' => [
+                'carrier_account_id' => 'ca_123',
+            ],
+        ];
 
-        $response = self::$client->fedexRegistration->requestPin($fedexAccountNumber, 'SMS');
+        $response = self::$client->fedexRegistration->requestPin($fedexAccountNumber, 'SMS', $params);
 
         $this->assertInstanceOf(EasyPostObject::class, $response);
         $this->assertEquals('sent secured Pin', $response->message); // @phpstan-ignore-line

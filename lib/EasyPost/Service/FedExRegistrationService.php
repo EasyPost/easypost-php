@@ -33,14 +33,14 @@ class FedExRegistrationService extends BaseService
      *
      * @param string $fedexAccountNumber
      * @param string $pinMethodOption
+     * @param mixed $params
      * @return mixed
      */
-    public function requestPin(string $fedexAccountNumber, string $pinMethodOption): mixed
+    public function requestPin(string $fedexAccountNumber, string $pinMethodOption, mixed $params = null): mixed
     {
-        $wrappedParams = [
-            'pin_method' => [
-                'option' => $pinMethodOption,
-            ],
+        $wrappedParams = $this->wrapPinValidation($params);
+        $wrappedParams['pin_method'] = [
+            'option' => $pinMethodOption,
         ];
         $url = "/fedex_registrations/{$fedexAccountNumber}/pin";
 
