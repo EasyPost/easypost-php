@@ -2,6 +2,7 @@
 
 namespace EasyPost\Service;
 
+use EasyPost\Http\HttpMethod;
 use EasyPost\Http\Requestor;
 use EasyPost\Util\InternalUtil;
 
@@ -63,7 +64,7 @@ class ClaimService extends BaseService
      */
     public function cancel(string $id): mixed
     {
-        $response = Requestor::request($this->client, 'post', "/claims/{$id}/cancel");
+        $response = Requestor::request($this->client, HttpMethod::POST, "/claims/{$id}/cancel");
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }

@@ -2,6 +2,7 @@
 
 namespace EasyPost\Service;
 
+use EasyPost\Http\HttpMethod;
 use EasyPost\Util\InternalUtil;
 
 /**
@@ -55,6 +56,6 @@ class EndShipperService extends BaseService
     {
         $params = InternalUtil::wrapParams($params, 'address');
 
-        return self::updateResource(self::serviceModelClassName(self::class), $id, $params, 'put');
+        return self::updateResource(self::serviceModelClassName(self::class), $id, $params, HttpMethod::PUT);
     }
 }

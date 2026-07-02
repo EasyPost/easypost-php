@@ -2,6 +2,7 @@
 
 namespace EasyPost\Service;
 
+use EasyPost\Http\HttpMethod;
 use EasyPost\Constant\Constants;
 use EasyPost\EasyPostClient;
 use EasyPost\Exception\General\EndOfPaginationException;
@@ -118,7 +119,7 @@ class BaseService
     {
         $url = $this->instanceUrl($class, $id);
 
-        $response = Requestor::request($this->client, 'get', $url, null, $beta);
+        $response = Requestor::request($this->client, HttpMethod::GET, $url, null, $beta);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -135,7 +136,7 @@ class BaseService
     {
         self::validate($params);
         $url = self::classUrl($class);
-        $response = Requestor::request($this->client, 'get', $url, $params, $beta);
+        $response = Requestor::request($this->client, HttpMethod::GET, $url, $params, $beta);
         if (isset($params)) {
             $response['_params'] = $params;
         }
@@ -196,7 +197,7 @@ class BaseService
     {
         self::validate($params);
         $url = self::classUrl($class);
-        $response = Requestor::request($this->client, 'post', $url, $params, $beta);
+        $response = Requestor::request($this->client, HttpMethod::POST, $url, $params, $beta);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -215,7 +216,7 @@ class BaseService
         self::validate();
         $url = $this->instanceUrl($class, $id);
 
-        Requestor::request($this->client, 'delete', $url, $params, $beta);
+        Requestor::request($this->client, HttpMethod::DELETE, $url, $params, $beta);
     }
 
     /**
@@ -224,7 +225,7 @@ class BaseService
      * @param string $class
      * @param string $id
      * @param mixed $params
-     * @param string $method
+     * @param HttpMethod|string $method
      * @param bool $beta
      * @return mixed
      */
@@ -232,7 +233,7 @@ class BaseService
         string $class,
         string $id,
         mixed $params = null,
-        string $method = 'patch',
+        HttpMethod|string $method = HttpMethod::PATCH,
         bool $beta = false
     ): mixed {
         self::validate();

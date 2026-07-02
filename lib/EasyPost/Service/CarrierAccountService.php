@@ -2,6 +2,7 @@
 
 namespace EasyPost\Service;
 
+use EasyPost\Http\HttpMethod;
 use EasyPost\Constant\Constants;
 use EasyPost\Exception\General\MissingParameterException;
 use EasyPost\Http\Requestor;
@@ -76,7 +77,7 @@ class CarrierAccountService extends BaseService
         $carrierAccountType = $params['type'];
         $params = [self::selectTopLayerKey($carrierAccountType) => $params];
         $url = self::selectCarrierAccountCreationEndpoint($carrierAccountType);
-        $response = Requestor::request($this->client, 'post', $url, $params);
+        $response = Requestor::request($this->client, HttpMethod::POST, $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -89,7 +90,7 @@ class CarrierAccountService extends BaseService
      */
     public function types(mixed $params = null): mixed
     {
-        $response = Requestor::request($this->client, 'get', '/carrier_types', $params);
+        $response = Requestor::request($this->client, HttpMethod::GET, '/carrier_types', $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }

@@ -34,7 +34,7 @@ class HookTest extends TestCase
      */
     public function requestTest(array $args): void
     {
-        $this->assertEquals('post', $args['method']);
+        $this->assertEquals('POST', $args['method']);
         $this->assertEquals('https://api.easypost.com/v2/parcels', $args['path']);
         $this->assertArrayHasKey('parcel', $args['request_body']);
         $this->assertArrayHasKey('Authorization', $args['headers']);
@@ -51,6 +51,7 @@ class HookTest extends TestCase
 
         self::$client->subscribeToRequestHook([$this, 'requestTest']);
         self::$client->parcel->create(Fixture::basicParcel());
+        self::$client->unsubscribeFromRequestHook([$this, 'requestTest']);
     }
 
     /**
@@ -61,7 +62,7 @@ class HookTest extends TestCase
     public function responseTest(array $args): void
     {
         $this->assertEquals(201, $args['http_status']);
-        $this->assertEquals('post', $args['method']);
+        $this->assertEquals('POST', $args['method']);
         $this->assertEquals('https://api.easypost.com/v2/parcels', $args['path']);
         $this->assertNotNull(json_decode($args['response_body'], true)['object']);
         $this->assertArrayHasKey('location', $args['headers']);
@@ -78,6 +79,7 @@ class HookTest extends TestCase
 
         self::$client->subscribeToResponseHook([$this, 'responseTest']);
         self::$client->parcel->create(Fixture::basicParcel());
+        self::$client->unsubscribeFromResponseHook([$this, 'responseTest']);
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace EasyPost\Service;
 
+use EasyPost\Http\HttpMethod;
 use EasyPost\Http\Requestor;
 use EasyPost\Util\InternalUtil;
 
@@ -74,7 +75,7 @@ class TrackerService extends BaseService
      */
     public function retrieveBatch(mixed $params = null): mixed
     {
-        $response = Requestor::request($this->client, 'post', '/trackers/batch', $params);
+        $response = Requestor::request($this->client, HttpMethod::POST, '/trackers/batch', $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }

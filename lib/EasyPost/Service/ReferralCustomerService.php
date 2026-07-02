@@ -2,6 +2,7 @@
 
 namespace EasyPost\Service;
 
+use EasyPost\Http\HttpMethod;
 use EasyPost\Constant\Constants;
 use EasyPost\EasyPostClient;
 use EasyPost\Exception\Api\ExternalApiException;
@@ -67,7 +68,7 @@ class ReferralCustomerService extends BaseService
             ]
         ];
 
-        Requestor::request($this->client, 'put', "/referral_customers/{$userId}", $wrappedParams);
+        Requestor::request($this->client, HttpMethod::PUT, "/referral_customers/{$userId}", $wrappedParams);
     }
 
     /**
@@ -136,7 +137,7 @@ class ReferralCustomerService extends BaseService
         ];
 
         $client = new EasyPostClient($referralApiKey);
-        $response = Requestor::request($client, 'post', '/credit_cards', $params);
+        $response = Requestor::request($client, HttpMethod::POST, '/credit_cards', $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -165,7 +166,7 @@ class ReferralCustomerService extends BaseService
         ];
 
         $client = new EasyPostClient($referralApiKey);
-        $response = Requestor::request($client, 'post', '/bank_accounts', $params);
+        $response = Requestor::request($client, HttpMethod::POST, '/bank_accounts', $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -177,7 +178,7 @@ class ReferralCustomerService extends BaseService
      */
     private function retrieveEasypostStripeApiKey(): string
     {
-        $response = Requestor::request($this->client, 'get', '/partners/stripe_public_key');
+        $response = Requestor::request($this->client, HttpMethod::GET, '/partners/stripe_public_key');
 
         return $response['public_key'] ?? '';
     }
@@ -224,7 +225,7 @@ class ReferralCustomerService extends BaseService
         $requestOptions['http_errors'] = false;
 
         try {
-            $response = $guzzleClient->request('POST', $url, $requestOptions);
+            $response = $guzzleClient->request(HttpMethod::POST->value, $url, $requestOptions);
         } catch (\GuzzleHttp\Exception\ConnectException $error) {
             throw new HttpException(sprintf(Constants::COMMUNICATION_ERROR, 'Stripe', $error->getMessage()));
         }
@@ -264,7 +265,7 @@ class ReferralCustomerService extends BaseService
         ];
 
         $client = new EasyPostClient($referralApiKey);
-        $response = Requestor::request($client, 'post', '/credit_cards', $params);
+        $response = Requestor::request($client, HttpMethod::POST, '/credit_cards', $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }

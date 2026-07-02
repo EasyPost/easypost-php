@@ -2,6 +2,7 @@
 
 namespace EasyPost\Service;
 
+use EasyPost\Http\HttpMethod;
 use EasyPost\Constant\Constants;
 use EasyPost\Exception\Api\PaymentException;
 use EasyPost\Http\Requestor;
@@ -47,7 +48,7 @@ class BillingService extends BaseService
         $url = $paymentMethodEndpoint . "/$paymentMethodId/charges";
         $wrappedParams = ['amount' => $amount];
 
-        Requestor::request($this->client, 'post', $url, $wrappedParams);
+        Requestor::request($this->client, HttpMethod::POST, $url, $wrappedParams);
     }
 
     /**
@@ -61,7 +62,7 @@ class BillingService extends BaseService
         [$paymentMethodEndpoint, $paymentMethodId] = self::getPaymentInfo(strtolower($priority));
         $url = $paymentMethodEndpoint . "/$paymentMethodId";
 
-        Requestor::request($this->client, 'delete', $url);
+        Requestor::request($this->client, HttpMethod::DELETE, $url);
     }
 
     /**
@@ -79,10 +80,11 @@ class BillingService extends BaseService
             'secondary' => 'secondary_payment_method'
         ];
         $paymentMethodToUse = $paymentMethodMap[$priority] ?? null;
+        $selectedPaymentMethod = $paymentMethodToUse ? ($paymentMethods->$paymentMethodToUse ?? null) : null;
 
-        if ($paymentMethodToUse != null && $paymentMethods->$paymentMethodToUse->id != null) {
-            $paymentMethodId = $paymentMethods->$paymentMethodToUse->id;
-            $paymentMethodObjectType = $paymentMethods->$paymentMethodToUse->object;
+        if ($selectedPaymentMethod != null && $selectedPaymentMethod->id != null) {
+            $paymentMethodId = $selectedPaymentMethod->id;
+            $paymentMethodObjectType = $selectedPaymentMethod->object;
             if ($paymentMethodObjectType == 'CreditCard') {
                 $endpoint = '/credit_cards';
             } else if ($paymentMethodObjectType == 'BankAccount') {

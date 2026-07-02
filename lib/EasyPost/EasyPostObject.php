@@ -54,7 +54,8 @@ class EasyPostObject implements \ArrayAccess, \Iterator
         // @phpstan-ignore-next-line
         while (true && $i < 99) {
             if (!is_null($current->_parent)) {
-                $param = [$current->_name => $param];
+                $name = $current->_name;
+                $param = [is_null($name) ? '' : $name => $param];
                 $current = $current->_parent;
             }
             $i++;
@@ -90,7 +91,8 @@ class EasyPostObject implements \ArrayAccess, \Iterator
             // @phpstan-ignore-next-line
             while (true && $i < 99) {
                 if (!is_null($current->_parent)) {
-                    $param = [$current->_name => $param];
+                    $name = $current->_name;
+                    $param = [is_null($name) ? '' : $name => $param];
                     $current = $current->_parent;
                 }
                 $i++;

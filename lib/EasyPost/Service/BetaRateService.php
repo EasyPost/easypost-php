@@ -2,6 +2,7 @@
 
 namespace EasyPost\Service;
 
+use EasyPost\Http\HttpMethod;
 use EasyPost\Http\Requestor;
 use EasyPost\Util\InternalUtil;
 
@@ -22,7 +23,7 @@ class BetaRateService extends BaseService
             'shipment' => $params,
         ];
 
-        $response = Requestor::request($this->client, 'post', '/rates', $wrappedParams, true);
+        $response = Requestor::request($this->client, HttpMethod::POST, '/rates', $wrappedParams, true);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response['rates']);
     }
