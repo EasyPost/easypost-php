@@ -651,6 +651,36 @@ Search.appendIndex(
             "summary": "An\u0020event\u0020that\u0020gets\u0020triggered\u0020when\u0020an\u0020HTTP\u0020response\u0020is\u0020returned.",
             "url": "classes/EasyPost-Hook-ResponseHook.html"
         },                {
+            "fqsen": "\\EasyPost\\Http\\HttpMethod",
+            "name": "HttpMethod",
+            "summary": "",
+            "url": "classes/EasyPost-Http-HttpMethod.html"
+        },                {
+            "fqsen": "\\EasyPost\\Http\\HttpMethod\u003A\u003AGET",
+            "name": "GET",
+            "summary": "",
+            "url": ""
+        },                {
+            "fqsen": "\\EasyPost\\Http\\HttpMethod\u003A\u003APOST",
+            "name": "POST",
+            "summary": "",
+            "url": ""
+        },                {
+            "fqsen": "\\EasyPost\\Http\\HttpMethod\u003A\u003APUT",
+            "name": "PUT",
+            "summary": "",
+            "url": ""
+        },                {
+            "fqsen": "\\EasyPost\\Http\\HttpMethod\u003A\u003APATCH",
+            "name": "PATCH",
+            "summary": "",
+            "url": ""
+        },                {
+            "fqsen": "\\EasyPost\\Http\\HttpMethod\u003A\u003ADELETE",
+            "name": "DELETE",
+            "summary": "",
+            "url": ""
+        },                {
             "fqsen": "\\EasyPost\\Http\\Requestor",
             "name": "Requestor",
             "summary": "",
