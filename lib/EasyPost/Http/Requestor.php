@@ -95,7 +95,7 @@ class Requestor
      * Make a request to the EasyPost API.
      *
      * @param EasyPostClient $client
-     * @param string $method
+     * @param HttpMethod|string $method
      * @param string $url
      * @param mixed $params
      * @param bool $beta
@@ -103,7 +103,7 @@ class Requestor
      */
     public static function request(
         EasyPostClient $client,
-        string $method,
+        HttpMethod|string $method,
         string $url,
         mixed $params = null,
         bool $beta = false
@@ -118,7 +118,7 @@ class Requestor
      * Internal logic required to make a request to the EasyPost API.
      *
      * @param EasyPostClient $client
-     * @param string $method
+     * @param HttpMethod|string $method
      * @param string $url
      * @param mixed $params
      * @param bool $beta
@@ -128,17 +128,22 @@ class Requestor
      */
     private static function requestRaw(
         EasyPostClient $client,
-        string $method,
+        HttpMethod|string $method,
         string $url,
         mixed $params,
         bool $beta = false
     ): array {
+        if ($method instanceof HttpMethod) {
+            $method = $method->value;
+        } else {
+            $method = strtoupper($method);
+        }
         $absoluteUrl = self::absoluteUrl($client, $url, $beta);
         $requestOptions = [
             'http_errors' => false, // we set this false here so we can do our own error handling
             'timeout' => $client->getTimeout(),
         ];
-        if (in_array(strtolower($method), ['get', 'delete'])) {
+        if (in_array($method, [HttpMethod::GET->value, HttpMethod::DELETE->value])) {
             $requestOptions['query'] = $params;
         } else {
             $params = self::encodeObjects($params);

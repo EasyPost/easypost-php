@@ -2,6 +2,7 @@
 
 namespace EasyPost\Service;
 
+use EasyPost\Http\HttpMethod;
 use EasyPost\Http\Requestor;
 use EasyPost\Rate;
 use EasyPost\Util\InternalUtil;
@@ -69,7 +70,7 @@ class ShipmentService extends BaseService
     public function regenerateRates(string $id, mixed $params = null): mixed
     {
         $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/rerate';
-        $response = Requestor::request($this->client, 'post', $url, $params);
+        $response = Requestor::request($this->client, HttpMethod::POST, $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -83,7 +84,7 @@ class ShipmentService extends BaseService
     public function getSmartRates(string $id): array
     {
         $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/smartrate';
-        $response = Requestor::request($this->client, 'get', $url);
+        $response = Requestor::request($this->client, HttpMethod::GET, $url);
 
         $result = isset($response['result']) ? $response['result'] : [];
 
@@ -113,7 +114,7 @@ class ShipmentService extends BaseService
             $params['end_shipper_id'] = $endShipperId;
         }
 
-        $response = Requestor::request($this->client, 'post', $url, $params);
+        $response = Requestor::request($this->client, HttpMethod::POST, $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -128,7 +129,7 @@ class ShipmentService extends BaseService
     public function refund(string $id, mixed $params = null): mixed
     {
         $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/refund';
-        $response = Requestor::request($this->client, 'post', $url, $params);
+        $response = Requestor::request($this->client, HttpMethod::POST, $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -150,7 +151,7 @@ class ShipmentService extends BaseService
         }
 
         $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/label';
-        $response = Requestor::request($this->client, 'get', $url, $params);
+        $response = Requestor::request($this->client, HttpMethod::GET, $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -172,7 +173,7 @@ class ShipmentService extends BaseService
         }
 
         $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/insure';
-        $response = Requestor::request($this->client, 'post', $url, $params);
+        $response = Requestor::request($this->client, HttpMethod::POST, $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -192,7 +193,7 @@ class ShipmentService extends BaseService
 
         $params['form'] = $formOptions;
 
-        $response = Requestor::request($this->client, 'post', $url, $params);
+        $response = Requestor::request($this->client, HttpMethod::POST, $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -229,7 +230,7 @@ class ShipmentService extends BaseService
         ];
 
         $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/smartrate/delivery_date';
-        $response = Requestor::request($this->client, 'get', $url, $params);
+        $response = Requestor::request($this->client, HttpMethod::GET, $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response['rates'] ?? []);
     }
@@ -249,7 +250,7 @@ class ShipmentService extends BaseService
         ];
 
         $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/smartrate/precision_shipping';
-        $response = Requestor::request($this->client, 'get', $url, $params);
+        $response = Requestor::request($this->client, HttpMethod::GET, $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response['rates'] ?? []);
     }
@@ -265,7 +266,7 @@ class ShipmentService extends BaseService
         $params = InternalUtil::wrapParams($params, 'shipment');
 
         $url = self::classUrl(self::serviceModelClassName(self::class)) . '/luma';
-        $response = Requestor::request($this->client, 'post', $url, $params);
+        $response = Requestor::request($this->client, HttpMethod::POST, $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -280,7 +281,7 @@ class ShipmentService extends BaseService
     public function buyLuma(string $id, array $params): mixed
     {
         $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/luma';
-        $response = Requestor::request($this->client, 'post', $url, $params);
+        $response = Requestor::request($this->client, HttpMethod::POST, $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }

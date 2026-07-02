@@ -2,6 +2,7 @@
 
 namespace EasyPost\Service;
 
+use EasyPost\Http\HttpMethod;
 use EasyPost\Http\Requestor;
 use EasyPost\Util\InternalUtil;
 
@@ -54,7 +55,7 @@ class EventService extends BaseService
     {
         $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/payloads';
 
-        $response = Requestor::request($this->client, 'get', $url);
+        $response = Requestor::request($this->client, HttpMethod::GET, $url);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -70,7 +71,7 @@ class EventService extends BaseService
     {
         $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/payloads/' . $payloadId;
 
-        $response = Requestor::request($this->client, 'get', $url);
+        $response = Requestor::request($this->client, HttpMethod::GET, $url);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }

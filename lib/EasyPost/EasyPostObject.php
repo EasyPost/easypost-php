@@ -45,20 +45,6 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     public function __set(string $k, mixed $v): void
     {
         $this->_values[$k] = $v;
-
-        $i = 0;
-        $current = $this;
-        $param = [$k => $v];
-
-        // TODO: Rework this when we fix (de)serialization
-        // @phpstan-ignore-next-line
-        while (true && $i < 99) {
-            if (!is_null($current->_parent)) {
-                $param = [$current->_name => $param];
-                $current = $current->_parent;
-            }
-            $i++;
-        }
     }
 
     /**
@@ -81,20 +67,6 @@ class EasyPostObject implements \ArrayAccess, \Iterator
     {
         if (!in_array($k, $this->_immutableValues)) {
             unset($this->_values[$k]);
-
-            $i = 0;
-            $current = $this;
-            $param = [$k => null];
-
-            // TODO: Rework this when we fix (de)serialization
-            // @phpstan-ignore-next-line
-            while (true && $i < 99) {
-                if (!is_null($current->_parent)) {
-                    $param = [$current->_name => $param];
-                    $current = $current->_parent;
-                }
-                $i++;
-            }
         }
     }
 

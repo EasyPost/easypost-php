@@ -2,6 +2,7 @@
 
 namespace EasyPost\Service;
 
+use EasyPost\Http\HttpMethod;
 use EasyPost\Constant\Constants;
 use EasyPost\Exception\General\EndOfPaginationException;
 use EasyPost\Exception\General\MissingParameterException;
@@ -40,7 +41,7 @@ class ReportService extends BaseService
             self::validate($params);
             $url = self::reportUrl($type);
             unset($params['type']);
-            $response = Requestor::request($this->client, 'get', $url, $params);
+            $response = Requestor::request($this->client, HttpMethod::GET, $url, $params);
             $response['type'] = $type;
 
             return InternalUtil::convertToEasyPostObject($this->client, $response);
@@ -73,7 +74,7 @@ class ReportService extends BaseService
         }
 
         $url = self::reportUrl($reportArray[0]->object);
-        $response = Requestor::request($this->client, 'get', $url, $params);
+        $response = Requestor::request($this->client, HttpMethod::GET, $url, $params);
 
         if (isset($userParams)) {
             $response['_params'] = $userParams;
@@ -101,7 +102,7 @@ class ReportService extends BaseService
 
         $url = self::reportUrl($params['type']);
         self::validate($params);
-        $response = Requestor::request($this->client, 'post', $url, $params);
+        $response = Requestor::request($this->client, HttpMethod::POST, $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }

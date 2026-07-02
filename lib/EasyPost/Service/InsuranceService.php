@@ -2,6 +2,7 @@
 
 namespace EasyPost\Service;
 
+use EasyPost\Http\HttpMethod;
 use EasyPost\Http\Requestor;
 use EasyPost\Util\InternalUtil;
 
@@ -65,7 +66,7 @@ class InsuranceService extends BaseService
      */
     public function refund(string $id): mixed
     {
-        $response = Requestor::request($this->client, 'post', "/insurances/{$id}/refund");
+        $response = Requestor::request($this->client, HttpMethod::POST, "/insurances/{$id}/refund");
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }

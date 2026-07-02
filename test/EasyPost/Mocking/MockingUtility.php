@@ -30,9 +30,12 @@ class MockingUtility
      */
     public function findMatchingMockRequest($method, $url): mixed
     {
+        $normalizedMethod = strtoupper($method);
+
         foreach ($this->mockRequests as $mockRequest) {
-            $methodMatches = $mockRequest->matchRule->method === ''
-                || $mockRequest->matchRule->method === $method;
+            $matchRuleMethod = strtoupper($mockRequest->matchRule->method);
+            $methodMatches = $matchRuleMethod === ''
+                || $matchRuleMethod === $normalizedMethod;
             $urlMatches = $mockRequest->matchRule->urlRegexPattern == ''
                 || preg_match($mockRequest->matchRule->urlRegexPattern, $url) >= 1;  // limit to exactly one match?
             if ($methodMatches && $urlMatches) {

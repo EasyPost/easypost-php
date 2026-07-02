@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="test/bootstrap.php" cacheResultFile=".phpunit.cache/test-results" testdox="true" executionOrder="depends,defects" verbose="true" colors="true">
-    <testsuites>
-        <testsuite name="EasyPost Test Suite">
-            <directory suffix="Test.php">./test/EasyPost/</directory>
-        </testsuite>
-    </testsuites>
-
-    <coverage cacheDirectory=".phpunit.cache/code-coverage" processUncoveredFiles="true">
-        <include>
-            <directory suffix=".php">./lib/EasyPost/</directory>
-        </include>
-    </coverage>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bootstrap="test/bootstrap.php" testdox="true" executionOrder="depends,defects" colors="true" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.5/phpunit.xsd" cacheDirectory=".phpunit.cache">
+  <testsuites>
+    <testsuite name="EasyPost Test Suite">
+      <directory suffix="Test.php">./test/EasyPost/</directory>
+    </testsuite>
+  </testsuites>
+  <source>
+    <include>
+      <directory suffix=".php">./lib/EasyPost/</directory>
+    </include>
+  </source>
 </phpunit>

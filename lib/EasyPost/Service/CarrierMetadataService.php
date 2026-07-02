@@ -2,6 +2,7 @@
 
 namespace EasyPost\Service;
 
+use EasyPost\Http\HttpMethod;
 use EasyPost\Http\Requestor;
 use EasyPost\Util\InternalUtil;
 
@@ -33,7 +34,7 @@ class CarrierMetadataService extends BaseService
             $url = "{$url}types=" . join(',', $types);
         }
 
-        $response = Requestor::request($this->client, 'get', $url, null);
+        $response = Requestor::request($this->client, HttpMethod::GET, $url, null);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response['carriers'] ?? []);
     }

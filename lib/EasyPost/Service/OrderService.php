@@ -2,6 +2,7 @@
 
 namespace EasyPost\Service;
 
+use EasyPost\Http\HttpMethod;
 use EasyPost\Http\Requestor;
 use EasyPost\Rate;
 use EasyPost\Util\InternalUtil;
@@ -45,7 +46,7 @@ class OrderService extends BaseService
     public function getRates(string $id, mixed $params = null): mixed
     {
         $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/rates';
-        $response = Requestor::request($this->client, 'get', $url, $params);
+        $response = Requestor::request($this->client, HttpMethod::GET, $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -68,7 +69,7 @@ class OrderService extends BaseService
         }
 
         $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/buy';
-        $response = Requestor::request($this->client, 'post', $url, $params);
+        $response = Requestor::request($this->client, HttpMethod::POST, $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }

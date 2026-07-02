@@ -2,6 +2,7 @@
 
 namespace EasyPost\Service;
 
+use EasyPost\Http\HttpMethod;
 use EasyPost\Http\Requestor;
 use EasyPost\Util\InternalUtil;
 
@@ -67,7 +68,7 @@ class PickupService extends BaseService
     public function buy(string $id, mixed $params = null): mixed
     {
         $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/buy';
-        $response = Requestor::request($this->client, 'post', $url, $params);
+        $response = Requestor::request($this->client, HttpMethod::POST, $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -82,7 +83,7 @@ class PickupService extends BaseService
     public function cancel(string $id, mixed $params = null): mixed
     {
         $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/cancel';
-        $response = Requestor::request($this->client, 'post', $url, $params);
+        $response = Requestor::request($this->client, HttpMethod::POST, $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }

@@ -2,6 +2,7 @@
 
 namespace EasyPost\Service;
 
+use EasyPost\Http\HttpMethod;
 use EasyPost\Exception\General\EndOfPaginationException;
 use EasyPost\Http\Requestor;
 use EasyPost\Util\InternalUtil;
@@ -82,7 +83,7 @@ class UserService extends BaseService
     {
         $response = Requestor::request(
             $this->client,
-            'patch',
+            HttpMethod::PATCH,
             $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/brand',
             $params
         );
@@ -101,7 +102,7 @@ class UserService extends BaseService
         self::validate($params);
 
         $url = '/users/children';
-        $response = Requestor::request($this->client, 'get', $url, $params);
+        $response = Requestor::request($this->client, HttpMethod::GET, $url, $params);
         if (isset($params)) {
             $response['_params'] = $params;
         }

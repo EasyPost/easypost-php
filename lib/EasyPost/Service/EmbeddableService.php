@@ -2,6 +2,7 @@
 
 namespace EasyPost\Service;
 
+use EasyPost\Http\HttpMethod;
 use EasyPost\Http\Requestor;
 use EasyPost\Util\InternalUtil;
 
@@ -18,7 +19,7 @@ class EmbeddableService extends BaseService
      */
     public function createSession(mixed $params = null): mixed
     {
-        $response = Requestor::request($this->client, 'post', '/embeddables/session', $params);
+        $response = Requestor::request($this->client, HttpMethod::POST, '/embeddables/session', $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }

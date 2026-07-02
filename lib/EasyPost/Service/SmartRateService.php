@@ -2,6 +2,7 @@
 
 namespace EasyPost\Service;
 
+use EasyPost\Http\HttpMethod;
 use EasyPost\Exception\General\EndOfPaginationException;
 use EasyPost\Http\Requestor;
 use EasyPost\Util\InternalUtil;
@@ -20,7 +21,7 @@ class SmartRateService extends BaseService
      */
     public function recommendShipDate(mixed $params = null): mixed
     {
-        $response = Requestor::request($this->client, 'post', '/smartrate/deliver_on', $params);
+        $response = Requestor::request($this->client, HttpMethod::POST, '/smartrate/deliver_on', $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -34,7 +35,7 @@ class SmartRateService extends BaseService
      */
     public function estimateDeliveryDate(mixed $params = null): mixed
     {
-        $response = Requestor::request($this->client, 'post', '/smartrate/deliver_by', $params);
+        $response = Requestor::request($this->client, HttpMethod::POST, '/smartrate/deliver_by', $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }

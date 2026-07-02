@@ -2,6 +2,7 @@
 
 namespace EasyPost\Service;
 
+use EasyPost\Http\HttpMethod;
 use EasyPost\Http\Requestor;
 use EasyPost\Util\InternalUtil;
 
@@ -96,7 +97,12 @@ class AddressService extends BaseService
         $wrappedParams['address'] = $params;
 
         $url = self::classUrl(self::serviceModelClassName(self::class));
-        $response = Requestor::request($this->client, 'post', $url . '/create_and_verify', $wrappedParams);
+        $response = Requestor::request(
+            $this->client,
+            HttpMethod::POST,
+            $url . '/create_and_verify',
+            $wrappedParams
+        );
 
         return InternalUtil::convertToEasyPostObject($this->client, $response['address']);
     }
@@ -110,7 +116,7 @@ class AddressService extends BaseService
     public function verify(string $id): mixed
     {
         $url = $this->instanceUrl(self::serviceModelClassName(self::class), $id) . '/verify';
-        $response = Requestor::request($this->client, 'get', $url, null);
+        $response = Requestor::request($this->client, HttpMethod::GET, $url, null);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response['address']);
     }

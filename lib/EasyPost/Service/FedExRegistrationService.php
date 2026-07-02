@@ -2,6 +2,7 @@
 
 namespace EasyPost\Service;
 
+use EasyPost\Http\HttpMethod;
 use EasyPost\Http\Requestor;
 use EasyPost\Util\InternalUtil;
 
@@ -23,7 +24,7 @@ class FedExRegistrationService extends BaseService
         $wrappedParams = $this->wrapAddressValidation($params);
         $url = "/fedex_registrations/{$fedexAccountNumber}/address";
 
-        $response = Requestor::request($this->client, 'post', $url, $wrappedParams);
+        $response = Requestor::request($this->client, HttpMethod::POST, $url, $wrappedParams);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -44,7 +45,7 @@ class FedExRegistrationService extends BaseService
         ];
         $url = "/fedex_registrations/{$fedexAccountNumber}/pin";
 
-        $response = Requestor::request($this->client, 'post', $url, $wrappedParams);
+        $response = Requestor::request($this->client, HttpMethod::POST, $url, $wrappedParams);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -61,7 +62,7 @@ class FedExRegistrationService extends BaseService
         $wrappedParams = $this->wrapPinValidation($params);
         $url = "/fedex_registrations/{$fedexAccountNumber}/pin/validate";
 
-        $response = Requestor::request($this->client, 'post', $url, $wrappedParams);
+        $response = Requestor::request($this->client, HttpMethod::POST, $url, $wrappedParams);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -78,7 +79,7 @@ class FedExRegistrationService extends BaseService
         $wrappedParams = $this->wrapInvoiceValidation($params);
         $url = "/fedex_registrations/{$fedexAccountNumber}/invoice";
 
-        $response = Requestor::request($this->client, 'post', $url, $wrappedParams);
+        $response = Requestor::request($this->client, HttpMethod::POST, $url, $wrappedParams);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }

@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v8.8.1 (2026-07-02)
+
+- Uppercases all HTTP methods to correct a new Guzzle deprecation
+- Removed dead code in `__set` and `__unset` of an `EasyPostObject`
+
 ## v8.8.0 (2026-06-25)
 
 - Adds `params` to `requestPin` ensuring users can pass `easypost_details` to the call.

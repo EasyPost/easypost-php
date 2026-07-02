@@ -2,6 +2,7 @@
 
 namespace EasyPost\Service;
 
+use EasyPost\Http\HttpMethod;
 use EasyPost\Constant\Constants;
 use EasyPost\Exception\General\FilteringException;
 use EasyPost\Http\Requestor;
@@ -45,7 +46,7 @@ class ApiKeyService extends BaseService
      */
     public function all(): mixed
     {
-        $response = Requestor::request($this->client, 'get', '/api_keys');
+        $response = Requestor::request($this->client, HttpMethod::GET, '/api_keys');
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -82,7 +83,7 @@ class ApiKeyService extends BaseService
      */
     public function enable(string $id): mixed
     {
-        $response = Requestor::request($this->client, 'post', "/api_keys/{$id}/enable");
+        $response = Requestor::request($this->client, HttpMethod::POST, "/api_keys/{$id}/enable");
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -95,7 +96,7 @@ class ApiKeyService extends BaseService
      */
     public function disable(string $id): mixed
     {
-        $response = Requestor::request($this->client, 'post', "/api_keys/{$id}/disable");
+        $response = Requestor::request($this->client, HttpMethod::POST, "/api_keys/{$id}/disable");
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }

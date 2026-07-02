@@ -2,6 +2,7 @@
 
 namespace EasyPost\Service;
 
+use EasyPost\Http\HttpMethod;
 use EasyPost\Http\Requestor;
 use EasyPost\Util\InternalUtil;
 
@@ -36,7 +37,13 @@ class BetaReferralCustomerService extends BaseService
             ]
         ];
 
-        $response = Requestor::request($this->client, 'post', '/referral_customers/payment_method', $params, true);
+        $response = Requestor::request(
+            $this->client,
+            HttpMethod::POST,
+            '/referral_customers/payment_method',
+            $params,
+            true
+        );
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -51,7 +58,13 @@ class BetaReferralCustomerService extends BaseService
     {
         $params = ['refund_amount' => $refundAmount];
 
-        $response = Requestor::request($this->client, 'post', '/referral_customers/refunds', $params, true);
+        $response = Requestor::request(
+            $this->client,
+            HttpMethod::POST,
+            '/referral_customers/refunds',
+            $params,
+            true
+        );
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -66,7 +79,13 @@ class BetaReferralCustomerService extends BaseService
     {
         $params = ['payment_log_id' => $paymentLogId];
 
-        $response = Requestor::request($this->client, 'post', '/referral_customers/refunds', $params, true);
+        $response = Requestor::request(
+            $this->client,
+            HttpMethod::POST,
+            '/referral_customers/refunds',
+            $params,
+            true
+        );
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -78,7 +97,7 @@ class BetaReferralCustomerService extends BaseService
      */
     public function createCreditCardClientSecret(): mixed
     {
-        $response = Requestor::request($this->client, 'post', '/setup_intents', null, true);
+        $response = Requestor::request($this->client, HttpMethod::POST, '/setup_intents', null, true);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
@@ -92,7 +111,13 @@ class BetaReferralCustomerService extends BaseService
     public function createBankAccountClientSecret(?string $returnUrl = null): mixed
     {
         $params = $returnUrl ? ['return_url' => $returnUrl] : null;
-        $response = Requestor::request($this->client, 'post', '/financial_connections_sessions', $params, true);
+        $response = Requestor::request(
+            $this->client,
+            HttpMethod::POST,
+            '/financial_connections_sessions',
+            $params,
+            true
+        );
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
     }
