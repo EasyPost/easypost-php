@@ -80,7 +80,7 @@ class Requestor
         } elseif (is_array($data)) {
             $resource = [];
             foreach ($data as $k => $v) {
-                if (!is_null($v) and ($v !== '') and (!is_array($v) or !empty($v))) {
+                if (!is_null($v) and ($v !== '')) {
                     $resource[$k] = self::encodeObjects($v);
                 }
             }

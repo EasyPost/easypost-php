@@ -293,7 +293,7 @@ class ShipmentTest extends TestCase
         $this->assertInstanceOf(Shipment::class, $shipment);
         $this->assertStringMatchesFormat('shp_%s', $shipment->id);
         $this->assertNotEmpty($shipment->options); // The EasyPost API populates some default values here
-        $this->assertEmpty($shipment->customs_info);
+        $this->assertEmpty($shipment->customs_info->customs_items);
         $this->assertNull($shipment->reference);
     }
 
