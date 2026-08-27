@@ -65,13 +65,13 @@ class Requestor
      * Encodes an EasyPost object and prepares the data for the request.
      *
      * @param mixed $data
-     * @return array<mixed>|string
+     * @return mixed
      */
-    private static function encodeObjects(mixed $data): array|string
+    private static function encodeObjects(mixed $data): mixed
     {
         if (is_null($data)) {
             return [];
-        } elseif ($data instanceof EasypostObject) {
+        } elseif ($data instanceof EasyPostObject) {
             return ['id' => self::utf8($data->id)]; // @phpstan-ignore-line
         } elseif ($data === true) {
             return 'true';
@@ -86,6 +86,15 @@ class Requestor
             }
 
             return $resource;
+        } elseif ($data instanceof \stdClass) {
+            $resource = [];
+            foreach (get_object_vars($data) as $k => $v) {
+                if (!is_null($v) and ($v !== '')) {
+                    $resource[$k] = self::encodeObjects($v);
+                }
+            }
+
+            return (object)$resource;
         } else {
             return self::utf8(strval($data));
         }
