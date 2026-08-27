@@ -93,7 +93,7 @@ class RequestorEncodingTest extends TestCase
         $this->assertArrayHasKey('shipment', $requestPayload);
         $this->assertArrayHasKey('options', $requestPayload['shipment']);
         $this->assertIsObject($requestPayload['shipment']['options']);
-        $this->assertSame('DDP', $requestPayload['shipment']['options']->incoterm);
+        $this->assertSame('DDP', $requestPayload['shipment']['options']->incoterm); // @phpstan-ignore-line
         $this->assertFalse(property_exists($requestPayload['shipment']['options'], 'currency'));
     }
 }
