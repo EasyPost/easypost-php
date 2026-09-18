@@ -220,7 +220,9 @@ class ReferralCustomerService extends BaseService
 
         $guzzleClient = new Client();
 
-        $requestOptions['query'] = $creditCardDetails;
+        // Card details must travel in the form-encoded request body, never in the URL,
+        // so they cannot end up in access logs, proxy logs, or Referer headers.
+        $requestOptions['form_params'] = $creditCardDetails;
         $requestOptions['headers'] = $headers;
         $requestOptions['http_errors'] = false;
 

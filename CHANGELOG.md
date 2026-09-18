@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Sends card details in the request body instead of the URL query string when `referralCustomer->addCreditCard` creates a Stripe token
+
 ## v8.8.3 (2026-08-26)
 
 - Preserves caller-provided plain PHP objects in request params so `(object) []` is sent as an empty JSON object (`{}`) instead of being stringified
