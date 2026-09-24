@@ -119,28 +119,6 @@ class ReferralCustomerTest extends TestCase
     /**
      * Test that we can add a credit card to a referral user.
      *
-     * This test requires a partner user's production API key via PARTNER_USER_PROD_API_KEY
-     * as well as one of that user's referral's production API keys via REFERRAL_USER_PROD_API_KEY.
-     */
-    public function testAddCreditCard(): void
-    {
-        TestUtil::setupCassette('referral_customers/addCreditCard.yml');
-
-        $creditCard = self::$client->referralCustomer->addCreditCard(
-            self::$referralUserProdApiKey,
-            Fixture::creditCardDetails()['number'],
-            Fixture::creditCardDetails()['expiration_month'],
-            Fixture::creditCardDetails()['expiration_year'],
-            Fixture::creditCardDetails()['cvc']
-        );
-
-        $this->assertStringMatchesFormat('pm_%s', $creditCard->id);
-        $this->assertEquals('6170', $creditCard->last4);
-    }
-
-    /**
-     * Test that we can add a credit card to a referral user.
-     *
      * This test requires a referral customer's production API key via REFERRAL_CUSTOMER_PROD_API_KEY.
      * We expect this test to fail because we don't have valid billing details to use. Assert the correct error.
      */
@@ -185,5 +163,20 @@ class ReferralCustomerTest extends TestCase
                 $error->getMessage()
             );
         }
+    }
+
+    /**
+     * Test that we can retrieve EasyPost's Stripe API key.
+     *
+     * This test requires a partner user's production API key via PARTNER_USER_PROD_API_KEY.
+     */
+    public function testRetrieveEasypostStripeApiKey(): void
+    {
+        TestUtil::setupCassette('referral_customers/retrieveEasypostStripeApiKey.yml');
+
+        $publicKey = self::$client->referralCustomer->retrieveEasypostStripeApiKey();
+
+        $this->assertIsString($publicKey);
+        $this->assertStringStartsWith('pk_', $publicKey);
     }
 }
