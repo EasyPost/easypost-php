@@ -156,11 +156,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/EasyPost-Constant-Constants.html#constant_NO_RESPONSE_ERROR"
         },                {
-            "fqsen": "\\EasyPost\\Constant\\Constants\u003A\u003ASEND_STRIPE_DETAILS_ERROR",
-            "name": "SEND_STRIPE_DETAILS_ERROR",
-            "summary": "",
-            "url": "classes/EasyPost-Constant-Constants.html#constant_SEND_STRIPE_DETAILS_ERROR"
-        },                {
             "fqsen": "\\EasyPost\\Constant\\Constants\u003A\u003AUNDEFINED_PROPERTY_ERROR",
             "name": "UNDEFINED_PROPERTY_ERROR",
             "summary": "",
@@ -1441,11 +1436,6 @@ Search.appendIndex(
             "summary": "Update\u0020an\u0020referral\u0020email.",
             "url": "classes/EasyPost-Service-ReferralCustomerService.html#method_updateEmail"
         },                {
-            "fqsen": "\\EasyPost\\Service\\ReferralCustomerService\u003A\u003AaddCreditCard\u0028\u0029",
-            "name": "addCreditCard",
-            "summary": "Add\u0020a\u0020credit\u0020card\u0020to\u0020EasyPost\u0020for\u0020a\u0020ReferralCustomer\u0020without\u0020needing\u0020a\u0020Stripe\u0020account.",
-            "url": "classes/EasyPost-Service-ReferralCustomerService.html#method_addCreditCard"
-        },                {
             "fqsen": "\\EasyPost\\Service\\ReferralCustomerService\u003A\u003AaddCreditCardFromStripe\u0028\u0029",
             "name": "addCreditCardFromStripe",
             "summary": "Add\u0020a\u0020credit\u0020card\u0020to\u0020EasyPost\u0020for\u0020a\u0020ReferralCustomer\u0020with\u0020a\u0020payment\u0020method\u0020ID\u0020from\u0020Stripe.",
@@ -1460,16 +1450,6 @@ Search.appendIndex(
             "name": "retrieveEasypostStripeApiKey",
             "summary": "Retrieves\u0020the\u0020public\u0020EasyPost\u0020Stripe\u0020API\u0020key.",
             "url": "classes/EasyPost-Service-ReferralCustomerService.html#method_retrieveEasypostStripeApiKey"
-        },                {
-            "fqsen": "\\EasyPost\\Service\\ReferralCustomerService\u003A\u003AcreateStripeToken\u0028\u0029",
-            "name": "createStripeToken",
-            "summary": "Retrieves\u0020the\u0020public\u0020EasyPost\u0020Stripe\u0020API\u0020key.",
-            "url": "classes/EasyPost-Service-ReferralCustomerService.html#method_createStripeToken"
-        },                {
-            "fqsen": "\\EasyPost\\Service\\ReferralCustomerService\u003A\u003AcreateEasypostCreditCard\u0028\u0029",
-            "name": "createEasypostCreditCard",
-            "summary": "Submit\u0020the\u0020Stripe\u0020credit\u0020card\u0020token\u0020to\u0020EasyPost.",
-            "url": "classes/EasyPost-Service-ReferralCustomerService.html#method_createEasypostCreditCard"
         },                {
             "fqsen": "\\EasyPost\\Service\\RefundService",
             "name": "RefundService",

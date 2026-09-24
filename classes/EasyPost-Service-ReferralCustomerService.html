@@ -138,7 +138,7 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Service/ReferralCustomerService.php"><a href="files/lib-easypost-service-referralcustomerservice.html"><abbr title="lib/EasyPost/Service/ReferralCustomerService.php">ReferralCustomerService.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">18</span>
+    <span class="phpdocumentor-element-found-in__line">13</span>
 
     </aside>
 
@@ -173,13 +173,6 @@
 <dd>Add a bank account to EasyPost for a ReferralCustomer.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/EasyPost-Service-ReferralCustomerService.html#method_addCreditCard">addCreditCard()</a>
-    <span>
-                                &nbsp;: mixed    </span>
-</dt>
-<dd>Add a credit card to EasyPost for a ReferralCustomer without needing a Stripe account.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/EasyPost-Service-ReferralCustomerService.html#method_addCreditCardFromStripe">addCreditCardFromStripe()</a>
     <span>
                                 &nbsp;: mixed    </span>
@@ -206,6 +199,13 @@
                                 &nbsp;: mixed    </span>
 </dt>
 <dd>Retrieve the next page of Referral collection</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/EasyPost-Service-ReferralCustomerService.html#method_retrieveEasypostStripeApiKey">retrieveEasypostStripeApiKey()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Retrieves the public EasyPost Stripe API key.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/EasyPost-Service-ReferralCustomerService.html#method_updateEmail">updateEmail()</a>
@@ -298,27 +298,6 @@
 </dt>
 <dd>Validate library usage.</dd>
 
-            <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/EasyPost-Service-ReferralCustomerService.html#method_createEasypostCreditCard">createEasypostCreditCard()</a>
-    <span>
-                                &nbsp;: mixed    </span>
-</dt>
-<dd>Submit the Stripe credit card token to EasyPost.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/EasyPost-Service-ReferralCustomerService.html#method_createStripeToken">createStripeToken()</a>
-    <span>
-                                &nbsp;: mixed    </span>
-</dt>
-<dd>Retrieves the public EasyPost Stripe API key.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/EasyPost-Service-ReferralCustomerService.html#method_retrieveEasypostStripeApiKey">retrieveEasypostStripeApiKey()</a>
-    <span>
-                                &nbsp;: string    </span>
-</dt>
-<dd>Retrieves the public EasyPost Stripe API key.</dd>
-
         </dl>
 
 
@@ -385,7 +364,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Service/ReferralCustomerService.php"><a href="files/lib-easypost-service-referralcustomerservice.html"><abbr title="lib/EasyPost/Service/ReferralCustomerService.php">ReferralCustomerService.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">156</span>
+    <span class="phpdocumentor-element-found-in__line">108</span>
 
     </aside>
 
@@ -444,100 +423,6 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_addCreditCard">
-        addCreditCard()
-        <a href="classes/EasyPost-Service-ReferralCustomerService.html#method_addCreditCard" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Service/ReferralCustomerService.php"><a href="files/lib-easypost-service-referralcustomerservice.html"><abbr title="lib/EasyPost/Service/ReferralCustomerService.php">ReferralCustomerService.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">88</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Add a credit card to EasyPost for a ReferralCustomer without needing a Stripe account.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">addCreditCard</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$referralApiKey</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$number</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$expirationMonth</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$expirationYear</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$cvc</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$priority</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;primary&#039;</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
-
-        <section class="phpdocumentor-description"><p>This function requires the Referral User's API key.</p>
-</section>
-
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$referralApiKey</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$number</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$expirationMonth</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$expirationYear</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$cvc</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$priority</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">&#039;primary&#039;</span>            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">throws</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                <span class="phpdocumentor-tag-link"><a href="classes/EasyPost-Exception-Api-ExternalApiException.html"><abbr title="\EasyPost\Exception\Api\ExternalApiException">ExternalApiException</abbr></a></span>
-                                                            
-                                             
-                                    </dd>
-                        </dl>
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
-            &mdash;
-        
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
     <h4 class="phpdocumentor-element__name" id="method_addCreditCardFromStripe">
         addCreditCardFromStripe()
         <a href="classes/EasyPost-Service-ReferralCustomerService.html#method_addCreditCardFromStripe" class="headerlink"><i class="fas fa-link"></i></a>
@@ -545,7 +430,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Service/ReferralCustomerService.php"><a href="files/lib-easypost-service-referralcustomerservice.html"><abbr title="lib/EasyPost/Service/ReferralCustomerService.php">ReferralCustomerService.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">127</span>
+    <span class="phpdocumentor-element-found-in__line">79</span>
 
     </aside>
 
@@ -604,7 +489,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Service/ReferralCustomerService.php"><a href="files/lib-easypost-service-referralcustomerservice.html"><abbr title="lib/EasyPost/Service/ReferralCustomerService.php">ReferralCustomerService.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">26</span>
+    <span class="phpdocumentor-element-found-in__line">21</span>
 
     </aside>
 
@@ -647,7 +532,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Service/ReferralCustomerService.php"><a href="files/lib-easypost-service-referralcustomerservice.html"><abbr title="lib/EasyPost/Service/ReferralCustomerService.php">ReferralCustomerService.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">49</span>
+    <span class="phpdocumentor-element-found-in__line">44</span>
 
     </aside>
 
@@ -690,7 +575,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Service/ReferralCustomerService.php"><a href="files/lib-easypost-service-referralcustomerservice.html"><abbr title="lib/EasyPost/Service/ReferralCustomerService.php">ReferralCustomerService.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">38</span>
+    <span class="phpdocumentor-element-found-in__line">33</span>
 
     </aside>
 
@@ -733,6 +618,39 @@
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_retrieveEasypostStripeApiKey">
+        retrieveEasypostStripeApiKey()
+        <a href="classes/EasyPost-Service-ReferralCustomerService.html#method_retrieveEasypostStripeApiKey" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Service/ReferralCustomerService.php"><a href="files/lib-easypost-service-referralcustomerservice.html"><abbr title="lib/EasyPost/Service/ReferralCustomerService.php">ReferralCustomerService.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">131</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Retrieves the public EasyPost Stripe API key.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">retrieveEasypostStripeApiKey</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">string</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_updateEmail">
         updateEmail()
         <a href="classes/EasyPost-Service-ReferralCustomerService.html#method_updateEmail" class="headerlink"><i class="fas fa-link"></i></a>
@@ -740,7 +658,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Service/ReferralCustomerService.php"><a href="files/lib-easypost-service-referralcustomerservice.html"><abbr title="lib/EasyPost/Service/ReferralCustomerService.php">ReferralCustomerService.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">63</span>
+    <span class="phpdocumentor-element-found-in__line">58</span>
 
     </aside>
 
@@ -1431,189 +1349,6 @@
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">void</span>
-            &mdash;
-        
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -private
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_createEasypostCreditCard">
-        createEasypostCreditCard()
-        <a href="classes/EasyPost-Service-ReferralCustomerService.html#method_createEasypostCreditCard" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Service/ReferralCustomerService.php"><a href="files/lib-easypost-service-referralcustomerservice.html"><abbr title="lib/EasyPost/Service/ReferralCustomerService.php">ReferralCustomerService.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">255</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Submit the Stripe credit card token to EasyPost.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">createEasypostCreditCard</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$referralApiKey</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$stripeObjectId</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$priority</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;primary&#039;</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
-
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$referralApiKey</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$stripeObjectId</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$priority</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">&#039;primary&#039;</span>            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
-            &mdash;
-        
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -private
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_createStripeToken">
-        createStripeToken()
-        <a href="classes/EasyPost-Service-ReferralCustomerService.html#method_createStripeToken" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Service/ReferralCustomerService.php"><a href="files/lib-easypost-service-referralcustomerservice.html"><abbr title="lib/EasyPost/Service/ReferralCustomerService.php">ReferralCustomerService.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">198</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Retrieves the public EasyPost Stripe API key.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">createStripeToken</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$number</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$expirationMonth</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$expirationYear</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$cvc</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$easypostStripeKey</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
-
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$number</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$expirationMonth</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$expirationYear</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$cvc</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$easypostStripeKey</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">throws</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                <span class="phpdocumentor-tag-link"><a href="classes/EasyPost-Exception-Api-HttpException.html"><abbr title="\EasyPost\Exception\Api\HttpException">HttpException</abbr></a></span>
-                                                            
-                                             
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">throws</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                <span class="phpdocumentor-tag-link"><a href="classes/EasyPost-Exception-Api-TimeoutException.html"><abbr title="\EasyPost\Exception\Api\TimeoutException">TimeoutException</abbr></a></span>
-                                                            
-                                             
-                                    </dd>
-                        </dl>
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
-            &mdash;
-        
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -private
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_retrieveEasypostStripeApiKey">
-        retrieveEasypostStripeApiKey()
-        <a href="classes/EasyPost-Service-ReferralCustomerService.html#method_retrieveEasypostStripeApiKey" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Service/ReferralCustomerService.php"><a href="files/lib-easypost-service-referralcustomerservice.html"><abbr title="lib/EasyPost/Service/ReferralCustomerService.php">ReferralCustomerService.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">179</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Retrieves the public EasyPost Stripe API key.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">retrieveEasypostStripeApiKey</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
-
-    
-    
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">string</span>
             &mdash;
         
     
