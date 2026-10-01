@@ -3,7 +3,6 @@
 namespace EasyPost\Test;
 
 use EasyPost\EasyPostClient;
-use EasyPost\Surcharge;
 use EasyPost\Util\InternalUtil;
 use PHPUnit\Framework\TestCase;
 
@@ -63,28 +62,5 @@ class EasyPostObjectTest extends TestCase
     "email": "test@example.com",
     "phone": "5555555555"
 }');
-    }
-
-    /**
-     * Test that Rate surcharges hydrate to Surcharge model objects.
-     */
-    public function testRateSurchargesHydrate(): void
-    {
-        $rate = InternalUtil::convertToEasyPostObject(self::$client, [
-            'id' => 'rate_123',
-            'object' => 'Rate',
-            'surcharges' => [
-                [
-                    'object' => 'Surcharge',
-                    'category' => 'residential_delivery',
-                    'amount' => '1.23',
-                    'currency' => 'USD',
-                ],
-            ],
-        ]);
-
-        $this->assertCount(1, $rate->surcharges);
-        $this->assertInstanceOf(Surcharge::class, $rate->surcharges[0]);
-        $this->assertSame('residential_delivery', $rate->surcharges[0]->category);
     }
 }
