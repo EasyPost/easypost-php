@@ -30,6 +30,7 @@ use EasyPost\Refund;
 use EasyPost\Report;
 use EasyPost\ScanForm;
 use EasyPost\Shipment;
+use EasyPost\Surcharge;
 use EasyPost\TaxIdentifier;
 use EasyPost\Tracker;
 use EasyPost\TrackingDetail;
@@ -65,6 +66,7 @@ const OBJECT_MAPPING = [
     'Shipment'              => Shipment::class,
     'ShipmentInvoiceReport' => Report::class,
     'ShipmentReport'        => Report::class,
+    'Surcharge'             => Surcharge::class,
     'TaxIdentifier'         => TaxIdentifier::class,
     'Tracker'               => Tracker::class,
     'TrackerReport'         => Report::class,

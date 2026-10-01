@@ -82,6 +82,7 @@ require_once(dirname(__FILE__) . '/EasyPost/Refund.php');
 require_once(dirname(__FILE__) . '/EasyPost/Report.php');
 require_once(dirname(__FILE__) . '/EasyPost/ScanForm.php');
 require_once(dirname(__FILE__) . '/EasyPost/Shipment.php');
+require_once(dirname(__FILE__) . '/EasyPost/Surcharge.php');
 require_once(dirname(__FILE__) . '/EasyPost/TaxIdentifier.php');
 require_once(dirname(__FILE__) . '/EasyPost/Tracker.php');
 require_once(dirname(__FILE__) . '/EasyPost/TrackingDetail.php');
