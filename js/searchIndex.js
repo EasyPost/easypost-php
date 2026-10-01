@@ -1751,6 +1751,11 @@ Search.appendIndex(
             "summary": "Get\u0020the\u0020lowest\u0020rate\u0020for\u0020the\u0020shipment.",
             "url": "classes/EasyPost-Shipment.html#method_lowestRate"
         },                {
+            "fqsen": "\\EasyPost\\Surcharge",
+            "name": "Surcharge",
+            "summary": "",
+            "url": "classes/EasyPost-Surcharge.html"
+        },                {
             "fqsen": "\\EasyPost\\TaxIdentifier",
             "name": "TaxIdentifier",
             "summary": "",
