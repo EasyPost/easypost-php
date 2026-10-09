@@ -6,6 +6,9 @@ on:
   pull_request: ~
   workflow_dispatch: ~
 
+permissions:
+  contents: read
+
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -56,6 +59,8 @@ jobs:
   docs:
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # peaceiris/actions-gh-pages pushes to gh-pages
     steps:
       - uses: actions/checkout@v6
         with:
