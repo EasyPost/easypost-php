@@ -5,7 +5,6 @@ namespace EasyPost\Test;
 use EasyPost\CarrierAccount;
 use EasyPost\Constant\Constants;
 use EasyPost\EasyPostClient;
-use EasyPost\Exception\Api\ApiException;
 use EasyPost\Exception\General\MissingParameterException;
 use PHPUnit\Framework\TestCase;
 
@@ -126,8 +125,12 @@ class CarrierAccountTest extends TestCase
         $carrierAccount = null;
         try {
             $carrierAccount = self::$client->carrierAccount->create($payload);
-        } catch (ApiException $error) {
-            $this->assertNotContains($error->getHttpStatus(), [404, 500]);
+        } catch (\Exception $error) {
+            if ($error instanceof \EasyPost\Exception\Api\ApiException) {
+                $this->assertNotContains($error->getHttpStatus(), [404, 500]);
+            } else {
+                throw $error;
+            }
         }
 
         if ($carrierAccount !== null) {
