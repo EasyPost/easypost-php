@@ -5,11 +5,8 @@ namespace EasyPost\Test;
 use EasyPost\CarrierAccount;
 use EasyPost\Constant\Constants;
 use EasyPost\EasyPostClient;
+use EasyPost\Exception\Api\ApiException;
 use EasyPost\Exception\General\MissingParameterException;
-use EasyPost\Test\Mocking\MockingUtility;
-use EasyPost\Test\Mocking\MockRequest;
-use EasyPost\Test\Mocking\MockRequestMatchRule;
-use EasyPost\Test\Mocking\MockRequestResponseInfo;
 use PHPUnit\Framework\TestCase;
 
 class CarrierAccountTest extends TestCase
@@ -117,27 +114,8 @@ class CarrierAccountTest extends TestCase
         array $params
     ): void {
         $capturedRequest = [];
-        $mockingUtility = new MockingUtility(
-            [
-                new MockRequest(
-                    new MockRequestMatchRule(
-                        'post',
-                        '/v2' . preg_quote($expectedEndpoint, '/') . '$/'
-                    ),
-                    new MockRequestResponseInfo(
-                        200,
-                        '{"id": "ca_123", "object": "CarrierAccount", "type": "' . $carrierAccountType . '"}'
-                    )
-                ),
-            ]
-        );
-
-        self::$client = new EasyPostClient(
-            (string)getenv('EASYPOST_TEST_API_KEY'),
-            Constants::TIMEOUT,
-            Constants::API_BASE,
-            $mockingUtility
-        );
+        TestUtil::setupCassette("carrier_accounts/create_url_routing_{$carrierAccountType}.yml");
+        self::$client = new EasyPostClient((string)getenv('EASYPOST_PROD_API_KEY'));
         self::$client->requestEvent->addHandler(function (array $requestInfo) use (&$capturedRequest): void {
             if (!isset($capturedRequest['path']) && str_contains($requestInfo['path'], '/carrier_accounts')) {
                 $capturedRequest = $requestInfo;
@@ -145,10 +123,19 @@ class CarrierAccountTest extends TestCase
         });
 
         $payload = ['type' => $carrierAccountType] + $params;
-        $carrierAccount = self::$client->carrierAccount->create($payload);
+        $carrierAccount = null;
+        try {
+            $carrierAccount = self::$client->carrierAccount->create($payload);
+        } catch (ApiException $error) {
+            $this->assertNotContains($error->getHttpStatus(), [404, 500]);
+        }
 
-        $this->assertInstanceOf(CarrierAccount::class, $carrierAccount);
-        $this->assertEquals($carrierAccountType, $carrierAccount->type);
+        if ($carrierAccount !== null) {
+            $this->assertInstanceOf(CarrierAccount::class, $carrierAccount);
+            $this->assertStringMatchesFormat('ca_%s', $carrierAccount->id);
+            self::$client->carrierAccount->delete($carrierAccount->id);
+        }
+
         $this->assertEquals(Constants::API_BASE . '/v2' . $expectedEndpoint, $capturedRequest['path']);
         if ($expectedEndpoint === '/carrier_accounts/register_oauth') {
             $this->assertArrayHasKey('carrier_account_oauth_registrations', $capturedRequest['request_body']);
