@@ -15,17 +15,25 @@ abstract class Constants
     const SUPPORT_EMAIL = 'support@easypost.com';
 
     // Validation
-    const CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_WORKFLOWS = [
-        'FedexAccount',
-        'FedexSmartpostAccount'
-    ];
-
-    const CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_OAUTH = [
-        'AmazonShippingAccount',
-        'UpsAccount',
-        'UpsMailInnovationsAccount',
-        'UpsSurepostAccount',
-        'UspsShipAccount',
+    const CARRIER_ACCOUNT_CREATE_ENDPOINT_TYPES = [
+        '/carrier_accounts/open' => [
+            'FedexDefaultAccount',
+            'GofoWalletAccount',
+            'UpsDapAccount',
+            'UniUniWalletAccount',
+            'VehoWalletAccount',
+        ],
+        '/carrier_accounts/register' => [
+            'FedexAccount',
+            'FedexSmartpostAccount',
+        ],
+        '/carrier_accounts/register_oauth' => [
+            'AmazonShippingAccount',
+            'UpsAccount',
+            'UpsMailInnovationsAccount',
+            'UpsSurepostAccount',
+            'UspsShipAccount',
+        ],
     ];
 
     // Exception messages (many of these are intended to be used with `sprintf()`)

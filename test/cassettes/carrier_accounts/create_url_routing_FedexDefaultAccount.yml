@@ -1,0 +1,88 @@
+
+-
+    request:
+        method: POST
+        url: 'https://api.easypost.com/v2/carrier_accounts/open'
+        headers:
+            Host: api.easypost.com
+            Expect: ''
+            Accept-Encoding: ''
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+        body: '{"carrier_account":{"type":"FedexDefaultAccount","registration_data":[]}}'
+    response:
+        status:
+            code: 422
+            message: 'Unprocessable Entity'
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            easypost-api-version: '2015-01-01'
+            vary: EasyPost-Api-Version
+            x-ep-request-uuid: add87ec76ad13f66e2cc176f006e1247
+            cache-control: 'private, no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '453'
+            x-runtime: '0.032359'
+            x-node: web118azw
+            x-version-label: easypost-202610151955-b13716d895-main
+            x-backend: easypost
+            x-proxied: ['intlb1azw f29267e751', 'extlb3azw ff4cfe6eb5']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"error":{"code":"UNPROCESSABLE_ENTITY","message":"The request was understood, but cannot be processed.","errors":[{"field":"name","message":"is missing"},{"field":"street1","message":"is missing"},{"field":"city","message":"is missing"},{"field":"state","message":"is missing"},{"field":"postal_code","message":"is missing"},{"field":"country","message":"is missing"},{"field":"phone","message":"is missing"},{"field":"email","message":"is missing"}]}}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/carrier_accounts/open'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 422
+            header_size: 764
+            request_size: 392
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.155085
+            namelookup_time: 0.037613
+            connect_time: 0.061864
+            pretransfer_time: 0.091443
+            size_upload: 73.0
+            size_download: 453.0
+            speed_download: 2921.0
+            speed_upload: 470.0
+            download_content_length: 453.0
+            upload_content_length: 73.0
+            starttransfer_time: 0.155062
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 172.185.21.32
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 192.168.1.60
+            local_port: 64140
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: https
+            appconnect_time_us: 91385
+            queue_time_us: 7
+            connect_time_us: 61864
+            namelookup_time_us: 37613
+            pretransfer_time_us: 91443
+            redirect_time_us: 0
+            starttransfer_time_us: 155062
+            posttransfer_time_us: 91443
+            total_time_us: 155085
+            effective_method: POST
+            capath: ''
+            cainfo: ''
+            used_proxy: 0
+            httpauth_used: 0
+            proxyauth_used: 0
+            conn_id: 0
+    index: 0

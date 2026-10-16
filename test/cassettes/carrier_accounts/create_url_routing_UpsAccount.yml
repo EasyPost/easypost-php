@@ -1,0 +1,88 @@
+
+-
+    request:
+        method: POST
+        url: 'https://api.easypost.com/v2/carrier_accounts/register_oauth'
+        headers:
+            Host: api.easypost.com
+            Expect: ''
+            Accept-Encoding: ''
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+        body: '{"carrier_account_oauth_registrations":{"type":"UpsAccount"}}'
+    response:
+        status:
+            code: 422
+            message: 'Unprocessable Entity'
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            easypost-api-version: '2015-01-01'
+            vary: EasyPost-Api-Version
+            x-ep-request-uuid: add87ec46ad13f68e2cc1792006e17a9
+            cache-control: 'private, no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '227'
+            x-runtime: '0.029751'
+            x-node: web111azw
+            x-version-label: easypost-202610151955-b13716d895-main
+            x-backend: easypost
+            x-proxied: ['intlb4azw f29267e751', 'extlb3azw ff4cfe6eb5']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"error":{"code":"UNPROCESSABLE_ENTITY","message":"The request was understood, but cannot be processed.","errors":[{"field":"account_number","message":"The provided Carrier Account''s Account Number is required but missing."}]}}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/carrier_accounts/register_oauth'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 422
+            header_size: 764
+            request_size: 390
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.134247
+            namelookup_time: 0.003893
+            connect_time: 0.031951
+            pretransfer_time: 0.062651
+            size_upload: 61.0
+            size_download: 227.0
+            speed_download: 1690.0
+            speed_upload: 454.0
+            download_content_length: 227.0
+            upload_content_length: 61.0
+            starttransfer_time: 0.134215
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 172.185.21.32
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 192.168.1.60
+            local_port: 64152
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: https
+            appconnect_time_us: 62573
+            queue_time_us: 17
+            connect_time_us: 31951
+            namelookup_time_us: 3893
+            pretransfer_time_us: 62651
+            redirect_time_us: 0
+            starttransfer_time_us: 134215
+            posttransfer_time_us: 62651
+            total_time_us: 134247
+            effective_method: POST
+            capath: ''
+            cainfo: ''
+            used_proxy: 0
+            httpauth_used: 0
+            proxyauth_used: 0
+            conn_id: 0
+    index: 0

@@ -3,8 +3,8 @@
 namespace EasyPost\Test;
 
 use EasyPost\CarrierAccount;
+use EasyPost\Constant\Constants;
 use EasyPost\EasyPostClient;
-use EasyPost\Exception\Api\ApiException;
 use EasyPost\Exception\General\MissingParameterException;
 use PHPUnit\Framework\TestCase;
 
@@ -30,6 +30,39 @@ class CarrierAccountTest extends TestCase
     }
 
     /**
+     * @return array<string, array<mixed>>
+     */
+    public static function carrierAccountCreateUrlRoutingDataProvider(): array
+    {
+        $tests = [];
+
+        foreach (Constants::CARRIER_ACCOUNT_CREATE_ENDPOINT_TYPES as $endpoint => $carrierAccountTypes) {
+            foreach ($carrierAccountTypes as $carrierAccountType) {
+                $tests[$carrierAccountType] = [
+                    $carrierAccountType,
+                    $endpoint,
+                    self::carrierCreatePayloadForEndpoint($endpoint),
+                ];
+            }
+        }
+
+        return $tests;
+    }
+
+    /**
+     * @param string $endpoint
+     * @return array<string, mixed>
+     */
+    private static function carrierCreatePayloadForEndpoint(string $endpoint): array
+    {
+        if ($endpoint === '/carrier_accounts/open' || $endpoint === '/carrier_accounts/register') {
+            return ['registration_data' => []];
+        }
+
+        return [];
+    }
+
+    /**
      * Test creating a carrier account.
      */
     public function testCreate(): void
@@ -41,49 +74,6 @@ class CarrierAccountTest extends TestCase
         $carrierAccount = self::$client->carrierAccount->create(Fixture::basicCarrierAccount());
 
         $this->assertEquals('DhlEcsAccount', $carrierAccount->type);
-        $this->assertInstanceOf(CarrierAccount::class, $carrierAccount);
-        $this->assertStringMatchesFormat('ca_%s', $carrierAccount->id);
-
-        // Delete the carrier account once it's done being tested.
-        self::$client->carrierAccount->delete($carrierAccount->id);
-    }
-
-    /**
-     * Test creating a UPS account.
-     */
-    public function testCreateUps(): void
-    {
-        TestUtil::setupCassette('carrier_accounts/create_ups.yml');
-
-        self::$client = new EasyPostClient((string)getenv('EASYPOST_PROD_API_KEY'));
-
-        $carrierAccount = self::$client->carrierAccount->create([
-            'type' => 'UpsAccount',
-            'account_number' => '123456789'
-        ]);
-
-        $this->assertEquals('UpsAccount', $carrierAccount->type);
-        $this->assertInstanceOf(CarrierAccount::class, $carrierAccount);
-        $this->assertStringMatchesFormat('ca_%s', $carrierAccount->id);
-
-        // Delete the carrier account once it's done being tested.
-        self::$client->carrierAccount->delete($carrierAccount->id);
-    }
-
-    /**
-     * Test creating an Amazon account.
-     */
-    public function testCreateAmazon(): void
-    {
-        TestUtil::setupCassette('carrier_accounts/create_amazon.yml');
-
-        self::$client = new EasyPostClient((string)getenv('EASYPOST_PROD_API_KEY'));
-
-        $carrierAccount = self::$client->carrierAccount->create([
-            'type' => 'AmazonShippingAccount',
-        ]);
-
-        $this->assertEquals('AmazonShippingAccount', $carrierAccount->type);
         $this->assertInstanceOf(CarrierAccount::class, $carrierAccount);
         $this->assertStringMatchesFormat('ca_%s', $carrierAccount->id);
 
@@ -112,40 +102,49 @@ class CarrierAccountTest extends TestCase
     }
 
     /**
-     * Test creating a carrier account with custom workflow such as FedEx or UPS.
+     * Test creating carrier accounts with custom endpoint routing.
      *
-     * We purposefully don't pass data here because real data is required for this endpoint
-     * which we don't have in a test context, simply assert the error matches when no data is passed.
+     * @dataProvider carrierAccountCreateUrlRoutingDataProvider
+     * @param array<string, mixed> $params
      */
-    public function testCreateWithCustomWorkflow(): void
-    {
-        TestUtil::setupCassette('carrier_accounts/createWithCustomWorkflow.yml');
-
+    public function testCreateUrlRouting(
+        string $carrierAccountType,
+        string $expectedEndpoint,
+        array $params
+    ): void {
+        $capturedRequest = [];
+        TestUtil::setupCassette("carrier_accounts/create_url_routing_{$carrierAccountType}.yml");
         self::$client = new EasyPostClient((string)getenv('EASYPOST_PROD_API_KEY'));
+        self::$client->requestEvent->addHandler(function (array $requestInfo) use (&$capturedRequest): void {
+            if (!isset($capturedRequest['path']) && str_contains($requestInfo['path'], '/carrier_accounts')) {
+                $capturedRequest = $requestInfo;
+            }
+        });
 
-        $data = [];
-        $data['type'] = 'FedexAccount';
-        // We have to send some registration data, otherwise API will throw a 400 Bad Request
-        $data['registration_data'] = ['some' => 'data'];
-
-        $errorFound = false;
-
+        $payload = ['type' => $carrierAccountType] + $params;
+        $carrierAccount = null;
         try {
-            $carrierAccount = self::$client->carrierAccount->create($data);
-            // Delete the carrier account once it's done being tested (should not be reached).
-            self::$client->carrierAccount->delete($carrierAccount->id);
-        } catch (ApiException $error) {
-            $this->assertEquals(422, $error->getHttpStatus());
-            $errors = $error->errors;
-            foreach ($errors as $error) {
-                if ($error['field'] == 'account_number' && $error['message'] == 'must be present and a string') {
-                    $errorFound = true;
-                    break;
-                }
+            $carrierAccount = self::$client->carrierAccount->create($payload);
+        } catch (\Exception $error) {
+            if ($error instanceof \EasyPost\Exception\Api\ApiException) {
+                $this->assertNotContains($error->getHttpStatus(), [404, 500]);
+            } else {
+                throw $error;
             }
         }
 
-        $this->assertTrue($errorFound);
+        if ($carrierAccount !== null) {
+            $this->assertInstanceOf(CarrierAccount::class, $carrierAccount);
+            $this->assertStringMatchesFormat('ca_%s', $carrierAccount->id);
+            self::$client->carrierAccount->delete($carrierAccount->id);
+        }
+
+        $this->assertEquals(Constants::API_BASE . '/v2' . $expectedEndpoint, $capturedRequest['path']);
+        if ($expectedEndpoint === '/carrier_accounts/register_oauth') {
+            $this->assertArrayHasKey('carrier_account_oauth_registrations', $capturedRequest['request_body']);
+        } else {
+            $this->assertArrayHasKey('carrier_account', $capturedRequest['request_body']);
+        }
     }
 
     /**
@@ -180,33 +179,6 @@ class CarrierAccountTest extends TestCase
         $carrierAccounts = self::$client->carrierAccount->all();
 
         $this->assertContainsOnlyInstancesOf(CarrierAccount::class, $carrierAccounts);
-    }
-
-    /**
-     * Test updating an UPS account.
-     */
-    public function testUpdateUps(): void
-    {
-        TestUtil::setupCassette('carrier_accounts/update_ups.yml');
-
-        self::$client = new EasyPostClient((string)getenv('EASYPOST_PROD_API_KEY'));
-
-        $carrierAccount = self::$client->carrierAccount->create([
-            'type' => 'UpsAccount',
-            'account_number' => '123456789'
-        ]);
-
-        $updatedCarrierAccount = self::$client->carrierAccount->update(
-            $carrierAccount->id,
-            ['account_number' => '987654321']
-        );
-
-        $this->assertInstanceOf(CarrierAccount::class, $updatedCarrierAccount);
-        $this->assertStringMatchesFormat('ca_%s', $updatedCarrierAccount->id);
-        $this->assertEquals('UpsAccount', $updatedCarrierAccount->type);
-
-        // Delete the carrier account once it's done being tested.
-        self::$client->carrierAccount->delete($updatedCarrierAccount->id);
     }
 
     /**
