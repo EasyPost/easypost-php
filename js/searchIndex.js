@@ -81,15 +81,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/EasyPost-Constant-Constants.html#constant_SUPPORT_EMAIL"
         },                {
-            "fqsen": "\\EasyPost\\Constant\\Constants\u003A\u003ACARRIER_ACCOUNT_TYPES_WITH_CUSTOM_WORKFLOWS",
-            "name": "CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_WORKFLOWS",
+            "fqsen": "\\EasyPost\\Constant\\Constants\u003A\u003ACARRIER_ACCOUNT_CREATE_ENDPOINT_TYPES",
+            "name": "CARRIER_ACCOUNT_CREATE_ENDPOINT_TYPES",
             "summary": "",
-            "url": "classes/EasyPost-Constant-Constants.html#constant_CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_WORKFLOWS"
-        },                {
-            "fqsen": "\\EasyPost\\Constant\\Constants\u003A\u003ACARRIER_ACCOUNT_TYPES_WITH_CUSTOM_OAUTH",
-            "name": "CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_OAUTH",
-            "summary": "",
-            "url": "classes/EasyPost-Constant-Constants.html#constant_CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_OAUTH"
+            "url": "classes/EasyPost-Constant-Constants.html#constant_CARRIER_ACCOUNT_CREATE_ENDPOINT_TYPES"
         },                {
             "fqsen": "\\EasyPost\\Constant\\Constants\u003A\u003AARRAY_REQUIRED_ERROR",
             "name": "ARRAY_REQUIRED_ERROR",

@@ -184,16 +184,9 @@
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a href="classes/EasyPost-Constant-Constants.html#constant_CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_OAUTH">CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_OAUTH</a>
+    <a href="classes/EasyPost-Constant-Constants.html#constant_CARRIER_ACCOUNT_CREATE_ENDPOINT_TYPES">CARRIER_ACCOUNT_CREATE_ENDPOINT_TYPES</a>
     <span>
-        &nbsp;= [&#039;AmazonShippingAccount&#039;, &#039;UpsAccount&#039;, &#039;UpsMailInnovationsAccount&#039;, &#039;UpsSurepostAccount&#039;, &#039;UspsShipAccount&#039;]                            </span>
-</dt>
-<dd></dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a href="classes/EasyPost-Constant-Constants.html#constant_CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_WORKFLOWS">CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_WORKFLOWS</a>
-    <span>
-        &nbsp;= [&#039;FedexAccount&#039;, &#039;FedexSmartpostAccount&#039;]                            </span>
+        &nbsp;= [&#039;/carrier_accounts/open&#039; =&gt; [&#039;FedexDefaultAccount&#039;, &#039;GofoWalletAccount&#039;, &#039;UpsDapAccount&#039;, &#039;UniUniWalletAccount&#039;, &#039;VehoWalletAccount&#039;], &#039;/carrier_accounts/register&#039; =&gt; [&#039;FedexAccount&#039;, &#039;FedexSmartpostAccount&#039;], &#039;/carrier_accounts/register_oauth&#039; =&gt; [&#039;AmazonShippingAccount&#039;, &#039;UpsAccount&#039;, &#039;UpsMailInnovationsAccount&#039;, &#039;UpsSurepostAccount&#039;, &#039;UspsShipAccount&#039;]]                            </span>
 </dt>
 <dd></dd>
 
@@ -400,7 +393,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Constant/Constants.php"><a href="files/lib-easypost-constant-constants.html"><abbr title="lib/EasyPost/Constant/Constants.php">Constants.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">32</span>
+    <span class="phpdocumentor-element-found-in__line">40</span>
 
     </aside>
 
@@ -450,38 +443,9 @@
 
 </article>
                     <article class="phpdocumentor-element -constant -public ">
-    <h4 class="phpdocumentor-element__name" id="constant_CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_OAUTH">
-        CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_OAUTH
-        <a href="classes/EasyPost-Constant-Constants.html#constant_CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_OAUTH" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Constant/Constants.php"><a href="files/lib-easypost-constant-constants.html"><abbr title="lib/EasyPost/Constant/Constants.php">Constants.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">23</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-signature phpdocumentor-code ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
-    <span class="phpdocumentor-signature__name">CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_OAUTH</span>
-    = <span class="phpdocumentor-signature__default-value">[&#039;AmazonShippingAccount&#039;, &#039;UpsAccount&#039;, &#039;UpsMailInnovationsAccount&#039;, &#039;UpsSurepostAccount&#039;, &#039;UspsShipAccount&#039;]</span>
-</code>
-
-
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
-    
-
-</article>
-                    <article class="phpdocumentor-element -constant -public ">
-    <h4 class="phpdocumentor-element__name" id="constant_CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_WORKFLOWS">
-        CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_WORKFLOWS
-        <a href="classes/EasyPost-Constant-Constants.html#constant_CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_WORKFLOWS" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="constant_CARRIER_ACCOUNT_CREATE_ENDPOINT_TYPES">
+        CARRIER_ACCOUNT_CREATE_ENDPOINT_TYPES
+        <a href="classes/EasyPost-Constant-Constants.html#constant_CARRIER_ACCOUNT_CREATE_ENDPOINT_TYPES" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -495,8 +459,8 @@
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
         <span class="phpdocumentor-signature__type">mixed</span>
-    <span class="phpdocumentor-signature__name">CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_WORKFLOWS</span>
-    = <span class="phpdocumentor-signature__default-value">[&#039;FedexAccount&#039;, &#039;FedexSmartpostAccount&#039;]</span>
+    <span class="phpdocumentor-signature__name">CARRIER_ACCOUNT_CREATE_ENDPOINT_TYPES</span>
+    = <span class="phpdocumentor-signature__default-value">[&#039;/carrier_accounts/open&#039; =&gt; [&#039;FedexDefaultAccount&#039;, &#039;GofoWalletAccount&#039;, &#039;UpsDapAccount&#039;, &#039;UniUniWalletAccount&#039;, &#039;VehoWalletAccount&#039;], &#039;/carrier_accounts/register&#039; =&gt; [&#039;FedexAccount&#039;, &#039;FedexSmartpostAccount&#039;], &#039;/carrier_accounts/register_oauth&#039; =&gt; [&#039;AmazonShippingAccount&#039;, &#039;UpsAccount&#039;, &#039;UpsMailInnovationsAccount&#039;, &#039;UpsSurepostAccount&#039;, &#039;UspsShipAccount&#039;]]</span>
 </code>
 
 
@@ -516,7 +480,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Constant/Constants.php"><a href="files/lib-easypost-constant-constants.html"><abbr title="lib/EasyPost/Constant/Constants.php">Constants.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">33</span>
+    <span class="phpdocumentor-element-found-in__line">41</span>
 
     </aside>
 
@@ -545,7 +509,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Constant/Constants.php"><a href="files/lib-easypost-constant-constants.html"><abbr title="lib/EasyPost/Constant/Constants.php">Constants.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">34</span>
+    <span class="phpdocumentor-element-found-in__line">42</span>
 
     </aside>
 
@@ -574,7 +538,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Constant/Constants.php"><a href="files/lib-easypost-constant-constants.html"><abbr title="lib/EasyPost/Constant/Constants.php">Constants.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">48</span>
+    <span class="phpdocumentor-element-found-in__line">56</span>
 
     </aside>
 
@@ -603,7 +567,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Constant/Constants.php"><a href="files/lib-easypost-constant-constants.html"><abbr title="lib/EasyPost/Constant/Constants.php">Constants.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">35</span>
+    <span class="phpdocumentor-element-found-in__line">43</span>
 
     </aside>
 
@@ -632,7 +596,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Constant/Constants.php"><a href="files/lib-easypost-constant-constants.html"><abbr title="lib/EasyPost/Constant/Constants.php">Constants.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">36</span>
+    <span class="phpdocumentor-element-found-in__line">44</span>
 
     </aside>
 
@@ -661,7 +625,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Constant/Constants.php"><a href="files/lib-easypost-constant-constants.html"><abbr title="lib/EasyPost/Constant/Constants.php">Constants.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">37</span>
+    <span class="phpdocumentor-element-found-in__line">45</span>
 
     </aside>
 
@@ -690,7 +654,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Constant/Constants.php"><a href="files/lib-easypost-constant-constants.html"><abbr title="lib/EasyPost/Constant/Constants.php">Constants.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">38</span>
+    <span class="phpdocumentor-element-found-in__line">46</span>
 
     </aside>
 
@@ -748,7 +712,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Constant/Constants.php"><a href="files/lib-easypost-constant-constants.html"><abbr title="lib/EasyPost/Constant/Constants.php">Constants.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">39</span>
+    <span class="phpdocumentor-element-found-in__line">47</span>
 
     </aside>
 
@@ -777,7 +741,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Constant/Constants.php"><a href="files/lib-easypost-constant-constants.html"><abbr title="lib/EasyPost/Constant/Constants.php">Constants.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">40</span>
+    <span class="phpdocumentor-element-found-in__line">48</span>
 
     </aside>
 
@@ -806,7 +770,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Constant/Constants.php"><a href="files/lib-easypost-constant-constants.html"><abbr title="lib/EasyPost/Constant/Constants.php">Constants.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">41</span>
+    <span class="phpdocumentor-element-found-in__line">49</span>
 
     </aside>
 
@@ -835,7 +799,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Constant/Constants.php"><a href="files/lib-easypost-constant-constants.html"><abbr title="lib/EasyPost/Constant/Constants.php">Constants.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">47</span>
+    <span class="phpdocumentor-element-found-in__line">55</span>
 
     </aside>
 
@@ -864,7 +828,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Constant/Constants.php"><a href="files/lib-easypost-constant-constants.html"><abbr title="lib/EasyPost/Constant/Constants.php">Constants.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">42</span>
+    <span class="phpdocumentor-element-found-in__line">50</span>
 
     </aside>
 
@@ -893,7 +857,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Constant/Constants.php"><a href="files/lib-easypost-constant-constants.html"><abbr title="lib/EasyPost/Constant/Constants.php">Constants.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">45</span>
+    <span class="phpdocumentor-element-found-in__line">53</span>
 
     </aside>
 
@@ -922,7 +886,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Constant/Constants.php"><a href="files/lib-easypost-constant-constants.html"><abbr title="lib/EasyPost/Constant/Constants.php">Constants.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">44</span>
+    <span class="phpdocumentor-element-found-in__line">52</span>
 
     </aside>
 
@@ -1009,7 +973,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="lib/EasyPost/Constant/Constants.php"><a href="files/lib-easypost-constant-constants.html"><abbr title="lib/EasyPost/Constant/Constants.php">Constants.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">46</span>
+    <span class="phpdocumentor-element-found-in__line">54</span>
 
     </aside>
 
