@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
       - uses: extractions/setup-just@v3
       - uses: shivammathur/setup-php@v2
         with:
@@ -26,6 +28,8 @@ jobs:
         phpversion: ['8.1', '8.2', '8.3', '8.4', '8.5']
     steps:
       - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
       - uses: extractions/setup-just@v3
       - uses: shivammathur/setup-php@v2
         with:
@@ -54,6 +58,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
       - uses: extractions/setup-just@v3
       - uses: shivammathur/setup-php@v2
         with:
