@@ -40,6 +40,10 @@ jobs:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-${{ matrix.phpversion }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: ${{ runner.os }}-${{ matrix.phpversion }}-composer-
+      # roave/security-advisories conflicts with every PHP 8.1 release (8.1 is EOL), so drop it on 8.1 only
+      - name: remove roave/security-advisories on PHP 8.1
+        if: matrix.phpversion == '8.1'
+        run: composer remove --dev --no-update --no-interaction roave/security-advisories
       - name: install dependencies
         run: just install
       - name: test with phpunit on ${{ matrix.phpversion }}
