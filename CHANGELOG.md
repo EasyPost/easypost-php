@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Next Release
+## v8.9.0 (2026-10-27)
 
 - Adds `surcharges` to `Rate` and a `Surcharge` model
 - Removes the deprecated, unusable `addCreditCard` function
