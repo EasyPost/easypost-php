@@ -1,0 +1,173 @@
+
+-
+    request:
+        method: POST
+        url: 'https://api.easypost.com/v2/carrier_accounts/open'
+        headers:
+            Host: api.easypost.com
+            Expect: ''
+            Accept-Encoding: ''
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+        body: '{"carrier_account":{"type":"VehoWalletAccount","registration_data":[]}}'
+    response:
+        status:
+            code: 201
+            message: Created
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            easypost-api-version: '2015-01-01'
+            vary: EasyPost-Api-Version
+            x-ep-request-uuid: add87ec86ad13f67e2cc1775006e1527
+            cache-control: 'private, no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '583'
+            x-runtime: '0.079996'
+            x-node: web124azw
+            x-version-label: easypost-202610151955-b13716d895-main
+            x-backend: easypost
+            x-proxied: ['intlb1azw f29267e751', 'extlb3azw ff4cfe6eb5']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '{"id":"ca_13db0ea5576d4e92aea9fb033a97a548","object":"CarrierAccount","type":"VehoWalletAccount","clone":false,"created_at":"2026-10-15T21:02:31Z","updated_at":"2026-10-15T21:02:31Z","description":"Veho Account","reference":null,"billing_type":"easypost","readable":"Veho","logo":null,"fields":[],"credentials":[],"test_credentials":[]}'
+        curl_info:
+            url: 'https://api.easypost.com/v2/carrier_accounts/open'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 201
+            header_size: 751
+            request_size: 390
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.176296
+            namelookup_time: 0.005111
+            connect_time: 0.031656
+            pretransfer_time: 0.06315
+            size_upload: 71.0
+            size_download: 583.0
+            speed_download: 3307.0
+            speed_upload: 402.0
+            download_content_length: 583.0
+            upload_content_length: 71.0
+            starttransfer_time: 0.176228
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 172.185.21.32
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 192.168.1.60
+            local_port: 64146
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: https
+            appconnect_time_us: 63071
+            queue_time_us: 27
+            connect_time_us: 31656
+            namelookup_time_us: 5111
+            pretransfer_time_us: 63150
+            redirect_time_us: 0
+            starttransfer_time_us: 176228
+            posttransfer_time_us: 63150
+            total_time_us: 176296
+            effective_method: POST
+            capath: ''
+            cainfo: ''
+            used_proxy: 0
+            httpauth_used: 0
+            proxyauth_used: 0
+            conn_id: 0
+    index: 0
+-
+    request:
+        method: DELETE
+        url: 'https://api.easypost.com/v2/carrier_accounts/ca_13db0ea5576d4e92aea9fb033a97a548'
+        headers:
+            Host: api.easypost.com
+            Accept-Encoding: ''
+            Accept: application/json
+            Authorization: ''
+            Content-Type: application/json
+            User-Agent: ''
+    response:
+        status:
+            code: 200
+            message: OK
+        headers:
+            x-frame-options: SAMEORIGIN
+            x-xss-protection: '1; mode=block'
+            x-content-type-options: nosniff
+            x-download-options: noopen
+            x-permitted-cross-domain-policies: none
+            referrer-policy: strict-origin-when-cross-origin
+            easypost-api-version: '2015-01-01'
+            vary: EasyPost-Api-Version
+            x-ep-request-uuid: ef2f75706ad13f67e2cc17760014af90
+            cache-control: 'private, no-cache, no-store'
+            pragma: no-cache
+            expires: '0'
+            content-type: 'application/json; charset=utf-8'
+            content-length: '2'
+            x-runtime: '0.072800'
+            x-node: web114azw
+            x-version-label: easypost-202610151955-b13716d895-main
+            x-backend: easypost
+            x-proxied: ['intlb4azw f29267e751', 'extlb1azw ff4cfe6eb5']
+            strict-transport-security: 'max-age=31536000; includeSubDomains; preload'
+        body: '[]'
+        curl_info:
+            url: 'https://api.easypost.com/v2/carrier_accounts/ca_13db0ea5576d4e92aea9fb033a97a548'
+            content_type: 'application/json; charset=utf-8'
+            http_code: 200
+            header_size: 744
+            request_size: 332
+            filetime: -1
+            ssl_verify_result: 0
+            redirect_count: 0
+            total_time: 0.167214
+            namelookup_time: 0.003189
+            connect_time: 0.030073
+            pretransfer_time: 0.062447
+            size_upload: 0.0
+            size_download: 2.0
+            speed_download: 11.0
+            speed_upload: 0.0
+            download_content_length: 2.0
+            upload_content_length: 0.0
+            starttransfer_time: 0.167123
+            redirect_time: 0.0
+            redirect_url: ''
+            primary_ip: 172.185.21.32
+            certinfo: {  }
+            primary_port: 443
+            local_ip: 192.168.1.60
+            local_port: 64147
+            http_version: 2
+            protocol: 2
+            ssl_verifyresult: 0
+            scheme: https
+            appconnect_time_us: 62382
+            queue_time_us: 20
+            connect_time_us: 30073
+            namelookup_time_us: 3189
+            pretransfer_time_us: 62447
+            redirect_time_us: 0
+            starttransfer_time_us: 167123
+            posttransfer_time_us: 62447
+            total_time_us: 167214
+            effective_method: DELETE
+            capath: ''
+            cainfo: ''
+            used_proxy: 0
+            httpauth_used: 0
+            proxyauth_used: 0
+            conn_id: 0
+    index: 0

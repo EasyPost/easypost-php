@@ -75,8 +75,8 @@ class CarrierAccountService extends BaseService
         }
 
         $carrierAccountType = $params['type'];
-        $params = [self::selectTopLayerKey($carrierAccountType) => $params];
         $url = self::selectCarrierAccountCreationEndpoint($carrierAccountType);
+        $params = [self::selectTopLayerKey($url) => $params];
         $response = Requestor::request($this->client, HttpMethod::POST, $url, $params);
 
         return InternalUtil::convertToEasyPostObject($this->client, $response);
@@ -103,10 +103,10 @@ class CarrierAccountService extends BaseService
      */
     private function selectCarrierAccountCreationEndpoint(string $carrierAccountType): string
     {
-        if (in_array($carrierAccountType, Constants::CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_WORKFLOWS, true)) {
-            return '/carrier_accounts/register';
-        } else if (in_array($carrierAccountType, Constants::CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_OAUTH, true)) {
-            return '/carrier_accounts/register_oauth';
+        foreach (Constants::CARRIER_ACCOUNT_CREATE_ENDPOINT_TYPES as $endpoint => $carrierAccountTypes) {
+            if (in_array($carrierAccountType, $carrierAccountTypes, true)) {
+                return $endpoint;
+            }
         }
 
         return '/carrier_accounts';
@@ -115,12 +115,12 @@ class CarrierAccountService extends BaseService
     /**
      * Select the top-key layer for creating/updating a carrier account based on the type of carrier account.
      *
-     * @param string $carrierAccountType The type of carrier account to create.
+     * @param string $carrierAccountUrl The URL used for the carrier-account create endpoint.
      * @return string The top-layer key for creating/updating a carrier account.
      */
-    private function selectTopLayerKey(string $carrierAccountType): string
+    private function selectTopLayerKey(string $carrierAccountUrl): string
     {
-        if (in_array($carrierAccountType, Constants::CARRIER_ACCOUNT_TYPES_WITH_CUSTOM_OAUTH, true)) {
+        if ($carrierAccountUrl === '/carrier_accounts/register_oauth') {
             return 'carrier_account_oauth_registrations';
         } else {
             return 'carrier_account';
