@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Adds `delivery_evidence` to `Tracker` and a `DeliveryEvidence` model
+
 ## v8.9.0 (2026-10-27)
 
 - Adds `surcharges` to `Rate` and a `Surcharge` model

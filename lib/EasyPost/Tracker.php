@@ -21,6 +21,7 @@ namespace EasyPost;
  * @property Fee[] $fees
  * @property bool $is_return
  * @property bool $finalized
+ * @property DeliveryEvidence[] $delivery_evidence
  * @property string $created_at
  * @property string $updated_at
  */
