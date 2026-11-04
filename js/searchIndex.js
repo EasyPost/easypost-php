@@ -176,6 +176,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/EasyPost-CustomsItem.html"
         },                {
+            "fqsen": "\\EasyPost\\DeliveryEvidence",
+            "name": "DeliveryEvidence",
+            "summary": "",
+            "url": "classes/EasyPost-DeliveryEvidence.html"
+        },                {
             "fqsen": "\\EasyPost\\EasyPostClient",
             "name": "EasyPostClient",
             "summary": "Client\u0020used\u0020to\u0020send\u0020requests\u0020to\u0020the\u0020EasyPost\u0020API.",
