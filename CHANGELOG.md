@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Next Release
+## v8.10.0 (2026-11-09)
 
 - Adds `delivery_evidence` to `Tracker` and a `DeliveryEvidence` model
 
