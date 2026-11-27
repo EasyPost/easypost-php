@@ -127,13 +127,13 @@ class UserService extends BaseService
             throw new EndOfPaginationException();
         }
 
-        $params = [
-            'page_size' => $pageSize,
+        // The new cursor (and page size, if given) must win over the params of the previous request
+        $params = array_merge($userParams ?? [], [
             'after_id' => $userArray[count($userArray) - 1]['id']
-        ];
+        ]);
 
-        if (isset($userParams)) {
-            $params = array_merge($params, $userParams);
+        if (isset($pageSize)) {
+            $params['page_size'] = $pageSize;
         }
 
         // Retrieve a page of users from the server

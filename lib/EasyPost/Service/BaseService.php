@@ -163,13 +163,13 @@ class BaseService
             throw new EndOfPaginationException();
         }
 
-        $params = [
-            'page_size' => $pageSize,
+        // The new cursor (and page size, if given) must win over the params of the previous request
+        $params = array_merge($userParams ?? [], [
             'before_id' => $collectionArray[count($collectionArray) - 1]['id']
-        ];
+        ]);
 
-        if (isset($userParams)) {
-            $params = array_merge($params, $userParams);
+        if (isset($pageSize)) {
+            $params['page_size'] = $pageSize;
         }
 
         $response = $this->allResources($class, $params);

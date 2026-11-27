@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Next Release
+
+- Fixes `getNextPage` and `getNextPageOfChildren` requesting the same page again when the previous request params already contained a cursor, and ignoring the `pageSize` argument when the previous params had a `page_size`
+
 ## v8.10.0 (2026-11-09)
 
 - Adds `delivery_evidence` to `Tracker` and a `DeliveryEvidence` model
